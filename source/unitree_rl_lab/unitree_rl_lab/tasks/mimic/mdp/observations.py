@@ -5,6 +5,11 @@ from typing import TYPE_CHECKING
 
 from isaaclab.utils.math import matrix_from_quat, subtract_frame_transforms
 
+try:
+    from isaaclab.utils.math import quat_apply_inverse
+except ImportError:
+    from isaaclab.utils.math import quat_rotate_inverse as quat_apply_inverse
+
 from unitree_rl_lab.tasks.mimic.mdp.commands import MotionCommand
 
 if TYPE_CHECKING:
@@ -81,3 +86,17 @@ def motion_anchor_ori_b(env: ManagerBasedEnv, command_name: str) -> torch.Tensor
     )
     mat = matrix_from_quat(ori)
     return mat[..., :2].reshape(mat.shape[0], -1)
+
+
+def motion_anchor_lin_vel_error_b(env: ManagerBasedEnv, command_name: str) -> torch.Tensor:
+    """Reference-minus-robot anchor linear velocity in the robot anchor frame."""
+    command: MotionCommand = env.command_manager.get_term(command_name)
+    error_w = command.anchor_lin_vel_w - command.robot_anchor_lin_vel_w
+    return quat_apply_inverse(command.robot_anchor_quat_w, error_w)
+
+
+def motion_anchor_ang_vel_error_b(env: ManagerBasedEnv, command_name: str) -> torch.Tensor:
+    """Reference-minus-robot anchor angular velocity in the robot anchor frame."""
+    command: MotionCommand = env.command_manager.get_term(command_name)
+    error_w = command.anchor_ang_vel_w - command.robot_anchor_ang_vel_w
+    return quat_apply_inverse(command.robot_anchor_quat_w, error_w)

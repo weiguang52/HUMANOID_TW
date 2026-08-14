@@ -4,6 +4,7 @@ import torch
 from typing import TYPE_CHECKING
 
 from isaaclab.managers import SceneEntityCfg
+from isaaclab.assets import Articulation
 from isaaclab.sensors import ContactSensor
 from isaaclab.utils.math import quat_error_magnitude
 
@@ -80,3 +81,43 @@ def feet_contact_time(env: ManagerBasedRLEnv, sensor_cfg: SceneEntityCfg, thresh
     last_contact_time = contact_sensor.data.last_contact_time[:, sensor_cfg.body_ids]
     reward = torch.sum((last_contact_time < threshold) * first_air, dim=-1)
     return reward
+
+
+def motion_joint_position_error_exp(
+    env: ManagerBasedRLEnv,
+    command_name: str,
+    std: float,
+    joint_names: list[str] | None = None,
+) -> torch.Tensor:
+    """Soft joint-reference reward, optionally restricted by explicit names."""
+    command: MotionCommand = env.command_manager.get_term(command_name)
+    if joint_names is None:
+        indexes = list(range(command.joint_pos.shape[1]))
+    else:
+        if command.cfg.joint_names is None:
+            raise ValueError("Named joint tracking requires MotionCommandCfg.joint_names")
+        lookup = {name: index for index, name in enumerate(command.cfg.joint_names)}
+        missing = [name for name in joint_names if name not in lookup]
+        if missing:
+            raise ValueError(f"Unknown reference joints: {missing}")
+        indexes = [lookup[name] for name in joint_names]
+    error = torch.mean(torch.square(command.joint_pos[:, indexes] - command.robot_joint_pos[:, indexes]), dim=-1)
+    return torch.exp(-error / std**2)
+
+
+def feet_slide(
+    env: ManagerBasedRLEnv,
+    sensor_cfg: SceneEntityCfg,
+    asset_cfg: SceneEntityCfg = SceneEntityCfg("robot"),
+) -> torch.Tensor:
+    """Penalize horizontal foot velocity only while each foot is in contact."""
+    contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
+    contacts = (
+        contact_sensor.data.net_forces_w_history[:, :, sensor_cfg.body_ids, :]
+        .norm(dim=-1)
+        .max(dim=1)[0]
+        > 1.0
+    )
+    asset: Articulation = env.scene[asset_cfg.name]
+    body_vel = asset.data.body_lin_vel_w[:, asset_cfg.body_ids, :2]
+    return torch.sum(body_vel.norm(dim=-1) * contacts, dim=1)
