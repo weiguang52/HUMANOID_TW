@@ -33,6 +33,25 @@ parser.add_argument(
     help="Use the pre-trained checkpoint from Nucleus.",
 )
 parser.add_argument("--real-time", action="store_true", default=False, help="Run in real-time, if possible.")
+parser.add_argument(
+    "--viewer_eye",
+    type=float,
+    nargs=3,
+    default=None,
+    metavar=("X", "Y", "Z"),
+    help="Override the viewport camera position relative to its configured origin.",
+)
+parser.add_argument(
+    "--viewer_lookat",
+    type=float,
+    nargs=3,
+    default=None,
+    metavar=("X", "Y", "Z"),
+    help="Override the viewport camera target relative to its configured origin.",
+)
+parser.add_argument(
+    "--viewer_follow_asset", type=str, default=None, help="Continuously follow this scene asset's root pose."
+)
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
@@ -86,6 +105,14 @@ def main():
         use_fabric=not args_cli.disable_fabric,
         entry_point_key="play_env_cfg_entry_point",
     )
+    if args_cli.viewer_eye is not None:
+        env_cfg.viewer.eye = tuple(args_cli.viewer_eye)
+    if args_cli.viewer_lookat is not None:
+        env_cfg.viewer.lookat = tuple(args_cli.viewer_lookat)
+    if args_cli.viewer_follow_asset is not None:
+        env_cfg.viewer.origin_type = "asset_root"
+        env_cfg.viewer.asset_name = args_cli.viewer_follow_asset
+        env_cfg.viewer.env_index = 0
     agent_cfg: RslRlOnPolicyRunnerCfg = cli_args.parse_rsl_rl_cfg(args_cli.task, args_cli)
     agent_cfg = handle_deprecated_rsl_rl_cfg(agent_cfg, installed_version)
 
