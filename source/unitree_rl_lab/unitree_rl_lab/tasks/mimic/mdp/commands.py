@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 import math
-import numpy as np
 import os
-import torch
 from collections.abc import Sequence
 from dataclasses import MISSING
 from typing import TYPE_CHECKING
 
+import numpy as np
+import torch
 from isaaclab.assets import Articulation
 from isaaclab.managers import CommandTerm, CommandTermCfg
 from isaaclab.markers import VisualizationMarkers, VisualizationMarkersCfg
@@ -102,6 +102,7 @@ class MotionCommand(CommandTerm):
             )
         self.motion_ids = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
         self.time_steps = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self._evaluation_motion_ids = torch.full((self.num_envs,), -1, dtype=torch.long, device=self.device)
         self.body_pos_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 3, device=self.device)
         self.body_quat_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 4, device=self.device)
         self.body_quat_relative_w[:, :, 0] = 1.0
@@ -140,6 +141,31 @@ class MotionCommand(CommandTerm):
     @property
     def frame_indices(self) -> torch.Tensor:
         return self.motion.frame_indices(self.motion_ids, self.time_steps)
+
+    def set_evaluation_motion_ids(self, motion_ids: Sequence[int] | torch.Tensor) -> None:
+        """Pin every environment to one motion and restart it from frame zero on reset.
+
+        This is intentionally an explicit runtime override instead of a training
+        configuration option. It keeps the adaptive sampler unchanged during
+        training while allowing deterministic per-clip evaluation.
+        """
+        values = torch.as_tensor(motion_ids, dtype=torch.long, device=self.device)
+        if values.ndim != 1 or values.shape[0] != self.num_envs:
+            raise ValueError(
+                f"Expected one evaluation motion id per environment ({self.num_envs}), got {tuple(values.shape)}"
+            )
+        if torch.any(values < 0) or torch.any(values >= self.motion.num_motions):
+            minimum = int(values.min().item()) if values.numel() else -1
+            maximum = int(values.max().item()) if values.numel() else -1
+            raise ValueError(
+                f"Evaluation motion ids must be in [0, {self.motion.num_motions}), got [{minimum}, {maximum}]"
+            )
+        self._evaluation_motion_ids.copy_(values)
+        self._sample_active.zero_()
+
+    def clear_evaluation_motion_ids(self) -> None:
+        """Return all environments to adaptive motion sampling on their next reset."""
+        self._evaluation_motion_ids.fill_(-1)
 
     @property
     def command(self) -> torch.Tensor:  # TODO Consider again if this is the best observation
@@ -302,7 +328,17 @@ class MotionCommand(CommandTerm):
     def _resample_command(self, env_ids: Sequence[int]):
         if len(env_ids) == 0:
             return
-        self._adaptive_sampling(env_ids)
+        env_ids_tensor = torch.as_tensor(env_ids, dtype=torch.long, device=self.device)
+        fixed_mask = self._evaluation_motion_ids[env_ids_tensor] >= 0
+        sampled_env_ids = env_ids_tensor[~fixed_mask]
+        fixed_env_ids = env_ids_tensor[fixed_mask]
+
+        if sampled_env_ids.numel() > 0:
+            self._adaptive_sampling(sampled_env_ids)
+        if fixed_env_ids.numel() > 0:
+            self.motion_ids[fixed_env_ids] = self._evaluation_motion_ids[fixed_env_ids]
+            self.time_steps[fixed_env_ids] = 0
+            self._sample_active[fixed_env_ids] = False
 
         root_pos = self.body_pos_w[:, self.motion_root_body_index].clone()
         root_ori = self.body_quat_w[:, self.motion_root_body_index].clone()

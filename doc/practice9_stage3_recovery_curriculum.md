@@ -74,3 +74,65 @@ bash scripts/practice9/train_humanml3d_custom.sh \
 40条通过后，从其最新checkpoint依次切换到 `stage_080.json`、`stage_165.json` 和
 `stage_174.json`。每次只扩大一个阶段，先做2环境smoke，再做正式训练。165或174条稳定前，
 不要扩大到1024环境，也不要增强push或domain randomization。
+
+## 174动作巩固与逐动作评估
+
+1024环境巩固运行：
+
+`2026-08-16_03-08-53_practice9_stage4_consolidate174`
+
+从 `model_3000.pt` 在完整174动作上继续600次迭代。最后100次平均reward为39.16，动作自然完成率
+为83.31%，anchor位置、姿态和末端终止率分别为3.02%、6.26%和10.08%；最后50次仍在改善。
+最终采用 `model_3599.pt`，actor/critic/optimizer共68个张量全部finite。
+
+为避免训练总体均值掩盖困难动作，新增 `scripts/rsl_rl/evaluate_humanml3d_custom.py`。评估入口通过
+`MotionCommand.set_evaluation_motion_ids()`让每个环境永久绑定一个clip，并在每次reset从第0帧开始；成功严格
+定义为触发 `motion_end` 且没有失败终止。结果原子发布为 `results.json`、`per_motion.csv` 和
+`summary.txt`，同时记录manifest与checkpoint SHA256。
+
+正式评估使用174个并行环境、每条动作3回合、seed 42：
+
+```bash
+python scripts/rsl_rl/evaluate_humanml3d_custom.py \
+  --headless --device cuda:0 \
+  --task Unitree-Custom-Humanoid-30dof-Mimic-HumanML3D \
+  --motion_manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_curriculum_v1/stage_174.json \
+  --episodes_per_motion 3 \
+  --checkpoint /root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-08-16_03-08-53_practice9_stage4_consolidate174/model_3599.pt \
+  --output_dir /root/gpufree-data/datasets/practice9/evaluations/model3599_stage174_eval3_seed42 \
+  --seed 42
+```
+
+评估结果：522回合中479回合自然完成，成功率91.76%，平均完成比例94.48%；153条动作3/3全过，
+10条2/3通过，11条0/3。失败终止以 `ee_body_pos` 为主（36次），anchor位置和姿态各6次。
+11条0/3动作是：`000930`、`001882`、`002585`、`005890`、`006564`、`008186`、`009223`、
+`011735`、`012605`、`012634`、`013604`。其中10条是forward，说明当前弱点集中在部分前向动作，
+不是全局采样坍塌。
+
+## 评估驱动的困难动作微调
+
+`scripts/practice9/build_evaluation_curriculum.py`将完整评估结果转换为加权manifest，不复制NPZ：
+3/3动作权重1、2/3动作权重2、0/3动作权重4。生成文件为：
+
+`/root/gpufree-data/datasets/practice9/humanml3d_custom30_eval_hard174_v1/manifest.json`
+
+该文件保留全部174条和159,961帧，并绑定源manifest、评估结果与checkpoint SHA256。2环境、1迭代smoke
+`2026-08-16_04-01-26_practice9_evalhard174_smoke2`已通过，checkpoint共68个张量全部finite。
+下一轮仍不增加push或domain randomization，从稳定的 `model_3599.pt` 只针对困难动作分布微调：
+
+```bash
+cd /root/gpufree-data/projects/HUMANOID_TW
+
+PRACTICE9_CUSTOM_MOTION_MANIFEST=/root/gpufree-data/datasets/practice9/humanml3d_custom30_eval_hard174_v1/manifest.json \
+P9_CUSTOM_GPU=1 \
+P9_CUSTOM_NUM_ENVS=1024 \
+P9_CUSTOM_MAX_ITERATIONS=600 \
+P9_CUSTOM_RUN_NAME=practice9_stage4b_evalhard174 \
+bash scripts/practice9/train_humanml3d_custom.sh \
+  --resume \
+  --load_run 2026-08-16_03-08-53_practice9_stage4_consolidate174 \
+  --checkpoint model_3599.pt
+```
+
+微调完成后必须用同一个逐动作评估入口重新跑3回合对照；只有0/3动作显著减少且原153条没有退化，
+才进入摩擦、质量、COM与push的鲁棒性课程。
