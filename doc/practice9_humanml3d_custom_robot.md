@@ -49,8 +49,9 @@
 | 训练 URDF | /root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf |
 | USD 缓存 | /root/gpufree-data/datasets/practice9/custom_robot/usd |
 | 100 条严格质量筛选 | /root/gpufree-data/datasets/practice9/humanml3d_custom30_screen100 |
-| 9 条 locomotion FK NPZ | /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/npz |
-| 默认训练 manifest | /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/manifest.json |
+| 400 条 locomotion 候选 | /root/gpufree-data/datasets/practice9/humanml3d_locomotion_candidates400_v1 |
+| 165 条 locomotion FK NPZ | /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion400_v1/npz |
+| 默认训练 manifest | /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion400_v1/manifest.json |
 | 训练日志 | /root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl |
 | Isaac 临时日志 | /root/gpufree-data/tmp/practice9_custom |
 
@@ -204,18 +205,18 @@ custom_motion_to_npz.py 会：
 - 比较 body velocity 与位姿有限差分；
 - 输出 fps、joint_names、body_names、motion_id 和质量字段。
 
-正式 locomotion9_v1 结果：
+正式 locomotion400_v1 结果：
 
 | 指标 | 值 |
 |---|---:|
-| 动作数/总帧数 | 9 / 7,522 |
-| retarget quality_pass | 9/9 |
-| FK quality_pass | 9/9 |
+| 动作数/总帧数 | 165 / 152,439 |
+| retarget quality_pass | 165/165（400 个候选中另有 235 个被拒绝） |
+| FK quality_pass | 165/165 |
 | 最大 base 位置/姿态回读误差 | 0 / 0 |
 | 最低鞋底 | 0.001 m |
-| 最大 body 线速度 FD P95 误差 | 0.03084 m/s |
-| 最大 body 角速度 FD P95 误差 | 0.000764 rad/s |
-| manifest SHA256 | 0e8f372139eeff5671e3658002432e877823479ed638ebf3e5531477622efcd0 |
+| 最大 body 线速度 FD P95 误差 | 0.0436661 m/s |
+| 最大 body 角速度 FD P95 误差 | 0.00193807 rad/s |
+| manifest SHA256 | ee8f53210109176070249a17bf7f09636c01fa6ec644955dfac98c27adeaabe9 |
 
 公开样本 012314 仍因右肩长期贴限等问题被拒绝，不进入正式训练。converter 使用 SimulationApp 官方 immediate shutdown，单条 FK 回归 12.1 秒自然退出并释放 GPU，避免批处理完成后卡在 Kit 清理。
 
@@ -244,12 +245,13 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 4. 多动作名称重排、边界、NaN/缺 body 拒绝通过。
 5. 50/51/99/100 帧尾 bin 公平性、末帧排除、质量门通过。
 6. 旧 G1 6574×29 NPZ 兼容加载通过。
-7. 100 条 bootstrap 筛选：27 pass、73 fail；正式 locomotion 子集 9/9 pass。
-8. 新 FK：30 关节、31 刚体、50 Hz，回读、鞋底和速度有限差分检查通过。
-9. 正式 locomotion manifest 的新任务 2 env、1 PPO iter：171→30、291→1、48 steps、无 NaN/Inf，checkpoint 6,860,503 字节。
-10. checkpoint：logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-08-15_12-03-51_practice9_humanml3d_locomotion9_smoke_v1/model_0.pt。
-11. GPU 测试后均已释放。
-12. Isaac/CUDA/Omniverse/W&B/pip/temp 路径均位于数据盘。
+7. 400 条语义平衡 locomotion 候选严格重定向：165 pass、235 fail；总帧 152,439。
+8. 新 FK：165/165 pass，30 关节、31 刚体、50 Hz，回读、鞋底和速度有限差分检查通过。
+9. 阶段二 model_998 在 165 条 manifest 上续训烟测：2 env、1 PPO iter，171→30、291→1、48 steps、无 NaN/Inf。
+10. smoke checkpoint 大小 6,861,099 字节，SHA256 为 2ccd8d555825b21e5cd9f8edd2c68072c0d9f98665f66af40a7197b00de5ab9e。
+11. checkpoint：logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-08-15_21-00-22_practice9_humanml3d_locomotion165_resume_smoke/model_998.pt。
+12. GPU 测试后均已释放。
+13. Isaac/CUDA/Omniverse/W&B/pip/temp 路径均位于数据盘。
 
 ## 文件变更
 
@@ -257,6 +259,7 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 
 - scripts/practice9/prepare_custom_robot_urdf.py
 - scripts/practice9/retarget_humanml3d.py
+- scripts/practice9/select_humanml3d_locomotion.py
 - scripts/practice9/custom_motion_to_npz.py
 - scripts/practice9/download_humanml3d_amass.sh
 - scripts/practice9/train_humanml3d_custom.sh
@@ -264,11 +267,12 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 - scripts/practice9/rebuild_humanml3d_postprocess.py
 - tests/practice9/test_rebuild_humanml3d.py
 - tests/practice9/test_rebuild_humanml3d_postprocess.py
+- tests/practice9/test_select_humanml3d_locomotion.py
 - source/unitree_rl_lab/unitree_rl_lab/assets/robots/custom_humanoid.py
 - source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/motion_library.py
 - source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/custom_30dof/humanml3d/
 
-修改 commands.py、observations.py、rewards.py、terminations.py，增加多动作、速度观测、奖励和 motion_end；训练脚本默认使用 locomotion9_v1 的严格质量 manifest。
+修改 commands.py、observations.py、rewards.py、terminations.py，增加多动作、速度观测、奖励和 motion_end；训练脚本默认使用 locomotion400_v1 的 165 条严格质量 manifest。
 
 ## 本次实际构建与扩展方法
 
@@ -281,15 +285,23 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 
 当前默认输入已经指向 READY 数据。扩展动作集时先做受控小批量筛选，不要直接把 29,228 条全部放进 eager MotionLibrary：
 
+    python scripts/practice9/select_humanml3d_locomotion.py \
+      --new-joints-dir /root/gpufree-data/datasets/practice9/humanml3d_rebuild/staging-v1/HumanML3D/new_joints \
+      --texts-dir /root/gpufree-data/datasets/HumanML3D-official/HumanML3D/texts \
+      --output-dir /root/gpufree-data/datasets/practice9/humanml3d_locomotion_candidates400_v1 \
+      --limit 400 --min-frames 40 --max-frames 300
+
+
     python scripts/practice9/retarget_humanml3d.py \
-      --input /root/gpufree-data/datasets/practice9/humanml3d_rebuild/staging-v1/HumanML3D/new_joints \
-      --limit 200 \
+      --input /root/gpufree-data/datasets/practice9/humanml3d_locomotion_candidates400_v1/new_joints \
+      --output-dir /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion400_v1/retargeted \
       --continue-on-error
 
 正式数据不要加 --allow-quality-failures。先检查 retarget_manifest.json 中 motions 非空、所有 quality_pass=true，并保持总帧数不超过 500,000。
 
 再做 Isaac FK：
 
+    source /root/gpufree-data/conda_envs/env_isaaclab/etc/conda/activate.d/isaac_paths.sh
     export GPUFREE_DATA_ROOT=/root/gpufree-data
     export PRACTICE9_CUSTOM_URDF=/root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf
     export PRACTICE9_CUSTOM_USD_DIR=/root/gpufree-data/datasets/practice9/custom_robot/usd
@@ -302,18 +314,22 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 
     python scripts/practice9/custom_motion_to_npz.py \
       --headless --device cuda:0 \
-      --input-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/retarget_manifest.json \
-      --output-dir /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/npz \
-      --output-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/manifest.json
+      --input-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion400_v1/retarget_manifest.json \
+      --output-dir /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion400_v1/npz \
+      --output-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion400_v1/manifest.json \
+      --continue-on-error # strict batch
 
 运行前必须确认目标 GPU 空闲。正式数据不要加 --allow-quality-failures，也不要设置 P9_CUSTOM_ALLOW_UNSAFE_MOTIONS。
 
 ## 如何开始训练
 
+> Current 165-motion stage-3 instructions: [practice9_stage3_locomotion165.md](practice9_stage3_locomotion165.md).
+> The locomotion9 commands below are retained as historical stage-1 examples; use the linked document for the current run.
+
 前置条件：
 
 - postprocess-ready.json 存在且 ready=true；
-- 默认 locomotion9_v1 manifest 有 9 条 quality_pass=true；
+- Default locomotion400_v1 manifest: 165 motions, all quality_pass=true.
 - 选择空闲 GPU。
 
 先复现最小烟测：

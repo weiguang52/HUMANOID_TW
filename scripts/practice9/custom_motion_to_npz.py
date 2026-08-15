@@ -8,6 +8,7 @@ import itertools
 import json
 import math
 import os
+import traceback
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -23,7 +24,6 @@ PROCESS_TMP_DIR.mkdir(parents=True, exist_ok=True)
 os.environ["TMPDIR"] = str(PROCESS_TMP_DIR)
 
 from isaaclab.app import AppLauncher
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input-manifest", type=Path, required=True)
@@ -44,23 +44,24 @@ parser.add_argument("--state-tolerance", type=float, default=1.0e-5)
 parser.add_argument("--body-linear-velocity-p95-tolerance", type=float, default=0.05)
 parser.add_argument("--body-angular-velocity-p95-tolerance", type=float, default=0.2)
 parser.add_argument("--allow-quality-failures", action="store_true")
+parser.add_argument("--continue-on-error", action="store_true")
 AppLauncher.add_app_launcher_args(parser)
 args_cli = parser.parse_args()
 
 app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
 
-import torch
-
 import isaaclab.sim as sim_utils
+import torch
 from isaaclab.assets import ArticulationCfg
 from isaaclab.scene import InteractiveScene, InteractiveSceneCfg
 from isaaclab.sim import SimulationContext
 from isaaclab.utils import configclass
 from isaaclab.utils.math import axis_angle_from_quat, quat_conjugate, quat_mul
-
 from unitree_rl_lab.assets.robots.custom_humanoid import (
     CUSTOM_HUMANOID_30DOF_CFG as ROBOT_CFG,
+)
+from unitree_rl_lab.assets.robots.custom_humanoid import (
     CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
 )
 
@@ -278,8 +279,6 @@ def convert_clip(
     root_pos_np = root_state_np[:, :3].copy()
     root_pos_np[:, :2] -= scene.env_origins[0, :2].cpu().numpy()
     root_quat_np = root_state_np[:, 3:7]
-    root_lin_vel_np = root_state_np[:, 7:10]
-    root_ang_vel_np = root_state_np[:, 10:13]
 
     collision_corners = load_link_collision_corners(
         args_cli.training_urdf, ["left_foot", "right_foot"]
@@ -378,6 +377,7 @@ def main() -> None:
     sim.reset()
 
     converted = []
+    failures = []
     for index, item in enumerate(motions, start=1):
         motion_id = str(item["id"])
         input_path = Path(item["file"]).expanduser()
@@ -385,19 +385,27 @@ def main() -> None:
             input_path = args_cli.input_manifest.parent / input_path
         input_path = input_path.resolve()
         source_quality_pass = item.get("quality_pass") is True
-        if not source_quality_pass and not args_cli.allow_quality_failures:
-            raise ValueError(
-                f"{motion_id}: retarget record is not marked quality_pass=true"
-            )
         output_path = args_cli.output_dir / f"{motion_id}.npz"
-        print(f"[{index}/{len(motions)}] FK {motion_id}", flush=True)
-        record = convert_clip(sim, scene, input_path, output_path, motion_id)
-        record["weight"] = float(item.get("weight", 1.0))
-        record["retarget_quality"] = item.get("quality", {})
-        record["quality_pass"] = bool(source_quality_pass and record["fk_quality_pass"])
-        if not record["quality_pass"] and not args_cli.allow_quality_failures:
-            raise ValueError(f"{motion_id}: FK or retarget quality gate failed")
-        converted.append(record)
+        try:
+            if not source_quality_pass and not args_cli.allow_quality_failures:
+                raise ValueError(
+                    f"{motion_id}: retarget record is not marked quality_pass=true"
+                )
+            print(f"[{index}/{len(motions)}] FK {motion_id}", flush=True)
+            record = convert_clip(sim, scene, input_path, output_path, motion_id)
+            record["weight"] = float(item.get("weight", 1.0))
+            record["retarget_quality"] = item.get("quality", {})
+            record["quality_pass"] = bool(source_quality_pass and record["fk_quality_pass"])
+            if not record["quality_pass"] and not args_cli.allow_quality_failures:
+                output_path.unlink(missing_ok=True)
+                raise ValueError(f"{motion_id}: FK or retarget quality gate failed")
+            converted.append(record)
+        except Exception as exc:
+            output_path.unlink(missing_ok=True)
+            failures.append({"id": motion_id, "file": str(input_path), "error": str(exc)})
+            traceback.print_exc()
+            if not args_cli.continue_on_error:
+                raise
 
     result = {
         "schema_version": 1,
@@ -405,9 +413,14 @@ def main() -> None:
         "robot": "urdf0711_training_30dof",
         "joint_names": CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
         "motions": converted,
+        "failures": failures,
     }
     output_manifest.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {len(converted)} clips to {output_manifest}")
+    print(
+        f"Wrote {len(converted)} clips and {len(failures)} failures to {output_manifest}"
+    )
+    if not converted:
+        raise RuntimeError("No clips passed FK conversion")
 
 
 if __name__ == "__main__":
