@@ -104,6 +104,10 @@ class CommandsCfg:
         require_quality_pass=os.environ.get("P9_CUSTOM_ALLOW_UNSAFE_MOTIONS", "0") != "1",
         adaptive_bin_size_s=1.0,
         adaptive_kernel_size=1,
+        adaptive_uniform_ratio=0.7,
+        adaptive_alpha=0.001,
+        adaptive_unvisited_score=1.0,
+        adaptive_max_probability=0.02,
         debug_vis=False,
         pose_range={
             "x": (-0.02, 0.02),

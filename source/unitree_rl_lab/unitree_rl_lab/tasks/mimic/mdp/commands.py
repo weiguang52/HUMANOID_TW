@@ -23,6 +23,7 @@ from isaaclab.utils.math import (
     yaw_quat,
 )
 
+from .adaptive_sampling import balanced_sampling_probabilities, failure_rates
 from .motion_library import MotionLibrary
 
 if TYPE_CHECKING:
@@ -107,13 +108,22 @@ class MotionCommand(CommandTerm):
 
         self.bin_count = self.motion.build_bins(self.cfg.adaptive_bin_size_s)
         self.bin_failed_count = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+        self.bin_visit_count = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
         self._current_bin_failed = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+        self._current_bin_visited = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
+        self._sample_active = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
+        self.max_sampling_probability = self.cfg.adaptive_max_probability
+        if self.max_sampling_probability is not None:
+            self.max_sampling_probability = max(self.max_sampling_probability, 1.0 / self.bin_count)
         if self.motion.num_motions > 1 and self.cfg.adaptive_kernel_size != 1:
             raise ValueError("Multi-motion adaptive sampling currently requires adaptive_kernel_size=1")
         self.kernel = torch.tensor(
             [self.cfg.adaptive_lambda**i for i in range(self.cfg.adaptive_kernel_size)], device=self.device
         )
         self.kernel = self.kernel / self.kernel.sum()
+        self.metrics['sampling_effective_bins'] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics['failure_rate_mean'] = torch.zeros(self.num_envs, device=self.device)
+        self.metrics['failure_rate_max'] = torch.zeros(self.num_envs, device=self.device)
 
         self.metrics["error_anchor_pos"] = torch.zeros(self.num_envs, device=self.device)
         self.metrics["error_anchor_rot"] = torch.zeros(self.num_envs, device=self.device)
@@ -240,37 +250,51 @@ class MotionCommand(CommandTerm):
 
     def _adaptive_sampling(self, env_ids: Sequence[int]):
         episode_failed = self._env.termination_manager.terminated[env_ids]
-        if torch.any(episode_failed):
-            current_bin_index = self.motion.current_bin_indexes(self.motion_ids, self.time_steps)
-            fail_bins = current_bin_index[env_ids][episode_failed]
+        previous_active = self._sample_active[env_ids]
+        current_bin_index = self.motion.current_bin_indexes(self.motion_ids, self.time_steps)
+        if torch.any(previous_active):
+            completed_bins = current_bin_index[env_ids][previous_active]
+            self._current_bin_visited[:] = torch.bincount(completed_bins, minlength=self.bin_count)
+            fail_bins = current_bin_index[env_ids][previous_active & episode_failed]
             self._current_bin_failed[:] = torch.bincount(fail_bins, minlength=self.bin_count)
 
         # Sample
-        uniform_prior = self.motion.bin_weights / self.motion.bin_weights.sum()
-        sampling_probabilities = (
-            self.bin_failed_count + self.cfg.adaptive_uniform_ratio * uniform_prior
+        failure_score = failure_rates(
+            self.bin_failed_count,
+            self.bin_visit_count,
+            unvisited_score=self.cfg.adaptive_unvisited_score,
         )
         if self.cfg.adaptive_kernel_size > 1:
-            sampling_probabilities = torch.nn.functional.pad(
-                sampling_probabilities.unsqueeze(0).unsqueeze(0),
+            failure_score = torch.nn.functional.pad(
+                failure_score.unsqueeze(0).unsqueeze(0),
                 (0, self.cfg.adaptive_kernel_size - 1),
                 mode="replicate",
             )
-            sampling_probabilities = torch.nn.functional.conv1d(
-                sampling_probabilities, self.kernel.view(1, 1, -1)
+            failure_score = torch.nn.functional.conv1d(
+                failure_score, self.kernel.view(1, 1, -1)
             ).view(-1)
 
-        sampling_probabilities = sampling_probabilities / sampling_probabilities.sum()
+        sampling_probabilities = balanced_sampling_probabilities(
+            failure_score,
+            self.motion.bin_weights,
+            uniform_ratio=self.cfg.adaptive_uniform_ratio,
+            max_probability=self.max_sampling_probability,
+        )
         sampled_bins = torch.multinomial(sampling_probabilities, len(env_ids), replacement=True)
         fractions = sample_uniform(0.0, 1.0, (len(env_ids),), device=self.device)
         sampled_motion_ids, sampled_time_steps = self.motion.sample_from_bins(sampled_bins, fractions)
         self.motion_ids[env_ids] = sampled_motion_ids
         self.time_steps[env_ids] = sampled_time_steps
+        self._sample_active[env_ids] = True
 
         # Metrics
         H = -(sampling_probabilities * (sampling_probabilities + 1e-12).log()).sum()
         H_norm = H / math.log(self.bin_count) if self.bin_count > 1 else torch.zeros_like(H)
         pmax, imax = sampling_probabilities.max(dim=0)
+        effective_bins = 1.0 / sampling_probabilities.square().sum()
+        self.metrics['sampling_effective_bins'][:] = effective_bins / self.bin_count
+        self.metrics['failure_rate_mean'][:] = failure_score.mean()
+        self.metrics['failure_rate_max'][:] = failure_score.max()
         self.metrics["sampling_entropy"][:] = H_norm
         self.metrics["sampling_top1_prob"][:] = pmax
         self.metrics["sampling_top1_bin"][:] = imax.float() / self.bin_count
@@ -344,7 +368,11 @@ class MotionCommand(CommandTerm):
         self.bin_failed_count = (
             self.cfg.adaptive_alpha * self._current_bin_failed + (1 - self.cfg.adaptive_alpha) * self.bin_failed_count
         )
+        self.bin_visit_count = (
+            self.cfg.adaptive_alpha * self._current_bin_visited + (1 - self.cfg.adaptive_alpha) * self.bin_visit_count
+        )
         self._current_bin_failed.zero_()
+        self._current_bin_visited.zero_()
 
     def _set_debug_vis_impl(self, debug_vis: bool):
         if debug_vis:
@@ -423,6 +451,8 @@ class MotionCommandCfg(CommandTermCfg):
     adaptive_lambda: float = 0.8
     adaptive_uniform_ratio: float = 0.1
     adaptive_alpha: float = 0.001
+    adaptive_unvisited_score: float = 1.0
+    adaptive_max_probability: float | None = None
 
     anchor_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path="/Visuals/Command/pose")
     anchor_visualizer_cfg.markers["frame"].scale = (0.2, 0.2, 0.2)
