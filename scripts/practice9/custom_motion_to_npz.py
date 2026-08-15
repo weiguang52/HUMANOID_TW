@@ -414,4 +414,9 @@ if __name__ == "__main__":
     try:
         main()
     finally:
-        simulation_app.close()
+        # This is a non-interactive batch converter with no Replicator work.
+        # Full Kit cleanup can spin indefinitely after all validated outputs
+        # are closed; the documented immediate shutdown releases the GPU.
+        simulation_app.close(
+            wait_for_replicator=False, skip_cleanup=True
+        )

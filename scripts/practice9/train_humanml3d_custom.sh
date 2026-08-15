@@ -9,7 +9,7 @@ NUM_ENVS="${P9_CUSTOM_NUM_ENVS:-1024}"
 MAX_ITERATIONS="${P9_CUSTOM_MAX_ITERATIONS:-10000}"
 SEED="${P9_CUSTOM_SEED:-42}"
 RUN_NAME="${P9_CUSTOM_RUN_NAME:-practice9_humanml3d_custom30}"
-MANIFEST="${PRACTICE9_CUSTOM_MOTION_MANIFEST:-$DATA/datasets/practice9/humanml3d_custom30/manifest.json}"
+MANIFEST="${PRACTICE9_CUSTOM_MOTION_MANIFEST:-$DATA/datasets/practice9/humanml3d_custom30_locomotion9_v1/manifest.json}"
 
 export GPUFREE_DATA_ROOT="$DATA"
 export ISAACLAB_PATH="$DATA/projects/IsaacLab"

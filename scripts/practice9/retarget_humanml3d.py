@@ -18,7 +18,10 @@ import numpy as np
 DATA_ROOT = Path("/root/gpufree-data")
 DEFAULT_IK_ROOT = DATA_ROOT / "projects/IK_V2"
 DEFAULT_TRAINING_URDF = DATA_ROOT / "datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf"
-DEFAULT_INPUT = DATA_ROOT / "datasets/HumanML3D-official/HumanML3D/new_joints"
+DEFAULT_INPUT = (
+    DATA_ROOT
+    / "datasets/practice9/humanml3d_rebuild/staging-v1/HumanML3D/new_joints"
+)
 DEFAULT_OUTPUT = DATA_ROOT / "datasets/practice9/humanml3d_custom30/retargeted"
 
 CUSTOM_JOINT_NAMES = [

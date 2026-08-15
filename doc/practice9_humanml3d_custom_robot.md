@@ -1,6 +1,6 @@
 # 实践9：HumanML3D 与自制 30DoF 机器人接入记录
 
-更新时间：2026-08-14
+更新时间：2026-08-15
 
 分支：practice9-adaptive-sampling
 
@@ -23,7 +23,16 @@
 
 代码已完成 2 环境、1 次 PPO 迭代冒烟：actor 171→30、critic 291→1。旧 G1 实践9也完成同规模回归，仍为 actor 154→29、critic 286→1。
 
-当前不能直接开始正式训练。RL 链路已运行，但完整 HumanML3D 还缺独立许可的 SMPL+H/DMPL 模型；公开样本 012314 又存在旧 IK 长时间贴限，正式任务会按质量门拒绝它。该样本只用于代码冒烟。
+当前训练前准备已经完成，可以开始分阶段训练：
+
+- HumanML3D 已完整受控重建并发布 postprocess READY：29,228 个 finite 动作、4,117,392 帧；
+- 官方 train/val/test/all split、29,228 份文本、Mean/Std 与全部上游哈希已闭环；
+- 前 100 条 bootstrap 重定向有 27 条通过严格质量门；
+- 从中按文本筛出 9 条走路、转向和停止动作，共 7,522 帧；
+- 9/9 已用新版 30DoF URDF 做 Isaac FK，retarget 与 FK 均为 quality_pass=true；
+- 无 unsafe 参数的 2 环境、1 次 PPO 迭代已通过并生成 checkpoint。
+
+当前限制是重定向仍采用“旧 28DoF Pink IK→30DoF 仿射映射”的 bootstrap 路线，并非新版 URDF 直接 IK；训练 URDF 的动力学与限位也是启动参数。它适合仿真课程训练和接口验证，实机部署前仍需新版 URDF 二次 IK 与真实机械参数。
 
 ## 数据盘布局
 
@@ -34,11 +43,14 @@
 | 新版原始 URDF | /root/gpufree-data/projects/urdf0711 |
 | HumanML3D 官方源码 | /root/gpufree-data/datasets/HumanML3D-official |
 | AMASS 官方归档 | /root/gpufree-data/datasets/humanml3d/amass_archives |
+| HumanML3D 受控重建 staging | /root/gpufree-data/datasets/practice9/humanml3d_rebuild/staging-v1 |
+| HumanML3D READY 动作根 | /root/gpufree-data/datasets/practice9/humanml3d_rebuild/staging-v1/HumanML3D |
+| postprocess READY | /root/gpufree-data/datasets/practice9/humanml3d_rebuild/staging-v1/manifests/postprocess-ready.json |
 | 训练 URDF | /root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf |
 | USD 缓存 | /root/gpufree-data/datasets/practice9/custom_robot/usd |
-| 重定向输出 | /root/gpufree-data/datasets/practice9/humanml3d_custom30/retargeted |
-| Isaac FK NPZ | /root/gpufree-data/datasets/practice9/humanml3d_custom30/npz |
-| 最终 manifest | /root/gpufree-data/datasets/practice9/humanml3d_custom30/manifest.json |
+| 100 条严格质量筛选 | /root/gpufree-data/datasets/practice9/humanml3d_custom30_screen100 |
+| 9 条 locomotion FK NPZ | /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/npz |
+| 默认训练 manifest | /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/manifest.json |
 | 训练日志 | /root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl |
 | Isaac 临时日志 | /root/gpufree-data/tmp/practice9_custom |
 
@@ -48,22 +60,68 @@
 
 已取得并解压 HumanML3D 官方公开代码、notebook、文本标注、split、HumanAct12 包和 new_joints/012314.npy 校验样本。
 
-已按用户授权接受并启动下载 18 项 AMASS SMPL+H G 数据：
+18 项 AMASS SMPL+H G 官方归档已全部下载完成：
 
 - ACCAD、BMLhandball、BMLmovi、BMLrub/BioMotionLab_NTroje；
 - CMU、DFaust、EKUT、EyesJapanDataset；
 - HDM05、HumanEva、KIT、MoSh、PosePrior；
 - SFU、SSM、TCDHands、TotalCapture、Transitions。
 
-18 包合计 10,305,703,324 字节，约 9.60 GiB。官方下载端单连接约 12–15 KB/s；重启连接后一度返回 403，退避后 BMLhandball 与 BMLmovi 已恢复断点续传，ACCAD 仍在自动重试。下载器已支持每文件独立会话、5 分钟退避、断点续传、字节数检查、bzip2 完整性检查和 HTML 响应拦截。
+18 包压缩后合计 10,305,703,324 字节，约 9.60 GiB。全量归档审计结果：bzip2 CRC 18/18 通过，普通文件 14,072 个，流式展开总量 24,634,346,711 字节，没有路径逃逸、链接或设备文件异常。归档没有整体解压到磁盘。
 
-查看下载状态：
+已按各门户独立许可取得 HumanML3D 所需 4 个模型：
 
-    ps -fp "$(cat /root/gpufree-data/tmp/humanml3d/download_master.pid)"
-    tail -n 20 /root/gpufree-data/tmp/humanml3d/download_logs/ACCAD.log
-    du -sh /root/gpufree-data/datasets/humanml3d/amass_archives
+- body_models/smplh/{male,female}/model.npz；
+- body_models/dmpls/{male,female}/model.npz。
 
-完整 HumanML3D 还需要 MANO 门户的 Extended SMPL+H 和 SMPL 门户的 DMPL。两者是独立许可，AMASS 授权不覆盖；本次没有擅自接受或下载。
+模型、归档、凭据和 Cookie 都只保存在数据盘且不进入 Git。
+
+官方 index.csv 已只读验证：14,616 行、11,715 个唯一 source，其中 HumanAct12 为 1,191 个。
+
+## HumanML3D 受控重建入口
+
+新增 scripts/practice9/rebuild_humanml3d.py，实现 preflight、pose、verify-pose 和 status 四个可恢复 stage。它只读官方目录和归档，输出固定写入 staging；不会覆盖 HumanML3D-official，也不会整体解压 AMASS。
+
+新增 scripts/practice9/rebuild_humanml3d_postprocess.py，实现 segment、mirror、represent、stats、verify 和 ready。后处理持有 pose 共享锁与自身独占锁，使用独立 SQLite ledger、原子文件和逐阶段 marker。
+
+安全边界包括：路径与归档成员类型校验、18 个规范顶层映射、HumanAct12 精确的 humanact12/humanact12 两层布局、输入 SHA/mtime 绑定、原子 NPY/JSON 写入、单实例锁、SQLite 断点状态以及 shape/finite/计数验收。preflight 会流式解压扫描全部 18 包，耗时较长，但不落地归档内容。
+
+纯 CPU 推进顺序：
+
+    cd /root/gpufree-data/projects/HUMANOID_TW
+    export CUDA_VISIBLE_DEVICES=""
+    export PYTHONDONTWRITEBYTECODE=1
+    HML_PY=/root/gpufree-data/conda_envs/humanml3d_cpu/bin/python
+
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d.py status
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d.py preflight
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d.py pose --device cpu
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d.py verify-pose
+
+BodyModel 的 pose 阶段可在之后使用单张空闲 GPU 加速，但每次启动前必须重新检查 nvidia-smi。脚本要求明确指定物理卡、只暴露一张卡，并在已有计算进程、显存超过 256 MiB 或利用率超过 5% 时拒绝启动：
+
+    nvidia-smi
+    CUDA_VISIBLE_DEVICES=1 "$HML_PY" -B \
+      scripts/practice9/rebuild_humanml3d.py pose \
+      --device cuda --gpu-id 1 --batch-frames 256
+
+本次实际完成结果：
+
+- pose：11,715 个唯一源动作，2,663,038 帧；
+- segment+mirror：29,232 个 joints 文件，4,146,624 帧；
+- representation：29,228 个 new_joints 和 29,228 个 new_joint_vecs，4,117,392 帧；
+- 仅 007975/M007975 使用确定性退化修复，全部输出 finite；
+- Mean.npy/Std.npy 按官方 float32 拼接归约生成，Mean 最大参考误差 6.69e-4、Std 最大参考误差 9.15e-5；
+- 另保存数值稳定的 Mean_stable/Std_stable，以及包含两个修复动作的 Mean_all_finite/Std_all_finite；
+- postprocess verify 与 ready 均已通过。
+
+后处理复现顺序：
+
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d_postprocess.py segment
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d_postprocess.py represent
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d_postprocess.py stats
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d_postprocess.py verify
+    "$HML_PY" -B scripts/practice9/rebuild_humanml3d_postprocess.py ready
 
 ## 训练 URDF 修订
 
@@ -146,20 +204,20 @@ custom_motion_to_npz.py 会：
 - 比较 body velocity 与位姿有限差分；
 - 输出 fps、joint_names、body_names、motion_id 和质量字段。
 
-012314 短版结果：
+正式 locomotion9_v1 结果：
 
 | 指标 | 值 |
 |---|---:|
-| 帧数 | 423 |
-| 关节/刚体 | 30/31 |
-| 状态与 base/root 回读误差 | 0 |
-| 对地平移 | -0.002074 m |
+| 动作数/总帧数 | 9 / 7,522 |
+| retarget quality_pass | 9/9 |
+| FK quality_pass | 9/9 |
+| 最大 base 位置/姿态回读误差 | 0 / 0 |
 | 最低鞋底 | 0.001 m |
-| body 线速度 FD P95 误差 | 0.0691 m/s |
-| body 角速度 FD P95 误差 | 0.0269 rad/s |
-| quality_pass | false |
+| 最大 body 线速度 FD P95 误差 | 0.03084 m/s |
+| 最大 body 角速度 FD P95 误差 | 0.000764 rad/s |
+| manifest SHA256 | 0e8f372139eeff5671e3658002432e877823479ed638ebf3e5531477622efcd0 |
 
-开启时间拉伸需要约 5.60 倍并扩到 2364 帧，但不能修复右肩位置饱和，因此它不会进入正式训练。
+公开样本 012314 仍因右肩长期贴限等问题被拒绝，不进入正式训练。converter 使用 SimulationApp 官方 immediate shutdown，单条 FK 回归 12.1 秒自然退出并释放 GPU，避免批处理完成后卡在 Kit 清理。
 
 ## 多动作与 RL
 
@@ -180,16 +238,18 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 
 ## 验证结果
 
-1. compileall、bash -n、git diff --check 通过。
-2. URDF：30 active + 4 fixed、无 continuous、Pinocchio nq=nv=30。
-3. 多动作名称重排、边界、NaN/缺 body 拒绝通过。
-4. 50/51/99/100 帧尾 bin 公平性、末帧排除、质量门通过。
-5. 旧 G1 6574×29 NPZ 兼容加载通过。
-6. 新 FK：30 关节、31 刚体、50 Hz，回读和鞋底检查通过。
-7. 新任务 2 env、1 PPO iter：171→30、291→1、48 steps、无 NaN/Inf。
-8. 旧任务回归：154→29、286→1、48 steps。
-9. GPU 测试后均已释放。
-10. Isaac/CUDA/Omniverse/W&B/pip/temp 路径均位于数据盘。
+1. HumanML3D pose/postprocess 测试共 43/43 通过；py_compile、bash -n、git diff --check 通过；postprocess 脚本及其测试通过 ruff 检查。
+2. 全量 postprocess verify/ready 通过；split 计数为 train 23,384、val 1,460、test 4,384、all 29,228。
+3. URDF：30 active + 4 fixed、无 continuous、Pinocchio nq=nv=30。
+4. 多动作名称重排、边界、NaN/缺 body 拒绝通过。
+5. 50/51/99/100 帧尾 bin 公平性、末帧排除、质量门通过。
+6. 旧 G1 6574×29 NPZ 兼容加载通过。
+7. 100 条 bootstrap 筛选：27 pass、73 fail；正式 locomotion 子集 9/9 pass。
+8. 新 FK：30 关节、31 刚体、50 Hz，回读、鞋底和速度有限差分检查通过。
+9. 正式 locomotion manifest 的新任务 2 env、1 PPO iter：171→30、291→1、48 steps、无 NaN/Inf，checkpoint 6,860,503 字节。
+10. checkpoint：logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-08-15_12-03-51_practice9_humanml3d_locomotion9_smoke_v1/model_0.pt。
+11. GPU 测试后均已释放。
+12. Isaac/CUDA/Omniverse/W&B/pip/temp 路径均位于数据盘。
 
 ## 文件变更
 
@@ -200,13 +260,17 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 - scripts/practice9/custom_motion_to_npz.py
 - scripts/practice9/download_humanml3d_amass.sh
 - scripts/practice9/train_humanml3d_custom.sh
+- scripts/practice9/rebuild_humanml3d.py
+- scripts/practice9/rebuild_humanml3d_postprocess.py
+- tests/practice9/test_rebuild_humanml3d.py
+- tests/practice9/test_rebuild_humanml3d_postprocess.py
 - source/unitree_rl_lab/unitree_rl_lab/assets/robots/custom_humanoid.py
 - source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/motion_library.py
 - source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/custom_30dof/humanml3d/
 
-修改 commands.py、observations.py、rewards.py、terminations.py，增加多动作、速度观测、奖励和 motion_end。
+修改 commands.py、observations.py、rewards.py、terminations.py，增加多动作、速度观测、奖励和 motion_end；训练脚本默认使用 locomotion9_v1 的严格质量 manifest。
 
-## 数据到齐后的构建
+## 本次实际构建与扩展方法
 
 生成训练 URDF：
 
@@ -215,12 +279,14 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
     conda activate /root/gpufree-data/conda_envs/env_isaaclab
     python scripts/practice9/prepare_custom_robot_urdf.py
 
-官方流程生成完整 new_joints 后，先做 200 条小课程：
+当前默认输入已经指向 READY 数据。扩展动作集时先做受控小批量筛选，不要直接把 29,228 条全部放进 eager MotionLibrary：
 
     python scripts/practice9/retarget_humanml3d.py \
-      --input /root/gpufree-data/datasets/HumanML3D-official/HumanML3D/new_joints \
+      --input /root/gpufree-data/datasets/practice9/humanml3d_rebuild/staging-v1/HumanML3D/new_joints \
       --limit 200 \
       --continue-on-error
+
+正式数据不要加 --allow-quality-failures。先检查 retarget_manifest.json 中 motions 非空、所有 quality_pass=true，并保持总帧数不超过 500,000。
 
 再做 Isaac FK：
 
@@ -232,27 +298,34 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
     export XDG_CACHE_HOME=/root/gpufree-data/.cache/xdg
     export CUDA_CACHE_PATH=/root/gpufree-data/.cache/nvidia/practice9_custom
     export OMNI_USER_DIR=/root/gpufree-data/.cache/omniverse/practice9_custom
-    export PYTHONPATH=/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab
-    export LD_LIBRARY_PATH=/root/gpufree-data/isaacsim
+    export PYTHONPATH=/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab:${PYTHONPATH:-}
 
     python scripts/practice9/custom_motion_to_npz.py \
       --headless --device cuda:0 \
-      --input-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30/retarget_manifest.json \
-      --output-dir /root/gpufree-data/datasets/practice9/humanml3d_custom30/npz \
-      --output-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30/manifest.json
+      --input-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/retarget_manifest.json \
+      --output-dir /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/npz \
+      --output-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_locomotion9_v1/manifest.json
 
-正式数据不要加 --allow-quality-failures。
+运行前必须确认目标 GPU 空闲。正式数据不要加 --allow-quality-failures，也不要设置 P9_CUSTOM_ALLOW_UNSAFE_MOTIONS。
 
 ## 如何开始训练
 
 前置条件：
 
-- AMASS 完整下载并校验；
-- 合法取得 SMPL+H/DMPL，生成完整 new_joints；
-- 最终 manifest 至少有一条 quality_pass=true；
+- postprocess-ready.json 存在且 ready=true；
+- 默认 locomotion9_v1 manifest 有 9 条 quality_pass=true；
 - 选择空闲 GPU。
 
-先运行 256 环境、200 迭代：
+先复现最小烟测：
+
+    cd /root/gpufree-data/projects/HUMANOID_TW
+    P9_CUSTOM_GPU=1 \
+    P9_CUSTOM_NUM_ENVS=2 \
+    P9_CUSTOM_MAX_ITERATIONS=1 \
+    P9_CUSTOM_RUN_NAME=practice9_humanml3d_locomotion9_smoke \
+    bash scripts/practice9/train_humanml3d_custom.sh
+
+烟测通过后运行 256 环境、200 迭代：
 
     cd /root/gpufree-data/projects/HUMANOID_TW
     P9_CUSTOM_GPU=1 \
@@ -273,9 +346,9 @@ MotionLibrary 支持单 NPZ 和 schema v1 manifest：
 
 ## 后续建议
 
-1. 取得 SMPL+H/DMPL 独立许可并完成官方重建。
-2. 先筛选站立、步行和转向。
-3. 在新版 URDF 上增加 Pink/QP 二次 IK，旧映射仅作 warm start。
-4. 用真实机械与电机参数替换 bootstrap 动力学。
+1. 先用 locomotion9_v1 完成 200 迭代阶段训练并观察终止率、足滑和跟踪误差。
+2. 从 train split 扩展到 50–200 条站立、步行和转向动作，继续严格质量筛选。
+3. 在新版 URDF 上增加 Pink/QP 二次 IK，旧 28→30 映射仅作 warm start。
+4. 用真实机械与电机参数替换 bootstrap 动力学与单侧膝伸直限位。
 5. 名义动力学收敛后逐步增加 push 和 domain randomization。
 6. 超过 500,000 帧前实现分片或 CPU cache MotionLibrary。
