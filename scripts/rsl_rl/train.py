@@ -40,6 +40,7 @@ parser.add_argument("--num_envs", type=int, default=None, help="Number of enviro
 parser.add_argument("--task", type=str, default=None, choices=tasks, help="Name of the task.")
 parser.add_argument("--seed", type=int, default=None, help="Seed used for the environment")
 parser.add_argument("--max_iterations", type=int, default=None, help="RL Policy training iterations.")
+parser.add_argument("--save_interval", type=int, default=None, help="Checkpoint save interval in iterations.")
 parser.add_argument(
     "--distributed", action="store_true", default=False, help="Run training with multiple GPUs or nodes."
 )
@@ -49,6 +50,9 @@ cli_args.add_rsl_rl_args(parser)
 AppLauncher.add_app_launcher_args(parser)
 argcomplete.autocomplete(parser)
 args_cli, hydra_args = parser.parse_known_args()
+
+if args_cli.save_interval is not None and args_cli.save_interval <= 0:
+    parser.error("--save_interval must be greater than zero")
 
 # always enable cameras to record video
 if args_cli.video:
@@ -126,6 +130,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     agent_cfg.max_iterations = (
         args_cli.max_iterations if args_cli.max_iterations is not None else agent_cfg.max_iterations
     )
+    if args_cli.save_interval is not None:
+        agent_cfg.save_interval = args_cli.save_interval
 
     # Convert legacy policy configs to the actor/critic format expected by newer rsl-rl releases.
     agent_cfg = handle_deprecated_rsl_rl_cfg(agent_cfg, installed_version)

@@ -264,6 +264,15 @@ class RewardsCfg:
             ],
         },
     )
+    motion_foot_pos = RewTerm(
+        func=mdp.motion_relative_body_position_error_exp,
+        weight=0.75,
+        params={
+            "command_name": "motion",
+            "std": 0.08,
+            "body_names": FOOT_BODIES,
+        },
+    )
     motion_arm_pos = RewTerm(
         func=mdp.motion_relative_body_position_error_exp,
         weight=0.6,

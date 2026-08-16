@@ -227,3 +227,53 @@ bash scripts/practice9/train_humanml3d_custom.sh \
 
 训练后必须用新manifest对完整174条各评估10回合。晋级条件是4条裁剪动作维持10/10、6条相位加权
 动作不再全部0/10，同时原139条10/10动作没有明显退化；否则不继续增加训练迭代。
+
+## Recovery 200迭代严格A/B与balanced v2
+
+使用同一failure-recovery manifest、seed 43且每条10回合，对原始主检查点与继续训练后的检查点做严格A/B：
+
+| checkpoint | 成功回合 | 成功率 | 10/10动作 | 0/10动作 |
+|---|---:|---:|---:|---:|
+| 原始`model_4000.pt` | 1638/1740 | 94.14% | 142 | 6 |
+| recovery训练`model_4199.pt` | 1640/1740 | 94.25% | 132 | 4 |
+
+`model_4199.pt`只增加2个成功回合，却少了10条10/10动作；逐动作统计为23条改善、30条退化、
+121条不变。4条裁剪动作在原始检查点均为10/10，recovery后`005890`退为9/10。6条相位目标从
+全部0/10改善为`000930=1/10`、`006564=5/10`，其余4条仍为0/10；剩余失败仍集中在相同帧的
+左脚Z误差。因此下一轮仍从原始`model_4000.pt`开始，不以`model_4199.pt`作为新基线。
+
+上一版课程继承困难清单的动作级权重后，再叠加局部4倍相位倍率，6条目标动作的总采样质量达到
+16.26%，这是遗忘扩散的主要风险。balanced v2改从普通`stage_174.json`生成，174条动作的基础权重
+全部恢复为1，只保留4条逻辑裁剪和6条局部相位倍率。MotionLibrary实际分箱验收结果为157,876帧、
+3,237个bin、单bin最大权重200；6条目标动作的总采样质量占比为5.0853%。产物路径：
+
+`/root/gpufree-data/datasets/practice9/humanml3d_custom30_failure_recovery174_balanced_v2/manifest.json`
+
+奖励侧新增左右脚单独位置跟踪项`motion_foot_pos`，权重0.75、std 0.08。原`motion_leg_pos`保持不变，
+末端位置终止阈值也仍为0.12m，因此这是对左右脚漂移的对称软引导，不是放宽失败判定。训练入口新增
+`--save_interval`，便于短间隔保存中间检查点并在严格评估后选最佳模型。
+
+2环境、1迭代smoke `2026-08-16_16-47-34_practice9_failure_recovery174_balanced_v2_smoke`已通过：
+环境绑定balanced v2，actor/critic/action维度为171/291/30，新增足端奖励生效，`save_interval=1`，
+GPU在退出后已释放。
+
+下一轮只训练100次迭代，每25次保存一次；不要使用unsafe motion开关，也不要从`model_4199.pt`继续：
+
+```bash
+cd /root/gpufree-data/projects/HUMANOID_TW
+
+PRACTICE9_CUSTOM_MOTION_MANIFEST=/root/gpufree-data/datasets/practice9/humanml3d_custom30_failure_recovery174_balanced_v2/manifest.json \
+P9_CUSTOM_GPU=1 \
+P9_CUSTOM_NUM_ENVS=1024 \
+P9_CUSTOM_MAX_ITERATIONS=100 \
+P9_CUSTOM_SEED=55 \
+P9_CUSTOM_RUN_NAME=practice9_stage4d_balanced_foot_reward174 \
+bash scripts/practice9/train_humanml3d_custom.sh \
+  --save_interval 25 \
+  --resume \
+  --load_run 2026-08-16_04-12-30_practice9_stage4b_evalhard174 \
+  --checkpoint model_4000.pt
+```
+
+完成后应依次评估保存的中间检查点，而不是默认选最后一个。主指标仍是完整174条、每条10回合：
+先要求4条裁剪动作全部维持10/10，再比较6条相位动作的改善，同时要求原142条10/10动作无明显回退。
