@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+from collections import deque
 from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
@@ -22,6 +23,59 @@ ERROR_METRICS = (
     "error_joint_vel",
 )
 TERMINATION_TERMS = ("time_out", "motion_end", "anchor_pos", "anchor_ori", "ee_body_pos")
+
+
+class FailureTraceBuffer:
+    '''Keep a bounded pre-failure history for each evaluation environment.'''
+
+    def __init__(self, environment_count: int, history_frames: int, max_records: int):
+        if environment_count <= 0:
+            raise ValueError('environment_count must be positive')
+        if history_frames <= 0:
+            raise ValueError('history_frames must be positive')
+        if max_records <= 0:
+            raise ValueError('max_records must be positive')
+        self._history = [deque(maxlen=history_frames) for _ in range(environment_count)]
+        self._max_records = max_records
+        self.records: list[dict[str, Any]] = []
+
+    def append(self, frames: Sequence[dict[str, Any] | None]) -> None:
+        if len(frames) != len(self._history):
+            raise ValueError(f'Expected {len(self._history)} frame entries, got {len(frames)}')
+        for env_index, frame in enumerate(frames):
+            if frame is not None:
+                self._history[env_index].append(frame)
+
+    def complete(
+        self,
+        *,
+        env_index: int,
+        motion_index: int,
+        motion_id: str,
+        episode: int,
+        successful: bool,
+        terminal_snapshot: dict[str, Any] | None,
+        termination_causes: Sequence[str],
+    ) -> None:
+        if env_index < 0 or env_index >= len(self._history):
+            raise IndexError(env_index)
+        if not successful and len(self.records) < self._max_records:
+            self.records.append(
+                {
+                    'environment_index': env_index,
+                    'motion_index': motion_index,
+                    'motion_id': motion_id,
+                    'episode': episode,
+                    'termination_causes': list(termination_causes),
+                    'history': list(self._history[env_index]),
+                    'terminal': terminal_snapshot,
+                }
+            )
+        self._history[env_index].clear()
+
+    @property
+    def history_frames(self) -> int:
+        return self._history[0].maxlen or 0
 
 
 def parse_motion_indices(spec: str | None, motion_count: int) -> list[int]:
@@ -140,7 +194,12 @@ def build_report(
     return summary, rows
 
 
-def atomic_write_reports(output_dir: Path, payload: dict[str, Any], rows: Sequence[dict[str, Any]]) -> None:
+def atomic_write_reports(
+    output_dir: Path,
+    payload: dict[str, Any],
+    rows: Sequence[dict[str, Any]],
+    failure_traces: dict[str, Any] | None = None,
+) -> None:
     """Atomically publish JSON, CSV, and a compact human-readable summary."""
     output_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
     if output_dir.is_symlink():
@@ -149,7 +208,11 @@ def atomic_write_reports(output_dir: Path, payload: dict[str, Any], rows: Sequen
     json_path = output_dir / "results.json"
     csv_path = output_dir / "per_motion.csv"
     summary_path = output_dir / "summary.txt"
-    for path in (json_path, csv_path, summary_path):
+    trace_path = output_dir / 'failure_traces.json'
+    published_paths = [json_path, csv_path, summary_path]
+    if failure_traces is not None:
+        published_paths.append(trace_path)
+    for path in published_paths:
         if path.is_symlink():
             raise ValueError(f"Refusing to replace symlink: {path}")
 
@@ -184,6 +247,14 @@ def atomic_write_reports(output_dir: Path, payload: dict[str, Any], rows: Sequen
             )
         stream.flush()
         os.fsync(stream.fileno())
+    if failure_traces is not None:
+        trace_tmp = trace_path.with_suffix('.json.tmp')
+        with trace_tmp.open('w', encoding='utf-8') as stream:
+            json.dump(failure_traces, stream, ensure_ascii=False, indent=2, sort_keys=True)
+            stream.write('\n')
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(trace_tmp, trace_path)
     os.replace(json_tmp, json_path)
     os.replace(csv_tmp, csv_path)
     os.replace(summary_tmp, summary_path)

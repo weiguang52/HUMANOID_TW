@@ -17,6 +17,44 @@ spec.loader.exec_module(utils)
 
 
 class EvaluationUtilsTests(unittest.TestCase):
+    def test_failure_trace_buffer_keeps_tail_and_ignores_success(self) -> None:
+        buffer = utils.FailureTraceBuffer(environment_count=2, history_frames=2, max_records=1)
+        buffer.append([{'frame': 1}, {'frame': 10}])
+        buffer.append([{'frame': 2}, {'frame': 11}])
+        buffer.append([{'frame': 3}, {'frame': 12}])
+        buffer.complete(
+            env_index=0,
+            motion_index=7,
+            motion_id='failed',
+            episode=1,
+            successful=False,
+            terminal_snapshot={'frame': 4},
+            termination_causes=['ee_body_pos'],
+        )
+        buffer.complete(
+            env_index=1,
+            motion_index=8,
+            motion_id='success',
+            episode=1,
+            successful=True,
+            terminal_snapshot=None,
+            termination_causes=['motion_end'],
+        )
+        self.assertEqual(buffer.history_frames, 2)
+        self.assertEqual(len(buffer.records), 1)
+        self.assertEqual(buffer.records[0]['history'], [{'frame': 2}, {'frame': 3}])
+        self.assertEqual(buffer.records[0]['terminal'], {'frame': 4})
+
+    def test_atomic_write_reports_can_publish_failure_traces(self) -> None:
+        payload = {'summary': {'motions': 1, 'episodes': 1, 'success_rate': 0.0, 'mean_completion_fraction': 0.5}}
+        row = {'motion_index': 0, 'motion_id': 'clip', 'success_rate': 0.0, 'mean_completion_fraction': 0.5}
+        traces = {'schema_version': 1, 'records': [{'motion_id': 'clip'}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / 'evaluation'
+            utils.atomic_write_reports(output, payload, [row], traces)
+            self.assertEqual(json.loads((output / 'failure_traces.json').read_text()), traces)
+            self.assertFalse(any(output.glob('*.tmp')))
+
     def test_parse_motion_indices_defaults_to_all(self) -> None:
         self.assertEqual(utils.parse_motion_indices(None, 4), [0, 1, 2, 3])
 
