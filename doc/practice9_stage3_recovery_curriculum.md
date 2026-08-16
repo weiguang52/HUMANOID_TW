@@ -179,3 +179,51 @@ bash scripts/practice9/train_humanml3d_custom.sh \
 
 因此下一阶段不能继续仅提高clip权重；必须分别处理起始无接触动作和中段左脚漂移，并保留完整174动作
 回放以避免遗忘。
+
+## 失败恢复课程
+
+`scripts/practice9/build_failure_recovery_curriculum.py`将上述两类问题分别处理，且不复制或覆盖原NPZ：
+
+- manifest的`start_frame`会在MotionLibrary加载时同步裁剪全部参考张量。对4条腾空开头动作，脚本寻找
+  足端高度不超过0.05m、速度不超过0.15m/s且连续15帧成立的首个支撑窗口。
+- `sampling_intervals`为半开帧区间提供局部采样倍率。对6条中段左脚漂移动作，失败最早帧前100帧到
+  最晚帧后50帧使用4倍先验；区间外仍保持原动作权重。bin权重按区间实际重叠帧数计算，尾部不足1秒
+  的bin不会被额外放大。
+
+生成命令：
+
+```bash
+cd /root/gpufree-data/projects/HUMANOID_TW
+
+CUDA_VISIBLE_DEVICES='' /root/gpufree-data/conda_envs/humanml3d_cpu/bin/python \
+  scripts/practice9/build_failure_recovery_curriculum.py \
+  --source-manifest /root/gpufree-data/datasets/practice9/humanml3d_custom30_eval_hard174_v1/manifest.json \
+  --failure-traces /root/gpufree-data/datasets/practice9/evaluations/model4000_failure_trace10_eval3_seed48/failure_traces.json \
+  --output /root/gpufree-data/datasets/practice9/humanml3d_custom30_failure_recovery174_v1/manifest.json
+```
+
+产物仍为174条动作，逻辑帧数157,876；4条动作共裁掉2,085个不可执行的开头帧。旧`model_4000.pt`
+直接评估裁剪后的4条动作得到12/12自然完成，平均完成比例99.76%，anchor和末端位置失败均为0。结果位于：
+
+`/root/gpufree-data/datasets/practice9/evaluations/model4000_recovery_trim4_eval3_seed49`
+
+2环境、1迭代训练smoke `2026-08-16_12-44-01_practice9_failure_recovery174_smoke`通过；实际环境绑定
+新manifest，检查点68个张量全部finite。下一轮从主检查点只训练200次迭代，避免重复此前训练过久导致的遗忘：
+
+```bash
+cd /root/gpufree-data/projects/HUMANOID_TW
+
+PRACTICE9_CUSTOM_MOTION_MANIFEST=/root/gpufree-data/datasets/practice9/humanml3d_custom30_failure_recovery174_v1/manifest.json \
+P9_CUSTOM_GPU=1 \
+P9_CUSTOM_NUM_ENVS=1024 \
+P9_CUSTOM_MAX_ITERATIONS=200 \
+P9_CUSTOM_SEED=51 \
+P9_CUSTOM_RUN_NAME=practice9_stage4c_failure_recovery174 \
+bash scripts/practice9/train_humanml3d_custom.sh \
+  --resume \
+  --load_run 2026-08-16_04-12-30_practice9_stage4b_evalhard174 \
+  --checkpoint model_4000.pt
+```
+
+训练后必须用新manifest对完整174条各评估10回合。晋级条件是4条裁剪动作维持10/10、6条相位加权
+动作不再全部0/10，同时原139条10/10动作没有明显退化；否则不继续增加训练迭代。

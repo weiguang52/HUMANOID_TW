@@ -3,12 +3,11 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 import numpy as np
 import torch
-
 
 MOTION_FIELDS = (
     "joint_pos",
@@ -69,6 +68,7 @@ class MotionLibrary:
         clip_ids: list[str] = []
         clip_lengths: list[int] = []
         clip_weights: list[float] = []
+        clip_sampling_intervals: list[list[tuple[int, int, float]]] = []
         fps_value: float | None = None
         total_frames = 0
 
@@ -76,7 +76,11 @@ class MotionLibrary:
             path = entry["path"]
             weight = float(entry["weight"])
             motion_id = str(entry["id"])
-            loaded = self._load_npz(path)
+            loaded = self._load_npz(
+                path,
+                start_frame=entry.get('start_frame', 0),
+                end_frame=entry.get('end_frame'),
+            )
             clip_fps = loaded.pop("fps")
             if fps_value is None:
                 fps_value = clip_fps
@@ -96,6 +100,13 @@ class MotionLibrary:
             clip_ids.append(motion_id)
             clip_lengths.append(length)
             clip_weights.append(weight)
+            clip_sampling_intervals.append(
+                self._validate_sampling_intervals(
+                    entry.get('sampling_intervals'),
+                    length=length,
+                    motion_id=motion_id,
+                )
+            )
 
         if fps_value is None:
             raise ValueError(f"No motions found in {self.source}")
@@ -110,6 +121,7 @@ class MotionLibrary:
         self.num_motions = len(clip_ids)
         self.clip_lengths = torch.tensor(clip_lengths, dtype=torch.long, device=device)
         self.clip_weights = torch.tensor(clip_weights, dtype=torch.float32, device=device)
+        self.clip_sampling_intervals = clip_sampling_intervals
         starts = np.cumsum([0, *clip_lengths[:-1]], dtype=np.int64)
         self.clip_starts = torch.tensor(starts, dtype=torch.long, device=device)
         self.time_step_total = total_frames
@@ -158,9 +170,69 @@ class MotionLibrary:
             if not np.isfinite(weight) or weight <= 0.0:
                 raise ValueError(f"Invalid sampling weight for {motion_id}: {weight}")
             entries.append({"id": motion_id, "path": path, "weight": weight})
+        for item, entry in zip(motions, entries):
+            motion_id = str(entry['id'])
+            start_frame = item.get('start_frame', 0)
+            end_frame = item.get('end_frame')
+            if isinstance(start_frame, bool) or not isinstance(start_frame, int) or start_frame < 0:
+                raise ValueError(f'Invalid start_frame for {motion_id}: {start_frame}')
+            if end_frame is not None and (
+                isinstance(end_frame, bool) or not isinstance(end_frame, int) or end_frame <= start_frame
+            ):
+                raise ValueError(f'Invalid end_frame for {motion_id}: {end_frame}')
+            entry.update(
+                {
+                    'start_frame': start_frame,
+                    'end_frame': end_frame,
+                    'sampling_intervals': item.get('sampling_intervals'),
+                }
+            )
         return entries
 
-    def _load_npz(self, path: Path) -> dict[str, np.ndarray | float]:
+    @staticmethod
+    def _validate_sampling_intervals(
+        value: object,
+        *,
+        length: int,
+        motion_id: str,
+    ) -> list[tuple[int, int, float]]:
+        if value is None:
+            return []
+        if not isinstance(value, list):
+            raise TypeError(f'sampling_intervals for {motion_id} must be a list')
+        intervals: list[tuple[int, int, float]] = []
+        previous_end = 0
+        startable_length = length - 1
+        for index, item in enumerate(value):
+            if not isinstance(item, dict):
+                raise TypeError(f'Invalid sampling interval {index} for {motion_id}')
+            start = item.get('start')
+            end = item.get('end')
+            multiplier = item.get('multiplier')
+            if (
+                isinstance(start, bool)
+                or not isinstance(start, int)
+                or isinstance(end, bool)
+                or not isinstance(end, int)
+                or start < previous_end
+                or end <= start
+                or end > startable_length
+            ):
+                raise ValueError(f'Invalid sampling interval {index} for {motion_id}: {item}')
+            multiplier = float(multiplier)
+            if not np.isfinite(multiplier) or multiplier <= 0.0:
+                raise ValueError(f'Invalid sampling multiplier for {motion_id}: {multiplier}')
+            intervals.append((start, end, multiplier))
+            previous_end = end
+        return intervals
+
+    def _load_npz(
+        self,
+        path: Path,
+        *,
+        start_frame: int = 0,
+        end_frame: int | None = None,
+    ) -> dict[str, np.ndarray | float]:
         if not path.is_file():
             raise FileNotFoundError(path)
         with np.load(path, allow_pickle=False) as data:
@@ -181,8 +253,23 @@ class MotionLibrary:
             body_quat = np.asarray(data["body_quat_w"], dtype=np.float32)
             body_lin_vel = np.asarray(data["body_lin_vel_w"], dtype=np.float32)
             body_ang_vel = np.asarray(data["body_ang_vel_w"], dtype=np.float32)
-            stored_joint_names = _string_list(data["joint_names"] if "joint_names" in data else None)
-            stored_body_names = _string_list(data["body_names"] if "body_names" in data else None)
+            stored_joint_names = _string_list(data.get("joint_names", None))
+            stored_body_names = _string_list(data.get("body_names", None))
+
+        if joint_pos.ndim != 2:
+            raise ValueError(f'{path}: joint_pos must be [T,J], got {joint_pos.shape}')
+        source_length = joint_pos.shape[0]
+        resolved_end = source_length if end_frame is None else end_frame
+        if start_frame >= source_length or resolved_end > source_length or resolved_end - start_frame < 2:
+            raise ValueError(
+                f'{path}: invalid frame slice [{start_frame}:{resolved_end}] for length {source_length}'
+            )
+        joint_pos = joint_pos[start_frame:resolved_end]
+        joint_vel = joint_vel[start_frame:resolved_end]
+        body_pos = body_pos[start_frame:resolved_end]
+        body_quat = body_quat[start_frame:resolved_end]
+        body_lin_vel = body_lin_vel[start_frame:resolved_end]
+        body_ang_vel = body_ang_vel[start_frame:resolved_end]
 
         if joint_pos.ndim != 2 or joint_pos.shape[0] < 2:
             raise ValueError(f"{path}: joint_pos must be [T,J] with T>=2, got {joint_pos.shape}")
@@ -273,7 +360,7 @@ class MotionLibrary:
     def build_bins(self, bin_size_s: float) -> int:
         if not np.isfinite(bin_size_s) or bin_size_s <= 0.0:
             raise ValueError(f"adaptive_bin_size_s must be positive, got {bin_size_s}")
-        self.frames_per_bin = max(1, int(round(self.fps * bin_size_s)))
+        self.frames_per_bin = max(1, round(self.fps * bin_size_s))
         motion_ids: list[int] = []
         local_starts: list[int] = []
         widths: list[int] = []
@@ -292,7 +379,12 @@ class MotionLibrary:
                 width = min(self.frames_per_bin, startable_length - start)
                 widths.append(width)
                 # Weight by startable frames so partial tail bins are not oversampled.
-                weights.append(weight * width)
+                weighted_width = float(width)
+                end = start + width
+                for interval_start, interval_end, multiplier in self.clip_sampling_intervals[motion_id]:
+                    overlap = max(0, min(end, interval_end) - max(start, interval_start))
+                    weighted_width += overlap * (multiplier - 1.0)
+                weights.append(weight * weighted_width)
                 cursor += 1
         self.bin_motion_ids = torch.tensor(motion_ids, dtype=torch.long, device=self.device)
         self.bin_local_starts = torch.tensor(local_starts, dtype=torch.long, device=self.device)
