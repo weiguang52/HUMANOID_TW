@@ -20,6 +20,8 @@ import struct
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from joint_coordinates import COORDINATES, apply_coordinates, rename
+
 DATA_ROOT = Path(os.environ.get("GPUFREE_DATA_ROOT", "/root/gpufree-data"))
 DEFAULT_SOURCE = DATA_ROOT / "projects/urdf0711/urdf/urdf0711.urdf"
 DEFAULT_MESH_ROOT = DATA_ROOT / "projects/urdf0711/meshes"
@@ -156,18 +158,23 @@ def generate(source: Path, mesh_root: Path, output: Path) -> dict[str, object]:
                 raise ValueError(f"Missing or empty mesh referenced by {name}: {resolved}")
             mesh.set("filename", str(resolved))
 
+    apply_coordinates(root)
+
     ET.indent(tree, space="  ")
     output.parent.mkdir(parents=True, exist_ok=True)
     tree.write(output, encoding="utf-8", xml_declaration=True)
 
     metadata = {
-        "schema_version": 1,
+        "schema_version": 2,
+        "joint_coordinate_contract": "tw44_table_v1",
+        "joint_coordinate_changes": COORDINATES,
+        "initial_joint_positions": {rename(name): COORDINATES.get(name, (name, 1, 0.0))[2] for name in JOINT_SPECS},
         "source": str(source.resolve()),
         "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
         "mesh_root": str(mesh_root.resolve()),
         "output": str(output.resolve()),
         "active_joint_count": len(JOINT_SPECS),
-        "active_joint_names": list(JOINT_SPECS),
+        "active_joint_names": [rename(name) for name in JOINT_SPECS],
         "fixed_hand_joints": sorted(FIXED_HAND_JOINTS),
         "removed_invalid_foot_end_payloads": sorted(EMPTY_FOOT_END_LINKS),
         "limits_are_bootstrap_only": True,

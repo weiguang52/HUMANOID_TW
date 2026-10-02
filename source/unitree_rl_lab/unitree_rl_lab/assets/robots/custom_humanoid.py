@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import os
 
+from unitree_rl_lab.assets.robots.custom_joint_coordinates import COORDINATES
+
 import isaaclab.sim as sim_utils
 from isaaclab.actuators import ImplicitActuatorCfg
 from isaaclab.assets.articulation import ArticulationCfg
@@ -23,32 +25,32 @@ CUSTOM_HUMANOID_USD_DIR = os.environ.get(
 
 # This order is the contract shared by actions, observations, retarget output, and NPZ metadata.
 CUSTOM_HUMANOID_30DOF_JOINT_NAMES = [
-    "left_hip_linkage_pitch",
-    "left_thigh_roll",
-    "left_knee_linkage_yaw",
-    "left_mid_leg_pitch",
-    "left_calf_yaw",
-    "left_ankle_pitch",
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_pitch_joint",
+    "left_ankle_yaw_joint",
+    "left_ankle_pitch_joint",
     "left_foot_roll",
-    "right_hip_linkage_pitch",
-    "right_thigh_roll",
-    "right_knee_linkage_yaw",
-    "right_mid_leg_pitch",
-    "right_calf_yaw",
-    "right_ankle_pitch",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_pitch_joint",
+    "right_ankle_yaw_joint",
+    "right_ankle_pitch_joint",
     "right_foot_roll",
     "waist_yaw",
     "gearbox_roll",
     "chest_pitch",
-    "left_shoulder_linkage_pitch",
-    "left_upper_arm_roll",
-    "left_elbow_linkage_pitch",
-    "left_force_arm_yaw",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_pitch_joint",
     "left_wrist_pitch",
-    "right_shoulder_linkage_pitch",
-    "right_upper_arm_roll",
-    "right_elbow_linkage_pitch",
-    "right_force_arm_yaw",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_pitch_joint",
     "right_wrist_pitch",
     "neck",
     "neck_linkage_roll",
@@ -73,34 +75,34 @@ CUSTOM_HUMANOID_TRACKING_BODY_NAMES = [
 ]
 
 LEG_MAJOR_JOINTS = [
-    "left_hip_linkage_pitch",
-    "left_thigh_roll",
-    "left_knee_linkage_yaw",
-    "left_mid_leg_pitch",
-    "left_calf_yaw",
-    "right_hip_linkage_pitch",
-    "right_thigh_roll",
-    "right_knee_linkage_yaw",
-    "right_mid_leg_pitch",
-    "right_calf_yaw",
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_pitch_joint",
+    "left_ankle_yaw_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_pitch_joint",
+    "right_ankle_yaw_joint",
 ]
 FOOT_JOINTS = [
-    "left_ankle_pitch",
+    "left_ankle_pitch_joint",
     "left_foot_roll",
-    "right_ankle_pitch",
+    "right_ankle_pitch_joint",
     "right_foot_roll",
 ]
 WAIST_JOINTS = ["waist_yaw", "gearbox_roll", "chest_pitch"]
 ARM_JOINTS = [
-    "left_shoulder_linkage_pitch",
-    "left_upper_arm_roll",
-    "left_elbow_linkage_pitch",
-    "left_force_arm_yaw",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_pitch_joint",
     "left_wrist_pitch",
-    "right_shoulder_linkage_pitch",
-    "right_upper_arm_roll",
-    "right_elbow_linkage_pitch",
-    "right_force_arm_yaw",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_pitch_joint",
     "right_wrist_pitch",
 ]
 NECK_JOINTS = ["neck", "neck_linkage_roll", "head_pitch"]
@@ -110,7 +112,7 @@ CUSTOM_HUMANOID_30DOF_CFG = UnitreeArticulationCfg(
     spawn=UnitreeUrdfFileCfg(
         asset_path=CUSTOM_HUMANOID_URDF,
         usd_dir=CUSTOM_HUMANOID_USD_DIR,
-        usd_file_name="urdf0711_training_30dof.usd",
+        usd_file_name="urdf0711_training_30dof_tw44_table_v1.usd",
         fix_base=False,
         merge_fixed_joints=True,
         collider_type="convex_hull",
@@ -124,7 +126,8 @@ CUSTOM_HUMANOID_30DOF_CFG = UnitreeArticulationCfg(
     ),
     init_state=ArticulationCfg.InitialStateCfg(
         pos=(0.0, 0.0, 0.264),
-        joint_pos={".*": 0.0},
+        joint_pos={name: next((initial for target, _, initial in COORDINATES.values() if target == name), 0.0)
+                   for name in CUSTOM_HUMANOID_30DOF_JOINT_NAMES},
         joint_vel={".*": 0.0},
     ),
     # Generated hard limits are already conservative bootstrap limits.

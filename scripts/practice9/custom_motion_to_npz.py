@@ -157,6 +157,11 @@ def load_retarget(path: Path, device: torch.device):
         root_pos = np.asarray(data["root_pos"], dtype=np.float32)
         root_quat_xyzw = np.asarray(data["root_quat_xyzw"], dtype=np.float32)
 
+    from joint_coordinates import convert_motion
+
+    stored_names, joint_pos, _ = convert_motion(
+        stored_names, joint_pos, np.zeros_like(joint_pos), CUSTOM_HUMANOID_30DOF_JOINT_NAMES
+    )
     lookup = {name: index for index, name in enumerate(stored_names)}
     missing = [name for name in CUSTOM_HUMANOID_30DOF_JOINT_NAMES if name not in lookup]
     if missing:

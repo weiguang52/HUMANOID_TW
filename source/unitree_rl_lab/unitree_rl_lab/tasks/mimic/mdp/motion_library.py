@@ -9,6 +9,8 @@ from pathlib import Path
 import numpy as np
 import torch
 
+from unitree_rl_lab.assets.robots.custom_joint_coordinates import convert_motion
+
 MOTION_FIELDS = (
     "joint_pos",
     "joint_vel",
@@ -302,6 +304,10 @@ class MotionLibrary:
             raise ValueError(
                 f"{path}: body_names count {len(stored_body_names)} != body array width {body_count}"
             )
+
+        stored_joint_names, joint_pos, joint_vel = convert_motion(
+            stored_joint_names, joint_pos, joint_vel, self.joint_names
+        )
 
         if self.joint_names is not None:
             if stored_joint_names is None:

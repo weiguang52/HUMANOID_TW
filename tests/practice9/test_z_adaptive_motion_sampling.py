@@ -25,6 +25,7 @@ MOTION_LIBRARY_MODULE = (
 class AdaptiveSamplingTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
+        sys.path.insert(0, str(Path(__file__).parents[2] / 'source/unitree_rl_lab'))
         import torch
 
         spec = importlib.util.spec_from_file_location('adaptive_sampling', MODULE)
@@ -137,6 +138,29 @@ class AdaptiveSamplingTests(unittest.TestCase):
             )
             self.assertEqual(library.build_bins(0.04), 2)
             self.torch.testing.assert_close(library.bin_weights, self.torch.tensor([8.0, 6.0]))
+
+
+    def test_motion_library_converts_legacy_custom_joint_coordinates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'legacy.npz'
+            quat = np.zeros((2, 1, 4), dtype=np.float32)
+            quat[..., 0] = 1.0
+            np.savez(path, fps=np.array([50.0]),
+                     joint_names=np.array(['left_shoulder_linkage_pitch', 'right_upper_arm_roll']),
+                     body_names=np.array(['base']), joint_pos=np.zeros((2, 2), dtype=np.float32),
+                     joint_vel=np.ones((2, 2), dtype=np.float32),
+                     body_pos_w=np.zeros((2, 1, 3), dtype=np.float32), body_quat_w=quat,
+                     body_lin_vel_w=np.zeros((2, 1, 3), dtype=np.float32),
+                     body_ang_vel_w=np.zeros((2, 1, 3), dtype=np.float32))
+            library = self.motion_library.MotionLibrary(
+                str(path), device='cpu', tracked_body_names=['base'],
+                legacy_body_indexes=[0],
+                joint_names=['right_shoulder_roll_joint', 'left_shoulder_pitch_joint'],
+                expected_fps=50.0, max_frames=10)
+            np.testing.assert_allclose(library.joint_pos.numpy(),
+                                       [[np.pi / 2, -np.pi / 2]] * 2)
+            np.testing.assert_allclose(library.joint_vel.numpy(), [[1, -1]] * 2)
+            np.testing.assert_array_equal(library.body_pos_w.numpy(), np.zeros((2, 1, 3)))
 
 
 if __name__ == '__main__':

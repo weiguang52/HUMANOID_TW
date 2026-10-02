@@ -72,6 +72,18 @@ MAPPING = {
 }
 
 
+# Compose old IK -> CAD with the user's CAD -> aligned coordinate table.
+from joint_coordinates import COORDINATES, rename
+
+CUSTOM_JOINT_NAMES = [rename(name) for name in CUSTOM_JOINT_NAMES]
+MAPPING = {
+    rename(name): (old, COORDINATES.get(name, (name, 1, 0.0))[1] * sign,
+                   COORDINATES.get(name, (name, 1, 0.0))[1] * offset
+                   + COORDINATES.get(name, (name, 1, 0.0))[2])
+    for name, (old, sign, offset) in MAPPING.items()
+}
+
+
 def load_ik_module(ik_root: Path):
     module_path = ik_root / "ik_redirection_npy.py"
     spec = importlib.util.spec_from_file_location("ik_v2_redirection", module_path)
