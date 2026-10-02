@@ -6,8 +6,8 @@ Both references preserve tw44_table_v2 and pass FK conversion, but fail retarget
 
 |Clip|First abnormal termination (s)|Termination counts|
 |---|---:|---|
-|000890|4.26|{'time_out': 0, 'motion_end': 0, 'anchor_pos': 0, 'anchor_ori': 0, 'ee_body_pos': 6}|
-|001240|0.78|{'time_out': 0, 'motion_end': 0, 'anchor_pos': 10, 'anchor_ori': 0, 'ee_body_pos': 24}|
+|000890|4.36|{'time_out': 0, 'motion_end': 0, 'anchor_pos': 0, 'anchor_ori': 0, 'ee_body_pos': 5}|
+|001240|2.7|{'time_out': 0, 'motion_end': 0, 'anchor_pos': 2, 'anchor_ori': 0, 'ee_body_pos': 13}|
 
 Neither motion completes successfully. Videos include automatic episode resets; discontinuities at reset must not be interpreted as recovery or camera jitter. first_attempt.png stops before the first termination. No sitting-on-floor capability is claimed. The model was trained on walking, stand, weight-shift and wave, not these squat motions.
 

@@ -2,7 +2,7 @@
 set -euo pipefail
 DATA=/root/gpufree-data
 REPO="$DATA/projects/HUMANOID_TW"
-STATE="$DATA/datasets/practice9/s2_squat_test"
+STATE="${1:-$DATA/datasets/practice9/s2_squat_test}"
 set +u
 source /opt/conda/etc/profile.d/conda.sh
 conda activate "$DATA/conda_envs/env_isaaclab"
