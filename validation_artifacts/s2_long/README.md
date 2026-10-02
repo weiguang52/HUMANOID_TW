@@ -31,4 +31,3 @@ Neither candidate is promoted as fully accepted. long_velocity is the smoother c
 Camera height/direction fixed, horizontal tracking tau=.5s. Within-segment height range is zero (see summary.json); episode resets can cut. Side videos are H2641280x720/50fps999frames. Joint oscillation is measured from physical telemetry independently of camera motion.
 
 Keep final weights beside params/control_runtime.json. Replay restores target shaping; deployment must implement the same rate limiter. No intermediate checkpoints included. Server shutdown interrupted only robustness evaluation; resume_s2_long_validation.sh verifies existing JSON/telemetry and completes missing outputs.
-
