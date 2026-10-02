@@ -1,0 +1,44 @@
+[
+  {
+    "clip": "000890",
+    "steps": 1295,
+    "first_termination_s": 4.26,
+    "termination": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 0,
+      "anchor_ori": 0,
+      "ee_body_pos": 6
+    },
+    "root_height_start_m": 0.3092077672481537,
+    "root_height_min_before_termination_m": 0.19314929842948914,
+    "quality_pass": false,
+    "quality_reasons": [
+      "joint_near_limit_fraction",
+      "joint_near_limit_run"
+    ],
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-02_22-23-57_s2_fix_long_velocity/model_15596.pt",
+    "body_position_error_m": 0.050016552073571786
+  },
+  {
+    "clip": "001240",
+    "steps": 1492,
+    "first_termination_s": 0.78,
+    "termination": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 10,
+      "anchor_ori": 0,
+      "ee_body_pos": 24
+    },
+    "root_height_start_m": 0.3735381066799164,
+    "root_height_min_before_termination_m": 0.2571045160293579,
+    "quality_pass": false,
+    "quality_reasons": [
+      "joint_near_limit_fraction",
+      "joint_near_limit_run"
+    ],
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-02_22-23-57_s2_fix_long_velocity/model_15596.pt",
+    "body_position_error_m": 0.0993268707370443
+  }
+]
