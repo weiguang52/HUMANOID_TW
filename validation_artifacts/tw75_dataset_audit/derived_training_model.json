@@ -1,0 +1,39 @@
+{
+  "upstream_commit": "087697e9cdcc3ff6516479a2562fdfa5c2d96674",
+  "training_urdf_sha256": "8cdcc0f054c19d31e02bd0180e25b3be7eca4ecdd07f325f5c3a1d1cdd8359d9",
+  "derived_urdf_sha256": "3eed4d6989255d39af268844f39d1ec2e5ba8cfe7724e88577cb60bc6d3dd244",
+  "fixed_joints": {
+    "left_foot_roll": 0,
+    "right_foot_roll": 0
+  },
+  "link_renames": {
+    "left_mid_leg": "left_calf",
+    "left_calf": "left_ankle",
+    "left_ankle": "left_foot",
+    "left_foot": "left_sole",
+    "left_wrist": "left_hand",
+    "left_hand": "left_hand_tip",
+    "right_mid_leg": "right_calf",
+    "right_calf": "right_ankle",
+    "right_ankle": "right_foot",
+    "right_foot": "right_sole",
+    "right_wrist": "right_hand",
+    "right_hand": "right_hand_tip"
+  },
+  "segment_lengths_m": {
+    "left": [
+      0.10175799515713191,
+      0.10513186872353147,
+      0.0717590751357027,
+      0.027073234014428342
+    ],
+    "right": [
+      0.10176699207613756,
+      0.10513069629924765,
+      0.07279447180254232,
+      0.02628639585410872
+    ]
+  },
+  "head_length_m": 0.02241987734132369,
+  "fk_100_pose_max_matrix_error": 0.0
+}

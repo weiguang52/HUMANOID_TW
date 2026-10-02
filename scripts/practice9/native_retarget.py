@@ -59,8 +59,11 @@ class NativeRetargeter:
         match = re.search(r'static const std::vector<std::string> names\s*=\s*\{(.*?)\};', source, re.S)
         if match is None or re.findall(r'"([^"]+)"', match.group(1)) != NATIVE_JOINT_NAMES:
             raise ValueError('Upstream joint order changed; update adapter explicitly')
-        commit = subprocess.run(['git', '-C', str(self.root), 'rev-parse', 'HEAD'],
-                                check=True, capture_output=True, text=True, timeout=10).stdout.strip()
+        derived_path = self.root / 'derived_model.json'
+        derived = json.loads(derived_path.read_text()) if derived_path.exists() else None
+        commit = derived['upstream_commit'] if derived else subprocess.run(
+            ['git', '-C', str(self.root), 'rev-parse', 'HEAD'],
+            check=True, capture_output=True, text=True, timeout=10).stdout.strip()
         self.provenance = {
             'backend': 'tw_retargeting_cpp', 'upstream_commit': commit,
             'native_fps': NATIVE_FPS, 'native_joint_names': NATIVE_JOINT_NAMES,
@@ -68,6 +71,8 @@ class NativeRetargeter:
             'selected_config_sha256': hashlib.sha256(config.read_bytes()).hexdigest(),
             'solver_urdf_sha256': hashlib.sha256(self.urdf.read_bytes()).hexdigest(),
             'selected_flags': self.flags,
+            'solver_source_sha256': hashlib.sha256((self.root / 'src/robot.cpp').read_bytes()).hexdigest(),
+            'derived_model': derived,
         }
         self.environment = os.environ.copy()
         libraries = [self.root / 'build/deps/cmeel.prefix/lib',

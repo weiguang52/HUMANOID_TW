@@ -1,0 +1,83 @@
+{
+  "baseline": {
+    "total": 100,
+    "quality_pass": 1,
+    "clips_with_output_clipping": 65,
+    "mean_clipped_fraction": 0.008116895734685919,
+    "near_limit_clips_by_joint": {
+      "right_ankle_yaw_joint": 78,
+      "left_ankle_yaw_joint": 77,
+      "left_shoulder_roll_joint": 41,
+      "right_shoulder_roll_joint": 27,
+      "neck_linkage_roll": 26,
+      "right_shoulder_yaw_joint": 26,
+      "left_shoulder_yaw_joint": 23,
+      "right_shoulder_pitch_joint": 20,
+      "head_pitch": 18,
+      "left_elbow_pitch_joint": 12,
+      "left_shoulder_pitch_joint": 9,
+      "right_elbow_pitch_joint": 9,
+      "left_knee_pitch_joint": 6,
+      "chest_pitch": 4,
+      "right_knee_pitch_joint": 3,
+      "gearbox_roll": 3,
+      "right_hip_pitch_joint": 2,
+      "left_hip_pitch_joint": 1,
+      "left_hip_roll_joint": 1
+    }
+  },
+  "training_geometry": {
+    "total": 100,
+    "quality_pass": 0,
+    "clips_with_output_clipping": 0,
+    "mean_clipped_fraction": 0.0,
+    "near_limit_clips_by_joint": {
+      "waist_yaw": 100,
+      "left_shoulder_yaw_joint": 98,
+      "left_shoulder_roll_joint": 91,
+      "left_ankle_yaw_joint": 86,
+      "right_ankle_yaw_joint": 82,
+      "right_shoulder_yaw_joint": 73,
+      "right_shoulder_roll_joint": 71,
+      "neck_linkage_roll": 70,
+      "gearbox_roll": 62,
+      "right_elbow_pitch_joint": 59,
+      "head_pitch": 34,
+      "neck": 33,
+      "right_shoulder_pitch_joint": 28,
+      "left_shoulder_pitch_joint": 22,
+      "chest_pitch": 13,
+      "left_elbow_pitch_joint": 6,
+      "left_knee_pitch_joint": 4,
+      "right_knee_pitch_joint": 2,
+      "right_hip_pitch_joint": 1,
+      "left_hip_roll_joint": 1
+    }
+  },
+  "training_geometry_aligned": {
+    "total": 100,
+    "quality_pass": 3,
+    "clips_with_output_clipping": 0,
+    "mean_clipped_fraction": 0.0,
+    "near_limit_clips_by_joint": {
+      "left_ankle_yaw_joint": 86,
+      "right_ankle_yaw_joint": 82,
+      "right_shoulder_yaw_joint": 31,
+      "neck_linkage_roll": 30,
+      "left_shoulder_yaw_joint": 29,
+      "head_pitch": 19,
+      "right_shoulder_pitch_joint": 19,
+      "left_shoulder_roll_joint": 14,
+      "right_shoulder_roll_joint": 11,
+      "left_elbow_pitch_joint": 8,
+      "left_shoulder_pitch_joint": 8,
+      "right_elbow_pitch_joint": 7,
+      "left_knee_pitch_joint": 4,
+      "chest_pitch": 4,
+      "right_knee_pitch_joint": 2,
+      "right_hip_pitch_joint": 1,
+      "left_hip_roll_joint": 1,
+      "gearbox_roll": 1
+    }
+  }
+}
