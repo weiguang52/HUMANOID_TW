@@ -1,0 +1,8 @@
+2026-10-03, TW75: diagnostics only, no candidate accepted for training.
+User-selected robot geometry remains derived from urdf0711_training_30dof.urdf.
+Model geometry alignment improved median per-clip upper-arm direction error (left/right) from 9.58/8.73 to 2.70/2.64 degrees, forearm from 14.96/19.51 to 4.39/5.55 degrees. Long-tail arm errors remain.
+Metrics use 25 matched phases per clip and unsmoothed HumanML3D limb directions, normalize hip heading as native preprocessing, FK in training geometry. They are approximate kinematic diagnostics, not contact or stability evidence.
+Foot orientation ablation (weight 1 -> 0) moved near-limit failures from ankle yaw (86/82 clips) to hip yaw (77/74 clips). Overall quality stayed 3/100; median foot-heading error increased from 20.24 to 35.98 degrees. Ablation rejected; do not train on it or treat lower ankle saturation as improvement.
+Next independent hypothesis: straight-knee initialization/local posture prior. A diagnostic variant seeds and regularizes knees at -0.25 rad while preserving foot orientation and training geometry. This changes both seed and prior, so causal attribution requires follow-up separation if beneficial.
+Knee reference experiment completed: 3/100 pass, ankle-yaw saturation 86/83 clips, no output clipping. No material improvement; not adopted. Native tests 4/4 and Python unittest 80/80 passed.
+Next investigation should measure reachable limb targets and redundant hip/ankle twist tradeoffs, plus source foot heading/contact; do not repeat these rejected ablations or weaken the quality gate.
