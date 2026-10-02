@@ -9,3 +9,5 @@ from .events import *  # noqa: F401, F403
 from .observations import *  # noqa: F401, F403
 from .rewards import *  # noqa: F401, F403
 from .terminations import *  # noqa: F401, F403
+
+from .joint_velocity_cost import motion_joint_velocity_error_l2

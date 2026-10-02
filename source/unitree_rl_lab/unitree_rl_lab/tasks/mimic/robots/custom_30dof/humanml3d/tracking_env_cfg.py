@@ -226,6 +226,11 @@ class EventCfg:
 
 @configclass
 class RewardsCfg:
+    # Opt-in experiment; zero preserves the existing reward objective.
+    motion_joint_vel_cost = RewTerm(
+        func=mdp.motion_joint_velocity_error_l2, weight=0.0,
+        params={"command_name": "motion"},
+    )
     joint_acc = RewTerm(func=mdp.joint_acc_l2, weight=-1.0e-7, params={"asset_cfg": JOINT_ENTITY})
     joint_torque = RewTerm(func=mdp.joint_torques_l2, weight=-2.0e-4, params={"asset_cfg": JOINT_ENTITY})
     action_rate_l2 = RewTerm(func=mdp.action_rate_l2, weight=-0.05)
