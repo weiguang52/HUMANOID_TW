@@ -52,6 +52,8 @@ parser.add_argument(
 parser.add_argument(
     "--viewer_follow_asset", type=str, default=None, help="Continuously follow this scene asset's root pose."
 )
+parser.add_argument("--evaluation_motion_id", type=int, default=None, help="Pin mimic replay to a clip from frame zero.")
+parser.add_argument("--evaluation_output", type=str, default=None, help="Write per-step replay metrics and termination counts.")
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
@@ -113,6 +115,9 @@ def main():
         env_cfg.viewer.origin_type = "asset_root"
         env_cfg.viewer.asset_name = args_cli.viewer_follow_asset
         env_cfg.viewer.env_index = 0
+    if args_cli.evaluation_motion_id is not None:
+        env_cfg.commands.motion.adaptive_max_probability = None
+        env_cfg.commands.motion.adaptive_uniform_ratio = 1.0
     agent_cfg: RslRlOnPolicyRunnerCfg = cli_args.parse_rsl_rl_cfg(args_cli.task, args_cli)
     agent_cfg = handle_deprecated_rsl_rl_cfg(agent_cfg, installed_version)
 
@@ -140,6 +145,10 @@ def main():
     if isinstance(env.unwrapped, DirectMARLEnv):
         env = multi_agent_to_single_agent(env)
 
+    if args_cli.evaluation_motion_id is not None:
+        env.unwrapped.command_manager.get_term("motion").set_evaluation_motion_ids(
+            [args_cli.evaluation_motion_id] * env.unwrapped.num_envs
+        )
     # wrap for video recording
     if args_cli.video:
         video_kwargs = {
@@ -205,6 +214,7 @@ def main():
     if version("rsl-rl-lib").startswith("2.3."):
         obs, _ = env.get_observations()
     timestep = 0
+    evaluation = {"steps": 0, "termination_counts": {}, "motion_metrics": {}}
     # simulate environment
     while simulation_app.is_running():
         start_time = time.time()
@@ -214,6 +224,15 @@ def main():
             actions = policy(obs)
             # env stepping
             obs, _, dones, _ = env.step(actions)
+            if args_cli.evaluation_output:
+                evaluation["steps"] += 1
+                manager = env.unwrapped.termination_manager
+                for name in manager.active_terms:
+                    count = int(manager.get_term(name).sum().item())
+                    evaluation["termination_counts"][name] = evaluation["termination_counts"].get(name, 0) + count
+                for name, value in env.unwrapped.command_manager.get_term("motion").metrics.items():
+                    if name.startswith("error_"):
+                        evaluation["motion_metrics"][name] = evaluation["motion_metrics"].get(name, 0.0) + float(value.mean().item())
             if packaging_version.parse(version("rsl-rl-lib")) >= packaging_version.parse("4.0.0"):
                 policy.reset(dones)
             elif policy_nn is not None:
@@ -229,6 +248,14 @@ def main():
         if args_cli.real_time and sleep_time > 0:
             time.sleep(sleep_time)
 
+    if args_cli.evaluation_output:
+        import json
+        from pathlib import Path
+        steps = max(evaluation["steps"], 1)
+        evaluation["motion_metrics"] = {name: value / steps for name, value in evaluation["motion_metrics"].items()}
+        evaluation.update(checkpoint=resume_path, motion_id=args_cli.evaluation_motion_id,
+                          seconds=evaluation["steps"] * dt, num_envs=env.unwrapped.num_envs)
+        Path(args_cli.evaluation_output).write_text(json.dumps(evaluation, indent=2) + "\n")
     # close the simulator
     env.close()
 

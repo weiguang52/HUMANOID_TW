@@ -3,8 +3,6 @@ set -euo pipefail
 DATA=/root/gpufree-data
 REPO="$DATA/projects/HUMANOID_TW"
 STATE="$DATA/datasets/practice9/tw59_s1"
-mkdir -p "$STATE"
-exec > >(tee -a "$STATE/supervisor.log") 2>&1
 trap 'code=$?; if (( code != 0 )); then echo failed:$code > "$STATE/status"; fi' EXIT
 export GPUFREE_DATA_ROOT="$DATA" ISAACLAB_PATH="$DATA/projects/IsaacLab"
 export PRACTICE9_CUSTOM_MOTION_MANIFEST="$DATA/datasets/practice9/tw56_native_v1/manifest.json"
@@ -18,11 +16,6 @@ source /opt/conda/etc/profile.d/conda.sh
 conda activate "$DATA/conda_envs/env_isaaclab"
 set -u
 cd "$REPO"
-echo training > "$STATE/status"
-date -Iseconds > "$STATE/started_at"
-git rev-parse HEAD > "$STATE/source_commit"
-cp "$PRACTICE9_CUSTOM_MOTION_MANIFEST" "$STATE/training_manifest.json"
-bash scripts/practice9/train_humanml3d_custom.sh --logger tensorboard > "$STATE/train.log" 2>&1
 RUN=$(find "$REPO/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d" -maxdepth 1 -type d -name '*_tw59_s1_v2' | sort | tail -1)
 test -n "$RUN"
 CHECKPOINT="$RUN/model_9999.pt"
