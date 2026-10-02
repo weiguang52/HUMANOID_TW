@@ -54,11 +54,19 @@ parser.add_argument(
 )
 parser.add_argument("--evaluation_motion_id", type=int, default=None, help="Pin mimic replay to a clip from frame zero.")
 parser.add_argument("--evaluation_output", type=str, default=None, help="Write per-step replay metrics and termination counts.")
+parser.add_argument("--disable_observation_noise", action="store_true", help="Diagnostic ablation: disable policy observation noise.")
+parser.add_argument("--seed", type=int, default=None, help="Seed the evaluation environment.")
+parser.add_argument("--evaluation_steps", type=int, default=None, help="Bound headless evaluation without recording video.")
+parser.add_argument("--telemetry_output", type=str, default=None, help="Save control/physics-rate mimic diagnostics (one environment).")
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
 AppLauncher.add_app_launcher_args(parser)
 args_cli = parser.parse_args()
+if args_cli.evaluation_steps is not None and args_cli.evaluation_steps <= 0:
+    parser.error("--evaluation_steps must be positive")
+if args_cli.telemetry_output and not (args_cli.evaluation_steps or args_cli.video):
+    parser.error("telemetry requires --evaluation_steps or --video")
 # always enable cameras to record video
 if args_cli.video:
     args_cli.enable_cameras = True
@@ -107,6 +115,10 @@ def main():
         use_fabric=not args_cli.disable_fabric,
         entry_point_key="play_env_cfg_entry_point",
     )
+    if args_cli.disable_observation_noise:
+        env_cfg.observations.policy.enable_corruption = False
+    if args_cli.seed is not None:
+        env_cfg.seed = args_cli.seed
     if args_cli.viewer_eye is not None:
         env_cfg.viewer.eye = tuple(args_cli.viewer_eye)
     if args_cli.viewer_lookat is not None:
@@ -215,6 +227,10 @@ def main():
         obs, _ = env.get_observations()
     timestep = 0
     evaluation = {"steps": 0, "termination_counts": {}, "motion_metrics": {}}
+    telemetry = None
+    if args_cli.telemetry_output:
+        from mimic_telemetry import MimicTelemetry
+        telemetry = MimicTelemetry(env.unwrapped, args_cli.telemetry_output)
     # simulate environment
     while simulation_app.is_running():
         start_time = time.time()
@@ -222,8 +238,12 @@ def main():
         with torch.inference_mode():
             # agent stepping
             actions = policy(obs)
+            if telemetry is not None:
+                telemetry.begin(actions)
             # env stepping
             obs, _, dones, _ = env.step(actions)
+            if telemetry is not None:
+                telemetry.end(dones)
             if args_cli.evaluation_output:
                 evaluation["steps"] += 1
                 manager = env.unwrapped.termination_manager
@@ -237,10 +257,10 @@ def main():
                 policy.reset(dones)
             elif policy_nn is not None:
                 policy_nn.reset(dones)
-        if args_cli.video:
+        if args_cli.video or args_cli.evaluation_steps:
             timestep += 1
             # Exit the play loop after recording one video
-            if timestep == args_cli.video_length:
+            if timestep == (args_cli.evaluation_steps or args_cli.video_length):
                 break
 
         # time delay for real-time evaluation
@@ -248,6 +268,8 @@ def main():
         if args_cli.real_time and sleep_time > 0:
             time.sleep(sleep_time)
 
+    if telemetry is not None:
+        telemetry.save()
     if args_cli.evaluation_output:
         import json
         from pathlib import Path
