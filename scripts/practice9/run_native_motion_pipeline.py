@@ -16,11 +16,11 @@ DATA = Path(os.environ.get('GPUFREE_DATA_ROOT', '/root/gpufree-data'))
 DEFAULT_OUTPUT = DATA / 'datasets/practice9/tw56_native_v1'
 
 
-def require_manifest(path, *, training=False):
+def require_manifest(path, *, training=False, expected_backend="tw_retargeting_cpp"):
     payload = json.loads(path.read_text())
     backend = payload.get('backend') or {}
-    if backend.get('backend') != 'tw_retargeting_cpp':
-        raise ValueError('This pipeline requires a native tw_retargeting manifest')
+    if backend.get('backend') != expected_backend:
+        raise ValueError('This pipeline requires a native tw_retargeting manifest' if expected_backend == 'tw_retargeting_cpp' else f'This pipeline requires backend {expected_backend}')
     if payload.get('joint_coordinate_contract') != CONTRACT_VERSION:
         raise ValueError('Stale joint coordinate contract; regenerate retarget and FK data')
     if payload.get('joint_names') != CUSTOM_JOINT_NAMES:

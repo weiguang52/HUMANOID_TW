@@ -1,0 +1,245 @@
+{
+  "source": "20 S1 walking runs; actuator estimate; current shaky policy, not final motor requirement",
+  "joints": [
+    {
+      "joint": "left_hip_pitch_joint",
+      "rms_torque_nm": 3.4309651851654053,
+      "p99_abs_torque_nm": 7.214300613403324,
+      "peak_abs_torque_nm": 10.811483383178711,
+      "p99_abs_speed_rad_s": 3.0155025839805605,
+      "peak_abs_speed_rad_s": 4.2987470626831055
+    },
+    {
+      "joint": "left_hip_roll_joint",
+      "rms_torque_nm": 1.8377679586410522,
+      "p99_abs_torque_nm": 4.937743268013012,
+      "peak_abs_torque_nm": 9.254018783569336,
+      "p99_abs_speed_rad_s": 3.0168986892700196,
+      "peak_abs_speed_rad_s": 4.812773704528809
+    },
+    {
+      "joint": "left_hip_yaw_joint",
+      "rms_torque_nm": 1.9940043687820435,
+      "p99_abs_torque_nm": 6.085233192443863,
+      "peak_abs_torque_nm": 16.678451538085938,
+      "p99_abs_speed_rad_s": 3.043474225997925,
+      "peak_abs_speed_rad_s": 3.878753423690796
+    },
+    {
+      "joint": "left_knee_pitch_joint",
+      "rms_torque_nm": 2.1819238662719727,
+      "p99_abs_torque_nm": 6.791128816604623,
+      "peak_abs_torque_nm": 11.699460983276367,
+      "p99_abs_speed_rad_s": 3.014513545036316,
+      "peak_abs_speed_rad_s": 6.989866733551025
+    },
+    {
+      "joint": "left_ankle_yaw_joint",
+      "rms_torque_nm": 1.3714830875396729,
+      "p99_abs_torque_nm": 4.985794878006018,
+      "peak_abs_torque_nm": 10.771383285522461,
+      "p99_abs_speed_rad_s": 3.0228786039352418,
+      "peak_abs_speed_rad_s": 3.663987398147583
+    },
+    {
+      "joint": "left_ankle_pitch_joint",
+      "rms_torque_nm": 0.5063375234603882,
+      "p99_abs_torque_nm": 1.8470402121543907,
+      "peak_abs_torque_nm": 6.111576080322266,
+      "p99_abs_speed_rad_s": 3.0070854711532595,
+      "peak_abs_speed_rad_s": 4.829659461975098
+    },
+    {
+      "joint": "left_foot_roll",
+      "rms_torque_nm": 0.23532746732234955,
+      "p99_abs_torque_nm": 0.9294313073158282,
+      "peak_abs_torque_nm": 2.5319833755493164,
+      "p99_abs_speed_rad_s": 2.4434192800521863,
+      "peak_abs_speed_rad_s": 3.687095880508423
+    },
+    {
+      "joint": "right_hip_pitch_joint",
+      "rms_torque_nm": 0.7841057181358337,
+      "p99_abs_torque_nm": 2.7054122948646553,
+      "peak_abs_torque_nm": 5.897282600402832,
+      "p99_abs_speed_rad_s": 3.001928462982178,
+      "peak_abs_speed_rad_s": 3.957892656326294
+    },
+    {
+      "joint": "right_hip_roll_joint",
+      "rms_torque_nm": 2.4180033206939697,
+      "p99_abs_torque_nm": 5.858294572830201,
+      "peak_abs_torque_nm": 10.406936645507812,
+      "p99_abs_speed_rad_s": 3.032447741031647,
+      "peak_abs_speed_rad_s": 4.546570777893066
+    },
+    {
+      "joint": "right_hip_yaw_joint",
+      "rms_torque_nm": 1.7985780239105225,
+      "p99_abs_torque_nm": 5.775627784729026,
+      "peak_abs_torque_nm": 10.128984451293945,
+      "p99_abs_speed_rad_s": 3.0238350009918213,
+      "peak_abs_speed_rad_s": 4.136197090148926
+    },
+    {
+      "joint": "right_knee_pitch_joint",
+      "rms_torque_nm": 1.571244716644287,
+      "p99_abs_torque_nm": 5.120954856872569,
+      "peak_abs_torque_nm": 13.03223991394043,
+      "p99_abs_speed_rad_s": 3.008145334720612,
+      "peak_abs_speed_rad_s": 4.584833145141602
+    },
+    {
+      "joint": "right_ankle_yaw_joint",
+      "rms_torque_nm": 1.2038134336471558,
+      "p99_abs_torque_nm": 4.426949362754825,
+      "peak_abs_torque_nm": 9.8362455368042,
+      "p99_abs_speed_rad_s": 3.0131750941276554,
+      "peak_abs_speed_rad_s": 3.429986000061035
+    },
+    {
+      "joint": "right_ankle_pitch_joint",
+      "rms_torque_nm": 0.4680102467536926,
+      "p99_abs_torque_nm": 1.7880565071106027,
+      "peak_abs_torque_nm": 4.987945079803467,
+      "p99_abs_speed_rad_s": 3.00095477104187,
+      "peak_abs_speed_rad_s": 4.844964027404785
+    },
+    {
+      "joint": "right_foot_roll",
+      "rms_torque_nm": 0.21781036257743835,
+      "p99_abs_torque_nm": 0.864697903990746,
+      "peak_abs_torque_nm": 2.0376973152160645,
+      "p99_abs_speed_rad_s": 2.3969885110855134,
+      "peak_abs_speed_rad_s": 3.769181251525879
+    },
+    {
+      "joint": "waist_yaw",
+      "rms_torque_nm": 0.7567561864852905,
+      "p99_abs_torque_nm": 2.2342460989952095,
+      "peak_abs_torque_nm": 3.6913132667541504,
+      "p99_abs_speed_rad_s": 2.034782180786133,
+      "peak_abs_speed_rad_s": 2.652547597885132
+    },
+    {
+      "joint": "gearbox_roll",
+      "rms_torque_nm": 1.8936694860458374,
+      "p99_abs_torque_nm": 4.040838708877564,
+      "peak_abs_torque_nm": 6.415752410888672,
+      "p99_abs_speed_rad_s": 2.012846477031708,
+      "peak_abs_speed_rad_s": 2.8956146240234375
+    },
+    {
+      "joint": "chest_pitch",
+      "rms_torque_nm": 1.7541357278823853,
+      "p99_abs_torque_nm": 4.017905020713812,
+      "peak_abs_torque_nm": 5.755516529083252,
+      "p99_abs_speed_rad_s": 2.008113477230072,
+      "peak_abs_speed_rad_s": 2.3882126808166504
+    },
+    {
+      "joint": "left_shoulder_pitch_joint",
+      "rms_torque_nm": 0.15442150831222534,
+      "p99_abs_torque_nm": 0.5758826613426224,
+      "peak_abs_torque_nm": 1.9580329656600952,
+      "p99_abs_speed_rad_s": 2.0039362120628357,
+      "peak_abs_speed_rad_s": 2.8423099517822266
+    },
+    {
+      "joint": "left_shoulder_roll_joint",
+      "rms_torque_nm": 0.8975005745887756,
+      "p99_abs_torque_nm": 2.8624447178840855,
+      "peak_abs_torque_nm": 8.0,
+      "p99_abs_speed_rad_s": 2.0006841468811034,
+      "peak_abs_speed_rad_s": 2.6674301624298096
+    },
+    {
+      "joint": "left_shoulder_yaw_joint",
+      "rms_torque_nm": 0.10226570069789886,
+      "p99_abs_torque_nm": 0.37269782632589366,
+      "peak_abs_torque_nm": 1.751037836074829,
+      "p99_abs_speed_rad_s": 1.9999851298332214,
+      "peak_abs_speed_rad_s": 2.0478577613830566
+    },
+    {
+      "joint": "left_elbow_pitch_joint",
+      "rms_torque_nm": 0.514600396156311,
+      "p99_abs_torque_nm": 3.433109998703004,
+      "peak_abs_torque_nm": 4.923871994018555,
+      "p99_abs_speed_rad_s": 2.00089129447937,
+      "peak_abs_speed_rad_s": 2.1486024856567383
+    },
+    {
+      "joint": "left_wrist_pitch",
+      "rms_torque_nm": 0.09476311504840851,
+      "p99_abs_torque_nm": 0.37262876391410843,
+      "peak_abs_torque_nm": 0.7535008192062378,
+      "p99_abs_speed_rad_s": 2.0000007152557373,
+      "peak_abs_speed_rad_s": 2.000364303588867
+    },
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "rms_torque_nm": 0.3176408112049103,
+      "p99_abs_torque_nm": 0.9310328066349035,
+      "peak_abs_torque_nm": 2.496710777282715,
+      "p99_abs_speed_rad_s": 2.0173177099227906,
+      "peak_abs_speed_rad_s": 2.2421441078186035
+    },
+    {
+      "joint": "right_shoulder_roll_joint",
+      "rms_torque_nm": 1.944162130355835,
+      "p99_abs_torque_nm": 4.964149870872498,
+      "peak_abs_torque_nm": 5.627047061920166,
+      "p99_abs_speed_rad_s": 2.000000238418579,
+      "peak_abs_speed_rad_s": 2.3631017208099365
+    },
+    {
+      "joint": "right_shoulder_yaw_joint",
+      "rms_torque_nm": 0.32369741797447205,
+      "p99_abs_torque_nm": 1.6494304084777878,
+      "peak_abs_torque_nm": 5.139928340911865,
+      "p99_abs_speed_rad_s": 2.000004291534424,
+      "peak_abs_speed_rad_s": 2.0669829845428467
+    },
+    {
+      "joint": "right_elbow_pitch_joint",
+      "rms_torque_nm": 0.23161599040031433,
+      "p99_abs_torque_nm": 0.9319806647300737,
+      "peak_abs_torque_nm": 3.5861077308654785,
+      "p99_abs_speed_rad_s": 2.000898749828339,
+      "peak_abs_speed_rad_s": 2.089810609817505
+    },
+    {
+      "joint": "right_wrist_pitch",
+      "rms_torque_nm": 0.07893501222133636,
+      "p99_abs_torque_nm": 0.31902845114469547,
+      "peak_abs_torque_nm": 0.6419435143470764,
+      "p99_abs_speed_rad_s": 1.9998561203479768,
+      "peak_abs_speed_rad_s": 2.0004913806915283
+    },
+    {
+      "joint": "neck",
+      "rms_torque_nm": 0.10555150359869003,
+      "p99_abs_torque_nm": 0.37299714177847043,
+      "peak_abs_torque_nm": 2.144867181777954,
+      "p99_abs_speed_rad_s": 1.9996599638462067,
+      "peak_abs_speed_rad_s": 2.1972813606262207
+    },
+    {
+      "joint": "neck_linkage_roll",
+      "rms_torque_nm": 0.06234966591000557,
+      "p99_abs_torque_nm": 0.22444415047764835,
+      "peak_abs_torque_nm": 1.0256699323654175,
+      "p99_abs_speed_rad_s": 1.9977058732509614,
+      "peak_abs_speed_rad_s": 2.3007612228393555
+    },
+    {
+      "joint": "head_pitch",
+      "rms_torque_nm": 0.0735475942492485,
+      "p99_abs_torque_nm": 0.25748630106449155,
+      "peak_abs_torque_nm": 0.7965273261070251,
+      "p99_abs_speed_rad_s": 1.9940338957309724,
+      "peak_abs_speed_rad_s": 2.5750114917755127
+    }
+  ]
+}
