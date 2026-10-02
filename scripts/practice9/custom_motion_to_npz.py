@@ -53,6 +53,7 @@ simulation_app = app_launcher.app
 
 import isaaclab.sim as sim_utils
 import torch
+from joint_coordinates import CONTRACT_VERSION
 from isaaclab.assets import ArticulationCfg
 from isaaclab.scene import InteractiveScene, InteractiveSceneCfg
 from isaaclab.sim import SimulationContext
@@ -152,6 +153,7 @@ def so3_derivative(rotations_wxyz: torch.Tensor, dt: float) -> torch.Tensor:
 def load_retarget(path: Path, device: torch.device):
     with np.load(path, allow_pickle=False) as data:
         fps = float(np.asarray(data["fps"]).reshape(-1)[0])
+        stored_contract = str(np.asarray(data["joint_coordinate_contract"]).reshape(-1)[0]) if "joint_coordinate_contract" in data else None
         stored_names = [str(name) for name in np.asarray(data["joint_names"]).tolist()]
         joint_pos = np.asarray(data["joint_pos"], dtype=np.float32)
         root_pos = np.asarray(data["root_pos"], dtype=np.float32)
@@ -160,7 +162,7 @@ def load_retarget(path: Path, device: torch.device):
     from joint_coordinates import convert_motion
 
     stored_names, joint_pos, _ = convert_motion(
-        stored_names, joint_pos, np.zeros_like(joint_pos), CUSTOM_HUMANOID_30DOF_JOINT_NAMES
+        stored_names, joint_pos, np.zeros_like(joint_pos), CUSTOM_HUMANOID_30DOF_JOINT_NAMES, stored_contract
     )
     lookup = {name: index for index, name in enumerate(stored_names)}
     missing = [name for name in CUSTOM_HUMANOID_30DOF_JOINT_NAMES if name not in lookup]
@@ -339,6 +341,7 @@ def convert_clip(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         output_path,
+        joint_coordinate_contract=np.asarray([CONTRACT_VERSION]),
         schema_version=np.asarray([1], dtype=np.int32),
         fps=np.asarray([fps], dtype=np.float32),
         motion_id=np.asarray([motion_id]),
@@ -413,6 +416,7 @@ def main() -> None:
                 raise
 
     result = {
+        "joint_coordinate_contract": CONTRACT_VERSION,
         "backend": payload.get("backend"),
         "schema_version": 1,
         "target_fps": float(payload.get("target_fps", 50)),

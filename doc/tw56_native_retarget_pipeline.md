@@ -91,3 +91,8 @@ a short training run, rather than policy convergence.
   logs are `/root/gpufree-data/tmp/tw56-full-pipeline.log`.
 
 No files from the mounted server were copied to the local computer.
+
+URDF correction: coordinate contract `tw44_table_v2` moves the left shoulder
+initial offset from pitch to roll and sets both knee/shoulder pitch limits to
+[-90, 90] degrees. Retarget, FK and training manifests must carry this contract.
+Old aligned files must be regenerated before training; the loader rejects them.

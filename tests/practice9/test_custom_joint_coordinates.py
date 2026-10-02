@@ -11,7 +11,7 @@ from scipy.spatial.transform import Rotation
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO / 'scripts/practice9'))
 sys.path.insert(0, str(REPO / 'source/unitree_rl_lab'))
-from joint_coordinates import COORDINATES, apply_coordinates, convert_motion, rename
+from joint_coordinates import CONTRACT_VERSION, LIMIT_OVERRIDES, COORDINATES, apply_coordinates, convert_motion, rename
 from prepare_custom_robot_urdf import generate, DEFAULT_SOURCE, DEFAULT_MESH_ROOT, DEFAULT_OUTPUT
 
 
@@ -46,7 +46,7 @@ class CoordinateTests(unittest.TestCase):
         self.assertEqual(len(COORDINATES), 20)
         self.assertEqual(sum(sign == -1 for _, sign, _ in COORDINATES.values()), 6)
         shifts = {new: offset for new, _, offset in COORDINATES.values() if offset}
-        self.assertEqual(shifts, {'left_shoulder_pitch_joint': -math.pi / 2,
+        self.assertEqual(shifts, {'left_shoulder_roll_joint': -math.pi / 2,
                                   'right_shoulder_roll_joint': math.pi / 2})
         self.assertEqual(rename('left_wrist_pitch'), 'left_wrist_pitch')
         self.assertEqual(rename('left_foot_roll'), 'left_foot_roll')
@@ -59,11 +59,25 @@ class CoordinateTests(unittest.TestCase):
         aligned, converted, converted_vel = convert_motion(names, pos, vel, targets)
         self.assertEqual(aligned, targets)
         np.testing.assert_allclose(converted[:, 0], pos[:, 0] + math.pi / 2)
-        np.testing.assert_allclose(converted[:, 1], -pos[:, 1] - math.pi / 2)
+        np.testing.assert_allclose(converted[:, 1], -pos[:, 1])
         np.testing.assert_allclose(converted_vel, [[1, -1, 1], [1, -1, 1]])
         _, twice, _ = convert_motion(aligned, converted, converted_vel, targets)
         np.testing.assert_array_equal(converted, twice)
         np.testing.assert_array_equal(pos, [[0, 0, .2], [.1, -.3, -.4]])
+
+    def test_stale_aligned_coordinates_are_rejected(self):
+        names = [item[0] for item in COORDINATES.values()]
+        values = np.zeros((2, len(names)))
+        with self.assertRaisesRegex(ValueError, 'Stale'):
+            convert_motion(names, values, values, names)
+        _, result, _ = convert_motion(names, values, values, names, CONTRACT_VERSION)
+        np.testing.assert_array_equal(result, values)
+
+    def test_explicit_limit_overrides(self):
+        self.assertEqual(set(LIMIT_OVERRIDES), {'left_knee_pitch_joint', 'right_knee_pitch_joint',
+            'left_shoulder_pitch_joint', 'right_shoulder_pitch_joint'})
+        for limits in LIMIT_OVERRIDES.values():
+            self.assertEqual(limits, (-math.pi / 2, math.pi / 2))
 
     def test_mixed_names_are_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Mixed'):
@@ -91,7 +105,7 @@ class CoordinateTests(unittest.TestCase):
                 self.assertNotIn(old, aligned_joints)
                 np.testing.assert_allclose(np.fromstring(b.find('axis').get('xyz'), sep=' '),
                                            sign * np.fromstring(a.find('axis').get('xyz'), sep=' '))
-                limits = sorted(sign * float(a.find('limit').get(k)) + offset for k in ('lower', 'upper'))
+                limits = LIMIT_OVERRIDES.get(new, sorted(sign * float(a.find('limit').get(k)) + offset for k in ('lower', 'upper')))
                 np.testing.assert_allclose([float(b.find('limit').get(k)) for k in ('lower', 'upper')], limits)
                 for tag in ('parent', 'child'):
                     self.assertEqual(a.find(tag).attrib, b.find(tag).attrib)
@@ -109,7 +123,8 @@ class CoordinateTests(unittest.TestCase):
                 error = max(error, max(float(np.max(np.abs(before[name] - after[name]))) for name in before))
             self.assertLess(error, 1e-12)
             print(f'65 poses, all links, max FK error: {error:.3g}')
-            self.assertEqual(meta['initial_joint_positions']['left_shoulder_pitch_joint'], -math.pi / 2)
+            self.assertEqual(meta['initial_joint_positions']['left_shoulder_pitch_joint'], 0)
+            self.assertEqual(meta['initial_joint_positions']['left_shoulder_roll_joint'], -math.pi / 2)
             self.assertEqual(meta['initial_joint_positions']['right_shoulder_roll_joint'], math.pi / 2)
 
 

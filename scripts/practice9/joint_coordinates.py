@@ -7,6 +7,8 @@ _spec = importlib.util.spec_from_file_location('custom_joint_coordinates', _path
 _module = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_module)
 COORDINATES = _module.COORDINATES
+CONTRACT_VERSION = _module.CONTRACT_VERSION
+LIMIT_OVERRIDES = _module.LIMIT_OVERRIDES
 rename = _module.rename
 convert_motion = _module.convert_motion
 
@@ -53,7 +55,7 @@ def apply_coordinates(root):
         axis_element.set('xyz', ' '.join(f'{sign * v:.17g}' for v in axis))
         joint.set('name', name)
         limit = joint.find('limit')
-        lower, upper = sorted(sign * float(limit.get(key)) + initial for key in ('lower', 'upper'))
+        lower, upper = LIMIT_OVERRIDES.get(name, sorted(sign * float(limit.get(key)) + initial for key in ('lower', 'upper')))
         limit.set('lower', f'{lower:.17g}')
         limit.set('upper', f'{upper:.17g}')
     names = [j.get('name') for j in root.findall('joint')]

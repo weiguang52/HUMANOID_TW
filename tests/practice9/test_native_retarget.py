@@ -9,7 +9,7 @@ REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO / 'scripts/practice9'))
 from native_retarget import DEFAULT_ROOT, NATIVE_JOINT_NAMES, NativeRetargeter, resample_native
 from retarget_humanml3d import validate_humanml3d, restore_root_trajectory, iter_inputs
-from run_native_motion_pipeline import require_manifest, CUSTOM_JOINT_NAMES
+from run_native_motion_pipeline import require_manifest, CUSTOM_JOINT_NAMES, CONTRACT_VERSION
 
 
 class NativeAdapterTests(unittest.TestCase):
@@ -60,7 +60,7 @@ class NativeAdapterTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'native'):
                 require_manifest(path)
             path.write_text(json.dumps({'backend': {'backend': 'tw_retargeting_cpp'},
-                                        'joint_names': CUSTOM_JOINT_NAMES, 'motions': []}))
+                                        'joint_coordinate_contract': CONTRACT_VERSION, 'joint_names': CUSTOM_JOINT_NAMES, 'motions': []}))
             with self.assertRaisesRegex(ValueError, 'quality'):
                 require_manifest(path)
 

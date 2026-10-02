@@ -158,7 +158,7 @@ class AdaptiveSamplingTests(unittest.TestCase):
                 joint_names=['right_shoulder_roll_joint', 'left_shoulder_pitch_joint'],
                 expected_fps=50.0, max_frames=10)
             np.testing.assert_allclose(library.joint_pos.numpy(),
-                                       [[np.pi / 2, -np.pi / 2]] * 2)
+                                       [[np.pi / 2, 0]] * 2)
             np.testing.assert_allclose(library.joint_vel.numpy(), [[1, -1]] * 2)
             np.testing.assert_array_equal(library.body_pos_w.numpy(), np.zeros((2, 1, 3)))
 

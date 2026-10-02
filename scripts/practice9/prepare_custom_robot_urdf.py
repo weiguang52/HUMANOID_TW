@@ -20,7 +20,7 @@ import struct
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from joint_coordinates import COORDINATES, apply_coordinates, rename
+from joint_coordinates import COORDINATES, CONTRACT_VERSION, LIMIT_OVERRIDES, apply_coordinates, rename
 
 DATA_ROOT = Path(os.environ.get("GPUFREE_DATA_ROOT", "/root/gpufree-data"))
 DEFAULT_SOURCE = DATA_ROOT / "projects/urdf0711/urdf/urdf0711.urdf"
@@ -166,7 +166,8 @@ def generate(source: Path, mesh_root: Path, output: Path) -> dict[str, object]:
 
     metadata = {
         "schema_version": 2,
-        "joint_coordinate_contract": "tw44_table_v1",
+        "joint_coordinate_contract": CONTRACT_VERSION,
+        "joint_limit_overrides": LIMIT_OVERRIDES,
         "joint_coordinate_changes": COORDINATES,
         "initial_joint_positions": {rename(name): COORDINATES.get(name, (name, 1, 0.0))[2] for name in JOINT_SPECS},
         "source": str(source.resolve()),

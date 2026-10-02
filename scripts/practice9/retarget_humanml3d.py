@@ -72,7 +72,7 @@ MAPPING = {
 
 
 # Compose old IK -> CAD with the user's CAD -> aligned coordinate table.
-from joint_coordinates import COORDINATES, rename
+from joint_coordinates import COORDINATES, CONTRACT_VERSION, rename
 
 CUSTOM_JOINT_NAMES = [rename(name) for name in CUSTOM_JOINT_NAMES]
 MAPPING = {
@@ -366,6 +366,7 @@ def main() -> None:
             np.savez_compressed(
                 output,
                 schema_version=np.asarray([1], dtype=np.int32),
+                joint_coordinate_contract=np.asarray([CONTRACT_VERSION]),
                 fps=np.asarray([args.output_fps], dtype=np.float32),
                 source_fps=np.asarray([20], dtype=np.float32),
                 source_id=np.asarray([motion_id]),
@@ -400,6 +401,7 @@ def main() -> None:
         "schema_version": 1,
         "stage": "retargeted_joint_motion",
         "backend": backend.provenance,
+        "joint_coordinate_contract": CONTRACT_VERSION,
         "target_fps": args.output_fps,
         "joint_names": CUSTOM_JOINT_NAMES,
         "quality_gate_version": 1,

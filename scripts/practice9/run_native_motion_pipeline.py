@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 from native_retarget import DEFAULT_ROOT
+from joint_coordinates import CONTRACT_VERSION
 from retarget_humanml3d import CUSTOM_JOINT_NAMES
 
 REPO = Path(__file__).parents[2]
@@ -20,6 +21,8 @@ def require_manifest(path, *, training=False):
     backend = payload.get('backend') or {}
     if backend.get('backend') != 'tw_retargeting_cpp':
         raise ValueError('This pipeline requires a native tw_retargeting manifest')
+    if payload.get('joint_coordinate_contract') != CONTRACT_VERSION:
+        raise ValueError('Stale joint coordinate contract; regenerate retarget and FK data')
     if payload.get('joint_names') != CUSTOM_JOINT_NAMES:
         raise ValueError('Manifest uses a different joint coordinate contract')
     motions = payload.get('motions', [])

@@ -255,6 +255,7 @@ class MotionLibrary:
             body_quat = np.asarray(data["body_quat_w"], dtype=np.float32)
             body_lin_vel = np.asarray(data["body_lin_vel_w"], dtype=np.float32)
             body_ang_vel = np.asarray(data["body_ang_vel_w"], dtype=np.float32)
+            stored_contract = str(np.asarray(data["joint_coordinate_contract"]).reshape(-1)[0]) if "joint_coordinate_contract" in data else None
             stored_joint_names = _string_list(data.get("joint_names", None))
             stored_body_names = _string_list(data.get("body_names", None))
 
@@ -306,7 +307,7 @@ class MotionLibrary:
             )
 
         stored_joint_names, joint_pos, joint_vel = convert_motion(
-            stored_joint_names, joint_pos, joint_vel, self.joint_names
+            stored_joint_names, joint_pos, joint_vel, self.joint_names, stored_contract
         )
 
         if self.joint_names is not None:
