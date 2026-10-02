@@ -1,0 +1,28 @@
+{
+  "passed_counts": {
+    "walking_train": 14,
+    "standing_upper_train": 14,
+    "walking_test": 1
+  },
+  "failure_counts": {
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run']": 5341,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'joint_speed_p99', 'joint_speed_max', 'required_time_scale_exceeds_cap']": 61,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'joint_speed_max', 'required_time_scale_exceeds_cap']": 54,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'required_time_scale_exceeds_cap']": 89,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'joint_speed_p99']": 171,
+    "quality gate failed: ['joint_near_limit_run', 'joint_speed_max', 'required_time_scale_exceeds_cap']": 1,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'joint_speed_p99', 'required_time_scale_exceeds_cap']": 70,
+    "quality gate failed: ['joint_near_limit_run']": 44,
+    "quality gate failed: ['joint_speed_p99', 'joint_speed_max', 'required_time_scale_exceeds_cap']": 1,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'root_yaw_rate']": 10,
+    "quality gate failed: ['joint_near_limit_run', 'required_time_scale_exceeds_cap']": 4,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'root_yaw_rate', 'required_time_scale_exceeds_cap']": 7,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'root_xy_speed', 'root_yaw_rate', 'required_time_scale_exceeds_cap']": 2,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'joint_speed_max']": 12,
+    "quality gate failed: ['joint_speed_p99']": 1,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'joint_speed_p99', 'joint_speed_max']": 1,
+    "quality gate failed: ['joint_near_limit_run', 'joint_speed_p99']": 1,
+    "quality gate failed: ['joint_near_limit_fraction', 'joint_near_limit_run', 'joint_speed_violation_fraction', 'joint_speed_p99', 'joint_speed_max', 'required_time_scale_exceeds_cap']": 1
+  },
+  "batches": 59
+}

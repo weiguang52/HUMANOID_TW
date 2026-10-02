@@ -313,6 +313,7 @@ def main() -> None:
     parser.add_argument("--retarget-root", type=Path, default=DEFAULT_ROOT)
     parser.add_argument("--retarget-binary", type=Path)
     parser.add_argument("--native-timeout", type=float, default=120)
+    parser.add_argument("--retarget-profile", type=Path, help="Explicit experimental native flag profile; default unchanged")
     parser.add_argument("--training-urdf", type=Path, default=DEFAULT_TRAINING_URDF)
     parser.add_argument("--output-fps", type=int, default=50)
     parser.add_argument("--root-scale", type=float, default=0.28963)
@@ -330,7 +331,7 @@ def main() -> None:
         raise ValueError("--max-time-scale must be at least 1")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     lower, upper, velocity_limits = load_limits(args.training_urdf)
-    backend = NativeRetargeter(args.retarget_root, args.retarget_binary, args.native_timeout)
+    backend = NativeRetargeter(args.retarget_root, args.retarget_binary, args.native_timeout, profile=args.retarget_profile)
     old_names = NATIVE_JOINT_NAMES
     inputs = iter_inputs(args.input, args.pattern, args.limit)
 

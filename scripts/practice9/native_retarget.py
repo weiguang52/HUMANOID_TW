@@ -42,11 +42,11 @@ def resample_native(values, output_fps):
 
 
 class NativeRetargeter:
-    def __init__(self, root=DEFAULT_ROOT, binary=None, timeout=120):
+    def __init__(self, root=DEFAULT_ROOT, binary=None, timeout=120, profile=None):
         self.root = Path(root).resolve()
         self.binary = Path(binary).resolve() if binary else self.root / 'build/native/tw_retarget'
         self.urdf = self.root / 'assets/urdf/Assembly.urdf'
-        config = self.root / 'configs/selected_head_axis.json'
+        config = Path(profile).resolve() if profile is not None else self.root / 'configs/selected_head_axis.json'
         if not self.binary.is_file():
             raise FileNotFoundError(f'Build the native backend first: {self.binary}')
         self.timeout = float(timeout)

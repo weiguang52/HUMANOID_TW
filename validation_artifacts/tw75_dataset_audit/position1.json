@@ -1,0 +1,32 @@
+{
+  "name": "tw75_position1",
+  "status": "diagnostic_not_selected",
+  "notes": "Previous one-QP weighted3 head-axis candidate. Original CLI defaults remain unchanged; all later refinements disabled. Not certified to meet 5 mm.",
+  "flags": [
+    "--objective",
+    "cartesian",
+    "--filter-aware-strength",
+    "1",
+    "--filter-aware-adaptive",
+    "--filter-gate-alpha",
+    ".5",
+    "--posture-bias",
+    ".25",
+    "--posture-shoulder-guard",
+    "--position-scale",
+    "1",
+    "--midpoint-scale",
+    "1.5",
+    "--acceleration-cost",
+    ".1",
+    "--mean-distance-mm",
+    "5",
+    "--human-head-axis"
+  ],
+  "disabled_refinements": {
+    "ankle_aware": false,
+    "neck_axis": false,
+    "output_acceleration_cost": 0,
+    "neck_posture_bias": 1
+  }
+}

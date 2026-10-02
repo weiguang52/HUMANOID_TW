@@ -1,0 +1,23 @@
+{
+  "counts": {
+    "available_arrays": 29228,
+    "original_arrays": 14614,
+    "mirror_arrays": 14614,
+    "walking_train": 3090,
+    "walking_val": 218,
+    "walking_test": 644,
+    "standing_upper_train": 1548,
+    "standing_upper_val": 100,
+    "standing_upper_test": 300
+  },
+  "rejections": {
+    "outside_scope_caption": 5025,
+    "standing_geometry_moving_or_height": 2509,
+    "no_scoped_caption": 512,
+    "train_source_overlaps_heldout": 410,
+    "invalid_or_short": 258
+  },
+  "total_caption_files": 29232,
+  "selected": 5900,
+  "method": "Full available-array scan; no top-N cap. Conservative caption+geometry candidates, not quality-approved. Mirror arrays excluded as augmentation duplicates. Official splits retained and overlapping original source families removed from train. Caption keywords are imperfect; manual samples and retarget/support audits required."
+}
