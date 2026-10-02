@@ -73,3 +73,7 @@ datasets
 
 # Mimic
 *.npz
+
+# Versioned final validation bundles requested by the user
+!/validation_artifacts/**/*.pt
+!/validation_artifacts/**/env.yaml

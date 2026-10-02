@@ -1,0 +1,63 @@
+{
+  "version": "S1-v1",
+  "checkpoint_iteration": 9999,
+  "training_source_commit": "d03ad7b",
+  "evaluation_source_commit": "67889f5",
+  "coordinate_contract": "tw44_table_v2",
+  "artifacts": [
+    {
+      "file": "model_9999.pt",
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-02_14-01-51_tw59_s1_v2/model_9999.pt",
+      "bytes": 6861173,
+      "sha256": "994cd28811b29da176f6ed98ab1f5ad8b468be31a0899421080cdc307aa78337"
+    },
+    {
+      "file": "validation_summary.json",
+      "source": "/root/gpufree-data/datasets/practice9/tw59_s1/validation_summary.json",
+      "bytes": 5154,
+      "sha256": "d8c246dec3d112fa6ce82010092de1c24e953ebe3cca4bfd4bcf07c11675f2db"
+    },
+    {
+      "file": "validation_report.md",
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/doc/tw64_s1_validation.md",
+      "bytes": 1936,
+      "sha256": "bb2832bada600a30df498b278ed010c7fc87907ac0e04f3a0abe133882fd9bfc"
+    },
+    {
+      "file": "walk_000801.mp4",
+      "source": "/root/gpufree-data/datasets/practice9/tw59_s1/videos/000801_zoom.mp4",
+      "bytes": 2653439,
+      "sha256": "99e762b73ffab864c24987d8eedca54d278502b2e11d7ae8d026e9e6da660fc9"
+    },
+    {
+      "file": "walk_006680.mp4",
+      "source": "/root/gpufree-data/datasets/practice9/tw59_s1/videos/006680_zoom.mp4",
+      "bytes": 3244374,
+      "sha256": "041bd06f69c2e9005f12e1ad3fd092021d5129d5fd7c10c507df36246615d0fd"
+    },
+    {
+      "file": "walk_010407.mp4",
+      "source": "/root/gpufree-data/datasets/practice9/tw59_s1/videos/010407_zoom.mp4",
+      "bytes": 2703745,
+      "sha256": "d7bf9a2f0a32bf620e3ad8fa73f8e6ade6931989c0b480fc4524d43118c1cae7"
+    },
+    {
+      "file": "walk_010782.mp4",
+      "source": "/root/gpufree-data/datasets/practice9/tw59_s1/videos/010782_zoom.mp4",
+      "bytes": 2946160,
+      "sha256": "682bb0d3e4261401b2208d39d16913e8dadbcc65b43f304f3452f3b6d6a78e7e"
+    },
+    {
+      "file": "env.yaml",
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-02_14-01-51_tw59_s1_v2/params/env.yaml",
+      "bytes": 51099,
+      "sha256": "50214240321d9e577ccc36826447806aaed2b13a6ec4516f059ec662d24ce663"
+    },
+    {
+      "file": "agent.yaml",
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-02_14-01-51_tw59_s1_v2/params/agent.yaml",
+      "bytes": 1174,
+      "sha256": "c7398376f6389e784b32e70ff8010d6baae1b0fd3d562aac2538700c8f1724d2"
+    }
+  ]
+}
