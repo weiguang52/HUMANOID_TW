@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import math
 
 import isaaclab.sim as sim_utils
 from isaaclab.assets import ArticulationCfg, AssetBaseCfg
@@ -18,6 +19,7 @@ from isaaclab.utils import configclass
 from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
 import unitree_rl_lab.tasks.mimic.mdp as mdp
+from unitree_rl_lab.tasks.mimic.mdp.smooth_joint_actions import SmoothJointPositionActionCfg
 from unitree_rl_lab.assets.robots.custom_humanoid import (
     CUSTOM_HUMANOID_30DOF_CFG as ROBOT_CFG,
     CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
@@ -124,7 +126,10 @@ class CommandsCfg:
 
 @configclass
 class ActionsCfg:
-    JointPositionAction = mdp.JointPositionActionCfg(
+    JointPositionAction = SmoothJointPositionActionCfg(
+        target_velocity_scale=float(os.environ.get("P9_TARGET_VELOCITY_SCALE", "1")),
+        smoothing_tau=float(os.environ.get("P9_TARGET_SMOOTHING_TAU", "0")),
+        limit_target_velocity=os.environ.get("P9_TARGET_LIMIT_VELOCITY", "0") == "1",
         asset_name="robot",
         joint_names=CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
         preserve_order=True,
@@ -366,6 +371,14 @@ class RobotEnvCfg(ManagerBasedRLEnvCfg):
         self.sim.render_interval = self.decimation
         self.sim.physics_material = self.scene.terrain.physics_material
         self.sim.physx.gpu_max_rigid_patch_count = 10 * 2**15
+        for field, variable in (("stiffness", "P9_PD_STIFFNESS_MULT"), ("damping", "P9_PD_DAMPING_MULT")):
+            multiplier = float(os.environ.get(variable, "1"))
+            if not math.isfinite(multiplier) or multiplier <= 0:
+                raise ValueError(f"{variable} must be finite and positive")
+            for group in ("leg_major", "waist"):
+                actuator = self.scene.robot.actuators[group]
+                setattr(actuator, field, getattr(actuator, field) * multiplier)
+
 
 
 class RobotPlayEnvCfg(RobotEnvCfg):

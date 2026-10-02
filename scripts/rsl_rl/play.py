@@ -54,6 +54,7 @@ parser.add_argument(
 )
 parser.add_argument("--evaluation_motion_id", type=int, default=None, help="Pin mimic replay to a clip from frame zero.")
 parser.add_argument("--evaluation_output", type=str, default=None, help="Write per-step replay metrics and termination counts.")
+parser.add_argument("--viewer_follow_tau", type=float, default=0.5, help="Horizontal follow smoothing in seconds; camera height stays fixed.")
 parser.add_argument("--disable_observation_noise", action="store_true", help="Diagnostic ablation: disable policy observation noise.")
 parser.add_argument("--seed", type=int, default=None, help="Seed the evaluation environment.")
 parser.add_argument("--evaluation_steps", type=int, default=None, help="Bound headless evaluation without recording video.")
@@ -124,7 +125,7 @@ def main():
     if args_cli.viewer_lookat is not None:
         env_cfg.viewer.lookat = tuple(args_cli.viewer_lookat)
     if args_cli.viewer_follow_asset is not None:
-        env_cfg.viewer.origin_type = "asset_root"
+        env_cfg.viewer.origin_type = "world"
         env_cfg.viewer.asset_name = args_cli.viewer_follow_asset
         env_cfg.viewer.env_index = 0
     if args_cli.evaluation_motion_id is not None:
@@ -148,6 +149,8 @@ def main():
         resume_path = get_checkpoint_path(log_root_path, agent_cfg.load_run, agent_cfg.load_checkpoint)
     resume_path = handle_deprecated_rsl_rl_checkpoint(resume_path, installed_version)
 
+    from control_runtime import restore as restore_control_runtime, snapshot as control_snapshot
+    restore_control_runtime(env_cfg, resume_path)
     log_dir = os.path.dirname(resume_path)
 
     # create isaac environment
@@ -231,9 +234,21 @@ def main():
     if args_cli.telemetry_output:
         from mimic_telemetry import MimicTelemetry
         telemetry = MimicTelemetry(env.unwrapped, args_cli.telemetry_output)
+    camera_trace = []
+    camera_follow = None
+    if args_cli.viewer_follow_asset is not None:
+        from camera_follow import SmoothCameraFollow
+        camera_asset = env.unwrapped.scene[args_cli.viewer_follow_asset]
+        camera_follow = SmoothCameraFollow(camera_asset.data.root_pos_w[0].cpu().numpy(), dt, args_cli.viewer_follow_tau)
+        camera_reset = False
     # simulate environment
     while simulation_app.is_running():
         start_time = time.time()
+        if camera_follow is not None:
+            origin = camera_follow.update(camera_asset.data.root_pos_w[0].cpu().numpy(), reset=camera_reset)
+            env.unwrapped.sim.set_camera_view(eye=origin + env_cfg.viewer.eye, target=origin + env_cfg.viewer.lookat)
+            if args_cli.evaluation_output:
+                camera_trace.append((origin.copy(), camera_asset.data.root_pos_w[0].cpu().numpy().copy(), camera_reset))
         # run everything in inference mode
         with torch.inference_mode():
             # agent stepping
@@ -242,6 +257,8 @@ def main():
                 telemetry.begin(actions)
             # env stepping
             obs, _, dones, _ = env.step(actions)
+            if camera_follow is not None:
+                camera_reset = bool(dones[0].item())
             if telemetry is not None:
                 telemetry.end(dones)
             if args_cli.evaluation_output:
@@ -273,9 +290,12 @@ def main():
     if args_cli.evaluation_output:
         import json
         from pathlib import Path
+        if camera_trace:
+            import numpy as np
+            np.savez_compressed(str(args_cli.evaluation_output) + ".camera.npz", camera_origin=np.array([x[0] for x in camera_trace]), robot_origin=np.array([x[1] for x in camera_trace]), reset=np.array([x[2] for x in camera_trace]), dt=dt)
         steps = max(evaluation["steps"], 1)
         evaluation["motion_metrics"] = {name: value / steps for name, value in evaluation["motion_metrics"].items()}
-        evaluation.update(checkpoint=resume_path, motion_id=args_cli.evaluation_motion_id,
+        evaluation.update(control_runtime=control_snapshot(env_cfg), camera_follow_tau=args_cli.viewer_follow_tau, checkpoint=resume_path, motion_id=args_cli.evaluation_motion_id,
                           seconds=evaluation["steps"] * dt, num_envs=env.unwrapped.num_envs)
         Path(args_cli.evaluation_output).write_text(json.dumps(evaluation, indent=2) + "\n")
     # close the simulator
