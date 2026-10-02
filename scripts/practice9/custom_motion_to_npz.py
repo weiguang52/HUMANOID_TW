@@ -413,6 +413,7 @@ def main() -> None:
                 raise
 
     result = {
+        "backend": payload.get("backend"),
         "schema_version": 1,
         "target_fps": float(payload.get("target_fps", 50)),
         "robot": "urdf0711_training_30dof",

@@ -9,7 +9,7 @@ NUM_ENVS="${P9_CUSTOM_NUM_ENVS:-1024}"
 MAX_ITERATIONS="${P9_CUSTOM_MAX_ITERATIONS:-10000}"
 SEED="${P9_CUSTOM_SEED:-42}"
 RUN_NAME="${P9_CUSTOM_RUN_NAME:-practice9_humanml3d_custom30}"
-MANIFEST="${PRACTICE9_CUSTOM_MOTION_MANIFEST:-$DATA/datasets/practice9/humanml3d_custom30_locomotion400_v1/manifest.json}"
+MANIFEST="${PRACTICE9_CUSTOM_MOTION_MANIFEST:-$DATA/datasets/practice9/tw56_native_v1/manifest.json}"
 
 export GPUFREE_DATA_ROOT="$DATA"
 export ISAACLAB_PATH="$DATA/projects/IsaacLab"
@@ -35,6 +35,14 @@ set -u
 python "$REPO/scripts/practice9/prepare_custom_robot_urdf.py" --output "$PRACTICE9_CUSTOM_URDF" >/dev/null
 test -s "$PRACTICE9_CUSTOM_URDF" || { echo "Missing training URDF: $PRACTICE9_CUSTOM_URDF" >&2; exit 2; }
 test -s "$MANIFEST" || { echo "Missing motion manifest: $MANIFEST" >&2; exit 2; }
+
+python - "$MANIFEST" "$REPO" <<'PYCHECK'
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(sys.argv[2]) / 'scripts/practice9'))
+from run_native_motion_pipeline import require_manifest
+require_manifest(Path(sys.argv[1]), training=True)
+PYCHECK
 
 gpu_memory="$(nvidia-smi -i "$GPU" --query-gpu=memory.used --format=csv,noheader,nounits | tr -d ' ')"
 if [[ ! "$gpu_memory" =~ ^[0-9]+$ ]] || (( gpu_memory > 256 )); then

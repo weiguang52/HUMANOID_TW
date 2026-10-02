@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-"""HumanML3D -> existing IK_V2 -> custom 30-DoF bootstrap retargeting."""
+"""HumanML3D -> selected native tw_retargeting -> aligned 30-DoF RL motion."""
 
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import json
 import math
-import sys
 import traceback
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -15,14 +13,15 @@ from pathlib import Path
 import numpy as np
 
 
+from native_retarget import DEFAULT_ROOT, NATIVE_JOINT_NAMES, NativeRetargeter
+
 DATA_ROOT = Path("/root/gpufree-data")
-DEFAULT_IK_ROOT = DATA_ROOT / "projects/IK_V2"
 DEFAULT_TRAINING_URDF = DATA_ROOT / "datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf"
 DEFAULT_INPUT = (
     DATA_ROOT
     / "datasets/practice9/humanml3d_rebuild/staging-v1/HumanML3D/new_joints"
 )
-DEFAULT_OUTPUT = DATA_ROOT / "datasets/practice9/humanml3d_custom30/retargeted"
+DEFAULT_OUTPUT = DATA_ROOT / "datasets/practice9/tw56_native_v1/retargeted"
 
 CUSTOM_JOINT_NAMES = [
     "left_hip_linkage_pitch", "left_thigh_roll", "left_knee_linkage_yaw",
@@ -84,17 +83,6 @@ MAPPING = {
 }
 
 
-def load_ik_module(ik_root: Path):
-    module_path = ik_root / "ik_redirection_npy.py"
-    spec = importlib.util.spec_from_file_location("ik_v2_redirection", module_path)
-    if spec is None or spec.loader is None:
-        raise ImportError(module_path)
-    module = importlib.util.module_from_spec(spec)
-    sys.path.insert(0, str(ik_root))
-    spec.loader.exec_module(module)
-    return module
-
-
 def load_limits(training_urdf: Path) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     root = ET.parse(training_urdf).getroot()
     by_name = {joint.attrib["name"]: joint for joint in root.findall("joint")}
@@ -111,8 +99,8 @@ def load_limits(training_urdf: Path) -> tuple[np.ndarray, np.ndarray, np.ndarray
 
 def validate_humanml3d(joints: np.ndarray, path: Path) -> np.ndarray:
     joints = np.asarray(joints, dtype=np.float64)
-    if joints.ndim != 3 or joints.shape[1:] != (22, 3):
-        raise ValueError(f"{path}: expected [T,22,3], got {joints.shape}")
+    if joints.ndim != 3 or joints.shape[1] < 22 or joints.shape[2] != 3:
+        raise ValueError(f"{path}: expected [T,J>=22,3], got {joints.shape}")
     if joints.shape[0] < 9:
         raise ValueError(f"{path}: at least 9 frames are required, got {joints.shape[0]}")
     if not np.isfinite(joints).all():
@@ -131,7 +119,7 @@ def map_28_to_30(old_dof: np.ndarray, old_names: list[str]) -> np.ndarray:
 
 
 def restore_root_trajectory(
-    joints: np.ndarray, output_frames: int, root_scale: float, nominal_height: float
+    joints: np.ndarray, output_frames: int, root_scale: float, nominal_height: float, output_fps: float = 50.0
 ) -> tuple[np.ndarray, np.ndarray]:
     # Same coordinates as IK_V2: HumanML3D [x,y,z] -> robot [z,x,y].
     world = joints[..., [2, 0, 1]]
@@ -147,8 +135,8 @@ def restore_root_trajectory(
     relative = pelvis - pelvis[0]
     relative_xy = relative[:, :2] @ rotation.T
 
-    source_t = np.linspace(0.0, 1.0, joints.shape[0])
-    output_t = np.linspace(0.0, 1.0, output_frames)
+    source_t = np.arange(joints.shape[0]) / 20.0
+    output_t = np.arange(output_frames) / output_fps
     root_pos = np.empty((output_frames, 3), dtype=np.float64)
     root_pos[:, 0] = np.interp(output_t, source_t, relative_xy[:, 0] * root_scale)
     root_pos[:, 1] = np.interp(output_t, source_t, relative_xy[:, 1] * root_scale)
@@ -300,9 +288,18 @@ def audit_and_time_scale(
 
 
 def iter_inputs(path: Path, pattern: str, limit: int | None) -> list[Path]:
-    files = [path] if path.is_file() else sorted(path.glob(pattern))
+    if path.is_file() and path.suffix == '.txt':
+        files = [Path(line.strip()).expanduser() for line in path.read_text().splitlines()
+                 if line.strip() and not line.lstrip().startswith('#')]
+        files = [file if file.is_absolute() else path.parent / file for file in files]
+    else:
+        files = [path] if path.is_file() else sorted(path.glob(pattern))
     if limit is not None:
         files = files[:limit]
+    if len({file.stem for file in files}) != len(files):
+        raise ValueError('Input clip stems must be unique')
+    if any(not file.is_file() for file in files):
+        raise FileNotFoundError('Input list contains missing files')
     if not files:
         raise FileNotFoundError(f"No HumanML3D clips found at {path} with pattern {pattern}")
     return files
@@ -313,7 +310,9 @@ def main() -> None:
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--pattern", default="*.npy")
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--ik-root", type=Path, default=DEFAULT_IK_ROOT)
+    parser.add_argument("--retarget-root", type=Path, default=DEFAULT_ROOT)
+    parser.add_argument("--retarget-binary", type=Path)
+    parser.add_argument("--native-timeout", type=float, default=120)
     parser.add_argument("--training-urdf", type=Path, default=DEFAULT_TRAINING_URDF)
     parser.add_argument("--output-fps", type=int, default=50)
     parser.add_argument("--root-scale", type=float, default=0.28963)
@@ -331,8 +330,8 @@ def main() -> None:
         raise ValueError("--max-time-scale must be at least 1")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     lower, upper, velocity_limits = load_limits(args.training_urdf)
-    ik = load_ik_module(args.ik_root)
-    old_names = list(ik.H1Config.H1_JOINT_NAMES)
+    backend = NativeRetargeter(args.retarget_root, args.retarget_binary, args.native_timeout)
+    old_names = NATIVE_JOINT_NAMES
     inputs = iter_inputs(args.input, args.pattern, args.limit)
 
     motions, failures = [], []
@@ -341,16 +340,13 @@ def main() -> None:
         print(f"[{index}/{len(inputs)}] retarget {motion_id}", flush=True)
         try:
             joints = validate_humanml3d(np.load(path, allow_pickle=False), path)
-            solver = ik.H1PinkSolver(str(args.ik_root / "data/urdf/Assembly.urdf"))
-            solver.TARGET_FPS = args.output_fps
-            old_result = solver.process_motion(joints, head_rot_mats=None, visualize=False)
-            old_dof = np.asarray(old_result["dof"], dtype=np.float64)
+            old_dof, native_timing = backend.process(joints, args.output_fps)
             joint_pos = map_28_to_30(old_dof, old_names)
             unclipped = joint_pos.copy()
             joint_pos = np.clip(joint_pos, lower, upper)
             clipped_fraction = float(np.mean(np.abs(unclipped - joint_pos) > 1.0e-7))
             root_pos, root_quat = restore_root_trajectory(
-                joints, joint_pos.shape[0], args.root_scale, args.nominal_root_height
+                joints, joint_pos.shape[0], args.root_scale, args.nominal_root_height, args.output_fps
             )
             joint_pos, root_pos, root_quat, quality = audit_and_time_scale(
                 joint_pos,
@@ -377,7 +373,9 @@ def main() -> None:
                 joint_pos=joint_pos.astype(np.float32),
                 root_pos=root_pos.astype(np.float32),
                 root_quat_xyzw=root_quat.astype(np.float32),
-                mapping_method=np.asarray(["ik_v2_28dof_to_custom30_bootstrap"]),
+                mapping_method=np.asarray(["tw_retargeting_cpp_28dof_to_aligned30"]),
+                backend_provenance_json=np.asarray([json.dumps(backend.provenance, sort_keys=True)]),
+                native_timing_json=np.asarray([json.dumps(native_timing, sort_keys=True)]),
                 clipped_fraction=np.asarray([clipped_fraction], dtype=np.float32),
                 quality_pass=np.asarray([quality["quality_pass"]], dtype=np.bool_),
                 quality_json=np.asarray([json.dumps(quality, sort_keys=True)]),
@@ -401,6 +399,7 @@ def main() -> None:
     manifest = {
         "schema_version": 1,
         "stage": "retargeted_joint_motion",
+        "backend": backend.provenance,
         "target_fps": args.output_fps,
         "joint_names": CUSTOM_JOINT_NAMES,
         "quality_gate_version": 1,
@@ -410,6 +409,8 @@ def main() -> None:
     manifest_path = args.output_dir.parent / "retarget_manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(motions)} motions and {len(failures)} failures to {manifest_path}")
+    if not motions:
+        raise RuntimeError("No clips passed the retarget quality gate; see manifest failures")
 
 
 if __name__ == "__main__":

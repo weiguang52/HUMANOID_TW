@@ -1,5 +1,7 @@
 # 实践9：HumanML3D 与自制 30DoF 机器人接入记录
 
+> Active pipeline (TW-56): use the native C++ backend and the TW-44 aligned joint contract. See [native pipeline instructions](tw56_native_retarget_pipeline.md). The older IK_V2 pipeline described below is historical.
+
 更新时间：2026-08-15
 
 分支：practice9-adaptive-sampling

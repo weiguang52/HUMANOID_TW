@@ -29,7 +29,7 @@ from unitree_rl_lab.assets.robots.custom_humanoid import (
 DATA_ROOT = os.environ.get("GPUFREE_DATA_ROOT", "/root/gpufree-data")
 MOTION_MANIFEST = os.environ.get(
     "PRACTICE9_CUSTOM_MOTION_MANIFEST",
-    f"{DATA_ROOT}/datasets/practice9/humanml3d_custom30/manifest.json",
+    f"{DATA_ROOT}/datasets/practice9/tw56_native_v1/manifest.json",
 )
 ROOT_BODY = "base_link"
 ANCHOR_BODY = "chest"
