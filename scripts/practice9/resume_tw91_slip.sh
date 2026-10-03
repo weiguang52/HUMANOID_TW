@@ -73,5 +73,6 @@ for TRAIN_SEED in 42 123; do
  done < "$DATA/datasets/practice9/tw75_train_v1/eval_ids.txt"
  echo completed > "$JOB/status"
 done
+python scripts/practice9/render_validation_references.py --manifest "$STATE/evaluation_manifest.json" --output "$STATE/reference_videos"
 echo completed > "$OUT/status"
 python scripts/practice9/summarize_tw91_slip.py
