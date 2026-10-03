@@ -1,0 +1,189 @@
+{
+  "snapshot_at": "2026-10-03T15:13:17+08:00",
+  "code_commit": "80a531820894bb8f469577103ff232859dcff16e",
+  "runtime": {
+    "42": {
+      "run": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-05_tw75_full_s42",
+      "status": "training",
+      "iteration": [
+        "31961",
+        "35596"
+      ],
+      "eta": "01:02:47",
+      "source_commit": "1f91dcd82d28f9c04ed9e4029b06bcfec500817d"
+    },
+    "123": {
+      "run": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-18_tw75_full_s123",
+      "status": "training",
+      "iteration": [
+        "31424",
+        "35596"
+      ],
+      "eta": "01:14:27",
+      "source_commit": "1f91dcd82d28f9c04ed9e4029b06bcfec500817d"
+    }
+  },
+  "sources": [
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-05_tw75_full_s42/params/env.yaml",
+      "sha256": "85abdfbbca39ab08cad6c5f5a2e26e80917ce03ec9342d7e60f46c872e54b1a3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-05_tw75_full_s42/params/agent.yaml",
+      "sha256": "041e1bd7c24c9cc1cfc2534706369011eacda6481c1cd1ce1f0831a9dedf12f3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-05_tw75_full_s42/params/control_runtime.json",
+      "sha256": "2ca56b7b3ec14bb261aca2d04dded76a9cf03fad9085c3f8cad5efd957ca8aac"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-18_tw75_full_s123/params/env.yaml",
+      "sha256": "9675af7bf45d2a1309e337aa8fa2ba63b35db6174db53825a49a4f01b9d05ecf"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-18_tw75_full_s123/params/agent.yaml",
+      "sha256": "c952717c0195f855ea7801e5152bd0dd3ceaa08935eeecd41ccce0e017be7f54"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_10-21-18_tw75_full_s123/params/control_runtime.json",
+      "sha256": "2ca56b7b3ec14bb261aca2d04dded76a9cf03fad9085c3f8cad5efd957ca8aac"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/audit_tw75_dataset.py",
+      "sha256": "66b52936b8b61543cae995d37877a856f7d4b3bbd0aff62c5438dc6786b3923b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/prepare_tw75_training.py",
+      "sha256": "3a070165eed28c97737ffc452b202682ff05d60eab33d54ddb493de14c20c820"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/prepare_tw75_training.sh",
+      "sha256": "58533a4b77a5aba2bfe9a27fcf13cf9de074ed5ad337808f36d4696591360447"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/build_tw75_manifests.py",
+      "sha256": "f61e608930a8954003ecd6231cb552a2fcda306f1c1b3e1807b4b1cda7ae9bfe"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/tw75_sampling.py",
+      "sha256": "ce46b8786ce3d2b69abc5c0d2a0ae8e14dfd3256d28671c7901e0a1053009ba2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/build_tw75_solver_model.py",
+      "sha256": "9451f97ed7d4d4b15a6a0fa8e6b0abc381de0ac852dda6f524794c4d3bf674fb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/native_retarget.py",
+      "sha256": "cf7204b493ae3d4f45ea00c3c55e68d23c154e68aba189a4f9b06eed33dec089"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/retarget_humanml3d.py",
+      "sha256": "117e1e3c485af09720d7527ad6e41da69cbbff36df8563b45ccc519e80a2e158"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/custom_motion_to_npz.py",
+      "sha256": "86ef567d56ac2cbc07b61d3e334919ab620505f3b7bcf90ff86460163694859c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/train_tw75_full.sh",
+      "sha256": "1a6dbc0bb306fdcf6e14ddf6e6880b48c9d69302e689f0c6425d90eec3965529"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/commands.py",
+      "sha256": "dc28bb56cbf18d8f2faf681c0474b4bafa63807c4ed2003b08e41160e490e1f1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/motion_library.py",
+      "sha256": "fe628874654ba8f81a71a39e7f00f31cc4a3eb9ef387ac536e49bc722eba964d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/observations.py",
+      "sha256": "7978cbf4a0201bed943d13940425eb800b305c7aeee6c6356c3825d2ac4a2ddd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/rewards.py",
+      "sha256": "da3616e66a09bda62a298db8bab9c68034ab46e698dbbdc508dccf00a9f5892c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/joint_velocity_cost.py",
+      "sha256": "60298b3e8b86d0075a16472390c9e28b51b4a3bc8ffe1c7e63079db6b88d83ea"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/terminations.py",
+      "sha256": "4d0e773783539547cd00ebab8c8031c7ae2e73715d8a3059086bb3a834061066"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/smooth_joint_actions.py",
+      "sha256": "1a69bcfc6a2d508f8195b8ef5de1e411d87106af84240f177ff3cdd3af8f3651"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/custom_30dof/humanml3d/tracking_env_cfg.py",
+      "sha256": "24e1bf1534d396e6b288c041f6bca54e4ed0ad8961252ec729f3c7a3d1333955"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/assets/robots/custom_humanoid.py",
+      "sha256": "b6c7dfdf458045da6108ca5987c49fa4d9007ed777ecf6347ecece9a822c53e9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/assets/robots/custom_joint_coordinates.py",
+      "sha256": "8011acf38822d0fa5e07f22afd026253e96821cbb02e719d7e50a0e9378fd999"
+    },
+    {
+      "path": "/root/gpufree-data/datasets/practice9/tw75_dataset_v1/native_training_geometry/src/robot.cpp",
+      "sha256": "08adc990df2aa1663257ad7eabdbb60526803850fa3817cc1172eedf29368467"
+    },
+    {
+      "path": "/root/gpufree-data/datasets/practice9/tw75_dataset_v1/native_training_geometry/src/motion.cpp",
+      "sha256": "bc1497d07b707831cf28afb9e882b13392d28105a056307ec606b12f474fae4b"
+    },
+    {
+      "path": "/root/gpufree-data/datasets/practice9/tw75_dataset_v1/native_training_geometry/src/main.cpp",
+      "sha256": "b5e719f407734db1684b61512069a6e71769e363d1f843092e704ea68f929683"
+    },
+    {
+      "path": "/root/gpufree-data/datasets/practice9/tw75_dataset_v1/native_training_geometry/configs/selected_head_axis.json",
+      "sha256": "266ed326e70080b48d76c6304e16a95c7b1e611f71f4e7a9a46e30ef4ffa551e"
+    },
+    {
+      "path": "/root/gpufree-data/datasets/practice9/tw75_dataset_v1/native_training_geometry/derived_model.json",
+      "sha256": "92a2cfa0cdafba9c9e1577e98ecff4b7a18f66e31ec99af5198b8dda9572c1e4"
+    },
+    {
+      "path": "/root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf",
+      "sha256": "8cdcc0f054c19d31e02bd0180e25b3be7eca4ecdd07f325f5c3a1d1cdd8359d9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/tw75_training_launch/dataset_summary.json",
+      "sha256": "3276030a83e50ff191efc36cce83d5ab28cd1fdc33b9a5b7d5ad93c7e15b34dc"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/tw75_training_launch/verification.json",
+      "sha256": "14071fa46a1f8399fa5d0b55830ebff2c6fe125affc5d6d4c254ca282e412f00"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/tw75_training_launch/fk_batch_equivalence.json",
+      "sha256": "a5a1283a9deced3b08d4c56e1b105d6341b0995cc4ba811521aabfa8acb3a37a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/rsl_rl/train.py",
+      "sha256": "f661e8285284abb3df41cdd9640ae76ca2a8ae43bbfdf72d2fff44097f6bd8c6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/rsl_rl/play.py",
+      "sha256": "1bc459543e24ca2935709be68e3cfacbd0bef9bde902595f6b192db2d3202121"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/rsl_rl/control_runtime.py",
+      "sha256": "cd2d20b58959f7f7c6def8fa6cf0f405631bde2db1501f78c20eab62850018ef"
+    },
+    {
+      "path": "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/runners/on_policy_runner.py",
+      "sha256": "39358a0a60219fdb360df7acddf80f6a382837aa58e2ec0ccf875df4afee4825"
+    },
+    {
+      "path": "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/algorithms/ppo.py",
+      "sha256": "a2d35e7ad7b884c80b7434e7d2ce785a6da1e18d93c96f1179fbd3a208669f8c"
+    }
+  ],
+  "html_sha256": "6d222f53434740d0d593b8195889df04c4138087b8ad334679110e0f1f88be76"
+}
