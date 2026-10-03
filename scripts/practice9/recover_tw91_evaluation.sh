@@ -32,7 +32,7 @@ for TRAIN_SEED in 123 42; do
  while read -r ID; do
   if [[ -s "$JOB/videos/$ID.mp4" ]] && ffprobe -v error "$JOB/videos/$ID.mp4" >/dev/null 2>&1; then continue; fi
   export PRACTICE9_CUSTOM_MOTION_MANIFEST="$OLD/eval/$ID.json"
-  timeout --signal=TERM --kill-after=15s 600s python scripts/rsl_rl/play.py --headless --task Unitree-Custom-Humanoid-30dof-Mimic-HumanML3D --num_envs 1 --checkpoint "$CHECKPOINT" --evaluation_motion_id 0 --video --video_length 1000 --seed 42 --disable_observation_noise --evaluation_output "$JOB/$ID.video.json" --viewer_follow_asset robot --viewer_follow_tau 0.5 --viewer_eye 0 -1.2 0.15 --viewer_lookat 0 0 -0.03 > "$JOB/$ID.video.repair.log" 2>&1
+  timeout --signal=TERM --kill-after=15s 600s python scripts/rsl_rl/play.py --headless --task Unitree-Custom-Humanoid-30dof-Mimic-HumanML3D --num_envs 1 --checkpoint "$CHECKPOINT" --evaluation_motion_id 0 --video --rendering_mode performance --video_length 1000 --seed 42 --disable_observation_noise --evaluation_output "$JOB/$ID.video.json" --viewer_follow_asset robot --viewer_follow_tau 0.5 --viewer_eye 0 -1.2 0.15 --viewer_lookat 0 0 -0.03 > "$JOB/$ID.video.performance.log" 2>&1
   VIDEO="$RUN/videos/play/rl-video-step-0.mp4"
   test -s "$VIDEO"
   ffprobe -v error "$VIDEO" > /dev/null
