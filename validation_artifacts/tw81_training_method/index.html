@@ -3948,12 +3948,12 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    7  OUT=Path(&#x27;/root/gpufree-data/datasets/practice9/tw75_train_v1&#x27;)
    8  POLICY=&#x27;tw75_user_review_20261003_near_limits_advisory&#x27;
    9  ADVISORY={&#x27;joint_near_limit_fraction&#x27;,&#x27;joint_near_limit_run&#x27;}
-  10  
+  10&#32;&#32;
   11  def eligible(record):
   12      quality=record.get(&#x27;quality&#x27;,{})
   13      reasons=set(quality.get(&#x27;reasons&#x27;,[]))
   14      return (record.get(&#x27;quality_pass&#x27;) is True or (bool(reasons) and reasons&lt;=ADVISORY)) and record.get(&#x27;clipped_fraction&#x27;,1)==0
-  15  
+  15&#32;&#32;
   16  def standing_upright(row):
   17      if row[&#x27;category&#x27;]!=&#x27;standing_upper&#x27;:return True
   18      a=np.load(row[&#x27;source&#x27;]);angles=[]
@@ -3962,7 +3962,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   21          cosine=(u*v).sum(1)/(np.linalg.norm(u,axis=1)*np.linalg.norm(v,axis=1)).clip(1e-8)
   22          angles.append(np.degrees(np.arccos(np.clip(cosine,-1,1))))
   23      return float(np.percentile(angles,90))&lt;=40
-  24  
+  24&#32;&#32;
   25  def main(worker):
   26      OUT.mkdir(exist_ok=True);status=OUT/f&#x27;prepare_{worker}.status&#x27;;status.write_text(&#x27;running&#x27;)
   27      rows=json.load(open(ROOT/&#x27;selection.json&#x27;));kept=[r for r in rows if standing_upright(r)]
@@ -3990,7 +3990,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   49              subprocess.run([sys.executable,&#x27;scripts/practice9/custom_motion_to_npz.py&#x27;,&#x27;--headless&#x27;,&#x27;--input-manifest&#x27;,str(dest/&#x27;training_eligible.json&#x27;),&#x27;--output-dir&#x27;,str(dest/&#x27;npz&#x27;),&#x27;--output-manifest&#x27;,str(dest/&#x27;manifest.json&#x27;),&#x27;--fk-batch-size&#x27;,&#x27;128&#x27;,&#x27;--continue-on-error&#x27;],stdout=log,stderr=subprocess.STDOUT,check=True)
   50          print(&#x27;completed&#x27;,i,&#x27;retarget eligible&#x27;,len(accepted),flush=True)
   51      status.write_text(&#x27;completed&#x27;)
-  52  
+  52&#32;&#32;
   53  if __name__==&#x27;__main__&#x27;:
   54      p=argparse.ArgumentParser();p.add_argument(&#x27;--worker&#x27;,type=int,choices=[0,1],required=True);a=p.parse_args()
   55      try:main(a.worker)
@@ -4044,7 +4044,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   14      return result
 </pre></details><details id="src11"><summary>/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/build_tw75_solver_model.py</summary><p class="meta">SHA256 9451f97ed7d4d4b15a6a0fa8e6b0abc381de0ac852dda6f524794c4d3bf674fb</p><pre>   1  #!/usr/bin/env python3
    2  &quot;&quot;&quot;Derive an isolated 28-coordinate native solver from the training geometry.
-   3  
+   3&#32;&#32;
    4  The two added foot-roll DoFs are held at zero, as in existing retarget output.
    5  No training URDF or original native source is modified.
    6  &quot;&quot;&quot;
@@ -4055,8 +4055,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   11  from audit_tw75_kinematics import fk
   12  from retarget_humanml3d import DEFAULT_ROOT, DEFAULT_TRAINING_URDF, MAPPING, CUSTOM_JOINT_NAMES, map_28_to_30
   13  from native_retarget import NATIVE_JOINT_NAMES
-  14  
-  15  
+  14&#32;&#32;
+  15&#32;&#32;
   16  def build(output, foot_orientation_weight=1.0, knee_reference=0.0):
   17      if not np.isfinite(knee_reference) or not -.5 &lt;= knee_reference &lt;= 0:
   18          raise ValueError(&quot;Diagnostic knee reference must be in [-.5,0]&quot;)
@@ -4159,7 +4159,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  115                &#x27;segment_lengths_m&#x27;:lengths,&#x27;head_length_m&#x27;:head,&#x27;fk_100_pose_max_matrix_error&#x27;:error}
  116      (output/&#x27;derived_model.json&#x27;).write_text(json.dumps(metadata,indent=2)+&#x27;\n&#x27;)
  117      print(json.dumps(metadata,indent=2))
- 118  
+ 118&#32;&#32;
  119  if __name__==&#x27;__main__&#x27;:
  120      parser=argparse.ArgumentParser(); parser.add_argument(&#x27;--output&#x27;,type=Path,required=True)
  121      parser.add_argument(&#x27;--foot-orientation-weight&#x27;,type=float,default=1.,help=&#x27;Diagnostic ablation; 1 preserves selected method&#x27;)
@@ -4176,7 +4176,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    9  import sysconfig
   10  from pathlib import Path
   11  import numpy as np
-  12  
+  12&#32;&#32;
   13  NATIVE_FPS = 90.0
   14  NATIVE_JOINT_NAMES = [
   15      &#x27;left_hip_pitch_joint&#x27;, &#x27;left_hip_roll_joint&#x27;, &#x27;left_hip_yaw_joint&#x27;,
@@ -4191,8 +4191,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   24      &#x27;neck_yaw_joint&#x27;, &#x27;neck_roll_joint&#x27;, &#x27;neck_pitch_joint&#x27;,
   25  ]
   26  DEFAULT_ROOT = Path(os.environ.get(&#x27;GPUFREE_DATA_ROOT&#x27;, &#x27;/root/gpufree-data&#x27;)) / &#x27;projects/tw_retargeting/IKRetargeting_V3&#x27;
-  27  
-  28  
+  27&#32;&#32;
+  28&#32;&#32;
   29  def resample_native(values, output_fps):
   30      values = np.asarray(values, dtype=np.float64)
   31      if values.ndim != 2 or values.shape[1] != 28 or len(values) &lt; 2 or not np.isfinite(values).all():
@@ -4206,8 +4206,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   39      source_t = np.arange(len(values)) / NATIVE_FPS
   40      target_t = np.arange(count) / output_fps
   41      return np.column_stack([np.interp(target_t, source_t, values[:, joint]) for joint in range(28)])
-  42  
-  43  
+  42&#32;&#32;
+  43&#32;&#32;
   44  class NativeRetargeter:
   45      def __init__(self, root=DEFAULT_ROOT, binary=None, timeout=120, profile=None):
   46          self.root = Path(root).resolve()
@@ -4245,7 +4245,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   78          libraries = [self.root / &#x27;build/deps/cmeel.prefix/lib&#x27;,
   79                       Path(sysconfig.get_paths()[&#x27;purelib&#x27;]) / &#x27;cmeel.prefix/lib&#x27;]
   80          self.environment[&#x27;LD_LIBRARY_PATH&#x27;] = &#x27;:&#x27;.join(str(p) for p in libraries) + &#x27;:&#x27; + self.environment.get(&#x27;LD_LIBRARY_PATH&#x27;, &#x27;&#x27;)
-  81  
+  81&#32;&#32;
   82      def process(self, joints, output_fps):
   83          joints = np.asarray(joints, dtype=np.float64)
   84          if joints.ndim != 3 or joints.shape[1] &lt; 22 or joints.shape[2] != 3 or len(joints) &lt; 9:
@@ -4272,21 +4272,21 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  105              return resample_native(values, output_fps), timing
 </pre></details><details id="src13"><summary>/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/retarget_humanml3d.py</summary><p class="meta">SHA256 117e1e3c485af09720d7527ad6e41da69cbbff36df8563b45ccc519e80a2e158</p><pre>   1  #!/usr/bin/env python3
    2  &quot;&quot;&quot;HumanML3D -&gt; selected native tw_retargeting -&gt; aligned 30-DoF RL motion.&quot;&quot;&quot;
-   3  
+   3&#32;&#32;
    4  from __future__ import annotations
-   5  
+   5&#32;&#32;
    6  import argparse
    7  import json
    8  import math
    9  import traceback
   10  import xml.etree.ElementTree as ET
   11  from pathlib import Path
-  12  
+  12&#32;&#32;
   13  import numpy as np
-  14  
-  15  
+  14&#32;&#32;
+  15&#32;&#32;
   16  from native_retarget import DEFAULT_ROOT, NATIVE_JOINT_NAMES, NativeRetargeter
-  17  
+  17&#32;&#32;
   18  DATA_ROOT = Path(&quot;/root/gpufree-data&quot;)
   19  DEFAULT_TRAINING_URDF = DATA_ROOT / &quot;datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf&quot;
   20  DEFAULT_INPUT = (
@@ -4294,7 +4294,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   22      / &quot;datasets/practice9/humanml3d_rebuild/staging-v1/HumanML3D/new_joints&quot;
   23  )
   24  DEFAULT_OUTPUT = DATA_ROOT / &quot;datasets/practice9/tw56_native_v1/retargeted&quot;
-  25  
+  25&#32;&#32;
   26  CUSTOM_JOINT_NAMES = [
   27      &quot;left_hip_linkage_pitch&quot;, &quot;left_thigh_roll&quot;, &quot;left_knee_linkage_yaw&quot;,
   28      &quot;left_mid_leg_pitch&quot;, &quot;left_calf_yaw&quot;, &quot;left_ankle_pitch&quot;, &quot;left_foot_roll&quot;,
@@ -4307,7 +4307,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   35      &quot;right_force_arm_yaw&quot;, &quot;right_wrist_pitch&quot;,
   36      &quot;neck&quot;, &quot;neck_linkage_roll&quot;, &quot;head_pitch&quot;,
   37  ]
-  38  
+  38&#32;&#32;
   39  # new_name: (old_name, sign, zero offset)
   40  MAPPING = {
   41      &quot;left_hip_linkage_pitch&quot;: (&quot;left_hip_pitch_joint&quot;, -1.0, 0.0),
@@ -4341,11 +4341,11 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   69      &quot;neck_linkage_roll&quot;: (&quot;neck_roll_joint&quot;, 1.0, 0.0),
   70      &quot;head_pitch&quot;: (&quot;neck_pitch_joint&quot;, -1.0, 0.0),
   71  }
-  72  
-  73  
+  72&#32;&#32;
+  73&#32;&#32;
   74  # Compose old IK -&gt; CAD with the user&#x27;s CAD -&gt; aligned coordinate table.
   75  from joint_coordinates import COORDINATES, CONTRACT_VERSION, rename
-  76  
+  76&#32;&#32;
   77  CUSTOM_JOINT_NAMES = [rename(name) for name in CUSTOM_JOINT_NAMES]
   78  MAPPING = {
   79      rename(name): (old, COORDINATES.get(name, (name, 1, 0.0))[1] * sign,
@@ -4353,8 +4353,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   81                     + COORDINATES.get(name, (name, 1, 0.0))[2])
   82      for name, (old, sign, offset) in MAPPING.items()
   83  }
-  84  
-  85  
+  84&#32;&#32;
+  85&#32;&#32;
   86  def load_limits(training_urdf: Path) -&gt; tuple[np.ndarray, np.ndarray, np.ndarray]:
   87      root = ET.parse(training_urdf).getroot()
   88      by_name = {joint.attrib[&quot;name&quot;]: joint for joint in root.findall(&quot;joint&quot;)}
@@ -4367,8 +4367,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   95          upper.append(float(limit.attrib[&quot;upper&quot;]))
   96          velocity.append(float(limit.attrib[&quot;velocity&quot;]))
   97      return np.asarray(lower), np.asarray(upper), np.asarray(velocity)
-  98  
-  99  
+  98&#32;&#32;
+  99&#32;&#32;
  100  def validate_humanml3d(joints: np.ndarray, path: Path) -&gt; np.ndarray:
  101      joints = np.asarray(joints, dtype=np.float64)
  102      if joints.ndim != 3 or joints.shape[1] &lt; 22 or joints.shape[2] != 3:
@@ -4378,8 +4378,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  106      if not np.isfinite(joints).all():
  107          raise ValueError(f&quot;{path}: contains NaN or Inf&quot;)
  108      return joints
- 109  
- 110  
+ 109&#32;&#32;
+ 110&#32;&#32;
  111  def map_28_to_30(old_dof: np.ndarray, old_names: list[str]) -&gt; np.ndarray:
  112      lookup = {name: index for index, name in enumerate(old_names)}
  113      output = np.zeros((old_dof.shape[0], len(CUSTOM_JOINT_NAMES)), dtype=np.float64)
@@ -4388,8 +4388,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  116          if old_name is not None:
  117              output[:, target_index] = sign * old_dof[:, lookup[old_name]] + offset
  118      return output
- 119  
- 120  
+ 119&#32;&#32;
+ 120&#32;&#32;
  121  def restore_root_trajectory(
  122      joints: np.ndarray, output_frames: int, root_scale: float, nominal_height: float, output_fps: float = 50.0
  123  ) -&gt; tuple[np.ndarray, np.ndarray]:
@@ -4399,14 +4399,14 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  127      lateral = world[:, 2] - world[:, 1]  # right hip - left hip
  128      heading = np.unwrap(np.arctan2(lateral[:, 1], lateral[:, 0]))
  129      heading_delta = heading - heading[0]
- 130  
+ 130&#32;&#32;
  131      # Normalize the initial lateral direction to robot -Y, retain subsequent turns.
  132      align = -math.pi / 2.0 - heading[0]
  133      c, s = math.cos(align), math.sin(align)
  134      rotation = np.array([[c, -s], [s, c]], dtype=np.float64)
  135      relative = pelvis - pelvis[0]
  136      relative_xy = relative[:, :2] @ rotation.T
- 137  
+ 137&#32;&#32;
  138      source_t = np.arange(joints.shape[0]) / 20.0
  139      output_t = np.arange(output_frames) / output_fps
  140      root_pos = np.empty((output_frames, 3), dtype=np.float64)
@@ -4414,28 +4414,28 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  142      root_pos[:, 1] = np.interp(output_t, source_t, relative_xy[:, 1] * root_scale)
  143      root_pos[:, 2] = nominal_height + np.interp(output_t, source_t, relative[:, 2] * root_scale)
  144      yaw = np.interp(output_t, source_t, heading_delta)
- 145  
+ 145&#32;&#32;
  146      root_quat_xyzw = np.zeros((output_frames, 4), dtype=np.float64)
  147      root_quat_xyzw[:, 2] = np.sin(0.5 * yaw)
  148      root_quat_xyzw[:, 3] = np.cos(0.5 * yaw)
  149      return root_pos, root_quat_xyzw
- 150  
- 151  
+ 150&#32;&#32;
+ 151&#32;&#32;
  152  def _gradient(values: np.ndarray, fps: float) -&gt; np.ndarray:
  153      return np.gradient(values, 1.0 / fps, axis=0, edge_order=2)
- 154  
- 155  
+ 154&#32;&#32;
+ 155&#32;&#32;
  156  def _yaw_from_quat_xyzw(quat: np.ndarray) -&gt; np.ndarray:
  157      return np.unwrap(2.0 * np.arctan2(quat[:, 2], quat[:, 3]))
- 158  
- 159  
+ 158&#32;&#32;
+ 159&#32;&#32;
  160  def _quat_xyzw_from_yaw(yaw: np.ndarray) -&gt; np.ndarray:
  161      quat = np.zeros((len(yaw), 4), dtype=np.float64)
  162      quat[:, 2] = np.sin(0.5 * yaw)
  163      quat[:, 3] = np.cos(0.5 * yaw)
  164      return quat
- 165  
- 166  
+ 165&#32;&#32;
+ 166&#32;&#32;
  167  def _max_true_run_seconds(mask: np.ndarray, fps: float) -&gt; np.ndarray:
  168      result = np.zeros(mask.shape[1], dtype=np.float64)
  169      for joint in range(mask.shape[1]):
@@ -4445,8 +4445,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  173              best = max(best, current)
  174          result[joint] = best / fps
  175      return result
- 176  
- 177  
+ 176&#32;&#32;
+ 177&#32;&#32;
  178  def _dynamic_metrics(
  179      joint_pos: np.ndarray,
  180      root_pos: np.ndarray,
@@ -4468,8 +4468,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  196          &quot;root_yaw_rate_p99&quot;: float(np.quantile(yaw_rate, 0.99)),
  197          &quot;root_yaw_rate_max&quot;: float(np.max(yaw_rate)),
  198      }
- 199  
- 200  
+ 199&#32;&#32;
+ 200&#32;&#32;
  201  def _resample_time(
  202      joint_pos: np.ndarray,
  203      root_pos: np.ndarray,
@@ -4489,8 +4489,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  217      )
  218      yaw_out = np.interp(output_u, source_u, _yaw_from_quat_xyzw(root_quat))
  219      return joint_out, root_out, _quat_xyzw_from_yaw(yaw_out)
- 220  
- 221  
+ 220&#32;&#32;
+ 221&#32;&#32;
  222  def audit_and_time_scale(
  223      joint_pos: np.ndarray,
  224      root_pos: np.ndarray,
@@ -4514,7 +4514,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  242      )
  243      applied = min(requested, max_time_scale) if auto_time_scale else 1.0
  244      joint_pos, root_pos, root_quat = _resample_time(joint_pos, root_pos, root_quat, applied)
- 245  
+ 245&#32;&#32;
  246      margin = np.maximum(1.0e-3, 0.01 * (upper - lower))
  247      near_limit = ((joint_pos - lower[None, :]) &lt;= margin[None, :]) | (
  248          (upper[None, :] - joint_pos) &lt;= margin[None, :]
@@ -4522,7 +4522,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  250      near_fraction = near_limit.mean(axis=0)
  251      near_run_s = _max_true_run_seconds(near_limit, fps)
  252      final = _dynamic_metrics(joint_pos, root_pos, root_quat, velocity_limits, fps)
- 253  
+ 253&#32;&#32;
  254      reasons = []
  255      if float(np.max(near_fraction)) &gt; 0.05:
  256          reasons.append(&quot;joint_near_limit_fraction&quot;)
@@ -4540,7 +4540,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  268          reasons.append(&quot;root_yaw_rate&quot;)
  269      if requested &gt; max_time_scale + 1.0e-6:
  270          reasons.append(&quot;required_time_scale_exceeds_cap&quot;)
- 271  
+ 271&#32;&#32;
  272      quality = {
  273          &quot;quality_pass&quot;: not reasons,
  274          &quot;reasons&quot;: reasons,
@@ -4557,8 +4557,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  285          &quot;root_yaw_rate_max&quot;: float(final[&quot;root_yaw_rate_max&quot;]),
  286      }
  287      return joint_pos, root_pos, root_quat, quality
- 288  
- 289  
+ 288&#32;&#32;
+ 289&#32;&#32;
  290  def iter_inputs(path: Path, pattern: str, limit: int | None) -&gt; list[Path]:
  291      if path.is_file() and path.suffix == &#x27;.txt&#x27;:
  292          files = [Path(line.strip()).expanduser() for line in path.read_text().splitlines()
@@ -4575,8 +4575,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  303      if not files:
  304          raise FileNotFoundError(f&quot;No HumanML3D clips found at {path} with pattern {pattern}&quot;)
  305      return files
- 306  
- 307  
+ 306&#32;&#32;
+ 307&#32;&#32;
  308  def main() -&gt; None:
  309      parser = argparse.ArgumentParser()
  310      parser.add_argument(&quot;--input&quot;, type=Path, default=DEFAULT_INPUT)
@@ -4596,7 +4596,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  324      parser.add_argument(&quot;--limit&quot;, type=int)
  325      parser.add_argument(&quot;--continue-on-error&quot;, action=&quot;store_true&quot;)
  326      args = parser.parse_args()
- 327  
+ 327&#32;&#32;
  328      if args.output_fps &lt;= 0:
  329          raise ValueError(&quot;--output-fps must be positive&quot;)
  330      if args.max_time_scale &lt; 1.0:
@@ -4606,7 +4606,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  334      backend = NativeRetargeter(args.retarget_root, args.retarget_binary, args.native_timeout, profile=args.retarget_profile)
  335      old_names = NATIVE_JOINT_NAMES
  336      inputs = iter_inputs(args.input, args.pattern, args.limit)
- 337  
+ 337&#32;&#32;
  338      motions, failures = [], []
  339      for index, path in enumerate(inputs, start=1):
  340          motion_id = path.stem
@@ -4634,7 +4634,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  362              )
  363              if not quality[&quot;quality_pass&quot;] and not args.allow_quality_failures:
  364                  raise ValueError(f&quot;quality gate failed: {quality[&#x27;reasons&#x27;]}&quot;)
- 365  
+ 365&#32;&#32;
  366              output = args.output_dir / f&quot;{motion_id}.retarget.npz&quot;
  367              np.savez_compressed(
  368                  output,
@@ -4669,7 +4669,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  397              traceback.print_exc()
  398              if not args.continue_on_error:
  399                  raise
- 400  
+ 400&#32;&#32;
  401      manifest = {
  402          &quot;schema_version&quot;: 1,
  403          &quot;stage&quot;: &quot;retargeted_joint_motion&quot;,
@@ -4686,15 +4686,15 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  414      print(f&quot;Wrote {len(motions)} motions and {len(failures)} failures to {manifest_path}&quot;)
  415      if not motions:
  416          raise RuntimeError(&quot;No clips passed the retarget quality gate; see manifest failures&quot;)
- 417  
- 418  
+ 417&#32;&#32;
+ 418&#32;&#32;
  419  if __name__ == &quot;__main__&quot;:
  420      main()
 </pre></details><details id="src14"><summary>/root/gpufree-data/projects/HUMANOID_TW/scripts/practice9/custom_motion_to_npz.py</summary><p class="meta">SHA256 86ef567d56ac2cbc07b61d3e334919ab620505f3b7bcf90ff86460163694859c</p><pre>   1  #!/usr/bin/env python3
    2  &quot;&quot;&quot;Convert custom 30-DoF retarget outputs into validated practice-9 NPZ clips.&quot;&quot;&quot;
-   3  
+   3&#32;&#32;
    4  from __future__ import annotations
-   5  
+   5&#32;&#32;
    6  import argparse
    7  import itertools
    8  import json
@@ -4703,9 +4703,9 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   11  import traceback
   12  import xml.etree.ElementTree as ET
   13  from pathlib import Path
-  14  
+  14&#32;&#32;
   15  import numpy as np
-  16  
+  16&#32;&#32;
   17  PROCESS_TMP_DIR = Path(
   18      os.environ.get(
   19          &quot;TMPDIR&quot;,
@@ -4714,9 +4714,9 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   22  )
   23  PROCESS_TMP_DIR.mkdir(parents=True, exist_ok=True)
   24  os.environ[&quot;TMPDIR&quot;] = str(PROCESS_TMP_DIR)
-  25  
+  25&#32;&#32;
   26  from isaaclab.app import AppLauncher
-  27  
+  27&#32;&#32;
   28  parser = argparse.ArgumentParser()
   29  parser.add_argument(&quot;--input-manifest&quot;, type=Path, required=True)
   30  parser.add_argument(&quot;--output-dir&quot;, type=Path, required=True)
@@ -4740,10 +4740,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   48  parser.add_argument(&quot;--continue-on-error&quot;, action=&quot;store_true&quot;)
   49  AppLauncher.add_app_launcher_args(parser)
   50  args_cli = parser.parse_args()
-  51  
+  51&#32;&#32;
   52  app_launcher = AppLauncher(args_cli)
   53  simulation_app = app_launcher.app
-  54  
+  54&#32;&#32;
   55  import isaaclab.sim as sim_utils
   56  import torch
   57  from joint_coordinates import CONTRACT_VERSION
@@ -4758,13 +4758,13 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   66  from unitree_rl_lab.assets.robots.custom_humanoid import (
   67      CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
   68  )
-  69  
-  70  
+  69&#32;&#32;
+  70&#32;&#32;
   71  @configclass
   72  class ReplaySceneCfg(InteractiveSceneCfg):
   73      robot: ArticulationCfg = ROBOT_CFG.replace(prim_path=&quot;{ENV_REGEX_NS}/Robot&quot;)
-  74  
-  75  
+  74&#32;&#32;
+  75&#32;&#32;
   76  def _rpy_matrix(rpy: np.ndarray) -&gt; np.ndarray:
   77      roll, pitch, yaw = rpy
   78      cr, sr = math.cos(roll), math.sin(roll)
@@ -4774,8 +4774,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   82      ry = np.array([[cp, 0, sp], [0, 1, 0], [-sp, 0, cp]], dtype=np.float64)
   83      rz = np.array([[cy, -sy, 0], [sy, cy, 0], [0, 0, 1]], dtype=np.float64)
   84      return rz @ ry @ rx
-  85  
-  86  
+  85&#32;&#32;
+  86&#32;&#32;
   87  def load_link_collision_corners(
   88      urdf_path: Path, link_names: list[str]
   89  ) -&gt; dict[str, np.ndarray]:
@@ -4802,8 +4802,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  110              raise ValueError(f&quot;{urdf_path}: {name} has no collision boxes&quot;)
  111          result[name] = np.concatenate(corners, axis=0)
  112      return result
- 113  
- 114  
+ 113&#32;&#32;
+ 114&#32;&#32;
  115  def _quat_wxyz_matrix(quat: np.ndarray) -&gt; np.ndarray:
  116      quat = quat / np.linalg.norm(quat, axis=-1, keepdims=True).clip(min=1.0e-8)
  117      w, x, y, z = np.moveaxis(quat, -1, 0)
@@ -4815,8 +4815,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  123          ],
  124          axis=-1,
  125      ).reshape(quat.shape[:-1] + (3, 3))
- 126  
- 127  
+ 126&#32;&#32;
+ 127&#32;&#32;
  128  def compute_sole_heights(
  129      body_pos: np.ndarray,
  130      body_quat: np.ndarray,
@@ -4832,8 +4832,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  140          )
  141          heights.append(np.min(corners_w[..., 2], axis=1))
  142      return np.stack(heights, axis=1)
- 143  
- 144  
+ 143&#32;&#32;
+ 144&#32;&#32;
  145  def so3_derivative(rotations_wxyz: torch.Tensor, dt: float) -&gt; torch.Tensor:
  146      if rotations_wxyz.shape[0] &lt; 3:
  147          return torch.zeros((rotations_wxyz.shape[0], 3), device=rotations_wxyz.device)
@@ -4841,8 +4841,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  149      relative = quat_mul(following, quat_conjugate(previous))
  150      omega = axis_angle_from_quat(relative) / (2.0 * dt)
  151      return torch.cat([omega[:1], omega, omega[-1:]], dim=0)
- 152  
- 153  
+ 152&#32;&#32;
+ 153&#32;&#32;
  154  def load_retarget(path: Path, device: torch.device):
  155      with np.load(path, allow_pickle=False) as data:
  156          fps = float(np.asarray(data[&quot;fps&quot;]).reshape(-1)[0])
@@ -4851,9 +4851,9 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  159          joint_pos = np.asarray(data[&quot;joint_pos&quot;], dtype=np.float32)
  160          root_pos = np.asarray(data[&quot;root_pos&quot;], dtype=np.float32)
  161          root_quat_xyzw = np.asarray(data[&quot;root_quat_xyzw&quot;], dtype=np.float32)
- 162  
+ 162&#32;&#32;
  163      from joint_coordinates import convert_motion
- 164  
+ 164&#32;&#32;
  165      stored_names, joint_pos, _ = convert_motion(
  166          stored_names, joint_pos, np.zeros_like(joint_pos), CUSTOM_HUMANOID_30DOF_JOINT_NAMES, stored_contract
  167      )
@@ -4863,26 +4863,26 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  171          raise ValueError(f&quot;{path}: missing joints {missing}&quot;)
  172      indexes = [lookup[name] for name in CUSTOM_HUMANOID_30DOF_JOINT_NAMES]
  173      joint_pos = joint_pos[:, indexes]
- 174  
+ 174&#32;&#32;
  175      length = joint_pos.shape[0]
  176      if length &lt; 2 or root_pos.shape != (length, 3) or root_quat_xyzw.shape != (length, 4):
  177          raise ValueError(f&quot;{path}: inconsistent retarget shapes&quot;)
  178      if not all(np.isfinite(value).all() for value in (joint_pos, root_pos, root_quat_xyzw)):
  179          raise ValueError(f&quot;{path}: contains NaN or Inf&quot;)
- 180  
+ 180&#32;&#32;
  181      root_quat_xyzw /= np.linalg.norm(root_quat_xyzw, axis=-1, keepdims=True).clip(min=1.0e-8)
  182      for frame in range(1, length):
  183          if np.dot(root_quat_xyzw[frame - 1], root_quat_xyzw[frame]) &lt; 0.0:
  184              root_quat_xyzw[frame] *= -1.0
- 185  
+ 185&#32;&#32;
  186      dt = 1.0 / fps
  187      joint_vel = np.gradient(joint_pos, dt, axis=0).astype(np.float32)
  188      root_lin_vel = np.gradient(root_pos, dt, axis=0).astype(np.float32)
- 189  
+ 189&#32;&#32;
  190      root_quat_wxyz = root_quat_xyzw[:, [3, 0, 1, 2]]
  191      root_quat_t = torch.tensor(root_quat_wxyz, dtype=torch.float32, device=device)
  192      root_ang_vel = so3_derivative(root_quat_t, dt)
- 193  
+ 193&#32;&#32;
  194      return (
  195          fps,
  196          torch.tensor(joint_pos, dtype=torch.float32, device=device),
@@ -4892,8 +4892,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  200          torch.tensor(root_lin_vel, dtype=torch.float32, device=device),
  201          root_ang_vel,
  202      )
- 203  
- 204  
+ 203&#32;&#32;
+ 204&#32;&#32;
  205  def convert_clip(
  206      sim: SimulationContext,
  207      scene: InteractiveScene,
@@ -4908,7 +4908,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  216      if resolved_names != CUSTOM_HUMANOID_30DOF_JOINT_NAMES:
  217          raise ValueError(f&quot;Simulator joint order mismatch: {resolved_names}&quot;)
  218      body_names = list(robot.body_names)
- 219  
+ 219&#32;&#32;
  220      (
  221          fps,
  222          joint_pos,
@@ -4918,7 +4918,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  226          root_lin_vel,
  227          root_ang_vel,
  228      ) = load_retarget(input_path, sim.device)
- 229  
+ 229&#32;&#32;
  230      log: dict[str, list[np.ndarray]] = {
  231          &quot;joint_pos&quot;: [],
  232          &quot;joint_vel&quot;: [],
@@ -4960,14 +4960,14 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  268              value=getattr(robot.data,field)[:count].clone()
  269              if field==&#x27;body_pos_w&#x27;: value-=scene.env_origins[:count,None,:]
  270              log[field].extend(value.cpu().numpy().copy())
- 271  
+ 271&#32;&#32;
  272      arrays = {name: np.stack(values).astype(np.float32) for name, values in log.items()}
  273      root_state_np = arrays.pop(&quot;root_state_w&quot;)
  274      joint_pos_np = arrays.pop(&quot;joint_pos&quot;)
  275      joint_vel_np = arrays.pop(&quot;joint_vel&quot;)
  276      root_pos_np = root_state_np[:, :3].copy()
  277      root_quat_np = root_state_np[:, 3:7]
- 278  
+ 278&#32;&#32;
  279      collision_corners = load_link_collision_corners(
  280          args_cli.training_urdf, [&quot;left_foot&quot;, &quot;right_foot&quot;]
  281      )
@@ -4978,7 +4978,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  286      root_pos_np[:, 2] += shift_z
  287      arrays[&quot;body_pos_w&quot;][:, :, 2] += shift_z
  288      sole_z += shift_z
- 289  
+ 289&#32;&#32;
  290      base_index = body_names.index(&quot;base_link&quot;)
  291      base_pos_error = float(
  292          np.max(np.abs(arrays[&quot;body_pos_w&quot;][:, base_index] - root_pos_np))
@@ -4996,7 +4996,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  304              f&quot;{motion_id}: base/root FK mismatch pos={base_pos_error:.6g}, &quot;
  305              f&quot;quat={base_quat_error:.6g}&quot;
  306          )
- 307  
+ 307&#32;&#32;
  308      dt = 1.0 / fps
  309      body_lin_fd = np.gradient(arrays[&quot;body_pos_w&quot;], dt, axis=0)
  310      lin_velocity_error_p95 = float(
@@ -5018,7 +5018,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  326          lin_velocity_error_p95 &lt;= args_cli.body_linear_velocity_p95_tolerance
  327          and ang_velocity_error_p95 &lt;= args_cli.body_angular_velocity_p95_tolerance
  328      )
- 329  
+ 329&#32;&#32;
  330      output_path.parent.mkdir(parents=True, exist_ok=True)
  331      np.savez_compressed(
  332          output_path,
@@ -5049,8 +5049,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  357          &quot;fk_quality_pass&quot;: fk_quality_pass,
  358          &quot;source_file&quot;: str(input_path.resolve()),
  359      }
- 360  
- 361  
+ 360&#32;&#32;
+ 361&#32;&#32;
  362  def main() -&gt; None:
  363      payload = json.loads(args_cli.input_manifest.read_text(encoding=&quot;utf-8&quot;))
  364      motions = payload.get(&quot;motions&quot;, [])
@@ -5058,13 +5058,13 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  366          raise ValueError(f&quot;No motions in {args_cli.input_manifest}&quot;)
  367      args_cli.output_dir.mkdir(parents=True, exist_ok=True)
  368      output_manifest = args_cli.output_manifest or args_cli.output_dir / &quot;manifest.json&quot;
- 369  
+ 369&#32;&#32;
  370      sim_cfg = sim_utils.SimulationCfg(device=args_cli.device)
  371      sim_cfg.dt = 1.0 / float(payload.get(&quot;target_fps&quot;, 50))
  372      sim = SimulationContext(sim_cfg)
  373      scene = InteractiveScene(ReplaySceneCfg(num_envs=args_cli.fk_batch_size, env_spacing=1.0))
  374      sim.reset()
- 375  
+ 375&#32;&#32;
  376      converted = []
  377      failures = []
  378      for index, item in enumerate(motions, start=1):
@@ -5097,7 +5097,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  405              traceback.print_exc()
  406              if not args_cli.continue_on_error:
  407                  raise
- 408  
+ 408&#32;&#32;
  409      result = {
  410          &quot;joint_coordinate_contract&quot;: CONTRACT_VERSION,
  411          &quot;backend&quot;: payload.get(&quot;backend&quot;),
@@ -5114,8 +5114,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  422      )
  423      if not converted:
  424          raise RuntimeError(&quot;No clips passed FK conversion&quot;)
- 425  
- 426  
+ 425&#32;&#32;
+ 426&#32;&#32;
  427  if __name__ == &quot;__main__&quot;:
  428      try:
  429          main()
@@ -5192,13 +5192,13 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   64  done &lt; &quot;$STATE/eval_ids.txt&quot;
   65  echo completed &gt; &quot;$OUT/status&quot;
 </pre></details><details id="src16"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/commands.py</summary><p class="meta">SHA256 dc28bb56cbf18d8f2faf681c0474b4bafa63807c4ed2003b08e41160e490e1f1</p><pre>   1  from __future__ import annotations
-   2  
+   2&#32;&#32;
    3  import math
    4  import os
    5  from collections.abc import Sequence
    6  from dataclasses import MISSING
    7  from typing import TYPE_CHECKING
-   8  
+   8&#32;&#32;
    9  import numpy as np
   10  import torch
   11  from isaaclab.assets import Articulation
@@ -5215,14 +5215,14 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   22      sample_uniform,
   23      yaw_quat,
   24  )
-  25  
+  25&#32;&#32;
   26  from .adaptive_sampling import balanced_sampling_probabilities, failure_rates
   27  from .motion_library import MotionLibrary
-  28  
+  28&#32;&#32;
   29  if TYPE_CHECKING:
   30      from isaaclab.envs import ManagerBasedRLEnv
-  31  
-  32  
+  31&#32;&#32;
+  32&#32;&#32;
   33  class MotionLoader:
   34      def __init__(self, motion_file: str, body_indexes: Sequence[int], device: str = &quot;cpu&quot;):
   35          assert os.path.isfile(motion_file), f&quot;Invalid file path: {motion_file}&quot;
@@ -5236,30 +5236,30 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   43          self._body_ang_vel_w = torch.tensor(data[&quot;body_ang_vel_w&quot;], dtype=torch.float32, device=device)
   44          self._body_indexes = body_indexes
   45          self.time_step_total = self.joint_pos.shape[0]
-  46  
+  46&#32;&#32;
   47      @property
   48      def body_pos_w(self) -&gt; torch.Tensor:
   49          return self._body_pos_w[:, self._body_indexes]
-  50  
+  50&#32;&#32;
   51      @property
   52      def body_quat_w(self) -&gt; torch.Tensor:
   53          return self._body_quat_w[:, self._body_indexes]
-  54  
+  54&#32;&#32;
   55      @property
   56      def body_lin_vel_w(self) -&gt; torch.Tensor:
   57          return self._body_lin_vel_w[:, self._body_indexes]
-  58  
+  58&#32;&#32;
   59      @property
   60      def body_ang_vel_w(self) -&gt; torch.Tensor:
   61          return self._body_ang_vel_w[:, self._body_indexes]
-  62  
-  63  
+  62&#32;&#32;
+  63&#32;&#32;
   64  class MotionCommand(CommandTerm):
   65      cfg: MotionCommandCfg
-  66  
+  66&#32;&#32;
   67      def __init__(self, cfg: MotionCommandCfg, env: ManagerBasedRLEnv):
   68          super().__init__(cfg, env)
-  69  
+  69&#32;&#32;
   70          self.robot: Articulation = env.scene[cfg.asset_name]
   71          self.robot_anchor_body_index = self.robot.body_names.index(self.cfg.anchor_body_name)
   72          self.motion_anchor_body_index = self.cfg.body_names.index(self.cfg.anchor_body_name)
@@ -5276,7 +5276,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   83                  &quot;Configured motion joint order did not resolve exactly. &quot;
   84                  f&quot;expected={self.cfg.joint_names}, resolved={resolved_joint_names}&quot;
   85              )
-  86  
+  86&#32;&#32;
   87          control_fps = 1.0 / (env.cfg.decimation * env.cfg.sim.dt)
   88          self.motion = MotionLibrary(
   89              self.cfg.motion_file,
@@ -5299,7 +5299,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  106          self.body_pos_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 3, device=self.device)
  107          self.body_quat_relative_w = torch.zeros(self.num_envs, len(cfg.body_names), 4, device=self.device)
  108          self.body_quat_relative_w[:, :, 0] = 1.0
- 109  
+ 109&#32;&#32;
  110          self.bin_count = self.motion.build_bins(self.cfg.adaptive_bin_size_s)
  111          self.bin_failed_count = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
  112          self.bin_visit_count = torch.zeros(self.bin_count, dtype=torch.float, device=self.device)
@@ -5318,7 +5318,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  125          self.metrics[&#x27;sampling_effective_bins&#x27;] = torch.zeros(self.num_envs, device=self.device)
  126          self.metrics[&#x27;failure_rate_mean&#x27;] = torch.zeros(self.num_envs, device=self.device)
  127          self.metrics[&#x27;failure_rate_max&#x27;] = torch.zeros(self.num_envs, device=self.device)
- 128  
+ 128&#32;&#32;
  129          self.metrics[&quot;error_anchor_pos&quot;] = torch.zeros(self.num_envs, device=self.device)
  130          self.metrics[&quot;error_anchor_rot&quot;] = torch.zeros(self.num_envs, device=self.device)
  131          self.metrics[&quot;error_anchor_lin_vel&quot;] = torch.zeros(self.num_envs, device=self.device)
@@ -5330,14 +5330,14 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  137          self.metrics[&quot;sampling_entropy&quot;] = torch.zeros(self.num_envs, device=self.device)
  138          self.metrics[&quot;sampling_top1_prob&quot;] = torch.zeros(self.num_envs, device=self.device)
  139          self.metrics[&quot;sampling_top1_bin&quot;] = torch.zeros(self.num_envs, device=self.device)
- 140  
+ 140&#32;&#32;
  141      @property
  142      def frame_indices(self) -&gt; torch.Tensor:
  143          return self.motion.frame_indices(self.motion_ids, self.time_steps)
- 144  
+ 144&#32;&#32;
  145      def set_evaluation_motion_ids(self, motion_ids: Sequence[int] | torch.Tensor) -&gt; None:
  146          &quot;&quot;&quot;Pin every environment to one motion and restart it from frame zero on reset.
- 147  
+ 147&#32;&#32;
  148          This is intentionally an explicit runtime override instead of a training
  149          configuration option. It keeps the adaptive sampler unchanged during
  150          training while allowing deterministic per-clip evaluation.
@@ -5355,118 +5355,118 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  162              )
  163          self._evaluation_motion_ids.copy_(values)
  164          self._sample_active.zero_()
- 165  
+ 165&#32;&#32;
  166      def clear_evaluation_motion_ids(self) -&gt; None:
  167          &quot;&quot;&quot;Return all environments to adaptive motion sampling on their next reset.&quot;&quot;&quot;
  168          self._evaluation_motion_ids.fill_(-1)
- 169  
+ 169&#32;&#32;
  170      @property
  171      def command(self) -&gt; torch.Tensor:  # TODO Consider again if this is the best observation
  172          return torch.cat([self.joint_pos, self.joint_vel], dim=1)
- 173  
+ 173&#32;&#32;
  174      @property
  175      def joint_pos(self) -&gt; torch.Tensor:
  176          return self.motion.joint_pos[self.frame_indices]
- 177  
+ 177&#32;&#32;
  178      @property
  179      def joint_vel(self) -&gt; torch.Tensor:
  180          return self.motion.joint_vel[self.frame_indices]
- 181  
+ 181&#32;&#32;
  182      @property
  183      def body_pos_w(self) -&gt; torch.Tensor:
  184          return self.motion.body_pos_w[self.frame_indices] + self._env.scene.env_origins[:, None, :]
- 185  
+ 185&#32;&#32;
  186      @property
  187      def body_quat_w(self) -&gt; torch.Tensor:
  188          return self.motion.body_quat_w[self.frame_indices]
- 189  
+ 189&#32;&#32;
  190      @property
  191      def body_lin_vel_w(self) -&gt; torch.Tensor:
  192          return self.motion.body_lin_vel_w[self.frame_indices]
- 193  
+ 193&#32;&#32;
  194      @property
  195      def body_ang_vel_w(self) -&gt; torch.Tensor:
  196          return self.motion.body_ang_vel_w[self.frame_indices]
- 197  
+ 197&#32;&#32;
  198      @property
  199      def anchor_pos_w(self) -&gt; torch.Tensor:
  200          return self.motion.body_pos_w[self.frame_indices, self.motion_anchor_body_index] + self._env.scene.env_origins
- 201  
+ 201&#32;&#32;
  202      @property
  203      def anchor_quat_w(self) -&gt; torch.Tensor:
  204          return self.motion.body_quat_w[self.frame_indices, self.motion_anchor_body_index]
- 205  
+ 205&#32;&#32;
  206      @property
  207      def anchor_lin_vel_w(self) -&gt; torch.Tensor:
  208          return self.motion.body_lin_vel_w[self.frame_indices, self.motion_anchor_body_index]
- 209  
+ 209&#32;&#32;
  210      @property
  211      def anchor_ang_vel_w(self) -&gt; torch.Tensor:
  212          return self.motion.body_ang_vel_w[self.frame_indices, self.motion_anchor_body_index]
- 213  
+ 213&#32;&#32;
  214      @property
  215      def robot_joint_pos(self) -&gt; torch.Tensor:
  216          return self.robot.data.joint_pos[:, self.joint_indexes]
- 217  
+ 217&#32;&#32;
  218      @property
  219      def robot_joint_vel(self) -&gt; torch.Tensor:
  220          return self.robot.data.joint_vel[:, self.joint_indexes]
- 221  
+ 221&#32;&#32;
  222      @property
  223      def robot_body_pos_w(self) -&gt; torch.Tensor:
  224          return self.robot.data.body_pos_w[:, self.body_indexes]
- 225  
+ 225&#32;&#32;
  226      @property
  227      def robot_body_quat_w(self) -&gt; torch.Tensor:
  228          return self.robot.data.body_quat_w[:, self.body_indexes]
- 229  
+ 229&#32;&#32;
  230      @property
  231      def robot_body_lin_vel_w(self) -&gt; torch.Tensor:
  232          return self.robot.data.body_lin_vel_w[:, self.body_indexes]
- 233  
+ 233&#32;&#32;
  234      @property
  235      def robot_body_ang_vel_w(self) -&gt; torch.Tensor:
  236          return self.robot.data.body_ang_vel_w[:, self.body_indexes]
- 237  
+ 237&#32;&#32;
  238      @property
  239      def robot_anchor_pos_w(self) -&gt; torch.Tensor:
  240          return self.robot.data.body_pos_w[:, self.robot_anchor_body_index]
- 241  
+ 241&#32;&#32;
  242      @property
  243      def robot_anchor_quat_w(self) -&gt; torch.Tensor:
  244          return self.robot.data.body_quat_w[:, self.robot_anchor_body_index]
- 245  
+ 245&#32;&#32;
  246      @property
  247      def robot_anchor_lin_vel_w(self) -&gt; torch.Tensor:
  248          return self.robot.data.body_lin_vel_w[:, self.robot_anchor_body_index]
- 249  
+ 249&#32;&#32;
  250      @property
  251      def robot_anchor_ang_vel_w(self) -&gt; torch.Tensor:
  252          return self.robot.data.body_ang_vel_w[:, self.robot_anchor_body_index]
- 253  
+ 253&#32;&#32;
  254      def _update_metrics(self):
  255          self.metrics[&quot;error_anchor_pos&quot;] = torch.norm(self.anchor_pos_w - self.robot_anchor_pos_w, dim=-1)
  256          self.metrics[&quot;error_anchor_rot&quot;] = quat_error_magnitude(self.anchor_quat_w, self.robot_anchor_quat_w)
  257          self.metrics[&quot;error_anchor_lin_vel&quot;] = torch.norm(self.anchor_lin_vel_w - self.robot_anchor_lin_vel_w, dim=-1)
  258          self.metrics[&quot;error_anchor_ang_vel&quot;] = torch.norm(self.anchor_ang_vel_w - self.robot_anchor_ang_vel_w, dim=-1)
- 259  
+ 259&#32;&#32;
  260          self.metrics[&quot;error_body_pos&quot;] = torch.norm(self.body_pos_relative_w - self.robot_body_pos_w, dim=-1).mean(
  261              dim=-1
  262          )
  263          self.metrics[&quot;error_body_rot&quot;] = quat_error_magnitude(self.body_quat_relative_w, self.robot_body_quat_w).mean(
  264              dim=-1
  265          )
- 266  
+ 266&#32;&#32;
  267          self.metrics[&quot;error_body_lin_vel&quot;] = torch.norm(self.body_lin_vel_w - self.robot_body_lin_vel_w, dim=-1).mean(
  268              dim=-1
  269          )
  270          self.metrics[&quot;error_body_ang_vel&quot;] = torch.norm(self.body_ang_vel_w - self.robot_body_ang_vel_w, dim=-1).mean(
  271              dim=-1
  272          )
- 273  
+ 273&#32;&#32;
  274          self.metrics[&quot;error_joint_pos&quot;] = torch.norm(self.joint_pos - self.robot_joint_pos, dim=-1)
  275          self.metrics[&quot;error_joint_vel&quot;] = torch.norm(self.joint_vel - self.robot_joint_vel, dim=-1)
- 276  
+ 276&#32;&#32;
  277      def _adaptive_sampling(self, env_ids: Sequence[int]):
  278          episode_failed = self._env.termination_manager.terminated[env_ids]
  279          previous_active = self._sample_active[env_ids]
@@ -5476,7 +5476,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  283              self._current_bin_visited[:] = torch.bincount(completed_bins, minlength=self.bin_count)
  284              fail_bins = current_bin_index[env_ids][previous_active &amp; episode_failed]
  285              self._current_bin_failed[:] = torch.bincount(fail_bins, minlength=self.bin_count)
- 286  
+ 286&#32;&#32;
  287          # Sample
  288          failure_score = failure_rates(
  289              self.bin_failed_count,
@@ -5492,7 +5492,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  299              failure_score = torch.nn.functional.conv1d(
  300                  failure_score, self.kernel.view(1, 1, -1)
  301              ).view(-1)
- 302  
+ 302&#32;&#32;
  303          sampling_probabilities = balanced_sampling_probabilities(
  304              failure_score,
  305              self.motion.bin_weights,
@@ -5505,7 +5505,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  312          self.motion_ids[env_ids] = sampled_motion_ids
  313          self.time_steps[env_ids] = sampled_time_steps
  314          self._sample_active[env_ids] = True
- 315  
+ 315&#32;&#32;
  316          # Metrics
  317          H = -(sampling_probabilities * (sampling_probabilities + 1e-12).log()).sum()
  318          H_norm = H / math.log(self.bin_count) if self.bin_count &gt; 1 else torch.zeros_like(H)
@@ -5517,7 +5517,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  324          self.metrics[&quot;sampling_entropy&quot;][:] = H_norm
  325          self.metrics[&quot;sampling_top1_prob&quot;][:] = pmax
  326          self.metrics[&quot;sampling_top1_bin&quot;][:] = imax.float() / self.bin_count
- 327  
+ 327&#32;&#32;
  328      def _resample_command(self, env_ids: Sequence[int]):
  329          if len(env_ids) == 0:
  330              return
@@ -5525,19 +5525,19 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  332          fixed_mask = self._evaluation_motion_ids[env_ids_tensor] &gt;= 0
  333          sampled_env_ids = env_ids_tensor[~fixed_mask]
  334          fixed_env_ids = env_ids_tensor[fixed_mask]
- 335  
+ 335&#32;&#32;
  336          if sampled_env_ids.numel() &gt; 0:
  337              self._adaptive_sampling(sampled_env_ids)
  338          if fixed_env_ids.numel() &gt; 0:
  339              self.motion_ids[fixed_env_ids] = self._evaluation_motion_ids[fixed_env_ids]
  340              self.time_steps[fixed_env_ids] = 0
  341              self._sample_active[fixed_env_ids] = False
- 342  
+ 342&#32;&#32;
  343          root_pos = self.body_pos_w[:, self.motion_root_body_index].clone()
  344          root_ori = self.body_quat_w[:, self.motion_root_body_index].clone()
  345          root_lin_vel = self.body_lin_vel_w[:, self.motion_root_body_index].clone()
  346          root_ang_vel = self.body_ang_vel_w[:, self.motion_root_body_index].clone()
- 347  
+ 347&#32;&#32;
  348          range_list = [self.cfg.pose_range.get(key, (0.0, 0.0)) for key in [&quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;roll&quot;, &quot;pitch&quot;, &quot;yaw&quot;]]
  349          ranges = torch.tensor(range_list, device=self.device)
  350          rand_samples = sample_uniform(ranges[:, 0], ranges[:, 1], (len(env_ids), 6), device=self.device)
@@ -5549,10 +5549,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  356          rand_samples = sample_uniform(ranges[:, 0], ranges[:, 1], (len(env_ids), 6), device=self.device)
  357          root_lin_vel[env_ids] += rand_samples[:, :3]
  358          root_ang_vel[env_ids] += rand_samples[:, 3:]
- 359  
+ 359&#32;&#32;
  360          joint_pos = self.joint_pos.clone()
  361          joint_vel = self.joint_vel.clone()
- 362  
+ 362&#32;&#32;
  363          joint_pos += sample_uniform(*self.cfg.joint_position_range, joint_pos.shape, joint_pos.device)
  364          soft_joint_pos_limits = self.robot.data.soft_joint_pos_limits[env_ids][:, self.joint_indexes]
  365          joint_pos[env_ids] = torch.clip(
@@ -5572,7 +5572,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  379          # transition. Seed these buffers with the newly selected reference.
  380          self.body_pos_relative_w[env_ids] = self.body_pos_w[env_ids]
  381          self.body_quat_relative_w[env_ids] = self.body_quat_w[env_ids]
- 382  
+ 382&#32;&#32;
  383      def _update_command(self):
  384          self.time_steps += 1
  385          clip_lengths = self.motion.clip_lengths[self.motion_ids]
@@ -5581,19 +5581,19 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  388              self._resample_command(env_ids)
  389          else:
  390              self.time_steps = torch.minimum(self.time_steps, clip_lengths - 1)
- 391  
+ 391&#32;&#32;
  392          anchor_pos_w_repeat = self.anchor_pos_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
  393          anchor_quat_w_repeat = self.anchor_quat_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
  394          robot_anchor_pos_w_repeat = self.robot_anchor_pos_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
  395          robot_anchor_quat_w_repeat = self.robot_anchor_quat_w[:, None, :].repeat(1, len(self.cfg.body_names), 1)
- 396  
+ 396&#32;&#32;
  397          delta_pos_w = robot_anchor_pos_w_repeat
  398          delta_pos_w[..., 2] = anchor_pos_w_repeat[..., 2]
  399          delta_ori_w = yaw_quat(quat_mul(robot_anchor_quat_w_repeat, quat_inv(anchor_quat_w_repeat)))
- 400  
+ 400&#32;&#32;
  401          self.body_quat_relative_w = quat_mul(delta_ori_w, self.body_quat_w)
  402          self.body_pos_relative_w = delta_pos_w + quat_apply(delta_ori_w, self.body_pos_w - anchor_pos_w_repeat)
- 403  
+ 403&#32;&#32;
  404          self.bin_failed_count = (
  405              self.cfg.adaptive_alpha * self._current_bin_failed + (1 - self.cfg.adaptive_alpha) * self.bin_failed_count
  406          )
@@ -5602,7 +5602,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  409          )
  410          self._current_bin_failed.zero_()
  411          self._current_bin_visited.zero_()
- 412  
+ 412&#32;&#32;
  413      def _set_debug_vis_impl(self, debug_vis: bool):
  414          if debug_vis:
  415              if not hasattr(self, &quot;current_anchor_visualizer&quot;):
@@ -5612,7 +5612,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  419                  self.goal_anchor_visualizer = VisualizationMarkers(
  420                      self.cfg.anchor_visualizer_cfg.replace(prim_path=&quot;/Visuals/Command/goal/anchor&quot;)
  421                  )
- 422  
+ 422&#32;&#32;
  423                  self.current_body_visualizers = []
  424                  self.goal_body_visualizers = []
  425                  for name in self.cfg.body_names:
@@ -5626,13 +5626,13 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  433                              self.cfg.body_visualizer_cfg.replace(prim_path=&quot;/Visuals/Command/goal/&quot; + name)
  434                          )
  435                      )
- 436  
+ 436&#32;&#32;
  437              self.current_anchor_visualizer.set_visibility(True)
  438              self.goal_anchor_visualizer.set_visibility(True)
  439              for i in range(len(self.cfg.body_names)):
  440                  self.current_body_visualizers[i].set_visibility(True)
  441                  self.goal_body_visualizers[i].set_visibility(True)
- 442  
+ 442&#32;&#32;
  443          else:
  444              if hasattr(self, &quot;current_anchor_visualizer&quot;):
  445                  self.current_anchor_visualizer.set_visibility(False)
@@ -5640,41 +5640,41 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  447                  for i in range(len(self.cfg.body_names)):
  448                      self.current_body_visualizers[i].set_visibility(False)
  449                      self.goal_body_visualizers[i].set_visibility(False)
- 450  
+ 450&#32;&#32;
  451      def _debug_vis_callback(self, event):
  452          if not self.robot.is_initialized:
  453              return
- 454  
+ 454&#32;&#32;
  455          self.current_anchor_visualizer.visualize(self.robot_anchor_pos_w, self.robot_anchor_quat_w)
  456          self.goal_anchor_visualizer.visualize(self.anchor_pos_w, self.anchor_quat_w)
- 457  
+ 457&#32;&#32;
  458          for i in range(len(self.cfg.body_names)):
  459              self.current_body_visualizers[i].visualize(self.robot_body_pos_w[:, i], self.robot_body_quat_w[:, i])
  460              self.goal_body_visualizers[i].visualize(self.body_pos_relative_w[:, i], self.body_quat_relative_w[:, i])
- 461  
- 462  
+ 461&#32;&#32;
+ 462&#32;&#32;
  463  @configclass
  464  class MotionCommandCfg(CommandTermCfg):
  465      &quot;&quot;&quot;Configuration for the motion command.&quot;&quot;&quot;
- 466  
+ 466&#32;&#32;
  467      class_type: type = MotionCommand
- 468  
+ 468&#32;&#32;
  469      asset_name: str = MISSING
- 470  
+ 470&#32;&#32;
  471      motion_file: str = MISSING
  472      anchor_body_name: str = MISSING
  473      body_names: list[str] = MISSING
  474      root_body_name: str | None = None
  475      joint_names: list[str] | None = None
- 476  
+ 476&#32;&#32;
  477      pose_range: dict[str, tuple[float, float]] = {}
  478      velocity_range: dict[str, tuple[float, float]] = {}
- 479  
+ 479&#32;&#32;
  480      joint_position_range: tuple[float, float] = (-0.52, 0.52)
  481      max_motion_frames: int = 2_000_000
  482      resample_at_motion_end: bool = True
  483      require_quality_pass: bool = False
- 484  
+ 484&#32;&#32;
  485      adaptive_bin_size_s: float = 1.0
  486      adaptive_kernel_size: int = 1
  487      adaptive_lambda: float = 0.8
@@ -5682,25 +5682,25 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  489      adaptive_alpha: float = 0.001
  490      adaptive_unvisited_score: float = 1.0
  491      adaptive_max_probability: float | None = None
- 492  
+ 492&#32;&#32;
  493      anchor_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path=&quot;/Visuals/Command/pose&quot;)
  494      anchor_visualizer_cfg.markers[&quot;frame&quot;].scale = (0.2, 0.2, 0.2)
- 495  
+ 495&#32;&#32;
  496      body_visualizer_cfg: VisualizationMarkersCfg = FRAME_MARKER_CFG.replace(prim_path=&quot;/Visuals/Command/pose&quot;)
  497      body_visualizer_cfg.markers[&quot;frame&quot;].scale = (0.1, 0.1, 0.1)
 </pre></details><details id="src17"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/motion_library.py</summary><p class="meta">SHA256 fe628874654ba8f81a71a39e7f00f31cc4a3eb9ef387ac536e49bc722eba964d</p><pre>   1  &quot;&quot;&quot;Validated single- and multi-clip motion loading for mimic tasks.&quot;&quot;&quot;
-   2  
+   2&#32;&#32;
    3  from __future__ import annotations
-   4  
+   4&#32;&#32;
    5  import json
    6  from collections.abc import Sequence
    7  from pathlib import Path
-   8  
+   8&#32;&#32;
    9  import numpy as np
   10  import torch
-  11  
+  11&#32;&#32;
   12  from unitree_rl_lab.assets.robots.custom_joint_coordinates import convert_motion
-  13  
+  13&#32;&#32;
   14  MOTION_FIELDS = (
   15      &quot;joint_pos&quot;,
   16      &quot;joint_vel&quot;,
@@ -5709,8 +5709,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   19      &quot;body_lin_vel_w&quot;,
   20      &quot;body_ang_vel_w&quot;,
   21  )
-  22  
-  23  
+  22&#32;&#32;
+  23&#32;&#32;
   24  def _string_list(value: np.ndarray | None) -&gt; list[str] | None:
   25      if value is None:
   26          return None
@@ -5718,16 +5718,16 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   28      if array.ndim != 1:
   29          raise ValueError(f&quot;Name metadata must be one-dimensional, got {array.shape}&quot;)
   30      return [str(item) for item in array.tolist()]
-  31  
-  32  
+  31&#32;&#32;
+  32&#32;&#32;
   33  class MotionLibrary:
   34      &quot;&quot;&quot;Eager motion library with explicit clip boundaries.
-  35  
+  35&#32;&#32;
   36      This backend intentionally has a frame cap. It is suitable for the first
   37      filtered HumanML3D curriculum and keeps the command interface ready for a
   38      future sharded/cache backend without changing the RL task.
   39      &quot;&quot;&quot;
-  40  
+  40&#32;&#32;
   41      def __init__(
   42          self,
   43          source: str,
@@ -5754,7 +5754,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   64              raise ValueError(f&quot;expected_fps must be finite and positive, got {expected_fps}&quot;)
   65          if self.max_frames &lt;= 0:
   66              raise ValueError(f&quot;max_frames must be positive, got {max_frames}&quot;)
-  67  
+  67&#32;&#32;
   68          entries = self._read_entries()
   69          arrays: dict[str, list[torch.Tensor]] = {field: [] for field in MOTION_FIELDS}
   70          clip_ids: list[str] = []
@@ -5763,7 +5763,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   73          clip_sampling_intervals: list[list[tuple[int, int, float]]] = []
   74          fps_value: float | None = None
   75          total_frames = 0
-  76  
+  76&#32;&#32;
   77          for entry in entries:
   78              path = entry[&quot;path&quot;]
   79              weight = float(entry[&quot;weight&quot;])
@@ -5778,7 +5778,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   88                  fps_value = clip_fps
   89              elif abs(clip_fps - fps_value) &gt; 1.0e-6:
   90                  raise ValueError(f&quot;Mixed motion FPS: {fps_value} and {clip_fps} in {path}&quot;)
-  91  
+  91&#32;&#32;
   92              length = int(loaded[&quot;joint_pos&quot;].shape[0])
   93              total_frames += length
   94              if total_frames &gt; self.max_frames:
@@ -5786,7 +5786,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   96                      f&quot;Motion manifest has {total_frames} frames, over eager limit &quot;
   97                      f&quot;{self.max_frames}. Filter the curriculum or use a sharded backend.&quot;
   98                  )
-  99  
+  99&#32;&#32;
  100              for field in MOTION_FIELDS:
  101                  arrays[field].append(torch.from_numpy(loaded[field]))
  102              clip_ids.append(motion_id)
@@ -5799,7 +5799,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  109                      motion_id=motion_id,
  110                  )
  111              )
- 112  
+ 112&#32;&#32;
  113          if fps_value is None:
  114              raise ValueError(f&quot;No motions found in {self.source}&quot;)
  115          if abs(fps_value - self.expected_fps) &gt; 1.0e-4:
@@ -5807,7 +5807,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  117                  f&quot;Motion FPS {fps_value:g} does not match environment control FPS &quot;
  118                  f&quot;{self.expected_fps:g}. Convert motions before training.&quot;
  119              )
- 120  
+ 120&#32;&#32;
  121          self.fps = fps_value
  122          self.clip_ids = clip_ids
  123          self.num_motions = len(clip_ids)
@@ -5817,31 +5817,31 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  127          starts = np.cumsum([0, *clip_lengths[:-1]], dtype=np.int64)
  128          self.clip_starts = torch.tensor(starts, dtype=torch.long, device=device)
  129          self.time_step_total = total_frames
- 130  
+ 130&#32;&#32;
  131          for field in MOTION_FIELDS:
  132              value = torch.cat(arrays[field], dim=0).to(device=device, dtype=torch.float32)
  133              setattr(self, field, value)
- 134  
+ 134&#32;&#32;
  135          self.bin_motion_ids: torch.Tensor | None = None
  136          self.bin_local_starts: torch.Tensor | None = None
  137          self.bin_widths: torch.Tensor | None = None
  138          self.bin_weights: torch.Tensor | None = None
  139          self.clip_bin_offsets: torch.Tensor | None = None
  140          self.frames_per_bin: int | None = None
- 141  
+ 141&#32;&#32;
  142      def _read_entries(self) -&gt; list[dict[str, object]]:
  143          if self.source.suffix.lower() != &quot;.json&quot;:
  144              if not self.source.is_file():
  145                  raise FileNotFoundError(self.source)
  146              return [{&quot;id&quot;: self.source.stem, &quot;path&quot;: self.source, &quot;weight&quot;: 1.0}]
- 147  
+ 147&#32;&#32;
  148          payload = json.loads(self.source.read_text(encoding=&quot;utf-8&quot;))
  149          if payload.get(&quot;schema_version&quot;) != 1:
  150              raise ValueError(f&quot;Unsupported motion manifest schema in {self.source}&quot;)
  151          motions = payload.get(&quot;motions&quot;)
  152          if not isinstance(motions, list) or not motions:
  153              raise ValueError(f&quot;Manifest has no motions: {self.source}&quot;)
- 154  
+ 154&#32;&#32;
  155          entries: list[dict[str, object]] = []
  156          seen_ids: set[str] = set()
  157          for index, item in enumerate(motions):
@@ -5880,7 +5880,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  190                  }
  191              )
  192          return entries
- 193  
+ 193&#32;&#32;
  194      @staticmethod
  195      def _validate_sampling_intervals(
  196          value: object,
@@ -5917,7 +5917,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  227              intervals.append((start, end, multiplier))
  228              previous_end = end
  229          return intervals
- 230  
+ 230&#32;&#32;
  231      def _load_npz(
  232          self,
  233          path: Path,
@@ -5931,14 +5931,14 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  241              missing = [field for field in MOTION_FIELDS if field not in data]
  242              if missing or &quot;fps&quot; not in data:
  243                  raise ValueError(f&quot;{path} is missing fields: {missing + ([] if &#x27;fps&#x27; in data else [&#x27;fps&#x27;])}&quot;)
- 244  
+ 244&#32;&#32;
  245              fps_array = np.asarray(data[&quot;fps&quot;]).reshape(-1)
  246              if fps_array.size != 1:
  247                  raise ValueError(f&quot;{path}: fps must be scalar, got {fps_array.shape}&quot;)
  248              fps = float(fps_array[0])
  249              if not np.isfinite(fps) or fps &lt;= 0.0:
  250                  raise ValueError(f&quot;{path}: fps must be finite and positive, got {fps}&quot;)
- 251  
+ 251&#32;&#32;
  252              joint_pos = np.asarray(data[&quot;joint_pos&quot;], dtype=np.float32)
  253              joint_vel = np.asarray(data[&quot;joint_vel&quot;], dtype=np.float32)
  254              body_pos = np.asarray(data[&quot;body_pos_w&quot;], dtype=np.float32)
@@ -5948,7 +5948,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  258              stored_contract = str(np.asarray(data[&quot;joint_coordinate_contract&quot;]).reshape(-1)[0]) if &quot;joint_coordinate_contract&quot; in data else None
  259              stored_joint_names = _string_list(data.get(&quot;joint_names&quot;, None))
  260              stored_body_names = _string_list(data.get(&quot;body_names&quot;, None))
- 261  
+ 261&#32;&#32;
  262          if joint_pos.ndim != 2:
  263              raise ValueError(f&#x27;{path}: joint_pos must be [T,J], got {joint_pos.shape}&#x27;)
  264          source_length = joint_pos.shape[0]
@@ -5963,7 +5963,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  273          body_quat = body_quat[start_frame:resolved_end]
  274          body_lin_vel = body_lin_vel[start_frame:resolved_end]
  275          body_ang_vel = body_ang_vel[start_frame:resolved_end]
- 276  
+ 276&#32;&#32;
  277          if joint_pos.ndim != 2 or joint_pos.shape[0] &lt; 2:
  278              raise ValueError(f&quot;{path}: joint_pos must be [T,J] with T&gt;=2, got {joint_pos.shape}&quot;)
  279          length = joint_pos.shape[0]
@@ -5995,18 +5995,18 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  305              raise ValueError(
  306                  f&quot;{path}: body_names count {len(stored_body_names)} != body array width {body_count}&quot;
  307              )
- 308  
+ 308&#32;&#32;
  309          stored_joint_names, joint_pos, joint_vel = convert_motion(
  310              stored_joint_names, joint_pos, joint_vel, self.joint_names, stored_contract
  311          )
- 312  
+ 312&#32;&#32;
  313          if self.joint_names is not None:
  314              if stored_joint_names is None:
  315                  raise ValueError(f&quot;{path}: custom motions require joint_names metadata&quot;)
  316              joint_indexes = self._ordered_indexes(stored_joint_names, self.joint_names, &quot;joint&quot;, path)
  317              joint_pos = joint_pos[:, joint_indexes]
  318              joint_vel = joint_vel[:, joint_indexes]
- 319  
+ 319&#32;&#32;
  320          if stored_body_names is None:
  321              body_indexes = self.legacy_body_indexes
  322              if body_indexes and (min(body_indexes) &lt; 0 or max(body_indexes) &gt;= body_count):
@@ -6019,7 +6019,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  329          body_quat = body_quat[:, body_indexes]
  330          body_lin_vel = body_lin_vel[:, body_indexes]
  331          body_ang_vel = body_ang_vel[:, body_indexes]
- 332  
+ 332&#32;&#32;
  333          values = (joint_pos, joint_vel, body_pos, body_quat, body_lin_vel, body_ang_vel)
  334          if not all(np.isfinite(value).all() for value in values):
  335              raise ValueError(f&quot;{path}: motion contains NaN or Inf&quot;)
@@ -6027,7 +6027,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  337          max_quat_error = float(np.max(np.abs(quat_norm - 1.0)))
  338          if max_quat_error &gt; 5.0e-3:
  339              raise ValueError(f&quot;{path}: body quaternion norm error {max_quat_error:.6g}&quot;)
- 340  
+ 340&#32;&#32;
  341          return {
  342              &quot;fps&quot;: fps,
  343              &quot;joint_pos&quot;: np.ascontiguousarray(joint_pos),
@@ -6037,7 +6037,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  347              &quot;body_lin_vel_w&quot;: np.ascontiguousarray(body_lin_vel),
  348              &quot;body_ang_vel_w&quot;: np.ascontiguousarray(body_ang_vel),
  349          }
- 350  
+ 350&#32;&#32;
  351      @staticmethod
  352      def _ordered_indexes(
  353          stored: Sequence[str], requested: Sequence[str], kind: str, path: Path
@@ -6050,10 +6050,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  360          if missing:
  361              raise ValueError(f&quot;{path}: missing requested {kind} names: {missing}&quot;)
  362          return [lookup[name] for name in requested]
- 363  
+ 363&#32;&#32;
  364      def frame_indices(self, motion_ids: torch.Tensor, local_frames: torch.Tensor) -&gt; torch.Tensor:
  365          return self.clip_starts[motion_ids] + local_frames
- 366  
+ 366&#32;&#32;
  367      def build_bins(self, bin_size_s: float) -&gt; int:
  368          if not np.isfinite(bin_size_s) or bin_size_s &lt;= 0.0:
  369              raise ValueError(f&quot;adaptive_bin_size_s must be positive, got {bin_size_s}&quot;)
@@ -6089,7 +6089,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  399          self.bin_weights = torch.tensor(weights, dtype=torch.float32, device=self.device)
  400          self.clip_bin_offsets = torch.tensor(offsets, dtype=torch.long, device=self.device)
  401          return cursor
- 402  
+ 402&#32;&#32;
  403      def current_bin_indexes(self, motion_ids: torch.Tensor, local_frames: torch.Tensor) -&gt; torch.Tensor:
  404          if self.frames_per_bin is None or self.clip_bin_offsets is None:
  405              raise RuntimeError(&quot;build_bins() must be called first&quot;)
@@ -6098,7 +6098,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  408          return self.clip_bin_offsets[motion_ids] + torch.div(
  409              startable_frames, self.frames_per_bin, rounding_mode=&quot;floor&quot;
  410          )
- 411  
+ 411&#32;&#32;
  412      def sample_from_bins(self, bin_ids: torch.Tensor, fractions: torch.Tensor) -&gt; tuple[torch.Tensor, torch.Tensor]:
  413          if self.bin_motion_ids is None or self.bin_local_starts is None or self.bin_widths is None:
  414              raise RuntimeError(&quot;build_bins() must be called first&quot;)
@@ -6107,44 +6107,44 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  417          offsets = torch.minimum(offsets, self.bin_widths[bin_ids] - 1)
  418          return motion_ids, self.bin_local_starts[bin_ids] + offsets
 </pre></details><details id="src18"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/observations.py</summary><p class="meta">SHA256 7978cbf4a0201bed943d13940425eb800b305c7aeee6c6356c3825d2ac4a2ddd</p><pre>   1  from __future__ import annotations
-   2  
+   2&#32;&#32;
    3  import torch
    4  from typing import TYPE_CHECKING
-   5  
+   5&#32;&#32;
    6  from isaaclab.utils.math import matrix_from_quat, subtract_frame_transforms
-   7  
+   7&#32;&#32;
    8  try:
    9      from isaaclab.utils.math import quat_apply_inverse
   10  except ImportError:
   11      from isaaclab.utils.math import quat_rotate_inverse as quat_apply_inverse
-  12  
+  12&#32;&#32;
   13  from unitree_rl_lab.tasks.mimic.mdp.commands import MotionCommand
-  14  
+  14&#32;&#32;
   15  if TYPE_CHECKING:
   16      from isaaclab.envs import ManagerBasedEnv
-  17  
-  18  
+  17&#32;&#32;
+  18&#32;&#32;
   19  def robot_anchor_ori_w(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   20      command: MotionCommand = env.command_manager.get_term(command_name)
   21      mat = matrix_from_quat(command.robot_anchor_quat_w)
   22      return mat[..., :2].reshape(mat.shape[0], -1)
-  23  
-  24  
+  23&#32;&#32;
+  24&#32;&#32;
   25  def robot_anchor_lin_vel_w(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   26      command: MotionCommand = env.command_manager.get_term(command_name)
-  27  
+  27&#32;&#32;
   28      return command.robot_anchor_vel_w[:, :3].view(env.num_envs, -1)
-  29  
-  30  
+  29&#32;&#32;
+  30&#32;&#32;
   31  def robot_anchor_ang_vel_w(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   32      command: MotionCommand = env.command_manager.get_term(command_name)
-  33  
+  33&#32;&#32;
   34      return command.robot_anchor_vel_w[:, 3:6].view(env.num_envs, -1)
-  35  
-  36  
+  35&#32;&#32;
+  36&#32;&#32;
   37  def robot_body_pos_b(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   38      command: MotionCommand = env.command_manager.get_term(command_name)
-  39  
+  39&#32;&#32;
   40      num_bodies = len(command.cfg.body_names)
   41      pos_b, _ = subtract_frame_transforms(
   42          command.robot_anchor_pos_w[:, None, :].repeat(1, num_bodies, 1),
@@ -6152,13 +6152,13 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   44          command.robot_body_pos_w,
   45          command.robot_body_quat_w,
   46      )
-  47  
+  47&#32;&#32;
   48      return pos_b.view(env.num_envs, -1)
-  49  
-  50  
+  49&#32;&#32;
+  50&#32;&#32;
   51  def robot_body_ori_b(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   52      command: MotionCommand = env.command_manager.get_term(command_name)
-  53  
+  53&#32;&#32;
   54      num_bodies = len(command.cfg.body_names)
   55      _, ori_b = subtract_frame_transforms(
   56          command.robot_anchor_pos_w[:, None, :].repeat(1, num_bodies, 1),
@@ -6168,24 +6168,24 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   60      )
   61      mat = matrix_from_quat(ori_b)
   62      return mat[..., :2].reshape(mat.shape[0], -1)
-  63  
-  64  
+  63&#32;&#32;
+  64&#32;&#32;
   65  def motion_anchor_pos_b(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   66      command: MotionCommand = env.command_manager.get_term(command_name)
-  67  
+  67&#32;&#32;
   68      pos, _ = subtract_frame_transforms(
   69          command.robot_anchor_pos_w,
   70          command.robot_anchor_quat_w,
   71          command.anchor_pos_w,
   72          command.anchor_quat_w,
   73      )
-  74  
+  74&#32;&#32;
   75      return pos.view(env.num_envs, -1)
-  76  
-  77  
+  76&#32;&#32;
+  77&#32;&#32;
   78  def motion_anchor_ori_b(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   79      command: MotionCommand = env.command_manager.get_term(command_name)
-  80  
+  80&#32;&#32;
   81      _, ori = subtract_frame_transforms(
   82          command.robot_anchor_pos_w,
   83          command.robot_anchor_quat_w,
@@ -6194,52 +6194,52 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   86      )
   87      mat = matrix_from_quat(ori)
   88      return mat[..., :2].reshape(mat.shape[0], -1)
-  89  
-  90  
+  89&#32;&#32;
+  90&#32;&#32;
   91  def motion_anchor_lin_vel_error_b(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   92      &quot;&quot;&quot;Reference-minus-robot anchor linear velocity in the robot anchor frame.&quot;&quot;&quot;
   93      command: MotionCommand = env.command_manager.get_term(command_name)
   94      error_w = command.anchor_lin_vel_w - command.robot_anchor_lin_vel_w
   95      return quat_apply_inverse(command.robot_anchor_quat_w, error_w)
-  96  
-  97  
+  96&#32;&#32;
+  97&#32;&#32;
   98  def motion_anchor_ang_vel_error_b(env: ManagerBasedEnv, command_name: str) -&gt; torch.Tensor:
   99      &quot;&quot;&quot;Reference-minus-robot anchor angular velocity in the robot anchor frame.&quot;&quot;&quot;
  100      command: MotionCommand = env.command_manager.get_term(command_name)
  101      error_w = command.anchor_ang_vel_w - command.robot_anchor_ang_vel_w
  102      return quat_apply_inverse(command.robot_anchor_quat_w, error_w)
 </pre></details><details id="src19"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/rewards.py</summary><p class="meta">SHA256 da3616e66a09bda62a298db8bab9c68034ab46e698dbbdc508dccf00a9f5892c</p><pre>   1  from __future__ import annotations
-   2  
+   2&#32;&#32;
    3  import torch
    4  from typing import TYPE_CHECKING
-   5  
+   5&#32;&#32;
    6  from isaaclab.managers import SceneEntityCfg
    7  from isaaclab.assets import Articulation
    8  from isaaclab.sensors import ContactSensor
    9  from isaaclab.utils.math import quat_error_magnitude
-  10  
+  10&#32;&#32;
   11  from unitree_rl_lab.tasks.mimic.mdp.commands import MotionCommand
-  12  
+  12&#32;&#32;
   13  if TYPE_CHECKING:
   14      from isaaclab.envs import ManagerBasedRLEnv
-  15  
-  16  
+  15&#32;&#32;
+  16&#32;&#32;
   17  def _get_body_indexes(command: MotionCommand, body_names: list[str] | None) -&gt; list[int]:
   18      return [i for i, name in enumerate(command.cfg.body_names) if (body_names is None) or (name in body_names)]
-  19  
-  20  
+  19&#32;&#32;
+  20&#32;&#32;
   21  def motion_global_anchor_position_error_exp(env: ManagerBasedRLEnv, command_name: str, std: float) -&gt; torch.Tensor:
   22      command: MotionCommand = env.command_manager.get_term(command_name)
   23      error = torch.sum(torch.square(command.anchor_pos_w - command.robot_anchor_pos_w), dim=-1)
   24      return torch.exp(-error / std**2)
-  25  
-  26  
+  25&#32;&#32;
+  26&#32;&#32;
   27  def motion_global_anchor_orientation_error_exp(env: ManagerBasedRLEnv, command_name: str, std: float) -&gt; torch.Tensor:
   28      command: MotionCommand = env.command_manager.get_term(command_name)
   29      error = quat_error_magnitude(command.anchor_quat_w, command.robot_anchor_quat_w) ** 2
   30      return torch.exp(-error / std**2)
-  31  
-  32  
+  31&#32;&#32;
+  32&#32;&#32;
   33  def motion_relative_body_position_error_exp(
   34      env: ManagerBasedRLEnv, command_name: str, std: float, body_names: list[str] | None = None
   35  ) -&gt; torch.Tensor:
@@ -6249,8 +6249,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   39          torch.square(command.body_pos_relative_w[:, body_indexes] - command.robot_body_pos_w[:, body_indexes]), dim=-1
   40      )
   41      return torch.exp(-error.mean(-1) / std**2)
-  42  
-  43  
+  42&#32;&#32;
+  43&#32;&#32;
   44  def motion_relative_body_orientation_error_exp(
   45      env: ManagerBasedRLEnv, command_name: str, std: float, body_names: list[str] | None = None
   46  ) -&gt; torch.Tensor:
@@ -6261,8 +6261,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   51          ** 2
   52      )
   53      return torch.exp(-error.mean(-1) / std**2)
-  54  
-  55  
+  54&#32;&#32;
+  55&#32;&#32;
   56  def motion_global_body_linear_velocity_error_exp(
   57      env: ManagerBasedRLEnv, command_name: str, std: float, body_names: list[str] | None = None
   58  ) -&gt; torch.Tensor:
@@ -6272,8 +6272,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   62          torch.square(command.body_lin_vel_w[:, body_indexes] - command.robot_body_lin_vel_w[:, body_indexes]), dim=-1
   63      )
   64      return torch.exp(-error.mean(-1) / std**2)
-  65  
-  66  
+  65&#32;&#32;
+  66&#32;&#32;
   67  def motion_global_body_angular_velocity_error_exp(
   68      env: ManagerBasedRLEnv, command_name: str, std: float, body_names: list[str] | None = None
   69  ) -&gt; torch.Tensor:
@@ -6283,16 +6283,16 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   73          torch.square(command.body_ang_vel_w[:, body_indexes] - command.robot_body_ang_vel_w[:, body_indexes]), dim=-1
   74      )
   75      return torch.exp(-error.mean(-1) / std**2)
-  76  
-  77  
+  76&#32;&#32;
+  77&#32;&#32;
   78  def feet_contact_time(env: ManagerBasedRLEnv, sensor_cfg: SceneEntityCfg, threshold: float) -&gt; torch.Tensor:
   79      contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
   80      first_air = contact_sensor.compute_first_air(env.step_dt, env.physics_dt)[:, sensor_cfg.body_ids]
   81      last_contact_time = contact_sensor.data.last_contact_time[:, sensor_cfg.body_ids]
   82      reward = torch.sum((last_contact_time &lt; threshold) * first_air, dim=-1)
   83      return reward
-  84  
-  85  
+  84&#32;&#32;
+  85&#32;&#32;
   86  def motion_joint_position_error_exp(
   87      env: ManagerBasedRLEnv,
   88      command_name: str,
@@ -6313,8 +6313,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  103          indexes = [lookup[name] for name in joint_names]
  104      error = torch.mean(torch.square(command.joint_pos[:, indexes] - command.robot_joint_pos[:, indexes]), dim=-1)
  105      return torch.exp(-error / std**2)
- 106  
- 107  
+ 106&#32;&#32;
+ 107&#32;&#32;
  108  def feet_slide(
  109      env: ManagerBasedRLEnv,
  110      sensor_cfg: SceneEntityCfg,
@@ -6338,27 +6338,27 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    5      # Penalize excess motion relative to reference, not intentional movement.
    6      return (command.robot_joint_vel - command.joint_vel).square().mean(dim=-1)
 </pre></details><details id="src21"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/mdp/terminations.py</summary><p class="meta">SHA256 4d0e773783539547cd00ebab8c8031c7ae2e73715d8a3059086bb3a834061066</p><pre>   1  from __future__ import annotations
-   2  
+   2&#32;&#32;
    3  from typing import TYPE_CHECKING
-   4  
+   4&#32;&#32;
    5  import torch
-   6  
+   6&#32;&#32;
    7  try:
    8      from isaaclab.utils.math import quat_apply_inverse
    9  except ImportError:
   10      from isaaclab.utils.math import quat_rotate_inverse as quat_apply_inverse
-  11  
-  12  
+  11&#32;&#32;
+  12&#32;&#32;
   13  if TYPE_CHECKING:
   14      from isaaclab.envs import ManagerBasedRLEnv
-  15  
+  15&#32;&#32;
   16  from isaaclab.assets import Articulation, RigidObject
   17  from isaaclab.managers import SceneEntityCfg
-  18  
+  18&#32;&#32;
   19  from unitree_rl_lab.tasks.mimic.mdp.commands import MotionCommand
   20  from unitree_rl_lab.tasks.mimic.mdp.rewards import _get_body_indexes
-  21  
-  22  
+  21&#32;&#32;
+  22&#32;&#32;
   23  def _record_evaluation_failure(
   24      command: MotionCommand,
   25      term_name: str,
@@ -6370,60 +6370,60 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   31      recorder = getattr(command, &#x27;_evaluation_failure_recorder&#x27;, None)
   32      if recorder is not None:
   33          recorder.record(term_name, failed, measure, body_names)
-  34  
-  35  
+  34&#32;&#32;
+  35&#32;&#32;
   36  def bad_anchor_pos(env: ManagerBasedRLEnv, command_name: str, threshold: float) -&gt; torch.Tensor:
   37      command: MotionCommand = env.command_manager.get_term(command_name)
   38      return torch.norm(command.anchor_pos_w - command.robot_anchor_pos_w, dim=1) &gt; threshold
-  39  
-  40  
+  39&#32;&#32;
+  40&#32;&#32;
   41  def bad_anchor_pos_z_only(env: ManagerBasedRLEnv, command_name: str, threshold: float) -&gt; torch.Tensor:
   42      command: MotionCommand = env.command_manager.get_term(command_name)
   43      error = torch.abs(command.anchor_pos_w[:, -1] - command.robot_anchor_pos_w[:, -1])
   44      failed = error &gt; threshold
   45      _record_evaluation_failure(command, &#x27;anchor_pos&#x27;, failed, error)
   46      return failed
-  47  
-  48  
+  47&#32;&#32;
+  48&#32;&#32;
   49  def bad_anchor_ori(
   50      env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg, command_name: str, threshold: float
   51  ) -&gt; torch.Tensor:
   52      asset: RigidObject | Articulation = env.scene[asset_cfg.name]
-  53  
+  53&#32;&#32;
   54      command: MotionCommand = env.command_manager.get_term(command_name)
   55      motion_projected_gravity_b = quat_apply_inverse(command.anchor_quat_w, asset.data.GRAVITY_VEC_W)
-  56  
+  56&#32;&#32;
   57      robot_projected_gravity_b = quat_apply_inverse(command.robot_anchor_quat_w, asset.data.GRAVITY_VEC_W)
-  58  
+  58&#32;&#32;
   59      error = (motion_projected_gravity_b[:, 2] - robot_projected_gravity_b[:, 2]).abs()
   60      failed = error &gt; threshold
   61      _record_evaluation_failure(command, &#x27;anchor_ori&#x27;, failed, error)
   62      return failed
-  63  
-  64  
+  63&#32;&#32;
+  64&#32;&#32;
   65  def bad_motion_body_pos(
   66      env: ManagerBasedRLEnv, command_name: str, threshold: float, body_names: list[str] | None = None
   67  ) -&gt; torch.Tensor:
   68      command: MotionCommand = env.command_manager.get_term(command_name)
-  69  
+  69&#32;&#32;
   70      body_indexes = _get_body_indexes(command, body_names)
   71      error = torch.norm(command.body_pos_relative_w[:, body_indexes] - command.robot_body_pos_w[:, body_indexes], dim=-1)
   72      return torch.any(error &gt; threshold, dim=-1)
-  73  
-  74  
+  73&#32;&#32;
+  74&#32;&#32;
   75  def bad_motion_body_pos_z_only(
   76      env: ManagerBasedRLEnv, command_name: str, threshold: float, body_names: list[str] | None = None
   77  ) -&gt; torch.Tensor:
   78      command: MotionCommand = env.command_manager.get_term(command_name)
-  79  
+  79&#32;&#32;
   80      body_indexes = _get_body_indexes(command, body_names)
   81      error = torch.abs(command.body_pos_relative_w[:, body_indexes, -1] - command.robot_body_pos_w[:, body_indexes, -1])
   82      failed = torch.any(error &gt; threshold, dim=-1)
   83      selected_names = [command.cfg.body_names[index] for index in body_indexes]
   84      _record_evaluation_failure(command, &#x27;ee_body_pos&#x27;, failed, error, selected_names)
   85      return failed
-  86  
-  87  
+  86&#32;&#32;
+  87&#32;&#32;
   88  def motion_end(env: ManagerBasedRLEnv, command_name: str) -&gt; torch.Tensor:
   89      &quot;&quot;&quot;End an episode cleanly at the last local frame of each motion clip.&quot;&quot;&quot;
   90      command: MotionCommand = env.command_manager.get_term(command_name)
@@ -6435,8 +6435,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    4  from isaaclab.envs.mdp.actions.joint_actions import JointPositionAction
    5  from isaaclab.envs.mdp.actions.actions_cfg import JointPositionActionCfg
    6  from isaaclab.utils import configclass
-   7  
-   8  
+   7&#32;&#32;
+   8&#32;&#32;
    9  class SmoothJointPositionAction(JointPositionAction):
   10      def __init__(self, cfg, env):
   11          super().__init__(cfg, env)
@@ -6448,7 +6448,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   17          self._alpha = 1.0 if cfg.smoothing_tau == 0 else -math.expm1(-env.step_dt / cfg.smoothing_tau)
   18          self._target_memory = self._asset.data.joint_pos[:, self._joint_ids].clone()
   19          self._target_initialized = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
-  20  
+  20&#32;&#32;
   21      def process_actions(self, actions):
   22          super().process_actions(actions)
   23          if self.cfg.smoothing_tau == 0 and not self.cfg.limit_target_velocity:
@@ -6462,13 +6462,13 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   31              change = torch.clamp(change, min=-maximum, max=maximum)
   32          self._target_memory.add_(change)
   33          self._processed_actions = self._target_memory.clone()
-  34  
+  34&#32;&#32;
   35      def reset(self, env_ids=None):
   36          super().reset(env_ids)
   37          # Seed after all reset events have placed the robot, on the next command.
   38          self._target_initialized[env_ids] = False
-  39  
-  40  
+  39&#32;&#32;
+  40&#32;&#32;
   41  @configclass
   42  class SmoothJointPositionActionCfg(JointPositionActionCfg):
   43      class_type: type = SmoothJointPositionAction
@@ -6476,10 +6476,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   45      limit_target_velocity: bool = False
   46      target_velocity_scale: float = 1.0
 </pre></details><details id="src23"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/mimic/robots/custom_30dof/humanml3d/tracking_env_cfg.py</summary><p class="meta">SHA256 24e1bf1534d396e6b288c041f6bca54e4ed0ad8961252ec729f3c7a3d1333955</p><pre>   1  from __future__ import annotations
-   2  
+   2&#32;&#32;
    3  import os
    4  import math
-   5  
+   5&#32;&#32;
    6  import isaaclab.sim as sim_utils
    7  from isaaclab.assets import ArticulationCfg, AssetBaseCfg
    8  from isaaclab.envs import ManagerBasedRLEnvCfg
@@ -6494,7 +6494,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   17  from isaaclab.terrains import TerrainImporterCfg
   18  from isaaclab.utils import configclass
   19  from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
-  20  
+  20&#32;&#32;
   21  import unitree_rl_lab.tasks.mimic.mdp as mdp
   22  from unitree_rl_lab.tasks.mimic.mdp.smooth_joint_actions import SmoothJointPositionActionCfg
   23  from unitree_rl_lab.assets.robots.custom_humanoid import (
@@ -6503,8 +6503,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   26      CUSTOM_HUMANOID_ACTION_SCALE,
   27      CUSTOM_HUMANOID_TRACKING_BODY_NAMES,
   28  )
-  29  
-  30  
+  29&#32;&#32;
+  30&#32;&#32;
   31  DATA_ROOT = os.environ.get(&quot;GPUFREE_DATA_ROOT&quot;, &quot;/root/gpufree-data&quot;)
   32  MOTION_MANIFEST = os.environ.get(
   33      &quot;PRACTICE9_CUSTOM_MOTION_MANIFEST&quot;,
@@ -6522,7 +6522,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   45      joint_names=CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
   46      preserve_order=True,
   47  )
-  48  
+  48&#32;&#32;
   49  VELOCITY_RANGE = {
   50      &quot;x&quot;: (-0.25, 0.25),
   51      &quot;y&quot;: (-0.25, 0.25),
@@ -6531,8 +6531,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   54      &quot;pitch&quot;: (-0.25, 0.25),
   55      &quot;yaw&quot;: (-0.40, 0.40),
   56  }
-  57  
-  58  
+  57&#32;&#32;
+  58&#32;&#32;
   59  @configclass
   60  class RobotSceneCfg(InteractiveSceneCfg):
   61      terrain = TerrainImporterCfg(
@@ -6566,8 +6566,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   89          force_threshold=1.0,
   90          debug_vis=False,
   91      )
-  92  
-  93  
+  92&#32;&#32;
+  93&#32;&#32;
   94  @configclass
   95  class CommandsCfg:
   96      motion = mdp.MotionCommandCfg(
@@ -6599,8 +6599,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  122          velocity_range=VELOCITY_RANGE,
  123          joint_position_range=(-0.05, 0.05),
  124      )
- 125  
- 126  
+ 125&#32;&#32;
+ 126&#32;&#32;
  127  @configclass
  128  class ActionsCfg:
  129      JointPositionAction = SmoothJointPositionActionCfg(
@@ -6613,8 +6613,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  136          scale=CUSTOM_HUMANOID_ACTION_SCALE,
  137          use_default_offset=True,
  138      )
- 139  
- 140  
+ 139&#32;&#32;
+ 140&#32;&#32;
  141  @configclass
  142  class ObservationsCfg:
  143      @configclass
@@ -6647,11 +6647,11 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  170              noise=Unoise(n_min=-0.30, n_max=0.30),
  171          )
  172          last_action = ObsTerm(func=mdp.last_action)
- 173  
+ 173&#32;&#32;
  174          def __post_init__(self):
  175              self.enable_corruption = True
  176              self.concatenate_terms = True
- 177  
+ 177&#32;&#32;
  178      @configclass
  179      class PrivilegedCfg(ObsGroup):
  180          command = ObsTerm(func=mdp.generated_commands, params={&quot;command_name&quot;: &quot;motion&quot;})
@@ -6664,11 +6664,11 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  187          joint_pos = ObsTerm(func=mdp.joint_pos_rel, params={&quot;asset_cfg&quot;: JOINT_ENTITY})
  188          joint_vel = ObsTerm(func=mdp.joint_vel_rel, params={&quot;asset_cfg&quot;: JOINT_ENTITY})
  189          actions = ObsTerm(func=mdp.last_action)
- 190  
+ 190&#32;&#32;
  191      policy: PolicyCfg = PolicyCfg()
  192      critic: PrivilegedCfg = PrivilegedCfg()
- 193  
- 194  
+ 193&#32;&#32;
+ 194&#32;&#32;
  195  @configclass
  196  class EventCfg:
  197      physics_material = EventTerm(
@@ -6699,8 +6699,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  222              &quot;com_range&quot;: {&quot;x&quot;: (-0.002, 0.002), &quot;y&quot;: (-0.002, 0.002), &quot;z&quot;: (-0.002, 0.002)},
  223          },
  224      )
- 225  
- 226  
+ 225&#32;&#32;
+ 226&#32;&#32;
  227  @configclass
  228  class RewardsCfg:
  229      # Opt-in experiment; zero preserves the existing reward objective.
@@ -6723,7 +6723,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  246              )
  247          },
  248      )
- 249  
+ 249&#32;&#32;
  250      motion_global_anchor_pos = RewTerm(
  251          func=mdp.motion_global_anchor_position_error_exp,
  252          weight=1.0,
@@ -6811,8 +6811,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  334              &quot;threshold&quot;: 1.0,
  335          },
  336      )
- 337  
- 338  
+ 337&#32;&#32;
+ 338&#32;&#32;
  339  @configclass
  340  class TerminationsCfg:
  341      time_out = DoneTerm(func=mdp.time_out, time_out=True)
@@ -6833,8 +6833,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  356              &quot;body_names&quot;: FOOT_BODIES + WRIST_BODIES,
  357          },
  358      )
- 359  
- 360  
+ 359&#32;&#32;
+ 360&#32;&#32;
  361  @configclass
  362  class RobotEnvCfg(ManagerBasedRLEnvCfg):
  363      scene: RobotSceneCfg = RobotSceneCfg(num_envs=1024, env_spacing=1.0)
@@ -6845,7 +6845,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  368      terminations: TerminationsCfg = TerminationsCfg()
  369      events: EventCfg = EventCfg()
  370      curriculum = None
- 371  
+ 371&#32;&#32;
  372      def __post_init__(self):
  373          self.decimation = 4
  374          self.episode_length_s = 30.0
@@ -6860,29 +6860,29 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  383              for group in (&quot;leg_major&quot;, &quot;waist&quot;):
  384                  actuator = self.scene.robot.actuators[group]
  385                  setattr(actuator, field, getattr(actuator, field) * multiplier)
- 386  
- 387  
- 388  
+ 386&#32;&#32;
+ 387&#32;&#32;
+ 388&#32;&#32;
  389  class RobotPlayEnvCfg(RobotEnvCfg):
  390      def __post_init__(self):
  391          super().__post_init__()
  392          self.scene.num_envs = 1
  393          self.episode_length_s = 1.0e9
 </pre></details><details id="src24"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/assets/robots/custom_humanoid.py</summary><p class="meta">SHA256 b6c7dfdf458045da6108ca5987c49fa4d9007ed777ecf6347ecece9a822c53e9</p><pre>   1  &quot;&quot;&quot;Isaac Lab asset configuration for the urdf0711 custom humanoid.&quot;&quot;&quot;
-   2  
+   2&#32;&#32;
    3  from __future__ import annotations
-   4  
+   4&#32;&#32;
    5  import os
-   6  
+   6&#32;&#32;
    7  from unitree_rl_lab.assets.robots.custom_joint_coordinates import COORDINATES
-   8  
+   8&#32;&#32;
    9  import isaaclab.sim as sim_utils
   10  from isaaclab.actuators import ImplicitActuatorCfg
   11  from isaaclab.assets.articulation import ArticulationCfg
-  12  
+  12&#32;&#32;
   13  from unitree_rl_lab.assets.robots.unitree import UnitreeArticulationCfg, UnitreeUrdfFileCfg
-  14  
-  15  
+  14&#32;&#32;
+  15&#32;&#32;
   16  DATA_ROOT = os.environ.get(&quot;GPUFREE_DATA_ROOT&quot;, &quot;/root/gpufree-data&quot;)
   17  CUSTOM_HUMANOID_URDF = os.environ.get(
   18      &quot;PRACTICE9_CUSTOM_URDF&quot;,
@@ -6892,7 +6892,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   22      &quot;PRACTICE9_CUSTOM_USD_DIR&quot;,
   23      f&quot;{DATA_ROOT}/datasets/practice9/custom_robot/usd&quot;,
   24  )
-  25  
+  25&#32;&#32;
   26  # This order is the contract shared by actions, observations, retarget output, and NPZ metadata.
   27  CUSTOM_HUMANOID_30DOF_JOINT_NAMES = [
   28      &quot;left_hip_pitch_joint&quot;,
@@ -6926,7 +6926,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   56      &quot;neck_linkage_roll&quot;,
   57      &quot;head_pitch&quot;,
   58  ]
-  59  
+  59&#32;&#32;
   60  CUSTOM_HUMANOID_TRACKING_BODY_NAMES = [
   61      &quot;base_link&quot;,
   62      &quot;left_thigh&quot;,
@@ -6943,7 +6943,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   73      &quot;right_force_arm&quot;,
   74      &quot;right_wrist&quot;,
   75  ]
-  76  
+  76&#32;&#32;
   77  LEG_MAJOR_JOINTS = [
   78      &quot;left_hip_pitch_joint&quot;,
   79      &quot;left_hip_roll_joint&quot;,
@@ -6976,8 +6976,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  106      &quot;right_wrist_pitch&quot;,
  107  ]
  108  NECK_JOINTS = [&quot;neck&quot;, &quot;neck_linkage_roll&quot;, &quot;head_pitch&quot;]
- 109  
- 110  
+ 109&#32;&#32;
+ 110&#32;&#32;
  111  CUSTOM_HUMANOID_30DOF_CFG = UnitreeArticulationCfg(
  112      spawn=UnitreeUrdfFileCfg(
  113          asset_path=CUSTOM_HUMANOID_URDF,
@@ -7046,7 +7046,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  176      },
  177      joint_sdk_names=CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
  178  )
- 179  
+ 179&#32;&#32;
  180  # Bootstrap action scales use the same 0.25 * effort / stiffness rule as G1 mimic.
  181  CUSTOM_HUMANOID_ACTION_SCALE = {
  182      **{name: 0.50 for name in LEG_MAJOR_JOINTS},
@@ -7056,17 +7056,17 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  186      **{name: 0.25 for name in NECK_JOINTS},
  187  }
 </pre></details><details id="src25"><summary>/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/assets/robots/custom_joint_coordinates.py</summary><p class="meta">SHA256 8011acf38822d0fa5e07f22afd026253e96821cbb02e719d7e50a0e9378fd999</p><pre>   1  &quot;&quot;&quot;TW-44 table: aligned angle = sign * original CAD angle + initial reading.
-   2  
+   2&#32;&#32;
    3  The pre-change training initial readings were all zero. Offsets are readings
    4  at that same physical pose, not additional physical rotations.
    5  &quot;&quot;&quot;
    6  import math
-   7  
+   7&#32;&#32;
    8  CONTRACT_VERSION = &#x27;tw44_table_v2&#x27;
    9  LIMIT_OVERRIDES = {name: (-math.pi / 2, math.pi / 2) for name in (
   10      &#x27;left_knee_pitch_joint&#x27;, &#x27;right_knee_pitch_joint&#x27;,
   11      &#x27;left_shoulder_pitch_joint&#x27;, &#x27;right_shoulder_pitch_joint&#x27;)}
-  12  
+  12&#32;&#32;
   13  COORDINATES = {
   14      &#x27;left_hip_linkage_pitch&#x27;: (&#x27;left_hip_pitch_joint&#x27;, -1, 0.0),
   15      &#x27;left_thigh_roll&#x27;: (&#x27;left_hip_roll_joint&#x27;, 1, 0.0),
@@ -7089,15 +7089,15 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   32      &#x27;right_elbow_linkage_pitch&#x27;: (&#x27;right_shoulder_yaw_joint&#x27;, 1, 0.0),
   33      &#x27;right_force_arm_yaw&#x27;: (&#x27;right_elbow_pitch_joint&#x27;, 1, 0.0),
   34  }
-  35  
-  36  
+  35&#32;&#32;
+  36&#32;&#32;
   37  def rename(name):
   38      return COORDINATES.get(name, (name, 1, 0.0))[0]
-  39  
-  40  
+  39&#32;&#32;
+  40&#32;&#32;
   41  def convert_motion(names, positions, velocities, requested_names, contract=None):
   42      &quot;&quot;&quot;Convert legacy CAD columns only when aligned coordinates are requested.
-  43  
+  43&#32;&#32;
   44  Body FK arrays remain valid because the conversion preserves physical pose.
   45  Current-version aligned clips and other robot families pass through unchanged.
   46  &quot;&quot;&quot;
@@ -7151,7 +7151,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   30  {-2.09f,3.14f},{0,3.14f},{-1.05f,1.05f},{0,2.62f},{-1.22f,1.22f},
   31  {-1.05f,1.05f},{-.52f,.52f},{-.79f,.79f}};
   32  static V3 norm(const V3&amp; x) { return x/(x.norm()+1e-6); }
-  33  
+  33&#32;&#32;
   34  // Primal active-set solution of a strictly convex box QP.
   35  // Returns only after feasibility and KKT stationarity checks pass.
   36  Vec solve_box_qp(const Mat&amp; H, const Vec&amp; c, const Vec&amp; lo, const Vec&amp; hi, double* residual) {
@@ -7216,7 +7216,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   95      }
   96      throw std::runtime_error(&quot;QP active-set iteration limit&quot;);
   97  }
-  98  
+  98&#32;&#32;
   99  struct Robot::Impl {
  100      pinocchio::Model model;
  101      std::unique_ptr&lt;pinocchio::Data&gt; data,filtered_data;
@@ -7307,7 +7307,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  186              throw std::runtime_error(&quot;Expected scalar joint coordinates&quot;);
  187          int index=j.idx_q();p-&gt;indices.push_back(index);
  188          // Limits are loaded from the derived training URDF.
- 189          
+ 189&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
  190          if(i==16) p-&gt;ref[index]=static_cast&lt;float&gt;(-1.57079632679);
  191          if(i==21) p-&gt;ref[index]=static_cast&lt;float&gt;(1.57079632679);
  192      }
@@ -7689,7 +7689,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  120          else filtered+=double(i+1)*history[j];
  121      }
  122      if(!batch)filtered/=6.;
- 123  
+ 123&#32;&#32;
  124      Vec unwrapped=filtered;
  125      if(has_filter)
  126          for(int j=0;j&lt;q.size();++j)
@@ -7709,7 +7709,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  140      return clip?robot.clamp(dof):dof;
  141  }
  142  Output Retargeter::process(const Motion&amp; input,bool batch,const std::vector&lt;M3&gt;&amp; heads) {
- 143  
+ 143&#32;&#32;
  144      if(filter_aware &amp;&amp; batch)throw std::runtime_error(&quot;Filter-aware mode currently supports stream only&quot;);
  145      Output out;out.preprocessed=preprocess(input,robot.waist());
  146      auto rotations=preprocess_head(input,heads);
@@ -7798,7 +7798,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   29              else if(arg==&quot;--list&quot;)list=value;else if(arg==&quot;--out&quot;)output=value;
   30              else if(arg==&quot;--head&quot;)head=value;else if(arg==&quot;--repeat&quot;)repeat=std::stoi(value);
   31              else if(arg==&quot;--iterations&quot;)iterations=std::stoi(value);
-  32  
+  32&#32;&#32;
   33              else if(arg==&quot;--neck-posture-bias&quot;) {
   34                  size_t used=0;tuning.neck_posture_bias=std::stod(value,&amp;used);
   35                  if(used!=value.size())throw std::runtime_error(&quot;Invalid neck posture bias&quot;);
@@ -9042,35 +9042,35 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    2  # All rights reserved.
    3  #
    4  # SPDX-License-Identifier: BSD-3-Clause
-   5  
+   5&#32;&#32;
    6  &quot;&quot;&quot;Script to train RL agent with RSL-RL.&quot;&quot;&quot;
-   7  
+   7&#32;&#32;
    8  &quot;&quot;&quot;Launch Isaac Sim Simulator first.&quot;&quot;&quot;
-   9  
-  10  
+   9&#32;&#32;
+  10&#32;&#32;
   11  import gymnasium as gym
   12  import pathlib
   13  import sys
-  14  
+  14&#32;&#32;
   15  sys.path.insert(0, f&quot;{pathlib.Path(__file__).parent.parent}&quot;)
   16  from list_envs import import_packages  # noqa: F401
-  17  
+  17&#32;&#32;
   18  sys.path.pop(0)
-  19  
+  19&#32;&#32;
   20  tasks = []
   21  for task_spec in gym.registry.values():
   22      if &quot;Unitree&quot; in task_spec.id and &quot;Isaac&quot; not in task_spec.id:
   23          tasks.append(task_spec.id)
-  24  
+  24&#32;&#32;
   25  import argparse
-  26  
+  26&#32;&#32;
   27  import argcomplete
-  28  
+  28&#32;&#32;
   29  from isaaclab.app import AppLauncher
-  30  
+  30&#32;&#32;
   31  # local imports
   32  import cli_args  # isort: skip
-  33  
+  33&#32;&#32;
   34  # add argparse arguments
   35  parser = argparse.ArgumentParser(description=&quot;Train an RL agent with RSL-RL.&quot;)
   36  parser.add_argument(&quot;--video&quot;, action=&quot;store_true&quot;, default=False, help=&quot;Record videos during training.&quot;)
@@ -9090,28 +9090,28 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   50  AppLauncher.add_app_launcher_args(parser)
   51  argcomplete.autocomplete(parser)
   52  args_cli, hydra_args = parser.parse_known_args()
-  53  
+  53&#32;&#32;
   54  if args_cli.save_interval is not None and args_cli.save_interval &lt;= 0:
   55      parser.error(&quot;--save_interval must be greater than zero&quot;)
-  56  
+  56&#32;&#32;
   57  # always enable cameras to record video
   58  if args_cli.video:
   59      args_cli.enable_cameras = True
-  60  
+  60&#32;&#32;
   61  # clear out sys.argv for Hydra
   62  sys.argv = [sys.argv[0]] + hydra_args
-  63  
+  63&#32;&#32;
   64  # launch omniverse app
   65  app_launcher = AppLauncher(args_cli)
   66  simulation_app = app_launcher.app
-  67  
+  67&#32;&#32;
   68  &quot;&quot;&quot;Check for minimum supported RSL-RL version.&quot;&quot;&quot;
-  69  
+  69&#32;&#32;
   70  import importlib.metadata as metadata
   71  import platform
-  72  
+  72&#32;&#32;
   73  from packaging import version
-  74  
+  74&#32;&#32;
   75  # for distributed training, check minimum supported rsl-rl version
   76  RSL_RL_VERSION = &quot;2.3.1&quot;
   77  installed_version = metadata.version(&quot;rsl-rl-lib&quot;)
@@ -9126,18 +9126,18 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   86          f&quot;\n\n\t{&#x27; &#x27;.join(cmd)}\n&quot;
   87      )
   88      exit(1)
-  89  
+  89&#32;&#32;
   90  &quot;&quot;&quot;Rest everything follows.&quot;&quot;&quot;
-  91  
+  91&#32;&#32;
   92  import gymnasium as gym
   93  import inspect
   94  import os
   95  import shutil
   96  import torch
   97  from datetime import datetime
-  98  
+  98&#32;&#32;
   99  from rsl_rl.runners import OnPolicyRunner  # TODO: Consider printing the experiment name in the terminal.
- 100  
+ 100&#32;&#32;
  101  import isaaclab_tasks  # noqa: F401
  102  from isaaclab.envs import (
  103      DirectMARLEnv,
@@ -9151,16 +9151,16 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  111  from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper, handle_deprecated_rsl_rl_cfg
  112  from isaaclab_tasks.utils import get_checkpoint_path
  113  from isaaclab_tasks.utils.hydra import hydra_task_config
- 114  
+ 114&#32;&#32;
  115  import unitree_rl_lab.tasks  # noqa: F401
  116  from unitree_rl_lab.utils.export_deploy_cfg import export_deploy_cfg
- 117  
+ 117&#32;&#32;
  118  torch.backends.cuda.matmul.allow_tf32 = True
  119  torch.backends.cudnn.allow_tf32 = True
  120  torch.backends.cudnn.deterministic = False
  121  torch.backends.cudnn.benchmark = False
- 122  
- 123  
+ 122&#32;&#32;
+ 123&#32;&#32;
  124  @hydra_task_config(args_cli.task, &quot;rsl_rl_cfg_entry_point&quot;)
  125  def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agent_cfg: RslRlOnPolicyRunnerCfg):
  126      &quot;&quot;&quot;Train with RSL-RL agent.&quot;&quot;&quot;
@@ -9172,25 +9172,25 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  132      )
  133      if args_cli.save_interval is not None:
  134          agent_cfg.save_interval = args_cli.save_interval
- 135  
+ 135&#32;&#32;
  136      # Convert legacy policy configs to the actor/critic format expected by newer rsl-rl releases.
  137      agent_cfg = handle_deprecated_rsl_rl_cfg(agent_cfg, installed_version)
- 138  
+ 138&#32;&#32;
  139      # set the environment seed
  140      # note: certain randomizations occur in the environment initialization so we set the seed here
  141      env_cfg.seed = agent_cfg.seed
  142      env_cfg.sim.device = args_cli.device if args_cli.device is not None else env_cfg.sim.device
- 143  
+ 143&#32;&#32;
  144      # multi-gpu training configuration
  145      if args_cli.distributed:
  146          env_cfg.sim.device = f&quot;cuda:{app_launcher.local_rank}&quot;
  147          agent_cfg.device = f&quot;cuda:{app_launcher.local_rank}&quot;
- 148  
+ 148&#32;&#32;
  149          # set seed to have diversity in different threads
  150          seed = agent_cfg.seed + app_launcher.local_rank
  151          env_cfg.seed = seed
  152          agent_cfg.seed = seed
- 153  
+ 153&#32;&#32;
  154      # specify directory for logging experiments
  155      log_root_path = os.path.join(&quot;logs&quot;, &quot;rsl_rl&quot;, agent_cfg.experiment_name)
  156      log_root_path = os.path.abspath(log_root_path)
@@ -9202,18 +9202,18 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  162      if agent_cfg.run_name:
  163          log_dir += f&quot;_{agent_cfg.run_name}&quot;
  164      log_dir = os.path.join(log_root_path, log_dir)
- 165  
+ 165&#32;&#32;
  166      # create isaac environment
  167      env = gym.make(args_cli.task, cfg=env_cfg, render_mode=&quot;rgb_array&quot; if args_cli.video else None)
- 168  
+ 168&#32;&#32;
  169      # convert to single-agent instance if required by the RL algorithm
  170      if isinstance(env.unwrapped, DirectMARLEnv):
  171          env = multi_agent_to_single_agent(env)
- 172  
+ 172&#32;&#32;
  173      # save resume path before creating a new log_dir
  174      if agent_cfg.resume or agent_cfg.algorithm.class_name == &quot;Distillation&quot;:
  175          resume_path = get_checkpoint_path(log_root_path, agent_cfg.load_run, agent_cfg.load_checkpoint)
- 176  
+ 176&#32;&#32;
  177      # wrap for video recording
  178      if args_cli.video:
  179          video_kwargs = {
@@ -9225,10 +9225,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  185          print(&quot;[INFO] Recording videos during training.&quot;)
  186          print_dict(video_kwargs, nesting=4)
  187          env = gym.wrappers.RecordVideo(env, **video_kwargs)
- 188  
+ 188&#32;&#32;
  189      # wrap around environment for rsl-rl
  190      env = RslRlVecEnvWrapper(env, clip_actions=agent_cfg.clip_actions)
- 191  
+ 191&#32;&#32;
  192      # create runner from rsl-rl
  193      runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
  194      # write git state to logs
@@ -9238,7 +9238,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  198          print(f&quot;[INFO]: Loading model checkpoint from: {resume_path}&quot;)
  199          # load previously trained model
  200          runner.load(resume_path)
- 201  
+ 201&#32;&#32;
  202      # dump the configuration into log-directory
  203      dump_yaml(os.path.join(log_dir, &quot;params&quot;, &quot;env.yaml&quot;), env_cfg)
  204      dump_yaml(os.path.join(log_dir, &quot;params&quot;, &quot;agent.yaml&quot;), agent_cfg)
@@ -9250,14 +9250,14 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  210          inspect.getfile(env_cfg.__class__),
  211          os.path.join(log_dir, &quot;params&quot;, os.path.basename(inspect.getfile(env_cfg.__class__))),
  212      )
- 213  
+ 213&#32;&#32;
  214      # run training
  215      runner.learn(num_learning_iterations=agent_cfg.max_iterations, init_at_random_ep_len=True)
- 216  
+ 216&#32;&#32;
  217      # close the simulator
  218      env.close()
- 219  
- 220  
+ 219&#32;&#32;
+ 220&#32;&#32;
  221  if __name__ == &quot;__main__&quot;:
  222      # run the main function
  223      main()
@@ -9267,22 +9267,22 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    2  # All rights reserved.
    3  #
    4  # SPDX-License-Identifier: BSD-3-Clause
-   5  
+   5&#32;&#32;
    6  &quot;&quot;&quot;Script to play a checkpoint if an RL agent from RSL-RL.&quot;&quot;&quot;
-   7  
+   7&#32;&#32;
    8  &quot;&quot;&quot;Launch Isaac Sim Simulator first.&quot;&quot;&quot;
-   9  
+   9&#32;&#32;
   10  import argparse
   11  import importlib.metadata as metadata
   12  from importlib.metadata import version
-  13  
+  13&#32;&#32;
   14  from packaging import version as packaging_version
-  15  
+  15&#32;&#32;
   16  from isaaclab.app import AppLauncher
-  17  
+  17&#32;&#32;
   18  # local imports
   19  import cli_args  # isort: skip
-  20  
+  20&#32;&#32;
   21  # add argparse arguments
   22  parser = argparse.ArgumentParser(description=&quot;Train an RL agent with RSL-RL.&quot;)
   23  parser.add_argument(&quot;--video&quot;, action=&quot;store_true&quot;, default=False, help=&quot;Record videos during training.&quot;)
@@ -9336,22 +9336,22 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   71  # always enable cameras to record video
   72  if args_cli.video:
   73      args_cli.enable_cameras = True
-  74  
+  74&#32;&#32;
   75  # launch omniverse app
   76  app_launcher = AppLauncher(args_cli)
   77  simulation_app = app_launcher.app
-  78  
+  78&#32;&#32;
   79  installed_version = metadata.version(&quot;rsl-rl-lib&quot;)
-  80  
+  80&#32;&#32;
   81  &quot;&quot;&quot;Rest everything follows.&quot;&quot;&quot;
-  82  
+  82&#32;&#32;
   83  import gymnasium as gym
   84  import os
   85  import time
   86  import torch
-  87  
+  87&#32;&#32;
   88  from rsl_rl.runners import OnPolicyRunner
-  89  
+  89&#32;&#32;
   90  import isaaclab_tasks  # noqa: F401
   91  from isaaclab.envs import DirectMARLEnv, multi_agent_to_single_agent
   92  from isaaclab.utils.assets import retrieve_file_path
@@ -9366,11 +9366,11 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  101  )
  102  from isaaclab_rl.utils.pretrained_checkpoint import get_published_pretrained_checkpoint
  103  from isaaclab_tasks.utils import get_checkpoint_path
- 104  
+ 104&#32;&#32;
  105  import unitree_rl_lab.tasks  # noqa: F401
  106  from unitree_rl_lab.utils.parser_cfg import parse_env_cfg
- 107  
- 108  
+ 107&#32;&#32;
+ 108&#32;&#32;
  109  def main():
  110      &quot;&quot;&quot;Play with RSL-RL agent.&quot;&quot;&quot;
  111      # parse configuration
@@ -9398,7 +9398,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  133          env_cfg.commands.motion.adaptive_uniform_ratio = 1.0
  134      agent_cfg: RslRlOnPolicyRunnerCfg = cli_args.parse_rsl_rl_cfg(args_cli.task, args_cli)
  135      agent_cfg = handle_deprecated_rsl_rl_cfg(agent_cfg, installed_version)
- 136  
+ 136&#32;&#32;
  137      # specify directory for logging experiments
  138      log_root_path = os.path.join(&quot;logs&quot;, &quot;rsl_rl&quot;, agent_cfg.experiment_name)
  139      log_root_path = os.path.abspath(log_root_path)
@@ -9413,18 +9413,18 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  148      else:
  149          resume_path = get_checkpoint_path(log_root_path, agent_cfg.load_run, agent_cfg.load_checkpoint)
  150      resume_path = handle_deprecated_rsl_rl_checkpoint(resume_path, installed_version)
- 151  
+ 151&#32;&#32;
  152      from control_runtime import restore as restore_control_runtime, snapshot as control_snapshot
  153      restore_control_runtime(env_cfg, resume_path)
  154      log_dir = os.path.dirname(resume_path)
- 155  
+ 155&#32;&#32;
  156      # create isaac environment
  157      env = gym.make(args_cli.task, cfg=env_cfg, render_mode=&quot;rgb_array&quot; if args_cli.video else None)
- 158  
+ 158&#32;&#32;
  159      # convert to single-agent instance if required by the RL algorithm
  160      if isinstance(env.unwrapped, DirectMARLEnv):
  161          env = multi_agent_to_single_agent(env)
- 162  
+ 162&#32;&#32;
  163      if args_cli.evaluation_motion_id is not None:
  164          env.unwrapped.command_manager.get_term(&quot;motion&quot;).set_evaluation_motion_ids(
  165              [args_cli.evaluation_motion_id] * env.unwrapped.num_envs
@@ -9440,27 +9440,27 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  175          print(&quot;[INFO] Recording videos during training.&quot;)
  176          print_dict(video_kwargs, nesting=4)
  177          env = gym.wrappers.RecordVideo(env, **video_kwargs)
- 178  
+ 178&#32;&#32;
  179      # wrap around environment for rsl-rl
  180      env = RslRlVecEnvWrapper(env, clip_actions=agent_cfg.clip_actions)
- 181  
+ 181&#32;&#32;
  182      print(f&quot;[INFO]: Loading model checkpoint from: {resume_path}&quot;)
  183      # load previously trained model
  184      if not hasattr(agent_cfg, &quot;class_name&quot;) or agent_cfg.class_name == &quot;OnPolicyRunner&quot;:
  185          runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=None, device=agent_cfg.device)
  186      elif agent_cfg.class_name == &quot;DistillationRunner&quot;:
  187          from rsl_rl.runners import DistillationRunner
- 188  
+ 188&#32;&#32;
  189          runner = DistillationRunner(env, agent_cfg.to_dict(), log_dir=None, device=agent_cfg.device)
  190      else:
  191          raise ValueError(f&quot;Unsupported runner class: {agent_cfg.class_name}&quot;)
  192      runner.load(resume_path)
- 193  
+ 193&#32;&#32;
  194      # obtain the trained policy for inference
  195      policy = runner.get_inference_policy(device=env.unwrapped.device)
- 196  
+ 196&#32;&#32;
  197      export_model_dir = os.path.join(os.path.dirname(resume_path), &quot;exported&quot;)
- 198  
+ 198&#32;&#32;
  199      if packaging_version.parse(version(&quot;rsl-rl-lib&quot;)) &gt;= packaging_version.parse(&quot;4.0.0&quot;):
  200          runner.export_policy_to_jit(path=export_model_dir, filename=&quot;policy.pt&quot;)
  201          runner.export_policy_to_onnx(path=export_model_dir, filename=&quot;policy.onnx&quot;)
@@ -9474,7 +9474,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  209          except AttributeError:
  210              # version 2.2 and below
  211              policy_nn = runner.alg.actor_critic
- 212  
+ 212&#32;&#32;
  213          # extract the normalizer
  214          if hasattr(policy_nn, &quot;actor_obs_normalizer&quot;):
  215              normalizer = policy_nn.actor_obs_normalizer
@@ -9482,13 +9482,13 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  217              normalizer = policy_nn.student_obs_normalizer
  218          else:
  219              normalizer = None
- 220  
+ 220&#32;&#32;
  221          # export policy to onnx/jit
  222          export_policy_as_jit(policy_nn, normalizer=normalizer, path=export_model_dir, filename=&quot;policy.pt&quot;)
  223          export_policy_as_onnx(policy_nn, normalizer=normalizer, path=export_model_dir, filename=&quot;policy.onnx&quot;)
- 224  
+ 224&#32;&#32;
  225      dt = env.unwrapped.step_dt
- 226  
+ 226&#32;&#32;
  227      # reset environment
  228      obs = env.get_observations()
  229      if version(&quot;rsl-rl-lib&quot;).startswith(&quot;2.3.&quot;):
@@ -9544,12 +9544,12 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  279              # Exit the play loop after recording one video
  280              if timestep == (args_cli.evaluation_steps or args_cli.video_length):
  281                  break
- 282  
+ 282&#32;&#32;
  283          # time delay for real-time evaluation
  284          sleep_time = dt - (time.time() - start_time)
  285          if args_cli.real_time and sleep_time &gt; 0:
  286              time.sleep(sleep_time)
- 287  
+ 287&#32;&#32;
  288      if telemetry is not None:
  289          telemetry.save()
  290      if args_cli.evaluation_output:
@@ -9565,8 +9565,8 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  300          Path(args_cli.evaluation_output).write_text(json.dumps(evaluation, indent=2) + &quot;\n&quot;)
  301      # close the simulator
  302      env.close()
- 303  
- 304  
+ 303&#32;&#32;
+ 304&#32;&#32;
  305  if __name__ == &quot;__main__&quot;:
  306      # run the main function
  307      main()
@@ -9576,22 +9576,22 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    2  import json
    3  import os
    4  from pathlib import Path
-   5  
-   6  
+   5&#32;&#32;
+   6&#32;&#32;
    7  def snapshot(cfg):
    8      action=getattr(cfg.actions,&#x27;JointPositionAction&#x27;,None)
    9      if action is None or not hasattr(action,&#x27;smoothing_tau&#x27;): return None
   10      return dict(version=1,target_velocity_scale=action.target_velocity_scale,smoothing_tau=action.smoothing_tau,limit_target_velocity=action.limit_target_velocity,
   11          actuators={name:dict(stiffness=a.stiffness,damping=a.damping) for name,a in cfg.scene.robot.actuators.items()})
-  12  
-  13  
+  12&#32;&#32;
+  13&#32;&#32;
   14  def save(cfg,run_dir):
   15      payload=snapshot(cfg)
   16      if payload is not None:
   17          path=Path(run_dir)/&#x27;params/control_runtime.json&#x27;;path.parent.mkdir(parents=True,exist_ok=True)
   18          path.write_text(json.dumps(payload,indent=2)+&#x27;\n&#x27;)
-  19  
-  20  
+  19&#32;&#32;
+  20&#32;&#32;
   21  def restore(cfg,checkpoint):
   22      path=Path(checkpoint).parent/&#x27;params/control_runtime.json&#x27;
   23      if not path.exists(): return
@@ -9607,43 +9607,43 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    2  # All rights reserved.
    3  #
    4  # SPDX-License-Identifier: BSD-3-Clause
-   5  
-   6  
+   5&#32;&#32;
+   6&#32;&#32;
    7  from __future__ import annotations
-   8  
+   8&#32;&#32;
    9  import os
   10  import time
   11  import torch
-  12  
+  12&#32;&#32;
   13  from rsl_rl.algorithms import PPO
   14  from rsl_rl.env import VecEnv
   15  from rsl_rl.models import MLPModel
   16  from rsl_rl.utils import check_nan, resolve_callable
   17  from rsl_rl.utils.logger import Logger
-  18  
-  19  
+  18&#32;&#32;
+  19&#32;&#32;
   20  class OnPolicyRunner:
   21      &quot;&quot;&quot;On-policy runner for reinforcement learning algorithms.&quot;&quot;&quot;
-  22  
+  22&#32;&#32;
   23      alg: PPO
   24      &quot;&quot;&quot;The actor-critic algorithm.&quot;&quot;&quot;
-  25  
+  25&#32;&#32;
   26      def __init__(self, env: VecEnv, train_cfg: dict, log_dir: str | None = None, device: str = &quot;cpu&quot;) -&gt; None:
   27          &quot;&quot;&quot;Construct the runner, algorithm, and logging stack.&quot;&quot;&quot;
   28          self.env = env
   29          self.cfg = train_cfg
   30          self.device = device
-  31  
+  31&#32;&#32;
   32          # Setup multi-GPU training if enabled
   33          self._configure_multi_gpu()
-  34  
+  34&#32;&#32;
   35          # Query observations from the environment for algorithm construction
   36          obs = self.env.get_observations()
-  37  
+  37&#32;&#32;
   38          # Create the algorithm
   39          alg_class: type[PPO] = resolve_callable(self.cfg[&quot;algorithm&quot;][&quot;class_name&quot;])  # type: ignore
   40          self.alg = alg_class.construct_algorithm(obs, self.env, self.cfg, self.device)
-  41  
+  41&#32;&#32;
   42          # Create the logger
   43          self.logger = Logger(
   44              log_dir=log_dir,
@@ -9655,9 +9655,9 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   50              gpu_global_rank=self.gpu_global_rank,
   51              device=self.device,
   52          )
-  53  
+  53&#32;&#32;
   54          self.current_learning_iteration = 0
-  55  
+  55&#32;&#32;
   56      def learn(self, num_learning_iterations: int, init_at_random_ep_len: bool = False) -&gt; None:
   57          &quot;&quot;&quot;Run the learning loop for the specified number of iterations.&quot;&quot;&quot;
   58          # Randomize initial episode lengths (for exploration)
@@ -9665,19 +9665,19 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   60              self.env.episode_length_buf = torch.randint_like(
   61                  self.env.episode_length_buf, high=int(self.env.max_episode_length)
   62              )
-  63  
+  63&#32;&#32;
   64          # Start learning
   65          obs = self.env.get_observations().to(self.device)
   66          self.alg.train_mode()  # switch to train mode (for dropout for example)
-  67  
+  67&#32;&#32;
   68          # Ensure all parameters are in-synced
   69          if self.is_distributed:
   70              print(f&quot;Synchronizing parameters for rank {self.gpu_global_rank}...&quot;)
   71              self.alg.broadcast_parameters()
-  72  
+  72&#32;&#32;
   73          # Initialize the logging writer
   74          self.logger.init_logging_writer()
-  75  
+  75&#32;&#32;
   76          # Start training
   77          start_it = self.current_learning_iteration
   78          total_it = start_it + num_learning_iterations
@@ -9701,21 +9701,21 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   96                      intrinsic_rewards = self.alg.intrinsic_rewards if self.cfg[&quot;algorithm&quot;][&quot;rnd_cfg&quot;] else None
   97                      # Book keeping
   98                      self.logger.process_env_step(rewards, dones, extras, intrinsic_rewards)
-  99  
+  99&#32;&#32;
  100                  stop = time.time()
  101                  collect_time = stop - start
  102                  start = stop
- 103  
+ 103&#32;&#32;
  104                  # Compute returns
  105                  self.alg.compute_returns(obs)
- 106  
+ 106&#32;&#32;
  107              # Update policy
  108              loss_dict = self.alg.update()
- 109  
+ 109&#32;&#32;
  110              stop = time.time()
  111              learn_time = stop - start
  112              self.current_learning_iteration = it
- 113  
+ 113&#32;&#32;
  114              # Log information
  115              self.logger.log(
  116                  it=it,
@@ -9728,16 +9728,16 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  123                  action_std=self.alg.get_policy().output_std,
  124                  rnd_weight=self.alg.rnd.weight if self.cfg[&quot;algorithm&quot;][&quot;rnd_cfg&quot;] else None,
  125              )
- 126  
+ 126&#32;&#32;
  127              # Save model
  128              if self.logger.writer is not None and it % self.cfg[&quot;save_interval&quot;] == 0:
  129                  self.save(os.path.join(self.logger.log_dir, f&quot;model_{it}.pt&quot;))  # type: ignore
- 130  
+ 130&#32;&#32;
  131          # Save the final model after training and stop the logging writer
  132          if self.logger.writer is not None:
  133              self.save(os.path.join(self.logger.log_dir, f&quot;model_{self.current_learning_iteration}.pt&quot;))  # type: ignore
  134              self.logger.stop_logging_writer()
- 135  
+ 135&#32;&#32;
  136      def save(self, path: str, infos: dict | None = None) -&gt; None:
  137          &quot;&quot;&quot;Save the models and training state to a given path and upload them if external logging is used.&quot;&quot;&quot;
  138          saved_dict = self.alg.save()
@@ -9746,12 +9746,12 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  141          torch.save(saved_dict, path)
  142          # Upload model to external logging services
  143          self.logger.save_model(path, self.current_learning_iteration)
- 144  
+ 144&#32;&#32;
  145      def load(
  146          self, path: str, load_cfg: dict | None = None, strict: bool = True, map_location: str | None = None
  147      ) -&gt; dict:
  148          &quot;&quot;&quot;Load the models and training state from a given path.
- 149  
+ 149&#32;&#32;
  150          Args:
  151              path (str): Path to load the model from.
  152              load_cfg (dict | None): Optional dictionary that defines what models and states to load. If None, all
@@ -9764,35 +9764,35 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  159          if load_iteration:
  160              self.current_learning_iteration = loaded_dict[&quot;iter&quot;]
  161          return loaded_dict[&quot;infos&quot;]
- 162  
+ 162&#32;&#32;
  163      def get_inference_policy(self, device: str | None = None) -&gt; MLPModel:
  164          &quot;&quot;&quot;Return the policy on the requested device for inference.&quot;&quot;&quot;
  165          self.alg.eval_mode()  # Switch to evaluation mode (e.g. for dropout)
  166          return self.alg.get_policy().to(device)  # type: ignore
- 167  
+ 167&#32;&#32;
  168      def export_policy_to_jit(self, path: str, filename: str = &quot;policy.pt&quot;) -&gt; None:
  169          &quot;&quot;&quot;Export the model to a Torch JIT file.&quot;&quot;&quot;
  170          jit_model = self.alg.get_policy().as_jit()
  171          jit_model.to(&quot;cpu&quot;)
- 172  
+ 172&#32;&#32;
  173          if not os.path.exists(path):
  174              os.makedirs(path, exist_ok=True)
  175          save_path = os.path.join(path, filename)
- 176  
+ 176&#32;&#32;
  177          # Trace and save the model
  178          traced_model = torch.jit.script(jit_model)
  179          traced_model.save(save_path)
- 180  
+ 180&#32;&#32;
  181      def export_policy_to_onnx(self, path: str, filename: str = &quot;policy.onnx&quot;, verbose: bool = False) -&gt; None:
  182          &quot;&quot;&quot;Export the model into an ONNX file.&quot;&quot;&quot;
  183          onnx_model = self.alg.get_policy().as_onnx(verbose=verbose)
  184          onnx_model.to(&quot;cpu&quot;)
  185          onnx_model.eval()
- 186  
+ 186&#32;&#32;
  187          if not os.path.exists(path):
  188              os.makedirs(path, exist_ok=True)
  189          save_path = os.path.join(path, filename)
- 190  
+ 190&#32;&#32;
  191          # Trace and save the model
  192          torch.onnx.export(
  193              onnx_model,
@@ -9804,35 +9804,35 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  199              input_names=onnx_model.input_names,  # type: ignore
  200              output_names=onnx_model.output_names,  # type: ignore
  201          )
- 202  
+ 202&#32;&#32;
  203      def add_git_repo_to_log(self, repo_file_path: str) -&gt; None:
  204          &quot;&quot;&quot;Register a repository path whose git status should be logged.&quot;&quot;&quot;
  205          self.logger.git_status_repos.append(repo_file_path)
- 206  
+ 206&#32;&#32;
  207      def _configure_multi_gpu(self) -&gt; None:
  208          &quot;&quot;&quot;Configure multi-gpu training.&quot;&quot;&quot;
  209          # Check if distributed training is enabled
  210          self.gpu_world_size = int(os.getenv(&quot;WORLD_SIZE&quot;, &quot;1&quot;))
  211          self.is_distributed = self.gpu_world_size &gt; 1
- 212  
+ 212&#32;&#32;
  213          # If not distributed training, set local and global rank to 0 and return
  214          if not self.is_distributed:
  215              self.gpu_local_rank = 0
  216              self.gpu_global_rank = 0
  217              self.cfg[&quot;multi_gpu&quot;] = None
  218              return
- 219  
+ 219&#32;&#32;
  220          # Get rank and world size
  221          self.gpu_local_rank = int(os.getenv(&quot;LOCAL_RANK&quot;, &quot;0&quot;))
  222          self.gpu_global_rank = int(os.getenv(&quot;RANK&quot;, &quot;0&quot;))
- 223  
+ 223&#32;&#32;
  224          # Make a configuration dictionary
  225          self.cfg[&quot;multi_gpu&quot;] = {
  226              &quot;global_rank&quot;: self.gpu_global_rank,  # Rank of the main process
  227              &quot;local_rank&quot;: self.gpu_local_rank,  # Rank of the current process
  228              &quot;world_size&quot;: self.gpu_world_size,  # Total number of processes
  229          }
- 230  
+ 230&#32;&#32;
  231          # Check if user has device specified for local rank
  232          if self.device != f&quot;cuda:{self.gpu_local_rank}&quot;:
  233              raise ValueError(
@@ -9847,7 +9847,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  242              raise ValueError(
  243                  f&quot;Global rank &#x27;{self.gpu_global_rank}&#x27; is greater than or equal to world size &#x27;{self.gpu_world_size}&#x27;.&quot;
  244              )
- 245  
+ 245&#32;&#32;
  246          # Initialize torch distributed
  247          torch.distributed.init_process_group(backend=&quot;nccl&quot;, rank=self.gpu_global_rank, world_size=self.gpu_world_size)
  248          # Set device to the local rank
@@ -9856,36 +9856,36 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
    2  # All rights reserved.
    3  #
    4  # SPDX-License-Identifier: BSD-3-Clause
-   5  
-   6  
+   5&#32;&#32;
+   6&#32;&#32;
    7  from __future__ import annotations
-   8  
+   8&#32;&#32;
    9  import torch
   10  import torch.nn as nn
   11  import torch.optim as optim
   12  from itertools import chain
   13  from tensordict import TensorDict
-  14  
+  14&#32;&#32;
   15  from rsl_rl.env import VecEnv
   16  from rsl_rl.extensions import RandomNetworkDistillation, resolve_rnd_config, resolve_symmetry_config
   17  from rsl_rl.models import MLPModel
   18  from rsl_rl.storage import RolloutStorage
   19  from rsl_rl.utils import resolve_callable, resolve_obs_groups, resolve_optimizer
-  20  
-  21  
+  20&#32;&#32;
+  21&#32;&#32;
   22  class PPO:
   23      &quot;&quot;&quot;Proximal Policy Optimization algorithm.
-  24  
+  24&#32;&#32;
   25      Reference:
   26          - Schulman et al. &quot;Proximal policy optimization algorithms.&quot; arXiv preprint arXiv:1707.06347 (2017).
   27      &quot;&quot;&quot;
-  28  
+  28&#32;&#32;
   29      actor: MLPModel
   30      &quot;&quot;&quot;The actor model.&quot;&quot;&quot;
-  31  
+  31&#32;&#32;
   32      critic: MLPModel
   33      &quot;&quot;&quot;The critic model.&quot;&quot;&quot;
-  34  
+  34&#32;&#32;
   35      def __init__(
   36          self,
   37          actor: MLPModel,
@@ -9917,7 +9917,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   63          # Device-related parameters
   64          self.device = device
   65          self.is_multi_gpu = multi_gpu_cfg is not None
-  66  
+  66&#32;&#32;
   67          # Multi-GPU parameters
   68          if multi_gpu_cfg is not None:
   69              self.gpu_global_rank = multi_gpu_cfg[&quot;global_rank&quot;]
@@ -9925,7 +9925,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   71          else:
   72              self.gpu_global_rank = 0
   73              self.gpu_world_size = 1
-  74  
+  74&#32;&#32;
   75          # RND components
   76          if rnd_cfg:
   77              # Extract parameters used in ppo
@@ -9938,7 +9938,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
   84          else:
   85              self.rnd = None
   86              self.rnd_optimizer = None
-  87  
+  87&#32;&#32;
   88          # Symmetry components
   89          if symmetry_cfg is not None:
   90              # Check if symmetry is enabled
@@ -9961,20 +9961,20 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  107              self.symmetry = symmetry_cfg
  108          else:
  109              self.symmetry = None
- 110  
+ 110&#32;&#32;
  111          # PPO components
  112          self.actor = actor.to(self.device)
  113          self.critic = critic.to(self.device)
- 114  
+ 114&#32;&#32;
  115          # Create the optimizer
  116          self.optimizer = resolve_optimizer(optimizer)(
  117              chain(self.actor.parameters(), self.critic.parameters()), lr=learning_rate
  118          )  # type: ignore
- 119  
+ 119&#32;&#32;
  120          # Add storage
  121          self.storage = storage
  122          self.transition = RolloutStorage.Transition()
- 123  
+ 123&#32;&#32;
  124          # PPO parameters
  125          self.clip_param = clip_param
  126          self.num_learning_epochs = num_learning_epochs
@@ -9989,7 +9989,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  135          self.schedule = schedule
  136          self.learning_rate = learning_rate
  137          self.normalize_advantage_per_mini_batch = normalize_advantage_per_mini_batch
- 138  
+ 138&#32;&#32;
  139      def act(self, obs: TensorDict) -&gt; torch.Tensor:
  140          &quot;&quot;&quot;Sample actions and store transition data.&quot;&quot;&quot;
  141          # Record the hidden states for recurrent policies
@@ -10002,7 +10002,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  148          # Record observations before env.step()
  149          self.transition.observations = obs
  150          return self.transition.actions  # type: ignore
- 151  
+ 151&#32;&#32;
  152      def process_env_step(
  153          self, obs: TensorDict, rewards: torch.Tensor, dones: torch.Tensor, extras: dict[str, torch.Tensor]
  154      ) -&gt; None:
@@ -10012,32 +10012,32 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  158          self.critic.update_normalization(obs)
  159          if self.rnd:
  160              self.rnd.update_normalization(obs)
- 161  
+ 161&#32;&#32;
  162          # Record the rewards and dones
  163          # Note: We clone here because later on we bootstrap the rewards based on timeouts
  164          self.transition.rewards = rewards.clone()
  165          self.transition.dones = dones
- 166  
+ 166&#32;&#32;
  167          # Compute the intrinsic rewards and add to extrinsic rewards
  168          if self.rnd:
  169              # Compute the intrinsic rewards
  170              self.intrinsic_rewards = self.rnd.get_intrinsic_reward(obs)
  171              # Add intrinsic rewards to extrinsic rewards
  172              self.transition.rewards += self.intrinsic_rewards
- 173  
+ 173&#32;&#32;
  174          # Bootstrapping on time outs
  175          if &quot;time_outs&quot; in extras:
  176              self.transition.rewards += self.gamma * torch.squeeze(
  177                  self.transition.values * extras[&quot;time_outs&quot;].unsqueeze(1).to(self.device),  # type: ignore
  178                  1,
  179              )
- 180  
+ 180&#32;&#32;
  181          # Record the transition
  182          self.storage.add_transition(self.transition)
  183          self.transition.clear()
  184          self.actor.reset(dones)
  185          self.critic.reset(dones)
- 186  
+ 186&#32;&#32;
  187      def compute_returns(self, obs: TensorDict) -&gt; None:
  188          &quot;&quot;&quot;Compute return and advantage targets from stored transitions.&quot;&quot;&quot;
  189          st = self.storage
@@ -10061,7 +10061,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  207          # Normalize the advantages if per minibatch normalization is not used
  208          if not self.normalize_advantage_per_mini_batch:
  209              st.advantages = (st.advantages - st.advantages.mean()) / (st.advantages.std() + 1e-8)
- 210  
+ 210&#32;&#32;
  211      def update(self) -&gt; dict[str, float]:
  212          &quot;&quot;&quot;Run optimization epochs over stored batches and return mean losses.&quot;&quot;&quot;
  213          mean_value_loss = 0
@@ -10071,22 +10071,22 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  217          mean_rnd_loss = 0 if self.rnd else None
  218          # Symmetry loss
  219          mean_symmetry_loss = 0 if self.symmetry else None
- 220  
+ 220&#32;&#32;
  221          # Get mini batch generator
  222          if self.actor.is_recurrent or self.critic.is_recurrent:
  223              generator = self.storage.recurrent_mini_batch_generator(self.num_mini_batches, self.num_learning_epochs)
  224          else:
  225              generator = self.storage.mini_batch_generator(self.num_mini_batches, self.num_learning_epochs)
- 226  
+ 226&#32;&#32;
  227          # Iterate over batches
  228          for batch in generator:
  229              original_batch_size = batch.observations.batch_size[0]
- 230  
+ 230&#32;&#32;
  231              # Check if we should normalize advantages per mini batch
  232              if self.normalize_advantage_per_mini_batch:
  233                  with torch.no_grad():
  234                      batch.advantages = (batch.advantages - batch.advantages.mean()) / (batch.advantages.std() + 1e-8)  # type: ignore
- 235  
+ 235&#32;&#32;
  236              # Perform symmetric augmentation
  237              if self.symmetry and self.symmetry[&quot;use_data_augmentation&quot;]:
  238                  # Augmentation using symmetry
@@ -10104,7 +10104,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  250                  batch.values = batch.values.repeat(num_aug, 1)
  251                  batch.advantages = batch.advantages.repeat(num_aug, 1)
  252                  batch.returns = batch.returns.repeat(num_aug, 1)
- 253  
+ 253&#32;&#32;
  254              # Recompute actions log prob and entropy for current batch of transitions
  255              # Note: We need to do this because we updated the policy with the new parameters
  256              self.actor(
@@ -10118,35 +10118,35 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  264              # Note: We only keep the distribution parameters and entropy of the first augmentation (the original one)
  265              distribution_params = tuple(p[:original_batch_size] for p in self.actor.output_distribution_params)
  266              entropy = self.actor.output_entropy[:original_batch_size]
- 267  
+ 267&#32;&#32;
  268              # Compute KL divergence and adapt the learning rate
  269              if self.desired_kl is not None and self.schedule == &quot;adaptive&quot;:
  270                  with torch.inference_mode():
  271                      kl = self.actor.get_kl_divergence(batch.old_distribution_params, distribution_params)  # type: ignore
  272                      kl_mean = torch.mean(kl)
- 273  
+ 273&#32;&#32;
  274                      # Reduce the KL divergence across all GPUs
  275                      if self.is_multi_gpu:
  276                          torch.distributed.all_reduce(kl_mean, op=torch.distributed.ReduceOp.SUM)
  277                          kl_mean /= self.gpu_world_size
- 278  
+ 278&#32;&#32;
  279                      # Update the learning rate only on the main process
  280                      if self.gpu_global_rank == 0:
  281                          if kl_mean &gt; self.desired_kl * 2.0:
  282                              self.learning_rate = max(1e-5, self.learning_rate / 1.5)
  283                          elif kl_mean &lt; self.desired_kl / 2.0 and kl_mean &gt; 0.0:
  284                              self.learning_rate = min(1e-2, self.learning_rate * 1.5)
- 285  
+ 285&#32;&#32;
  286                      # Update the learning rate for all GPUs
  287                      if self.is_multi_gpu:
  288                          lr_tensor = torch.tensor(self.learning_rate, device=self.device)
  289                          torch.distributed.broadcast(lr_tensor, src=0)
  290                          self.learning_rate = lr_tensor.item()
- 291  
+ 291&#32;&#32;
  292                      # Update the learning rate for all parameter groups
  293                      for param_group in self.optimizer.param_groups:
  294                          param_group[&quot;lr&quot;] = self.learning_rate
- 295  
+ 295&#32;&#32;
  296              # Surrogate loss
  297              ratio = torch.exp(actions_log_prob - torch.squeeze(batch.old_actions_log_prob))  # type: ignore
  298              surrogate = -torch.squeeze(batch.advantages) * ratio  # type: ignore
@@ -10154,7 +10154,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  300                  ratio, 1.0 - self.clip_param, 1.0 + self.clip_param
  301              )
  302              surrogate_loss = torch.max(surrogate, surrogate_clipped).mean()
- 303  
+ 303&#32;&#32;
  304              # Value function loss
  305              if self.use_clipped_value_loss:
  306                  value_clipped = batch.values + (values - batch.values).clamp(-self.clip_param, self.clip_param)
@@ -10163,9 +10163,9 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  309                  value_loss = torch.max(value_losses, value_losses_clipped).mean()
  310              else:
  311                  value_loss = (batch.returns - values).pow(2).mean()
- 312  
+ 312&#32;&#32;
  313              loss = surrogate_loss + self.value_loss_coef * value_loss - self.entropy_coef * entropy.mean()
- 314  
+ 314&#32;&#32;
  315              # Symmetry loss
  316              if self.symmetry:
  317                  # Obtain the symmetric actions
@@ -10175,10 +10175,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  321                      batch.observations, _ = data_augmentation_func(
  322                          obs=batch.observations, actions=None, env=self.symmetry[&quot;_env&quot;]
  323                      )
- 324  
+ 324&#32;&#32;
  325                  # Actions predicted by the actor for symmetrically-augmented observations
  326                  mean_actions = self.actor(batch.observations.detach().clone())
- 327  
+ 327&#32;&#32;
  328                  # Compute the symmetrically augmented actions
  329                  # Note: We are assuming the first augmentation is the original one. We do not use the batch.actions from
  330                  # earlier since that action was sampled from the distribution. However, the symmetry loss is computed
@@ -10187,7 +10187,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  333                  _, actions_mean_symm = data_augmentation_func(
  334                      obs=None, actions=action_mean_orig, env=self.symmetry[&quot;_env&quot;]
  335                  )
- 336  
+ 336&#32;&#32;
  337                  # Compute the loss
  338                  mse_loss = torch.nn.MSELoss()
  339                  symmetry_loss = mse_loss(
@@ -10198,7 +10198,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  344                      loss += self.symmetry[&quot;mirror_loss_coeff&quot;] * symmetry_loss
  345                  else:
  346                      symmetry_loss = symmetry_loss.detach()
- 347  
+ 347&#32;&#32;
  348              # RND loss
  349              if self.rnd:
  350                  # Extract the rnd_state
@@ -10211,7 +10211,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  357                  # Compute the loss as the mean squared error
  358                  mseloss = torch.nn.MSELoss()
  359                  rnd_loss = mseloss(predicted_embedding, target_embedding)
- 360  
+ 360&#32;&#32;
  361              # Compute the gradients for PPO
  362              self.optimizer.zero_grad()
  363              loss.backward()
@@ -10219,11 +10219,11 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  365              if self.rnd:
  366                  self.rnd_optimizer.zero_grad()
  367                  rnd_loss.backward()
- 368  
+ 368&#32;&#32;
  369              # Collect gradients from all GPUs
  370              if self.is_multi_gpu:
  371                  self.reduce_parameters()
- 372  
+ 372&#32;&#32;
  373              # Apply the gradients for PPO
  374              nn.utils.clip_grad_norm_(self.actor.parameters(), self.max_grad_norm)
  375              nn.utils.clip_grad_norm_(self.critic.parameters(), self.max_grad_norm)
@@ -10231,7 +10231,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  377              # Apply the gradients for RND
  378              if self.rnd_optimizer:
  379                  self.rnd_optimizer.step()
- 380  
+ 380&#32;&#32;
  381              # Store the losses
  382              mean_value_loss += value_loss.item()
  383              mean_surrogate_loss += surrogate_loss.item()
@@ -10242,7 +10242,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  388              # Symmetry loss
  389              if mean_symmetry_loss is not None:
  390                  mean_symmetry_loss += symmetry_loss.item()
- 391  
+ 391&#32;&#32;
  392          # Divide the losses by the number of updates
  393          num_updates = self.num_learning_epochs * self.num_mini_batches
  394          mean_value_loss /= num_updates
@@ -10252,10 +10252,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  398              mean_rnd_loss /= num_updates
  399          if mean_symmetry_loss is not None:
  400              mean_symmetry_loss /= num_updates
- 401  
+ 401&#32;&#32;
  402          # Clear the storage
  403          self.storage.clear()
- 404  
+ 404&#32;&#32;
  405          # Construct the loss dictionary
  406          loss_dict = {
  407              &quot;value&quot;: mean_value_loss,
@@ -10266,23 +10266,23 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  412              loss_dict[&quot;rnd&quot;] = mean_rnd_loss
  413          if self.symmetry:
  414              loss_dict[&quot;symmetry&quot;] = mean_symmetry_loss
- 415  
+ 415&#32;&#32;
  416          return loss_dict
- 417  
+ 417&#32;&#32;
  418      def train_mode(self) -&gt; None:
  419          &quot;&quot;&quot;Set train mode for learnable models.&quot;&quot;&quot;
  420          self.actor.train()
  421          self.critic.train()
  422          if self.rnd:
  423              self.rnd.train()
- 424  
+ 424&#32;&#32;
  425      def eval_mode(self) -&gt; None:
  426          &quot;&quot;&quot;Set evaluation mode for learnable models.&quot;&quot;&quot;
  427          self.actor.eval()
  428          self.critic.eval()
  429          if self.rnd:
  430              self.rnd.eval()
- 431  
+ 431&#32;&#32;
  432      def save(self) -&gt; dict:
  433          &quot;&quot;&quot;Return a dict of all models for saving.&quot;&quot;&quot;
  434          saved_dict = {
@@ -10294,7 +10294,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  440              saved_dict[&quot;rnd_state_dict&quot;] = self.rnd.state_dict()
  441              saved_dict[&quot;rnd_optimizer_state_dict&quot;] = self.rnd_optimizer.state_dict()
  442          return saved_dict
- 443  
+ 443&#32;&#32;
  444      def load(self, loaded_dict: dict, load_cfg: dict | None, strict: bool) -&gt; bool:
  445          &quot;&quot;&quot;Load specified models from a saved dict.&quot;&quot;&quot;
  446          # If no load_cfg is provided, load all models and states
@@ -10306,7 +10306,7 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  452                  &quot;iteration&quot;: True,
  453                  &quot;rnd&quot;: True,
  454              }
- 455  
+ 455&#32;&#32;
  456          # Load the specified models
  457          if load_cfg.get(&quot;actor&quot;):
  458              self.actor.load_state_dict(loaded_dict[&quot;actor_state_dict&quot;], strict=strict)
@@ -10318,11 +10318,11 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  464              self.rnd.load_state_dict(loaded_dict[&quot;rnd_state_dict&quot;], strict=strict)
  465              self.rnd_optimizer.load_state_dict(loaded_dict[&quot;rnd_optimizer_state_dict&quot;])
  466          return load_cfg.get(&quot;iteration&quot;, False)
- 467  
+ 467&#32;&#32;
  468      def get_policy(self) -&gt; MLPModel:
  469          &quot;&quot;&quot;Get the policy model.&quot;&quot;&quot;
  470          return self.actor
- 471  
+ 471&#32;&#32;
  472      @staticmethod
  473      def construct_algorithm(obs: TensorDict, env: VecEnv, cfg: dict, device: str) -&gt; PPO:
  474          &quot;&quot;&quot;Construct the PPO algorithm.&quot;&quot;&quot;
@@ -10330,19 +10330,19 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  476          alg_class: type[PPO] = resolve_callable(cfg[&quot;algorithm&quot;].pop(&quot;class_name&quot;))  # type: ignore
  477          actor_class: type[MLPModel] = resolve_callable(cfg[&quot;actor&quot;].pop(&quot;class_name&quot;))  # type: ignore
  478          critic_class: type[MLPModel] = resolve_callable(cfg[&quot;critic&quot;].pop(&quot;class_name&quot;))  # type: ignore
- 479  
+ 479&#32;&#32;
  480          # Resolve observation groups
  481          default_sets = [&quot;actor&quot;, &quot;critic&quot;]
  482          if &quot;rnd_cfg&quot; in cfg[&quot;algorithm&quot;] and cfg[&quot;algorithm&quot;][&quot;rnd_cfg&quot;] is not None:
  483              default_sets.append(&quot;rnd_state&quot;)
  484          cfg[&quot;obs_groups&quot;] = resolve_obs_groups(obs, cfg[&quot;obs_groups&quot;], default_sets)
- 485  
+ 485&#32;&#32;
  486          # Resolve RND config if used
  487          cfg[&quot;algorithm&quot;] = resolve_rnd_config(cfg[&quot;algorithm&quot;], obs, cfg[&quot;obs_groups&quot;], env)
- 488  
+ 488&#32;&#32;
  489          # Resolve symmetry config if used
  490          cfg[&quot;algorithm&quot;] = resolve_symmetry_config(cfg[&quot;algorithm&quot;], env)
- 491  
+ 491&#32;&#32;
  492          # Initialize the policy
  493          actor: MLPModel = actor_class(obs, cfg[&quot;obs_groups&quot;], &quot;actor&quot;, env.num_actions, **cfg[&quot;actor&quot;]).to(device)
  494          print(f&quot;Actor Model: {actor}&quot;)
@@ -10350,15 +10350,15 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  496              cfg[&quot;critic&quot;][&quot;cnns&quot;] = actor.cnns  # type: ignore
  497          critic: MLPModel = critic_class(obs, cfg[&quot;obs_groups&quot;], &quot;critic&quot;, 1, **cfg[&quot;critic&quot;]).to(device)
  498          print(f&quot;Critic Model: {critic}&quot;)
- 499  
+ 499&#32;&#32;
  500          # Initialize the storage
  501          storage = RolloutStorage(&quot;rl&quot;, env.num_envs, cfg[&quot;num_steps_per_env&quot;], obs, [env.num_actions], device)
- 502  
+ 502&#32;&#32;
  503          # Initialize the algorithm
  504          alg: PPO = alg_class(actor, critic, storage, device=device, **cfg[&quot;algorithm&quot;], multi_gpu_cfg=cfg[&quot;multi_gpu&quot;])
- 505  
+ 505&#32;&#32;
  506          return alg
- 507  
+ 507&#32;&#32;
  508      def broadcast_parameters(self) -&gt; None:
  509          &quot;&quot;&quot;Broadcast model parameters to all GPUs.&quot;&quot;&quot;
  510          # Obtain the model parameters on current GPU
@@ -10372,10 +10372,10 @@ PD + physics -&gt; actual state</pre><p>tau=0无指数低通，目标变化率�
  518          self.critic.load_state_dict(model_params[1])
  519          if self.rnd:
  520              self.rnd.predictor.load_state_dict(model_params[2])
- 521  
+ 521&#32;&#32;
  522      def reduce_parameters(self) -&gt; None:
  523          &quot;&quot;&quot;Collect gradients from all GPUs and average them.
- 524  
+ 524&#32;&#32;
  525          This function is called after the backward pass to synchronize the gradients across all GPUs.
  526          &quot;&quot;&quot;
  527          # Create a tensor to store the gradients
