@@ -1,0 +1,31 @@
+{
+  "candidate_counts": {
+    "train/walking": 3090,
+    "train/standing_upper": 1447,
+    "val/standing_upper": 94,
+    "test/walking": 644,
+    "val/walking": 218,
+    "test/standing_upper": 281
+  },
+  "excluded_non_upright_candidates": 126,
+  "acceptance_policy": "tw75_user_review_20261003_near_limits_advisory",
+  "policy_note": "User approved visual retarget and directed training. Only near-limit duration/fraction warnings are advisory; raw strict flags/reasons preserved. No output clipping; speed/numeric/FK gates retained. Final eligible counts pending FK.",
+  "training": {
+    "gpus": [
+      0,
+      1
+    ],
+    "seeds": [
+      42,
+      123
+    ],
+    "additional_iterations_per_seed": 20000,
+    "num_envs": 1024,
+    "initial_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-02_22-23-57_s2_fix_long_velocity/model_15596.pt",
+    "sampling": "50/50 category, equal clip prior, uniform_ratio=1",
+    "rewards": "unchanged from long_velocity",
+    "checkpoint_interval": 500
+  },
+  "validation": "6 held-out val clips (3/category), seeds42/123/2026, 20s stable side-camera videos; test split reserved",
+  "state_dir": "/root/gpufree-data/datasets/practice9/tw75_train_v1"
+}

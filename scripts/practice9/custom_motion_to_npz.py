@@ -43,6 +43,7 @@ parser.add_argument("--ground-clearance", type=float, default=0.001)
 parser.add_argument("--state-tolerance", type=float, default=1.0e-5)
 parser.add_argument("--body-linear-velocity-p95-tolerance", type=float, default=0.05)
 parser.add_argument("--body-angular-velocity-p95-tolerance", type=float, default=0.2)
+parser.add_argument("--fk-batch-size", type=int, default=1)
 parser.add_argument("--allow-quality-failures", action="store_true")
 parser.add_argument("--continue-on-error", action="store_true")
 AppLauncher.add_app_launcher_args(parser)
@@ -235,56 +236,44 @@ def convert_clip(
         "body_lin_vel_w": [],
         "body_ang_vel_w": [],
     }
-    for frame in range(joint_pos.shape[0]):
+    batch = scene.num_envs
+    for frame in range(0, joint_pos.shape[0], batch):
+        count = min(batch, joint_pos.shape[0] - frame)
+        ix = torch.arange(frame, frame + batch, device=sim.device).clamp(max=joint_pos.shape[0]-1)
         root_state = robot.data.default_root_state.clone()
-        root_state[:, :3] = root_pos[frame]
-        root_state[:, :2] += scene.env_origins[:, :2]
-        root_state[:, 3:7] = root_quat[frame]
-        root_state[:, 7:10] = root_lin_vel[frame]
-        root_state[:, 10:13] = root_ang_vel[frame]
+        root_state[:, :3] = root_pos[ix] + scene.env_origins
+        root_state[:, 3:7] = root_quat[ix]
+        root_state[:, 7:10] = root_lin_vel[ix]
+        root_state[:, 10:13] = root_ang_vel[ix]
         robot.write_root_state_to_sim(root_state)
-
-        robot.write_joint_state_to_sim(
-            joint_pos[frame].unsqueeze(0),
-            joint_vel[frame].unsqueeze(0),
-            joint_ids=joint_indexes,
-        )
+        robot.write_joint_state_to_sim(joint_pos[ix], joint_vel[ix], joint_ids=joint_indexes)
         sim.render()
         scene.update(sim.get_physics_dt())
-        actual_joint_pos = robot.data.joint_pos[0, joint_indexes].cpu().numpy().copy()
-        actual_joint_vel = robot.data.joint_vel[0, joint_indexes].cpu().numpy().copy()
-        actual_root_state = robot.data.root_state_w[0].cpu().numpy().copy()
-        target_joint_pos = joint_pos[frame].cpu().numpy()
-        target_joint_vel = joint_vel[frame].cpu().numpy()
-        target_root_state = root_state[0].cpu().numpy()
-        quat_error = min(
-            np.linalg.norm(actual_root_state[3:7] - target_root_state[3:7]),
-            np.linalg.norm(actual_root_state[3:7] + target_root_state[3:7]),
-        )
-        state_error = max(
-            float(np.max(np.abs(actual_joint_pos - target_joint_pos))),
-            float(np.max(np.abs(actual_joint_vel - target_joint_vel))),
-            float(np.max(np.abs(actual_root_state[:3] - target_root_state[:3]))),
-            float(quat_error),
-            float(np.max(np.abs(actual_root_state[7:] - target_root_state[7:]))),
-        )
-        if state_error > args_cli.state_tolerance:
-            raise ValueError(
-                f"{motion_id}: simulator state readback error {state_error:.6g} "
-                f"> {args_cli.state_tolerance:.6g} at frame {frame}"
-            )
-        log["joint_pos"].append(actual_joint_pos)
-        log["joint_vel"].append(actual_joint_vel)
-        log["root_state_w"].append(actual_root_state)
-        for field in ("body_pos_w", "body_quat_w", "body_lin_vel_w", "body_ang_vel_w"):
-            log[field].append(getattr(robot.data, field)[0].cpu().numpy().copy())
+        actual_pos = robot.data.joint_pos[:, joint_indexes]
+        actual_vel = robot.data.joint_vel[:, joint_indexes]
+        actual_root = robot.data.root_state_w
+        quat_error = torch.minimum(torch.linalg.vector_norm(actual_root[:,3:7]-root_state[:,3:7],dim=1),
+                                   torch.linalg.vector_norm(actual_root[:,3:7]+root_state[:,3:7],dim=1)).max()
+        error = max(float((actual_pos-joint_pos[ix]).abs().max()),float((actual_vel-joint_vel[ix]).abs().max()),
+                    float((actual_root[:,:3]-root_state[:,:3]).abs().max()),float(quat_error),
+                    float((actual_root[:,7:]-root_state[:,7:]).abs().max()))
+        if error > args_cli.state_tolerance:
+            raise ValueError(f'{motion_id}: simulator readback error {error} at frame {frame}')
+        log['joint_pos'].extend(actual_pos[:count].cpu().numpy().copy())
+        log['joint_vel'].extend(actual_vel[:count].cpu().numpy().copy())
+        normalized_root = actual_root[:count].clone()
+        normalized_root[:,:3] -= scene.env_origins[:count]
+        log['root_state_w'].extend(normalized_root.cpu().numpy().copy())
+        for field in ('body_pos_w','body_quat_w','body_lin_vel_w','body_ang_vel_w'):
+            value=getattr(robot.data,field)[:count].clone()
+            if field=='body_pos_w': value-=scene.env_origins[:count,None,:]
+            log[field].extend(value.cpu().numpy().copy())
 
     arrays = {name: np.stack(values).astype(np.float32) for name, values in log.items()}
     root_state_np = arrays.pop("root_state_w")
     joint_pos_np = arrays.pop("joint_pos")
     joint_vel_np = arrays.pop("joint_vel")
     root_pos_np = root_state_np[:, :3].copy()
-    root_pos_np[:, :2] -= scene.env_origins[0, :2].cpu().numpy()
     root_quat_np = root_state_np[:, 3:7]
 
     collision_corners = load_link_collision_corners(
@@ -381,7 +370,7 @@ def main() -> None:
     sim_cfg = sim_utils.SimulationCfg(device=args_cli.device)
     sim_cfg.dt = 1.0 / float(payload.get("target_fps", 50))
     sim = SimulationContext(sim_cfg)
-    scene = InteractiveScene(ReplaySceneCfg(num_envs=1, env_spacing=1.0))
+    scene = InteractiveScene(ReplaySceneCfg(num_envs=args_cli.fk_batch_size, env_spacing=1.0))
     sim.reset()
 
     converted = []
@@ -403,6 +392,8 @@ def main() -> None:
             record = convert_clip(sim, scene, input_path, output_path, motion_id)
             record["weight"] = float(item.get("weight", 1.0))
             record["retarget_quality"] = item.get("quality", {})
+            record["acceptance_policy"] = item.get("acceptance_policy", "strict_original")
+            record["strict_retarget_quality_pass"] = item.get("strict_quality_pass", source_quality_pass)
             record["quality_pass"] = bool(source_quality_pass and record["fk_quality_pass"])
             if not record["quality_pass"] and not args_cli.allow_quality_failures:
                 output_path.unlink(missing_ok=True)
