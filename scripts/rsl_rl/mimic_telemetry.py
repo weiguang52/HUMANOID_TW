@@ -52,6 +52,7 @@ class MimicTelemetry:
     def begin(self, actions):
         self.active = True
         self.control.append(dict(action=self.array(actions[0]),
+            reference_frame=int(self.command.frame_indices[0].item()),
             reference_q=self.array(self.command.joint_pos[0]),
             reference_qd=self.array(self.command.joint_vel[0])))
 
@@ -64,6 +65,9 @@ class MimicTelemetry:
             torque=self.array(d.applied_torque[0, self.index]),
             force=self.array(self.sensor.data.net_forces_w[0, self.sensor_feet]),
             foot_velocity=self.array(d.body_lin_vel_w[0, self.feet]),
+            foot_position=self.array(d.body_pos_w[0, self.feet]),
+            foot_quaternion=self.array(d.body_quat_w[0, self.feet]),
+            foot_angular_velocity=self.array(d.body_ang_vel_w[0, self.feet]),
             root_height=float(d.root_pos_w[0, 2].item())))
 
     def end(self, dones):

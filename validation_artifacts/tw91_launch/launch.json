@@ -1,0 +1,21 @@
+{
+  "initial_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-03_18-50-44_tw75_contact_contact/model_39594.pt",
+  "training_seeds": [
+    42,
+    123
+  ],
+  "iterations_per_seed": 4000,
+  "num_envs": 1024,
+  "control_feet_slide": -0.2,
+  "slip_feet_slide": -1.0,
+  "contact_phase": -0.5,
+  "changed_factor": "existing feet_slide weight only",
+  "batch_smoke": "three motion ids,120 control steps each; start frames and telemetry shapes checked",
+  "repeat_initial_q_max_diff_rad": 5.282461643218994e-06,
+  "limitations": [
+    "GPU physics is not bitwise repeatable",
+    "Batch startup randomization shared within evaluation seed",
+    "Six clips are validation, not independent test",
+    "Body-origin speed is a proxy for contact-patch slip"
+  ]
+}

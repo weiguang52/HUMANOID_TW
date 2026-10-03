@@ -1,0 +1,1089 @@
+{
+  "note": "Limited 6 holdout clips x 3 seeds; raw Fz threshold 1N, reset neighborhoods excluded. Not full acceptance.",
+  "baseline_seed123": [
+    {
+      "replay": "000016.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012046349105303703,
+      "raw_switches_per_s": [
+        12.21294363256785,
+        19.62421711899791
+      ],
+      "contact_slip_mean_m_s": [
+        0.006912267301231623,
+        0.010104893706738949
+      ]
+    },
+    {
+      "replay": "000016.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012203113878244794,
+      "raw_switches_per_s": [
+        11.74321503131524,
+        20.615866388308977
+      ],
+      "contact_slip_mean_m_s": [
+        0.006172905210405588,
+        0.007897854782640934
+      ]
+    },
+    {
+      "replay": "000016.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012010122795143853,
+      "raw_switches_per_s": [
+        11.221294363256785,
+        19.467640918580376
+      ],
+      "contact_slip_mean_m_s": [
+        0.006456422153860331,
+        0.010382265783846378
+      ]
+    },
+    {
+      "replay": "000039.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.023825866330851198,
+      "raw_switches_per_s": [
+        6.322155030236393,
+        6.5420560747663545
+      ],
+      "contact_slip_mean_m_s": [
+        0.022308779880404472,
+        0.026740731671452522
+      ]
+    },
+    {
+      "replay": "000039.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.023747705504247124,
+      "raw_switches_per_s": [
+        6.212204507971412,
+        6.267179769103903
+      ],
+      "contact_slip_mean_m_s": [
+        0.02088324725627899,
+        0.021512793377041817
+      ]
+    },
+    {
+      "replay": "000039.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.02407596229559856,
+      "raw_switches_per_s": [
+        6.184716877405167,
+        6.349642660802639
+      ],
+      "contact_slip_mean_m_s": [
+        0.021277880296111107,
+        0.025672337040305138
+      ]
+    },
+    {
+      "replay": "000124.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.011280997870017856,
+      "raw_switches_per_s": [
+        13.88888888888889,
+        21.32936507936508
+      ],
+      "contact_slip_mean_m_s": [
+        0.009013810195028782,
+        0.011358472518622875
+      ]
+    },
+    {
+      "replay": "000124.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.011442587987738683,
+      "raw_switches_per_s": [
+        13.740079365079366,
+        21.180555555555557
+      ],
+      "contact_slip_mean_m_s": [
+        0.0071991076692938805,
+        0.009151531383395195
+      ]
+    },
+    {
+      "replay": "000124.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.011176315939680498,
+      "raw_switches_per_s": [
+        12.003968253968253,
+        22.321428571428573
+      ],
+      "contact_slip_mean_m_s": [
+        0.007053406443446875,
+        0.01201914343982935
+      ]
+    },
+    {
+      "replay": "000139.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.029382012123034165,
+      "raw_switches_per_s": [
+        7.23524656426839,
+        7.720291026677445
+      ],
+      "contact_slip_mean_m_s": [
+        0.015636881813406944,
+        0.019802626222372055
+      ]
+    },
+    {
+      "replay": "000139.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.029116303499055862,
+      "raw_switches_per_s": [
+        7.275666936135812,
+        7.19482619240097
+      ],
+      "contact_slip_mean_m_s": [
+        0.016127770766615868,
+        0.014544999226927757
+      ]
+    },
+    {
+      "replay": "000139.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.029404255589188657,
+      "raw_switches_per_s": [
+        7.275666936135812,
+        7.4373484236054965
+      ],
+      "contact_slip_mean_m_s": [
+        0.017349475994706154,
+        0.017039829865098
+      ]
+    },
+    {
+      "replay": "000211.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.021483158828426687,
+      "raw_switches_per_s": [
+        7.935153583617747,
+        7.849829351535836
+      ],
+      "contact_slip_mean_m_s": [
+        0.020375413820147514,
+        0.028551189228892326
+      ]
+    },
+    {
+      "replay": "000211.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.021404377436093847,
+      "raw_switches_per_s": [
+        8.319112627986348,
+        7.80716723549488
+      ],
+      "contact_slip_mean_m_s": [
+        0.02141459845006466,
+        0.021811189129948616
+      ]
+    },
+    {
+      "replay": "000211.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.02147976956512925,
+      "raw_switches_per_s": [
+        7.892491467576791,
+        7.892491467576791
+      ],
+      "contact_slip_mean_m_s": [
+        0.02083485573530197,
+        0.024375081062316895
+      ]
+    },
+    {
+      "replay": "000346.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.013495452275710135,
+      "raw_switches_per_s": [
+        10.987726475745179,
+        18.731735827001753
+      ],
+      "contact_slip_mean_m_s": [
+        0.010745744220912457,
+        0.011442944407463074
+      ]
+    },
+    {
+      "replay": "000346.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012630012650480306,
+      "raw_switches_per_s": [
+        10.8708357685564,
+        23.553477498538868
+      ],
+      "contact_slip_mean_m_s": [
+        0.005996624007821083,
+        0.009438625536859035
+      ]
+    },
+    {
+      "replay": "000346.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012452156905666143,
+      "raw_switches_per_s": [
+        7.656341320864992,
+        21.36177673874927
+      ],
+      "contact_slip_mean_m_s": [
+        0.005241165868937969,
+        0.010877962224185467
+      ]
+    }
+  ],
+  "control": [
+    {
+      "replay": "000016.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012550879472299763,
+      "raw_switches_per_s": [
+        17.014613778705638,
+        16.49269311064718
+      ],
+      "contact_slip_mean_m_s": [
+        0.00977801438421011,
+        0.008823215030133724
+      ]
+    },
+    {
+      "replay": "000016.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012832258958459476,
+      "raw_switches_per_s": [
+        16.805845511482254,
+        19.832985386221296
+      ],
+      "contact_slip_mean_m_s": [
+        0.008079004473984241,
+        0.00743563799187541
+      ]
+    },
+    {
+      "replay": "000016.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012444099371325998,
+      "raw_switches_per_s": [
+        18.26722338204593,
+        16.805845511482254
+      ],
+      "contact_slip_mean_m_s": [
+        0.007243565749377012,
+        0.00969337485730648
+      ]
+    },
+    {
+      "replay": "000039.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 1
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.022153675754138027,
+      "raw_switches_per_s": [
+        6.100278551532034,
+        6.211699164345404
+      ],
+      "contact_slip_mean_m_s": [
+        0.023994080722332,
+        0.026357227936387062
+      ]
+    },
+    {
+      "replay": "000039.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.021794982312221614,
+      "raw_switches_per_s": [
+        5.88235294117647,
+        6.047278724573942
+      ],
+      "contact_slip_mean_m_s": [
+        0.024539889767766,
+        0.022522849962115288
+      ]
+    },
+    {
+      "replay": "000039.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.021850534195310283,
+      "raw_switches_per_s": [
+        6.047278724573942,
+        5.992303463441451
+      ],
+      "contact_slip_mean_m_s": [
+        0.024827418848872185,
+        0.024624763056635857
+      ]
+    },
+    {
+      "replay": "000124.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.013027640210662019,
+      "raw_switches_per_s": [
+        16.865079365079364,
+        20.48611111111111
+      ],
+      "contact_slip_mean_m_s": [
+        0.010617464780807495,
+        0.008988103829324245
+      ]
+    },
+    {
+      "replay": "000124.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012927287658633588,
+      "raw_switches_per_s": [
+        20.535714285714285,
+        18.055555555555557
+      ],
+      "contact_slip_mean_m_s": [
+        0.008927610702812672,
+        0.008245802484452724
+      ]
+    },
+    {
+      "replay": "000124.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.013133500572637341,
+      "raw_switches_per_s": [
+        18.353174603174605,
+        19.345238095238095
+      ],
+      "contact_slip_mean_m_s": [
+        0.007886067032814026,
+        0.011429798789322376
+      ]
+    },
+    {
+      "replay": "000139.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.026874090522082485,
+      "raw_switches_per_s": [
+        8.286176232821342,
+        8.528698464025869
+      ],
+      "contact_slip_mean_m_s": [
+        0.018923630937933922,
+        0.01935652084648609
+      ]
+    },
+    {
+      "replay": "000139.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.02737524593383063,
+      "raw_switches_per_s": [
+        7.9628132578819715,
+        7.8819725141471295
+      ],
+      "contact_slip_mean_m_s": [
+        0.016265904530882835,
+        0.014387397095561028
+      ]
+    },
+    {
+      "replay": "000139.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.02657409606580579,
+      "raw_switches_per_s": [
+        8.043654001616813,
+        8.286176232821342
+      ],
+      "contact_slip_mean_m_s": [
+        0.01758861169219017,
+        0.017629221081733704
+      ]
+    },
+    {
+      "replay": "000211.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.020168736424920463,
+      "raw_switches_per_s": [
+        8.57508532423208,
+        8.617747440273037
+      ],
+      "contact_slip_mean_m_s": [
+        0.025241978466510773,
+        0.024849141016602516
+      ]
+    },
+    {
+      "replay": "000211.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 4
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.022462483368712583,
+      "raw_switches_per_s": [
+        10.201005025125626,
+        10.402010050251254
+      ],
+      "contact_slip_mean_m_s": [
+        0.023630313575267792,
+        0.018768465146422386
+      ]
+    },
+    {
+      "replay": "000211.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.02008366357539598,
+      "raw_switches_per_s": [
+        7.679180887372013,
+        8.020477815699659
+      ],
+      "contact_slip_mean_m_s": [
+        0.021295493468642235,
+        0.023669611662626266
+      ]
+    },
+    {
+      "replay": "000346.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012656430279683963,
+      "raw_switches_per_s": [
+        21.215663354763297,
+        22.38457042665108
+      ],
+      "contact_slip_mean_m_s": [
+        0.007735951337963343,
+        0.007303962484002113
+      ]
+    },
+    {
+      "replay": "000346.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012812143973006097,
+      "raw_switches_per_s": [
+        21.975452951490357,
+        20.689655172413794
+      ],
+      "contact_slip_mean_m_s": [
+        0.007187465205788612,
+        0.007406787946820259
+      ]
+    },
+    {
+      "replay": "000346.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.01260722840936142,
+      "raw_switches_per_s": [
+        21.68322618351841,
+        19.871420222092343
+      ],
+      "contact_slip_mean_m_s": [
+        0.006933430675417185,
+        0.007852667942643166
+      ]
+    }
+  ],
+  "contact": [
+    {
+      "replay": "000016.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.013070648003387567,
+      "raw_switches_per_s": [
+        0.7306889352818372,
+        27.035490605427974
+      ],
+      "contact_slip_mean_m_s": [
+        0.007753319106996059,
+        0.011053810827434063
+      ]
+    },
+    {
+      "replay": "000016.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.011705522279250593,
+      "raw_switches_per_s": [
+        0.9394572025052192,
+        22.703549060542798
+      ],
+      "contact_slip_mean_m_s": [
+        0.005126694682985544,
+        0.007566581014543772
+      ]
+    },
+    {
+      "replay": "000016.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.011315659547431602,
+      "raw_switches_per_s": [
+        0.6263048016701461,
+        21.450939457202505
+      ],
+      "contact_slip_mean_m_s": [
+        0.0051358588971197605,
+        0.009868448600172997
+      ]
+    },
+    {
+      "replay": "000039.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.022154404188875692,
+      "raw_switches_per_s": [
+        6.349642660802639,
+        6.349642660802639
+      ],
+      "contact_slip_mean_m_s": [
+        0.02053510956466198,
+        0.028295913711190224
+      ]
+    },
+    {
+      "replay": "000039.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.02198699385788339,
+      "raw_switches_per_s": [
+        6.349642660802639,
+        6.239692138537658
+      ],
+      "contact_slip_mean_m_s": [
+        0.023581843823194504,
+        0.02023794874548912
+      ]
+    },
+    {
+      "replay": "000039.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.022316059451068865,
+      "raw_switches_per_s": [
+        6.706981858163826,
+        6.761957119296317
+      ],
+      "contact_slip_mean_m_s": [
+        0.021918291226029396,
+        0.023527827113866806
+      ]
+    },
+    {
+      "replay": "000124.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.014177937792777191,
+      "raw_switches_per_s": [
+        2.9265873015873014,
+        14.484126984126984
+      ],
+      "contact_slip_mean_m_s": [
+        0.01146442536264658,
+        0.010788156650960445
+      ]
+    },
+    {
+      "replay": "000124.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.012060851248384621,
+      "raw_switches_per_s": [
+        8.829365079365079,
+        25.496031746031747
+      ],
+      "contact_slip_mean_m_s": [
+        0.00691535510122776,
+        0.009106142446398735
+      ]
+    },
+    {
+      "replay": "000124.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.011904499152769692,
+      "raw_switches_per_s": [
+        7.886904761904762,
+        22.42063492063492
+      ],
+      "contact_slip_mean_m_s": [
+        0.00594697380438447,
+        0.010842186398804188
+      ]
+    },
+    {
+      "replay": "000139.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.02945504757616591,
+      "raw_switches_per_s": [
+        13.7429264349232,
+        12.206952303961195
+      ],
+      "contact_slip_mean_m_s": [
+        0.015148513950407505,
+        0.015804991126060486
+      ]
+    },
+    {
+      "replay": "000139.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.028821278678600612,
+      "raw_switches_per_s": [
+        12.449474535165722,
+        11.277283751010508
+      ],
+      "contact_slip_mean_m_s": [
+        0.012587443925440311,
+        0.01401950791478157
+      ]
+    },
+    {
+      "replay": "000139.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 0,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 2
+      },
+      "clean_motion_end": false,
+      "body_error_m": 0.028865557494174347,
+      "raw_switches_per_s": [
+        12.206952303961195,
+        12.00485044462409
+      ],
+      "contact_slip_mean_m_s": [
+        0.012054309248924255,
+        0.01585547812283039
+      ]
+    },
+    {
+      "replay": "000211.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.020790910973900362,
+      "raw_switches_per_s": [
+        8.703071672354948,
+        9.47098976109215
+      ],
+      "contact_slip_mean_m_s": [
+        0.021495195105671883,
+        0.024408932775259018
+      ]
+    },
+    {
+      "replay": "000211.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.020464615180515785,
+      "raw_switches_per_s": [
+        8.617747440273037,
+        8.87372013651877
+      ],
+      "contact_slip_mean_m_s": [
+        0.02039491757750511,
+        0.020061535760760307
+      ]
+    },
+    {
+      "replay": "000211.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.020560946346844456,
+      "raw_switches_per_s": [
+        7.849829351535836,
+        10.06825938566553
+      ],
+      "contact_slip_mean_m_s": [
+        0.019613143056631088,
+        0.023663947358727455
+      ]
+    },
+    {
+      "replay": "000346.seed123",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.013957490476256683,
+      "raw_switches_per_s": [
+        4.5587375803623615,
+        20.455873758036237
+      ],
+      "contact_slip_mean_m_s": [
+        0.010013869032263756,
+        0.008697830140590668
+      ]
+    },
+    {
+      "replay": "000346.seed2026",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.013517339329206087,
+      "raw_switches_per_s": [
+        14.377556984219755,
+        19.34541203974284
+      ],
+      "contact_slip_mean_m_s": [
+        0.006501085124909878,
+        0.00731047336012125
+      ]
+    },
+    {
+      "replay": "000346.seed42",
+      "termination_counts": {
+        "time_out": 0,
+        "motion_end": 1,
+        "anchor_pos": 0,
+        "anchor_ori": 0,
+        "ee_body_pos": 0
+      },
+      "clean_motion_end": true,
+      "body_error_m": 0.014285102536093434,
+      "raw_switches_per_s": [
+        16.072472238457042,
+        24.605493863237875
+      ],
+      "contact_slip_mean_m_s": [
+        0.006898787803947926,
+        0.011004016734659672
+      ]
+    }
+  ]
+}

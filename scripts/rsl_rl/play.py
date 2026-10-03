@@ -59,6 +59,7 @@ parser.add_argument("--disable_observation_noise", action="store_true", help="Di
 parser.add_argument("--seed", type=int, default=None, help="Seed the evaluation environment.")
 parser.add_argument("--evaluation_steps", type=int, default=None, help="Bound headless evaluation without recording video.")
 parser.add_argument("--telemetry_output", type=str, default=None, help="Save control/physics-rate mimic diagnostics (one environment).")
+parser.add_argument("--evaluation_batch", type=str, help="JSON jobs; one simulator startup per seed, no video.")
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
@@ -68,6 +69,8 @@ if args_cli.evaluation_steps is not None and args_cli.evaluation_steps <= 0:
     parser.error("--evaluation_steps must be positive")
 if args_cli.telemetry_output and not (args_cli.evaluation_steps or args_cli.video):
     parser.error("telemetry requires --evaluation_steps or --video")
+if args_cli.evaluation_batch and (args_cli.video or args_cli.seed is None):
+    parser.error("batch requires an explicit seed and does not support video")
 # always enable cameras to record video
 if args_cli.video:
     args_cli.enable_cameras = True
@@ -128,7 +131,7 @@ def main():
         env_cfg.viewer.origin_type = "world"
         env_cfg.viewer.asset_name = args_cli.viewer_follow_asset
         env_cfg.viewer.env_index = 0
-    if args_cli.evaluation_motion_id is not None:
+    if args_cli.evaluation_motion_id is not None or args_cli.evaluation_batch:
         env_cfg.commands.motion.adaptive_max_probability = None
         env_cfg.commands.motion.adaptive_uniform_ratio = 1.0
     agent_cfg: RslRlOnPolicyRunnerCfg = cli_args.parse_rsl_rl_cfg(args_cli.task, args_cli)
@@ -221,6 +224,12 @@ def main():
         # export policy to onnx/jit
         export_policy_as_jit(policy_nn, normalizer=normalizer, path=export_model_dir, filename="policy.pt")
         export_policy_as_onnx(policy_nn, normalizer=normalizer, path=export_model_dir, filename="policy.onnx")
+
+    if args_cli.evaluation_batch:
+        from batch_mimic_evaluation import run
+        run(env, policy, policy_nn, args_cli, resume_path, env_cfg)
+        env.close()
+        return
 
     dt = env.unwrapped.step_dt
 
