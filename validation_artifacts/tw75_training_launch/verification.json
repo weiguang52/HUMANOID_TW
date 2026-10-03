@@ -1,0 +1,13 @@
+{
+  "train_clips": 4209,
+  "validation_clips": 294,
+  "test_clips": 858,
+  "train_frames": 4981348,
+  "source_family_train_heldout_overlap": 0,
+  "sampling_prior_by_category": {
+    "walking": 0.5,
+    "standing_upper": 0.5
+  },
+  "startup_smoke": "32 envs, one PPO iteration from model_15596.pt completed",
+  "unit_tests_passed": 83
+}
