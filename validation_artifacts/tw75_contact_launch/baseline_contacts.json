@@ -1,0 +1,794 @@
+[
+  {
+    "model_seed": 42,
+    "motion": "000039",
+    "eval_seed": 42,
+    "seconds": 36.800000000000004,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.146739130434781,
+        "hysteresis_switches_per_s": 7.146739130434781,
+        "contact_fraction": 0.5260869565217391,
+        "contact_slip_mean_m_s": 0.021241147071123123,
+        "contact_slip_p95_m_s": 0.053306265361607034
+      },
+      {
+        "raw_switches_per_s": 7.2554347826086945,
+        "hysteresis_switches_per_s": 7.2554347826086945,
+        "contact_fraction": 0.48519021739130436,
+        "contact_slip_mean_m_s": 0.023102739825844765,
+        "contact_slip_p95_m_s": 0.06705773621797562
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000039",
+    "eval_seed": 123,
+    "seconds": 36.38,
+    "feet": [
+      {
+        "raw_switches_per_s": 6.652006597031336,
+        "hysteresis_switches_per_s": 6.597031335898845,
+        "contact_fraction": 0.5377954920285871,
+        "contact_slip_mean_m_s": 0.021869225427508354,
+        "contact_slip_p95_m_s": 0.06127859130501745
+      },
+      {
+        "raw_switches_per_s": 6.597031335898845,
+        "hysteresis_switches_per_s": 6.5420560747663545,
+        "contact_fraction": 0.4708631115997801,
+        "contact_slip_mean_m_s": 0.02728409133851528,
+        "contact_slip_p95_m_s": 0.09537344239652157
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000039",
+    "eval_seed": 2026,
+    "seconds": 36.38,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.146783947223748,
+        "hysteresis_switches_per_s": 7.036833424958768,
+        "contact_fraction": 0.5420560747663551,
+        "contact_slip_mean_m_s": 0.020264843478798866,
+        "contact_slip_p95_m_s": 0.053008832596242415
+      },
+      {
+        "raw_switches_per_s": 7.036833424958768,
+        "hysteresis_switches_per_s": 6.981858163826278,
+        "contact_fraction": 0.4729246838922485,
+        "contact_slip_mean_m_s": 0.021299229934811592,
+        "contact_slip_p95_m_s": 0.05477717146277428
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000139",
+    "eval_seed": 42,
+    "seconds": 24.740000000000002,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.922392886014551,
+        "hysteresis_switches_per_s": 7.922392886014551,
+        "contact_fraction": 0.47049312853678255,
+        "contact_slip_mean_m_s": 0.01662309095263481,
+        "contact_slip_p95_m_s": 0.04298038221895697
+      },
+      {
+        "raw_switches_per_s": 7.922392886014551,
+        "hysteresis_switches_per_s": 7.760711398544866,
+        "contact_fraction": 0.5493128536782539,
+        "contact_slip_mean_m_s": 0.016702650114893913,
+        "contact_slip_p95_m_s": 0.05326571315526962
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000139",
+    "eval_seed": 123,
+    "seconds": 24.740000000000002,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.316087308003233,
+        "hysteresis_switches_per_s": 7.316087308003233,
+        "contact_fraction": 0.501818916734034,
+        "contact_slip_mean_m_s": 0.015965905040502548,
+        "contact_slip_p95_m_s": 0.045396464318037046
+      },
+      {
+        "raw_switches_per_s": 7.396928051738075,
+        "hysteresis_switches_per_s": 7.396928051738075,
+        "contact_fraction": 0.5080840743734842,
+        "contact_slip_mean_m_s": 0.017032314091920853,
+        "contact_slip_p95_m_s": 0.05544693190604443
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000139",
+    "eval_seed": 2026,
+    "seconds": 24.740000000000002,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.922392886014551,
+        "hysteresis_switches_per_s": 7.922392886014551,
+        "contact_fraction": 0.49797898140662894,
+        "contact_slip_mean_m_s": 0.016619574278593063,
+        "contact_slip_p95_m_s": 0.040881251357495776
+      },
+      {
+        "raw_switches_per_s": 7.922392886014551,
+        "hysteresis_switches_per_s": 7.841552142279708,
+        "contact_fraction": 0.5194017784963622,
+        "contact_slip_mean_m_s": 0.016177374869585037,
+        "contact_slip_p95_m_s": 0.04438677970319985
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000211",
+    "eval_seed": 42,
+    "seconds": 23.44,
+    "feet": [
+      {
+        "raw_switches_per_s": 8.959044368600683,
+        "hysteresis_switches_per_s": 8.87372013651877,
+        "contact_fraction": 0.5262372013651877,
+        "contact_slip_mean_m_s": 0.01860678568482399,
+        "contact_slip_p95_m_s": 0.05421925112605094
+      },
+      {
+        "raw_switches_per_s": 9.385665529010238,
+        "hysteresis_switches_per_s": 8.87372013651877,
+        "contact_fraction": 0.5174914675767918,
+        "contact_slip_mean_m_s": 0.02627371996641159,
+        "contact_slip_p95_m_s": 0.0779157504439354
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000211",
+    "eval_seed": 123,
+    "seconds": 23.44,
+    "feet": [
+      {
+        "raw_switches_per_s": 9.556313993174061,
+        "hysteresis_switches_per_s": 9.044368600682594,
+        "contact_fraction": 0.5356228668941979,
+        "contact_slip_mean_m_s": 0.02574392966926098,
+        "contact_slip_p95_m_s": 0.07676326856017113
+      },
+      {
+        "raw_switches_per_s": 9.300341296928327,
+        "hysteresis_switches_per_s": 8.532423208191126,
+        "contact_fraction": 0.5189846416382252,
+        "contact_slip_mean_m_s": 0.025515595450997353,
+        "contact_slip_p95_m_s": 0.09673285931348806
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000211",
+    "eval_seed": 2026,
+    "seconds": 23.44,
+    "feet": [
+      {
+        "raw_switches_per_s": 8.532423208191126,
+        "hysteresis_switches_per_s": 8.447098976109215,
+        "contact_fraction": 0.5420221843003413,
+        "contact_slip_mean_m_s": 0.018032820895314217,
+        "contact_slip_p95_m_s": 0.04903702810406685
+      },
+      {
+        "raw_switches_per_s": 8.532423208191126,
+        "hysteresis_switches_per_s": 8.361774744027302,
+        "contact_fraction": 0.4959470989761092,
+        "contact_slip_mean_m_s": 0.01912785694003105,
+        "contact_slip_p95_m_s": 0.05164536908268919
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000016",
+    "eval_seed": 42,
+    "seconds": 19.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 12.630480167014614,
+        "hysteresis_switches_per_s": 12.31732776617954,
+        "contact_fraction": 0.5493215031315241,
+        "contact_slip_mean_m_s": 0.008123621344566345,
+        "contact_slip_p95_m_s": 0.022673531994223582
+      },
+      {
+        "raw_switches_per_s": 13.204592901878915,
+        "hysteresis_switches_per_s": 12.89144050104384,
+        "contact_fraction": 0.5347077244258872,
+        "contact_slip_mean_m_s": 0.009458607994019985,
+        "contact_slip_p95_m_s": 0.023291879892349234
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000016",
+    "eval_seed": 123,
+    "seconds": 19.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 14.091858037578287,
+        "hysteresis_switches_per_s": 12.839248434237996,
+        "contact_fraction": 0.6195198329853863,
+        "contact_slip_mean_m_s": 0.008309842087328434,
+        "contact_slip_p95_m_s": 0.03049366222694516
+      },
+      {
+        "raw_switches_per_s": 14.926931106471816,
+        "hysteresis_switches_per_s": 14.30062630480167,
+        "contact_fraction": 0.5555845511482255,
+        "contact_slip_mean_m_s": 0.009123519994318485,
+        "contact_slip_p95_m_s": 0.02298498712480067
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000016",
+    "eval_seed": 2026,
+    "seconds": 19.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 13.100208768267223,
+        "hysteresis_switches_per_s": 11.534446764091857,
+        "contact_fraction": 0.5957724425887265,
+        "contact_slip_mean_m_s": 0.007699140347540379,
+        "contact_slip_p95_m_s": 0.020184123516082782
+      },
+      {
+        "raw_switches_per_s": 14.039665970772443,
+        "hysteresis_switches_per_s": 12.78705636743215,
+        "contact_fraction": 0.5600208768267223,
+        "contact_slip_mean_m_s": 0.008755495771765709,
+        "contact_slip_p95_m_s": 0.015331176575273275
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000124",
+    "eval_seed": 42,
+    "seconds": 20.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 11.458333333333334,
+        "hysteresis_switches_per_s": 7.787698412698413,
+        "contact_fraction": 0.7361111111111112,
+        "contact_slip_mean_m_s": 0.007835399359464645,
+        "contact_slip_p95_m_s": 0.021992839593440297
+      },
+      {
+        "raw_switches_per_s": 15.376984126984127,
+        "hysteresis_switches_per_s": 10.615079365079366,
+        "contact_fraction": 0.7294146825396826,
+        "contact_slip_mean_m_s": 0.009657829999923706,
+        "contact_slip_p95_m_s": 0.03297213464975357
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000124",
+    "eval_seed": 123,
+    "seconds": 20.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 13.88888888888889,
+        "hysteresis_switches_per_s": 9.821428571428571,
+        "contact_fraction": 0.7202380952380952,
+        "contact_slip_mean_m_s": 0.009276074357330799,
+        "contact_slip_p95_m_s": 0.03642442971467972
+      },
+      {
+        "raw_switches_per_s": 16.567460317460316,
+        "hysteresis_switches_per_s": 12.003968253968253,
+        "contact_fraction": 0.6872519841269841,
+        "contact_slip_mean_m_s": 0.008500914089381695,
+        "contact_slip_p95_m_s": 0.02369589265435934
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000124",
+    "eval_seed": 2026,
+    "seconds": 20.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 14.037698412698413,
+        "hysteresis_switches_per_s": 9.771825396825397,
+        "contact_fraction": 0.6971726190476191,
+        "contact_slip_mean_m_s": 0.006723477970808744,
+        "contact_slip_p95_m_s": 0.020054792053997517
+      },
+      {
+        "raw_switches_per_s": 16.121031746031747,
+        "hysteresis_switches_per_s": 12.748015873015873,
+        "contact_fraction": 0.6788194444444444,
+        "contact_slip_mean_m_s": 0.008064979687333107,
+        "contact_slip_p95_m_s": 0.016954304650425894
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000346",
+    "eval_seed": 42,
+    "seconds": 34.22,
+    "feet": [
+      {
+        "raw_switches_per_s": 10.257159555815313,
+        "hysteresis_switches_per_s": 5.8737580362361195,
+        "contact_fraction": 0.8571011104617183,
+        "contact_slip_mean_m_s": 0.0060158283449709415,
+        "contact_slip_p95_m_s": 0.016080697067081928
+      },
+      {
+        "raw_switches_per_s": 15.809468147282292,
+        "hysteresis_switches_per_s": 10.257159555815313,
+        "contact_fraction": 0.7508766803039159,
+        "contact_slip_mean_m_s": 0.009620576165616512,
+        "contact_slip_p95_m_s": 0.026687560230493533
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000346",
+    "eval_seed": 123,
+    "seconds": 34.22,
+    "feet": [
+      {
+        "raw_switches_per_s": 10.286382232612509,
+        "hysteresis_switches_per_s": 6.136762127410871,
+        "contact_fraction": 0.8866160140268848,
+        "contact_slip_mean_m_s": 0.007476648315787315,
+        "contact_slip_p95_m_s": 0.02606774000450966
+      },
+      {
+        "raw_switches_per_s": 23.495032144944478,
+        "hysteresis_switches_per_s": 18.527177089421393,
+        "contact_fraction": 0.6925774400935125,
+        "contact_slip_mean_m_s": 0.009118114598095417,
+        "contact_slip_p95_m_s": 0.029793915245682007
+      }
+    ]
+  },
+  {
+    "model_seed": 42,
+    "motion": "000346",
+    "eval_seed": 2026,
+    "seconds": 34.22,
+    "feet": [
+      {
+        "raw_switches_per_s": 12.215078901227352,
+        "hysteresis_switches_per_s": 7.8901227352425485,
+        "contact_fraction": 0.8357685563997662,
+        "contact_slip_mean_m_s": 0.0060857548378407955,
+        "contact_slip_p95_m_s": 0.017934096604585652
+      },
+      {
+        "raw_switches_per_s": 19.34541203974284,
+        "hysteresis_switches_per_s": 13.676212741087085,
+        "contact_fraction": 0.7128872004675628,
+        "contact_slip_mean_m_s": 0.00784245878458023,
+        "contact_slip_p95_m_s": 0.018721604347229
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000039",
+    "eval_seed": 42,
+    "seconds": 36.38,
+    "feet": [
+      {
+        "raw_switches_per_s": 6.184716877405167,
+        "hysteresis_switches_per_s": 6.184716877405167,
+        "contact_fraction": 0.5454920285871357,
+        "contact_slip_mean_m_s": 0.021277880296111107,
+        "contact_slip_p95_m_s": 0.052035875618457766
+      },
+      {
+        "raw_switches_per_s": 6.349642660802639,
+        "hysteresis_switches_per_s": 6.239692138537658,
+        "contact_fraction": 0.46206706981858164,
+        "contact_slip_mean_m_s": 0.025672337040305138,
+        "contact_slip_p95_m_s": 0.07593705952167511
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000039",
+    "eval_seed": 123,
+    "seconds": 36.38,
+    "feet": [
+      {
+        "raw_switches_per_s": 6.322155030236393,
+        "hysteresis_switches_per_s": 6.212204507971412,
+        "contact_fraction": 0.5666575041231446,
+        "contact_slip_mean_m_s": 0.022308779880404472,
+        "contact_slip_p95_m_s": 0.05979765057563779
+      },
+      {
+        "raw_switches_per_s": 6.5420560747663545,
+        "hysteresis_switches_per_s": 6.4321055525013735,
+        "contact_fraction": 0.4413139087410665,
+        "contact_slip_mean_m_s": 0.026740731671452522,
+        "contact_slip_p95_m_s": 0.09939764812588692
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000039",
+    "eval_seed": 2026,
+    "seconds": 36.38,
+    "feet": [
+      {
+        "raw_switches_per_s": 6.212204507971412,
+        "hysteresis_switches_per_s": 6.212204507971412,
+        "contact_fraction": 0.5523639362286971,
+        "contact_slip_mean_m_s": 0.02088324725627899,
+        "contact_slip_p95_m_s": 0.05145487971603869
+      },
+      {
+        "raw_switches_per_s": 6.267179769103903,
+        "hysteresis_switches_per_s": 6.267179769103903,
+        "contact_fraction": 0.45560747663551404,
+        "contact_slip_mean_m_s": 0.021512793377041817,
+        "contact_slip_p95_m_s": 0.05659958906471729
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000139",
+    "eval_seed": 42,
+    "seconds": 24.740000000000002,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.275666936135812,
+        "hysteresis_switches_per_s": 7.275666936135812,
+        "contact_fraction": 0.511519805982215,
+        "contact_slip_mean_m_s": 0.017349475994706154,
+        "contact_slip_p95_m_s": 0.04328951798379421
+      },
+      {
+        "raw_switches_per_s": 7.4373484236054965,
+        "hysteresis_switches_per_s": 7.356507679870655,
+        "contact_fraction": 0.5024252223120452,
+        "contact_slip_mean_m_s": 0.017039829865098,
+        "contact_slip_p95_m_s": 0.06290538236498833
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000139",
+    "eval_seed": 123,
+    "seconds": 24.740000000000002,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.23524656426839,
+        "hysteresis_switches_per_s": 7.23524656426839,
+        "contact_fraction": 0.5341552142279709,
+        "contact_slip_mean_m_s": 0.015636881813406944,
+        "contact_slip_p95_m_s": 0.043563016504049305
+      },
+      {
+        "raw_switches_per_s": 7.720291026677445,
+        "hysteresis_switches_per_s": 7.477768795472918,
+        "contact_fraction": 0.4793856103476152,
+        "contact_slip_mean_m_s": 0.019802626222372055,
+        "contact_slip_p95_m_s": 0.07997841760516161
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000139",
+    "eval_seed": 2026,
+    "seconds": 24.740000000000002,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.275666936135812,
+        "hysteresis_switches_per_s": 7.275666936135812,
+        "contact_fraction": 0.5194017784963622,
+        "contact_slip_mean_m_s": 0.016127770766615868,
+        "contact_slip_p95_m_s": 0.042763933539390446
+      },
+      {
+        "raw_switches_per_s": 7.19482619240097,
+        "hysteresis_switches_per_s": 7.19482619240097,
+        "contact_fraction": 0.49818108326596605,
+        "contact_slip_mean_m_s": 0.014544999226927757,
+        "contact_slip_p95_m_s": 0.04716344773769374
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000211",
+    "eval_seed": 42,
+    "seconds": 23.44,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.892491467576791,
+        "hysteresis_switches_per_s": 7.721843003412969,
+        "contact_fraction": 0.47973549488054607,
+        "contact_slip_mean_m_s": 0.02083485573530197,
+        "contact_slip_p95_m_s": 0.057906449586153
+      },
+      {
+        "raw_switches_per_s": 7.892491467576791,
+        "hysteresis_switches_per_s": 7.551194539249146,
+        "contact_fraction": 0.5620733788395904,
+        "contact_slip_mean_m_s": 0.024375081062316895,
+        "contact_slip_p95_m_s": 0.07559736669063566
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000211",
+    "eval_seed": 123,
+    "seconds": 23.44,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.935153583617747,
+        "hysteresis_switches_per_s": 7.764505119453925,
+        "contact_fraction": 0.4861348122866894,
+        "contact_slip_mean_m_s": 0.020375413820147514,
+        "contact_slip_p95_m_s": 0.052082102373242366
+      },
+      {
+        "raw_switches_per_s": 7.849829351535836,
+        "hysteresis_switches_per_s": 7.593856655290102,
+        "contact_fraction": 0.5369027303754266,
+        "contact_slip_mean_m_s": 0.028551189228892326,
+        "contact_slip_p95_m_s": 0.11026004850864408
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000211",
+    "eval_seed": 2026,
+    "seconds": 23.44,
+    "feet": [
+      {
+        "raw_switches_per_s": 8.319112627986348,
+        "hysteresis_switches_per_s": 8.063139931740613,
+        "contact_fraction": 0.4786689419795222,
+        "contact_slip_mean_m_s": 0.02141459845006466,
+        "contact_slip_p95_m_s": 0.05420348886400461
+      },
+      {
+        "raw_switches_per_s": 7.80716723549488,
+        "hysteresis_switches_per_s": 7.80716723549488,
+        "contact_fraction": 0.5482081911262798,
+        "contact_slip_mean_m_s": 0.021811189129948616,
+        "contact_slip_p95_m_s": 0.06177788991481065
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000016",
+    "eval_seed": 42,
+    "seconds": 19.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 11.221294363256785,
+        "hysteresis_switches_per_s": 10.177453027139874,
+        "contact_fraction": 0.7299060542797495,
+        "contact_slip_mean_m_s": 0.006456422153860331,
+        "contact_slip_p95_m_s": 0.01343548838049172
+      },
+      {
+        "raw_switches_per_s": 19.467640918580376,
+        "hysteresis_switches_per_s": 15.81419624217119,
+        "contact_fraction": 0.6524008350730689,
+        "contact_slip_mean_m_s": 0.010382265783846378,
+        "contact_slip_p95_m_s": 0.041888108290731745
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000016",
+    "eval_seed": 123,
+    "seconds": 19.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 12.21294363256785,
+        "hysteresis_switches_per_s": 10.33402922755741,
+        "contact_fraction": 0.708768267223382,
+        "contact_slip_mean_m_s": 0.006912267301231623,
+        "contact_slip_p95_m_s": 0.01861980464309454
+      },
+      {
+        "raw_switches_per_s": 19.62421711899791,
+        "hysteresis_switches_per_s": 16.701461377870565,
+        "contact_fraction": 0.5908141962421712,
+        "contact_slip_mean_m_s": 0.010104893706738949,
+        "contact_slip_p95_m_s": 0.03826274219900361
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000016",
+    "eval_seed": 2026,
+    "seconds": 19.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 11.74321503131524,
+        "hysteresis_switches_per_s": 10.386221294363256,
+        "contact_fraction": 0.7601774530271399,
+        "contact_slip_mean_m_s": 0.006172905210405588,
+        "contact_slip_p95_m_s": 0.015746265649795532
+      },
+      {
+        "raw_switches_per_s": 20.615866388308977,
+        "hysteresis_switches_per_s": 16.440501043841337,
+        "contact_fraction": 0.6417014613778705,
+        "contact_slip_mean_m_s": 0.007897854782640934,
+        "contact_slip_p95_m_s": 0.023354175128042685
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000124",
+    "eval_seed": 42,
+    "seconds": 20.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 12.003968253968253,
+        "hysteresis_switches_per_s": 9.920634920634921,
+        "contact_fraction": 0.7529761904761905,
+        "contact_slip_mean_m_s": 0.007053406443446875,
+        "contact_slip_p95_m_s": 0.014480089768767357
+      },
+      {
+        "raw_switches_per_s": 22.321428571428573,
+        "hysteresis_switches_per_s": 17.16269841269841,
+        "contact_fraction": 0.6862599206349206,
+        "contact_slip_mean_m_s": 0.01201914343982935,
+        "contact_slip_p95_m_s": 0.049964047968387576
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000124",
+    "eval_seed": 123,
+    "seconds": 20.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 13.88888888888889,
+        "hysteresis_switches_per_s": 11.607142857142858,
+        "contact_fraction": 0.761656746031746,
+        "contact_slip_mean_m_s": 0.009013810195028782,
+        "contact_slip_p95_m_s": 0.02720991801470518
+      },
+      {
+        "raw_switches_per_s": 21.32936507936508,
+        "hysteresis_switches_per_s": 16.567460317460316,
+        "contact_fraction": 0.6716269841269841,
+        "contact_slip_mean_m_s": 0.011358472518622875,
+        "contact_slip_p95_m_s": 0.050376262329518806
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000124",
+    "eval_seed": 2026,
+    "seconds": 20.16,
+    "feet": [
+      {
+        "raw_switches_per_s": 13.740079365079366,
+        "hysteresis_switches_per_s": 11.85515873015873,
+        "contact_fraction": 0.7336309523809523,
+        "contact_slip_mean_m_s": 0.0071991076692938805,
+        "contact_slip_p95_m_s": 0.0160309698432684
+      },
+      {
+        "raw_switches_per_s": 21.180555555555557,
+        "hysteresis_switches_per_s": 18.10515873015873,
+        "contact_fraction": 0.660218253968254,
+        "contact_slip_mean_m_s": 0.009151531383395195,
+        "contact_slip_p95_m_s": 0.02488019308075308
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000346",
+    "eval_seed": 42,
+    "seconds": 34.22,
+    "feet": [
+      {
+        "raw_switches_per_s": 7.656341320864992,
+        "hysteresis_switches_per_s": 6.604324956165985,
+        "contact_fraction": 0.8703974284044419,
+        "contact_slip_mean_m_s": 0.005241165868937969,
+        "contact_slip_p95_m_s": 0.013463958725333213
+      },
+      {
+        "raw_switches_per_s": 21.36177673874927,
+        "hysteresis_switches_per_s": 11.133839859731152,
+        "contact_fraction": 0.7194623027469316,
+        "contact_slip_mean_m_s": 0.010877962224185467,
+        "contact_slip_p95_m_s": 0.03174006100744004
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000346",
+    "eval_seed": 123,
+    "seconds": 34.22,
+    "feet": [
+      {
+        "raw_switches_per_s": 10.987726475745179,
+        "hysteresis_switches_per_s": 7.481005260081823,
+        "contact_fraction": 0.8630917592051431,
+        "contact_slip_mean_m_s": 0.010745744220912457,
+        "contact_slip_p95_m_s": 0.03698436468839643
+      },
+      {
+        "raw_switches_per_s": 18.731735827001753,
+        "hysteresis_switches_per_s": 12.01052016364699,
+        "contact_fraction": 0.7590590298071304,
+        "contact_slip_mean_m_s": 0.011442944407463074,
+        "contact_slip_p95_m_s": 0.042499389499425916
+      }
+    ]
+  },
+  {
+    "model_seed": 123,
+    "motion": "000346",
+    "eval_seed": 2026,
+    "seconds": 34.22,
+    "feet": [
+      {
+        "raw_switches_per_s": 10.8708357685564,
+        "hysteresis_switches_per_s": 8.59146697837522,
+        "contact_fraction": 0.8414669783752192,
+        "contact_slip_mean_m_s": 0.005996624007821083,
+        "contact_slip_p95_m_s": 0.01580182202160358
+      },
+      {
+        "raw_switches_per_s": 23.553477498538868,
+        "hysteresis_switches_per_s": 16.072472238457042,
+        "contact_fraction": 0.6405610753945061,
+        "contact_slip_mean_m_s": 0.009438625536859035,
+        "contact_slip_p95_m_s": 0.02317330176010725
+      }
+    ]
+  }
+]

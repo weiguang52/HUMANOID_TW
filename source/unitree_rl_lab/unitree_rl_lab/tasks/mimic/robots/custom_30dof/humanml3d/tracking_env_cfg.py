@@ -19,6 +19,7 @@ from isaaclab.utils import configclass
 from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
 import unitree_rl_lab.tasks.mimic.mdp as mdp
+from unitree_rl_lab.tasks.mimic.mdp.contact_rewards import motion_contact_phase_cost
 from unitree_rl_lab.tasks.mimic.mdp.smooth_joint_actions import SmoothJointPositionActionCfg
 from unitree_rl_lab.assets.robots.custom_humanoid import (
     CUSTOM_HUMANOID_30DOF_CFG as ROBOT_CFG,
@@ -226,6 +227,14 @@ class EventCfg:
 
 @configclass
 class RewardsCfg:
+    # Zero by default: preserves all previous checkpoints and experiments.
+    contact_phase = RewTerm(
+        func=motion_contact_phase_cost,
+        weight=-float(os.environ.get("P9_CONTACT_PHASE_WEIGHT", "0")),
+        params={"command_name": "motion", "force_on": 1.0,
+                "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODIES,
+                                             preserve_order=True)},
+    )
     # Opt-in experiment; zero preserves the existing reward objective.
     motion_joint_vel_cost = RewTerm(
         func=mdp.motion_joint_velocity_error_l2, weight=0.0,

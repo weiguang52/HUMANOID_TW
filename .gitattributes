@@ -21,3 +21,5 @@ validation_artifacts/**/*.pt -filter -diff -merge -text
 validation_artifacts/**/*.mp4 -filter -diff -merge -text
 
 validation_artifacts/**/*.png -filter -diff -merge -text
+
+validation_artifacts/**/*.jpg -filter -diff -merge -text

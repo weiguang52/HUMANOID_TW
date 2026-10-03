@@ -1,0 +1,25 @@
+{
+  "source_contact_fields": "HumanML3D unnormalized 263D last4: left ankle/toe, right ankle/toe",
+  "aggregation": "left OR, right OR; geometry masks contradictions, never replaces original bits",
+  "known_train_fraction": [
+    0.62171063,
+    0.62140389
+  ],
+  "unit_tests_passed": 9,
+  "isaac_smoke": "2 PPO iterations, 32 environments, original feature labels; exit 0",
+  "experiments": {
+    "control": {
+      "gpu": 0,
+      "contact_weight": 0
+    },
+    "contact": {
+      "gpu": 1,
+      "contact_weight": -0.5
+    }
+  },
+  "same_seed": 42,
+  "iterations_each": 4000,
+  "initial_checkpoint": "tw75_full_s123/model_35595.pt",
+  "evaluation": "6 held-out clips x seeds42/123/2026, serialized after both trainings; 600s per-process timeout",
+  "limitation": "Contact labels are heuristics from source motion, not measured force. Treadmill labels have low coverage."
+}
