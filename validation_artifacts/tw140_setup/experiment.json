@@ -1,0 +1,48 @@
+{
+  "issue": "TW-140",
+  "iterations": 16000,
+  "num_envs": 1024,
+  "seed": 42,
+  "resume": false,
+  "data": "/root/gpufree-data/datasets/practice9/tw123_v1/contact/splits/train.json",
+  "sampling": "standing/walking equal category mass; unchanged clip weights",
+  "variants": {
+    "step": {
+      "gpu": 0,
+      "velocity_std": 0.25
+    },
+    "velocity": {
+      "gpu": 1,
+      "velocity_std": 0.1
+    }
+  },
+  "shared": {
+    "leg_joint_weight": 0.75,
+    "leg_joint_std": 0.35,
+    "foot_position_weight": 1.5,
+    "foot_position_std": 0.04,
+    "known_swing_height_weight": 0.5,
+    "swing_height_std": 0.02,
+    "preview_seconds": [
+      0,
+      0.1,
+      0.3
+    ],
+    "target_velocity_scale": 0.5,
+    "extra_compensation": false
+  },
+  "unchanged": [
+    "contact labels and masks",
+    "reference timeline",
+    "PD",
+    "friction randomization",
+    "upper-body goals"
+  ],
+  "validation": "6 held-out clips x 3 seeds per variant; original NPY and stable side videos; first-episode step diagnostics plus 5s windows",
+  "limitations": [
+    "unknown contact coverage unchanged",
+    "reference remains time-stretched",
+    "one training seed",
+    "foot-link speed includes rolling"
+  ]
+}
