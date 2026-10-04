@@ -1,0 +1,20 @@
+{
+  "unit_tests": 13,
+  "smoke_iterations": 2,
+  "smoke_num_envs": 32,
+  "training_clips": 1299,
+  "policy_observation_dim": 145,
+  "critic_observation_dim": 265,
+  "smoke_status": "completed",
+  "source_log": "/root/gpufree-data/datasets/practice9/tw100_expression_v1/smoke.log",
+  "learning_lines": [
+    "Learning iteration 0/2",
+    "Mean reward: -2.43",
+    "Episode_Reward/contact_phase: -0.0005",
+    "Episode_Reward/standing_drift: -0.0010",
+    "Learning iteration 1/2",
+    "Mean reward: -4.40",
+    "Episode_Reward/contact_phase: -0.0048",
+    "Episode_Reward/standing_drift: -0.0053"
+  ]
+}
