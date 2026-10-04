@@ -64,6 +64,8 @@ parser.add_argument("--evaluation_batch", type=str, help="JSON jobs; one simulat
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
 AppLauncher.add_app_launcher_args(parser)
+parser.add_argument('--evaluation_upper_body_termination', action='store_true',
+    help='TW100 matched criterion: anchor height/orientation + wrist height, no foot trajectory termination.')
 args_cli = parser.parse_args()
 if args_cli.evaluation_steps is not None and args_cli.evaluation_steps <= 0:
     parser.error("--evaluation_steps must be positive")
@@ -119,6 +121,10 @@ def main():
         use_fabric=not args_cli.disable_fabric,
         entry_point_key="play_env_cfg_entry_point",
     )
+    if args_cli.evaluation_upper_body_termination:
+        if 'Custom-Humanoid-30dof' not in args_cli.task:
+            raise ValueError('Upper-body validation criterion only supported for custom humanoid')
+        env_cfg.terminations.ee_body_pos.params['body_names'] = ['left_wrist', 'right_wrist']
     if args_cli.disable_observation_noise:
         env_cfg.observations.policy.enable_corruption = False
     if args_cli.seed is not None:

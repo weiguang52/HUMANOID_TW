@@ -1,0 +1,55 @@
+{
+  "steps": 1000,
+  "termination_counts": {
+    "time_out": 0,
+    "motion_end": 0,
+    "anchor_pos": 0,
+    "anchor_ori": 0,
+    "ee_body_pos": 0
+  },
+  "motion_metrics": {
+    "error_anchor_pos": 0.03244362714700401,
+    "error_anchor_rot": 0.058454850885085764,
+    "error_anchor_lin_vel": 0.02162303157156566,
+    "error_anchor_ang_vel": 0.4950411025136709,
+    "error_body_pos": 0.017429431220982224,
+    "error_body_rot": 0.31571201760321854,
+    "error_joint_pos": 1.1876356329023838,
+    "error_joint_vel": 1.293333450138569,
+    "error_body_lin_vel": 0.03458218295127154,
+    "error_body_ang_vel": 0.5627501666247845
+  },
+  "control_runtime": {
+    "version": 1,
+    "target_velocity_scale": 0.5,
+    "smoothing_tau": 0.0,
+    "limit_target_velocity": true,
+    "actuators": {
+      "leg_major": {
+        "stiffness": 20.0,
+        "damping": 1.0
+      },
+      "feet": {
+        "stiffness": 10.0,
+        "damping": 0.5
+      },
+      "waist": {
+        "stiffness": 10.0,
+        "damping": 0.5
+      },
+      "arms": {
+        "stiffness": 5.0,
+        "damping": 0.25
+      },
+      "neck": {
+        "stiffness": 3.0,
+        "damping": 0.15
+      }
+    }
+  },
+  "camera_follow_tau": 0.5,
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_mimic_humanml3d/2026-10-04_12-29-12_tw100_standing_control_s42/model_5999.pt",
+  "motion_id": 0,
+  "seconds": 20.0,
+  "num_envs": 1
+}

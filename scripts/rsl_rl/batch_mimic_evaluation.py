@@ -43,6 +43,7 @@ def run(env,policy,policy_nn,args,checkpoint,cfg):
         report.update(checkpoint=checkpoint,motion_id=job['motion_id'],seed=args.seed,
             seconds=report['steps']*env.unwrapped.step_dt,num_envs=1,
             control_runtime=snapshot(cfg),batch_protocol='single_startup_per_seed_reset_per_clip_v1',
+            upper_body_termination=bool(args.evaluation_upper_body_termination),
             note='Startup physical randomization shared across clips within seed. Compare only matched batch protocol.')
         output.write_text(json.dumps(report,indent=2)+'\n')
         print('BATCH_COMPLETED',output,flush=True)

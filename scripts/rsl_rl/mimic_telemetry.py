@@ -1,5 +1,6 @@
 """Opt-in, single-environment mimic diagnostics at control and physics rates."""
 import json
+import os
 from pathlib import Path
 import numpy as np
 
@@ -37,6 +38,13 @@ class MimicTelemetry:
         self.sensor = env.scene['contact_forces']
         self.sensor_feet = [self.sensor.body_names.index(n) for n in ['left_foot', 'right_foot']]
         self.physics, self.control, self.terminals = [], [], []
+        self.expression_diagnostics = os.environ.get('P9_EXPRESSION_TELEMETRY') == '1'
+        if self.expression_diagnostics:
+            from unitree_rl_lab.tasks.mimic.mdp.contact_rewards import load_reference
+            self.contact_labels, self.contact_known = load_reference(self.command)
+            self.upper_names = ['left_upper_arm', 'left_force_arm', 'left_wrist',
+                                'right_upper_arm', 'right_force_arm', 'right_wrist']
+            self.upper_indexes = [self.command.cfg.body_names.index(n) for n in self.upper_names]
         self.active = False
         self.original_update = env.scene.update
         def update(dt):
@@ -55,6 +63,22 @@ class MimicTelemetry:
             reference_frame=int(self.command.frame_indices[0].item()),
             reference_q=self.array(self.command.joint_pos[0]),
             reference_qd=self.array(self.command.joint_vel[0])))
+
+        if self.expression_diagnostics:
+            from isaaclab.utils.math import quat_apply_inverse, yaw_quat
+            c = self.command
+            ix = self.upper_indexes
+            ref = quat_apply_inverse(yaw_quat(c.anchor_quat_w[0]).expand(len(ix), -1),
+                c.body_pos_w[0, ix] - c.anchor_pos_w[0])
+            actual = quat_apply_inverse(yaw_quat(c.robot_anchor_quat_w[0]).expand(len(ix), -1),
+                c.robot_body_pos_w[0, ix] - c.robot_anchor_pos_w[0])
+            frame = c.frame_indices[0]
+            self.control[-1].update(
+                upper_reference=self.array(ref), upper_actual=self.array(actual),
+                reference_contact=self.array(self.contact_labels[frame]),
+                reference_known=self.array(self.contact_known[frame]),
+                anchor_reference=self.array(c.anchor_pos_w[0]),
+                anchor_actual=self.array(c.robot_anchor_pos_w[0]))
 
     def sample(self):
         d = self.robot.data
@@ -80,6 +104,8 @@ class MimicTelemetry:
             raise ValueError('No physics telemetry samples recorded')
         arrays = {k: np.asarray([x[k] for x in self.physics]) for k in self.physics[0]}
         arrays.update({k: np.asarray([x[k] for x in self.control]) for k in self.control[0]})
+        if self.expression_diagnostics:
+            arrays['upper_body_names'] = np.asarray(self.upper_names)
         arrays['terminal'] = np.asarray(self.terminals)
         arrays['joint_names'] = np.asarray([self.robot.joint_names[i] for i in self.index])
         arrays['effort_limits'] = self.array(self.robot.data.joint_effort_limits[0, self.index])
