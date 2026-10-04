@@ -1,0 +1,59 @@
+{
+  "steps": 1788,
+  "termination_counts": {
+    "time_out": 0,
+    "motion_end": 1,
+    "anchor_pos": 0,
+    "anchor_ori": 0,
+    "ee_body_pos": 0
+  },
+  "motion_metrics": {
+    "error_anchor_pos": 0.13212308838496806,
+    "error_anchor_rot": 0.07365263496542254,
+    "error_anchor_lin_vel": 0.02955994666442046,
+    "error_anchor_ang_vel": 0.472811593340764,
+    "error_body_pos": 0.012187448889381718,
+    "error_body_rot": 0.22419881238341666,
+    "error_joint_pos": 0.9074873053020812,
+    "error_joint_vel": 1.0922734909743004,
+    "error_body_lin_vel": 0.037761971918070146,
+    "error_body_ang_vel": 0.46898190333805895
+  },
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_balanced_humanml3d/2026-10-04_16-27-46_tw108_mixed_balanced_formal_s42/model_11999.pt",
+  "motion_id": 2,
+  "seed": 123,
+  "seconds": 35.76,
+  "num_envs": 1,
+  "control_runtime": {
+    "version": 2,
+    "limit_target_position": true,
+    "target_velocity_scale": 0.5,
+    "smoothing_tau": 0.0,
+    "limit_target_velocity": true,
+    "actuators": {
+      "leg_major": {
+        "stiffness": 20.0,
+        "damping": 1.0
+      },
+      "feet": {
+        "stiffness": 10.0,
+        "damping": 0.5
+      },
+      "waist": {
+        "stiffness": 10.0,
+        "damping": 0.5
+      },
+      "arms": {
+        "stiffness": 5.0,
+        "damping": 0.25
+      },
+      "neck": {
+        "stiffness": 3.0,
+        "damping": 0.15
+      }
+    }
+  },
+  "batch_protocol": "single_startup_per_seed_reset_per_clip_v1",
+  "upper_body_termination": true,
+  "note": "Startup physical randomization shared across clips within seed. Compare only matched batch protocol."
+}
