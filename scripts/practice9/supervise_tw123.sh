@@ -18,12 +18,14 @@ python scripts/practice9/finalize_tw123_data.py > "$S/finalize.log" 2>&1
 while [[ ! -f "$S/source_pushed" ]]; do sleep 15; done
 test "$(cat "$S/source_pushed")" = "$(git rev-parse HEAD)"
 echo smoke_training > "$S/pipeline.status"
-bash scripts/practice9/train_tw123_mixed.sh 0 bounded 3 smoke > "$S/smoke_bounded.log" 2>&1 &
-P0=$!
-bash scripts/practice9/train_tw123_mixed.sh 1 balanced 3 smoke > "$S/smoke_balanced.log" 2>&1 &
-P1=$!
-wait "$P0"
-wait "$P1"
+PIDS=()
+for SPEC in '0 bounded' '1 balanced'; do
+ read -r GPU VARIANT <<< "$SPEC"
+ if [[ "$(cat "$S/smoke_$VARIANT/status" 2>/dev/null || true)" == trained ]]; then continue; fi
+ bash scripts/practice9/train_tw123_mixed.sh "$GPU" "$VARIANT" 3 smoke > "$S/smoke_$VARIANT.log" 2>&1 &
+ PIDS+=("$!")
+done
+for PID in "${PIDS[@]}"; do wait "$PID"; done
 python scripts/practice9/audit_tw123_start.py > "$S/start_audit.json"
 echo training > "$S/pipeline.status"
 tmux new-session -d -s tw123_mixed_bounded "cd $PWD && bash scripts/practice9/train_tw123_mixed.sh 0 bounded 12000 > $S/bounded_supervisor.log 2>&1"

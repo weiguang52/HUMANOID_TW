@@ -1,0 +1,12 @@
+{
+  "bounded": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_bounded_humanml3d/2026-10-04_21-32-51_tw123_mixed_bounded_smoke_s42/model_2.pt",
+    "finite": true,
+    "target_position_limited": true
+  },
+  "balanced": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_balanced_humanml3d/2026-10-04_21-32-51_tw123_mixed_balanced_smoke_s42/model_2.pt",
+    "finite": true,
+    "target_position_limited": true
+  }
+}

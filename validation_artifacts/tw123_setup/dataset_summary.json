@@ -1,0 +1,26 @@
+{
+  "train": {
+    "counts": {
+      "walking": 2783,
+      "standing_upper": 1353
+    },
+    "frames": 3181007,
+    "note": "50/50 category PRIOR and equal clip PRIOR. To preserve exact category mass use uniform_ratio=1, or implement within-category failure sampling. Global failure mixing can change class mass. Counts and coverage need review before training."
+  },
+  "val": {
+    "counts": {
+      "walking": 194,
+      "standing_upper": 89
+    },
+    "frames": 239784,
+    "note": "50/50 category PRIOR and equal clip PRIOR. To preserve exact category mass use uniform_ratio=1, or implement within-category failure sampling. Global failure mixing can change class mass. Counts and coverage need review before training."
+  },
+  "test": {
+    "counts": {
+      "walking": 566,
+      "standing_upper": 263
+    },
+    "frames": 661721,
+    "note": "50/50 category PRIOR and equal clip PRIOR. To preserve exact category mass use uniform_ratio=1, or implement within-category failure sampling. Global failure mixing can change class mass. Counts and coverage need review before training."
+  }
+}
