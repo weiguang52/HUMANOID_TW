@@ -10,7 +10,7 @@ state=Path('/root/gpufree-data/datasets/practice9/tw108_mixed_v1')
 root=state/'validation';src=root/variant
 manifest=json.loads((root/'manifest.json').read_text())
 categories={r['id']:r['category'] for r in manifest['motions']}
-paths=sorted(src.glob('*.seed*.json'))
+paths=sorted(p for p in src.glob('*.seed*.json') if not p.name.endswith('.summary.json'))
 assert len(paths)==18,(variant,len(paths))
 rows=[]
 for p in paths:
