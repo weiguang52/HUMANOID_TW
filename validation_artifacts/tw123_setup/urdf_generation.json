@@ -1,0 +1,212 @@
+{
+  "schema_version": 2,
+  "joint_coordinate_contract": "tw123_yaw_waist_v3",
+  "joint_limit_overrides": {
+    "left_knee_pitch_joint": [
+      -1.5707963267948966,
+      1.5707963267948966
+    ],
+    "right_knee_pitch_joint": [
+      -1.5707963267948966,
+      1.5707963267948966
+    ],
+    "left_shoulder_pitch_joint": [
+      -1.5707963267948966,
+      1.5707963267948966
+    ],
+    "right_shoulder_pitch_joint": [
+      -1.5707963267948966,
+      1.5707963267948966
+    ]
+  },
+  "joint_coordinate_changes": {
+    "gearbox_roll": [
+      "waist_roll_joint",
+      1,
+      0.0
+    ],
+    "chest_pitch": [
+      "waist_pitch_joint",
+      -1,
+      0.0
+    ],
+    "left_hip_linkage_pitch": [
+      "left_hip_pitch_joint",
+      -1,
+      0.0
+    ],
+    "left_thigh_roll": [
+      "left_hip_roll_joint",
+      1,
+      0.0
+    ],
+    "left_knee_linkage_yaw": [
+      "left_hip_yaw_joint",
+      1,
+      0.0
+    ],
+    "left_mid_leg_pitch": [
+      "left_knee_pitch_joint",
+      -1,
+      0.0
+    ],
+    "left_calf_yaw": [
+      "left_ankle_yaw_joint",
+      -1,
+      0.0
+    ],
+    "left_ankle_pitch": [
+      "left_ankle_pitch_joint",
+      1,
+      0.0
+    ],
+    "right_hip_linkage_pitch": [
+      "right_hip_pitch_joint",
+      -1,
+      0.0
+    ],
+    "right_thigh_roll": [
+      "right_hip_roll_joint",
+      1,
+      0.0
+    ],
+    "right_knee_linkage_yaw": [
+      "right_hip_yaw_joint",
+      1,
+      0.0
+    ],
+    "right_mid_leg_pitch": [
+      "right_knee_pitch_joint",
+      1,
+      0.0
+    ],
+    "right_calf_yaw": [
+      "right_ankle_yaw_joint",
+      1,
+      0.0
+    ],
+    "right_ankle_pitch": [
+      "right_ankle_pitch_joint",
+      1,
+      0.0
+    ],
+    "left_shoulder_linkage_pitch": [
+      "left_shoulder_pitch_joint",
+      -1,
+      0.0
+    ],
+    "left_upper_arm_roll": [
+      "left_shoulder_roll_joint",
+      1,
+      -1.5707963267948966
+    ],
+    "left_elbow_linkage_pitch": [
+      "left_shoulder_yaw_joint",
+      1,
+      0.0
+    ],
+    "left_force_arm_yaw": [
+      "left_elbow_pitch_joint",
+      1,
+      0.0
+    ],
+    "right_shoulder_linkage_pitch": [
+      "right_shoulder_pitch_joint",
+      -1,
+      0.0
+    ],
+    "right_upper_arm_roll": [
+      "right_shoulder_roll_joint",
+      1,
+      1.5707963267948966
+    ],
+    "right_elbow_linkage_pitch": [
+      "right_shoulder_yaw_joint",
+      1,
+      0.0
+    ],
+    "right_force_arm_yaw": [
+      "right_elbow_pitch_joint",
+      1,
+      0.0
+    ]
+  },
+  "initial_joint_positions": {
+    "left_hip_pitch_joint": 0.0,
+    "left_hip_roll_joint": 0.0,
+    "left_hip_yaw_joint": 0.0,
+    "left_knee_pitch_joint": 0.0,
+    "left_ankle_yaw_joint": 0.0,
+    "left_ankle_pitch_joint": 0.0,
+    "left_foot_roll": 0.0,
+    "right_hip_pitch_joint": 0.0,
+    "right_hip_roll_joint": 0.0,
+    "right_hip_yaw_joint": 0.0,
+    "right_knee_pitch_joint": 0.0,
+    "right_ankle_yaw_joint": 0.0,
+    "right_ankle_pitch_joint": 0.0,
+    "right_foot_roll": 0.0,
+    "left_shoulder_pitch_joint": 0.0,
+    "left_shoulder_roll_joint": -1.5707963267948966,
+    "left_shoulder_yaw_joint": 0.0,
+    "left_elbow_pitch_joint": 0.0,
+    "left_wrist_pitch": 0.0,
+    "right_shoulder_pitch_joint": 0.0,
+    "right_shoulder_roll_joint": 1.5707963267948966,
+    "right_shoulder_yaw_joint": 0.0,
+    "right_elbow_pitch_joint": 0.0,
+    "right_wrist_pitch": 0.0,
+    "waist_yaw": 0.0,
+    "waist_roll_joint": 0.0,
+    "waist_pitch_joint": 0.0,
+    "neck": 0.0,
+    "neck_linkage_roll": 0.0,
+    "head_pitch": 0.0
+  },
+  "source": "/root/gpufree-data/projects/urdf0711/urdf/urdf0711.urdf",
+  "source_sha256": "7ad14b568ae66e3730539f4fb794676866e691f7c966a56ad3f038677bc8fce5",
+  "mesh_root": "/root/gpufree-data/projects/urdf0711/meshes",
+  "output": "/root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf",
+  "active_joint_count": 30,
+  "active_joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_pitch_joint",
+    "left_ankle_yaw_joint",
+    "left_ankle_pitch_joint",
+    "left_foot_roll",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_pitch_joint",
+    "right_ankle_yaw_joint",
+    "right_ankle_pitch_joint",
+    "right_foot_roll",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_pitch_joint",
+    "right_wrist_pitch",
+    "waist_yaw",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "neck",
+    "neck_linkage_roll",
+    "head_pitch"
+  ],
+  "fixed_hand_joints": [
+    "left_hand_roll",
+    "right_hand_roll"
+  ],
+  "removed_invalid_foot_end_payloads": [
+    "left_foot_end",
+    "right_foot_end"
+  ],
+  "limits_are_bootstrap_only": true
+}

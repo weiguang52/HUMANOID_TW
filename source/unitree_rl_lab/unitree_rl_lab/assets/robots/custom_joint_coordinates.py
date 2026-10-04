@@ -5,12 +5,14 @@ at that same physical pose, not additional physical rotations.
 """
 import math
 
-CONTRACT_VERSION = 'tw44_table_v2'
+CONTRACT_VERSION = 'tw123_yaw_waist_v3'
 LIMIT_OVERRIDES = {name: (-math.pi / 2, math.pi / 2) for name in (
     'left_knee_pitch_joint', 'right_knee_pitch_joint',
     'left_shoulder_pitch_joint', 'right_shoulder_pitch_joint')}
 
 COORDINATES = {
+    'gearbox_roll': ('waist_roll_joint', 1, 0.0),
+    'chest_pitch': ('waist_pitch_joint', -1, 0.0),
     'left_hip_linkage_pitch': ('left_hip_pitch_joint', -1, 0.0),
     'left_thigh_roll': ('left_hip_roll_joint', 1, 0.0),
     'left_knee_linkage_yaw': ('left_hip_yaw_joint', 1, 0.0),
@@ -46,6 +48,9 @@ Current-version aligned clips and other robot families pass through unchanged.
 """
     if names is None or requested_names is None:
         return names, positions, velocities
+    if ('waist_pitch_joint' in requested_names and contract is not None
+            and contract != CONTRACT_VERSION):
+        raise ValueError('Stale retarget coordinates; regenerate with ' + CONTRACT_VERSION)
     legacy = [name for name in COORDINATES if name in names and rename(name) in requested_names]
     if not legacy:
         if all(new in names for new, _, _ in COORDINATES.values()) and contract != CONTRACT_VERSION:

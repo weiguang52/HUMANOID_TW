@@ -1,0 +1,997 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="urdf0711_training_30dof">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-6.25582551953106E-06 -2.79939365974231E-06 -0.001391403065746" rpy="0 0 0" />
+      <mass value="0.0799078359825546" />
+      <inertia ixx="4.48132423524957E-06" ixy="-4.51427087439667E-11" ixz="-4.31687435643241E-08" iyy="5.14998687875219E-06" iyz="-1.587894342485E-09" izz="4.8858816020543E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hip_linkage">
+    <inertial>
+      <origin xyz="0.00162065783129909 0.00843871260841759 3.46944695195361E-18" rpy="0 0 0" />
+      <mass value="0.00414150695234183" />
+      <inertia ixx="1.14537034335562E-07" ixy="-3.66668909545336E-08" ixz="-1.1026395559406E-23" iyy="9.38597794780742E-08" iyz="1.10009104595064E-23" izz="1.56281782763102E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_hip_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_hip_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_hip_pitch_joint" type="revolute">
+    <origin xyz="-0.000800708548486906 0.0129003490058409 -0.0250461250462462" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="left_hip_linkage" />
+    <axis xyz="-0 1 -0" />
+    <limit lower="-1.5700000000000001" upper="1.5700000000000001" effort="100" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_thigh">
+    <inertial>
+      <origin xyz="-0.000243585589829922 -0.0054773508375438 -0.0399062900723398" rpy="0 0 0" />
+      <mass value="0.0423908770455622" />
+      <inertia ixx="4.63213088916025E-06" ixy="-1.73876205974684E-08" ixz="-7.81535238588422E-08" iyy="4.18060914874404E-06" iyz="-6.60794953616287E-07" izz="1.42786505295514E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_thigh.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_thigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_hip_roll_joint" type="revolute">
+    <origin xyz="0.000399999999999998 0.0156 0" rpy="0 0 0" />
+    <parent link="left_hip_linkage" />
+    <child link="left_thigh" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.79000000000000004" upper="0.79000000000000004" effort="100" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_knee_linkage">
+    <inertial>
+      <origin xyz="8.35621310644671E-11 0.000302223703095517 -0.00135896578848345" rpy="0 0 0" />
+      <mass value="0.0109387332112454" />
+      <inertia ixx="3.64486055336558E-07" ixy="4.37711418847844E-14" ixz="-1.47249321077707E-15" iyy="3.23293853459171E-07" iyz="5.49319292394718E-08" izz="3.99286628475643E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_knee_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_knee_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_hip_yaw_joint" type="revolute">
+    <origin xyz="-0.000100349005840905 -0.00950040840666744 -0.0851134825607255" rpy="0 0 0" />
+    <parent link="left_thigh" />
+    <child link="left_knee_linkage" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-1.05" upper="1.05" effort="80" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_mid_leg">
+    <inertial>
+      <origin xyz="-0.000160619142658538 0.000554854255081241 -0.0264962857330621" rpy="0 0 0" />
+      <mass value="0.0351288855694943" />
+      <inertia ixx="1.58067053549265E-06" ixy="-6.78744022168369E-09" ixz="4.16946809569046E-08" iyy="1.71832537575296E-06" iyz="-2.35359020365635E-08" izz="9.01800645730185E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_mid_leg.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_mid_leg.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_knee_pitch_joint" type="revolute">
+    <origin xyz="0 0 -0.0162" rpy="0 0 0" />
+    <parent link="left_knee_linkage" />
+    <child link="left_mid_leg" />
+    <axis xyz="-0 -1 -0" />
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="80" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_calf">
+    <inertial>
+      <origin xyz="-9.05844655879455E-05 -7.23589403344091E-05 -0.0217976600596376" rpy="0 0 0" />
+      <mass value="0.0290658438470571" />
+      <inertia ixx="1.93177563293425E-06" ixy="-4.74112918824537E-09" ixz="-1.16827417540029E-08" iyy="2.09303573139741E-06" iyz="4.74283282412182E-08" izz="8.15783732208128E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_calf.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_calf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_ankle_yaw_joint" type="revolute">
+    <origin xyz="-9.20668331106581E-05 0.0007998390444744 -0.0588131713669349" rpy="0 0 0" />
+    <parent link="left_mid_leg" />
+    <child link="left_calf" />
+    <axis xyz="-0 -0 -1" />
+    <limit lower="-0.87" upper="0.87" effort="60" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_ankle">
+    <inertial>
+      <origin xyz="-0.00296120980734099 0.000334963592693929 -0.010205673223233" rpy="0 0 0" />
+      <mass value="0.00631731429677689" />
+      <inertia ixx="3.04647256118312E-07" ixy="-2.52733127129021E-08" ixz="-6.05209345718502E-08" iyy="2.86822057407049E-07" iyz="-7.23402183396917E-08" izz="2.05394345958345E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_ankle.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_ankle.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_ankle_pitch_joint" type="revolute">
+    <origin xyz="-9.20667353885101E-05 -9.49738716793241E-05 -0.0463161731626444" rpy="0 0 0" />
+    <parent link="left_calf" />
+    <child link="left_ankle" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.79000000000000004" upper="0.79000000000000004" effort="60" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_foot">
+    <inertial>
+      <origin xyz="0.016153520650742 -9.95985773039436E-05 -0.000849945393902263" rpy="0 0 0" />
+      <mass value="0.0262298087164477" />
+      <inertia ixx="8.45633127580822E-07" ixy="1.00187506571747E-08" ixz="-1.6880062847282E-07" iyy="2.31396120066181E-06" iyz="-7.02567004043486E-10" izz="2.13093333395521E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_foot.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0196999994 0.000375000294 -0.000228563324" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0490000001 0.0228500003 0.0209428743" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_foot_roll" type="revolute">
+    <origin xyz="-0.0045 -0.000204666542371789 -0.0204999999999999" rpy="0 0 0" />
+    <parent link="left_ankle" />
+    <child link="left_foot" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.35" upper="0.35" effort="60" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_foot_end">
+    </link>
+  <joint name="left_foot_end" type="fixed">
+    <origin xyz="0.0442 0 0" rpy="0 0 0" />
+    <parent link="left_foot" />
+    <child link="left_foot_end" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="right_hip_linkage">
+    <inertial>
+      <origin xyz="0.00162065783129908 -0.0084387126084176 -3.46944695195361E-18" rpy="0 0 0" />
+      <mass value="0.00414150695234183" />
+      <inertia ixx="1.14537034335562E-07" ixy="3.66668909545336E-08" ixz="5.84791705382397E-23" iyy="9.38597794780743E-08" iyz="-4.38692050381814E-23" izz="1.56281782763102E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_hip_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_hip_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_hip_pitch_joint" type="revolute">
+    <origin xyz="0 -0.0129003490058409 -0.0250134825607255" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="right_hip_linkage" />
+    <axis xyz="-0 -1 -0" />
+    <limit lower="-1.5700000000000001" upper="1.5700000000000001" effort="100" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_thigh">
+    <inertial>
+      <origin xyz="-0.000379243580626815 0.00556790945080432 -0.039953490238967" rpy="0 0 0" />
+      <mass value="0.042314658885025" />
+      <inertia ixx="4.58995798628429E-06" ixy="1.47115008033473E-08" ixz="-7.47460721634263E-08" iyy="4.14102423304104E-06" iyz="6.6770524907567E-07" izz="1.42440408725471E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_thigh.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_thigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_hip_roll_joint" type="revolute">
+    <origin xyz="0 -0.0156 0" rpy="0 0 0" />
+    <parent link="right_hip_linkage" />
+    <child link="right_thigh" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.79000000000000004" upper="0.79000000000000004" effort="100" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_knee_linkage">
+    <inertial>
+      <origin xyz="-8.3566003699102E-11 -0.000302223703096936 -0.00135896578829772" rpy="0 0 0" />
+      <mass value="0.0109387332114676" />
+      <inertia ixx="3.64486055322929E-07" ixy="4.3792978658406E-14" ixz="1.47115334899444E-15" iyy="3.23293853600584E-07" iyz="-5.49319292428126E-08" izz="3.9928662856393E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_knee_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_knee_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_hip_yaw_joint" type="revolute">
+    <origin xyz="-0.000209794261541747 0.00959206672396506 -0.085113172875656" rpy="0 0 0" />
+    <parent link="right_thigh" />
+    <child link="right_knee_linkage" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-1.05" upper="1.05" effort="80" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_mid_leg">
+    <inertial>
+      <origin xyz="-1.24954582081654E-05 -0.000557856372600023 -0.0264982170863483" rpy="0 0 0" />
+      <mass value="0.0351055360217541" />
+      <inertia ixx="1.57925447280254E-06" ixy="5.19844197328669E-09" ixz="4.51106157226017E-08" iyy="1.71719592826455E-06" iyz="2.30419714699069E-08" izz="9.00242700716041E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_mid_leg.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_mid_leg.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_knee_pitch_joint" type="revolute">
+    <origin xyz="-9.2475335723718E-05 0 -0.0162003087804307" rpy="0 0 0" />
+    <parent link="right_knee_linkage" />
+    <child link="right_mid_leg" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="80" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_calf">
+    <inertial>
+      <origin xyz="-8.25812414238278E-05 7.22480402294383E-05 -0.021797573672462" rpy="0 0 0" />
+      <mass value="0.029069078200411" />
+      <inertia ixx="1.93177597450633E-06" ixy="5.89346507889914E-09" ixz="-9.42644912087762E-09" iyy="2.09318796109901E-06" iyz="-4.74271501423077E-08" izz="8.15929721165547E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_calf.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_calf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_ankle_yaw_joint" type="revolute">
+    <origin xyz="9.20666639956422E-05 -0.000799828484634196 -0.0588131713669348" rpy="0 0 0" />
+    <parent link="right_mid_leg" />
+    <child link="right_calf" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.87" upper="0.87" effort="60" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_ankle">
+    <inertial>
+      <origin xyz="-0.00296196356571573 -0.00053154799823257 -0.0102055609185296" rpy="0 0 0" />
+      <mass value="0.00630105032303955" />
+      <inertia ixx="3.02563915503304E-07" ixy="2.51021983445714E-08" ixz="-6.00554356181271E-08" iyy="2.84841128469769E-07" iyz="7.17084560387738E-08" izz="2.04959710981233E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_ankle.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_ankle.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_ankle_pitch_joint" type="revolute">
+    <origin xyz="9.20669290550086E-05 0.000299640414050128 -0.0463161737802628" rpy="0 0 0" />
+    <parent link="right_calf" />
+    <child link="right_ankle" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.79000000000000004" upper="0.79000000000000004" effort="60" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_foot">
+    <inertial>
+      <origin xyz="0.0161044001749433 4.81531188295317E-05 -0.000866324709394517" rpy="0 0 0" />
+      <mass value="0.0262900718137924" />
+      <inertia ixx="8.47421053021038E-07" ixy="-7.96437422949891E-09" ixz="-1.68203828605171E-07" iyy="2.31587743176651E-06" iyz="8.96137555353555E-10" izz="2.13150152106189E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_foot.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0194685692 -0.000375000294 -0.000228563324" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0490000006 0.0228500003 0.0209428743" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_foot_roll" type="revolute">
+    <origin xyz="-0.0045 0 -0.0205000000000001" rpy="0 0 0" />
+    <parent link="right_ankle" />
+    <child link="right_foot" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.35" upper="0.35" effort="60" velocity="3" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_foot_end">
+    </link>
+  <joint name="right_foot_end" type="fixed">
+    <origin xyz="0.043968569379244 0 0" rpy="0 0 0" />
+    <parent link="right_foot" />
+    <child link="right_foot_end" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="left_shoulder_linkage">
+    <inertial>
+      <origin xyz="-0.00162065783129908 0.0084387126084176 1.38777878078145E-17" rpy="0 0 0" />
+      <mass value="0.00414150695234183" />
+      <inertia ixx="1.14537034335562E-07" ixy="3.66668909545337E-08" ixz="7.78181702645767E-24" iyy="9.38597794780744E-08" iyz="-7.44455097022049E-24" izz="1.56281782763102E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_shoulder_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_shoulder_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_shoulder_pitch_joint" type="revolute">
+    <origin xyz="-0.0014 -0.0251003490058406 0.056266965121451" rpy="0 0 3.14159265358979" />
+    <parent link="chest" />
+    <child link="left_shoulder_linkage" />
+    <axis xyz="-0 1 -0" />
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="30" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_upper_arm">
+    <inertial>
+      <origin xyz="-0.00052747107226346 0.0268870310597029 -0.000102940021341036" rpy="0 0 0" />
+      <mass value="0.0345692879746072" />
+      <inertia ixx="1.45960542385778E-06" ixy="-1.31257823526336E-08" ixz="4.69241906058678E-09" iyy="8.74497494295078E-07" iyz="-5.19205978642779E-10" izz="1.3333085613866E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_upper_arm.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_upper_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_shoulder_roll_joint" type="revolute">
+    <origin xyz="0 0.0156003087804307 9.24753357237212E-05" rpy="-1.5707963267948966 -0 0" />
+    <parent link="left_shoulder_linkage" />
+    <child link="left_upper_arm" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-3.1407963267948968" upper="-0.00079632679489649583" effort="30" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_elbow_linkage">
+    <inertial>
+      <origin xyz="3.51524526327751E-09 0.00852502004937629 -0.00564337979052976" rpy="0 0 0" />
+      <mass value="0.00313518888389746" />
+      <inertia ixx="1.17488312430517E-07" ixy="2.00423331152685E-14" ixz="1.14759325274328E-14" iyy="5.82946330787822E-08" iyz="3.04963922529989E-08" izz="9.52693915231886E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_elbow_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_elbow_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_shoulder_yaw_joint" type="revolute">
+    <origin xyz="-0.000799813396226011 0.0538131713669576 -9.20668331126778E-05" rpy="0 0 0" />
+    <parent link="left_upper_arm" />
+    <child link="left_elbow_linkage" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.05" upper="1.05" effort="25" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_force_arm">
+    <inertial>
+      <origin xyz="-0.00998473302519526 -0.000132737329736356 -0.00639480164075865" rpy="0 0 0" />
+      <mass value="0.0157367831205667" />
+      <inertia ixx="2.93632995491444E-07" ixy="1.38372261027468E-08" ixz="-1.48164005147283E-08" iyy="8.73909410358737E-07" iyz="-1.00767106110406E-08" izz="1.00967014931547E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_force_arm.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_force_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_elbow_pitch_joint" type="revolute">
+    <origin xyz="0 0.0176 -0.00689965099415914" rpy="-3.14159265358979 0 -1.5707963267949" />
+    <parent link="left_elbow_linkage" />
+    <child link="left_force_arm" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-2.6200000000000001" upper="0" effort="25" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_wrist">
+    <inertial>
+      <origin xyz="-0.000372519840713078 0.0146686343032318 -3.73548201166307E-05" rpy="0 0 0" />
+      <mass value="0.0207127192796713" />
+      <inertia ixx="5.61865059803571E-07" ixy="3.05258021231495E-08" ixz="2.96576887659212E-10" iyy="6.23577764517102E-07" iyz="4.71910909931546E-10" izz="5.81825857873519E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_wrist.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_wrist_pitch" type="revolute">
+    <origin xyz="-0.0264 0 -0.00600000000000002" rpy="3.14159265358979 0 -1.5707963267949" />
+    <parent link="left_force_arm" />
+    <child link="left_wrist" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.22" upper="1.22" effort="20" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="left_hand">
+    <inertial>
+      <origin xyz="0.00393670340033953 0.00703322851442012 -3.06928526247197E-05" rpy="0 0 0" />
+      <mass value="0.00530457266357" />
+      <inertia ixx="1.24590066072677E-07" ixy="-5.47350803212651E-09" ixz="-3.39460231594169E-11" iyy="4.99451344478892E-08" iyz="2.32908771932041E-10" izz="1.20287313663946E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_hand.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/left_hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_hand_roll" type="fixed">
+    <origin xyz="-0.0054 0.0367 0" rpy="0 0 0" />
+    <parent link="left_wrist" />
+    <child link="left_hand" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="right_shoulder_linkage">
+    <inertial>
+      <origin xyz="-0.00162065783129908 -0.0084387126084176 -1.38777878078145E-17" rpy="0 0 0" />
+      <mass value="0.00414150695234182" />
+      <inertia ixx="1.14537034335562E-07" ixy="-3.66668909545336E-08" ixz="-6.99503361638006E-23" iyy="9.38597794780742E-08" iyz="-8.26622837770302E-23" izz="1.56281782763102E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_shoulder_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_shoulder_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_shoulder_pitch_joint" type="revolute">
+    <origin xyz="-0.00140081698245012 0.0251003490058412 0.056266965121451" rpy="0 0 3.14159265358979" />
+    <parent link="chest" />
+    <child link="right_shoulder_linkage" />
+    <axis xyz="-0 -1 -0" />
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="30" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_upper_arm">
+    <inertial>
+      <origin xyz="-0.000524567217189559 -0.0268988212746559 4.33872508196764E-05" rpy="0 0 0" />
+      <mass value="0.0345511617732144" />
+      <inertia ixx="1.4533101351706E-06" ixy="1.1613946471323E-08" ixz="3.58900880774164E-09" iyy="8.73915738593873E-07" iyz="4.0984589572467E-09" izz="1.3268196983643E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_upper_arm.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_upper_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_shoulder_roll_joint" type="revolute">
+    <origin xyz="0 -0.0156003087804307 -9.24753357237351E-05" rpy="1.5707963267948966 -0 0" />
+    <parent link="right_shoulder_linkage" />
+    <child link="right_upper_arm" />
+    <axis xyz="-1 0 0" />
+    <limit lower="0.00079632679489649583" upper="3.1407963267948968" effort="30" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_elbow_linkage">
+    <inertial>
+      <origin xyz="-3.51524529233413E-09 -0.0085250200493763 -0.00564337979052977" rpy="0 0 0" />
+      <mass value="0.00313518888389747" />
+      <inertia ixx="1.17488312430517E-07" ixy="2.00423330532267E-14" ixz="-1.14759325753488E-14" iyy="5.82946330787822E-08" iyz="-3.04963922529989E-08" izz="9.52693915231885E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_elbow_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_elbow_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_shoulder_yaw_joint" type="revolute">
+    <origin xyz="-0.000799813396225951 -0.0538131713669576 9.20666639974699E-05" rpy="0 0 0" />
+    <parent link="right_upper_arm" />
+    <child link="right_elbow_linkage" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.05" upper="1.05" effort="25" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_force_arm">
+    <inertial>
+      <origin xyz="-0.00135900367289561 -0.00898575881908256 0.00699522398694342" rpy="0 0 0" />
+      <mass value="0.0157365841709073" />
+      <inertia ixx="8.73529841621876E-07" ixy="-1.45961520211758E-08" ixz="-9.2156962334972E-09" iyy="2.93422173761761E-07" iyz="1.47487028196317E-08" izz="1.00908621824653E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_force_arm.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_force_arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_elbow_pitch_joint" type="revolute">
+    <origin xyz="0.00149999999999996 -0.0186 -0.00750000000000002" rpy="0 0 0" />
+    <parent link="right_elbow_linkage" />
+    <child link="right_force_arm" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="2.6200000000000001" effort="25" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_wrist">
+    <inertial>
+      <origin xyz="-0.000372519840575608 -0.0146686342974069 3.73548213770669E-05" rpy="0 0 0" />
+      <mass value="0.0207127192896152" />
+      <inertia ixx="5.61865060101549E-07" ixy="-3.05258021249717E-08" ixz="-2.96576892600232E-10" iyy="6.23577764718142E-07" iyz="4.71910830663882E-10" izz="5.81825857951548E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_wrist.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_wrist_pitch" type="revolute">
+    <origin xyz="-0.0015 -0.0254 0.00660034900584087" rpy="0 0 0" />
+    <parent link="right_force_arm" />
+    <child link="right_wrist" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.22" upper="1.22" effort="20" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="right_hand">
+    <inertial>
+      <origin xyz="0.00393670340030007 -0.0070332285143507 3.06928526212086E-05" rpy="0 0 0" />
+      <mass value="0.00530457266360597" />
+      <inertia ixx="1.24590066072692E-07" ixy="5.47350803257131E-09" ixz="3.39460230943065E-11" iyy="4.99451344482387E-08" iyz="2.3290877190091E-10" izz="1.20287313664633E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_hand.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/right_hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_hand_roll" type="fixed">
+    <origin xyz="-0.0054 -0.0366999999999999 0" rpy="0 0 0" />
+    <parent link="right_wrist" />
+    <child link="right_hand" />
+    <axis xyz="1 0 0" />
+  </joint>
+  <link name="waist">
+    <inertial>
+      <origin xyz="0.000780061045320096 -1.5087678779816E-10 -0.00208232579094525" rpy="0 0 0" />
+      <mass value="0.0197428970782702" />
+      <inertia ixx="1.85276485538419E-06" ixy="2.80302867220273E-13" ixz="-7.30040309238123E-09" iyy="1.81158051902501E-06" iyz="-6.32665873100697E-14" izz="2.10653118801609E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/waist.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/waist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="waist_yaw" type="revolute">
+    <origin xyz="0 0 0.029" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="waist" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.57" upper="1.57" effort="50" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="gearbox">
+    <inertial>
+      <origin xyz="0.00134759962513474 2.92532937309692E-18 1.38777878078145E-17" rpy="0 0 0" />
+      <mass value="0.000862157247850822" />
+      <inertia ixx="5.4192626302679E-09" ixy="2.99594071262693E-24" ixz="-2.91391889132295E-25" iyy="1.21889860864162E-08" iyz="-8.60075368178281E-25" izz="1.5262690136706E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/gearbox.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/gearbox.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="gearbox_roll" type="revolute">
+    <origin xyz="-0.000800806369247891 0 0.01345" rpy="0 0 3.14159265358979" />
+    <parent link="waist" />
+    <child link="gearbox" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.52" upper="0.52" effort="50" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="chest">
+    <inertial>
+      <origin xyz="-0.000571061527709939 -5.11066021265952E-05 0.0316215992248141" rpy="0 0 0" />
+      <mass value="0.128305541622678" />
+      <inertia ixx="1.66636051501694E-05" ixy="-1.23849096620307E-09" ixz="-4.83279949620691E-07" iyy="1.3284959620372E-05" iyz="6.6517969278344E-09" izz="1.14409827995024E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/chest.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/chest.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="chest_pitch" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="gearbox" />
+    <child link="chest" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.79" upper="0.79" effort="50" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="neck">
+    <inertial>
+      <origin xyz="-0.000764920222177646 8.08967262161547E-06 0.0115028073837663" rpy="0 0 0" />
+      <mass value="0.0174129410747815" />
+      <inertia ixx="1.30458029184721E-06" ixy="1.85992210379625E-10" ixz="-1.6674551390947E-08" iyy="1.13141808250671E-06" iyz="1.05053450920263E-09" izz="3.77046468111358E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/neck.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/neck.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="neck" type="revolute">
+    <origin xyz="-0.00199959142421734 0 0.0545034825607255" rpy="0 0 3.14159265358979" />
+    <parent link="chest" />
+    <child link="neck" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.05" upper="1.05" effort="20" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="neck_linkage">
+    <inertial>
+      <origin xyz="-0.00168958102777081 -0.00216766006245085 0.00969042751968478" rpy="0 0 0" />
+      <mass value="0.00394425941487334" />
+      <inertia ixx="2.46397850353869E-07" ixy="-3.21632004639581E-08" ixz="7.82132582123401E-08" iyy="2.42126436374589E-07" iyz="5.77565628161224E-08" izz="1.74024904823469E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/neck_linkage.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/neck_linkage.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="neck_linkage_roll" type="revolute">
+    <origin xyz="0.00460034900584089 0 0.0223" rpy="0 0 0" />
+    <parent link="neck" />
+    <child link="neck_linkage" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.52" upper="0.52" effort="15" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+  <link name="head">
+    <inertial>
+      <origin xyz="0.00316837284061092 0.00436151262200687 0.0334202164623033" rpy="0 0 0" />
+      <mass value="0.11501177867034" />
+      <inertia ixx="3.62491657806048E-05" ixy="1.33837714010752E-08" ixz="1.72743538377718E-06" iyy="2.81372109366398E-05" iyz="2.78776373197223E-07" izz="3.62639848136766E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/head.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="/root/gpufree-data/projects/urdf0711/meshes/head.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="head_pitch" type="revolute">
+    <origin xyz="-0.00597000000000004 -0.00509992427500552 0.0210000183902112" rpy="0 0 0" />
+    <parent link="neck_linkage" />
+    <child link="head" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.79" upper="0.79" effort="15" velocity="2" />
+    <dynamics damping="0" friction="0" />
+  </joint>
+</robot>

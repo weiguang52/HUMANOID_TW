@@ -2,11 +2,12 @@
 import argparse,json
 from pathlib import Path
 from tw75_sampling import balance
+from joint_coordinates import CONTRACT_VERSION
 p=argparse.ArgumentParser();p.add_argument('--selection',type=Path,required=True);p.add_argument('--fk-manifests',type=Path,nargs='+',required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
 lookup={r['id']:r for r in json.load(open(a.selection))};accepted={};template=None
 for f in a.fk_manifests:
  d=json.load(open(f))
- if d.get('joint_coordinate_contract')!='tw44_table_v2' or float(d['target_fps'])!=50:raise ValueError('Wrong coordinate/FPS contract')
+ if d.get('joint_coordinate_contract')!=CONTRACT_VERSION or float(d['target_fps'])!=50:raise ValueError('Wrong coordinate/FPS contract')
  if template is not None and d['joint_names']!=template['joint_names']:raise ValueError('Joint order mismatch')
  template=d
  for m in d['motions']:

@@ -26,7 +26,7 @@ NATIVE_JOINT_NAMES = [
 DEFAULT_ROOT = Path(os.environ.get('GPUFREE_DATA_ROOT', '/root/gpufree-data')) / 'projects/tw_retargeting/IKRetargeting_V3'
 
 
-def resample_native(values, output_fps):
+def resample_native(values, output_fps, same_direction=False):
     values = np.asarray(values, dtype=np.float64)
     if values.ndim != 2 or values.shape[1] != 28 or len(values) < 2 or not np.isfinite(values).all():
         raise ValueError(f'Native output must be finite [T>=2,28], got {values.shape}')
@@ -38,6 +38,9 @@ def resample_native(values, output_fps):
         raise ValueError('At least three output frames required for derivatives')
     source_t = np.arange(len(values)) / NATIVE_FPS
     target_t = np.arange(count) / output_fps
+    if same_direction:
+        from leg_yaw_interpolation import interpolate
+        return interpolate(values,source_t,target_t,[(2,4),(8,10)])
     return np.column_stack([np.interp(target_t, source_t, values[:, joint]) for joint in range(28)])
 
 
@@ -102,4 +105,4 @@ class NativeRetargeter:
             residual = float(timing.get('max_kkt', float('inf')))
             if not np.isfinite(residual) or residual > 1e-6:
                 raise ValueError(f'Native QP residual exceeds contract: {residual}')
-            return resample_native(values, output_fps), timing
+            return resample_native(values, output_fps, '--same-direction-leg-yaw' in self.flags), timing

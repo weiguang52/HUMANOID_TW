@@ -43,8 +43,8 @@ def fk(root, q):
 
 class CoordinateTests(unittest.TestCase):
     def test_explicit_table_initial_readings(self):
-        self.assertEqual(len(COORDINATES), 20)
-        self.assertEqual(sum(sign == -1 for _, sign, _ in COORDINATES.values()), 6)
+        self.assertEqual(len(COORDINATES), 22)
+        self.assertEqual(sum(sign == -1 for _, sign, _ in COORDINATES.values()), 7)
         shifts = {new: offset for new, _, offset in COORDINATES.values() if offset}
         self.assertEqual(shifts, {'left_shoulder_roll_joint': -math.pi / 2,
                                   'right_shoulder_roll_joint': math.pi / 2})
@@ -72,6 +72,14 @@ class CoordinateTests(unittest.TestCase):
             convert_motion(names, values, values, names)
         _, result, _ = convert_motion(names, values, values, names, CONTRACT_VERSION)
         np.testing.assert_array_equal(result, values)
+
+    def test_old_aligned_waist_contract_is_rejected(self):
+        names = ['left_hip_yaw_joint', 'gearbox_roll', 'chest_pitch']
+        values = np.zeros((2, 3))
+        with self.assertRaisesRegex(ValueError, 'Stale'):
+            convert_motion(names, values, values,
+                ['left_hip_yaw_joint', 'waist_roll_joint', 'waist_pitch_joint'],
+                'tw44_table_v2')
 
     def test_explicit_limit_overrides(self):
         self.assertEqual(set(LIMIT_OVERRIDES), {'left_knee_pitch_joint', 'right_knee_pitch_joint',

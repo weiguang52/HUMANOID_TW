@@ -40,8 +40,8 @@ CUSTOM_HUMANOID_30DOF_JOINT_NAMES = [
     "right_ankle_pitch_joint",
     "right_foot_roll",
     "waist_yaw",
-    "gearbox_roll",
-    "chest_pitch",
+    "waist_roll_joint",
+    "waist_pitch_joint",
     "left_shoulder_pitch_joint",
     "left_shoulder_roll_joint",
     "left_shoulder_yaw_joint",
@@ -92,7 +92,7 @@ FOOT_JOINTS = [
     "right_ankle_pitch_joint",
     "right_foot_roll",
 ]
-WAIST_JOINTS = ["waist_yaw", "gearbox_roll", "chest_pitch"]
+WAIST_JOINTS = ["waist_yaw", "waist_roll_joint", "waist_pitch_joint"]
 ARM_JOINTS = [
     "left_shoulder_pitch_joint",
     "left_shoulder_roll_joint",
@@ -112,7 +112,7 @@ CUSTOM_HUMANOID_30DOF_CFG = UnitreeArticulationCfg(
     spawn=UnitreeUrdfFileCfg(
         asset_path=CUSTOM_HUMANOID_URDF,
         usd_dir=CUSTOM_HUMANOID_USD_DIR,
-        usd_file_name="urdf0711_training_30dof_tw44_table_v2.usd",
+        usd_file_name="urdf0711_training_30dof_tw123_yaw_waist_v3.usd",
         fix_base=False,
         merge_fixed_joints=True,
         collider_type="convex_hull",

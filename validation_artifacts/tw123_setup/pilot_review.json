@@ -1,0 +1,17 @@
+{
+  "pilot_ids": [
+    "000016",
+    "000124",
+    "000346",
+    "000039",
+    "000139",
+    "000211"
+  ],
+  "fk_pass": 6,
+  "clipped_fraction": 0,
+  "same_direction_yaw_verified_after_resampling": true,
+  "fk_100_pose_max_matrix_error": 0.0,
+  "visual_review": "Six mid-phase source/robot preview frames inspected; poses correspond at coarse level. Kinematic comparison is not a dynamic contact or full temporal fidelity acceptance.",
+  "advisory": "Four clips retain near-limit warnings under prior user-reviewed advisory policy; no velocity/FK gate relaxed.",
+  "upstream_commit": "655a103e7a0b66dd6afcc31e123bd24e1f478d84"
+}

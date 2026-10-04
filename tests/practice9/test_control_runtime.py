@@ -30,3 +30,16 @@ def test_position_limit_roundtrip_and_legacy(tmp_path):
     del payload['limit_target_position'];path.write_text(json.dumps(payload))
     restore(replay,tmp_path/'model.pt')
     assert replay.actions.JointPositionAction.limit_target_position is False
+
+
+def test_old_waist_checkpoint_cannot_load_in_new_robot(tmp_path):
+    import pytest
+    original=cfg();save(original,tmp_path)
+    replay=cfg();replay.actions.JointPositionAction.joint_names=['waist_pitch_joint']
+    with pytest.raises(ValueError,match='Legacy checkpoint'):
+        restore(replay,tmp_path/'model.pt')
+    original.actions.JointPositionAction.joint_names=['waist_pitch_joint']
+    save(original,tmp_path);restore(replay,tmp_path/'model.pt')
+    replay.actions.JointPositionAction.joint_names=['chest_pitch']
+    with pytest.raises(ValueError,match='coordinate names'):
+        restore(replay,tmp_path/'model.pt')

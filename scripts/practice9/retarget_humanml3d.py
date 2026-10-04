@@ -203,6 +203,7 @@ def _resample_time(
     root_pos: np.ndarray,
     root_quat: np.ndarray,
     stretch: float,
+    same_direction: bool = False,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     if stretch <= 1.0 + 1.0e-6:
         return joint_pos, root_pos, root_quat
@@ -212,6 +213,11 @@ def _resample_time(
     joint_out = np.column_stack(
         [np.interp(output_u, source_u, joint_pos[:, index]) for index in range(joint_pos.shape[1])]
     )
+    if same_direction:
+        from leg_yaw_interpolation import interpolate
+        pairs=[(CUSTOM_JOINT_NAMES.index(f'{side}_hip_yaw_joint'),
+                CUSTOM_JOINT_NAMES.index(f'{side}_ankle_yaw_joint')) for side in ('left','right')]
+        joint_out=interpolate(joint_pos,source_u,output_u,pairs)
     root_out = np.column_stack(
         [np.interp(output_u, source_u, root_pos[:, index]) for index in range(3)]
     )
@@ -229,6 +235,7 @@ def audit_and_time_scale(
     fps: float,
     auto_time_scale: bool,
     max_time_scale: float,
+    same_direction: bool = False,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, dict[str, object]]:
     initial = _dynamic_metrics(joint_pos, root_pos, root_quat, velocity_limits, fps)
     requested = max(
@@ -241,7 +248,7 @@ def audit_and_time_scale(
         float(initial["root_yaw_rate_max"]) / 3.0,
     )
     applied = min(requested, max_time_scale) if auto_time_scale else 1.0
-    joint_pos, root_pos, root_quat = _resample_time(joint_pos, root_pos, root_quat, applied)
+    joint_pos, root_pos, root_quat = _resample_time(joint_pos, root_pos, root_quat, applied, same_direction)
 
     margin = np.maximum(1.0e-3, 0.01 * (upper - lower))
     near_limit = ((joint_pos - lower[None, :]) <= margin[None, :]) | (
@@ -359,6 +366,7 @@ def main() -> None:
                 args.output_fps,
                 args.auto_time_scale,
                 args.max_time_scale,
+                same_direction='--same-direction-leg-yaw' in backend.flags,
             )
             if not quality["quality_pass"] and not args.allow_quality_failures:
                 raise ValueError(f"quality gate failed: {quality['reasons']}")

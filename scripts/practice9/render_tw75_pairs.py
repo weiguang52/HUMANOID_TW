@@ -42,13 +42,13 @@ def camera(points):
     cam=mujoco.MjvCamera();cam.lookat[:]=(low+high)/2
     cam.distance=max(float(np.linalg.norm(high-low))*1.4,.6);cam.azimuth=135;cam.elevation=-12
     return cam
-def run(output,ids):
+def run(output,ids,manifest=None,selection_path=None):
     output.mkdir(parents=True,exist_ok=True);robot,human=models(output)
     rd=mujoco.MjData(robot);hd=mujoco.MjData(human)
     rr=mujoco.Renderer(robot,640,640);hr=mujoco.Renderer(human,640,640)
     option=mujoco.MjvOption();option.geomgroup[3]=0
-    records={x['id']:x for x in json.loads((ROOT/'pilot_training_geometry_aligned/retarget_manifest.json').read_text())['motions']}
-    selection={x['id']:x for x in json.loads((ROOT/'selection.json').read_text())}
+    records={x['id']:x for x in json.loads((manifest or ROOT/'pilot_training_geometry_aligned/retarget_manifest.json').read_text())['motions']}
+    selection={x['id']:x for x in json.loads((selection_path or ROOT/'selection.json').read_text())}
     font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',18)
     small=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',15)
     report=[]
@@ -91,4 +91,4 @@ def run(output,ids):
     rr.close();hr.close()
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--ids',nargs='+',default=['011921','000005','000009','000308','007981']);a=p.parse_args();run(a.output,a.ids)
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--ids',nargs='+',default=['011921','000005','000009','000308','007981']);p.add_argument('--manifest',type=Path);p.add_argument('--selection',type=Path);a=p.parse_args();run(a.output,a.ids,a.manifest,a.selection)

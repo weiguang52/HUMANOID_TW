@@ -6,7 +6,7 @@ from .expression_env_cfg import ExpressionEnvCfg
 
 GROUPS = {
     'feet': (['left_foot_roll', 'right_foot_roll'], .05),
-    'trunk': (['waist_yaw', 'gearbox_roll', 'chest_pitch'], .05),
+    'trunk': (['waist_yaw', 'waist_roll_joint', 'waist_pitch_joint'], .05),
     'arms': ([f'{side}_{joint}' for side in ('left','right') for joint in
         ('shoulder_pitch_joint','shoulder_roll_joint','shoulder_yaw_joint',
          'elbow_pitch_joint','wrist_pitch')], .02),
