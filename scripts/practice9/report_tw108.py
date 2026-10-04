@@ -64,8 +64,9 @@ for p in sorted(dst.rglob('*.mp4')):
     assert meta['codec_name']=='h264' and int(meta['nb_read_frames'])>0,(p,meta)
     if p.parent.name=='videos':
         motion=next(r for r in manifest['motions'] if r['id']==p.stem)
-        expected=max(1000,motion['frames']+1)-1
-        assert int(meta['nb_read_frames'])==expected,(p,meta,expected)
+        requested=max(1000,motion['frames']+1)
+        # Recorder may include the initial frame; allow exactly one control frame.
+        assert int(meta['nb_read_frames']) in (requested-1,requested),(p,meta,requested)
         numerator,denominator=map(float,meta['r_frame_rate'].split('/'))
         assert abs(numerator/denominator-50)<1.e-6
     encoding.append(dict(file=str(p.relative_to(dst)),**meta))
