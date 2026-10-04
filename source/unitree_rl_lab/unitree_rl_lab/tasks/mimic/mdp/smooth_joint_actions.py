@@ -20,16 +20,26 @@ class SmoothJointPositionAction(JointPositionAction):
 
     def process_actions(self, actions):
         super().process_actions(actions)
+        bounded = getattr(self.cfg, 'limit_target_position', False)
+        if bounded:
+            limits = self._asset.data.soft_joint_pos_limits[:, self._joint_ids]
+            lower, upper = limits[..., 0], limits[..., 1]
+            self._processed_actions = self._processed_actions.clamp(min=lower, max=upper)
         if self.cfg.smoothing_tau == 0 and not self.cfg.limit_target_velocity:
             return
         missing = ~self._target_initialized
         self._target_memory[missing] = self._asset.data.joint_pos[missing][:, self._joint_ids]
+        if bounded:
+            # Also bound state after reset; never accumulate inaccessible targets.
+            self._target_memory.clamp_(min=lower, max=upper)
         self._target_initialized[:] = True
         change = self._alpha * (self._processed_actions - self._target_memory)
         if self.cfg.limit_target_velocity:
             maximum = self._asset.data.joint_vel_limits[:, self._joint_ids] * self._target_dt * self.cfg.target_velocity_scale
             change = torch.clamp(change, min=-maximum, max=maximum)
         self._target_memory.add_(change)
+        if bounded:
+            self._target_memory.clamp_(min=lower, max=upper)
         self._processed_actions = self._target_memory.clone()
 
     def reset(self, env_ids=None):
@@ -44,3 +54,4 @@ class SmoothJointPositionActionCfg(JointPositionActionCfg):
     smoothing_tau: float = 0.0
     limit_target_velocity: bool = False
     target_velocity_scale: float = 1.0
+    limit_target_position: bool = False

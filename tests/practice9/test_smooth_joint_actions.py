@@ -41,3 +41,33 @@ def test_disabled_target_shaping_preserves_original_action():
     term=cls(NS(smoothing_tau=0.,limit_target_velocity=False,target_velocity_scale=1.),NS(step_dt=.02,asset=NS(data=data)))
     actions=torch.tensor([[100.,-100.],[.1,.2]]);term.process_actions(actions)
     torch.testing.assert_close(term._processed_actions,actions)
+
+
+def test_position_bound_memory_and_reversal():
+    import torch
+    cls=load_action()
+    data=NS(joint_pos=torch.zeros((2,2)),joint_vel_limits=torch.ones((2,2)),
+        soft_joint_pos_limits=torch.tensor([[[-.1,.1],[-.2,.2]]]*2))
+    cfg=NS(smoothing_tau=0.,limit_target_velocity=True,target_velocity_scale=1.,
+        limit_target_position=True)
+    term=cls(cfg,NS(step_dt=.02,asset=NS(data=data)))
+    for _ in range(100):term.process_actions(torch.full((2,2),100.))
+    torch.testing.assert_close(term._processed_actions,torch.tensor([[.2,.1]]*2))
+    term.process_actions(torch.full((2,2),-100.))
+    torch.testing.assert_close(term._processed_actions,torch.tensor([[.18,.08]]*2))
+    term.reset([0]);data.joint_pos[0]=torch.tensor([-.11,-.21])
+    term.process_actions(torch.zeros((2,2)))
+    torch.testing.assert_close(term._processed_actions[0],torch.tensor([-.18,-.08]))
+    torch.testing.assert_close(term._processed_actions[1],torch.tensor([.16,.06]))
+
+
+def test_position_bounds_without_velocity_shaping():
+    import torch
+    cls=load_action()
+    data=NS(joint_pos=torch.zeros((2,2)),
+        soft_joint_pos_limits=torch.tensor([[[-.1,.1],[-.2,.2]]]*2))
+    cfg=NS(smoothing_tau=0.,limit_target_velocity=False,target_velocity_scale=1.,
+        limit_target_position=True)
+    term=cls(cfg,NS(step_dt=.02,asset=NS(data=data)))
+    term.process_actions(torch.tensor([[100.,-100.]]*2))
+    torch.testing.assert_close(term._processed_actions,torch.tensor([[.2,-.1]]*2))

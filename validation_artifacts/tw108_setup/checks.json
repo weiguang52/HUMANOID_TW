@@ -1,0 +1,110 @@
+{
+  "unit_tests": 25,
+  "unit_tests_result": "passed",
+  "bash_syntax": "passed",
+  "python_compile": "passed",
+  "smoke_training": {
+    "bounded": {
+      "iterations": 3,
+      "envs": 64,
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_bounded_humanml3d/2026-10-04_16-18-52_tw108_mixed_bounded_smoke_s42/model_2.pt",
+      "runtime": {
+        "version": 2,
+        "limit_target_position": true,
+        "target_velocity_scale": 0.5,
+        "smoothing_tau": 0.0,
+        "limit_target_velocity": true,
+        "actuators": {
+          "leg_major": {
+            "stiffness": 20.0,
+            "damping": 1.0
+          },
+          "feet": {
+            "stiffness": 10.0,
+            "damping": 0.5
+          },
+          "waist": {
+            "stiffness": 10.0,
+            "damping": 0.5
+          },
+          "arms": {
+            "stiffness": 5.0,
+            "damping": 0.25
+          },
+          "neck": {
+            "stiffness": 3.0,
+            "damping": 0.15
+          }
+        }
+      }
+    },
+    "balanced": {
+      "iterations": 3,
+      "envs": 64,
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_balanced_humanml3d/2026-10-04_16-18-52_tw108_mixed_balanced_smoke_s42/model_2.pt",
+      "runtime": {
+        "version": 2,
+        "limit_target_position": true,
+        "target_velocity_scale": 0.5,
+        "smoothing_tau": 0.0,
+        "limit_target_velocity": true,
+        "actuators": {
+          "leg_major": {
+            "stiffness": 20.0,
+            "damping": 1.0
+          },
+          "feet": {
+            "stiffness": 10.0,
+            "damping": 0.5
+          },
+          "waist": {
+            "stiffness": 10.0,
+            "damping": 0.5
+          },
+          "arms": {
+            "stiffness": 5.0,
+            "damping": 0.25
+          },
+          "neck": {
+            "stiffness": 3.0,
+            "damping": 0.15
+          }
+        }
+      }
+    }
+  },
+  "smoke_replay": {
+    "control_frames": 256,
+    "max_target_limit_violation_rad": 8.731149137020111e-09,
+    "five_second_windows": 8,
+    "runtime": {
+      "version": 2,
+      "limit_target_position": true,
+      "target_velocity_scale": 0.5,
+      "smoothing_tau": 0.0,
+      "limit_target_velocity": true,
+      "actuators": {
+        "leg_major": {
+          "stiffness": 20.0,
+          "damping": 1.0
+        },
+        "feet": {
+          "stiffness": 10.0,
+          "damping": 0.5
+        },
+        "waist": {
+          "stiffness": 10.0,
+          "damping": 0.5
+        },
+        "arms": {
+          "stiffness": 5.0,
+          "damping": 0.25
+        },
+        "neck": {
+          "stiffness": 3.0,
+          "damping": 0.15
+        }
+      }
+    }
+  }
+}

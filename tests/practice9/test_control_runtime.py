@@ -18,3 +18,15 @@ def test_checkpoint_control_contract_and_explicit_override(tmp_path,monkeypatch)
     replay.scene.robot.actuators['leg_major'].damping=2
     restore(replay,tmp_path/'model.pt')
     assert replay.scene.robot.actuators['leg_major'].damping==2
+
+
+def test_position_limit_roundtrip_and_legacy(tmp_path):
+    original=cfg();original.actions.JointPositionAction.limit_target_position=True
+    save(original,tmp_path)
+    replay=cfg();restore(replay,tmp_path/'model.pt')
+    assert replay.actions.JointPositionAction.limit_target_position is True
+    path=tmp_path/'params/control_runtime.json'
+    payload=json.loads(path.read_text());payload['version']=1
+    del payload['limit_target_position'];path.write_text(json.dumps(payload))
+    restore(replay,tmp_path/'model.pt')
+    assert replay.actions.JointPositionAction.limit_target_position is False

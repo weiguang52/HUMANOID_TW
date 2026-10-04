@@ -1,0 +1,66 @@
+{
+  "issue": "TW-108",
+  "parent": "TW-100",
+  "validation": "TW-101",
+  "seed": 42,
+  "iterations": 12000,
+  "environments_per_gpu": 1024,
+  "fresh_training": true,
+  "variants": {
+    "bounded": {
+      "gpu": 0,
+      "position_limit": true
+    },
+    "balanced": {
+      "gpu": 1,
+      "position_limit": true,
+      "extra_cost": "group mean ((target_q-q)/0.25)^2",
+      "weights": {
+        "feet": -0.05,
+        "trunk": -0.05,
+        "arms": -0.02,
+        "legs": -0.02,
+        "neck": -0.01
+      }
+    }
+  },
+  "control_hz": 50,
+  "physics_hz": 200,
+  "velocity_scale": 0.5,
+  "smoothing_tau": 0,
+  "unchanged": [
+    "source contact labels/known masks and motion clock",
+    "URDF",
+    "PD",
+    "TW100 imitation rewards"
+  ],
+  "train_categories": {
+    "walking": 2910,
+    "standing_upper": 1299
+  },
+  "category_probability": 0.5,
+  "evaluation": {
+    "clips": [
+      "000016",
+      "000124",
+      "000346",
+      "000039",
+      "000139",
+      "000211"
+    ],
+    "seeds": [
+      42,
+      123,
+      2026
+    ],
+    "window_seconds": 5,
+    "full_clip_videos": true,
+    "original_npy_video": true
+  },
+  "limitations": [
+    "One training seed",
+    "Six validation clips, not full test set",
+    "Cannot determine real motor requirements from implicit PD torque estimate",
+    "This experiment isolates extra compensation cost after shared target-limit fix; it does not isolate the limit fix from mixed-data changes relative to TW100"
+  ]
+}
