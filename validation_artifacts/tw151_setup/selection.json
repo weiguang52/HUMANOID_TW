@@ -1,0 +1,130 @@
+[
+  {
+    "id": "000832",
+    "split": "val",
+    "source_family": "./pose_data/KIT/11/WalkingStraightForwards03_poses.npy",
+    "captions": [
+      "a person walking forward and stands still.",
+      "a person walks forward and comes to a stop.",
+      "the person is walking forward."
+    ],
+    "root_height_span_m": 0.05708146095275879,
+    "low_foot_p95_p05_m": 0.0219621229916811,
+    "nonplanar_review_flag": false,
+    "straightness": 0.9740322232246399,
+    "source_speed_m_s": 0.4503703939503637,
+    "frames": 531
+  },
+  {
+    "id": "001191",
+    "split": "val",
+    "source_family": "./pose_data/KIT/12/WalkingStraightForwards06_1_poses.npy",
+    "captions": [
+      "he slowly walks forward directly",
+      "a person walks normally forward.",
+      "a person walks forward in a straight line, then stops."
+    ],
+    "root_height_span_m": 0.06457644701004028,
+    "low_foot_p95_p05_m": 0.022957852110266685,
+    "nonplanar_review_flag": false,
+    "straightness": 0.9617726802825928,
+    "source_speed_m_s": 0.5407375473159928,
+    "frames": 544
+  },
+  {
+    "id": "002011",
+    "split": "val",
+    "source_family": "./pose_data/KIT/424/walking_medium07_poses.npy",
+    "captions": [
+      "a man slowly walks forward.",
+      "person is walking straight ahead",
+      "a person walks forward."
+    ],
+    "root_height_span_m": 0.03924548625946045,
+    "low_foot_p95_p05_m": 0.01520950198173523,
+    "nonplanar_review_flag": false,
+    "straightness": 0.980964183807373,
+    "source_speed_m_s": 0.4764937088552829,
+    "frames": 436
+  },
+  {
+    "id": "005309",
+    "split": "val",
+    "source_family": "./pose_data/KIT/9/walking_slow07_poses.npy",
+    "captions": [
+      "a person walking very slowly.",
+      "person is walking forward slowly",
+      "person walks straight forward with a slight sway."
+    ],
+    "root_height_span_m": 0.025612235069274902,
+    "low_foot_p95_p05_m": 0.011468431912362576,
+    "nonplanar_review_flag": false,
+    "straightness": 0.9306600689888,
+    "source_speed_m_s": 0.30243529992945056,
+    "frames": 343
+  },
+  {
+    "id": "006634",
+    "split": "val",
+    "source_family": "./pose_data/KIT/359/walking_slow03_poses.npy",
+    "captions": [
+      "a person slowly walked forward",
+      "someone slowly taking a few steps forward",
+      "the person is walking very slowly."
+    ],
+    "root_height_span_m": 0.04509150981903076,
+    "low_foot_p95_p05_m": 0.02722812369465828,
+    "nonplanar_review_flag": false,
+    "straightness": 0.9462004899978638,
+    "source_speed_m_s": 0.3264576721191406,
+    "frames": 410
+  },
+  {
+    "id": "007481",
+    "split": "val",
+    "source_family": "./pose_data/KIT/314/walking_fast01_poses.npy",
+    "captions": [
+      "a person saunters forward.",
+      "the person is walking very fast forward",
+      "the person quickly walks forward."
+    ],
+    "root_height_span_m": 0.09150516986846924,
+    "low_foot_p95_p05_m": 0.032548872381448726,
+    "nonplanar_review_flag": false,
+    "straightness": 0.9716870188713074,
+    "source_speed_m_s": 0.5376164933555146,
+    "frames": 693
+  },
+  {
+    "id": "009516",
+    "split": "val",
+    "source_family": "./pose_data/KIT/12/WalkingStraightForwards01_1_poses.npy",
+    "captions": [
+      "the person walked four steps forward.",
+      "a person walks forward from one end to the other while slightly leans left.",
+      "a man with his arms to his sides takes four steps forward and stops."
+    ],
+    "root_height_span_m": 0.057214558124542236,
+    "low_foot_p95_p05_m": 0.019182767719030373,
+    "nonplanar_review_flag": false,
+    "straightness": 0.9884359836578369,
+    "source_speed_m_s": 0.7498473758938946,
+    "frames": 454
+  },
+  {
+    "id": "011084",
+    "split": "val",
+    "source_family": "./pose_data/KIT/317/walking_medium02_poses.npy",
+    "captions": [
+      "the person walk forward four steps and stop.",
+      "a person walks forward normally",
+      "starting with the right leg, a person walks forward five steps to end up standing still, feet side by side."
+    ],
+    "root_height_span_m": 0.04566103219985962,
+    "low_foot_p95_p05_m": 0.01982980668544769,
+    "nonplanar_review_flag": false,
+    "straightness": 0.9939081072807312,
+    "source_speed_m_s": 0.7029200807402405,
+    "frames": 356
+  }
+]
