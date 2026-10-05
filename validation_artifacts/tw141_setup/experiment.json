@@ -1,0 +1,68 @@
+{
+  "issue": "TW-141",
+  "base": "TW140 Step; fresh initialization",
+  "iterations": 20000,
+  "num_envs": 1024,
+  "seed": 42,
+  "train_clips": 4136,
+  "scales": {
+    "foot_m": {
+      "old": 0.04,
+      "new": 0.016682068705558776
+    },
+    "swing_height_m": {
+      "old": 0.02,
+      "new": 0.010426292940974236
+    },
+    "anchor_height_m": {
+      "old": 0.08,
+      "new": 0.020852585881948472
+    },
+    "core_m": {
+      "old": 0.15,
+      "new": 0.041705171763896945
+    },
+    "arm_m": {
+      "old": 0.1,
+      "new": 0.019791873544454577
+    },
+    "standing_drift_m": {
+      "old": 0.08,
+      "new": 0.020852585881948472
+    },
+    "linear_velocity_m_s": {
+      "old": 0.25,
+      "new": 0.05213146470487118
+    }
+  },
+  "variants": {
+    "size": {
+      "gpu": 0,
+      "extra_residual": false
+    },
+    "residual": {
+      "gpu": 1,
+      "extra_residual": true,
+      "weight": -0.5
+    }
+  },
+  "scale_policy": "Initial engineering tolerances from audited FK dimensions; not proven optimal or claimed inherited verbatim from G1",
+  "residual": "mean over feet(sqrt(1+sum((position_error/foot_scale)^2))-1)",
+  "unchanged": [
+    "all existing reward weights",
+    "angular scales",
+    "contact labels/masks/timeline",
+    "friction",
+    "PD",
+    "target rate limit",
+    "mixed sampling",
+    "evaluation protocol"
+  ],
+  "validation": "6 holdout motions x 3 seeds; 5s and first-episode step metrics, robot and original NPY videos",
+  "caveats": [
+    "20k vs prior16k prevents a pure scales-only comparison with prior run",
+    "single training seed",
+    "reference timing still stretched",
+    "contact mask coverage unchanged"
+  ]
+}

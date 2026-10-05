@@ -1,0 +1,10 @@
+{
+  "fresh": true,
+  "only_between_group_difference": "foot_residual cost weight -0.5",
+  "matched_fields": [
+    "rewards excluding foot_residual",
+    "observations",
+    "actions",
+    "events"
+  ]
+}
