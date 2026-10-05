@@ -1,0 +1,1897 @@
+{
+  "expected_replays": 48,
+  "completed_replays": 48,
+  "summary": {
+    "size": {
+      "replays": 24,
+      "clean": 24,
+      "mean_knee_amplitude_ratio": 0.28309383337178423,
+      "mean_foot_z_amplitude_ratio": 0.11625174334321038,
+      "mean_horizontal_net_vector_error_m": 0.3648962192237377,
+      "target_rate_cap_fraction": 0.6887536456388799
+    },
+    "residual": {
+      "replays": 24,
+      "clean": 24,
+      "mean_knee_amplitude_ratio": 0.49325947939079917,
+      "mean_foot_z_amplitude_ratio": 0.2692859475175722,
+      "mean_horizontal_net_vector_error_m": 0.27972714602947235,
+      "target_rate_cap_fraction": 0.7335342883400721
+    }
+  },
+  "rows": [
+    {
+      "variant": "size",
+      "id": "000832",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7046313799621928,
+      "reference_over_target_rate_cap_fraction": 0.07721280602636535,
+      "first_episode_seconds": 10.6,
+      "knee_reference_span_deg": [
+        49.58782147386744,
+        53.73401726647616
+      ],
+      "knee_actual_span_deg": [
+        13.259443567703109,
+        13.222825578869179
+      ],
+      "foot_reference_z_span_mm": [
+        42.60679390281435,
+        49.23591194674371
+      ],
+      "foot_actual_z_span_mm": [
+        4.877975070849059,
+        7.623001001775265
+      ],
+      "known_fraction": [
+        0.5458333333333333,
+        0.675
+      ],
+      "known_swing_fraction": [
+        0.04583333333333333,
+        0.029166666666666667
+      ],
+      "known_swing_contact_fraction": 0.7222222222222222,
+      "known_stance_contact_speed_m_s": 0.016018563881516457,
+      "anchor_reference_net_distance_m": 0.7339216470718384,
+      "anchor_actual_net_distance_m": 0.3121234178543091,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4220021069049835
+    },
+    {
+      "variant": "size",
+      "id": "000832",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6625708884688091,
+      "reference_over_target_rate_cap_fraction": 0.07721280602636535,
+      "first_episode_seconds": 10.6,
+      "knee_reference_span_deg": [
+        49.58782147386744,
+        53.73401726647616
+      ],
+      "knee_actual_span_deg": [
+        14.979823184831163,
+        11.269526201726912
+      ],
+      "foot_reference_z_span_mm": [
+        42.60679390281435,
+        49.23591194674371
+      ],
+      "foot_actual_z_span_mm": [
+        2.9139136895537376,
+        5.839284509420391
+      ],
+      "known_fraction": [
+        0.5458333333333333,
+        0.675
+      ],
+      "known_swing_fraction": [
+        0.04583333333333333,
+        0.029166666666666667
+      ],
+      "known_swing_contact_fraction": 0.7638888888888888,
+      "known_stance_contact_speed_m_s": 0.014286604709923267,
+      "anchor_reference_net_distance_m": 0.7339216470718384,
+      "anchor_actual_net_distance_m": 0.29575493931770325,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4488002061843872
+    },
+    {
+      "variant": "size",
+      "id": "000832",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6701323251417769,
+      "reference_over_target_rate_cap_fraction": 0.07721280602636535,
+      "first_episode_seconds": 10.6,
+      "knee_reference_span_deg": [
+        49.58782147386744,
+        53.73401726647616
+      ],
+      "knee_actual_span_deg": [
+        14.79221833087366,
+        12.251423396571317
+      ],
+      "foot_reference_z_span_mm": [
+        42.60679390281435,
+        49.23591194674371
+      ],
+      "foot_actual_z_span_mm": [
+        4.13025110028684,
+        6.500734575092791
+      ],
+      "known_fraction": [
+        0.5458333333333333,
+        0.675
+      ],
+      "known_swing_fraction": [
+        0.04583333333333333,
+        0.029166666666666667
+      ],
+      "known_swing_contact_fraction": 0.75,
+      "known_stance_contact_speed_m_s": 0.017222313210368156,
+      "anchor_reference_net_distance_m": 0.7339216470718384,
+      "anchor_actual_net_distance_m": 0.3380170166492462,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4237561523914337
+    },
+    {
+      "variant": "size",
+      "id": "001191",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6955719557195572,
+      "reference_over_target_rate_cap_fraction": 0.06295955882352941,
+      "first_episode_seconds": 10.86,
+      "knee_reference_span_deg": [
+        49.35013447660031,
+        45.08479446493548
+      ],
+      "knee_actual_span_deg": [
+        14.955031724574003,
+        12.648857846354467
+      ],
+      "foot_reference_z_span_mm": [
+        40.40894955396651,
+        46.77745923399924
+      ],
+      "foot_actual_z_span_mm": [
+        2.9735349118709555,
+        6.615152675658466
+      ],
+      "known_fraction": [
+        0.5618661257606491,
+        0.6511156186612576
+      ],
+      "known_swing_fraction": [
+        0.05070993914807302,
+        0.030425963488843813
+      ],
+      "known_swing_contact_fraction": 0.6,
+      "known_stance_contact_speed_m_s": 0.018337424844503403,
+      "anchor_reference_net_distance_m": 0.8285417556762695,
+      "anchor_actual_net_distance_m": 0.44238051772117615,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.3863074779510498
+    },
+    {
+      "variant": "size",
+      "id": "001191",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7186346863468634,
+      "reference_over_target_rate_cap_fraction": 0.06295955882352941,
+      "first_episode_seconds": 10.86,
+      "knee_reference_span_deg": [
+        49.35013447660031,
+        45.08479446493548
+      ],
+      "knee_actual_span_deg": [
+        14.067200199135874,
+        11.168072279342836
+      ],
+      "foot_reference_z_span_mm": [
+        40.40894955396651,
+        46.77745923399924
+      ],
+      "foot_actual_z_span_mm": [
+        3.130805306136606,
+        5.118026956915857
+      ],
+      "known_fraction": [
+        0.5618661257606491,
+        0.6511156186612576
+      ],
+      "known_swing_fraction": [
+        0.05070993914807302,
+        0.030425963488843813
+      ],
+      "known_swing_contact_fraction": 0.6375,
+      "known_stance_contact_speed_m_s": 0.01472941879183054,
+      "anchor_reference_net_distance_m": 0.8285417556762695,
+      "anchor_actual_net_distance_m": 0.44499146938323975,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.38535988330841064
+    },
+    {
+      "variant": "size",
+      "id": "001191",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7038745387453874,
+      "reference_over_target_rate_cap_fraction": 0.06295955882352941,
+      "first_episode_seconds": 10.86,
+      "knee_reference_span_deg": [
+        49.35013447660031,
+        45.08479446493548
+      ],
+      "knee_actual_span_deg": [
+        14.481385584721957,
+        10.462554335017398
+      ],
+      "foot_reference_z_span_mm": [
+        40.40894955396651,
+        46.77745923399924
+      ],
+      "foot_actual_z_span_mm": [
+        2.7666578069329253,
+        5.511068552732465
+      ],
+      "known_fraction": [
+        0.5618661257606491,
+        0.6511156186612576
+      ],
+      "known_swing_fraction": [
+        0.05070993914807302,
+        0.030425963488843813
+      ],
+      "known_swing_contact_fraction": 0.625,
+      "known_stance_contact_speed_m_s": 0.015190680511295795,
+      "anchor_reference_net_distance_m": 0.8285417556762695,
+      "anchor_actual_net_distance_m": 0.427241712808609,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4063316881656647
+    },
+    {
+      "variant": "size",
+      "id": "002011",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7056451612903226,
+      "reference_over_target_rate_cap_fraction": 0.09231651376146789,
+      "first_episode_seconds": 8.700000000000001,
+      "knee_reference_span_deg": [
+        56.92799704892032,
+        51.00907331914859
+      ],
+      "knee_actual_span_deg": [
+        17.20348418104587,
+        17.397664111271805
+      ],
+      "foot_reference_z_span_mm": [
+        42.48386025428772,
+        41.716401651501656
+      ],
+      "foot_actual_z_span_mm": [
+        3.1014887616038314,
+        8.375321328639984
+      ],
+      "known_fraction": [
+        0.638961038961039,
+        0.4883116883116883
+      ],
+      "known_swing_fraction": [
+        0.04155844155844156,
+        0.01038961038961039
+      ],
+      "known_swing_contact_fraction": 0.65,
+      "known_stance_contact_speed_m_s": 0.01809721067547798,
+      "anchor_reference_net_distance_m": 0.7641007304191589,
+      "anchor_actual_net_distance_m": 0.3353234827518463,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.43014025688171387
+    },
+    {
+      "variant": "size",
+      "id": "002011",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7206221198156681,
+      "reference_over_target_rate_cap_fraction": 0.09231651376146789,
+      "first_episode_seconds": 8.700000000000001,
+      "knee_reference_span_deg": [
+        56.92799704892032,
+        51.00907331914859
+      ],
+      "knee_actual_span_deg": [
+        16.492015135585277,
+        16.04953208775395
+      ],
+      "foot_reference_z_span_mm": [
+        42.48386025428772,
+        41.716401651501656
+      ],
+      "foot_actual_z_span_mm": [
+        3.1157203018665305,
+        6.856461055576801
+      ],
+      "known_fraction": [
+        0.638961038961039,
+        0.4883116883116883
+      ],
+      "known_swing_fraction": [
+        0.04155844155844156,
+        0.01038961038961039
+      ],
+      "known_swing_contact_fraction": 0.625,
+      "known_stance_contact_speed_m_s": 0.014623500406742096,
+      "anchor_reference_net_distance_m": 0.7641007304191589,
+      "anchor_actual_net_distance_m": 0.3495867848396301,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.41451603174209595
+    },
+    {
+      "variant": "size",
+      "id": "002011",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7044930875576036,
+      "reference_over_target_rate_cap_fraction": 0.09231651376146789,
+      "first_episode_seconds": 8.700000000000001,
+      "knee_reference_span_deg": [
+        56.92799704892032,
+        51.00907331914859
+      ],
+      "knee_actual_span_deg": [
+        17.052951731609422,
+        15.86955916444505
+      ],
+      "foot_reference_z_span_mm": [
+        42.48386025428772,
+        41.716401651501656
+      ],
+      "foot_actual_z_span_mm": [
+        3.7447336129844166,
+        6.649897526949642
+      ],
+      "known_fraction": [
+        0.638961038961039,
+        0.4883116883116883
+      ],
+      "known_swing_fraction": [
+        0.04155844155844156,
+        0.01038961038961039
+      ],
+      "known_swing_contact_fraction": 0.575,
+      "known_stance_contact_speed_m_s": 0.01636061817407608,
+      "anchor_reference_net_distance_m": 0.7641007304191589,
+      "anchor_actual_net_distance_m": 0.40214666724205017,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.3625549077987671
+    },
+    {
+      "variant": "size",
+      "id": "005309",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6539589442815249,
+      "reference_over_target_rate_cap_fraction": 0.06778425655976676,
+      "first_episode_seconds": 6.84,
+      "knee_reference_span_deg": [
+        37.79153861825392,
+        36.88302975698454
+      ],
+      "knee_actual_span_deg": [
+        9.667367143299682,
+        10.247422586069032
+      ],
+      "foot_reference_z_span_mm": [
+        33.05936781689524,
+        37.57205810397863
+      ],
+      "foot_actual_z_span_mm": [
+        4.061840381473299,
+        5.187546089291568
+      ],
+      "known_fraction": [
+        0.6095890410958904,
+        0.4897260273972603
+      ],
+      "known_swing_fraction": [
+        0.00684931506849315,
+        0.0
+      ],
+      "known_swing_contact_fraction": 1.0,
+      "known_stance_contact_speed_m_s": 0.01808815449476242,
+      "anchor_reference_net_distance_m": 0.5496721863746643,
+      "anchor_actual_net_distance_m": 0.2198052555322647,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.3307577073574066
+    },
+    {
+      "variant": "size",
+      "id": "005309",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6818181818181818,
+      "reference_over_target_rate_cap_fraction": 0.06778425655976676,
+      "first_episode_seconds": 6.84,
+      "knee_reference_span_deg": [
+        37.79153861825392,
+        36.88302975698454
+      ],
+      "knee_actual_span_deg": [
+        10.237239270939485,
+        9.867133533272543
+      ],
+      "foot_reference_z_span_mm": [
+        33.05936781689524,
+        37.57205810397863
+      ],
+      "foot_actual_z_span_mm": [
+        5.238215764984487,
+        5.661163758486507
+      ],
+      "known_fraction": [
+        0.6095890410958904,
+        0.4897260273972603
+      ],
+      "known_swing_fraction": [
+        0.00684931506849315,
+        0.0
+      ],
+      "known_swing_contact_fraction": 1.0,
+      "known_stance_contact_speed_m_s": 0.013538986444473267,
+      "anchor_reference_net_distance_m": 0.5496721863746643,
+      "anchor_actual_net_distance_m": 0.26167458295822144,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.2940344512462616
+    },
+    {
+      "variant": "size",
+      "id": "005309",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6488269794721407,
+      "reference_over_target_rate_cap_fraction": 0.06778425655976676,
+      "first_episode_seconds": 6.84,
+      "knee_reference_span_deg": [
+        37.79153861825392,
+        36.88302975698454
+      ],
+      "knee_actual_span_deg": [
+        11.147435913974439,
+        10.615297513916929
+      ],
+      "foot_reference_z_span_mm": [
+        33.05936781689524,
+        37.57205810397863
+      ],
+      "foot_actual_z_span_mm": [
+        6.305980216711757,
+        7.4932659976184315
+      ],
+      "known_fraction": [
+        0.6095890410958904,
+        0.4897260273972603
+      ],
+      "known_swing_fraction": [
+        0.00684931506849315,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.625,
+      "known_stance_contact_speed_m_s": 0.01832972653210163,
+      "anchor_reference_net_distance_m": 0.5496721863746643,
+      "anchor_actual_net_distance_m": 0.31486669182777405,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.24696043133735657
+    },
+    {
+      "variant": "size",
+      "id": "006634",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6709558823529411,
+      "reference_over_target_rate_cap_fraction": 0.075,
+      "first_episode_seconds": 8.18,
+      "knee_reference_span_deg": [
+        49.59928876384234,
+        40.38830268927236
+      ],
+      "knee_actual_span_deg": [
+        11.188405827207154,
+        10.297878986392575
+      ],
+      "foot_reference_z_span_mm": [
+        52.81125605106354,
+        34.568388946354375
+      ],
+      "foot_actual_z_span_mm": [
+        4.149412736296654,
+        4.294562619179487
+      ],
+      "known_fraction": [
+        0.520891364902507,
+        0.4958217270194986
+      ],
+      "known_swing_fraction": [
+        0.08913649025069638,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.859375,
+      "known_stance_contact_speed_m_s": 0.019564921036362648,
+      "anchor_reference_net_distance_m": 0.5550615787506104,
+      "anchor_actual_net_distance_m": 0.22513870894908905,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.33126452565193176
+    },
+    {
+      "variant": "size",
+      "id": "006634",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7132352941176471,
+      "reference_over_target_rate_cap_fraction": 0.075,
+      "first_episode_seconds": 8.18,
+      "knee_reference_span_deg": [
+        49.59928876384234,
+        40.38830268927236
+      ],
+      "knee_actual_span_deg": [
+        9.12128439978741,
+        11.042808872464962
+      ],
+      "foot_reference_z_span_mm": [
+        52.81125605106354,
+        34.568388946354375
+      ],
+      "foot_actual_z_span_mm": [
+        2.9481067322194576,
+        5.155860912054777
+      ],
+      "known_fraction": [
+        0.520891364902507,
+        0.4958217270194986
+      ],
+      "known_swing_fraction": [
+        0.08913649025069638,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.6796875,
+      "known_stance_contact_speed_m_s": 0.01545053068548441,
+      "anchor_reference_net_distance_m": 0.5550615787506104,
+      "anchor_actual_net_distance_m": 0.24834121763706207,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.3069921135902405
+    },
+    {
+      "variant": "size",
+      "id": "006634",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6513480392156863,
+      "reference_over_target_rate_cap_fraction": 0.075,
+      "first_episode_seconds": 8.18,
+      "knee_reference_span_deg": [
+        49.59928876384234,
+        40.38830268927236
+      ],
+      "knee_actual_span_deg": [
+        10.288357275802754,
+        9.504241740688359
+      ],
+      "foot_reference_z_span_mm": [
+        52.81125605106354,
+        34.568388946354375
+      ],
+      "foot_actual_z_span_mm": [
+        3.2398279290646315,
+        3.8151289336383343
+      ],
+      "known_fraction": [
+        0.520891364902507,
+        0.4958217270194986
+      ],
+      "known_swing_fraction": [
+        0.08913649025069638,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.75,
+      "known_stance_contact_speed_m_s": 0.016831202432513237,
+      "anchor_reference_net_distance_m": 0.5550615787506104,
+      "anchor_actual_net_distance_m": 0.21029892563819885,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.34617680311203003
+    },
+    {
+      "variant": "size",
+      "id": "007481",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6982633863965267,
+      "reference_over_target_rate_cap_fraction": 0.044733044733044736,
+      "first_episode_seconds": 13.84,
+      "knee_reference_span_deg": [
+        39.407733283202596,
+        44.30104924263421
+      ],
+      "knee_actual_span_deg": [
+        16.046273009630625,
+        13.726929654241358
+      ],
+      "foot_reference_z_span_mm": [
+        40.33401831984519,
+        31.24196548014877
+      ],
+      "foot_actual_z_span_mm": [
+        3.1406369525939226,
+        5.916753318160776
+      ],
+      "known_fraction": [
+        0.6277258566978193,
+        0.5
+      ],
+      "known_swing_fraction": [
+        0.07320872274143302,
+        0.018691588785046728
+      ],
+      "known_swing_contact_fraction": 0.4703389830508475,
+      "known_stance_contact_speed_m_s": 0.017113732174038887,
+      "anchor_reference_net_distance_m": 0.8853126764297485,
+      "anchor_actual_net_distance_m": 0.4429260790348053,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4435361325740814
+    },
+    {
+      "variant": "size",
+      "id": "007481",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7304630969609262,
+      "reference_over_target_rate_cap_fraction": 0.044733044733044736,
+      "first_episode_seconds": 13.84,
+      "knee_reference_span_deg": [
+        39.407733283202596,
+        44.30104924263421
+      ],
+      "knee_actual_span_deg": [
+        15.159860407967795,
+        13.642631758325834
+      ],
+      "foot_reference_z_span_mm": [
+        40.33401831984519,
+        31.24196548014877
+      ],
+      "foot_actual_z_span_mm": [
+        2.8368306346237686,
+        6.00026547908783
+      ],
+      "known_fraction": [
+        0.6277258566978193,
+        0.5
+      ],
+      "known_swing_fraction": [
+        0.07320872274143302,
+        0.018691588785046728
+      ],
+      "known_swing_contact_fraction": 0.559322033898305,
+      "known_stance_contact_speed_m_s": 0.010590959340333939,
+      "anchor_reference_net_distance_m": 0.8853126764297485,
+      "anchor_actual_net_distance_m": 0.47473278641700745,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.41085076332092285
+    },
+    {
+      "variant": "size",
+      "id": "007481",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6989869753979739,
+      "reference_over_target_rate_cap_fraction": 0.044733044733044736,
+      "first_episode_seconds": 13.84,
+      "knee_reference_span_deg": [
+        39.407733283202596,
+        44.30104924263421
+      ],
+      "knee_actual_span_deg": [
+        15.941242522720692,
+        14.530406470463895
+      ],
+      "foot_reference_z_span_mm": [
+        40.33401831984519,
+        31.24196548014877
+      ],
+      "foot_actual_z_span_mm": [
+        3.2517190091311923,
+        7.3501676321029645
+      ],
+      "known_fraction": [
+        0.6277258566978193,
+        0.5
+      ],
+      "known_swing_fraction": [
+        0.07320872274143302,
+        0.018691588785046728
+      ],
+      "known_swing_contact_fraction": 0.538135593220339,
+      "known_stance_contact_speed_m_s": 0.012991010211408138,
+      "anchor_reference_net_distance_m": 0.8853126764297485,
+      "anchor_actual_net_distance_m": 0.4626377820968628,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.43720707297325134
+    },
+    {
+      "variant": "size",
+      "id": "009516",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.665929203539823,
+      "reference_over_target_rate_cap_fraction": 0.05837004405286344,
+      "first_episode_seconds": 9.06,
+      "knee_reference_span_deg": [
+        54.25445768158347,
+        47.94461251428903
+      ],
+      "knee_actual_span_deg": [
+        11.886147083562257,
+        10.291468512347057
+      ],
+      "foot_reference_z_span_mm": [
+        39.613095298409455,
+        52.845472656190395
+      ],
+      "foot_actual_z_span_mm": [
+        2.622500574216244,
+        5.833291169255971
+      ],
+      "known_fraction": [
+        0.4466501240694789,
+        0.5260545905707196
+      ],
+      "known_swing_fraction": [
+        0.07444168734491315,
+        0.05707196029776675
+      ],
+      "known_swing_contact_fraction": 0.7028301886792453,
+      "known_stance_contact_speed_m_s": 0.02047647535800934,
+      "anchor_reference_net_distance_m": 0.807847261428833,
+      "anchor_actual_net_distance_m": 0.4566428065299988,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.35250529646873474
+    },
+    {
+      "variant": "size",
+      "id": "009516",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6670353982300885,
+      "reference_over_target_rate_cap_fraction": 0.05837004405286344,
+      "first_episode_seconds": 9.06,
+      "knee_reference_span_deg": [
+        54.25445768158347,
+        47.94461251428903
+      ],
+      "knee_actual_span_deg": [
+        12.118281169050679,
+        11.32090297004111
+      ],
+      "foot_reference_z_span_mm": [
+        39.613095298409455,
+        52.845472656190395
+      ],
+      "foot_actual_z_span_mm": [
+        2.332811523228881,
+        5.689392425119879
+      ],
+      "known_fraction": [
+        0.4466501240694789,
+        0.5260545905707196
+      ],
+      "known_swing_fraction": [
+        0.07444168734491315,
+        0.05707196029776675
+      ],
+      "known_swing_contact_fraction": 0.7452830188679245,
+      "known_stance_contact_speed_m_s": 0.015537100844085217,
+      "anchor_reference_net_distance_m": 0.807847261428833,
+      "anchor_actual_net_distance_m": 0.4030603766441345,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.40575307607650757
+    },
+    {
+      "variant": "size",
+      "id": "009516",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6797566371681416,
+      "reference_over_target_rate_cap_fraction": 0.05837004405286344,
+      "first_episode_seconds": 9.06,
+      "knee_reference_span_deg": [
+        54.25445768158347,
+        47.94461251428903
+      ],
+      "knee_actual_span_deg": [
+        12.161114848808818,
+        10.695185626260878
+      ],
+      "foot_reference_z_span_mm": [
+        39.613095298409455,
+        52.845472656190395
+      ],
+      "foot_actual_z_span_mm": [
+        2.96860416419804,
+        5.134733859449625
+      ],
+      "known_fraction": [
+        0.4466501240694789,
+        0.5260545905707196
+      ],
+      "known_swing_fraction": [
+        0.07444168734491315,
+        0.05707196029776675
+      ],
+      "known_swing_contact_fraction": 0.6037735849056604,
+      "known_stance_contact_speed_m_s": 0.0166363175958395,
+      "anchor_reference_net_distance_m": 0.807847261428833,
+      "anchor_actual_net_distance_m": 0.4556974470615387,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.35323071479797363
+    },
+    {
+      "variant": "size",
+      "id": "011084",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6864406779661016,
+      "reference_over_target_rate_cap_fraction": 0.08918539325842696,
+      "first_episode_seconds": 7.1000000000000005,
+      "knee_reference_span_deg": [
+        58.3309763879357,
+        46.2050443558058
+      ],
+      "knee_actual_span_deg": [
+        19.194258351564766,
+        16.436283630755348
+      ],
+      "foot_reference_z_span_mm": [
+        41.60452373325824,
+        42.66335032880307
+      ],
+      "foot_actual_z_span_mm": [
+        3.8604352157562953,
+        5.297695938497781
+      ],
+      "known_fraction": [
+        0.521311475409836,
+        0.47540983606557374
+      ],
+      "known_swing_fraction": [
+        0.05901639344262295,
+        0.04590163934426229
+      ],
+      "known_swing_contact_fraction": 0.515625,
+      "known_stance_contact_speed_m_s": 0.021940549835562706,
+      "anchor_reference_net_distance_m": 0.707170844078064,
+      "anchor_actual_net_distance_m": 0.4330890476703644,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.274082213640213
+    },
+    {
+      "variant": "size",
+      "id": "011084",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.721045197740113,
+      "reference_over_target_rate_cap_fraction": 0.08918539325842696,
+      "first_episode_seconds": 7.1000000000000005,
+      "knee_reference_span_deg": [
+        58.3309763879357,
+        46.2050443558058
+      ],
+      "knee_actual_span_deg": [
+        19.250573410681906,
+        16.567778027113953
+      ],
+      "foot_reference_z_span_mm": [
+        41.60452373325824,
+        42.66335032880307
+      ],
+      "foot_actual_z_span_mm": [
+        4.181402083486318,
+        5.634344276040794
+      ],
+      "known_fraction": [
+        0.521311475409836,
+        0.47540983606557374
+      ],
+      "known_swing_fraction": [
+        0.05901639344262295,
+        0.04590163934426229
+      ],
+      "known_swing_contact_fraction": 0.5859375,
+      "known_stance_contact_speed_m_s": 0.019881241023540497,
+      "anchor_reference_net_distance_m": 0.707170844078064,
+      "anchor_actual_net_distance_m": 0.4356085956096649,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.272089421749115
+    },
+    {
+      "variant": "size",
+      "id": "011084",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6758474576271186,
+      "reference_over_target_rate_cap_fraction": 0.08918539325842696,
+      "first_episode_seconds": 7.1000000000000005,
+      "knee_reference_span_deg": [
+        58.3309763879357,
+        46.2050443558058
+      ],
+      "knee_actual_span_deg": [
+        19.370470636749676,
+        16.59073749456554
+      ],
+      "foot_reference_z_span_mm": [
+        41.60452373325824,
+        42.66335032880307
+      ],
+      "foot_actual_z_span_mm": [
+        4.3951600790023795,
+        6.158594880253078
+      ],
+      "known_fraction": [
+        0.521311475409836,
+        0.47540983606557374
+      ],
+      "known_swing_fraction": [
+        0.05901639344262295,
+        0.04590163934426229
+      ],
+      "known_swing_contact_fraction": 0.609375,
+      "known_stance_contact_speed_m_s": 0.0180215947329998,
+      "anchor_reference_net_distance_m": 0.707170844078064,
+      "anchor_actual_net_distance_m": 0.4424550533294678,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.2722998261451721
+    },
+    {
+      "variant": "residual",
+      "id": "000832",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7372400756143668,
+      "reference_over_target_rate_cap_fraction": 0.07721280602636535,
+      "first_episode_seconds": 10.6,
+      "knee_reference_span_deg": [
+        49.58782147386744,
+        53.73401726647616
+      ],
+      "knee_actual_span_deg": [
+        21.81984611970144,
+        23.97653158291981
+      ],
+      "foot_reference_z_span_mm": [
+        42.60679390281435,
+        49.23591194674371
+      ],
+      "foot_actual_z_span_mm": [
+        10.061754984781144,
+        12.59196884930134
+      ],
+      "known_fraction": [
+        0.5458333333333333,
+        0.675
+      ],
+      "known_swing_fraction": [
+        0.04583333333333333,
+        0.029166666666666667
+      ],
+      "known_swing_contact_fraction": 0.3402777777777778,
+      "known_stance_contact_speed_m_s": 0.019927693530917168,
+      "anchor_reference_net_distance_m": 0.7339216470718384,
+      "anchor_actual_net_distance_m": 0.4391123354434967,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.30474627017974854
+    },
+    {
+      "variant": "residual",
+      "id": "000832",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7329867674858223,
+      "reference_over_target_rate_cap_fraction": 0.07721280602636535,
+      "first_episode_seconds": 10.6,
+      "knee_reference_span_deg": [
+        49.58782147386744,
+        53.73401726647616
+      ],
+      "knee_actual_span_deg": [
+        23.854518833822677,
+        23.22151186392904
+      ],
+      "foot_reference_z_span_mm": [
+        42.60679390281435,
+        49.23591194674371
+      ],
+      "foot_actual_z_span_mm": [
+        7.516205450519919,
+        11.038801074028013
+      ],
+      "known_fraction": [
+        0.5458333333333333,
+        0.675
+      ],
+      "known_swing_fraction": [
+        0.04583333333333333,
+        0.029166666666666667
+      ],
+      "known_swing_contact_fraction": 0.4236111111111111,
+      "known_stance_contact_speed_m_s": 0.015199565328657627,
+      "anchor_reference_net_distance_m": 0.7339216470718384,
+      "anchor_actual_net_distance_m": 0.39442163705825806,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.3544858694076538
+    },
+    {
+      "variant": "residual",
+      "id": "000832",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7674858223062382,
+      "reference_over_target_rate_cap_fraction": 0.07721280602636535,
+      "first_episode_seconds": 10.6,
+      "knee_reference_span_deg": [
+        49.58782147386744,
+        53.73401726647616
+      ],
+      "knee_actual_span_deg": [
+        25.969677196452555,
+        18.860520495745178
+      ],
+      "foot_reference_z_span_mm": [
+        42.60679390281435,
+        49.23591194674371
+      ],
+      "foot_actual_z_span_mm": [
+        7.902405317872757,
+        12.09695413708687
+      ],
+      "known_fraction": [
+        0.5458333333333333,
+        0.675
+      ],
+      "known_swing_fraction": [
+        0.04583333333333333,
+        0.029166666666666667
+      ],
+      "known_swing_contact_fraction": 0.4166666666666667,
+      "known_stance_contact_speed_m_s": 0.015961427241563797,
+      "anchor_reference_net_distance_m": 0.7339216470718384,
+      "anchor_actual_net_distance_m": 0.37525731325149536,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.36420443654060364
+    },
+    {
+      "variant": "residual",
+      "id": "001191",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7283210332103321,
+      "reference_over_target_rate_cap_fraction": 0.06295955882352941,
+      "first_episode_seconds": 10.86,
+      "knee_reference_span_deg": [
+        49.35013447660031,
+        45.08479446493548
+      ],
+      "knee_actual_span_deg": [
+        23.29492286519439,
+        23.17647291352306
+      ],
+      "foot_reference_z_span_mm": [
+        40.40894955396651,
+        46.77745923399924
+      ],
+      "foot_actual_z_span_mm": [
+        6.873175315558904,
+        11.094534862786526
+      ],
+      "known_fraction": [
+        0.5618661257606491,
+        0.6511156186612576
+      ],
+      "known_swing_fraction": [
+        0.05070993914807302,
+        0.030425963488843813
+      ],
+      "known_swing_contact_fraction": 0.56875,
+      "known_stance_contact_speed_m_s": 0.01764664426445961,
+      "anchor_reference_net_distance_m": 0.8285417556762695,
+      "anchor_actual_net_distance_m": 0.35235312581062317,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4776689112186432
+    },
+    {
+      "variant": "residual",
+      "id": "001191",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7038745387453874,
+      "reference_over_target_rate_cap_fraction": 0.06295955882352941,
+      "first_episode_seconds": 10.86,
+      "knee_reference_span_deg": [
+        49.35013447660031,
+        45.08479446493548
+      ],
+      "knee_actual_span_deg": [
+        24.553799203938134,
+        20.968828497468625
+      ],
+      "foot_reference_z_span_mm": [
+        40.40894955396651,
+        46.77745923399924
+      ],
+      "foot_actual_z_span_mm": [
+        7.346376869827511,
+        11.61326905712485
+      ],
+      "known_fraction": [
+        0.5618661257606491,
+        0.6511156186612576
+      ],
+      "known_swing_fraction": [
+        0.05070993914807302,
+        0.030425963488843813
+      ],
+      "known_swing_contact_fraction": 0.41875,
+      "known_stance_contact_speed_m_s": 0.013224155642092228,
+      "anchor_reference_net_distance_m": 0.8285417556762695,
+      "anchor_actual_net_distance_m": 0.3929995596408844,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4406633675098419
+    },
+    {
+      "variant": "residual",
+      "id": "001191",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7375461254612546,
+      "reference_over_target_rate_cap_fraction": 0.06295955882352941,
+      "first_episode_seconds": 10.86,
+      "knee_reference_span_deg": [
+        49.35013447660031,
+        45.08479446493548
+      ],
+      "knee_actual_span_deg": [
+        24.864417412363906,
+        19.963736791287815
+      ],
+      "foot_reference_z_span_mm": [
+        40.40894955396651,
+        46.77745923399924
+      ],
+      "foot_actual_z_span_mm": [
+        10.334587562829237,
+        11.21228076517581
+      ],
+      "known_fraction": [
+        0.5618661257606491,
+        0.6511156186612576
+      ],
+      "known_swing_fraction": [
+        0.05070993914807302,
+        0.030425963488843813
+      ],
+      "known_swing_contact_fraction": 0.45625,
+      "known_stance_contact_speed_m_s": 0.014300396665930748,
+      "anchor_reference_net_distance_m": 0.8285417556762695,
+      "anchor_actual_net_distance_m": 0.4632766842842102,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.3673049509525299
+    },
+    {
+      "variant": "residual",
+      "id": "002011",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.711405529953917,
+      "reference_over_target_rate_cap_fraction": 0.09231651376146789,
+      "first_episode_seconds": 8.700000000000001,
+      "knee_reference_span_deg": [
+        56.92799704892032,
+        51.00907331914859
+      ],
+      "knee_actual_span_deg": [
+        27.81991423637672,
+        23.838484601892272
+      ],
+      "foot_reference_z_span_mm": [
+        42.48386025428772,
+        41.716401651501656
+      ],
+      "foot_actual_z_span_mm": [
+        10.942728910595179,
+        13.282141927629706
+      ],
+      "known_fraction": [
+        0.638961038961039,
+        0.4883116883116883
+      ],
+      "known_swing_fraction": [
+        0.04155844155844156,
+        0.01038961038961039
+      ],
+      "known_swing_contact_fraction": 0.5875,
+      "known_stance_contact_speed_m_s": 0.014353915117681026,
+      "anchor_reference_net_distance_m": 0.7641007304191589,
+      "anchor_actual_net_distance_m": 0.508331835269928,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.26074641942977905
+    },
+    {
+      "variant": "residual",
+      "id": "002011",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7269585253456221,
+      "reference_over_target_rate_cap_fraction": 0.09231651376146789,
+      "first_episode_seconds": 8.700000000000001,
+      "knee_reference_span_deg": [
+        56.92799704892032,
+        51.00907331914859
+      ],
+      "knee_actual_span_deg": [
+        28.663867276557113,
+        23.808611947800088
+      ],
+      "foot_reference_z_span_mm": [
+        42.48386025428772,
+        41.716401651501656
+      ],
+      "foot_actual_z_span_mm": [
+        11.149330204352735,
+        12.645412702113394
+      ],
+      "known_fraction": [
+        0.638961038961039,
+        0.4883116883116883
+      ],
+      "known_swing_fraction": [
+        0.04155844155844156,
+        0.01038961038961039
+      ],
+      "known_swing_contact_fraction": 0.25,
+      "known_stance_contact_speed_m_s": 0.013158836401998997,
+      "anchor_reference_net_distance_m": 0.7641007304191589,
+      "anchor_actual_net_distance_m": 0.43395623564720154,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.33028051257133484
+    },
+    {
+      "variant": "residual",
+      "id": "002011",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7540322580645161,
+      "reference_over_target_rate_cap_fraction": 0.09231651376146789,
+      "first_episode_seconds": 8.700000000000001,
+      "knee_reference_span_deg": [
+        56.92799704892032,
+        51.00907331914859
+      ],
+      "knee_actual_span_deg": [
+        28.268413368189858,
+        24.719076857853878
+      ],
+      "foot_reference_z_span_mm": [
+        42.48386025428772,
+        41.716401651501656
+      ],
+      "foot_actual_z_span_mm": [
+        11.602584738284348,
+        15.945247840136286
+      ],
+      "known_fraction": [
+        0.638961038961039,
+        0.4883116883116883
+      ],
+      "known_swing_fraction": [
+        0.04155844155844156,
+        0.01038961038961039
+      ],
+      "known_swing_contact_fraction": 0.5625,
+      "known_stance_contact_speed_m_s": 0.013504916802048683,
+      "anchor_reference_net_distance_m": 0.7641007304191589,
+      "anchor_actual_net_distance_m": 0.6078909039497375,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.1636563241481781
+    },
+    {
+      "variant": "residual",
+      "id": "005309",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7316715542521994,
+      "reference_over_target_rate_cap_fraction": 0.06778425655976676,
+      "first_episode_seconds": 6.84,
+      "knee_reference_span_deg": [
+        37.79153861825392,
+        36.88302975698454
+      ],
+      "knee_actual_span_deg": [
+        20.505236440514423,
+        20.12066649195042
+      ],
+      "foot_reference_z_span_mm": [
+        33.05936781689524,
+        37.57205810397863
+      ],
+      "foot_actual_z_span_mm": [
+        8.889124309644084,
+        10.075932182371616
+      ],
+      "known_fraction": [
+        0.6095890410958904,
+        0.4897260273972603
+      ],
+      "known_swing_fraction": [
+        0.00684931506849315,
+        0.0
+      ],
+      "known_swing_contact_fraction": 1.0,
+      "known_stance_contact_speed_m_s": 0.021353809162974358,
+      "anchor_reference_net_distance_m": 0.5496721863746643,
+      "anchor_actual_net_distance_m": 0.3600866496562958,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.19204707443714142
+    },
+    {
+      "variant": "residual",
+      "id": "005309",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7126099706744868,
+      "reference_over_target_rate_cap_fraction": 0.06778425655976676,
+      "first_episode_seconds": 6.84,
+      "knee_reference_span_deg": [
+        37.79153861825392,
+        36.88302975698454
+      ],
+      "knee_actual_span_deg": [
+        19.09496949242586,
+        20.752382790878684
+      ],
+      "foot_reference_z_span_mm": [
+        33.05936781689524,
+        37.57205810397863
+      ],
+      "foot_actual_z_span_mm": [
+        10.100169852375982,
+        11.113489139825104
+      ],
+      "known_fraction": [
+        0.6095890410958904,
+        0.4897260273972603
+      ],
+      "known_swing_fraction": [
+        0.00684931506849315,
+        0.0
+      ],
+      "known_swing_contact_fraction": 1.0,
+      "known_stance_contact_speed_m_s": 0.015303083695471287,
+      "anchor_reference_net_distance_m": 0.5496721863746643,
+      "anchor_actual_net_distance_m": 0.4105033576488495,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.1440999060869217
+    },
+    {
+      "variant": "residual",
+      "id": "005309",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.717008797653959,
+      "reference_over_target_rate_cap_fraction": 0.06778425655976676,
+      "first_episode_seconds": 6.84,
+      "knee_reference_span_deg": [
+        37.79153861825392,
+        36.88302975698454
+      ],
+      "knee_actual_span_deg": [
+        19.225945354696513,
+        20.210858264822438
+      ],
+      "foot_reference_z_span_mm": [
+        33.05936781689524,
+        37.57205810397863
+      ],
+      "foot_actual_z_span_mm": [
+        10.989092709496614,
+        11.287754401564598
+      ],
+      "known_fraction": [
+        0.6095890410958904,
+        0.4897260273972603
+      ],
+      "known_swing_fraction": [
+        0.00684931506849315,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.0,
+      "known_stance_contact_speed_m_s": 0.017400270327925682,
+      "anchor_reference_net_distance_m": 0.5496721863746643,
+      "anchor_actual_net_distance_m": 0.43234676122665405,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.12327517569065094
+    },
+    {
+      "variant": "residual",
+      "id": "006634",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.741421568627451,
+      "reference_over_target_rate_cap_fraction": 0.075,
+      "first_episode_seconds": 8.18,
+      "knee_reference_span_deg": [
+        49.59928876384234,
+        40.38830268927236
+      ],
+      "knee_actual_span_deg": [
+        18.121346228659462,
+        16.51938261502812
+      ],
+      "foot_reference_z_span_mm": [
+        52.81125605106354,
+        34.568388946354375
+      ],
+      "foot_actual_z_span_mm": [
+        8.93644173629582,
+        10.029339231550694
+      ],
+      "known_fraction": [
+        0.520891364902507,
+        0.4958217270194986
+      ],
+      "known_swing_fraction": [
+        0.08913649025069638,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.4609375,
+      "known_stance_contact_speed_m_s": 0.016817834228277206,
+      "anchor_reference_net_distance_m": 0.5550615787506104,
+      "anchor_actual_net_distance_m": 0.3492858409881592,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.2174999713897705
+    },
+    {
+      "variant": "residual",
+      "id": "006634",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6764705882352942,
+      "reference_over_target_rate_cap_fraction": 0.075,
+      "first_episode_seconds": 8.18,
+      "knee_reference_span_deg": [
+        49.59928876384234,
+        40.38830268927236
+      ],
+      "knee_actual_span_deg": [
+        15.83078220617533,
+        18.131748660126245
+      ],
+      "foot_reference_z_span_mm": [
+        52.81125605106354,
+        34.568388946354375
+      ],
+      "foot_actual_z_span_mm": [
+        10.431542061269283,
+        10.793463792651892
+      ],
+      "known_fraction": [
+        0.520891364902507,
+        0.4958217270194986
+      ],
+      "known_swing_fraction": [
+        0.08913649025069638,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.4765625,
+      "known_stance_contact_speed_m_s": 0.013755318708717823,
+      "anchor_reference_net_distance_m": 0.5550615787506104,
+      "anchor_actual_net_distance_m": 0.3452916145324707,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.2097766399383545
+    },
+    {
+      "variant": "residual",
+      "id": "006634",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7028186274509803,
+      "reference_over_target_rate_cap_fraction": 0.075,
+      "first_episode_seconds": 8.18,
+      "knee_reference_span_deg": [
+        49.59928876384234,
+        40.38830268927236
+      ],
+      "knee_actual_span_deg": [
+        16.897646708834774,
+        15.46569957705401
+      ],
+      "foot_reference_z_span_mm": [
+        52.81125605106354,
+        34.568388946354375
+      ],
+      "foot_actual_z_span_mm": [
+        12.355123646557331,
+        9.234416298568249
+      ],
+      "known_fraction": [
+        0.520891364902507,
+        0.4958217270194986
+      ],
+      "known_swing_fraction": [
+        0.08913649025069638,
+        0.0
+      ],
+      "known_swing_contact_fraction": 0.4140625,
+      "known_stance_contact_speed_m_s": 0.01577148772776127,
+      "anchor_reference_net_distance_m": 0.5550615787506104,
+      "anchor_actual_net_distance_m": 0.41137272119522095,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.14531223475933075
+    },
+    {
+      "variant": "residual",
+      "id": "007481",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.6986251808972503,
+      "reference_over_target_rate_cap_fraction": 0.044733044733044736,
+      "first_episode_seconds": 13.84,
+      "knee_reference_span_deg": [
+        39.407733283202596,
+        44.30104924263421
+      ],
+      "knee_actual_span_deg": [
+        26.291422423366512,
+        23.333956638576907
+      ],
+      "foot_reference_z_span_mm": [
+        40.33401831984519,
+        31.24196548014877
+      ],
+      "foot_actual_z_span_mm": [
+        5.560627300292258,
+        11.697175540030004
+      ],
+      "known_fraction": [
+        0.6277258566978193,
+        0.5
+      ],
+      "known_swing_fraction": [
+        0.07320872274143302,
+        0.018691588785046728
+      ],
+      "known_swing_contact_fraction": 0.5,
+      "known_stance_contact_speed_m_s": 0.013813886791467667,
+      "anchor_reference_net_distance_m": 0.8853126764297485,
+      "anchor_actual_net_distance_m": 0.4171596169471741,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4687820076942444
+    },
+    {
+      "variant": "residual",
+      "id": "007481",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7409551374819102,
+      "reference_over_target_rate_cap_fraction": 0.044733044733044736,
+      "first_episode_seconds": 13.84,
+      "knee_reference_span_deg": [
+        39.407733283202596,
+        44.30104924263421
+      ],
+      "knee_actual_span_deg": [
+        30.64719140756665,
+        22.439024517846736
+      ],
+      "foot_reference_z_span_mm": [
+        40.33401831984519,
+        31.24196548014877
+      ],
+      "foot_actual_z_span_mm": [
+        8.487835619598629,
+        13.445816189050678
+      ],
+      "known_fraction": [
+        0.6277258566978193,
+        0.5
+      ],
+      "known_swing_fraction": [
+        0.07320872274143302,
+        0.018691588785046728
+      ],
+      "known_swing_contact_fraction": 0.6186440677966102,
+      "known_stance_contact_speed_m_s": 0.012851892970502377,
+      "anchor_reference_net_distance_m": 0.8853126764297485,
+      "anchor_actual_net_distance_m": 0.3968866765499115,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.49264979362487793
+    },
+    {
+      "variant": "residual",
+      "id": "007481",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7029667149059334,
+      "reference_over_target_rate_cap_fraction": 0.044733044733044736,
+      "first_episode_seconds": 13.84,
+      "knee_reference_span_deg": [
+        39.407733283202596,
+        44.30104924263421
+      ],
+      "knee_actual_span_deg": [
+        28.51449375014026,
+        21.149130721272886
+      ],
+      "foot_reference_z_span_mm": [
+        40.33401831984519,
+        31.24196548014877
+      ],
+      "foot_actual_z_span_mm": [
+        9.202078450471165,
+        13.281481340527538
+      ],
+      "known_fraction": [
+        0.6277258566978193,
+        0.5
+      ],
+      "known_swing_fraction": [
+        0.07320872274143302,
+        0.018691588785046728
+      ],
+      "known_swing_contact_fraction": 0.538135593220339,
+      "known_stance_contact_speed_m_s": 0.013062133453786373,
+      "anchor_reference_net_distance_m": 0.8853126764297485,
+      "anchor_actual_net_distance_m": 0.5608750581741333,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.3678530752658844
+    },
+    {
+      "variant": "residual",
+      "id": "009516",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7394911504424779,
+      "reference_over_target_rate_cap_fraction": 0.05837004405286344,
+      "first_episode_seconds": 9.06,
+      "knee_reference_span_deg": [
+        54.25445768158347,
+        47.94461251428903
+      ],
+      "knee_actual_span_deg": [
+        23.922858505006644,
+        22.061800106897806
+      ],
+      "foot_reference_z_span_mm": [
+        39.613095298409455,
+        52.845472656190395
+      ],
+      "foot_actual_z_span_mm": [
+        7.369753764942287,
+        14.401490520685911
+      ],
+      "known_fraction": [
+        0.4466501240694789,
+        0.5260545905707196
+      ],
+      "known_swing_fraction": [
+        0.07444168734491315,
+        0.05707196029776675
+      ],
+      "known_swing_contact_fraction": 0.5188679245283019,
+      "known_stance_contact_speed_m_s": 0.0239113662391901,
+      "anchor_reference_net_distance_m": 0.807847261428833,
+      "anchor_actual_net_distance_m": 0.3788936734199524,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4296676516532898
+    },
+    {
+      "variant": "residual",
+      "id": "009516",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.764933628318584,
+      "reference_over_target_rate_cap_fraction": 0.05837004405286344,
+      "first_episode_seconds": 9.06,
+      "knee_reference_span_deg": [
+        54.25445768158347,
+        47.94461251428903
+      ],
+      "knee_actual_span_deg": [
+        24.985372812158946,
+        20.198813290254176
+      ],
+      "foot_reference_z_span_mm": [
+        39.613095298409455,
+        52.845472656190395
+      ],
+      "foot_actual_z_span_mm": [
+        7.390104886144392,
+        14.844668656587592
+      ],
+      "known_fraction": [
+        0.4466501240694789,
+        0.5260545905707196
+      ],
+      "known_swing_fraction": [
+        0.07444168734491315,
+        0.05707196029776675
+      ],
+      "known_swing_contact_fraction": 0.4716981132075472,
+      "known_stance_contact_speed_m_s": 0.014016630128026009,
+      "anchor_reference_net_distance_m": 0.807847261428833,
+      "anchor_actual_net_distance_m": 0.41808632016181946,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.4036036729812622
+    },
+    {
+      "variant": "residual",
+      "id": "009516",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7560840707964602,
+      "reference_over_target_rate_cap_fraction": 0.05837004405286344,
+      "first_episode_seconds": 9.06,
+      "knee_reference_span_deg": [
+        54.25445768158347,
+        47.94461251428903
+      ],
+      "knee_actual_span_deg": [
+        22.897287794612623,
+        21.66935370157683
+      ],
+      "foot_reference_z_span_mm": [
+        39.613095298409455,
+        52.845472656190395
+      ],
+      "foot_actual_z_span_mm": [
+        14.017661428079007,
+        17.919090762734406
+      ],
+      "known_fraction": [
+        0.4466501240694789,
+        0.5260545905707196
+      ],
+      "known_swing_fraction": [
+        0.07444168734491315,
+        0.05707196029776675
+      ],
+      "known_swing_contact_fraction": 0.39622641509433965,
+      "known_stance_contact_speed_m_s": 0.01997549645602703,
+      "anchor_reference_net_distance_m": 0.807847261428833,
+      "anchor_actual_net_distance_m": 0.7116456031799316,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.1268325001001358
+    },
+    {
+      "variant": "residual",
+      "id": "011084",
+      "seed": 123,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7725988700564972,
+      "reference_over_target_rate_cap_fraction": 0.08918539325842696,
+      "first_episode_seconds": 7.1000000000000005,
+      "knee_reference_span_deg": [
+        58.3309763879357,
+        46.2050443558058
+      ],
+      "knee_actual_span_deg": [
+        31.074156297620224,
+        29.68177359155963
+      ],
+      "foot_reference_z_span_mm": [
+        41.60452373325824,
+        42.66335032880307
+      ],
+      "foot_actual_z_span_mm": [
+        12.743895594030619,
+        14.937529060989622
+      ],
+      "known_fraction": [
+        0.521311475409836,
+        0.47540983606557374
+      ],
+      "known_swing_fraction": [
+        0.05901639344262295,
+        0.04590163934426229
+      ],
+      "known_swing_contact_fraction": 0.40625,
+      "known_stance_contact_speed_m_s": 0.020833706483244896,
+      "anchor_reference_net_distance_m": 0.707170844078064,
+      "anchor_actual_net_distance_m": 0.6418416500091553,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.06648275256156921
+    },
+    {
+      "variant": "residual",
+      "id": "011084",
+      "seed": 2026,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7860169491525424,
+      "reference_over_target_rate_cap_fraction": 0.08918539325842696,
+      "first_episode_seconds": 7.1000000000000005,
+      "knee_reference_span_deg": [
+        58.3309763879357,
+        46.2050443558058
+      ],
+      "knee_actual_span_deg": [
+        31.81900977095127,
+        29.04920325218086
+      ],
+      "foot_reference_z_span_mm": [
+        41.60452373325824,
+        42.66335032880307
+      ],
+      "foot_actual_z_span_mm": [
+        12.514817016199228,
+        13.410034961998461
+      ],
+      "known_fraction": [
+        0.521311475409836,
+        0.47540983606557374
+      ],
+      "known_swing_fraction": [
+        0.05901639344262295,
+        0.04590163934426229
+      ],
+      "known_swing_contact_fraction": 0.453125,
+      "known_stance_contact_speed_m_s": 0.016539841890335083,
+      "anchor_reference_net_distance_m": 0.707170844078064,
+      "anchor_actual_net_distance_m": 0.5352660417556763,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.17192454636096954
+    },
+    {
+      "variant": "residual",
+      "id": "011084",
+      "seed": 42,
+      "clean": true,
+      "target_rate_cap_fraction": 0.7612994350282486,
+      "reference_over_target_rate_cap_fraction": 0.08918539325842696,
+      "first_episode_seconds": 7.1000000000000005,
+      "knee_reference_span_deg": [
+        58.3309763879357,
+        46.2050443558058
+      ],
+      "knee_actual_span_deg": [
+        31.12440845394324,
+        27.549999236970812
+      ],
+      "foot_reference_z_span_mm": [
+        41.60452373325824,
+        42.66335032880307
+      ],
+      "foot_actual_z_span_mm": [
+        13.156792428344481,
+        13.623632863163946
+      ],
+      "known_fraction": [
+        0.521311475409836,
+        0.47540983606557374
+      ],
+      "known_swing_fraction": [
+        0.05901639344262295,
+        0.04590163934426229
+      ],
+      "known_swing_contact_fraction": 0.2890625,
+      "known_stance_contact_speed_m_s": 0.01948116533458233,
+      "anchor_reference_net_distance_m": 0.707170844078064,
+      "anchor_actual_net_distance_m": 0.640783429145813,
+      "note": "First episode excluding first 1s; P95-P5 spans. Foot-link Z is not sole clearance. Contact speed includes rolling; do not label it pure slip.",
+      "horizontal_net_vector_error_m": 0.08988744020462036
+    }
+  ],
+  "note": "Original source labels and geometric screening only. All KIT. Joint-origin Z, not sole clearance. Cap is actuator 3rad/s x runtime0.5; occupancy does not establish causality."
+}
