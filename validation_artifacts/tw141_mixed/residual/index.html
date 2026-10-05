@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><title>TW141 mixed validation</title>
+<style>body{max-width:1400px;margin:auto;font:18px sans-serif}.pair{display:flex}video{width:49%}pre{white-space:pre-wrap}</style>
+<h1>TW141 mixed walking / standing validation</h1>
+<p>Left: original HumanML3D NPY (20fps). Right: robot simulation (50fps), stable side camera.
+Different reference durations: these videos are not phase aligned. No source-contact time warping.</p>
+<p>Metrics: 3 evaluation seeds, one training seed; mean and worst 5s windows in comparison.json.
+Incomplete/failing rollouts must not be treated as complete reference coverage.</p><pre>{
+  "standing_upper": {
+    "clean": 9,
+    "total": 9,
+    "metrics": {
+      "upper_error_m": 0.006260064792715841,
+      "wrist_error_m": 0.008450909569445584,
+      "anchor_height_error_m": 0.003567842689032356,
+      "contact_mismatch_fraction": 0.1748781968736926,
+      "foot_link_contact_speed_m_s": 0.013371344552271895,
+      "contact_known_fraction": 0.9747659963346238,
+      "worst_window_wrist_error_m": 0.011419161222875118
+    }
+  },
+  "walking": {
+    "clean": 5,
+    "total": 9,
+    "metrics": {
+      "upper_error_m": 0.010328367352485657,
+      "wrist_error_m": 0.013566431899865469,
+      "anchor_height_error_m": 0.015769694207443133,
+      "contact_mismatch_fraction": 0.3724563693198068,
+      "foot_link_contact_speed_m_s": 0.024699771776795387,
+      "contact_known_fraction": 0.36903381601539914,
+      "worst_window_wrist_error_m": 0.016825342136952613
+    }
+  }
+}</pre><h2>000016 / standing_upper</h2><div class="pair"><video controls src="humanml_source/000016_source.mp4"></video><video controls src="videos/000016.mp4"></video></div><h2>000124 / standing_upper</h2><div class="pair"><video controls src="humanml_source/000124_source.mp4"></video><video controls src="videos/000124.mp4"></video></div><h2>000346 / standing_upper</h2><div class="pair"><video controls src="humanml_source/000346_source.mp4"></video><video controls src="videos/000346.mp4"></video></div><h2>000039 / walking</h2><div class="pair"><video controls src="humanml_source/000039_source.mp4"></video><video controls src="videos/000039.mp4"></video></div><h2>000139 / walking</h2><div class="pair"><video controls src="humanml_source/000139_source.mp4"></video><video controls src="videos/000139.mp4"></video></div><h2>000211 / walking</h2><div class="pair"><video controls src="humanml_source/000211_source.mp4"></video><video controls src="videos/000211.mp4"></video></div>
