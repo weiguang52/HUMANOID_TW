@@ -1,0 +1,15 @@
+{
+  "policy": "Conservative flat-forward subset from existing train; excluded clips preserved, not relabelled or flattened",
+  "counts": {
+    "walking": 408,
+    "standing_upper": 1353
+  },
+  "frames": 1235994,
+  "category_mass": {
+    "walking": 0.4999999999999985,
+    "standing_upper": 0.4999999999999962
+  },
+  "manifest_sha256": "0e0a51ad2ed970ad4df3532a6c297cc31c19f1b4c2032203a46887defcef51b8",
+  "contact_sha256": "c039e5b4d411e439ce272fe8779fa98bf5f3df696fd016f0926c705dbadff381",
+  "source_family_disjoint": true
+}

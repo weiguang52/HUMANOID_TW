@@ -1,0 +1,44 @@
+{
+  "issue": "TW154",
+  "iterations": 20000,
+  "num_envs": 1024,
+  "seed": 42,
+  "fresh": true,
+  "baseline": "TW141 Residual architecture plus horizontal path observation/cost; original policies preserved",
+  "horizontal_cost": {
+    "weight": -0.5,
+    "pseudo_huber_scale_m": 0.10426292940974236,
+    "observation_scale_m": 0.2085258588194847
+  },
+  "removed": "standing-only drift cost replaced by all-category horizontal cost",
+  "variants": {
+    "path": {
+      "gpu": 0,
+      "leg_target_rate_factor": 0.5
+    },
+    "rate": {
+      "gpu": 1,
+      "leg_target_rate_factor": 0.75
+    }
+  },
+  "upper_waist_neck_rate_factor": 0.5,
+  "contact_timing": "unchanged",
+  "pd_friction": "unchanged",
+  "validation": {
+    "flat_forward": 8,
+    "standing_upper": 3,
+    "treadmill": 1,
+    "turning": 1,
+    "nonplanar_review": 1,
+    "seeds": [
+      42,
+      123,
+      2026
+    ]
+  },
+  "caveats": [
+    "conservative subset, not entire walking class",
+    "rate limiter alone retained 97% reference amplitude; not established primary cause",
+    "nonplanar case only diagnostic on flat terrain"
+  ]
+}

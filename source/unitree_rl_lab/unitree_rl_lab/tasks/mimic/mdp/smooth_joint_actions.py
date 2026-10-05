@@ -1,6 +1,7 @@
 """Optional physical-unit target shaping, shared by training and replay."""
 import math
 import torch
+from .target_rate_scales import resolve_scales
 from isaaclab.envs.mdp.actions.joint_actions import JointPositionAction
 from isaaclab.envs.mdp.actions.actions_cfg import JointPositionActionCfg
 from isaaclab.utils import configclass
@@ -13,6 +14,10 @@ class SmoothJointPositionAction(JointPositionAction):
             raise ValueError('smoothing_tau must be finite and nonnegative')
         if not math.isfinite(cfg.target_velocity_scale) or not 0 < cfg.target_velocity_scale <= 1:
             raise ValueError("target_velocity_scale must be in (0,1]")
+        names = (self._asset.joint_names[self._joint_ids] if isinstance(self._joint_ids, slice)
+                 else [self._asset.joint_names[i] for i in self._joint_ids])
+        self._target_scales = torch.tensor(resolve_scales(names, cfg.target_velocity_scale,
+            getattr(cfg, 'target_velocity_scale_by_joint', None)), device=self.device)
         self._target_dt = env.step_dt
         self._alpha = 1.0 if cfg.smoothing_tau == 0 else -math.expm1(-env.step_dt / cfg.smoothing_tau)
         self._target_memory = self._asset.data.joint_pos[:, self._joint_ids].clone()
@@ -35,7 +40,7 @@ class SmoothJointPositionAction(JointPositionAction):
         self._target_initialized[:] = True
         change = self._alpha * (self._processed_actions - self._target_memory)
         if self.cfg.limit_target_velocity:
-            maximum = self._asset.data.joint_vel_limits[:, self._joint_ids] * self._target_dt * self.cfg.target_velocity_scale
+            maximum = self._asset.data.joint_vel_limits[:, self._joint_ids] * self._target_dt * self._target_scales
             change = torch.clamp(change, min=-maximum, max=maximum)
         self._target_memory.add_(change)
         if bounded:
@@ -54,4 +59,5 @@ class SmoothJointPositionActionCfg(JointPositionActionCfg):
     smoothing_tau: float = 0.0
     limit_target_velocity: bool = False
     target_velocity_scale: float = 1.0
+    target_velocity_scale_by_joint: dict[str, float] | None = None
     limit_target_position: bool = False

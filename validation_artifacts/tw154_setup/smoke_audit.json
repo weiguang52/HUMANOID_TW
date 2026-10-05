@@ -1,0 +1,12 @@
+{
+  "path": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_path_humanml3d/2026-10-05_17-05-24_tw154_mixed_path_smoke_s42/model_2.pt",
+    "finite": true,
+    "target_position_limited": true
+  },
+  "rate": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-05_17-06-10_tw154_mixed_rate_smoke_s42/model_2.pt",
+    "finite": true,
+    "target_position_limited": true
+  }
+}

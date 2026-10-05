@@ -43,3 +43,14 @@ def test_old_waist_checkpoint_cannot_load_in_new_robot(tmp_path):
     replay.actions.JointPositionAction.joint_names=['chest_pitch']
     with pytest.raises(ValueError,match='coordinate names'):
         restore(replay,tmp_path/'model.pt')
+
+
+def test_per_joint_rate_contract_roundtrip_and_legacy(tmp_path):
+    original=cfg();original.actions.JointPositionAction.target_velocity_scale_by_joint={'knee':.75}
+    save(original,tmp_path)
+    replay=cfg();restore(replay,tmp_path/'model.pt')
+    assert replay.actions.JointPositionAction.target_velocity_scale_by_joint=={'knee':.75}
+    p=tmp_path/'params/control_runtime.json';d=json.loads(p.read_text())
+    d['version']=3;del d['target_velocity_scale_by_joint'];p.write_text(json.dumps(d))
+    restore(replay,tmp_path/'model.pt')
+    assert replay.actions.JointPositionAction.target_velocity_scale_by_joint is None
