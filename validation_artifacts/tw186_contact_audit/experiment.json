@@ -1,0 +1,12 @@
+{
+  "iterations": 2000,
+  "seed": 42,
+  "num_envs": 1024,
+  "base": "tw176_v1/control/final_checkpoint",
+  "variants": [
+    "sole",
+    "masked"
+  ],
+  "original_contact_unchanged": true,
+  "remaining_conflicts": "Other foot position and joint pose imitation still use original reference."
+}

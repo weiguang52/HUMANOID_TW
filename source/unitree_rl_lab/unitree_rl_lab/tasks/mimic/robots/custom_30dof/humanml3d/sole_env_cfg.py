@@ -17,3 +17,16 @@ class SolePlayEnvCfg(SoleEnvCfg):
         super().__post_init__()
         self.scene.num_envs=1
         self.episode_length_s=1.e9
+
+
+@configclass
+class SoleMaskedEnvCfg(SoleEnvCfg):
+    def __post_init__(self):
+        super().__post_init__()
+        self.rewards.sole_height_residual.params["exclude_known_stance"]=True
+
+class SoleMaskedPlayEnvCfg(SoleMaskedEnvCfg):
+    def __post_init__(self):
+        super().__post_init__()
+        self.scene.num_envs=1
+        self.episode_length_s=1.e9

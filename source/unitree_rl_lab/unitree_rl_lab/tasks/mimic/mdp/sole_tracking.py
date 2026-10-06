@@ -38,7 +38,7 @@ def sole_cost(reference,actual,scale):
     return (torch.sqrt(1+((reference-actual)/scale).square())-1).mean(-1)
 
 
-def sole_tracking_cost(env,command_name,urdf_path,scale):
+def sole_tracking_cost(env,command_name,urdf_path,scale,exclude_known_stance=False):
     c=env.command_manager.get_term(command_name)
     if not hasattr(c,'_sole_corners'):
         vertices,_=read_foot_geometry(urdf_path)
@@ -46,4 +46,16 @@ def sole_tracking_cost(env,command_name,urdf_path,scale):
     ix=[c.cfg.body_names.index(n) for n in ['left_foot','right_foot']]
     ref=sole_height(c.body_pos_relative_w[:,ix],c.body_quat_relative_w[:,ix],c._sole_corners)
     actual=sole_height(c.robot_body_pos_w[:,ix],c.robot_body_quat_w[:,ix],c._sole_corners)
+    if exclude_known_stance:
+        from .expression import reference_contacts
+        labels,known=reference_contacts(c)
+        return stance_excluded_cost(ref,actual,labels,known,scale)
     return sole_cost(ref,actual,scale)
+
+
+def stance_excluded_cost(reference,actual,contact,known,scale):
+    # Keep denominator fixed at two feet: no amplification of remaining samples.
+    if not math.isfinite(scale) or scale<=0:raise ValueError("Positive scale required")
+    active=~(contact.bool() & known.bool())
+    cost=torch.sqrt(1+((reference-actual)/scale).square())-1
+    return (cost*active.to(cost.dtype)).mean(-1)
