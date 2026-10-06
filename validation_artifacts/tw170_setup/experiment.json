@@ -1,0 +1,22 @@
+{
+  "issue": "TW-170",
+  "iterations_additional": 12000,
+  "seed": 42,
+  "num_envs": 1024,
+  "variants": {
+    "control": "unchanged TW154 rate",
+    "knee": "add known-swing knee pseudo-Huber cost, scale .35rad, weight -.5"
+  },
+  "data": "TW154 immutable mixed manifest: 408 flat walks + 1353 standing upper; 50/50 class sampling",
+  "frozen": [
+    "original contact timing and known mask",
+    "PD",
+    "friction",
+    "target rates",
+    "observations",
+    "all other rewards"
+  ],
+  "rationale": "12-joint exponential averages dilute local knee error; separate masked knee residual preserves learning signal. Offline old exp mean .748 is not evidence of total saturation.",
+  "validation": "14 clips x seeds42/123/2026 per variant; fixed-height smoothed camera and original NPY videos",
+  "caveat": "One training seed; continuation control distinguishes added training from reward effect. Smoke verifies execution, not quality. New final policies must pass gait review."
+}

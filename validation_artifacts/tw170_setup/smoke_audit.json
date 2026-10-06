@@ -1,0 +1,28 @@
+{
+  "base_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-05_17-16-03_tw154_mixed_rate_formal_s42/model_19999.pt",
+  "base_sha256": "1ae3248e6377f4b85835d39c052a3070297e35cf3dd840cc391defb66198c860",
+  "runs": {
+    "control": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-06_08-30-40_tw170_mixed_control_smoke_s42/model_20002.pt",
+      "iteration": 20002,
+      "finite": true,
+      "loaded_base": true
+    },
+    "knee": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-06_08-30-40_tw170_mixed_knee_smoke_s42/model_20002.pt",
+      "iteration": 20002,
+      "finite": true,
+      "loaded_base": true
+    }
+  },
+  "only_config_difference": {
+    "swing_knee_residual": {
+      "func": "unitree_rl_lab.tasks.mimic.mdp.swing_knee:swing_knee_cost",
+      "params": {
+        "command_name": "motion",
+        "scale": "0.35"
+      },
+      "weight": "-0.5"
+    }
+  }
+}
