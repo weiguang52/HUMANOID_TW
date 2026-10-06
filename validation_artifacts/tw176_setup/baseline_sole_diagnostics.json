@@ -1,0 +1,3657 @@
+{
+  "rows": [
+    {
+      "samples": 2064,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 35,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0038143969140946865,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.4648925065994264e-06,
+        -6.423518061637878e-06
+      ],
+      "sole_z_m_p95": [
+        3.3838674426078793e-06,
+        2.2402033209800717e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.051919291338582675,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.013152345083653927,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        6.395348837209302,
+        4.7480620155038755
+      ],
+      "variant": "control",
+      "replay": "000016.seed123",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 2064,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 68,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0038143775891512632,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -4.512909799814224e-06,
+        -5.877949297428131e-06
+      ],
+      "sole_z_m_p95": [
+        2.745073288679122e-06,
+        3.4863129258155785e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.09301181102362205,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.009772871620953083,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        8.042635658914728,
+        10.562015503875969
+      ],
+      "variant": "control",
+      "replay": "000016.seed2026",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 2064,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 22,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 36,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.003813869087025523,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.981031477451325e-06,
+        -5.7049095630645755e-06
+      ],
+      "sole_z_m_p95": [
+        2.858648076653479e-06,
+        2.4715438485145545e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.07406496062992125,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.011804675683379173,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        7.751937984496124,
+        6.589147286821706
+      ],
+      "variant": "control",
+      "replay": "000016.seed42",
+      "category": "standing_upper"
+    },
+    {
+      "insufficient_samples": true,
+      "variant": "control",
+      "replay": "000039.seed123",
+      "category": "treadmill"
+    },
+    {
+      "samples": 168,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 2,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 2,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.019101198762655258,
+      "known_swing_sole_reference_error_m": 0.03362259268760681,
+      "sole_z_m_p05": [
+        -2.9905140399932863e-05,
+        -1.7041154205799102e-05
+      ],
+      "sole_z_m_p95": [
+        0.0032479445450007928,
+        0.009420207981020213
+      ],
+      "known_swing_sole_height_m": 0.006341448985040188,
+      "known_swing_contact": 0.0,
+      "known_stance_missing_contact": null,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.05925234779715538,
+      "known_swing_contact_force_n": 0.0,
+      "touchdown_events_per_second": [
+        14.285714285714286,
+        5.9523809523809526
+      ],
+      "variant": "control",
+      "replay": "000039.seed2026",
+      "category": "treadmill"
+    },
+    {
+      "samples": 244,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 3,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 4,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.020584415644407272,
+      "known_swing_sole_reference_error_m": 0.023375254124403,
+      "sole_z_m_p05": [
+        -1.8442049622535706e-05,
+        -4.5345351099967954e-05
+      ],
+      "sole_z_m_p95": [
+        0.04978104382753372,
+        0.007394639309495687
+      ],
+      "known_swing_sole_height_m": 0.020960189402103424,
+      "known_swing_contact": 0.19444444444444445,
+      "known_stance_missing_contact": null,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.1556898057460785,
+      "known_swing_contact_force_n": 1.1372641324996948,
+      "touchdown_events_per_second": [
+        3.278688524590164,
+        8.19672131147541
+      ],
+      "variant": "control",
+      "replay": "000039.seed42",
+      "category": "treadmill"
+    },
+    {
+      "samples": 3940,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 12,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 35,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0028469418175518513,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -4.3531879782676695e-06,
+        -5.8603473007678986e-06
+      ],
+      "sole_z_m_p95": [
+        3.136182203888891e-06,
+        3.1632371246814702e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.05780123583934089,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.014757663011550903,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        12.588832487309645,
+        4.365482233502538
+      ],
+      "variant": "control",
+      "replay": "000124.seed123",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 3940,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 34,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 32,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0028470722027122974,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -4.715612158179283e-06,
+        -7.163733243942261e-06
+      ],
+      "sole_z_m_p95": [
+        3.1312461942434303e-06,
+        2.0678155124187454e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.11933573635427394,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.012365585193037987,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        15.126903553299494,
+        13.096446700507615
+      ],
+      "variant": "control",
+      "replay": "000124.seed2026",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 3940,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 7,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 37,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.002847155323252082,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -5.395384505391121e-06,
+        -6.759725511074066e-06
+      ],
+      "sole_z_m_p95": [
+        2.932827919721603e-06,
+        2.1184794604778254e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.03643151390319258,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.015995677560567856,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        5.431472081218274,
+        3.451776649746193
+      ],
+      "variant": "control",
+      "replay": "000124.seed42",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 1016,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.04,
+            0.06,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 16,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.06054163724184036,
+      "known_swing_sole_reference_error_m": 0.023944616317749023,
+      "sole_z_m_p05": [
+        -4.914822056889534e-06,
+        -6.936723366379738e-06
+      ],
+      "sole_z_m_p95": [
+        0.01744162803515792,
+        0.0077605838887393475
+      ],
+      "known_swing_sole_height_m": 0.003927825950086117,
+      "known_swing_contact": 0.31666666666666665,
+      "known_stance_missing_contact": 0.09078947368421053,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.029418643563985825,
+      "known_swing_contact_force_n": 1.996256709098816,
+      "touchdown_events_per_second": [
+        6.496062992125984,
+        4.52755905511811
+      ],
+      "variant": "control",
+      "replay": "000139.seed123",
+      "category": "nonplanar_review"
+    },
+    {
+      "samples": 1016,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.04,
+            -0.06,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 11,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 17,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.060730502009391785,
+      "known_swing_sole_reference_error_m": 0.022109562531113625,
+      "sole_z_m_p05": [
+        -5.642883479595184e-06,
+        -7.159542292356491e-06
+      ],
+      "sole_z_m_p95": [
+        0.016352852806448936,
+        0.005743215326219797
+      ],
+      "known_swing_sole_height_m": 0.005762881133705378,
+      "known_swing_contact": 0.2,
+      "known_stance_missing_contact": 0.11447368421052631,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.033354032784700394,
+      "known_swing_contact_force_n": 1.670136570930481,
+      "touchdown_events_per_second": [
+        4.921259842519685,
+        5.905511811023622
+      ],
+      "variant": "control",
+      "replay": "000139.seed2026",
+      "category": "nonplanar_review"
+    },
+    {
+      "samples": 1020,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.06,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 18,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 29,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.06127430871129036,
+      "known_swing_sole_reference_error_m": 0.026083707809448242,
+      "sole_z_m_p05": [
+        -6.473297253251075e-06,
+        -7.3086470365524295e-06
+      ],
+      "sole_z_m_p95": [
+        0.014815005846321581,
+        0.007573848217725731
+      ],
+      "known_swing_sole_height_m": 0.001788736553862691,
+      "known_swing_contact": 0.43333333333333335,
+      "known_stance_missing_contact": 0.1763157894736842,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.025311360135674477,
+      "known_swing_contact_force_n": 3.6020617485046387,
+      "touchdown_events_per_second": [
+        5.88235294117647,
+        8.03921568627451
+      ],
+      "variant": "control",
+      "replay": "000139.seed42",
+      "category": "nonplanar_review"
+    },
+    {
+      "samples": 2220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.06,
+            -0.1,
+            0.16
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 53,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            0.02,
+            0.04,
+            0.08,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 50,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.018038325011730194,
+      "known_swing_sole_reference_error_m": 0.027857191860675812,
+      "sole_z_m_p05": [
+        -8.054869249463082e-06,
+        -6.726291030645371e-06
+      ],
+      "sole_z_m_p95": [
+        0.012260377779603005,
+        0.006383992591872789
+      ],
+      "known_swing_sole_height_m": 0.0030029688496142626,
+      "known_swing_contact": 0.3377659574468085,
+      "known_stance_missing_contact": 0.29358353510895885,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.03624496981501579,
+      "known_swing_contact_force_n": 2.653886556625366,
+      "touchdown_events_per_second": [
+        6.306306306306307,
+        5.405405405405405
+      ],
+      "variant": "control",
+      "replay": "000211.seed123",
+      "category": "turning"
+    },
+    {
+      "samples": 2220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.06,
+            0.08,
+            -0.12,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 40,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.06,
+            0.06,
+            0.06,
+            -0.08,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 37,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01802634820342064,
+      "known_swing_sole_reference_error_m": 0.02767559327185154,
+      "sole_z_m_p05": [
+        -7.0231966674327845e-06,
+        -5.412893369793892e-06
+      ],
+      "sole_z_m_p95": [
+        0.01134388670325279,
+        0.006294572958722707
+      ],
+      "known_swing_sole_height_m": 0.003184566041454673,
+      "known_swing_contact": 0.3696808510638298,
+      "known_stance_missing_contact": 0.2838983050847458,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.028969435021281242,
+      "known_swing_contact_force_n": 2.8980929851531982,
+      "touchdown_events_per_second": [
+        5.045045045045045,
+        4.414414414414415
+      ],
+      "variant": "control",
+      "replay": "000211.seed2026",
+      "category": "turning"
+    },
+    {
+      "samples": 2220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            0.04,
+            0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 37,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.02,
+            0.06,
+            -0.06,
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 39,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.018136264756321907,
+      "known_swing_sole_reference_error_m": 0.027753474190831184,
+      "sole_z_m_p05": [
+        -7.5088348239660265e-06,
+        -5.684792995452881e-06
+      ],
+      "sole_z_m_p95": [
+        0.010398803930729623,
+        0.006078934064134943
+      ],
+      "known_swing_sole_height_m": 0.0031066846568137407,
+      "known_swing_contact": 0.3271276595744681,
+      "known_stance_missing_contact": 0.2645278450363196,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.029952511191368103,
+      "known_swing_contact_force_n": 2.586665153503418,
+      "touchdown_events_per_second": [
+        4.774774774774775,
+        4.414414414414415
+      ],
+      "variant": "control",
+      "replay": "000211.seed42",
+      "category": "turning"
+    },
+    {
+      "samples": 4216,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 7,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 87,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0033333629835397005,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -4.5280903577804565e-06,
+        -5.295500159263611e-06
+      ],
+      "sole_z_m_p95": [
+        2.612825483083725e-06,
+        4.152301698923111e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.06687440076701821,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.010441950522363186,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        12.286527514231498,
+        6.214421252371916
+      ],
+      "variant": "control",
+      "replay": "000346.seed123",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 4216,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 18,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 113,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0033298665657639503,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -4.702946171164513e-06,
+        -5.002599209547043e-06
+      ],
+      "sole_z_m_p95": [
+        3.7353020161390305e-06,
+        3.963569179177284e-05
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.10618408437200383,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.01228402927517891,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        13.662239089184059,
+        7.495256166982921
+      ],
+      "variant": "control",
+      "replay": "000346.seed2026",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 4216,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 3,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 46,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0033334707841277122,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -4.696426913142204e-06,
+        -5.284324288368225e-06
+      ],
+      "sole_z_m_p95": [
+        2.621905878186226e-06,
+        3.375113010406494e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.06915148609779483,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.0084800124168396,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        16.081593927893735,
+        4.838709677419354
+      ],
+      "variant": "control",
+      "replay": "000346.seed42",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 1920,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.02,
+            -0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 28,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.08,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 46,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012185661122202873,
+      "known_swing_sole_reference_error_m": 0.026315880939364433,
+      "sole_z_m_p05": [
+        -4.814984276890755e-06,
+        -5.8731064200401304e-06
+      ],
+      "sole_z_m_p95": [
+        0.007798638101667165,
+        0.007510237023234365
+      ],
+      "known_swing_sole_height_m": 0.002195082139223814,
+      "known_swing_contact": 0.4097222222222222,
+      "known_stance_missing_contact": 0.16545454545454547,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.025740737095475197,
+      "known_swing_contact_force_n": 2.5830488204956055,
+      "touchdown_events_per_second": [
+        8.645833333333334,
+        6.770833333333334
+      ],
+      "variant": "control",
+      "replay": "000832.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1920,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            -0.02,
+            0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 23,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.06,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 50,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012266231700778008,
+      "known_swing_sole_reference_error_m": 0.0276472307741642,
+      "sole_z_m_p05": [
+        -5.045905709266663e-06,
+        -4.947371780872345e-06
+      ],
+      "sole_z_m_p95": [
+        0.007024999894201754,
+        0.008614773489534851
+      ],
+      "known_swing_sole_height_m": 0.0008637309074401855,
+      "known_swing_contact": 0.5277777777777778,
+      "known_stance_missing_contact": 0.12818181818181817,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.018329642713069916,
+      "known_swing_contact_force_n": 3.824350118637085,
+      "touchdown_events_per_second": [
+        5.729166666666667,
+        6.145833333333334
+      ],
+      "variant": "control",
+      "replay": "000832.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1920,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.02,
+            -0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 59,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            0.18
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 89,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01228355709463358,
+      "known_swing_sole_reference_error_m": 0.027552295476198196,
+      "sole_z_m_p05": [
+        -4.745181649923325e-06,
+        -6.348453462123871e-06
+      ],
+      "sole_z_m_p95": [
+        0.00729390252381563,
+        0.009875142481178045
+      ],
+      "known_swing_sole_height_m": 0.0009586680680513382,
+      "known_swing_contact": 0.5694444444444444,
+      "known_stance_missing_contact": 0.2359090909090909,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.030697179958224297,
+      "known_swing_contact_force_n": 3.4601247310638428,
+      "touchdown_events_per_second": [
+        8.541666666666668,
+        10.833333333333334
+      ],
+      "variant": "control",
+      "replay": "000832.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1972,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.06,
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 35,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.04,
+            0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 40,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01298542320728302,
+      "known_swing_sole_reference_error_m": 0.02596648409962654,
+      "sole_z_m_p05": [
+        -4.98676672577858e-06,
+        -6.0819555073976515e-06
+      ],
+      "sole_z_m_p95": [
+        0.00907352315261959,
+        0.007724487269297212
+      ],
+      "known_swing_sole_height_m": 0.0029630959033966064,
+      "known_swing_contact": 0.35625,
+      "known_stance_missing_contact": 0.13440860215053763,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02470695786178112,
+      "known_swing_contact_force_n": 2.357720136642456,
+      "touchdown_events_per_second": [
+        8.823529411764707,
+        5.37525354969574
+      ],
+      "variant": "control",
+      "replay": "001191.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1972,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            -0.04,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 46,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 57,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012972008436918259,
+      "known_swing_sole_reference_error_m": 0.026744414120912552,
+      "sole_z_m_p05": [
+        -5.5533833801746365e-06,
+        -5.456153303384781e-06
+      ],
+      "sole_z_m_p95": [
+        0.009134728787466883,
+        0.009543985268101095
+      ],
+      "known_swing_sole_height_m": 0.0021851640194654465,
+      "known_swing_contact": 0.4625,
+      "known_stance_missing_contact": 0.18503584229390682,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.022563112899661064,
+      "known_swing_contact_force_n": 3.4924488067626953,
+      "touchdown_events_per_second": [
+        8.620689655172415,
+        7.505070993914808
+      ],
+      "variant": "control",
+      "replay": "001191.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1972,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.06,
+            -0.08,
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 76,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.06,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 86,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013021509163081646,
+      "known_swing_sole_reference_error_m": 0.026070471853017807,
+      "sole_z_m_p05": [
+        -5.445163697004318e-06,
+        -5.9322454035282125e-06
+      ],
+      "sole_z_m_p95": [
+        0.008494321070611467,
+        0.006764738168567399
+      ],
+      "known_swing_sole_height_m": 0.002859107917174697,
+      "known_swing_contact": 0.31875,
+      "known_stance_missing_contact": 0.2638888888888889,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02317378856241703,
+      "known_swing_contact_force_n": 2.4936347007751465,
+      "touchdown_events_per_second": [
+        9.53346855983773,
+        9.736308316430021
+      ],
+      "variant": "control",
+      "replay": "001191.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1540,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.1,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 20,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            0.04,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 35,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014554164372384548,
+      "known_swing_sole_reference_error_m": 0.030336743220686913,
+      "sole_z_m_p05": [
+        -4.961295053362846e-06,
+        -5.8211386203765866e-06
+      ],
+      "sole_z_m_p95": [
+        0.009612259361892935,
+        0.006466711917892097
+      ],
+      "known_swing_sole_height_m": 0.002184696029871702,
+      "known_swing_contact": 0.45,
+      "known_stance_missing_contact": 0.125,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.025264425203204155,
+      "known_swing_contact_force_n": 3.7631659507751465,
+      "touchdown_events_per_second": [
+        4.805194805194805,
+        6.233766233766234
+      ],
+      "variant": "control",
+      "replay": "002011.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1540,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.12,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 36,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            0.0,
+            0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 62,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01457288395613432,
+      "known_swing_sole_reference_error_m": 0.029678743332624435,
+      "sole_z_m_p05": [
+        -5.525164306163788e-06,
+        -5.800556391477585e-06
+      ],
+      "sole_z_m_p95": [
+        0.008414196409285068,
+        0.009218945167958736
+      ],
+      "known_swing_sole_height_m": 0.00284269149415195,
+      "known_swing_contact": 0.25,
+      "known_stance_missing_contact": 0.2252415458937198,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02278999611735344,
+      "known_swing_contact_force_n": 2.0648722648620605,
+      "touchdown_events_per_second": [
+        7.532467532467532,
+        10.12987012987013
+      ],
+      "variant": "control",
+      "replay": "002011.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1540,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.02,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 37,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02,
+            -0.04,
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 57,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014604602009057999,
+      "known_swing_sole_reference_error_m": 0.0296557005494833,
+      "sole_z_m_p05": [
+        -5.430588498711586e-06,
+        -6.298255175352096e-06
+      ],
+      "sole_z_m_p95": [
+        0.007677552569657561,
+        0.007707435823976993
+      ],
+      "known_swing_sole_height_m": 0.0028657373040914536,
+      "known_swing_contact": 0.3,
+      "known_stance_missing_contact": 0.22705314009661837,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02493816241621971,
+      "known_swing_contact_force_n": 2.1045050621032715,
+      "touchdown_events_per_second": [
+        8.7012987012987,
+        8.7012987012987
+      ],
+      "variant": "control",
+      "replay": "002011.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1168,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.1,
+            -0.16
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 19,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            -0.04,
+            -0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 30,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013283522799611092,
+      "known_swing_sole_reference_error_m": 0.020081734284758568,
+      "sole_z_m_p05": [
+        -4.9121677875518795e-06,
+        -6.187520921230316e-06
+      ],
+      "sole_z_m_p95": [
+        0.010061597311869256,
+        0.0028190591372549497
+      ],
+      "known_swing_sole_height_m": 0.006663249805569649,
+      "known_swing_contact": 0.0,
+      "known_stance_missing_contact": 0.1786833855799373,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.037394825369119644,
+      "known_swing_contact_force_n": 0.0,
+      "touchdown_events_per_second": [
+        7.02054794520548,
+        7.705479452054795
+      ],
+      "variant": "control",
+      "replay": "005309.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1168,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.08,
+            0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 23,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02,
+            -0.02,
+            0.02
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 35,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013301142491400242,
+      "known_swing_sole_reference_error_m": 0.026298634707927704,
+      "sole_z_m_p05": [
+        -5.360133945941925e-06,
+        -5.667842924594879e-06
+      ],
+      "sole_z_m_p95": [
+        0.010004136851057409,
+        0.0036153089255094484
+      ],
+      "known_swing_sole_height_m": 0.0004463489167392254,
+      "known_swing_contact": 0.375,
+      "known_stance_missing_contact": 0.19905956112852666,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.026781370863318443,
+      "known_swing_contact_force_n": 2.2827212810516357,
+      "touchdown_events_per_second": [
+        7.191780821917808,
+        8.047945205479452
+      ],
+      "variant": "control",
+      "replay": "005309.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1168,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.02,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 29,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02,
+            0.04,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 40,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013304434716701508,
+      "known_swing_sole_reference_error_m": 0.019628798589110374,
+      "sole_z_m_p05": [
+        -5.514873191714287e-06,
+        -5.677342414855957e-06
+      ],
+      "sole_z_m_p95": [
+        0.008196476753801103,
+        0.004056097380816935
+      ],
+      "known_swing_sole_height_m": 0.007116185501217842,
+      "known_swing_contact": 0.0,
+      "known_stance_missing_contact": 0.23981191222570533,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.03170881047844887,
+      "known_swing_contact_force_n": 0.0,
+      "touchdown_events_per_second": [
+        7.191780821917808,
+        9.246575342465754
+      ],
+      "variant": "control",
+      "replay": "005309.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1436,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            -0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 21,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.04,
+            -0.06,
+            -0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 44,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013356490060687065,
+      "known_swing_sole_reference_error_m": 0.02109886147081852,
+      "sole_z_m_p05": [
+        -4.8796646296978e-06,
+        -5.801906809210777e-06
+      ],
+      "sole_z_m_p95": [
+        0.008018410298973322,
+        0.005065136589109898
+      ],
+      "known_swing_sole_height_m": 0.003998082131147385,
+      "known_swing_contact": 0.3515625,
+      "known_stance_missing_contact": 0.19294294294294295,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.034467458724975586,
+      "known_swing_contact_force_n": 2.8592848777770996,
+      "touchdown_events_per_second": [
+        5.153203342618385,
+        9.470752089136491
+      ],
+      "variant": "control",
+      "replay": "006634.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1436,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.02,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 19,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            -0.04,
+            -0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 40,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013377061113715172,
+      "known_swing_sole_reference_error_m": 0.02098817005753517,
+      "sole_z_m_p05": [
+        -4.8032961785793304e-06,
+        -4.9532391130924225e-06
+      ],
+      "sole_z_m_p95": [
+        0.008748059161007404,
+        0.0037693381309509277
+      ],
+      "known_swing_sole_height_m": 0.0041087716817855835,
+      "known_swing_contact": 0.3125,
+      "known_stance_missing_contact": 0.16666666666666666,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.024891452863812447,
+      "known_swing_contact_force_n": 2.581399917602539,
+      "touchdown_events_per_second": [
+        4.596100278551532,
+        8.07799442896936
+      ],
+      "variant": "control",
+      "replay": "006634.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1436,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.06,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 20,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.04,
+            -0.06,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 42,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013431006111204624,
+      "known_swing_sole_reference_error_m": 0.020040130242705345,
+      "sole_z_m_p05": [
+        -4.592817276716232e-06,
+        -5.0710514187812805e-06
+      ],
+      "sole_z_m_p95": [
+        0.008483579847961664,
+        0.00424170820042491
+      ],
+      "known_swing_sole_height_m": 0.005056812893599272,
+      "known_swing_contact": 0.3203125,
+      "known_stance_missing_contact": 0.18993993993993993,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.024932602420449257,
+      "known_swing_contact_force_n": 2.6479649543762207,
+      "touchdown_events_per_second": [
+        4.735376044568246,
+        9.052924791086351
+      ],
+      "variant": "control",
+      "replay": "006634.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 2568,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.06,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 26,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            0.04,
+            -0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 46,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013800328597426414,
+      "known_swing_sole_reference_error_m": 0.01920260675251484,
+      "sole_z_m_p05": [
+        -5.036452785134316e-06,
+        -6.105285137891769e-06
+      ],
+      "sole_z_m_p95": [
+        0.008263808442279698,
+        0.005272098537534478
+      ],
+      "known_swing_sole_height_m": 0.004537347238510847,
+      "known_swing_contact": 0.326271186440678,
+      "known_stance_missing_contact": 0.08909774436090226,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.020235365256667137,
+      "known_swing_contact_force_n": 2.681812286376953,
+      "touchdown_events_per_second": [
+        5.7632398753894085,
+        5.29595015576324
+      ],
+      "variant": "control",
+      "replay": "007481.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 2568,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.12,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 26,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.04,
+            0.08,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 53,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01380570326000452,
+      "known_swing_sole_reference_error_m": 0.019125772640109062,
+      "sole_z_m_p05": [
+        -4.727020859718323e-06,
+        -5.4513104259967806e-06
+      ],
+      "sole_z_m_p95": [
+        0.007721421681344522,
+        0.007633406715467585
+      ],
+      "known_swing_sole_height_m": 0.004614181350916624,
+      "known_swing_contact": 0.2330508474576271,
+      "known_stance_missing_contact": 0.07368421052631578,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.01506525743752718,
+      "known_swing_contact_force_n": 1.974104642868042,
+      "touchdown_events_per_second": [
+        3.7383177570093458,
+        5.218068535825545
+      ],
+      "variant": "control",
+      "replay": "007481.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 2568,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 25,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02,
+            -0.08,
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 47,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013868431560695171,
+      "known_swing_sole_reference_error_m": 0.019072292372584343,
+      "sole_z_m_p05": [
+        -5.1067676395177845e-06,
+        -5.498342216014862e-06
+      ],
+      "sole_z_m_p95": [
+        0.0075706135481596,
+        0.004800252802670003
+      ],
+      "known_swing_sole_height_m": 0.004667660221457481,
+      "known_swing_contact": 0.2966101694915254,
+      "known_stance_missing_contact": 0.07631578947368421,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.017874669283628464,
+      "known_swing_contact_force_n": 2.3746466636657715,
+      "touchdown_events_per_second": [
+        4.906542056074766,
+        5.841121495327103
+      ],
+      "variant": "control",
+      "replay": "007481.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1612,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 22,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.04,
+            -0.16
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 44,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014660455286502838,
+      "known_swing_sole_reference_error_m": 0.02864040434360504,
+      "sole_z_m_p05": [
+        -4.799477756023407e-06,
+        -6.062723696231842e-06
+      ],
+      "sole_z_m_p95": [
+        0.008464911580085747,
+        0.011313325632363543
+      ],
+      "known_swing_sole_height_m": 0.0026314572896808386,
+      "known_swing_contact": 0.46226415094339623,
+      "known_stance_missing_contact": 0.17551622418879056,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.03314449265599251,
+      "known_swing_contact_force_n": 2.491217613220215,
+      "touchdown_events_per_second": [
+        5.9553349875930515,
+        7.940446650124069
+      ],
+      "variant": "control",
+      "replay": "009516.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1612,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            0.06,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 27,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 51,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014777900651097298,
+      "known_swing_sole_reference_error_m": 0.029348820447921753,
+      "sole_z_m_p05": [
+        -4.977546632289886e-06,
+        -5.455221980810165e-06
+      ],
+      "sole_z_m_p95": [
+        0.007648380007594822,
+        0.011716570612043134
+      ],
+      "known_swing_sole_height_m": 0.0019230407197028399,
+      "known_swing_contact": 0.5518867924528302,
+      "known_stance_missing_contact": 0.22271386430678466,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.025872737169265747,
+      "known_swing_contact_force_n": 4.001680374145508,
+      "touchdown_events_per_second": [
+        7.692307692307692,
+        7.692307692307692
+      ],
+      "variant": "control",
+      "replay": "009516.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1612,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.06,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 32,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.08,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 44,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014853050000965595,
+      "known_swing_sole_reference_error_m": 0.029449954628944397,
+      "sole_z_m_p05": [
+        -5.101691931486129e-06,
+        -6.12884759902954e-06
+      ],
+      "sole_z_m_p95": [
+        0.006475723534822458,
+        0.010565033927559836
+      ],
+      "known_swing_sole_height_m": 0.0018219075864180923,
+      "known_swing_contact": 0.5424528301886793,
+      "known_stance_missing_contact": 0.18215339233038347,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.03275177627801895,
+      "known_swing_contact_force_n": 3.2627129554748535,
+      "touchdown_events_per_second": [
+        6.203473945409429,
+        7.568238213399503
+      ],
+      "variant": "control",
+      "replay": "009516.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.04,
+            -0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.02
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 40,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012712625786662102,
+      "known_swing_sole_reference_error_m": 0.027683347463607788,
+      "sole_z_m_p05": [
+        -6.24009408056736e-06,
+        -6.696768105030059e-06
+      ],
+      "sole_z_m_p95": [
+        0.011768690822646012,
+        0.008087497809901829
+      ],
+      "known_swing_sole_height_m": 0.001308825914748013,
+      "known_swing_contact": 0.6328125,
+      "known_stance_missing_contact": 0.17095588235294118,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.03524206951260567,
+      "known_swing_contact_force_n": 4.249983310699463,
+      "touchdown_events_per_second": [
+        8.032786885245901,
+        9.344262295081966
+      ],
+      "variant": "control",
+      "replay": "011084.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 13,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 23,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012786472216248512,
+      "known_swing_sole_reference_error_m": 0.027899622917175293,
+      "sole_z_m_p05": [
+        -6.134901195764541e-06,
+        -5.743512883782387e-06
+      ],
+      "sole_z_m_p95": [
+        0.011473620496690273,
+        0.006077622948214403
+      ],
+      "known_swing_sole_height_m": 0.0010925513925030828,
+      "known_swing_contact": 0.625,
+      "known_stance_missing_contact": 0.1056985294117647,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.026866490021348,
+      "known_swing_contact_force_n": 4.180032253265381,
+      "touchdown_events_per_second": [
+        4.754098360655737,
+        5.081967213114754
+      ],
+      "variant": "control",
+      "replay": "011084.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.02,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 22,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 38,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012677988968789577,
+      "known_swing_sole_reference_error_m": 0.02698122337460518,
+      "sole_z_m_p05": [
+        -5.8284029364585875e-06,
+        -6.567128002643585e-06
+      ],
+      "sole_z_m_p95": [
+        0.010360859613865611,
+        0.006571434019133443
+      ],
+      "known_swing_sole_height_m": 0.0020109505858272314,
+      "known_swing_contact": 0.5,
+      "known_stance_missing_contact": 0.20955882352941177,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.025803465396165848,
+      "known_swing_contact_force_n": 4.187987327575684,
+      "touchdown_events_per_second": [
+        7.377049180327869,
+        7.5409836065573765
+      ],
+      "variant": "control",
+      "replay": "011084.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 2064,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 0,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 9,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.003814165946096182,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.4499447792768478e-06,
+        -3.4878961741924285e-06
+      ],
+      "sole_z_m_p95": [
+        1.910002902150154e-06,
+        3.2478012144565567e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.03248031496062992,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.011013568378984928,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        2.9069767441860463,
+        8.430232558139535
+      ],
+      "variant": "knee",
+      "replay": "000016.seed123",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 2064,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 1,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 9,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0038141198456287384,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.6248937249183653e-06,
+        -4.1387975215911865e-06
+      ],
+      "sole_z_m_p95": [
+        1.8046237528324126e-06,
+        2.6704743504524228e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.029281496062992126,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.008994482457637787,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        4.844961240310077,
+        4.844961240310077
+      ],
+      "variant": "knee",
+      "replay": "000016.seed2026",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 2064,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 0,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 3,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0038142921403050423,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.3978838473558424e-06,
+        -4.283245652914048e-06
+      ],
+      "sole_z_m_p95": [
+        1.8654856830835331e-06,
+        3.1964853405952443e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.019931102362204724,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.010133902542293072,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        5.232558139534883,
+        2.4224806201550386
+      ],
+      "variant": "knee",
+      "replay": "000016.seed42",
+      "category": "standing_upper"
+    },
+    {
+      "insufficient_samples": true,
+      "variant": "knee",
+      "replay": "000039.seed123",
+      "category": "treadmill"
+    },
+    {
+      "samples": 128,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 1,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 0,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.016592681407928467,
+      "known_swing_sole_reference_error_m": 0.025576867163181305,
+      "sole_z_m_p05": [
+        -3.558145835995674e-05,
+        -6.132712587714194e-06
+      ],
+      "sole_z_m_p95": [
+        0.0023094266653060883,
+        0.0675763890147209
+      ],
+      "known_swing_sole_height_m": 0.014387175440788269,
+      "known_swing_contact": 0.0,
+      "known_stance_missing_contact": null,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.08112962543964386,
+      "known_swing_contact_force_n": 0.0,
+      "touchdown_events_per_second": [
+        10.9375,
+        1.5625
+      ],
+      "variant": "knee",
+      "replay": "000039.seed2026",
+      "category": "treadmill"
+    },
+    {
+      "samples": 348,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 4,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 5,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.019024528563022614,
+      "known_swing_sole_reference_error_m": 0.023543931543827057,
+      "sole_z_m_p05": [
+        -2.1329429000616073e-05,
+        -1.894193701446056e-05
+      ],
+      "sole_z_m_p95": [
+        0.021128941606730223,
+        0.016266437247395512
+      ],
+      "known_swing_sole_height_m": 0.015294879674911499,
+      "known_swing_contact": 0.0,
+      "known_stance_missing_contact": null,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.08967838436365128,
+      "known_swing_contact_force_n": 0.0,
+      "touchdown_events_per_second": [
+        4.022988505747127,
+        7.471264367816092
+      ],
+      "variant": "knee",
+      "replay": "000039.seed42",
+      "category": "treadmill"
+    },
+    {
+      "samples": 3940,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 7,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 63,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.002843739464879036,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.3993739634752275e-06,
+        -5.257036536931991e-06
+      ],
+      "sole_z_m_p95": [
+        2.8391368687152837e-06,
+        7.510371506214141e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.060504634397528324,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.016993802040815353,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        5.0761421319796955,
+        5.431472081218274
+      ],
+      "variant": "knee",
+      "replay": "000124.seed123",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 3940,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 9,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 65,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0028415019623935223,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.1665898859500884e-06,
+        -4.505831748247147e-06
+      ],
+      "sole_z_m_p95": [
+        3.1359028071165026e-06,
+        4.652701318263988e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.07788362512873326,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.014217354357242584,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        9.949238578680204,
+        6.243654822335025
+      ],
+      "variant": "knee",
+      "replay": "000124.seed2026",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 3940,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 10,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 98,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0028399054426699877,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.6137644201517105e-06,
+        -4.575029015541076e-06
+      ],
+      "sole_z_m_p95": [
+        5.045346915721891e-06,
+        4.341863095760322e-05
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.11791967044284243,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.015632834285497665,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        10.812182741116752,
+        8.832487309644671
+      ],
+      "variant": "knee",
+      "replay": "000124.seed42",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 1024,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            -0.02,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 18,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.06129620224237442,
+      "known_swing_sole_reference_error_m": 0.022119753062725067,
+      "sole_z_m_p05": [
+        -5.752872675657272e-06,
+        -7.579056546092033e-06
+      ],
+      "sole_z_m_p95": [
+        0.020805080980062424,
+        0.009967685118317587
+      ],
+      "known_swing_sole_height_m": 0.0057526882737874985,
+      "known_swing_contact": 0.21666666666666667,
+      "known_stance_missing_contact": 0.11447368421052631,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.024303467944264412,
+      "known_swing_contact_force_n": 1.940486192703247,
+      "touchdown_events_per_second": [
+        6.8359375,
+        5.2734375
+      ],
+      "variant": "knee",
+      "replay": "000139.seed123",
+      "category": "nonplanar_review"
+    },
+    {
+      "samples": 1000,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.02,
+            -0.06,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 17,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 16,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.05825242027640343,
+      "known_swing_sole_reference_error_m": 0.024169158190488815,
+      "sole_z_m_p05": [
+        -6.061140447854996e-06,
+        -6.685312837362289e-06
+      ],
+      "sole_z_m_p95": [
+        0.01811082148924469,
+        0.01117654228582978
+      ],
+      "known_swing_sole_height_m": 0.0037032824475318193,
+      "known_swing_contact": 0.18333333333333332,
+      "known_stance_missing_contact": 0.125,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.019814446568489075,
+      "known_swing_contact_force_n": 1.4529622793197632,
+      "touchdown_events_per_second": [
+        5.8,
+        4.4
+      ],
+      "variant": "knee",
+      "replay": "000139.seed2026",
+      "category": "nonplanar_review"
+    },
+    {
+      "samples": 1000,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.02,
+            0.04,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 20,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.058704495429992676,
+      "known_swing_sole_reference_error_m": 0.02719014696776867,
+      "sole_z_m_p05": [
+        -6.134342402219772e-06,
+        -6.618909537792206e-06
+      ],
+      "sole_z_m_p95": [
+        0.01451691668480634,
+        0.011360133811831465
+      ],
+      "known_swing_sole_height_m": 0.0006822962895967066,
+      "known_swing_contact": 0.26666666666666666,
+      "known_stance_missing_contact": 0.15394736842105264,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.022974161431193352,
+      "known_swing_contact_force_n": 2.481368064880371,
+      "touchdown_events_per_second": [
+        8.8,
+        6.6
+      ],
+      "variant": "knee",
+      "replay": "000139.seed42",
+      "category": "nonplanar_review"
+    },
+    {
+      "samples": 2220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.08,
+            0.1,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 33,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            -0.02,
+            -0.02,
+            -0.04,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 36,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.017764456570148468,
+      "known_swing_sole_reference_error_m": 0.02760835364460945,
+      "sole_z_m_p05": [
+        -7.715029641985894e-06,
+        -6.749341264367104e-06
+      ],
+      "sole_z_m_p95": [
+        0.014058878086507319,
+        0.007562464848160741
+      ],
+      "known_swing_sole_height_m": 0.003251805668696761,
+      "known_swing_contact": 0.4015957446808511,
+      "known_stance_missing_contact": 0.30387409200968524,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.03178693354129791,
+      "known_swing_contact_force_n": 3.112588405609131,
+      "touchdown_events_per_second": [
+        4.324324324324325,
+        4.2342342342342345
+      ],
+      "variant": "knee",
+      "replay": "000211.seed123",
+      "category": "turning"
+    },
+    {
+      "samples": 2220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            -0.1,
+            0.12,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 35,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            0.02,
+            0.04,
+            0.06,
+            -0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 32,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01764397695660591,
+      "known_swing_sole_reference_error_m": 0.026243219152092934,
+      "sole_z_m_p05": [
+        -7.353257387876511e-06,
+        -6.075901910662651e-06
+      ],
+      "sole_z_m_p95": [
+        0.014665316883474574,
+        0.009054006543010473
+      ],
+      "known_swing_sole_height_m": 0.004616937134414911,
+      "known_swing_contact": 0.3484042553191489,
+      "known_stance_missing_contact": 0.2984261501210654,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.027081770822405815,
+      "known_swing_contact_force_n": 2.589324951171875,
+      "touchdown_events_per_second": [
+        4.684684684684685,
+        3.6936936936936937
+      ],
+      "variant": "knee",
+      "replay": "000211.seed2026",
+      "category": "turning"
+    },
+    {
+      "samples": 2220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.06,
+            0.12,
+            -0.12,
+            0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 32,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.02,
+            0.04,
+            -0.12,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 34,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.017768042162060738,
+      "known_swing_sole_reference_error_m": 0.02734525129199028,
+      "sole_z_m_p05": [
+        -7.309019565582275e-06,
+        -6.6925305873155596e-06
+      ],
+      "sole_z_m_p95": [
+        0.01119669759646056,
+        0.008794905524700875
+      ],
+      "known_swing_sole_height_m": 0.003514909418299794,
+      "known_swing_contact": 0.40691489361702127,
+      "known_stance_missing_contact": 0.30387409200968524,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.029705040156841278,
+      "known_swing_contact_force_n": 3.2759337425231934,
+      "touchdown_events_per_second": [
+        5.045045045045045,
+        4.324324324324325
+      ],
+      "variant": "knee",
+      "replay": "000211.seed42",
+      "category": "turning"
+    },
+    {
+      "samples": 4216,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 1,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 44,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0033329541329294443,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.702240064740181e-06,
+        -4.6300701797008514e-06
+      ],
+      "sole_z_m_p95": [
+        2.129003405570984e-06,
+        3.3066608011722565e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.029841802492809204,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.01078500784933567,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        2.1821631878557874,
+        3.7001897533206827
+      ],
+      "variant": "knee",
+      "replay": "000346.seed123",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 4216,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 3,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 45,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0033321762457489967,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -3.908295184373856e-06,
+        -4.691537469625473e-06
+      ],
+      "sole_z_m_p95": [
+        2.2132880985736847e-06,
+        2.9439106583595276e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.04242569511025887,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.00829408224672079,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        5.692599620493358,
+        3.9373814041745727
+      ],
+      "variant": "knee",
+      "replay": "000346.seed2026",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 4216,
+      "touchdown_matching": [
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 2,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [],
+          "unmatched_reference": 0,
+          "unmatched_actual": 45,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.0033324966207146645,
+      "known_swing_sole_reference_error_m": null,
+      "sole_z_m_p05": [
+        -4.011671990156174e-06,
+        -4.491768777370453e-06
+      ],
+      "sole_z_m_p95": [
+        2.1194573491811752e-06,
+        4.353001713752747e-06
+      ],
+      "known_swing_sole_height_m": null,
+      "known_swing_contact": null,
+      "known_stance_missing_contact": 0.03847075743048897,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.009430637583136559,
+      "known_swing_contact_force_n": null,
+      "touchdown_events_per_second": [
+        4.222011385199241,
+        3.605313092979127
+      ],
+      "variant": "knee",
+      "replay": "000346.seed42",
+      "category": "standing_upper"
+    },
+    {
+      "samples": 1920,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            -0.02,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 19,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 25,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.011907338164746761,
+      "known_swing_sole_reference_error_m": 0.026968814432621002,
+      "sole_z_m_p05": [
+        -5.369680002331733e-06,
+        -5.558319389820099e-06
+      ],
+      "sole_z_m_p95": [
+        0.008829981461167334,
+        0.00972481342032551
+      ],
+      "known_swing_sole_height_m": 0.0015421474818140268,
+      "known_swing_contact": 0.5069444444444444,
+      "known_stance_missing_contact": 0.1590909090909091,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.022000551223754883,
+      "known_swing_contact_force_n": 3.5781092643737793,
+      "touchdown_events_per_second": [
+        11.770833333333334,
+        3.6458333333333335
+      ],
+      "variant": "knee",
+      "replay": "000832.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1920,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.04,
+            0.04,
+            -0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 23,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 34,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012096655555069447,
+      "known_swing_sole_reference_error_m": 0.02690550498664379,
+      "sole_z_m_p05": [
+        -5.368096753954887e-06,
+        -5.273241549730301e-06
+      ],
+      "sole_z_m_p95": [
+        0.008431693073362107,
+        0.009609111165627834
+      ],
+      "known_swing_sole_height_m": 0.0016054579755291343,
+      "known_swing_contact": 0.4444444444444444,
+      "known_stance_missing_contact": 0.16,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02014336921274662,
+      "known_swing_contact_force_n": 3.326327085494995,
+      "touchdown_events_per_second": [
+        10.520833333333334,
+        4.583333333333334
+      ],
+      "variant": "knee",
+      "replay": "000832.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1920,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            -0.02,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 36,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 60,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01221606507897377,
+      "known_swing_sole_reference_error_m": 0.02726338990032673,
+      "sole_z_m_p05": [
+        -5.157757550477982e-06,
+        -5.811639130115509e-06
+      ],
+      "sole_z_m_p95": [
+        0.007478910963982343,
+        0.009058088110759853
+      ],
+      "known_swing_sole_height_m": 0.0012475750409066677,
+      "known_swing_contact": 0.5,
+      "known_stance_missing_contact": 0.18681818181818183,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02178005687892437,
+      "known_swing_contact_force_n": 3.763768434524536,
+      "touchdown_events_per_second": [
+        6.458333333333334,
+        7.916666666666667
+      ],
+      "variant": "knee",
+      "replay": "000832.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1972,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            0.06,
+            0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 29,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 55,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012921169400215149,
+      "known_swing_sole_reference_error_m": 0.027223914861679077,
+      "sole_z_m_p05": [
+        -5.422905087471008e-06,
+        -5.787564441561699e-06
+      ],
+      "sole_z_m_p95": [
+        0.008694550488144147,
+        0.01092611076310277
+      ],
+      "known_swing_sole_height_m": 0.0017056658398360014,
+      "known_swing_contact": 0.48125,
+      "known_stance_missing_contact": 0.17383512544802868,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.023843925446271896,
+      "known_swing_contact_force_n": 3.6085727214813232,
+      "touchdown_events_per_second": [
+        6.592292089249494,
+        6.8965517241379315
+      ],
+      "variant": "knee",
+      "replay": "001191.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1972,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.02,
+            0.06,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 31,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.04,
+            -0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 71,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012827550061047077,
+      "known_swing_sole_reference_error_m": 0.025766242295503616,
+      "sole_z_m_p05": [
+        -5.181692540645599e-06,
+        -5.016755312681198e-06
+      ],
+      "sole_z_m_p95": [
+        0.009945882856845844,
+        0.010004304256290168
+      ],
+      "known_swing_sole_height_m": 0.0031633363105356693,
+      "known_swing_contact": 0.39375,
+      "known_stance_missing_contact": 0.2110215053763441,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.019367948174476624,
+      "known_swing_contact_force_n": 2.872252941131592,
+      "touchdown_events_per_second": [
+        9.432048681541582,
+        8.519269776876268
+      ],
+      "variant": "knee",
+      "replay": "001191.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1972,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            0.02,
+            0.02
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 24,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 29,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01299835555255413,
+      "known_swing_sole_reference_error_m": 0.026372283697128296,
+      "sole_z_m_p05": [
+        -4.887580871582031e-06,
+        -4.901178181171417e-06
+      ],
+      "sole_z_m_p95": [
+        0.007859737519174797,
+        0.010278649628162372
+      ],
+      "known_swing_sole_height_m": 0.0025572937447577715,
+      "known_swing_contact": 0.36875,
+      "known_stance_missing_contact": 0.14829749103942652,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02019386738538742,
+      "known_swing_contact_force_n": 2.8178534507751465,
+      "touchdown_events_per_second": [
+        11.257606490872211,
+        4.665314401622719
+      ],
+      "variant": "knee",
+      "replay": "001191.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1540,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.02,
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 17,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02,
+            -0.04,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 37,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014262599870562553,
+      "known_swing_sole_reference_error_m": 0.02729845605790615,
+      "sole_z_m_p05": [
+        -5.7105906307697294e-06,
+        -5.832035094499588e-06
+      ],
+      "sole_z_m_p95": [
+        0.009889574442058797,
+        0.008525173179805274
+      ],
+      "known_swing_sole_height_m": 0.005222979001700878,
+      "known_swing_contact": 0.2,
+      "known_stance_missing_contact": 0.16847826086956522,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.026890747249126434,
+      "known_swing_contact_force_n": 1.15130615234375,
+      "touchdown_events_per_second": [
+        3.766233766233766,
+        6.883116883116883
+      ],
+      "variant": "knee",
+      "replay": "002011.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1540,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.08,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 19,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02,
+            -0.02,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 36,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01442831289023161,
+      "known_swing_sole_reference_error_m": 0.02862512692809105,
+      "sole_z_m_p05": [
+        -5.783839151263237e-06,
+        -5.1095150411129e-06
+      ],
+      "sole_z_m_p95": [
+        0.009787239553406832,
+        0.007144553447142243
+      ],
+      "known_swing_sole_height_m": 0.0038963095284998417,
+      "known_swing_contact": 0.2625,
+      "known_stance_missing_contact": 0.15217391304347827,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02327554300427437,
+      "known_swing_contact_force_n": 2.566880702972412,
+      "touchdown_events_per_second": [
+        3.6363636363636362,
+        6.103896103896104
+      ],
+      "variant": "knee",
+      "replay": "002011.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1540,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.02,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 22,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.04,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 43,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01437342632561922,
+      "known_swing_sole_reference_error_m": 0.030822575092315674,
+      "sole_z_m_p05": [
+        -5.1550567150115965e-06,
+        -5.7390891015529634e-06
+      ],
+      "sole_z_m_p95": [
+        0.011051509296521543,
+        0.006604418624192475
+      ],
+      "known_swing_sole_height_m": 0.0016988642746582627,
+      "known_swing_contact": 0.6125,
+      "known_stance_missing_contact": 0.17753623188405798,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.022701319307088852,
+      "known_swing_contact_force_n": 5.45328426361084,
+      "touchdown_events_per_second": [
+        7.792207792207792,
+        7.2727272727272725
+      ],
+      "variant": "knee",
+      "replay": "002011.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1168,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.14,
+            0.16
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 16,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.04,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 29,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013044058345258236,
+      "known_swing_sole_reference_error_m": 0.026748744770884514,
+      "sole_z_m_p05": [
+        -5.297735333442688e-06,
+        -6.249640136957169e-06
+      ],
+      "sole_z_m_p95": [
+        0.011445996304973949,
+        0.005228301323950286
+      ],
+      "known_swing_sole_height_m": -3.7602148950099945e-06,
+      "known_swing_contact": 1.0,
+      "known_stance_missing_contact": 0.1778996865203762,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.03074570745229721,
+      "known_swing_contact_force_n": 7.528237342834473,
+      "touchdown_events_per_second": [
+        5.136986301369864,
+        7.705479452054795
+      ],
+      "variant": "knee",
+      "replay": "005309.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1168,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.1,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 16,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.02,
+            -0.02
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 34,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012998098507523537,
+      "known_swing_sole_reference_error_m": 0.025861205533146858,
+      "sole_z_m_p05": [
+        -4.9550551921129225e-06,
+        -5.101785063743591e-06
+      ],
+      "sole_z_m_p95": [
+        0.010884428955614566,
+        0.005017484817653886
+      ],
+      "known_swing_sole_height_m": 0.0008837785571813583,
+      "known_swing_contact": 0.25,
+      "known_stance_missing_contact": 0.19905956112852666,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.024015989154577255,
+      "known_swing_contact_force_n": 0.9856645464897156,
+      "touchdown_events_per_second": [
+        5.47945205479452,
+        8.219178082191782
+      ],
+      "variant": "knee",
+      "replay": "005309.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1168,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.04,
+            -0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 17,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            0.04,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 26,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01307994406670332,
+      "known_swing_sole_reference_error_m": 0.02676275186240673,
+      "sole_z_m_p05": [
+        -5.0513073801994325e-06,
+        -5.44469803571701e-06
+      ],
+      "sole_z_m_p95": [
+        0.010325164534151538,
+        0.004766108933836216
+      ],
+      "known_swing_sole_height_m": -1.7767539247870445e-05,
+      "known_swing_contact": 1.0,
+      "known_stance_missing_contact": 0.19435736677115986,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.026492753997445107,
+      "known_swing_contact_force_n": 11.577770233154297,
+      "touchdown_events_per_second": [
+        7.363013698630137,
+        6.506849315068493
+      ],
+      "variant": "knee",
+      "replay": "005309.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1436,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.02,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 20,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.04,
+            0.04,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 37,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013040134683251381,
+      "known_swing_sole_reference_error_m": 0.02210294082760811,
+      "sole_z_m_p05": [
+        -4.639849066734314e-06,
+        -5.789566785097122e-06
+      ],
+      "sole_z_m_p95": [
+        0.010655420366674662,
+        0.005583386402577162
+      ],
+      "known_swing_sole_height_m": 0.002994003240019083,
+      "known_swing_contact": 0.3515625,
+      "known_stance_missing_contact": 0.22147147147147148,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02301046997308731,
+      "known_swing_contact_force_n": 2.849752426147461,
+      "touchdown_events_per_second": [
+        4.456824512534819,
+        8.217270194986073
+      ],
+      "variant": "knee",
+      "replay": "006634.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1436,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.04,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 24,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            -0.04,
+            0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 37,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.01314113661646843,
+      "known_swing_sole_reference_error_m": 0.022482289001345634,
+      "sole_z_m_p05": [
+        -4.451954737305641e-06,
+        -4.750210791826248e-06
+      ],
+      "sole_z_m_p95": [
+        0.00961469323374331,
+        0.00469019403681159
+      ],
+      "known_swing_sole_height_m": 0.002614655066281557,
+      "known_swing_contact": 0.359375,
+      "known_stance_missing_contact": 0.21996996996996998,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.020204385742545128,
+      "known_swing_contact_force_n": 3.101741313934326,
+      "touchdown_events_per_second": [
+        5.2924791086350975,
+        7.381615598885794
+      ],
+      "variant": "knee",
+      "replay": "006634.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1436,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 24,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.04,
+            -0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 36,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013258473947644234,
+      "known_swing_sole_reference_error_m": 0.021617896854877472,
+      "sole_z_m_p05": [
+        -4.534609615802765e-06,
+        -4.812609404325485e-06
+      ],
+      "sole_z_m_p95": [
+        0.008503869641572237,
+        0.004311054479330778
+      ],
+      "known_swing_sole_height_m": 0.003479046281427145,
+      "known_swing_contact": 0.3125,
+      "known_stance_missing_contact": 0.22597597597597596,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.022139867767691612,
+      "known_swing_contact_force_n": 2.905817985534668,
+      "touchdown_events_per_second": [
+        6.128133704735376,
+        7.381615598885794
+      ],
+      "variant": "knee",
+      "replay": "006634.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 2568,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 26,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.06,
+            -0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 41,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013682053424417973,
+      "known_swing_sole_reference_error_m": 0.019831988960504532,
+      "sole_z_m_p05": [
+        -4.985323175787926e-06,
+        -5.925353616476059e-06
+      ],
+      "sole_z_m_p95": [
+        0.009278748277574779,
+        0.007234879676252606
+      ],
+      "known_swing_sole_height_m": 0.003907964564859867,
+      "known_swing_contact": 0.3135593220338983,
+      "known_stance_missing_contact": 0.08007518796992481,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.020460156723856926,
+      "known_swing_contact_force_n": 2.4751319885253906,
+      "touchdown_events_per_second": [
+        4.906542056074766,
+        5.140186915887851
+      ],
+      "variant": "knee",
+      "replay": "007481.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 2568,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.06,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 21,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            -0.04,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 51,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013728260062634945,
+      "known_swing_sole_reference_error_m": 0.020045684650540352,
+      "sole_z_m_p05": [
+        -6.121722981333733e-06,
+        -5.08185476064682e-06
+      ],
+      "sole_z_m_p95": [
+        0.008744752686470753,
+        0.007033015647903086
+      ],
+      "known_swing_sole_height_m": 0.0036942691076546907,
+      "known_swing_contact": 0.3601694915254237,
+      "known_stance_missing_contact": 0.08157894736842106,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.017117831856012344,
+      "known_swing_contact_force_n": 2.756251811981201,
+      "touchdown_events_per_second": [
+        4.4392523364485985,
+        5.451713395638629
+      ],
+      "variant": "knee",
+      "replay": "007481.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 2568,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 22,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.02,
+            -0.04,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 42,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.013777775689959526,
+      "known_swing_sole_reference_error_m": 0.01972603052854538,
+      "sole_z_m_p05": [
+        -6.218906491994858e-06,
+        -5.024764686822891e-06
+      ],
+      "sole_z_m_p95": [
+        0.008777581341564668,
+        0.006282920390367508
+      ],
+      "known_swing_sole_height_m": 0.004013923928141594,
+      "known_swing_contact": 0.3601694915254237,
+      "known_stance_missing_contact": 0.07593984962406015,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.016941949725151062,
+      "known_swing_contact_force_n": 2.8241474628448486,
+      "touchdown_events_per_second": [
+        5.140186915887851,
+        6.230529595015576
+      ],
+      "variant": "knee",
+      "replay": "007481.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1612,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.04,
+            -0.12,
+            -0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 23,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.06,
+            -0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 28,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014450350776314735,
+      "known_swing_sole_reference_error_m": 0.029054708778858185,
+      "sole_z_m_p05": [
+        -5.361158400774001e-06,
+        -6.093550473451614e-06
+      ],
+      "sole_z_m_p95": [
+        0.009234378114342686,
+        0.010577359423041324
+      ],
+      "known_swing_sole_height_m": 0.002217154251411557,
+      "known_swing_contact": 0.4009433962264151,
+      "known_stance_missing_contact": 0.18584070796460178,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.027102449908852577,
+      "known_swing_contact_force_n": 2.943999767303467,
+      "touchdown_events_per_second": [
+        5.459057071960298,
+        4.466501240694789
+      ],
+      "variant": "knee",
+      "replay": "009516.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1612,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.0,
+            0.02,
+            0.02
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 23,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            -0.08,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 29,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014483434148132801,
+      "known_swing_sole_reference_error_m": 0.028626346960663795,
+      "sole_z_m_p05": [
+        -5.28702512383461e-06,
+        -5.365069955587387e-06
+      ],
+      "sole_z_m_p95": [
+        0.008956586429849265,
+        0.011043329536914821
+      ],
+      "known_swing_sole_height_m": 0.0026455142069607973,
+      "known_swing_contact": 0.4339622641509434,
+      "known_stance_missing_contact": 0.17994100294985252,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.023379016667604446,
+      "known_swing_contact_force_n": 3.505016326904297,
+      "touchdown_events_per_second": [
+        4.962779156327543,
+        4.714640198511166
+      ],
+      "variant": "knee",
+      "replay": "009516.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1612,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.04,
+            -0.06,
+            -0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 21,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            0.06
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 29,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.014483134262263775,
+      "known_swing_sole_reference_error_m": 0.029636841267347336,
+      "sole_z_m_p05": [
+        -5.385605618357658e-06,
+        -6.045401096343993e-06
+      ],
+      "sole_z_m_p95": [
+        0.00972408992238342,
+        0.013305972656235086
+      ],
+      "known_swing_sole_height_m": 0.0016350219957530499,
+      "known_swing_contact": 0.49528301886792453,
+      "known_stance_missing_contact": 0.19616519174041297,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02321961149573326,
+      "known_swing_contact_force_n": 3.913292169570923,
+      "touchdown_events_per_second": [
+        5.707196029776674,
+        5.086848635235731
+      ],
+      "variant": "knee",
+      "replay": "009516.seed42",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.02,
+            0.12
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.04,
+            0.1
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 26,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012630278244614601,
+      "known_swing_sole_reference_error_m": 0.02639847807586193,
+      "sole_z_m_p05": [
+        -6.915489211678505e-06,
+        -6.625149399042129e-06
+      ],
+      "sole_z_m_p95": [
+        0.0133266294375062,
+        0.010661547118797885
+      ],
+      "known_swing_sole_height_m": 0.002593696117401123,
+      "known_swing_contact": 0.3984375,
+      "known_stance_missing_contact": 0.17371323529411764,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02471715770661831,
+      "known_swing_contact_force_n": 3.132573366165161,
+      "touchdown_events_per_second": [
+        4.426229508196721,
+        5.573770491803278
+      ],
+      "variant": "knee",
+      "replay": "011084.seed123",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            -0.08,
+            -0.14
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 14,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.0,
+            -0.16
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 24,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012783491984009743,
+      "known_swing_sole_reference_error_m": 0.02653871849179268,
+      "sole_z_m_p05": [
+        -5.52772544324398e-06,
+        -6.037019193172455e-06
+      ],
+      "sole_z_m_p95": [
+        0.011207710579037664,
+        0.00950897457078099
+      ],
+      "known_swing_sole_height_m": 0.0024534547701478004,
+      "known_swing_contact": 0.4375,
+      "known_stance_missing_contact": 0.12683823529411764,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.02264844812452793,
+      "known_swing_contact_force_n": 2.9604220390319824,
+      "touchdown_events_per_second": [
+        4.426229508196721,
+        6.0655737704918025
+      ],
+      "variant": "knee",
+      "replay": "011084.seed2026",
+      "category": "flat_forward"
+    },
+    {
+      "samples": 1220,
+      "touchdown_matching": [
+        {
+          "lags_s": [
+            0.08,
+            0.08
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 16,
+          "tolerance_s": 0.2
+        },
+        {
+          "lags_s": [
+            0.02,
+            0.04
+          ],
+          "unmatched_reference": 0,
+          "unmatched_actual": 21,
+          "tolerance_s": 0.2
+        }
+      ],
+      "sole_reference_rmse_m": 0.012636199593544006,
+      "known_swing_sole_reference_error_m": 0.0269910991191864,
+      "sole_z_m_p05": [
+        -6.140442565083504e-06,
+        -5.786679685115814e-06
+      ],
+      "sole_z_m_p95": [
+        0.012049937015399333,
+        0.0096819007769227
+      ],
+      "known_swing_sole_height_m": 0.0020010778680443764,
+      "known_swing_contact": 0.4296875,
+      "known_stance_missing_contact": 0.15257352941176472,
+      "contact_lowest_corner_speed_candidate_min_m_s": 0.021554049104452133,
+      "known_swing_contact_force_n": 3.608642101287842,
+      "touchdown_events_per_second": [
+        4.098360655737705,
+        4.754098360655737
+      ],
+      "variant": "knee",
+      "replay": "011084.seed42",
+      "category": "flat_forward"
+    }
+  ],
+  "note": "World collision-box minimum Z. Lowest-corner speed is a minimum candidate-corner geometry proxy, not actual contact point measurement; >1N raw contact, no phase edits, first episode excluding 1s."
+}

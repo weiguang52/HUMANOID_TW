@@ -1,0 +1,26 @@
+{
+  "issue": "TW-176",
+  "base": "TW170 control model_31998.pt",
+  "iterations_additional": 12000,
+  "num_envs": 1024,
+  "seed": 42,
+  "variants": {
+    "control": "PathRate unchanged",
+    "sole": "add collision-box minimum-Z reference residual; weight -.5; scale .05*leg_length=0.0104263m"
+  },
+  "data": "1761 mixed clips:408walk+1353standing; 50/50 classes; immutable TW154 manifest and contact sidecar",
+  "supervision": "Dense geometry derived from unchanged reference FK, no contact-label changes or confidence expansion",
+  "mask_audit": "21.4% raw source swing ->13.2% >=5cm ->7.87% source known ->4.87% resampled known",
+  "geometry": "URDF collision boxes, scalar-first quaternion, all 408 walking reference sole minima >=~1mm",
+  "validation": "84 same-protocol replays,56 videos plus sole/stance-loss/touchdown diagnostics. Corner velocity is only a proxy, not measured contact patches.",
+  "fixed": [
+    "PD",
+    "friction",
+    "contact timing",
+    "known mask",
+    "target rates",
+    "observations",
+    "all previous rewards"
+  ],
+  "caveat": "Single training seed; tests prove execution not motion quality. No automatic Done on training completion."
+}

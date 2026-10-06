@@ -1,0 +1,29 @@
+{
+  "base_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-06_08-37-59_tw170_mixed_control_formal_s42/model_31998.pt",
+  "base_sha256": "8011a636e3826beb20aa2c0cbf26857a8d53625b1530b1ec98549452bb59d786",
+  "runs": {
+    "control": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-06_14-31-06_tw176_mixed_control_smoke_s42/model_32001.pt",
+      "iteration": 32001,
+      "finite": true,
+      "loaded_base": true
+    },
+    "sole": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-06_14-31-06_tw176_mixed_sole_smoke_s42/model_32001.pt",
+      "iteration": 32001,
+      "finite": true,
+      "loaded_base": true
+    }
+  },
+  "only_config_difference": {
+    "sole_height_residual": {
+      "func": "unitree_rl_lab.tasks.mimic.mdp.sole_tracking:sole_tracking_cost",
+      "params": {
+        "command_name": "motion",
+        "scale": "0.010426292940974236",
+        "urdf_path": "/root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf"
+      },
+      "weight": "-0.5"
+    }
+  }
+}
