@@ -1,0 +1,20 @@
+{
+  "urdf": "/root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf",
+  "urdf_sha256": "1d613d3aef37d99e467ac7574d1455dacd3e9c5cc3276feff06afda6b25386f2",
+  "solver": "pinocchio 2.7 + scipy bounded least squares",
+  "variables": "10 leg pitch/roll joints and pelvis z; all yaw and upper joints fixed",
+  "contact": "original 263D ankle/toe bits; confidence unchanged; full-foot flattening only both source bits and known stance; partial contact minimum sole height only",
+  "timing": "unchanged 50Hz frames, no warping",
+  "smoothing": "Zero-phase Gaussian sigma2 frames on the 10 solved leg joints; root correction only smoothed, yaw/upper joints fixed; no contact time resampling. Full solved-angle smoothing prevents velocity overshoot from delta-only smoothing.",
+  "gates": {
+    "stance_error_p95_m": 0.003,
+    "flat_spread_p95_m": 0.005,
+    "max_q_change_rad": 0.8,
+    "max_root_z_change_m": 0.031,
+    "velocity_ratio": 1.001,
+    "joint_limit_violation": 1e-06,
+    "acceleration": "max leg acceleration <= max(40,1.5*original maximum)"
+  },
+  "experiment": "paired fresh 20000 iterations, seed42,1024env each; original versus corrected reference, identical IDs/rewards/50-50 category sampling; task PathRate (no extra sole reward)",
+  "limitations": "kinematic feasibility does not establish dynamic stability; flat floor only; original treadmill/stairs kept as out-of-scope diagnostics"
+}
