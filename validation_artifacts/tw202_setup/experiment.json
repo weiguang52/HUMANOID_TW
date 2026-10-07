@@ -1,0 +1,60 @@
+{
+  "variants": {
+    "baseline": "PathRate",
+    "precision": "Precision",
+    "neck": "PrecisionNeck",
+    "root": "PrecisionNeckRoot"
+  },
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_00-38-00_tw195_corrected_formal_s42/model_19999.pt",
+  "checkpoint_sha256": "e62437a81065c6f1c8d17aa86b9f08485ff7e5e4f6b6b3a27d90ab760d72bfb0",
+  "train_manifest_sha256": "f0fce7dee85ea5b00ca761e9125be2d5e94361b082145e96db03804f127d6193",
+  "motions": 1348,
+  "frames": 788767,
+  "seed": 42,
+  "environments": 1024,
+  "additional_iterations": 2000,
+  "physics_hz": 200,
+  "control_hz": 50,
+  "contact_unchanged": true,
+  "reward_changes": {
+    "precision": {
+      "standing_scale_m": 0.02085258588194847,
+      "walking_scale_m": 0.10426292940974236,
+      "weight": -0.5,
+      "gate": "audited standing_upper category AND reference XY speed < .025 m/s"
+    },
+    "neck": {
+      "joint_names": [
+        "neck",
+        "neck_linkage_roll",
+        "head_pitch"
+      ],
+      "position_scale_rad": 0.1745329252,
+      "position_weight": -0.25,
+      "velocity_scale_rad_s": 1.0,
+      "velocity_weight": -0.05
+    },
+    "root": {
+      "body": "base_link",
+      "heading_scale_rad": 0.2617993878,
+      "heading_weight": -0.25,
+      "target": "reference world yaw; wrap-aware; chest orientation unchanged"
+    }
+  },
+  "schedule": {
+    "GPU0": [
+      "neck",
+      "baseline"
+    ],
+    "GPU1": [
+      "root",
+      "precision"
+    ]
+  },
+  "comparison": "All arms independently resume identical checkpoint and optimizer state; incremental reward-group contrasts, not full factorial. One training seed; 3 validation seeds.",
+  "validation": "14 held-out clips x seeds42/123/2026; per-category 5s windows, sole contacts, neck tracking, pelvis yaw; 14 fixed-height side videos and 14 original NPY videos per arm. No long run until quality review. Plus two 20s synthetic fixed-leg diagnostic replays per arm, separately reported.",
+  "checks": {
+    "unit_regression_tests": 17,
+    "simulator_smoke": "neck/root each64env x2 iterations, same checkpoint resumed; finite rewards; identical control_runtime"
+  }
+}

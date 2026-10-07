@@ -1,0 +1,138 @@
+"""Per-category 5s validation diagnostics and source/robot video delivery."""
+import sys,json,hashlib,shutil,subprocess
+from pathlib import Path
+import numpy as np
+from summarize_tw100_validation import summarize
+
+variant=sys.argv[1]
+assert variant in ('baseline','precision','neck','root')
+state=Path('/root/gpufree-data/datasets/practice9/tw202_v1')
+root=state/'validation';src=root/variant
+manifest=json.loads((src/'manifest.json').read_text())
+categories={r['id']:r.get('evaluation_class',r['category']) for r in manifest['motions']}
+paths=sorted(p for p in src.glob('*.seed*.json') if not p.name.endswith('.summary.json'))
+assert len(paths)==42,(variant,len(paths))
+rows=[]
+for p in paths:
+    row=summarize(p);row['category']=categories[p.name.split('.')[0]]
+    with np.load(p.with_suffix('.npz')) as a:
+        row['joint_target_error_rms_rad']=np.sqrt(np.mean((a['target_q']-a['q'])**2,axis=0)).tolist()
+        end=int(np.flatnonzero(a['terminal'])[0]) if a['terminal'].any() else len(a['terminal'])
+        sel=(a['control_step']>=50)&(a['control_step']<end)
+        ix=[a['joint_names'].tolist().index(n) for n in ['neck','neck_linkage_roll','head_pitch']]
+        steps=a['control_step'][sel]
+        row['neck_reference_rmse_rad']=np.sqrt(np.mean((a['q'][sel][:,ix]-a['reference_q'][steps][:,ix])**2,axis=0)).tolist() if len(steps) else None
+        row['neck_velocity_reference_rmse_rad_s']=np.sqrt(np.mean((a['qd'][sel][:,ix]-a['reference_qd'][steps][:,ix])**2,axis=0)).tolist() if len(steps) else None
+        def yaw(q):
+            w,x,y,z=q.T
+            return np.arctan2(2*(w*z+x*y),1-2*(y*y+z*z))
+        delta=yaw(a['pelvis_reference_quat'][50:end])-yaw(a['pelvis_actual_quat'][50:end])
+        error=np.arctan2(np.sin(delta),np.cos(delta))
+        row['pelvis_heading_rmse_deg']=float(np.rad2deg(np.sqrt(np.mean(error**2)))) if len(error) else None
+    from step_diagnostics import diagnose
+    motion=next(r for r in manifest['motions'] if r['id']==p.name.split('.')[0])
+    offset=sum(r['frames'] for r in manifest['motions'][:manifest['motions'].index(motion)])
+    row['step_diagnostics']=diagnose(p,motion,offset)
+    rows.append(row)
+result=dict(variant=variant,training_seed=42,evaluation_seeds=[42,123,2026],rows=rows,
+    protocol='Fourteen stratified held-out motions; nonplanar_review is a terrain-mismatch diagnostic, NOT flat-walk acceptance; not full test-set acceptance. 5s continuous windows retain short tails and reset boundaries; not HumanScore. Unknown contact excluded with coverage. Foot-link speed includes rolling. Joint 2-8Hz energy includes intentional movement. Torque is implicit-PD estimate, not measured motor torque.')
+result['categories']={}
+for cat in sorted(set(categories.values())):
+    rr=[r for r in rows if r['category']==cat]
+    result['categories'][cat]=dict(clean=sum(r['clean_motion_end'] for r in rr),total=len(rr),
+        metrics={k:float(np.mean([r[k] for r in rr if r[k] is not None])) for k in
+        ['upper_error_m','wrist_error_m','anchor_height_error_m','contact_mismatch_fraction',
+         'foot_link_contact_speed_m_s','contact_known_fraction','worst_window_wrist_error_m']})
+for cat, summary in result['categories'].items():
+    rr=[r for r in rows if r['category']==cat]
+    for key in ['neck_reference_rmse_rad','neck_velocity_reference_rmse_rad_s']:
+        values=[r[key] for r in rr if r[key] is not None]
+        summary['metrics'][key]=np.mean(values,axis=0).tolist() if values else None
+    values=[r['pelvis_heading_rmse_deg'] for r in rr if r['pelvis_heading_rmse_deg'] is not None]
+    summary['metrics']['pelvis_heading_rmse_deg']=float(np.mean(values)) if values else None
+(src/'comparison.json').write_text(json.dumps(result,indent=2)+'\n')
+# Separate output per variant avoids concurrent report writes. Final files only.
+dst=Path('validation_artifacts/tw202_flat_walk')/variant
+dst.mkdir(parents=True,exist_ok=True)
+checkpoint=Path((state/variant/'final_checkpoint').read_text().strip())
+shutil.copy2(checkpoint,dst/'model_final.pt')
+shutil.copytree(checkpoint.parent/'params',dst/'params',dirs_exist_ok=True)
+for name in ('source_commit','data_audit.json'):
+    shutil.copy2(state/variant/name,dst/name)
+shutil.copy2(src/'comparison.json',dst/'comparison.json')
+shutil.copy2(src/'manifest.json',dst/'evaluation_manifest.json')
+for p in paths:shutil.copy2(p,dst/p.name)
+shutil.copytree(src/'videos',dst/'videos',dirs_exist_ok=True)
+camera_audit=[]
+for p in src.glob('*.camera.npz'):
+    shutil.copy2(p,dst/p.name)
+    with np.load(p) as a:
+        continuous=~(a['reset'][1:] | a['reset'][:-1])
+        delta=np.diff(a['camera_origin'],axis=0)[continuous]
+        vertical=float(np.max(np.abs(delta[:,2]))) if len(delta) else 0.
+        assert vertical<1.e-6,(p,vertical)
+        camera_audit.append(dict(file=p.name,frames=len(a['reset']),
+            continuous_max_vertical_step_m=vertical,
+            continuous_max_horizontal_step_m=float(np.linalg.norm(delta[:,:2],axis=1).max()) if len(delta) else 0.))
+assert len(camera_audit)==14,len(camera_audit)
+(dst/'camera_audit.json').write_text(json.dumps(camera_audit,indent=2)+'\n')
+ref=dst/'humanml_source'
+subprocess.run([sys.executable,'scripts/practice9/render_validation_references.py',
+    '--manifest',str(src/'manifest.json'),'--output',str(ref)],check=True)
+encoding=[]
+for p in sorted(dst.rglob('*.mp4')):
+    meta=json.loads(subprocess.check_output(['ffprobe','-v','error','-count_frames',
+        '-select_streams','v:0','-show_entries','stream=codec_name,nb_read_frames,r_frame_rate',
+        '-of','json',str(p)],text=True))['streams'][0]
+    assert meta['codec_name']=='h264' and int(meta['nb_read_frames'])>0,(p,meta)
+    if p.parent.name=='videos':
+        motion=next(r for r in manifest['motions'] if r['id']==p.stem)
+        requested=motion['frames']+1
+        # Recorder may include the initial frame; allow exactly one control frame.
+        assert int(meta['nb_read_frames']) in (requested-1,requested),(p,meta,requested)
+        numerator,denominator=map(float,meta['r_frame_rate'].split('/'))
+        assert abs(numerator/denominator-50)<1.e-6
+    encoding.append(dict(file=str(p.relative_to(dst)),**meta))
+assert len(encoding)==28,len(encoding)
+(dst/'encoding.json').write_text(json.dumps(encoding,indent=2)+'\n')
+items=[]
+for cid in categories:
+    candidates=list(ref.rglob(f'*{cid}*.mp4'))
+    assert len(candidates)==1,(cid,candidates)
+    source=candidates[0].relative_to(dst).as_posix()
+    items.append(f'<h2>{cid} / {categories[cid]}</h2><div class="pair">'
+        f'<video controls src="{source}"></video><video controls src="videos/{cid}.mp4"></video></div>')
+html='''<!doctype html><meta charset="utf-8"><title>TW202 mixed validation</title>
+<style>body{max-width:1400px;margin:auto;font:18px sans-serif}.pair{display:flex}video{width:49%}pre{white-space:pre-wrap}</style>
+<h1>TW202 mixed walking / standing validation</h1>
+<p>Left: original HumanML3D NPY (20fps). Right: robot simulation (50fps), stable side camera.
+Different reference durations: these videos are not phase aligned. No source-contact time warping.</p>
+<p>Metrics: 3 evaluation seeds, one training seed; mean and worst 5s windows in comparison.json.
+One reference cycle requested; no intentional second cycle. Incomplete/failing rollouts must not be treated as complete reference coverage.</p>'''
+from diagnose_sole_contacts import diagnose as sole_diagnose
+sole_rows=[]
+for p in paths:
+    motion=next(r for r in manifest['motions'] if r['id']==p.name.split('.')[0])
+    offset=sum(r['frames'] for r in manifest['motions'][:manifest['motions'].index(motion)])
+    sole_rows.append(dict(replay=p.stem,**sole_diagnose(p.with_suffix('.npz'),motion,offset)))
+(dst/'sole_diagnostics.json').write_text(json.dumps(sole_rows,indent=2))
+(dst/'index.html').write_text(html+f'<pre>{json.dumps(result["categories"],indent=2)}</pre>'+''.join(items))
+# Synthetic diagnostics are separate from held-out motion acceptance.
+diag=state/'diagnostic'/variant
+shutil.copytree(diag,dst/'diagnostic',dirs_exist_ok=True)
+static_rows=[]
+for name in ['corrected_static','corrected_upper']:
+    meta=json.loads((diag/(name+'.json')).read_text())
+    a=np.load(diag/(name+'.npz'));xy=a['anchor_actual'][50:,:2]
+    static_rows.append(dict(case=name,seconds=meta['seconds'],termination_counts=meta['termination_counts'],net_xy_mm=float(np.linalg.norm(xy[-1]-xy[0])*1000) if len(xy) else None,excursion_mm=float(np.linalg.norm(xy-xy[0],axis=-1).max()*1000) if len(xy) else None))
+    video=diag/(name+'.mp4')
+    check=json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','v:0','-show_entries','stream=codec_name,nb_frames,r_frame_rate','-of','json',str(video)],text=True))['streams'][0]
+    assert check['codec_name']=='h264' and int(check['nb_frames'])==(meta['steps']+1)//2 and check['r_frame_rate']=='25/1'
+(dst/'diagnostic_summary.json').write_text(json.dumps(static_rows,indent=2))
+with (dst/'index.html').open('a') as f:
+    f.write('<h2>Synthetic fixed-leg diagnostics (not original source timeline)</h2><pre>'+json.dumps(static_rows,indent=2)+'</pre>')
+    for name in ['corrected_static','corrected_upper']:f.write('<video controls src="diagnostic/'+name+'.mp4"></video>')
+sha={str(p.relative_to(dst)):hashlib.sha256(p.read_bytes()).hexdigest()
+     for p in dst.rglob('*') if p.is_file() and p.name!='sha256.json'}
+(dst/'sha256.json').write_text(json.dumps(sha,indent=2)+'\n')
+print(json.dumps(result['categories'],indent=2))

@@ -1,0 +1,45 @@
+{
+  "neck": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_10-06-54_tw202_neck_smoke_s42/model_20000.pt",
+    "control_runtime_matches_initial": true,
+    "log_evidence": [
+      "|    12    | horizontal_path_error               |   (2,)   |",
+      "|     12    | horizontal_path_error              |    (2,)   |",
+      "|   21  | horizontal_path_error    |    -0.5 |",
+      "|   22  | neck_reference_position  |   -0.25 |",
+      "|   23  | neck_reference_velocity  |   -0.05 |",
+      "[INFO]: Loading model checkpoint from: /root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_00-38-00_tw195_corrected_formal_s42/model_19999.pt",
+      "\u001b[1m                         Learning iteration 19999/20001                         \u001b[0m ",
+      "   Episode_Reward/horizontal_path_error: -0.0100",
+      " Episode_Reward/neck_reference_position: -0.0005",
+      " Episode_Reward/neck_reference_velocity: -0.0001",
+      "\u001b[1m                         Learning iteration 20000/20001                         \u001b[0m ",
+      "   Episode_Reward/horizontal_path_error: -0.0067",
+      " Episode_Reward/neck_reference_position: -0.0030",
+      " Episode_Reward/neck_reference_velocity: -0.0002"
+    ]
+  },
+  "root": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_10-06-54_tw202_root_smoke_s42/model_20000.pt",
+    "control_runtime_matches_initial": true,
+    "log_evidence": [
+      "|    12    | horizontal_path_error               |   (2,)   |",
+      "|     12    | horizontal_path_error              |    (2,)   |",
+      "|   21  | horizontal_path_error    |    -0.5 |",
+      "|   22  | neck_reference_position  |   -0.25 |",
+      "|   23  | neck_reference_velocity  |   -0.05 |",
+      "|   24  | pelvis_reference_heading |   -0.25 |",
+      "[INFO]: Loading model checkpoint from: /root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_00-38-00_tw195_corrected_formal_s42/model_19999.pt",
+      "\u001b[1m                         Learning iteration 19999/20001                         \u001b[0m ",
+      "   Episode_Reward/horizontal_path_error: -0.0100",
+      " Episode_Reward/neck_reference_position: -0.0005",
+      " Episode_Reward/neck_reference_velocity: -0.0001",
+      "Episode_Reward/pelvis_reference_heading: -0.0006",
+      "\u001b[1m                         Learning iteration 20000/20001                         \u001b[0m ",
+      "   Episode_Reward/horizontal_path_error: -0.0067",
+      " Episode_Reward/neck_reference_position: -0.0030",
+      " Episode_Reward/neck_reference_velocity: -0.0002",
+      "Episode_Reward/pelvis_reference_heading: -0.0006"
+    ]
+  }
+}

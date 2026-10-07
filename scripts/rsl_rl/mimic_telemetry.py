@@ -78,7 +78,9 @@ class MimicTelemetry:
                 reference_contact=self.array(self.contact_labels[frame]),
                 reference_known=self.array(self.contact_known[frame]),
                 anchor_reference=self.array(c.anchor_pos_w[0]),
-                anchor_actual=self.array(c.robot_anchor_pos_w[0]))
+                anchor_actual=self.array(c.robot_anchor_pos_w[0]),
+                pelvis_reference_quat=self.array(c.body_quat_w[0, c.motion_root_body_index]),
+                pelvis_actual_quat=self.array(c.robot_body_quat_w[0, c.motion_root_body_index]))
 
     def sample(self):
         d = self.robot.data
