@@ -1,0 +1,25 @@
+{
+  "neck_reference_velocity": {
+    "baseline": null,
+    "neck_only": {
+      "func": "unitree_rl_lab.tasks.mimic.mdp.stability_tracking:neck_tracking_cost",
+      "params": {
+        "command_name": "motion",
+        "scale": "1.0",
+        "velocity": "true"
+      },
+      "weight": "-0.05"
+    }
+  },
+  "neck_reference_position": {
+    "baseline": null,
+    "neck_only": {
+      "func": "unitree_rl_lab.tasks.mimic.mdp.stability_tracking:neck_tracking_cost",
+      "params": {
+        "command_name": "motion",
+        "scale": "0.1745329252"
+      },
+      "weight": "-0.25"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "reward_only_difference": [
+    "neck_reference_position",
+    "neck_reference_velocity"
+  ],
+  "unchanged": [
+    "actions",
+    "observations",
+    "sim",
+    "terminations"
+  ],
+  "smoke_status": "trained",
+  "reward_tests_passed": 6
+}

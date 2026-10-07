@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "baseline": "PathRate",
+    "neck_only": "NeckOnly"
+  },
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_11-01-01_tw202_baseline_formal_s42/model_21998.pt",
+  "checkpoint_sha256": "bf6ca098b20c50bf9db38229c8e6e1c7c28e24d9615ca553ad54d38141a23997",
+  "train_manifest_sha256": "f0fce7dee85ea5b00ca761e9125be2d5e94361b082145e96db03804f127d6193",
+  "motions": 1348,
+  "frames": 788767,
+  "seed": 42,
+  "environments": 1024,
+  "additional_iterations": 2000,
+  "physics_hz": 200,
+  "control_hz": 50,
+  "contact_unchanged": true
+}

@@ -52,3 +52,20 @@ class PrecisionNeckRootPlayEnvCfg(PrecisionNeckRootEnvCfg):
         super().__post_init__()
         self.scene.num_envs=1
         self.episode_length_s=1.e9
+
+@configclass
+class NeckOnlyEnvCfg(PathRateEnvCfg):
+    def __post_init__(self):
+        super().__post_init__()
+        self.rewards.neck_reference_position = RewTerm(func=reward.neck_tracking_cost, weight=-.25,
+            params={'command_name': 'motion', 'scale': .1745329252})
+        self.rewards.neck_reference_velocity = RewTerm(func=reward.neck_tracking_cost, weight=-.05,
+            params={'command_name': 'motion', 'scale': 1., 'velocity': True})
+
+
+
+class NeckOnlyPlayEnvCfg(NeckOnlyEnvCfg):
+    def __post_init__(self):
+        super().__post_init__()
+        self.scene.num_envs=1
+        self.episode_length_s=1.e9
