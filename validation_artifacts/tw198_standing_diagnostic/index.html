@@ -1,0 +1,63 @@
+<!doctype html><meta charset="utf-8"><title>TW198 Standing diagnosis</title><style>body{font:16px sans-serif;max-width:1400px;margin:30px auto;padding:20px}td,th{padding:7px;border:1px solid #ddd}table{border-collapse:collapse}video{width:560px;max-width:100%}img{max-width:100%}</style><h1>TW-198 固定目标 PD / 策略对照</h1>
+<p>仅诊断，未启动训练。000016 第100帧生成静止目标；另设腿/腰/根固定、1秒后仅上肢表达的合成目标。原始人体接触时序未修改，合成双支撑标签仅用于受控测试。每组最多20秒，seed42、相同初态，无观测/初态噪声，μ=1、恢复系数0，控制50Hz；物理200/400Hz。禁用手部跟踪终止，保留高度/倾角终止。</p>
+<p>Displacement excludes first second; early failures retained. Synthetic out-of-distribution test, not full-motion acceptance. Foot displacement is not measured contact-point slip.</p>
+<h2>Interpretation and next experiment</h2>
+<p>The corrected pose is statically feasible under the tested PD/material settings. This does not establish that every corrected motion is dynamically feasible. Both learned policies still introduce unnecessary leg motion under a frozen target. Original-reference PD fails before one second; therefore reverting every IK change is not justified by this diagnostic.</p>
+<p>At 200Hz, the corrected policy with the corrected static target lasts 20s but drifts 87.09mm after the first second. Left foot-roll target range is 30.42 degrees; left ankle-yaw 25.94 degrees. Its feet move 80.41/89.91mm net. With the same target, fixed PD holds for 20s with approximately 0.01mm body net drift. With upper-body expression, fixed PD holds 20s; the corrected policy terminates at 7.06s with 178.10mm net drift.</p>
+<p>The horizontal path cost currently uses a 104.26mm scale and weight -0.5; the separate standing-drift term is disabled. A 10mm horizontal error incurs only about -0.00229 before timestep integration. This makes standing precision a plausible objective-calibration issue, but reward causality is not established by policy replay alone.</p>
+<p>Next: retain both reference versions and both checkpoints; first isolate a standing-only tighter horizontal-error scale in the existing mixed standing/walking task, using reference-derived standing classification. Keep all human contact labels/timing, PD, friction, walking rewards and sampling unchanged. Use a short paired experiment and evaluate full held-out motions plus this static diagnostic before a long run. Avoid simultaneous friction, IK and reward changes; avoid hard-locking ankle degrees of freedom.</p>
+<p>Limitations: one source pose, one seed, synthetic targets outside the normal training distribution, fixed material settings, no perturbations. PD holding is not a walking controller. Different early terminations imply unequal observation horizons; do not rank raw net displacement alone. The 400Hz evaluation changes physics resolution without retraining; it is a sensitivity check, not a fair comparison of policies trained at two frequencies. Fixed-world-camera frame sheets were visually inspected; exact trajectories are in the telemetry.</p>
+<p>Contact diagnostics at 200Hz on the corrected static target: corrected policy has 12.45% known-stance samples with Fz below 1N; fixed PD has 0%. Threshold up-crossings are 12.4/13.7 per second, but sole geometry remains close to ground, so these are force unloading/chatter events, not confirmed airborne touchdowns. Minimum candidate-corner tangential speed averages 12.9mm/s versus 0.42mm/s for PD; this remains a geometric proxy, not a measured contact-patch velocity. See sole_metrics.json. Five-second windows in metrics.json exclude resets and retain max excursion as well as net displacement.</p>
+<p>All 32 replays completed. At 400Hz physics (still 50Hz control), corrected-policy static drift rises from 87.09 to 123.92mm, while fixed PD remains approximately 0.01mm. Upper-expression policy terminates at 5.60s versus 7.06s at 200Hz. Increasing physics resolution alone does not resolve the observed behavior. No new policy training was started.</p>
+
+<h2>Same corrected target: fixed PD vs trained policy</h2><video controls src="pd_vs_policy.mp4" style="width:1100px"></video>
+<img src="comparison.png"><table><tr><th>权重</th><th>物理频率</th><th>目标/控制器</th><th>持续秒</th><th>机身净位移mm</th><th>终止</th><th>腿目标最大变化幅度°</th></tr>
+<tr><td>corrected</td><td>200hz</td><td>corrected_static_policy</td><td>20.0</td><td>87.089</td><td>{}</td><td>30.42</td></tr>
+<tr><td>corrected</td><td>200hz</td><td>corrected_static_reference_pd</td><td>20.0</td><td>0.014</td><td>{}</td><td>0.0</td></tr>
+<tr><td>corrected</td><td>200hz</td><td>corrected_upper_policy</td><td>7.0600000000000005</td><td>178.105</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>67.36</td></tr>
+<tr><td>corrected</td><td>200hz</td><td>corrected_upper_reference_pd</td><td>20.0</td><td>0.036</td><td>{}</td><td>0.0</td></tr>
+<tr><td>corrected</td><td>200hz</td><td>original_static_policy</td><td>20.0</td><td>20.368</td><td>{}</td><td>16.7</td></tr>
+<tr><td>corrected</td><td>200hz</td><td>original_static_reference_pd</td><td>0.96</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+<tr><td>corrected</td><td>200hz</td><td>original_upper_policy</td><td>6.74</td><td>133.128</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>69.56</td></tr>
+<tr><td>corrected</td><td>200hz</td><td>original_upper_reference_pd</td><td>0.96</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>corrected_static_policy</td><td>20.0</td><td>123.918</td><td>{}</td><td>33.26</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>corrected_static_reference_pd</td><td>20.0</td><td>0.009</td><td>{}</td><td>0.0</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>corrected_upper_policy</td><td>5.6000000000000005</td><td>142.457</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>76.84</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>corrected_upper_reference_pd</td><td>20.0</td><td>0.036</td><td>{}</td><td>0.0</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>original_static_policy</td><td>20.0</td><td>74.1</td><td>{}</td><td>23.51</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>original_static_reference_pd</td><td>0.9400000000000001</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>original_upper_policy</td><td>4.64</td><td>198.12</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>79.39</td></tr>
+<tr><td>corrected</td><td>400hz</td><td>original_upper_reference_pd</td><td>0.9400000000000001</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+<tr><td>original</td><td>200hz</td><td>corrected_static_policy</td><td>9.74</td><td>295.239</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>63.39</td></tr>
+<tr><td>original</td><td>200hz</td><td>corrected_static_reference_pd</td><td>20.0</td><td>0.014</td><td>{}</td><td>0.0</td></tr>
+<tr><td>original</td><td>200hz</td><td>corrected_upper_policy</td><td>7.18</td><td>266.912</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>63.55</td></tr>
+<tr><td>original</td><td>200hz</td><td>corrected_upper_reference_pd</td><td>20.0</td><td>0.036</td><td>{}</td><td>0.0</td></tr>
+<tr><td>original</td><td>200hz</td><td>original_static_policy</td><td>3.38</td><td>509.604</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>50.27</td></tr>
+<tr><td>original</td><td>200hz</td><td>original_static_reference_pd</td><td>0.96</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+<tr><td>original</td><td>200hz</td><td>original_upper_policy</td><td>8.9</td><td>544.213</td><td>{&#x27;anchor_ori&#x27;: 1}</td><td>69.45</td></tr>
+<tr><td>original</td><td>200hz</td><td>original_upper_reference_pd</td><td>0.96</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+<tr><td>original</td><td>400hz</td><td>corrected_static_policy</td><td>7.0200000000000005</td><td>685.424</td><td>{&#x27;anchor_pos&#x27;: 1, &#x27;anchor_ori&#x27;: 1}</td><td>60.61</td></tr>
+<tr><td>original</td><td>400hz</td><td>corrected_static_reference_pd</td><td>20.0</td><td>0.009</td><td>{}</td><td>0.0</td></tr>
+<tr><td>original</td><td>400hz</td><td>corrected_upper_policy</td><td>9.120000000000001</td><td>738.159</td><td>{&#x27;anchor_ori&#x27;: 1}</td><td>58.01</td></tr>
+<tr><td>original</td><td>400hz</td><td>corrected_upper_reference_pd</td><td>20.0</td><td>0.036</td><td>{}</td><td>0.0</td></tr>
+<tr><td>original</td><td>400hz</td><td>original_static_policy</td><td>5.58</td><td>626.443</td><td>{&#x27;anchor_pos&#x27;: 1, &#x27;anchor_ori&#x27;: 1}</td><td>52.22</td></tr>
+<tr><td>original</td><td>400hz</td><td>original_static_reference_pd</td><td>0.9400000000000001</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+<tr><td>original</td><td>400hz</td><td>original_upper_policy</td><td>3.84</td><td>397.382</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>61.9</td></tr>
+<tr><td>original</td><td>400hz</td><td>original_upper_reference_pd</td><td>0.9400000000000001</td><td>nan</td><td>{&#x27;anchor_pos&#x27;: 1}</td><td>nan</td></tr>
+</table><h2>Original NPY (20fps)</h2><p>Synthetic targets freeze the legs/root; not synchronized with source.</p><video controls src="000016_source.mp4"></video><h2>Fixed world camera, 25fps realtime</h2>
+<h3>corrected/200hz/corrected_static_policy.mp4</h3><video controls src="corrected/200hz/corrected_static_policy.mp4"></video>
+<h3>corrected/200hz/corrected_static_reference_pd.mp4</h3><video controls src="corrected/200hz/corrected_static_reference_pd.mp4"></video>
+<h3>corrected/200hz/corrected_upper_policy.mp4</h3><video controls src="corrected/200hz/corrected_upper_policy.mp4"></video>
+<h3>corrected/200hz/corrected_upper_reference_pd.mp4</h3><video controls src="corrected/200hz/corrected_upper_reference_pd.mp4"></video>
+<h3>corrected/200hz/original_static_policy.mp4</h3><video controls src="corrected/200hz/original_static_policy.mp4"></video>
+<h3>corrected/200hz/original_static_reference_pd.mp4</h3><video controls src="corrected/200hz/original_static_reference_pd.mp4"></video>
+<h3>corrected/200hz/original_upper_policy.mp4</h3><video controls src="corrected/200hz/original_upper_policy.mp4"></video>
+<h3>corrected/200hz/original_upper_reference_pd.mp4</h3><video controls src="corrected/200hz/original_upper_reference_pd.mp4"></video>
+<h3>original/200hz/corrected_static_policy.mp4</h3><video controls src="original/200hz/corrected_static_policy.mp4"></video>
+<h3>original/200hz/corrected_static_reference_pd.mp4</h3><video controls src="original/200hz/corrected_static_reference_pd.mp4"></video>
+<h3>original/200hz/corrected_upper_policy.mp4</h3><video controls src="original/200hz/corrected_upper_policy.mp4"></video>
+<h3>original/200hz/corrected_upper_reference_pd.mp4</h3><video controls src="original/200hz/corrected_upper_reference_pd.mp4"></video>
+<h3>original/200hz/original_static_policy.mp4</h3><video controls src="original/200hz/original_static_policy.mp4"></video>
+<h3>original/200hz/original_static_reference_pd.mp4</h3><video controls src="original/200hz/original_static_reference_pd.mp4"></video>
+<h3>original/200hz/original_upper_policy.mp4</h3><video controls src="original/200hz/original_upper_policy.mp4"></video>
+<h3>original/200hz/original_upper_reference_pd.mp4</h3><video controls src="original/200hz/original_upper_reference_pd.mp4"></video>

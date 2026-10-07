@@ -1,0 +1,1590 @@
+[
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "corrected_static_policy",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 87.08871155977249,
+    "anchor_excursion_mm": 92.76353567838669,
+    "feet_net_mm": [
+      80.40614318847656,
+      89.91177368164062
+    ],
+    "fz_below_1_fraction": [
+      0.12289473684210526,
+      0.12605263157894736
+    ],
+    "leg_target_range_deg": [
+      10.146986961364746,
+      8.352131843566895,
+      12.081649780273438,
+      15.371346473693848,
+      25.939504623413086,
+      7.341705799102783,
+      30.424583435058594,
+      9.798824310302734,
+      8.011425971984863,
+      16.69953727722168,
+      8.6441650390625,
+      13.779729843139648,
+      5.448766708374023,
+      7.4296488761901855
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.41456401348114014,
+    "joint_tracking_rmse_rad": 0.016391286626458168,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 23.09083566069603,
+        "excursion_mm": 24.079356342554092
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 21.560247987508774,
+        "excursion_mm": 21.698053926229477
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 47.18933627009392,
+        "excursion_mm": 47.451455146074295
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "corrected_static_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.014069807548366953,
+    "anchor_excursion_mm": 0.01791013710317202,
+    "feet_net_mm": [
+      3.6166027712170035e-05,
+      7.16815993655473e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 1.0966958008395977e-08,
+    "joint_tracking_rmse_rad": 0.004186408128589392,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 0.01401962526870193,
+        "excursion_mm": 0.01791013710317202
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 6.964059195979644e-05,
+        "excursion_mm": 0.00018047740013571456
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 7.581167693615498e-05,
+        "excursion_mm": 0.000164146257475295
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "corrected_upper_policy",
+    "seconds": 7.0600000000000005,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 178.10456454753876,
+    "anchor_excursion_mm": 178.10456454753876,
+    "feet_net_mm": [
+      130.91249084472656,
+      64.9423599243164
+    ],
+    "fz_below_1_fraction": [
+      0.2665016501650165,
+      0.14933993399339934
+    ],
+    "leg_target_range_deg": [
+      53.49472427368164,
+      28.15441131591797,
+      67.36209869384766,
+      64.39424896240234,
+      46.16843795776367,
+      37.201942443847656,
+      7.8796796798706055,
+      55.85023880004883,
+      38.64399337768555,
+      51.35602569580078,
+      45.622283935546875,
+      34.36235046386719,
+      21.683691024780273,
+      30.939720153808594
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.4626138508319855,
+    "joint_tracking_rmse_rad": 0.024940552189946175,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 18.914027139544487,
+        "excursion_mm": 18.914027139544487
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "corrected_upper_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.03619300696300343,
+    "anchor_excursion_mm": 2.656298689544201,
+    "feet_net_mm": [
+      2.60770320892334e-05,
+      3.182889486197382e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.014792948961257935,
+    "joint_tracking_rmse_rad": 0.00849939789623022,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 2.209560014307499,
+        "excursion_mm": 2.656298689544201
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 2.245935145765543,
+        "excursion_mm": 2.345543587580323
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 0.00020226913477472408,
+        "excursion_mm": 0.0003026440253961482
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "original_static_policy",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 20.367901772260666,
+    "anchor_excursion_mm": 20.881658419966698,
+    "feet_net_mm": [
+      23.18684196472168,
+      22.262237548828125
+    ],
+    "fz_below_1_fraction": [
+      0.045,
+      0.028157894736842104
+    ],
+    "leg_target_range_deg": [
+      8.599894523620605,
+      5.77331018447876,
+      7.77683687210083,
+      10.05342960357666,
+      16.703704833984375,
+      4.288878917694092,
+      8.80320930480957,
+      5.007519721984863,
+      5.480215549468994,
+      12.128246307373047,
+      4.772339820861816,
+      11.730219841003418,
+      4.282361030578613,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.4247334599494934,
+    "joint_tracking_rmse_rad": 0.015791362151503563,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 2.496765460819006,
+        "excursion_mm": 5.634132772684097
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 3.595696995034814,
+        "excursion_mm": 3.700125264003873
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 5.441205110400915,
+        "excursion_mm": 5.530867725610733
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "original_static_reference_pd",
+    "seconds": 0.96,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  },
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "original_upper_policy",
+    "seconds": 6.74,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 133.12754034996033,
+    "anchor_excursion_mm": 133.12754034996033,
+    "feet_net_mm": [
+      124.22063446044922,
+      19.091726303100586
+    ],
+    "fz_below_1_fraction": [
+      0.24041811846689895,
+      0.2186411149825784
+    ],
+    "leg_target_range_deg": [
+      64.3329849243164,
+      16.679262161254883,
+      69.56439971923828,
+      68.73884582519531,
+      52.269100189208984,
+      51.487098693847656,
+      0.0,
+      59.349178314208984,
+      45.334510803222656,
+      46.594871520996094,
+      41.68537521362305,
+      20.07469940185547,
+      16.74372673034668,
+      25.783100128173828
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.46854427456855774,
+    "joint_tracking_rmse_rad": 0.026012780144810677,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 12.54572719335556,
+        "excursion_mm": 18.95182393491268
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "200hz",
+    "case": "original_upper_reference_pd",
+    "seconds": 0.96,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "corrected_static_policy",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 123.9178478717804,
+    "anchor_excursion_mm": 131.5990537405014,
+    "feet_net_mm": [
+      106.9141845703125,
+      133.02886962890625
+    ],
+    "fz_below_1_fraction": [
+      0.2061842105263158,
+      0.17578947368421052
+    ],
+    "leg_target_range_deg": [
+      9.502324104309082,
+      7.362179279327393,
+      11.303406715393066,
+      11.772445678710938,
+      25.357019424438477,
+      7.007267951965332,
+      33.26041030883789,
+      8.011787414550781,
+      7.941569805145264,
+      16.766468048095703,
+      8.309455871582031,
+      16.40545082092285,
+      7.353335380554199,
+      8.093722343444824
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.41185247898101807,
+    "joint_tracking_rmse_rad": 0.016420645639300346,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 29.05454859137535,
+        "excursion_mm": 29.05454859137535
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 58.99650603532791,
+        "excursion_mm": 61.027370393276215
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 13.347136788070202,
+        "excursion_mm": 13.48196156322956
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "corrected_static_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.008564954441681039,
+    "anchor_excursion_mm": 0.010782732715597376,
+    "feet_net_mm": [
+      0.00015656193136237562,
+      5.066942685516551e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 1.0966958008395977e-08,
+    "joint_tracking_rmse_rad": 0.0036919109988957644,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 0.008526038072886877,
+        "excursion_mm": 0.010782732715597376
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 5.127827407136465e-05,
+        "excursion_mm": 0.0004723677875517751
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 1.63926667795522e-05,
+        "excursion_mm": 0.00013834456069616863
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "corrected_upper_policy",
+    "seconds": 5.6000000000000005,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 142.45663583278656,
+    "anchor_excursion_mm": 142.45663583278656,
+    "feet_net_mm": [
+      165.28575134277344,
+      39.534446716308594
+    ],
+    "fz_below_1_fraction": [
+      0.3108695652173913,
+      0.2076086956521739
+    ],
+    "leg_target_range_deg": [
+      38.93846893310547,
+      37.142398834228516,
+      68.30712890625,
+      76.84224700927734,
+      48.13572311401367,
+      32.993690490722656,
+      0.0,
+      70.2127456665039,
+      36.70318603515625,
+      44.328086853027344,
+      39.175628662109375,
+      30.14658546447754,
+      18.720062255859375,
+      34.37746810913086
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.4670834541320801,
+    "joint_tracking_rmse_rad": 0.02742158994078636,
+    "five_second_windows": []
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "corrected_upper_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.03562928031897172,
+    "anchor_excursion_mm": 2.2780951112508774,
+    "feet_net_mm": [
+      0.00020492482872214168,
+      9.36708674998954e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.01479294989258051,
+    "joint_tracking_rmse_rad": 0.008347515016794205,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 1.9050703849643469,
+        "excursion_mm": 2.2780951112508774
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 1.940801739692688,
+        "excursion_mm": 2.0268235821276903
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 0.0001762878554245617,
+        "excursion_mm": 0.00046831573285999184
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "original_static_policy",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 74.10018891096115,
+    "anchor_excursion_mm": 74.80421662330627,
+    "feet_net_mm": [
+      49.938934326171875,
+      82.48452758789062
+    ],
+    "fz_below_1_fraction": [
+      0.17657894736842106,
+      0.12657894736842104
+    ],
+    "leg_target_range_deg": [
+      9.703914642333984,
+      8.937605857849121,
+      10.067497253417969,
+      13.399667739868164,
+      23.513893127441406,
+      6.935356140136719,
+      18.975276947021484,
+      8.19817066192627,
+      8.118752479553223,
+      15.828344345092773,
+      6.645971775054932,
+      11.913679122924805,
+      7.01675271987915,
+      0.35911938548088074
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.420450359582901,
+    "joint_tracking_rmse_rad": 0.0164230614900589,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 14.366929419338703,
+        "excursion_mm": 18.8088770955801
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 20.47557570040226,
+        "excursion_mm": 20.47557570040226
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 34.421201795339584,
+        "excursion_mm": 34.421201795339584
+      }
+    ]
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "original_static_reference_pd",
+    "seconds": 0.9400000000000001,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "original_upper_policy",
+    "seconds": 4.64,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 198.11974465847015,
+    "anchor_excursion_mm": 198.11974465847015,
+    "feet_net_mm": [
+      106.73182678222656,
+      92.36702728271484
+    ],
+    "fz_below_1_fraction": [
+      0.34203296703296704,
+      0.20192307692307693
+    ],
+    "leg_target_range_deg": [
+      36.17409896850586,
+      40.89076232910156,
+      64.9266586303711,
+      79.39209747314453,
+      49.06462860107422,
+      30.7124080657959,
+      0.0,
+      77.60227966308594,
+      28.10037612915039,
+      23.09366798400879,
+      19.32604217529297,
+      29.686845779418945,
+      16.337568283081055,
+      30.939720153808594
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.4627734422683716,
+    "joint_tracking_rmse_rad": 0.02935715764760971,
+    "five_second_windows": []
+  },
+  {
+    "model": "corrected",
+    "rate": "400hz",
+    "case": "original_upper_reference_pd",
+    "seconds": 0.9400000000000001,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "corrected_static_policy",
+    "seconds": 9.74,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 295.2386736869812,
+    "anchor_excursion_mm": 295.2386736869812,
+    "feet_net_mm": [
+      140.05410766601562,
+      64.11254119873047
+    ],
+    "fz_below_1_fraction": [
+      0.18363844393592677,
+      0.24542334096109839
+    ],
+    "leg_target_range_deg": [
+      28.71867561340332,
+      26.82914924621582,
+      63.38922119140625,
+      30.939714431762695,
+      63.168052673339844,
+      24.83514404296875,
+      8.594367027282715,
+      15.469858169555664,
+      28.04364585876465,
+      22.41744613647461,
+      17.427997589111328,
+      58.869964599609375,
+      23.085391998291016,
+      13.799440383911133
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.5721434354782104,
+    "joint_tracking_rmse_rad": 0.022299395874142647,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 53.54299768805504,
+        "excursion_mm": 53.54299768805504
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "corrected_static_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.014069807548366953,
+    "anchor_excursion_mm": 0.01791013710317202,
+    "feet_net_mm": [
+      3.6166027712170035e-05,
+      7.16815993655473e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 1.0966958008395977e-08,
+    "joint_tracking_rmse_rad": 0.004186408128589392,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 0.01401962526870193,
+        "excursion_mm": 0.01791013710317202
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 6.964059195979644e-05,
+        "excursion_mm": 0.00018047740013571456
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 7.581167693615498e-05,
+        "excursion_mm": 0.000164146257475295
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "corrected_upper_policy",
+    "seconds": 7.18,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 266.9118642807007,
+    "anchor_excursion_mm": 266.9118642807007,
+    "feet_net_mm": [
+      41.24685287475586,
+      99.46894073486328
+    ],
+    "fz_below_1_fraction": [
+      0.2993527508090615,
+      0.18284789644012944
+    ],
+    "leg_target_range_deg": [
+      27.729652404785156,
+      34.96509552001953,
+      25.783098220825195,
+      55.811058044433594,
+      56.3332405090332,
+      46.63937759399414,
+      35.52823257446289,
+      32.21831130981445,
+      35.33464813232422,
+      52.8028564453125,
+      48.5756721496582,
+      63.547508239746094,
+      24.51154136657715,
+      14.853767395019531
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.4859508275985718,
+    "joint_tracking_rmse_rad": 0.02671833150088787,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 51.678724586963654,
+        "excursion_mm": 51.678724586963654
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "corrected_upper_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.03619300696300343,
+    "anchor_excursion_mm": 2.656298689544201,
+    "feet_net_mm": [
+      2.60770320892334e-05,
+      3.182889486197382e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.014792948961257935,
+    "joint_tracking_rmse_rad": 0.00849939789623022,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 2.209560014307499,
+        "excursion_mm": 2.656298689544201
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 2.245935145765543,
+        "excursion_mm": 2.345543587580323
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 0.00020226913477472408,
+        "excursion_mm": 0.0003026440253961482
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "original_static_policy",
+    "seconds": 3.38,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 509.60397720336914,
+    "anchor_excursion_mm": 509.60397720336914,
+    "feet_net_mm": [
+      356.9597473144531,
+      319.9725036621094
+    ],
+    "fz_below_1_fraction": [
+      0.31092436974789917,
+      0.3802521008403361
+    ],
+    "leg_target_range_deg": [
+      23.835283279418945,
+      35.952919006347656,
+      44.06782913208008,
+      35.15727996826172,
+      48.967166900634766,
+      38.213226318359375,
+      34.99372100830078,
+      33.518028259277344,
+      23.998912811279297,
+      19.636661529541016,
+      33.518028259277344,
+      50.27130126953125,
+      28.361408233642578,
+      15.469860076904297
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.49421045184135437,
+    "joint_tracking_rmse_rad": 0.03839260712265968,
+    "five_second_windows": []
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "original_static_reference_pd",
+    "seconds": 0.96,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "original_upper_policy",
+    "seconds": 8.9,
+    "termination": {
+      "anchor_ori": 1
+    },
+    "anchor_net_mm": 544.212818145752,
+    "anchor_excursion_mm": 544.212818145752,
+    "feet_net_mm": [
+      464.91937255859375,
+      385.2242431640625
+    ],
+    "fz_below_1_fraction": [
+      0.3962025316455696,
+      0.22658227848101264
+    ],
+    "leg_target_range_deg": [
+      21.824508666992188,
+      30.755929946899414,
+      37.03055191040039,
+      50.20692825317383,
+      40.27427673339844,
+      43.5015869140625,
+      40.1070442199707,
+      25.8123722076416,
+      26.116117477416992,
+      31.640085220336914,
+      23.581876754760742,
+      69.45117950439453,
+      20.528940200805664,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.4965672791004181,
+    "joint_tracking_rmse_rad": 0.02988281473517418,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 45.96804082393646,
+        "excursion_mm": 46.36048153042793
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "200hz",
+    "case": "original_upper_reference_pd",
+    "seconds": 0.96,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "corrected_static_policy",
+    "seconds": 7.0200000000000005,
+    "termination": {
+      "anchor_pos": 1,
+      "anchor_ori": 1
+    },
+    "anchor_net_mm": 685.4242086410522,
+    "anchor_excursion_mm": 685.4242086410522,
+    "feet_net_mm": [
+      574.5845336914062,
+      480.4278259277344
+    ],
+    "fz_below_1_fraction": [
+      0.4995847176079734,
+      0.287375415282392
+    ],
+    "leg_target_range_deg": [
+      25.783098220825195,
+      31.17860221862793,
+      43.33333969116211,
+      48.29584884643555,
+      58.62843322753906,
+      35.90803909301758,
+      40.1070442199707,
+      20.724897384643555,
+      31.698688507080078,
+      38.68595886230469,
+      30.685855865478516,
+      60.607276916503906,
+      23.20329475402832,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.5142566561698914,
+    "joint_tracking_rmse_rad": 0.03124815784394741,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 398.4770476818085,
+        "excursion_mm": 398.4770476818085
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "corrected_static_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.008564954441681039,
+    "anchor_excursion_mm": 0.010782732715597376,
+    "feet_net_mm": [
+      0.00015656193136237562,
+      5.066942685516551e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 1.0966958008395977e-08,
+    "joint_tracking_rmse_rad": 0.0036919109988957644,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 0.008526038072886877,
+        "excursion_mm": 0.010782732715597376
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 5.127827407136465e-05,
+        "excursion_mm": 0.0004723677875517751
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 1.63926667795522e-05,
+        "excursion_mm": 0.00013834456069616863
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "corrected_upper_policy",
+    "seconds": 9.120000000000001,
+    "termination": {
+      "anchor_ori": 1
+    },
+    "anchor_net_mm": 738.158643245697,
+    "anchor_excursion_mm": 738.158643245697,
+    "feet_net_mm": [
+      671.403076171875,
+      609.8604125976562
+    ],
+    "fz_below_1_fraction": [
+      0.4205665024630542,
+      0.27801724137931033
+    ],
+    "leg_target_range_deg": [
+      20.64076042175293,
+      32.491397857666016,
+      37.699462890625,
+      46.08060073852539,
+      47.040672302246094,
+      39.63417053222656,
+      40.1070442199707,
+      16.414718627929688,
+      29.627248764038086,
+      42.55478286743164,
+      29.97572898864746,
+      58.00825500488281,
+      25.617189407348633,
+      7.889450550079346
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.49201124906539917,
+    "joint_tracking_rmse_rad": 0.033227309584617615,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 39.13908824324608,
+        "excursion_mm": 44.89488899707794
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "corrected_upper_reference_pd",
+    "seconds": 20.0,
+    "termination": {},
+    "anchor_net_mm": 0.03562928031897172,
+    "anchor_excursion_mm": 2.2780951112508774,
+    "feet_net_mm": [
+      0.00020492482872214168,
+      9.36708674998954e-05
+    ],
+    "fz_below_1_fraction": [
+      0.0,
+      0.0
+    ],
+    "leg_target_range_deg": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.01479294989258051,
+    "joint_tracking_rmse_rad": 0.008347515016794205,
+    "five_second_windows": [
+      {
+        "start_s": 1.0,
+        "net_mm": 1.9050703849643469,
+        "excursion_mm": 2.2780951112508774
+      },
+      {
+        "start_s": 6.0,
+        "net_mm": 1.940801739692688,
+        "excursion_mm": 2.0268235821276903
+      },
+      {
+        "start_s": 11.0,
+        "net_mm": 0.0001762878554245617,
+        "excursion_mm": 0.00046831573285999184
+      }
+    ]
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "original_static_policy",
+    "seconds": 5.58,
+    "termination": {
+      "anchor_pos": 1,
+      "anchor_ori": 1
+    },
+    "anchor_net_mm": 626.4430284500122,
+    "anchor_excursion_mm": 626.4430284500122,
+    "feet_net_mm": [
+      490.21466064453125,
+      435.72393798828125
+    ],
+    "fz_below_1_fraction": [
+      0.5414847161572053,
+      0.3335152838427948
+    ],
+    "leg_target_range_deg": [
+      22.138639450073242,
+      23.376340866088867,
+      44.61825942993164,
+      45.12686538696289,
+      42.67155838012695,
+      35.9478874206543,
+      40.1070442199707,
+      23.47940444946289,
+      28.19353675842285,
+      24.161758422851562,
+      32.71363067626953,
+      52.22441482543945,
+      25.180330276489258,
+      0.0
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.5007823705673218,
+    "joint_tracking_rmse_rad": 0.03207603469491005,
+    "five_second_windows": []
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "original_static_reference_pd",
+    "seconds": 0.9400000000000001,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "original_upper_policy",
+    "seconds": 3.84,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "anchor_net_mm": 397.3817229270935,
+    "anchor_excursion_mm": 397.3817229270935,
+    "feet_net_mm": [
+      275.1786804199219,
+      215.53897094726562
+    ],
+    "fz_below_1_fraction": [
+      0.4551056338028169,
+      0.34242957746478875
+    ],
+    "leg_target_range_deg": [
+      36.459869384765625,
+      25.783098220825195,
+      61.897945404052734,
+      46.07281494140625,
+      60.932071685791016,
+      23.20478630065918,
+      7.9431610107421875,
+      33.51802444458008,
+      27.703018188476562,
+      25.107980728149414,
+      30.939714431762695,
+      38.670928955078125,
+      23.53410530090332,
+      18.90760612487793
+    ],
+    "leg_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll"
+    ],
+    "target_reference_rmse_rad": 0.45474866032600403,
+    "joint_tracking_rmse_rad": 0.03604665771126747,
+    "five_second_windows": []
+  },
+  {
+    "model": "original",
+    "rate": "400hz",
+    "case": "original_upper_reference_pd",
+    "seconds": 0.9400000000000001,
+    "termination": {
+      "anchor_pos": 1
+    },
+    "insufficient_after_1s": true
+  }
+]

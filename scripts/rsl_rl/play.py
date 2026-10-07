@@ -60,6 +60,8 @@ parser.add_argument("--seed", type=int, default=None, help="Seed the evaluation 
 parser.add_argument("--evaluation_steps", type=int, default=None, help="Bound headless evaluation without recording video.")
 parser.add_argument("--telemetry_output", type=str, default=None, help="Save control/physics-rate mimic diagnostics (one environment).")
 parser.add_argument("--evaluation_batch", type=str, help="JSON jobs; one simulator startup per seed, no video.")
+parser.add_argument("--standing_diagnostic", action="store_true", help="Controlled TW198 test, not benchmark evaluation.")
+parser.add_argument("--diagnostic_physics_dt", type=float, default=.005)
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
@@ -160,10 +162,13 @@ def main():
 
     from control_runtime import restore as restore_control_runtime, snapshot as control_snapshot
     restore_control_runtime(env_cfg, resume_path)
+    if args_cli.standing_diagnostic:
+        from standing_diagnostic import configure
+        configure(env_cfg,args_cli.diagnostic_physics_dt)
     log_dir = os.path.dirname(resume_path)
 
     # create isaac environment
-    env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if args_cli.video else None)
+    env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if (args_cli.video or (args_cli.standing_diagnostic and args_cli.enable_cameras)) else None)
 
     # convert to single-agent instance if required by the RL algorithm
     if isinstance(env.unwrapped, DirectMARLEnv):
