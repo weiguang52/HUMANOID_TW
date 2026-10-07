@@ -1,0 +1,14 @@
+[
+  {
+    "motion_id": 2,
+    "steps": 1000,
+    "controller": "policy",
+    "output": "/root/gpufree-data/datasets/practice9/tw215_v1/diagnostic/neck_only/corrected_static.json"
+  },
+  {
+    "motion_id": 3,
+    "steps": 1000,
+    "controller": "policy",
+    "output": "/root/gpufree-data/datasets/practice9/tw215_v1/diagnostic/neck_only/corrected_upper.json"
+  }
+]
