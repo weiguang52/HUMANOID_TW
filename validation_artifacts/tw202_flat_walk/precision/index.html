@@ -1,0 +1,177 @@
+<!doctype html><meta charset="utf-8"><title>TW202 mixed validation</title>
+<style>body{max-width:1400px;margin:auto;font:18px sans-serif}.pair{display:flex}video{width:49%}pre{white-space:pre-wrap}</style>
+<h1>TW202 mixed walking / standing validation</h1>
+<p>Left: original HumanML3D NPY (20fps). Right: robot simulation (50fps), stable side camera.
+Different reference durations: these videos are not phase aligned. No source-contact time warping.</p>
+<p>Metrics: 3 evaluation seeds, one training seed; mean and worst 5s windows in comparison.json.
+One reference cycle requested; no intentional second cycle. Incomplete/failing rollouts must not be treated as complete reference coverage.</p><pre>{
+  "flat_forward": {
+    "clean": 24,
+    "total": 24,
+    "metrics": {
+      "upper_error_m": 0.005088099879988779,
+      "wrist_error_m": 0.007086350116878748,
+      "anchor_height_error_m": 0.0023034335754346102,
+      "contact_mismatch_fraction": 0.18257088663668775,
+      "foot_link_contact_speed_m_s": 0.04915071465075016,
+      "contact_known_fraction": 0.5545480662634432,
+      "worst_window_wrist_error_m": 0.0076924273938251036,
+      "neck_reference_rmse_rad": [
+        0.22405414283275604,
+        0.19239249949653944,
+        0.24180728072921434
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.5879353135824203,
+        0.6057265574733416,
+        0.5904060453176498
+      ],
+      "pelvis_heading_rmse_deg": 9.274471362431845
+    }
+  },
+  "nonplanar_review": {
+    "clean": 0,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.007059460040181875,
+      "wrist_error_m": 0.010533069570859274,
+      "anchor_height_error_m": 0.029935335119565327,
+      "contact_mismatch_fraction": 0.2586866902237927,
+      "foot_link_contact_speed_m_s": 0.04314085220297178,
+      "contact_known_fraction": 0.48625429553264604,
+      "worst_window_wrist_error_m": 0.014934639756878218,
+      "neck_reference_rmse_rad": [
+        0.13425298283497492,
+        0.15349083145459494,
+        0.2870426227649053
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.592849334081014,
+        0.6010472575823466,
+        0.6454430222511292
+      ],
+      "pelvis_heading_rmse_deg": 6.535745461781819
+    }
+  },
+  "standing_upper": {
+    "clean": 4,
+    "total": 6,
+    "metrics": {
+      "upper_error_m": 0.00587010554348429,
+      "wrist_error_m": 0.008229514195894202,
+      "anchor_height_error_m": 0.0013337756778734426,
+      "contact_mismatch_fraction": 0.13320410497686752,
+      "foot_link_contact_speed_m_s": 0.015670857081810634,
+      "contact_known_fraction": 0.970103039547484,
+      "worst_window_wrist_error_m": 0.011816730179513494,
+      "neck_reference_rmse_rad": [
+        0.17379251619180044,
+        0.2721267491579056,
+        0.24800093720356622
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.2754857912659645,
+        0.3526298726598422,
+        0.305863360563914
+      ],
+      "pelvis_heading_rmse_deg": 26.760939757029217
+    }
+  },
+  "standing_upper_reference_limit_diagnostic": {
+    "clean": 1,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.004570556494096915,
+      "wrist_error_m": 0.006282302550971508,
+      "anchor_height_error_m": 0.006284119250873725,
+      "contact_mismatch_fraction": 0.12517241742915067,
+      "foot_link_contact_speed_m_s": 0.014052051740388075,
+      "contact_known_fraction": 0.9788838612368024,
+      "worst_window_wrist_error_m": 0.012485985333720842,
+      "neck_reference_rmse_rad": [
+        0.14846036831537882,
+        0.13881678879261017,
+        0.22858887910842896
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.23002514243125916,
+        0.2946399400631587,
+        0.19283762325843176
+      ],
+      "pelvis_heading_rmse_deg": 29.61442279815674
+    }
+  },
+  "treadmill": {
+    "clean": 0,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.014776266490419706,
+      "wrist_error_m": 0.019038258741299312,
+      "anchor_height_error_m": 0.019308121254046757,
+      "contact_mismatch_fraction": 0.519538702432734,
+      "foot_link_contact_speed_m_s": 0.05879557256897291,
+      "contact_known_fraction": 0.11835109717080199,
+      "worst_window_wrist_error_m": 0.02551453746855259,
+      "neck_reference_rmse_rad": [
+        0.2507832944393158,
+        0.2611442506313324,
+        0.3124350905418396
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.6962801516056061,
+        0.7042908668518066,
+        0.8226408362388611
+      ],
+      "pelvis_heading_rmse_deg": 11.202513694763184
+    }
+  },
+  "turning": {
+    "clean": 2,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.007052671164274216,
+      "wrist_error_m": 0.009915949776768684,
+      "anchor_height_error_m": 0.0035349919150273004,
+      "contact_mismatch_fraction": 0.2306738427383522,
+      "foot_link_contact_speed_m_s": 0.07118444268902142,
+      "contact_known_fraction": 0.4672717271727173,
+      "worst_window_wrist_error_m": 0.016699092152218025,
+      "neck_reference_rmse_rad": [
+        0.26923755804697674,
+        0.2713720252116521,
+        0.23468192915121713
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.7805062929789225,
+        0.7341161370277405,
+        0.6720553636550903
+      ],
+      "pelvis_heading_rmse_deg": 11.221813519795736
+    }
+  }
+}</pre><h2>000832 / flat_forward</h2><div class="pair"><video controls src="humanml_source/000832_source.mp4"></video><video controls src="videos/000832.mp4"></video></div><h2>001191 / flat_forward</h2><div class="pair"><video controls src="humanml_source/001191_source.mp4"></video><video controls src="videos/001191.mp4"></video></div><h2>002011 / flat_forward</h2><div class="pair"><video controls src="humanml_source/002011_source.mp4"></video><video controls src="videos/002011.mp4"></video></div><h2>005309 / flat_forward</h2><div class="pair"><video controls src="humanml_source/005309_source.mp4"></video><video controls src="videos/005309.mp4"></video></div><h2>006634 / flat_forward</h2><div class="pair"><video controls src="humanml_source/006634_source.mp4"></video><video controls src="videos/006634.mp4"></video></div><h2>007481 / flat_forward</h2><div class="pair"><video controls src="humanml_source/007481_source.mp4"></video><video controls src="videos/007481.mp4"></video></div><h2>009516 / flat_forward</h2><div class="pair"><video controls src="humanml_source/009516_source.mp4"></video><video controls src="videos/009516.mp4"></video></div><h2>011084 / flat_forward</h2><div class="pair"><video controls src="humanml_source/011084_source.mp4"></video><video controls src="videos/011084.mp4"></video></div><h2>000016 / standing_upper</h2><div class="pair"><video controls src="humanml_source/000016_source.mp4"></video><video controls src="videos/000016.mp4"></video></div><h2>000124 / standing_upper</h2><div class="pair"><video controls src="humanml_source/000124_source.mp4"></video><video controls src="videos/000124.mp4"></video></div><h2>000346 / standing_upper_reference_limit_diagnostic</h2><div class="pair"><video controls src="humanml_source/000346_source.mp4"></video><video controls src="videos/000346.mp4"></video></div><h2>000039 / treadmill</h2><div class="pair"><video controls src="humanml_source/000039_source.mp4"></video><video controls src="videos/000039.mp4"></video></div><h2>000139 / nonplanar_review</h2><div class="pair"><video controls src="humanml_source/000139_source.mp4"></video><video controls src="videos/000139.mp4"></video></div><h2>000211 / turning</h2><div class="pair"><video controls src="humanml_source/000211_source.mp4"></video><video controls src="videos/000211.mp4"></video></div><h2>Synthetic fixed-leg diagnostics (not original source timeline)</h2><pre>[
+  {
+    "case": "corrected_static",
+    "seconds": 2.04,
+    "termination_counts": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 1,
+      "anchor_ori": 0
+    },
+    "net_xy_mm": 291.3402318954468,
+    "excursion_mm": 291.3402318954468
+  },
+  {
+    "case": "corrected_upper",
+    "seconds": 20.0,
+    "termination_counts": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 0,
+      "anchor_ori": 0
+    },
+    "net_xy_mm": 131.56920671463013,
+    "excursion_mm": 197.8798508644104
+  }
+]</pre><video controls src="diagnostic/corrected_static.mp4"></video><video controls src="diagnostic/corrected_upper.mp4"></video>

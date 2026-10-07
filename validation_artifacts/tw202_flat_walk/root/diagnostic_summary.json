@@ -1,0 +1,26 @@
+[
+  {
+    "case": "corrected_static",
+    "seconds": 20.0,
+    "termination_counts": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 0,
+      "anchor_ori": 0
+    },
+    "net_xy_mm": 17.36447773873806,
+    "excursion_mm": 29.092803597450256
+  },
+  {
+    "case": "corrected_upper",
+    "seconds": 11.120000000000001,
+    "termination_counts": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 1,
+      "anchor_ori": 0
+    },
+    "net_xy_mm": 259.7648501396179,
+    "excursion_mm": 259.7648501396179
+  }
+]

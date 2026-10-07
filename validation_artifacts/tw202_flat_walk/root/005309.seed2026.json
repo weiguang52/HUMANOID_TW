@@ -1,0 +1,108 @@
+{
+  "steps": 344,
+  "termination_counts": {
+    "time_out": 0,
+    "motion_end": 1,
+    "anchor_pos": 0,
+    "anchor_ori": 0,
+    "ee_body_pos": 0
+  },
+  "motion_metrics": {
+    "error_anchor_pos": 0.02187578105753515,
+    "error_anchor_rot": 0.08775898371281665,
+    "error_anchor_lin_vel": 0.046672465434016354,
+    "error_anchor_ang_vel": 0.8921419286797213,
+    "error_body_pos": 0.006220032282303585,
+    "error_body_rot": 0.16733876669909373,
+    "error_joint_pos": 0.7083991527730642,
+    "error_joint_vel": 2.675308865516685,
+    "error_body_lin_vel": 0.07647079789231337,
+    "error_body_ang_vel": 1.0640075043883435
+  },
+  "diagnostic": false,
+  "controller": "policy",
+  "physics_dt": 0.005,
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_10-20-01_tw202_root_formal_s42/model_21998.pt",
+  "motion_id": 3,
+  "seed": 2026,
+  "seconds": 6.88,
+  "num_envs": 1,
+  "control_runtime": {
+    "version": 4,
+    "target_velocity_scale_by_joint": {
+      "left_hip_pitch_joint": 0.75,
+      "left_hip_roll_joint": 0.75,
+      "left_hip_yaw_joint": 0.75,
+      "left_knee_pitch_joint": 0.75,
+      "left_ankle_yaw_joint": 0.75,
+      "left_ankle_pitch_joint": 0.75,
+      "right_hip_pitch_joint": 0.75,
+      "right_hip_roll_joint": 0.75,
+      "right_hip_yaw_joint": 0.75,
+      "right_knee_pitch_joint": 0.75,
+      "right_ankle_yaw_joint": 0.75,
+      "right_ankle_pitch_joint": 0.75
+    },
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_pitch_joint",
+      "left_ankle_yaw_joint",
+      "left_ankle_pitch_joint",
+      "left_foot_roll",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_pitch_joint",
+      "right_ankle_yaw_joint",
+      "right_ankle_pitch_joint",
+      "right_foot_roll",
+      "waist_yaw",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_pitch_joint",
+      "left_wrist_pitch",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_pitch_joint",
+      "right_wrist_pitch",
+      "neck",
+      "neck_linkage_roll",
+      "head_pitch"
+    ],
+    "limit_target_position": true,
+    "target_velocity_scale": 0.5,
+    "smoothing_tau": 0.0,
+    "limit_target_velocity": true,
+    "actuators": {
+      "leg_major": {
+        "stiffness": 20.0,
+        "damping": 1.0
+      },
+      "feet": {
+        "stiffness": 10.0,
+        "damping": 0.5
+      },
+      "waist": {
+        "stiffness": 10.0,
+        "damping": 0.5
+      },
+      "arms": {
+        "stiffness": 5.0,
+        "damping": 0.25
+      },
+      "neck": {
+        "stiffness": 3.0,
+        "damping": 0.15
+      }
+    }
+  },
+  "batch_protocol": "single_startup_per_seed_reset_per_clip_v1",
+  "upper_body_termination": true,
+  "note": "Startup physical randomization shared across clips within seed. Compare only matched batch protocol."
+}

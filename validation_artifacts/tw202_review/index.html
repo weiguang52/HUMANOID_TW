@@ -1,0 +1,58 @@
+<!doctype html><meta charset="utf-8"><title>TW202 review</title><style>body{max-width:1450px;margin:auto;padding:24px;font:17px sans-serif;line-height:1.6}table{border-collapse:collapse}td,th{border:1px solid #bbb;padding:8px}img{max-width:100%}.videos{display:grid;grid-template-columns:1fr 1fr;gap:16px}video{width:100%}pre{white-space:pre-wrap}</style><h1>TW202 四组训练效果审查</h1>
+<p><strong>结论：不替换基线。头颈约束有局部收益，但新增组合没有同时解决接触、转向和静止鲁棒性。</strong></p>
+<p>四组全部使用同一套IK修正参考，独立从TW195 corrected的model_19999.pt续训2000轮。baseline表示奖励不变的续训对照，并非未做IK。precision增加站立精度；neck在此基础上增加头颈约束；root再增加骨盆yaw约束。</p>
+<p>仅收紧站立位置尺度未达到目标：站立完成率6/6降至4/6，世界XY误差45.64升至59.59毫米。两次站立异常由手部跟踪条件触发，不应全部称作摔倒。</p>
+<p>加入头颈约束相对precision，走路头颈平均误差12.57降至7.10度，站立13.25降至7.49度；相对baseline约降低44%和43%。完整站立6/6完成，XY误差40.78毫米。但转向0/3，合成静止4.08秒高度终止。走路2–8Hz头颈平均振幅只小幅变化，不能把角度跟踪改善说成所有抖动已消失。</p>
+<p>再加入骨盆yaw后，平地走路骨盆误差7.68降至5.98度；站立则9.38升至13.32度，世界XY误差40.78升至57.27毫米。已知摆动期接触比例54.9%升至69.4%，转向仍0/3。朝向奖励有局部作用，但当前组合不具备整体优势。</p>
+<p>四组平地走路都24/24完成，但已知摆动期足底高度平均仅0.22–0.31毫米，接触比例54.9%–69.4%。完成周期不能视为成功学会正常抬脚。接触指标只统计有可信标签的片段，不能外推到未知时段；角点速度是几何代理，不是接触点滑移实测。</p>
+<p>合成静止中，baseline从上一轮87.09毫米改善到12.60毫米，说明单纯继续训练已有收益，不能归功于新增奖励。root为17.36毫米；precision和neck提前终止。仅上肢表达合成测试中，precision保持20秒但净漂移131.57毫米，其余提前终止。合成目标是分布外测试，不替代完整动作验证。</p>
+<p>下一步优先测试baseline直接加头颈约束，去掉已显示退化的站立尺度修改，以分离头颈收益与交互影响。骨盆方向约束暂保留为实验项。四个最终模型全部归档；本次不自动启动新训练，也不宣布TW202质量验收通过。</p>
+<p>局限：一个训练种子，三个验证种子不是三个独立训练重复；只有8条平地、2条合格站立和1条转向样本。早停组误差存在截断偏差，应同时查看完成率、首次终止时刻和5秒窗口。视频只做关键时刻抽帧审阅，高频结论依靠遥测。000832/000016/000211帧图保留，转向片段可见显著前倾及重置，不能将重置后的站姿当作恢复成功。</p>
+
+<img src="comparison.png"><h2>完成情况</h2><p>完成参考周期不等于无滑移。站立限位诊断000346、跑步机和非平地样本单独列出。</p><table><tr><th>组</th><th>平地走路</th><th>站立上肢</th><th>转向</th><th>站立限位诊断</th><th>跑步机</th><th>非平地</th></tr>
+<tr><td>baseline</td><td>24/24</td><td>6/6</td><td>2/3</td><td>3/3</td><td>0/3</td><td>0/3</td></tr>
+<tr><td>precision</td><td>24/24</td><td>4/6</td><td>2/3</td><td>1/3</td><td>0/3</td><td>0/3</td></tr>
+<tr><td>neck</td><td>24/24</td><td>6/6</td><td>0/3</td><td>3/3</td><td>0/3</td><td>0/3</td></tr>
+<tr><td>root</td><td>24/24</td><td>6/6</td><td>0/3</td><td>3/3</td><td>0/3</td><td>0/3</td></tr>
+</table><h2>位置、头颈和骨盆指标</h2><table><tr><th>组</th><th>类别</th><th>世界XY RMSE mm</th><th>头颈三轴平均RMSE °</th><th>骨盆yaw RMSE °</th><th>手腕误差 mm</th></tr>
+<tr><td>baseline</td><td>flat_forward</td><td>41.40</td><td>12.66</td><td>6.57</td><td>7.08</td></tr>
+<tr><td>baseline</td><td>standing_upper</td><td>45.64</td><td>13.17</td><td>13.71</td><td>7.02</td></tr>
+<tr><td>precision</td><td>flat_forward</td><td>41.78</td><td>12.57</td><td>9.27</td><td>7.09</td></tr>
+<tr><td>precision</td><td>standing_upper</td><td>59.59</td><td>13.25</td><td>26.76</td><td>8.23</td></tr>
+<tr><td>neck</td><td>flat_forward</td><td>39.16</td><td>7.10</td><td>7.68</td><td>6.13</td></tr>
+<tr><td>neck</td><td>standing_upper</td><td>40.78</td><td>7.49</td><td>9.38</td><td>6.49</td></tr>
+<tr><td>root</td><td>flat_forward</td><td>38.43</td><td>6.96</td><td>5.98</td><td>5.77</td></tr>
+<tr><td>root</td><td>standing_upper</td><td>57.27</td><td>9.32</td><td>13.32</td><td>7.45</td></tr>
+</table><h2>合成固定腿部诊断</h2><p>排除首秒；不同终止时间不可直接用净位移排名。此项是分布外压力测试，不是完整人体动作。</p><table><tr><th>组</th><th>目标</th><th>时长s</th><th>净位移mm</th><th>最大偏移mm</th><th>终止</th></tr>
+<tr><td>baseline</td><td>corrected_static</td><td>20.00</td><td>12.60</td><td>12.89</td><td>{}</td></tr>
+<tr><td>baseline</td><td>corrected_upper</td><td>7.34</td><td>134.61</td><td>134.61</td><td>{&#x27;anchor_pos&#x27;: 1}</td></tr>
+<tr><td>precision</td><td>corrected_static</td><td>2.04</td><td>291.34</td><td>291.34</td><td>{&#x27;anchor_pos&#x27;: 1}</td></tr>
+<tr><td>precision</td><td>corrected_upper</td><td>20.00</td><td>131.57</td><td>197.88</td><td>{}</td></tr>
+<tr><td>neck</td><td>corrected_static</td><td>4.08</td><td>416.20</td><td>416.20</td><td>{&#x27;anchor_pos&#x27;: 1}</td></tr>
+<tr><td>neck</td><td>corrected_upper</td><td>10.30</td><td>186.05</td><td>186.05</td><td>{&#x27;anchor_pos&#x27;: 1}</td></tr>
+<tr><td>root</td><td>corrected_static</td><td>20.00</td><td>17.36</td><td>29.09</td><td>{}</td></tr>
+<tr><td>root</td><td>corrected_upper</td><td>11.12</td><td>259.76</td><td>259.76</td><td>{&#x27;anchor_pos&#x27;: 1}</td></tr>
+</table>
+<h2>000832</h2><p>原始NPY为20fps；机器人为50fps参考时间。两者不按播放时间同步。机器人视频失败后可能重置，不能把后续片段视为连续成功。</p><a href="../tw202_flat_walk/baseline/humanml_source/000832_source.mp4">原始NPY视频</a><img src="000832_sheet.jpg"><div class="videos">
+<div>baseline<video controls preload="none" src="../tw202_flat_walk/baseline/videos/000832.mp4"></video></div>
+<div>precision<video controls preload="none" src="../tw202_flat_walk/precision/videos/000832.mp4"></video></div>
+<div>neck<video controls preload="none" src="../tw202_flat_walk/neck/videos/000832.mp4"></video></div>
+<div>root<video controls preload="none" src="../tw202_flat_walk/root/videos/000832.mp4"></video></div>
+</div>
+<h2>000016</h2><p>原始NPY为20fps；机器人为50fps参考时间。两者不按播放时间同步。机器人视频失败后可能重置，不能把后续片段视为连续成功。</p><a href="../tw202_flat_walk/baseline/humanml_source/000016_source.mp4">原始NPY视频</a><img src="000016_sheet.jpg"><div class="videos">
+<div>baseline<video controls preload="none" src="../tw202_flat_walk/baseline/videos/000016.mp4"></video></div>
+<div>precision<video controls preload="none" src="../tw202_flat_walk/precision/videos/000016.mp4"></video></div>
+<div>neck<video controls preload="none" src="../tw202_flat_walk/neck/videos/000016.mp4"></video></div>
+<div>root<video controls preload="none" src="../tw202_flat_walk/root/videos/000016.mp4"></video></div>
+</div>
+<h2>000211</h2><p>原始NPY为20fps；机器人为50fps参考时间。两者不按播放时间同步。机器人视频失败后可能重置，不能把后续片段视为连续成功。</p><a href="../tw202_flat_walk/baseline/humanml_source/000211_source.mp4">原始NPY视频</a><img src="000211_sheet.jpg"><div class="videos">
+<div>baseline<video controls preload="none" src="../tw202_flat_walk/baseline/videos/000211.mp4"></video></div>
+<div>precision<video controls preload="none" src="../tw202_flat_walk/precision/videos/000211.mp4"></video></div>
+<div>neck<video controls preload="none" src="../tw202_flat_walk/neck/videos/000211.mp4"></video></div>
+<div>root<video controls preload="none" src="../tw202_flat_walk/root/videos/000211.mp4"></video></div>
+</div>
+<h2>完整交付</h2>
+<p><a href="../tw202_flat_walk/baseline/index.html">baseline 完整报告、最终权重目录、所有动作与NPY视频</a></p>
+<p><a href="../tw202_flat_walk/precision/index.html">precision 完整报告、最终权重目录、所有动作与NPY视频</a></p>
+<p><a href="../tw202_flat_walk/neck/index.html">neck 完整报告、最终权重目录、所有动作与NPY视频</a></p>
+<p><a href="../tw202_flat_walk/root/index.html">root 完整报告、最终权重目录、所有动作与NPY视频</a></p>
