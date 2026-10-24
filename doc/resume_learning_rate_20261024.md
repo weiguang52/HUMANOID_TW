@@ -36,8 +36,8 @@ Status:smoke running; formal result pending.
 Interrupted by lost remote job; both recovered from their own model_28100.pt
 for395runner iterations to model_28494.pt. This is NOT uninterrupted training.
 Both42case reports and46videos complete;28dual-view checks per group passed.
-Baseline36/42 vs restored33/42: flat24/24 and standing6/6 both; turning3/3 vs1/3;
-reference-limit3/3 vs2/3; treadmill/nonplanar0/3 both.
+Baseline36/42 vs restored34/42: flat24/24 and standing6/6 both; turning3/3 vs1/3;
+reference-limit3/3 both; treadmill/nonplanar0/3 both.
 Baseline static completes20s with36.84mm drift, upper20s with102.15mm.
 Restored static terminates8.76s with624.24mm; upper19.42s with214.55mm.
 Shorter candidate results must not be described as20s drift measurements.
