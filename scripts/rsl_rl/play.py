@@ -20,6 +20,7 @@ import cli_args  # isort: skip
 
 # add argparse arguments
 parser = argparse.ArgumentParser(description="Train an RL agent with RSL-RL.")
+parser.add_argument("--joint_colors", type=str, help="Apply visual joint colors and write the color legend JSON here.")
 parser.add_argument("--video", action="store_true", default=False, help="Record videos during training.")
 parser.add_argument("--video_length", type=int, default=200, help="Length of the recorded video (in steps).")
 parser.add_argument(
@@ -169,6 +170,10 @@ def main():
 
     # create isaac environment
     env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if (args_cli.video or (args_cli.standing_diagnostic and args_cli.enable_cameras)) else None)
+
+    if args_cli.joint_colors:
+        from joint_colors import apply
+        apply(env.unwrapped.sim.stage, args_cli.joint_colors)
 
     # convert to single-agent instance if required by the RL algorithm
     if isinstance(env.unwrapped, DirectMARLEnv):
