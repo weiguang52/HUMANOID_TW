@@ -1,0 +1,71 @@
+{
+  "counts": {
+    "walking": 332,
+    "standing_upper": 1016
+  },
+  "frames": 788767,
+  "upstream": {
+    "upstream_commit": "00d4317f6dbd2a64140346c68c916759d0e4fd75",
+    "training_urdf_sha256": "1d613d3aef37d99e467ac7574d1455dacd3e9c5cc3276feff06afda6b25386f2",
+    "derived_urdf_sha256": "3eed4d6989255d39af268844f39d1ec2e5ba8cfe7724e88577cb60bc6d3dd244",
+    "foot_orientation_weight": 1.0,
+    "knee_reference_rad": 0.0,
+    "fixed_joints": {
+      "left_foot_roll": 0,
+      "right_foot_roll": 0
+    },
+    "link_renames": {
+      "left_mid_leg": "left_calf",
+      "left_calf": "left_ankle",
+      "left_ankle": "left_foot",
+      "left_foot": "left_sole",
+      "left_wrist": "left_hand",
+      "left_hand": "left_hand_tip",
+      "right_mid_leg": "right_calf",
+      "right_calf": "right_ankle",
+      "right_ankle": "right_foot",
+      "right_foot": "right_sole",
+      "right_wrist": "right_hand",
+      "right_hand": "right_hand_tip"
+    },
+    "segment_lengths_m": {
+      "left": [
+        0.10175799515713191,
+        0.10513186872353147,
+        0.0717590751357027,
+        0.027073234014428342
+      ],
+      "right": [
+        0.10176699207613756,
+        0.10513069629924765,
+        0.07279447180254232,
+        0.02628639585410872
+      ]
+    },
+    "head_length_m": 0.02241987734132369,
+    "fk_100_pose_max_matrix_error": 0.0
+  },
+  "source_manifest_sha256": "f0fce7dee85ea5b00ca761e9125be2d5e94361b082145e96db03804f127d6193",
+  "training_manifest_sha256": "2d7283fe1692c955e0235394ddde5f2aaa29d347137dee30ba887a9c9b29cd5f",
+  "contact_audited": 1348,
+  "timestamp": "2026-10-24T11:12:58.020661+08:00",
+  "status": "training",
+  "source_commit": "9bb1e32fdbbbc63509ee5558d69808ae3d76a019",
+  "validation": {
+    "upstream_ctest_passed": 10,
+    "derived_ctest_passed": 7,
+    "derived_ctest_failed_incompatible_expectations": 3,
+    "python_existing_isolated_passed": 102,
+    "new_tests_passed": 3,
+    "smoke_iterations": 2
+  },
+  "training": {
+    "gpu": 1,
+    "num_envs": 1024,
+    "additional_iterations": 2000,
+    "seed": 42,
+    "tmux": "cpp_refresh_20261024",
+    "state_dir": "/root/gpufree-data/datasets/practice9/cpp_refresh_20261024",
+    "initial_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_14-47-37_tw215_neck_only_formal_s42/model_23997.pt"
+  }
+}
