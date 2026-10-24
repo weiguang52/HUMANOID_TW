@@ -41,3 +41,16 @@ Do not promote without verified metrics and visual review.
 State:/root/gpufree-data/datasets/practice9/heading_ablation_20261024
 Scripts:train_heading_ablation.sh,prepare_heading_evaluation.py,run_heading_experiment.sh.
 Status:pilot launching; optimization outcome pending.
+
+## Result: 2026-10-24 23:39 Asia/Shanghai
+Both pilots and assemblies completed; model_28494.pt exists for each.
+Each delivery contains46videos,28dual-view encoding checks and14front-camera audits.
+Baseline34/42; heading35/42. Flat24/24 both, standing5/6 both,
+turning2/3 vs3/3, reference-limit3/3 both, treadmill0/3 and nonplanar0/3 both.
+Static20s drift227.95mm baseline vs261.12mm heading (original109.15mm).
+Upper terminates7.52s baseline (anchor orientation),6.52s heading (anchor position).
+These are not completed20s trajectories. Standing heading RMSE13.73deg vs21.65deg;
+wrist7.29mm vs7.46mm. Reject both for promotion; original checkpoint unchanged.
+Baseline also regresses: do not attribute all regression to the added term.
+One training seed and500iterations limit conclusions. Remaining optimization
+requires investigation of continuation stability and contact drift.
