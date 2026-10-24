@@ -76,6 +76,10 @@ class NativeRetargeter:
             'selected_flags': self.flags,
             'solver_source_sha256': hashlib.sha256((self.root / 'src/robot.cpp').read_bytes()).hexdigest(),
             'derived_model': derived,
+            'source_tree_sha256': hashlib.sha256(b''.join(
+                str(p.relative_to(self.root)).encode() + b'\0' + p.read_bytes()
+                for folder in ('include', 'src') for p in sorted((self.root / folder).rglob('*'))
+                if p.is_file())).hexdigest(),
         }
         self.environment = os.environ.copy()
         libraries = [self.root / 'build/deps/cmeel.prefix/lib',

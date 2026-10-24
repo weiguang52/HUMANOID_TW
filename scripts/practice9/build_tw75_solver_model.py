@@ -13,15 +13,16 @@ from retarget_humanml3d import DEFAULT_ROOT, DEFAULT_TRAINING_URDF, MAPPING, CUS
 from native_retarget import NATIVE_JOINT_NAMES
 
 
-def build(output, foot_orientation_weight=1.0, knee_reference=0.0):
+def build(output, foot_orientation_weight=1.0, knee_reference=0.0, upstream_root=DEFAULT_ROOT):
+    upstream_root = Path(upstream_root).resolve()
     if not np.isfinite(knee_reference) or not -.5 <= knee_reference <= 0:
         raise ValueError("Diagnostic knee reference must be in [-.5,0]")
     if not np.isfinite(foot_orientation_weight) or not 0 <= foot_orientation_weight <= 1:
         raise ValueError("Foot orientation weight must be in [0,1]")
     output.mkdir(parents=True, exist_ok=True)
     for directory in ['src', 'include', 'tests', 'configs']:
-        shutil.copytree(DEFAULT_ROOT/directory, output/directory, dirs_exist_ok=True)
-    shutil.copy2(DEFAULT_ROOT/'CMakeLists.txt', output/'CMakeLists.txt')
+        shutil.copytree(upstream_root/directory, output/directory, dirs_exist_ok=True)
+    shutil.copy2(upstream_root/'CMakeLists.txt', output/'CMakeLists.txt')
     tree = ET.parse(DEFAULT_TRAINING_URDF)
     root = tree.getroot()
     links = {}
@@ -79,6 +80,11 @@ def build(output, foot_orientation_weight=1.0, knee_reference=0.0):
     for index,old in enumerate(['*.0832','*.1105','*.07579','*.04739']):
         replacements[old]=f'*(side ? {lengths["right"][index]:.17g} : {lengths["left"][index]:.17g})'
     for old,new in replacements.items():
+        # New cpp uses model bounds directly in state setters.
+        if old in ('double(limits[i][0])', 'double(limits[i][1])') and source.count(old)==0:
+            if 'std::clamp(x[i],p->model.lowerPositionLimit[p->indices[i]],p->model.upperPositionLimit[p->indices[i]])' not in source:
+                raise ValueError('Native state bounds changed')
+            continue
         if source.count(old)!=1:
             raise ValueError('Upstream source changed: '+old)
         source=source.replace(old,new)
@@ -86,7 +92,7 @@ def build(output, foot_orientation_weight=1.0, knee_reference=0.0):
     if source.count(anchor)!=1:
         raise ValueError('Foot orientation task changed')
     source=source.replace(anchor,f'wr=(k==7||k==8)?{foot_orientation_weight:.17g}:(k==9?5.:0.);')
-    old_neutral=fk(DEFAULT_ROOT/'assets/urdf/Assembly.urdf',dict(zip(NATIVE_JOINT_NAMES,np.array([(-np.pi/2 if i==16 else np.pi/2 if i==21 else 0.) for i in range(28)]))))
+    old_neutral=fk(upstream_root/'assets/urdf/Assembly.urdf',dict(zip(NATIVE_JOINT_NAMES,np.array([(-np.pi/2 if i==16 else np.pi/2 if i==21 else 0.) for i in range(28)]))))
     corrections=[]
     for task,link in [(0,'chest'),(7,'left_foot'),(8,'right_foot'),(9,'head')]:
         rotation=old_neutral[link][:3,:3].T @ neutral[link][:3,:3]
@@ -96,6 +102,8 @@ def build(output, foot_orientation_weight=1.0, knee_reference=0.0):
     if source.count(anchor)!=1:
         raise ValueError('Upstream orientation task changed')
     source=source.replace(anchor,'\n'.join(corrections)+'\n'+anchor)
+    source=source.replace('        if(p->model.frames[i].parentJoint==0)',
+        '#if PINOCCHIO_VERSION_AT_LEAST(3,0,0)\n        if(p->model.frames[i].parentJoint==0)\n#else\n        if(p->model.frames[i].parent==0)\n#endif')
     (output/'src/robot.cpp').write_text(source)
     rng=np.random.default_rng(42); error=0.
     for _ in range(100):
@@ -107,7 +115,8 @@ def build(output, foot_orientation_weight=1.0, knee_reference=0.0):
             error=max(error,float(np.max(np.abs(native[links.get(name,name)]-T))))
     if error>1e-10:
         raise ValueError(f'Geometry equivalence failed: {error}')
-    metadata={'upstream_commit':subprocess.check_output(['git','-C',str(DEFAULT_ROOT),'rev-parse','HEAD'],text=True).strip(),
+    metadata={'upstream_root':str(upstream_root),'pinocchio_frame_compatibility':'version-gated parentJoint/parent',
+              'upstream_commit':subprocess.check_output(['git','-C',str(upstream_root),'rev-parse','HEAD'],text=True).strip(),
               'training_urdf_sha256':hashlib.sha256(DEFAULT_TRAINING_URDF.read_bytes()).hexdigest(),
               'derived_urdf_sha256':hashlib.sha256(destination.read_bytes()).hexdigest(),
               'foot_orientation_weight':foot_orientation_weight,'knee_reference_rad':knee_reference,
@@ -120,4 +129,5 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(); parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--foot-orientation-weight',type=float,default=1.,help='Diagnostic ablation; 1 preserves selected method')
     parser.add_argument('--knee-reference',type=float,default=0.,help='Diagnostic knee initial/prior pose in radians')
-    args=parser.parse_args(); build(args.output,args.foot_orientation_weight,args.knee_reference)
+    parser.add_argument('--upstream-root',type=Path,default=DEFAULT_ROOT)
+    args=parser.parse_args(); build(args.output,args.foot_orientation_weight,args.knee_reference,args.upstream_root)
