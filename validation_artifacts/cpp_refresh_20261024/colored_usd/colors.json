@@ -1,0 +1,332 @@
+[
+  {
+    "joint": "left_hip_pitch_joint",
+    "link": "left_hip_linkage",
+    "rgb": [
+      0.95,
+      0.266,
+      0.266
+    ],
+    "hex": "#f24444",
+    "bindings": 1
+  },
+  {
+    "joint": "left_hip_roll_joint",
+    "link": "left_thigh",
+    "rgb": [
+      0.266,
+      0.46558851016999997,
+      0.95
+    ],
+    "hex": "#4477f2",
+    "bindings": 1
+  },
+  {
+    "joint": "left_hip_yaw_joint",
+    "link": "left_knee_linkage",
+    "rgb": [
+      0.6651770203399997,
+      0.95,
+      0.266
+    ],
+    "hex": "#aaf244",
+    "bindings": 1
+  },
+  {
+    "joint": "left_knee_pitch_joint",
+    "link": "left_mid_leg",
+    "rgb": [
+      0.95,
+      0.266,
+      0.8647655305099999
+    ],
+    "hex": "#f244dd",
+    "bindings": 1
+  },
+  {
+    "joint": "left_ankle_yaw_joint",
+    "link": "left_calf",
+    "rgb": [
+      0.266,
+      0.95,
+      0.8356459593200006
+    ],
+    "hex": "#44f2d5",
+    "bindings": 1
+  },
+  {
+    "joint": "left_ankle_pitch_joint",
+    "link": "left_ankle",
+    "rgb": [
+      0.95,
+      0.6360574491500012,
+      0.266
+    ],
+    "hex": "#f2a244",
+    "bindings": 1
+  },
+  {
+    "joint": "left_foot_roll",
+    "link": "left_foot",
+    "rgb": [
+      0.4364689389800001,
+      0.266,
+      0.95
+    ],
+    "hex": "#6f44f2",
+    "bindings": 1
+  },
+  {
+    "joint": "right_hip_pitch_joint",
+    "link": "right_hip_linkage",
+    "rgb": [
+      0.29511957118999754,
+      0.95,
+      0.266
+    ],
+    "hex": "#4bf244",
+    "bindings": 1
+  },
+  {
+    "joint": "right_hip_roll_joint",
+    "link": "right_thigh",
+    "rgb": [
+      0.95,
+      0.266,
+      0.4947080813599987
+    ],
+    "hex": "#f2447e",
+    "bindings": 1
+  },
+  {
+    "joint": "right_hip_yaw_joint",
+    "link": "right_knee_linkage",
+    "rgb": [
+      0.266,
+      0.6942965915299998,
+      0.95
+    ],
+    "hex": "#44b1f2",
+    "bindings": 1
+  },
+  {
+    "joint": "right_knee_pitch_joint",
+    "link": "right_mid_leg",
+    "rgb": [
+      0.8938851016999975,
+      0.95,
+      0.266
+    ],
+    "hex": "#e4f244",
+    "bindings": 1
+  },
+  {
+    "joint": "right_ankle_yaw_joint",
+    "link": "right_calf",
+    "rgb": [
+      0.8065263881300013,
+      0.266,
+      0.95
+    ],
+    "hex": "#ce44f2",
+    "bindings": 1
+  },
+  {
+    "joint": "right_ankle_pitch_joint",
+    "link": "right_ankle",
+    "rgb": [
+      0.266,
+      0.95,
+      0.6069378779600002
+    ],
+    "hex": "#44f29b",
+    "bindings": 1
+  },
+  {
+    "joint": "right_foot_roll",
+    "link": "right_foot",
+    "rgb": [
+      0.95,
+      0.40734936778999903,
+      0.266
+    ],
+    "hex": "#f26844",
+    "bindings": 1
+  },
+  {
+    "joint": "left_shoulder_pitch_joint",
+    "link": "left_shoulder_linkage",
+    "rgb": [
+      0.266,
+      0.3242391423799949,
+      0.95
+    ],
+    "hex": "#4453f2",
+    "bindings": 1
+  },
+  {
+    "joint": "left_shoulder_roll_joint",
+    "link": "left_upper_arm",
+    "rgb": [
+      0.5238276525499961,
+      0.95,
+      0.266
+    ],
+    "hex": "#86f244",
+    "bindings": 1
+  },
+  {
+    "joint": "left_shoulder_yaw_joint",
+    "link": "left_elbow_linkage",
+    "rgb": [
+      0.95,
+      0.266,
+      0.7234161627199973
+    ],
+    "hex": "#f244b8",
+    "bindings": 1
+  },
+  {
+    "joint": "left_elbow_pitch_joint",
+    "link": "left_force_arm",
+    "rgb": [
+      0.266,
+      0.9230046728899985,
+      0.95
+    ],
+    "hex": "#44ebf2",
+    "bindings": 1
+  },
+  {
+    "joint": "left_wrist_pitch",
+    "link": "left_wrist",
+    "rgb": [
+      0.95,
+      0.7774068169400002,
+      0.266
+    ],
+    "hex": "#f2c644",
+    "bindings": 1
+  },
+  {
+    "joint": "right_shoulder_pitch_joint",
+    "link": "right_shoulder_linkage",
+    "rgb": [
+      0.5778183067700063,
+      0.266,
+      0.95
+    ],
+    "hex": "#9344f2",
+    "bindings": 1
+  },
+  {
+    "joint": "right_shoulder_roll_joint",
+    "link": "right_upper_arm",
+    "rgb": [
+      0.266,
+      0.95,
+      0.3782297966000052
+    ],
+    "hex": "#44f260",
+    "bindings": 1
+  },
+  {
+    "joint": "right_shoulder_yaw_joint",
+    "link": "right_elbow_linkage",
+    "rgb": [
+      0.95,
+      0.266,
+      0.35335871356999604
+    ],
+    "hex": "#f2445a",
+    "bindings": 1
+  },
+  {
+    "joint": "right_elbow_pitch_joint",
+    "link": "right_force_arm",
+    "rgb": [
+      0.266,
+      0.5529472237399973,
+      0.95
+    ],
+    "hex": "#448df2",
+    "bindings": 1
+  },
+  {
+    "joint": "right_wrist_pitch",
+    "link": "right_wrist",
+    "rgb": [
+      0.7525357339099984,
+      0.95,
+      0.266
+    ],
+    "hex": "#c0f244",
+    "bindings": 1
+  },
+  {
+    "joint": "waist_yaw",
+    "link": "waist",
+    "rgb": [
+      0.9478757559200003,
+      0.266,
+      0.95
+    ],
+    "hex": "#f244f2",
+    "bindings": 1
+  },
+  {
+    "joint": "waist_roll_joint",
+    "link": "gearbox",
+    "rgb": [
+      0.266,
+      0.95,
+      0.7482872457500064
+    ],
+    "hex": "#44f2bf",
+    "bindings": 1
+  },
+  {
+    "joint": "waist_pitch_joint",
+    "link": "chest",
+    "rgb": [
+      0.95,
+      0.548698735579998,
+      0.266
+    ],
+    "hex": "#f28c44",
+    "bindings": 1
+  },
+  {
+    "joint": "neck",
+    "link": "neck",
+    "rgb": [
+      0.34911022541001135,
+      0.266,
+      0.95
+    ],
+    "hex": "#5944f2",
+    "bindings": 2
+  },
+  {
+    "joint": "neck_linkage_roll",
+    "link": "neck_linkage",
+    "rgb": [
+      0.38247828475998985,
+      0.95,
+      0.266
+    ],
+    "hex": "#62f244",
+    "bindings": 1
+  },
+  {
+    "joint": "head_pitch",
+    "link": "head",
+    "rgb": [
+      0.95,
+      0.266,
+      0.582066794929991
+    ],
+    "hex": "#f24494",
+    "bindings": 1
+  }
+]

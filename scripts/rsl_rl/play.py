@@ -20,6 +20,7 @@ import cli_args  # isort: skip
 
 # add argparse arguments
 parser = argparse.ArgumentParser(description="Train an RL agent with RSL-RL.")
+parser.add_argument("--robot_usd", type=str, help="Load a prebuilt robot USD for replay, preserving spawn physics settings.")
 parser.add_argument("--joint_colors", type=str, help="Apply visual joint colors and write the color legend JSON here.")
 parser.add_argument("--video", action="store_true", default=False, help="Record videos during training.")
 parser.add_argument("--video_length", type=int, default=200, help="Length of the recorded video (in steps).")
@@ -168,16 +169,19 @@ def main():
         configure(env_cfg,args_cli.diagnostic_physics_dt)
     log_dir = os.path.dirname(resume_path)
 
-    # Apply visual materials during spawning, before PhysX/Fabric builds its views.
-    if args_cli.joint_colors:
-        original_spawn = env_cfg.scene.robot.spawn.func
-        def spawn_colored(*args, **kwargs):
-            prim = original_spawn(*args, **kwargs)
-            import omni.usd
-            from joint_colors import apply
-            apply(omni.usd.get_context().get_stage(), args_cli.joint_colors)
-            return prim
-        env_cfg.scene.robot.spawn.func = spawn_colored
+    if args_cli.robot_usd:
+        import copy
+        from isaaclab.sim import UsdFileCfg
+        if args_cli.joint_colors:
+            raise ValueError("Use a precolored USD without runtime joint coloring")
+        previous_spawn = env_cfg.scene.robot.spawn
+        usd_spawn = UsdFileCfg(usd_path=args_cli.robot_usd)
+        for name in vars(usd_spawn):
+            if name not in ("func", "usd_path") and hasattr(previous_spawn, name):
+                setattr(usd_spawn, name, copy.deepcopy(getattr(previous_spawn, name)))
+        env_cfg.scene.robot.spawn = usd_spawn
+    elif args_cli.joint_colors:
+        raise ValueError("Runtime coloring retired; build_colored_usd.py then use --robot_usd")
 
     # create isaac environment
     env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if (args_cli.video or (args_cli.standing_diagnostic and args_cli.enable_cameras)) else None)
