@@ -168,12 +168,19 @@ def main():
         configure(env_cfg,args_cli.diagnostic_physics_dt)
     log_dir = os.path.dirname(resume_path)
 
+    # Apply visual materials during spawning, before PhysX/Fabric builds its views.
+    if args_cli.joint_colors:
+        original_spawn = env_cfg.scene.robot.spawn.func
+        def spawn_colored(*args, **kwargs):
+            prim = original_spawn(*args, **kwargs)
+            import omni.usd
+            from joint_colors import apply
+            apply(omni.usd.get_context().get_stage(), args_cli.joint_colors)
+            return prim
+        env_cfg.scene.robot.spawn.func = spawn_colored
+
     # create isaac environment
     env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if (args_cli.video or (args_cli.standing_diagnostic and args_cli.enable_cameras)) else None)
-
-    if args_cli.joint_colors:
-        from joint_colors import apply
-        apply(env.unwrapped.sim.stage, args_cli.joint_colors)
 
     # convert to single-agent instance if required by the RL algorithm
     if isinstance(env.unwrapped, DirectMARLEnv):
