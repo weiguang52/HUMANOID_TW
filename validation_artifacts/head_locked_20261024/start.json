@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-10-24T15:25:25.150107+08:00",
+  "locked_joints": {
+    "neck": 0,
+    "neck_linkage_roll": 0,
+    "head_pitch": 0
+  },
+  "initial_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-24_11-12-00_cpp_refresh_20261024_formal/model_25996.pt",
+  "manifest": "/root/gpufree-data/datasets/practice9/cpp_refresh_20261024/train.json",
+  "motions": 1348,
+  "frames": 788767,
+  "seed": 42,
+  "num_envs": 1024,
+  "additional_iterations": 2000,
+  "head_mass_kg": 0.1150117814540863,
+  "total_mass_kg": 0.8407428076607175,
+  "smoke_passed": true,
+  "maximum_logged_mean_position_error_rad": 2.7041616704082116e-05,
+  "position_tolerance_guard_rad": 0.01,
+  "automatic_evaluation": "42 held-out replays plus videos after successful training",
+  "limitation": "Exploratory continuation: no same-budget unlocked continuation control; does not establish that head mass is the cause."
+}

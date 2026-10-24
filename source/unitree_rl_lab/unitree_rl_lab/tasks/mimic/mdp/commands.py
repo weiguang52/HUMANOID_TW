@@ -95,6 +95,14 @@ class MotionCommand(CommandTerm):
             max_frames=self.cfg.max_motion_frames,
             require_quality_pass=self.cfg.require_quality_pass,
         )
+        self._locked_motion_indices = []
+        self._locked_positions = []
+        for name, position in self.cfg.locked_joint_positions.items():
+            index = resolved_joint_names.index(name)
+            self.motion.joint_pos[:, index] = position
+            self.motion.joint_vel[:, index] = 0.
+            self._locked_motion_indices.append(index)
+            self._locked_positions.append(position)
         if self.motion.joint_pos.shape[1] != len(self.joint_indexes):
             raise ValueError(
                 f"Motion has {self.motion.joint_pos.shape[1]} joints, but robot selection "
@@ -252,6 +260,13 @@ class MotionCommand(CommandTerm):
         return self.robot.data.body_ang_vel_w[:, self.robot_anchor_body_index]
 
     def _update_metrics(self):
+        if self._locked_motion_indices:
+            ids = self.joint_indexes[self._locked_motion_indices]
+            target = torch.tensor(self._locked_positions, device=self.device)
+            self.metrics['locked_head_position_error'] = (self.robot.data.joint_pos[:, ids]-target).abs().amax(dim=1)
+            self.metrics['locked_head_speed'] = self.robot.data.joint_vel[:, ids].abs().amax(dim=1)
+            if self.metrics['locked_head_position_error'].max() > .01:
+                raise RuntimeError('Head lock exceeded 0.01 rad physical constraint tolerance')
         self.metrics["error_anchor_pos"] = torch.norm(self.anchor_pos_w - self.robot_anchor_pos_w, dim=-1)
         self.metrics["error_anchor_rot"] = quat_error_magnitude(self.anchor_quat_w, self.robot_anchor_quat_w)
         self.metrics["error_anchor_lin_vel"] = torch.norm(self.anchor_lin_vel_w - self.robot_anchor_lin_vel_w, dim=-1)
@@ -473,6 +488,7 @@ class MotionCommandCfg(CommandTermCfg):
     body_names: list[str] = MISSING
     root_body_name: str | None = None
     joint_names: list[str] | None = None
+    locked_joint_positions: dict[str, float] = {}
 
     pose_range: dict[str, tuple[float, float]] = {}
     velocity_range: dict[str, tuple[float, float]] = {}

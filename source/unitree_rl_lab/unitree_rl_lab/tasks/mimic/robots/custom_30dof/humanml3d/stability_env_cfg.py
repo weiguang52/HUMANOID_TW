@@ -69,3 +69,28 @@ class NeckOnlyPlayEnvCfg(NeckOnlyEnvCfg):
         super().__post_init__()
         self.scene.num_envs=1
         self.episode_length_s=1.e9
+
+
+@configclass
+class HeadLockedEnvCfg(NeckOnlyEnvCfg):
+    def __post_init__(self):
+        super().__post_init__()
+        from isaaclab.sim import UsdFileCfg
+        import copy
+        old = self.scene.robot.spawn
+        new = UsdFileCfg(usd_path='/root/gpufree-data/datasets/practice9/head_locked_20261024/robot.usd')
+        for name in vars(new):
+            if name not in ('func', 'usd_path') and hasattr(old, name):
+                setattr(new, name, copy.deepcopy(getattr(old, name)))
+        self.scene.robot.spawn = new
+        names = ['neck', 'neck_linkage_roll', 'head_pitch']
+        self.commands.motion.locked_joint_positions = {n: self.scene.robot.init_state.joint_pos[n] for n in names}
+        assert all(v == 0. for v in self.commands.motion.locked_joint_positions.values())
+        self.actions.JointPositionAction.limit_target_position = True
+
+
+class HeadLockedPlayEnvCfg(HeadLockedEnvCfg):
+    def __post_init__(self):
+        super().__post_init__()
+        self.scene.num_envs=1
+        self.episode_length_s=1.e9

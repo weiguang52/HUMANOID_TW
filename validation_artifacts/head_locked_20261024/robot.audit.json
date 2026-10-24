@@ -1,0 +1,70 @@
+{
+  "changes": [
+    {
+      "joint": "neck",
+      "old": [
+        -60.160560607910156,
+        60.160560607910156
+      ],
+      "new": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "joint": "neck_linkage_roll",
+      "old": [
+        -29.79380226135254,
+        29.79380226135254
+      ],
+      "new": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "joint": "head_pitch",
+      "old": [
+        -45.26366424560547,
+        45.26366424560547
+      ],
+      "new": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "mass_unchanged": {
+    "/urdf0711_training_30dof/base_link": 0.07990783452987671,
+    "/urdf0711_training_30dof/left_hip_linkage": 0.004141506738960743,
+    "/urdf0711_training_30dof/left_thigh": 0.04239087551832199,
+    "/urdf0711_training_30dof/left_knee_linkage": 0.010938732884824276,
+    "/urdf0711_training_30dof/left_mid_leg": 0.0351288840174675,
+    "/urdf0711_training_30dof/left_calf": 0.029065843671560287,
+    "/urdf0711_training_30dof/left_ankle": 0.006317314226180315,
+    "/urdf0711_training_30dof/left_foot": 0.02622980810701847,
+    "/urdf0711_training_30dof/right_hip_linkage": 0.004141506738960743,
+    "/urdf0711_training_30dof/right_thigh": 0.04231465980410576,
+    "/urdf0711_training_30dof/right_knee_linkage": 0.010938732884824276,
+    "/urdf0711_training_30dof/right_mid_leg": 0.03510553762316704,
+    "/urdf0711_training_30dof/right_calf": 0.0290690790861845,
+    "/urdf0711_training_30dof/right_ankle": 0.006301050540059805,
+    "/urdf0711_training_30dof/right_foot": 0.02629007212817669,
+    "/urdf0711_training_30dof/waist": 0.019742896780371666,
+    "/urdf0711_training_30dof/gearbox": 0.00086215726332739,
+    "/urdf0711_training_30dof/chest": 0.12830553948879242,
+    "/urdf0711_training_30dof/left_shoulder_linkage": 0.004141506738960743,
+    "/urdf0711_training_30dof/left_upper_arm": 0.03456928953528404,
+    "/urdf0711_training_30dof/left_elbow_linkage": 0.0031351889483630657,
+    "/urdf0711_training_30dof/left_force_arm": 0.015736782923340797,
+    "/urdf0711_training_30dof/left_wrist": 0.026017291471362114,
+    "/urdf0711_training_30dof/neck": 0.0174129419028759,
+    "/urdf0711_training_30dof/neck_linkage": 0.003944259602576494,
+    "/urdf0711_training_30dof/head": 0.1150117814540863,
+    "/urdf0711_training_30dof/right_shoulder_linkage": 0.004141506738960743,
+    "/urdf0711_training_30dof/right_upper_arm": 0.03455116227269173,
+    "/urdf0711_training_30dof/right_elbow_linkage": 0.0031351889483630657,
+    "/urdf0711_training_30dof/right_force_arm": 0.01573658362030983,
+    "/urdf0711_training_30dof/right_wrist": 0.026017291471362114
+  }
+}

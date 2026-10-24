@@ -96,7 +96,7 @@ gym.register(
     },
 )
 
-for name in ('Precision', 'PrecisionNeck', 'PrecisionNeckRoot', 'NeckOnly'):
+for name in ('Precision', 'PrecisionNeck', 'PrecisionNeckRoot', 'NeckOnly', 'HeadLocked'):
     gym.register(
         id=f'Unitree-Custom-Humanoid-30dof-{name}-HumanML3D',
         entry_point='isaaclab.envs:ManagerBasedRLEnv', disable_env_checker=True,
