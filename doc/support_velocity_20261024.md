@@ -45,3 +45,14 @@ physics and locked joints match the training model. Front camera follows
 translation, not heading. Raw human timing is not phase aligned to robot replay.
 State: /root/gpufree-data/datasets/practice9/support_ablation_20261024
 Archive: validation_artifacts/support_ablation_20261024/{baseline,support}/evaluation_colored/neck_only
+
+
+## Results: 2026-10-24 21:25 Asia/Shanghai
+
+Both matched continuations completed, with 42 evaluation cases and 46 videos per variant. Baseline and candidate each pass 35/42; previous checkpoint passed 34/42. Category counts (previous / baseline / candidate): flat 23/24 / 24/24 / 24/24; standing upper 6/6 throughout; turning 3/3 / 1/3 / 2/3; treadmill 0/3 / 1/3 / 0/3; nonplanar 0/3 throughout; reference-limit diagnostic 2/3 / 3/3 / 3/3.
+
+20s static net XY drift: previous 109.15mm, baseline 66.35mm, candidate 444.13mm. Upper diagnostic: baseline completes20s with62.62mm drift; candidate terminates at10.04s (anchor position and orientation), so its200.16mm is not a matched20s result. Standing-upper wrist error: baseline5.91mm vs candidate8.91mm; heading RMSE8.66deg vs28.07deg. Reject candidate for promotion; baseline also regresses turning versus previous. No production checkpoint replaced.
+
+Video assembly originally assumed every diagnostic reached500frames. Corrected validation checks frames against recorded elapsed time and requires recorded termination for shorter clips; failure remains visible in HTML. Both assemblies complete. H264/frame checks and front camera audit passed; sampled front/side views show colored full robot with attached head. Sampled final upper frame is still upright: termination is not by itself proof of falling. Full original-timing HumanML3D source videos retained.
+
+Remaining optimization goal is unresolved. Next investigation should examine standing heading and contact drift, preserving held-out turning and upper motion, before additional training.

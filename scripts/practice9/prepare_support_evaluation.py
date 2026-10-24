@@ -60,6 +60,7 @@ for variant, task in [('baseline', 'HeadLocked'), ('support', 'SupportVelocity')
     raw = raw.replace('Colored rerun', variant+' continuation')
     raw = raw.replace('colored rerun', variant+' continuation')
     raw = raw.replace('metric_reproducibility.json', 'previous_checkpoint_differences.json')
+    raw = raw.replace(" assert meta['codec_name']=='h264' and int(meta['nb_frames'])==500 and meta['r_frame_rate']=='25/1'", ' diagnostic=json.loads((D/\'diagnostic_front\'/(name+\'.json\')).read_text())\n expected=round(diagnostic[\'seconds\']*25)\n assert meta[\'codec_name\']==\'h264\' and int(meta[\'nb_frames\'])==expected and meta[\'r_frame_rate\']==\'25/1\'\n if expected<500:\n  assert any(diagnostic[\'termination_counts\'].values())\n  page+=f\'<p>Early termination: {diagnostic["seconds"]:.2f} seconds; {html.escape(str(diagnostic["termination_counts"]))}. This case did not complete 20 seconds.</p>\'')
     (target/'finish.py').write_text(raw)
     # Metric differences are recorded, never asserted to be zero after training.
     compile(raw, str(target/'finish.py'), 'exec')
