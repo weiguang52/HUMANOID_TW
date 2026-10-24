@@ -44,6 +44,7 @@ parser.add_argument("--save_interval", type=int, default=None, help="Checkpoint 
 parser.add_argument(
     "--distributed", action="store_true", default=False, help="Run training with multiple GPUs or nodes."
 )
+parser.add_argument("--restore_optimizer_learning_rate", action="store_true", help="Restore adaptive PPO learning rate from loaded optimizer state.")
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
@@ -198,6 +199,14 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         print(f"[INFO]: Loading model checkpoint from: {resume_path}")
         # load previously trained model
         runner.load(resume_path)
+        if args_cli.restore_optimizer_learning_rate:
+            import json
+            from resume_learning_rate import restore_learning_rate
+            resume_audit=restore_learning_rate(runner.alg)
+            os.makedirs(log_dir, exist_ok=True)
+            with open(os.path.join(log_dir, "resume_learning_rate.json"), "w") as stream:
+                json.dump(resume_audit, stream, indent=2)
+            print(f"[INFO] Restored scheduler learning rate: {resume_audit}")
 
     # dump the configuration into log-directory
     dump_yaml(os.path.join(log_dir, "params", "env.yaml"), env_cfg)
