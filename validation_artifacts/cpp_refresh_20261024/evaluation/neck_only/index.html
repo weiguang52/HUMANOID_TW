@@ -1,0 +1,177 @@
+<!doctype html><meta charset="utf-8"><title>CPP refresh 20261024 evaluation</title>
+<style>body{max-width:1400px;margin:auto;font:18px sans-serif}.pair{display:flex}video{width:49%}pre{white-space:pre-wrap}</style>
+<h1>CPP refresh 20261024 evaluation</h1><p>Final checkpoint: model_25996.pt. Fixed TW215 held-out benchmark, 14 motions x 3 seeds. Clean completion: flat 23/24 (previous 24/24); standing 5/6 (6/6); turning 3/3 (0/3); treadmill 0/3; nonplanar 0/3; reference-limit diagnostic 2/3 (3/3). Total remains 33/42. Turning improved, flat walking and standing regressed; no overall gain. Failed rollouts may reset in videos; use comparison.json for termination evidence.</p>
+<p>Left: original HumanML3D NPY (20fps). Right: robot simulation (50fps), stable side camera.
+Different reference durations: these videos are not phase aligned. No source-contact time warping.</p>
+<p>Metrics: 3 evaluation seeds, one training seed; mean and worst 5s windows in comparison.json.
+One reference cycle requested; no intentional second cycle. Incomplete/failing rollouts must not be treated as complete reference coverage.</p><pre>{
+  "flat_forward": {
+    "clean": 23,
+    "total": 24,
+    "metrics": {
+      "upper_error_m": 0.004839767119847238,
+      "wrist_error_m": 0.006646483612712473,
+      "anchor_height_error_m": 0.002177891665875601,
+      "contact_mismatch_fraction": 0.1823374640459902,
+      "foot_link_contact_speed_m_s": 0.04683173354715109,
+      "contact_known_fraction": 0.5554499421653191,
+      "worst_window_wrist_error_m": 0.007578617621523638,
+      "neck_reference_rmse_rad": [
+        0.11726622004061937,
+        0.10634107887744904,
+        0.15653893941392502
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.5139436461031437,
+        0.4407721484700839,
+        0.5637572680910429
+      ],
+      "pelvis_heading_rmse_deg": 8.154681921005249
+    }
+  },
+  "nonplanar_review": {
+    "clean": 0,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.006775688224782546,
+      "wrist_error_m": 0.009206107507149378,
+      "anchor_height_error_m": 0.027521672348181408,
+      "contact_mismatch_fraction": 0.28849706957169025,
+      "foot_link_contact_speed_m_s": 0.0402906226615111,
+      "contact_known_fraction": 0.514358859098643,
+      "worst_window_wrist_error_m": 0.013349306769669056,
+      "neck_reference_rmse_rad": [
+        0.14416692654291788,
+        0.11915966868400574,
+        0.2303812950849533
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.5153832832972208,
+        0.4938621719678243,
+        0.7002364993095398
+      ],
+      "pelvis_heading_rmse_deg": 11.520168622334799
+    }
+  },
+  "standing_upper": {
+    "clean": 5,
+    "total": 6,
+    "metrics": {
+      "upper_error_m": 0.005128596598903338,
+      "wrist_error_m": 0.006818048345545928,
+      "anchor_height_error_m": 0.0010841639790063102,
+      "contact_mismatch_fraction": 0.1516560369239365,
+      "foot_link_contact_speed_m_s": 0.01625966327264905,
+      "contact_known_fraction": 0.9698090948090948,
+      "worst_window_wrist_error_m": 0.01207371250105401,
+      "neck_reference_rmse_rad": [
+        0.11504999175667763,
+        0.2037776311238607,
+        0.12341708689928055
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.22639216482639313,
+        0.2956088085969289,
+        0.25779665758212406
+      ],
+      "pelvis_heading_rmse_deg": 22.711597601572674
+    }
+  },
+  "standing_upper_reference_limit_diagnostic": {
+    "clean": 2,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.00431140442378819,
+      "wrist_error_m": 0.006343920870373647,
+      "anchor_height_error_m": 0.006861511928339799,
+      "contact_mismatch_fraction": 0.17415970014756654,
+      "foot_link_contact_speed_m_s": 0.015987589955329895,
+      "contact_known_fraction": 0.9785822021116138,
+      "worst_window_wrist_error_m": 0.01078121674557527,
+      "neck_reference_rmse_rad": [
+        0.06626868744691213,
+        0.1091445858279864,
+        0.09137953321139018
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.21794345478216806,
+        0.25434976319471997,
+        0.27295761307080585
+      ],
+      "pelvis_heading_rmse_deg": 24.407987594604492
+    }
+  },
+  "treadmill": {
+    "clean": 0,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.012325488962233067,
+      "wrist_error_m": 0.016148121406634647,
+      "anchor_height_error_m": 0.015498591586947441,
+      "contact_mismatch_fraction": 0.43061322686322684,
+      "foot_link_contact_speed_m_s": 0.04679509003957113,
+      "contact_known_fraction": 0.14705250011405058,
+      "worst_window_wrist_error_m": 0.020167368774612743,
+      "neck_reference_rmse_rad": [
+        0.19252420216798782,
+        0.20221928507089615,
+        0.3347415253520012
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.6839045882225037,
+        0.7715354263782501,
+        0.891820877790451
+      ],
+      "pelvis_heading_rmse_deg": 20.396934509277344
+    }
+  },
+  "turning": {
+    "clean": 3,
+    "total": 3,
+    "metrics": {
+      "upper_error_m": 0.0061008248788615065,
+      "wrist_error_m": 0.008531985493997732,
+      "anchor_height_error_m": 0.0029858863757302365,
+      "contact_mismatch_fraction": 0.2007908611599297,
+      "foot_link_contact_speed_m_s": 0.060405424485603966,
+      "contact_known_fraction": 0.46947194719471946,
+      "worst_window_wrist_error_m": 0.010082625163098177,
+      "neck_reference_rmse_rad": [
+        0.15007014572620392,
+        0.15461660424868265,
+        0.19379937648773193
+      ],
+      "neck_velocity_reference_rmse_rad_s": [
+        0.7092987497647604,
+        0.5889879067738851,
+        0.6412193179130554
+      ],
+      "pelvis_heading_rmse_deg": 8.466428279876709
+    }
+  }
+}</pre><h2>000832 / flat_forward</h2><div class="pair"><video controls src="humanml_source/000832_source.mp4"></video><video controls src="videos/000832.mp4"></video></div><h2>001191 / flat_forward</h2><div class="pair"><video controls src="humanml_source/001191_source.mp4"></video><video controls src="videos/001191.mp4"></video></div><h2>002011 / flat_forward</h2><div class="pair"><video controls src="humanml_source/002011_source.mp4"></video><video controls src="videos/002011.mp4"></video></div><h2>005309 / flat_forward</h2><div class="pair"><video controls src="humanml_source/005309_source.mp4"></video><video controls src="videos/005309.mp4"></video></div><h2>006634 / flat_forward</h2><div class="pair"><video controls src="humanml_source/006634_source.mp4"></video><video controls src="videos/006634.mp4"></video></div><h2>007481 / flat_forward</h2><div class="pair"><video controls src="humanml_source/007481_source.mp4"></video><video controls src="videos/007481.mp4"></video></div><h2>009516 / flat_forward</h2><div class="pair"><video controls src="humanml_source/009516_source.mp4"></video><video controls src="videos/009516.mp4"></video></div><h2>011084 / flat_forward</h2><div class="pair"><video controls src="humanml_source/011084_source.mp4"></video><video controls src="videos/011084.mp4"></video></div><h2>000016 / standing_upper</h2><div class="pair"><video controls src="humanml_source/000016_source.mp4"></video><video controls src="videos/000016.mp4"></video></div><h2>000124 / standing_upper</h2><div class="pair"><video controls src="humanml_source/000124_source.mp4"></video><video controls src="videos/000124.mp4"></video></div><h2>000346 / standing_upper_reference_limit_diagnostic</h2><div class="pair"><video controls src="humanml_source/000346_source.mp4"></video><video controls src="videos/000346.mp4"></video></div><h2>000039 / treadmill</h2><div class="pair"><video controls src="humanml_source/000039_source.mp4"></video><video controls src="videos/000039.mp4"></video></div><h2>000139 / nonplanar_review</h2><div class="pair"><video controls src="humanml_source/000139_source.mp4"></video><video controls src="videos/000139.mp4"></video></div><h2>000211 / turning</h2><div class="pair"><video controls src="humanml_source/000211_source.mp4"></video><video controls src="videos/000211.mp4"></video></div><h2>Synthetic fixed-leg diagnostics (not original source timeline)</h2><pre>[
+  {
+    "case": "corrected_static",
+    "seconds": 20.0,
+    "termination_counts": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 0,
+      "anchor_ori": 0
+    },
+    "net_xy_mm": 34.99094024300575,
+    "excursion_mm": 35.349901765584946
+  },
+  {
+    "case": "corrected_upper",
+    "seconds": 20.0,
+    "termination_counts": {
+      "time_out": 0,
+      "motion_end": 0,
+      "anchor_pos": 0,
+      "anchor_ori": 0
+    },
+    "net_xy_mm": 32.232653349637985,
+    "excursion_mm": 32.82236307859421
+  }
+]</pre><video controls src="diagnostic/corrected_static.mp4"></video><video controls src="diagnostic/corrected_upper.mp4"></video>

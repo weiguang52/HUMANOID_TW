@@ -1,0 +1,278 @@
+{
+  "protocol": "Fourteen stratified held-out motions; nonplanar_review is a terrain-mismatch diagnostic, NOT flat-walk acceptance; not full test-set acceptance. 5s continuous windows retain short tails and reset boundaries; not HumanScore. Unknown contact excluded with coverage. Foot-link speed includes rolling. Joint 2-8Hz energy includes intentional movement. Torque is implicit-PD estimate, not measured motor torque.",
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-24_11-12-00_cpp_refresh_20261024_formal/model_25996.pt",
+  "previous_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/unitree_custom_humanoid_30dof_pathrate_humanml3d/2026-10-07_14-47-37_tw215_neck_only_formal_s42/model_23997.pt",
+  "categories": {
+    "flat_forward": {
+      "previous_clean": 24,
+      "current_clean": 23,
+      "total": 24,
+      "previous_metrics": {
+        "upper_error_m": 0.005081431338718782,
+        "wrist_error_m": 0.007078696003494163,
+        "anchor_height_error_m": 0.0019993306341348216,
+        "contact_mismatch_fraction": 0.17410797699383163,
+        "foot_link_contact_speed_m_s": 0.05055460318302115,
+        "contact_known_fraction": 0.5545480662634432,
+        "worst_window_wrist_error_m": 0.008459820315086594,
+        "neck_reference_rmse_rad": [
+          0.13676700430611768,
+          0.12070130339513223,
+          0.1462288253630201
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.49843232333660126,
+          0.44691094011068344,
+          0.5310489125549793
+        ],
+        "pelvis_heading_rmse_deg": 8.17518017689387
+      },
+      "current_metrics": {
+        "upper_error_m": 0.004839767119847238,
+        "wrist_error_m": 0.006646483612712473,
+        "anchor_height_error_m": 0.002177891665875601,
+        "contact_mismatch_fraction": 0.1823374640459902,
+        "foot_link_contact_speed_m_s": 0.04683173354715109,
+        "contact_known_fraction": 0.5554499421653191,
+        "worst_window_wrist_error_m": 0.007578617621523638,
+        "neck_reference_rmse_rad": [
+          0.11726622004061937,
+          0.10634107887744904,
+          0.15653893941392502
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.5139436461031437,
+          0.4407721484700839,
+          0.5637572680910429
+        ],
+        "pelvis_heading_rmse_deg": 8.154681921005249
+      }
+    },
+    "nonplanar_review": {
+      "previous_clean": 0,
+      "current_clean": 0,
+      "total": 3,
+      "previous_metrics": {
+        "upper_error_m": 0.006383512634783983,
+        "wrist_error_m": 0.008882813776532808,
+        "anchor_height_error_m": 0.02957974250117938,
+        "contact_mismatch_fraction": 0.28945818610129564,
+        "foot_link_contact_speed_m_s": 0.042143801848093666,
+        "contact_known_fraction": 0.48625429553264604,
+        "worst_window_wrist_error_m": 0.01890719123184681,
+        "neck_reference_rmse_rad": [
+          0.1582264850536982,
+          0.18621484438578287,
+          0.2410401552915573
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.5106202165285746,
+          0.5022499263286591,
+          0.664591113726298
+        ],
+        "pelvis_heading_rmse_deg": 6.898367245992024
+      },
+      "current_metrics": {
+        "upper_error_m": 0.006775688224782546,
+        "wrist_error_m": 0.009206107507149378,
+        "anchor_height_error_m": 0.027521672348181408,
+        "contact_mismatch_fraction": 0.28849706957169025,
+        "foot_link_contact_speed_m_s": 0.0402906226615111,
+        "contact_known_fraction": 0.514358859098643,
+        "worst_window_wrist_error_m": 0.013349306769669056,
+        "neck_reference_rmse_rad": [
+          0.14416692654291788,
+          0.11915966868400574,
+          0.2303812950849533
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.5153832832972208,
+          0.4938621719678243,
+          0.7002364993095398
+        ],
+        "pelvis_heading_rmse_deg": 11.520168622334799
+      }
+    },
+    "standing_upper": {
+      "previous_clean": 6,
+      "current_clean": 5,
+      "total": 6,
+      "previous_metrics": {
+        "upper_error_m": 0.004878281382843852,
+        "wrist_error_m": 0.007083684826890628,
+        "anchor_height_error_m": 0.001209415359577785,
+        "contact_mismatch_fraction": 0.10312472463337763,
+        "foot_link_contact_speed_m_s": 0.014160693157464266,
+        "contact_known_fraction": 0.9696482196482196,
+        "worst_window_wrist_error_m": 0.008115628346179923,
+        "neck_reference_rmse_rad": [
+          0.14710740745067596,
+          0.2084397698442141,
+          0.1573559915026029
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.23137064278125763,
+          0.27310578028361004,
+          0.25749777257442474
+        ],
+        "pelvis_heading_rmse_deg": 12.928873300552368
+      },
+      "current_metrics": {
+        "upper_error_m": 0.005128596598903338,
+        "wrist_error_m": 0.006818048345545928,
+        "anchor_height_error_m": 0.0010841639790063102,
+        "contact_mismatch_fraction": 0.1516560369239365,
+        "foot_link_contact_speed_m_s": 0.01625966327264905,
+        "contact_known_fraction": 0.9698090948090948,
+        "worst_window_wrist_error_m": 0.01207371250105401,
+        "neck_reference_rmse_rad": [
+          0.11504999175667763,
+          0.2037776311238607,
+          0.12341708689928055
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.22639216482639313,
+          0.2956088085969289,
+          0.25779665758212406
+        ],
+        "pelvis_heading_rmse_deg": 22.711597601572674
+      }
+    },
+    "standing_upper_reference_limit_diagnostic": {
+      "previous_clean": 3,
+      "current_clean": 2,
+      "total": 3,
+      "previous_metrics": {
+        "upper_error_m": 0.004387224093079567,
+        "wrist_error_m": 0.006255749457826217,
+        "anchor_height_error_m": 0.0067292860088249045,
+        "contact_mismatch_fraction": 0.18343354918285537,
+        "foot_link_contact_speed_m_s": 0.015304476643602053,
+        "contact_known_fraction": 0.9782805429864253,
+        "worst_window_wrist_error_m": 0.0103332648674647,
+        "neck_reference_rmse_rad": [
+          0.08438671380281448,
+          0.09390799204508464,
+          0.10498833159605662
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.216444730758667,
+          0.24916439255078635,
+          0.17630386352539062
+        ],
+        "pelvis_heading_rmse_deg": 17.588125228881836
+      },
+      "current_metrics": {
+        "upper_error_m": 0.00431140442378819,
+        "wrist_error_m": 0.006343920870373647,
+        "anchor_height_error_m": 0.006861511928339799,
+        "contact_mismatch_fraction": 0.17415970014756654,
+        "foot_link_contact_speed_m_s": 0.015987589955329895,
+        "contact_known_fraction": 0.9785822021116138,
+        "worst_window_wrist_error_m": 0.01078121674557527,
+        "neck_reference_rmse_rad": [
+          0.06626868744691213,
+          0.1091445858279864,
+          0.09137953321139018
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.21794345478216806,
+          0.25434976319471997,
+          0.27295761307080585
+        ],
+        "pelvis_heading_rmse_deg": 24.407987594604492
+      }
+    },
+    "treadmill": {
+      "previous_clean": 0,
+      "current_clean": 0,
+      "total": 3,
+      "previous_metrics": {
+        "upper_error_m": 0.013458050166567167,
+        "wrist_error_m": 0.015819521620869637,
+        "anchor_height_error_m": 0.018331731980045635,
+        "contact_mismatch_fraction": 0.5188062556597725,
+        "foot_link_contact_speed_m_s": 0.05836179852485657,
+        "contact_known_fraction": 0.11525906614275323,
+        "worst_window_wrist_error_m": 0.021150301521023113,
+        "neck_reference_rmse_rad": [
+          0.22007147098580995,
+          0.2855098793903987,
+          0.314291109641393
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.7275505661964417,
+          0.3437727739413579,
+          0.9390944639841715
+        ],
+        "pelvis_heading_rmse_deg": 28.7774600982666
+      },
+      "current_metrics": {
+        "upper_error_m": 0.012325488962233067,
+        "wrist_error_m": 0.016148121406634647,
+        "anchor_height_error_m": 0.015498591586947441,
+        "contact_mismatch_fraction": 0.43061322686322684,
+        "foot_link_contact_speed_m_s": 0.04679509003957113,
+        "contact_known_fraction": 0.14705250011405058,
+        "worst_window_wrist_error_m": 0.020167368774612743,
+        "neck_reference_rmse_rad": [
+          0.19252420216798782,
+          0.20221928507089615,
+          0.3347415253520012
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.6839045882225037,
+          0.7715354263782501,
+          0.891820877790451
+        ],
+        "pelvis_heading_rmse_deg": 20.396934509277344
+      }
+    },
+    "turning": {
+      "previous_clean": 0,
+      "current_clean": 3,
+      "total": 3,
+      "previous_metrics": {
+        "upper_error_m": 0.007581039797514677,
+        "wrist_error_m": 0.010197148658335209,
+        "anchor_height_error_m": 0.004293630210061868,
+        "contact_mismatch_fraction": 0.22623750715333604,
+        "foot_link_contact_speed_m_s": 0.06774615248044331,
+        "contact_known_fraction": 0.47964523725099784,
+        "worst_window_wrist_error_m": 0.04260713358720144,
+        "neck_reference_rmse_rad": [
+          0.1968758006890615,
+          0.1432045896848043,
+          0.1300284887353579
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.7112456560134888,
+          0.608132004737854,
+          0.7173321843147278
+        ],
+        "pelvis_heading_rmse_deg": 8.048258940378824
+      },
+      "current_metrics": {
+        "upper_error_m": 0.0061008248788615065,
+        "wrist_error_m": 0.008531985493997732,
+        "anchor_height_error_m": 0.0029858863757302365,
+        "contact_mismatch_fraction": 0.2007908611599297,
+        "foot_link_contact_speed_m_s": 0.060405424485603966,
+        "contact_known_fraction": 0.46947194719471946,
+        "worst_window_wrist_error_m": 0.010082625163098177,
+        "neck_reference_rmse_rad": [
+          0.15007014572620392,
+          0.15461660424868265,
+          0.19379937648773193
+        ],
+        "neck_velocity_reference_rmse_rad_s": [
+          0.7092987497647604,
+          0.5889879067738851,
+          0.6412193179130554
+        ],
+        "pelvis_heading_rmse_deg": 8.466428279876709
+      }
+    }
+  },
+  "interpretation": "Turning completion improved; flat walking and standing completion regressed. No overall clean-completion gain. Same held-out reference corpus; one training seed; not full-test acceptance."
+}
