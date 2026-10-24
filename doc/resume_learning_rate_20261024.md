@@ -31,3 +31,24 @@ One-seed short continuation is evidence for this run, not a robust general claim
 State:/root/gpufree-data/datasets/practice9/resume_ablation_20261024
 Scripts:train_resume_ablation.sh,prepare_resume_evaluation.py,run_resume_experiment.sh.
 Status:smoke running; formal result pending.
+
+## Result 2026-10-25 02:00 Asia/Shanghai
+Interrupted by lost remote job; both recovered from their own model_28100.pt
+for395runner iterations to model_28494.pt. This is NOT uninterrupted training.
+Both42case reports and46videos complete;28dual-view checks per group passed.
+Baseline36/42 vs restored33/42: flat24/24 and standing6/6 both; turning3/3 vs1/3;
+reference-limit3/3 vs2/3; treadmill/nonplanar0/3 both.
+Baseline static completes20s with36.84mm drift, upper20s with102.15mm.
+Restored static terminates8.76s with624.24mm; upper19.42s with214.55mm.
+Shorter candidate results must not be described as20s drift measurements.
+Standing heading RMSE21.04deg vs14.62deg; wrist7.789mm vs7.794mm.
+The exact scheduler state restoration mismatch is verified, but functional
+improvement is rejected in this single-seed interrupted experiment. Do not enable
+by default or replace production policy. Baseline improves static drift versus
+original109.15mm but upper drift worsens versus original35.06mm.
+Sampled front/side frames show colored full body and attached head, candidate
+lateral drift. These frames do not establish a fall. Source timing preserved.
+Current local Z mount unavailable; remote reports remain intact at
+validation_artifacts/resume_ablation_20261024/{baseline,resume}/evaluation_colored/neck_only/index.html.
+Optimization remains unresolved; investigate repeated-run variance and sampling
+state before attributing performance causally to one optimizer scalar.
