@@ -24,7 +24,9 @@ for case,limit in [('corrected_static',109.1526566),('corrected_upper',35.055562
  gates[case+'_drift_baseline']=d['drift_mm']<b['diagnostics'][case]['drift_mm'] if case=='corrected_static' else d['drift_mm']<=b['diagnostics'][case]['drift_mm']
 for group,target in [('standing_upper',6),('flat_forward',23),('turning',3)]:
  gates[group]=c['categories'][group]['clean']>=target
+original=json.loads((ROOT/'validation_artifacts/head_locked_20261024/evaluation_colored/neck_only/comparison.json').read_text())
 for group in c['categories']:
+ gates[group+'_no_original_count_regression']=c['categories'][group]['clean']>=original['categories'][group]['clean']
  gates[group+'_no_baseline_count_regression']=c['categories'][group]['clean']>=b['categories'][group]['clean']
 out={'gates':gates,'numerical_gates_pass':all(gates.values()),'results':results,'remaining':['Inspect per-group wrist/upper/heading errors and full video evidence.','Independent validation required before claiming robust improvement.','No automatic promotion.']}
 (D/'acceptance.json').write_text(json.dumps(out,indent=2));print(json.dumps(gates,indent=2))
