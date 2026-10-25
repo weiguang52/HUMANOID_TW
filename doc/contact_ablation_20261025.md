@@ -29,3 +29,23 @@ and drift <=original35.06mm and matched baseline; standing6/6,walking>=23/24,tur
 Inspect upper/wrist tracking for regression, not merely total success or reward.
 No automatic production promotion. If rejected, retain original and inspect evidence.
 State /root/gpufree-data/datasets/practice9/contact_ablation_20261025.
+
+## Intermediate result,2026-10-25 12:54+08
+All42 metric evaluations completed. Matched baseline:standing6/6,flat24/24,
+turning3/3,reference-limit diagnostic3/3,treadmill0/3,nonplanar0/3.
+Candidate matches other counts but turning1/3: unequivocal rejection; no promotion.
+Candidate000211 seed42 first termination5.74s(anchor_pos+ee_body_pos), seed123
+5.40s(anchor_ori); matched baseline all finish12.12s. Orientation termination
+is not synonymous with yaw failure; seed123 yaw alone does not explain it.
+Reference category walking means the new reward's standing gate is false throughout.
+This excludes direct evaluation-time gate activation, not training interference.
+State turning_failure_audit.json and metric_counts_prevideo.json retain evidence.
+Drift diagnostics and videos still pending; do not infer a support benefit yet.
+
+Potential next mechanism, not implemented: preserve original action behavior on
+locomotion while learning balance. Primary research reference: Proximal Policy
+Distillation https://arxiv.org/abs/2407.15134 combines student-driven distillation
+and PPO, but does not establish success on this robot. ProtoMotions fine-tuning
+supports frozen pretrained modules (not a drop-in guarantee of behavior retention):
+https://github.com/NVlabs/ProtoMotions/tree/main/protomotions/agents/fine_tuning.
+Any implementation needs an explicit matched comparison and unchanged test gates.
