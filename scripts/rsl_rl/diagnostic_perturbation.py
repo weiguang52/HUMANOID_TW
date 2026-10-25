@@ -18,12 +18,12 @@ def validate(jobs,args):
 def apply(env,job,step,seed):
     if step!=int(job.get('push_step',250)):return None
     robot=env.scene['robot']
-    before=robot.root_physx_view.get_velocities().clone()
+    before=robot.root_physx_view.get_root_velocities().clone()
     target=before.clone()
     delta=torch.tensor(vector(seed,float(job['push_speed'])),device=target.device,dtype=target.dtype)
     target[:,:2]+=delta
     if float(job['push_speed'])>0:robot.write_root_velocity_to_sim(target)
-    actual=robot.root_physx_view.get_velocities().clone()
+    actual=robot.root_physx_view.get_root_velocities().clone()
     error=float((actual-target).abs().max().item())
     if error>1e-6:raise RuntimeError(f'Physical velocity write mismatch {error}')
     return {'step':step,'time_s':step*env.step_dt,'requested_delta_xy':delta.cpu().tolist(),
@@ -31,4 +31,4 @@ def apply(env,job,step,seed):
             'physics_readback':actual[0].cpu().tolist(),'max_write_error':error}
 
 def after_step(env,record):
-    record['after_control_step']=env.scene['robot'].root_physx_view.get_velocities()[0].cpu().tolist()
+    record['after_control_step']=env.scene['robot'].root_physx_view.get_root_velocities()[0].cpu().tolist()

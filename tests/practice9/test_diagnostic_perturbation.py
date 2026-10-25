@@ -15,7 +15,7 @@ def test_invalid(v):
 def test_applies_additive_velocity_and_reads_back():
  class Robot:
   def __init__(self):self.v=torch.tensor([[.01,.02,.03,.04,.05,.06]]);self.root_physx_view=self
-  def get_velocities(self):return self.v
+  def get_root_velocities(self):return self.v
   def write_root_velocity_to_sim(self,v):self.v=v.clone()
  r=Robot();e=SimpleNamespace(scene={'robot':r},step_dt=.02);before=r.v.clone()
  assert m.apply(e,{'push_speed':.05},249,42) is None
