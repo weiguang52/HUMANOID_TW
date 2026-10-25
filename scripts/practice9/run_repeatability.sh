@@ -7,8 +7,10 @@ cd /root/gpufree-data/projects/HUMANOID_TW
 exec 7>"$OUT/worker.lock"; flock -n 7
 [[ ! -e "$OUT/status" ]] || exit 2
 trap 'echo failed > "$OUT/status"' ERR
+set +u
 source /opt/conda/etc/profile.d/conda.sh
 conda activate /root/gpufree-data/conda_envs/env_isaaclab
+set -u
 export CUDA_VISIBLE_DEVICES=$GPU OMP_NUM_THREADS=1 P9_EXPRESSION_TELEMETRY=1 P9_CONTACT_PHASE_WEIGHT=0.5
 export PYTHONPATH="$PWD/source/unitree_rl_lab:$PWD/scripts/practice9:${PYTHONPATH:-}"
 export LD_LIBRARY_PATH="/root/gpufree-data/isaacsim:${LD_LIBRARY_PATH:-}"
