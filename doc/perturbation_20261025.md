@@ -20,3 +20,21 @@ repeatability, paired0-control changes, actual injection audit and visual checks
 8 pure tests pass; source compile and shell syntax pass. Actual simulator injection
 must be verified before claiming disturbance delivery. Worker outputs remain remote.
 State:/root/gpufree-data/datasets/practice9/perturbation_20261025
+
+## Results 2026-10-25 10:45 Asia/Shanghai
+Both26case reports/videos complete(52total); all20s without termination. All
+physical injection readback errors0; paired directions/amplitudes match26/26,
+checkpoint hashes unchanged. Repeat42 results identical. Encoding/frame checks
+passed. Sampled front/side show full colored robot, attached head, no observed
+fall in samples; logs record no termination. Front follows translation only.
+Independent nonzero batch cases per motion:3directions x2speeds=6, excluding
+repeats/front duplicates. Static mean net drift(after1s): original124.29mm vs
+baseline38.98mm; maximum excursion175.83mm vs45.44mm. Upper mean drift48.12mm vs
+66.63mm; maximum excursion79.20mm vs109.69mm. These describe six cases, not a
+population estimate. Zero controls reproduce prior109.15/35.06mm original and
+36.84/102.15mm baseline. Perturbed drift can be smaller than zero-control drift:
+a direction can oppose existing drift; do not claim disturbance improves stability.
+Conclusion:both tolerate the tested velocity kicks, baseline is better for static
+position holding but no consistent overall upper-task gain. No policy promoted.
+Scope:synthetic standing/upper only; not force-calibrated pushes, full randomization
+or locomotion robustness. Remaining optimization concerns upper-motion balance.
