@@ -44,6 +44,8 @@ parser.add_argument("--save_interval", type=int, default=None, help="Checkpoint 
 parser.add_argument(
     "--distributed", action="store_true", default=False, help="Run training with multiple GPUs or nodes."
 )
+parser.add_argument("--policy_anchor_checkpoint", type=str, default=None, help="Explicit frozen teacher checkpoint, retained across interrupted recovery.")
+parser.add_argument("--policy_anchor_coefficient", type=float, default=0.0, help="Frozen resumed-policy mean-action MSE coefficient; opt-in.")
 parser.add_argument("--restore_optimizer_learning_rate", action="store_true", help="Restore adaptive PPO learning rate from loaded optimizer state.")
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
@@ -207,6 +209,21 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             with open(os.path.join(log_dir, "resume_learning_rate.json"), "w") as stream:
                 json.dump(resume_audit, stream, indent=2)
             print(f"[INFO] Restored scheduler learning rate: {resume_audit}")
+
+    if args_cli.policy_anchor_coefficient != 0:
+        if not agent_cfg.resume:
+            raise ValueError('Policy anchor requires a resumed teacher checkpoint')
+        import json, hashlib
+        from anchored_ppo import install_anchor
+        teacher_path=args_cli.policy_anchor_checkpoint or resume_path
+        teacher_state=torch.load(teacher_path,map_location=agent_cfg.device,weights_only=False)['actor_state_dict']
+        audit=install_anchor(runner.alg,args_cli.policy_anchor_coefficient,teacher_state)
+        audit['teacher_checkpoint']=teacher_path
+        with open(teacher_path,'rb') as source:
+            audit['teacher_checkpoint_sha256']=hashlib.sha256(source.read()).hexdigest()
+        with open(os.path.join(log_dir,'policy_anchor.json'),'w') as stream:
+            json.dump(audit,stream,indent=2)
+        print(f'[INFO] Policy anchor: {audit}')
 
     # dump the configuration into log-directory
     dump_yaml(os.path.join(log_dir, "params", "env.yaml"), env_cfg)
