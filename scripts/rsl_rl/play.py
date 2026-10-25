@@ -62,6 +62,7 @@ parser.add_argument("--seed", type=int, default=None, help="Seed the evaluation 
 parser.add_argument("--evaluation_steps", type=int, default=None, help="Bound headless evaluation without recording video.")
 parser.add_argument("--telemetry_output", type=str, default=None, help="Save control/physics-rate mimic diagnostics (one environment).")
 parser.add_argument("--evaluation_batch", type=str, help="JSON jobs; one simulator startup per seed, no video.")
+parser.add_argument("--diagnostic_perturbation", action="store_true", help="Audited5s root velocity kick; requires standing diagnostic batch.")
 parser.add_argument("--standing_diagnostic", action="store_true", help="Controlled TW198 test, not benchmark evaluation.")
 parser.add_argument("--diagnostic_physics_dt", type=float, default=.005)
 # append RSL-RL cli arguments
@@ -254,7 +255,10 @@ def main():
 
     if args_cli.evaluation_batch:
         from batch_mimic_evaluation import run
-        run(env, policy, policy_nn, args_cli, resume_path, env_cfg)
+        perturbation=None
+        if args_cli.diagnostic_perturbation:
+            import diagnostic_perturbation as perturbation
+        run(env, policy, policy_nn, args_cli, resume_path, env_cfg, perturbation=perturbation)
         env.close()
         return
 

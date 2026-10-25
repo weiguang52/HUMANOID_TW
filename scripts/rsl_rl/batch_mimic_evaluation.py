@@ -6,13 +6,14 @@ from mimic_telemetry import MimicTelemetry
 from control_runtime import snapshot
 
 @torch.inference_mode()
-def run(env,policy,policy_nn,args,checkpoint,cfg):
+def run(env,policy,policy_nn,args,checkpoint,cfg,perturbation=None):
     if env.unwrapped.num_envs!=1:raise ValueError('Batch telemetry requires one environment')
     jobs=json.loads(Path(args.evaluation_batch).read_text())
     if not isinstance(jobs,list) or not jobs:raise ValueError('Empty batch')
     if any(job.get('controller','policy') not in ('policy','reference_pd') for job in jobs):raise ValueError('Unknown controller')
     if any(job.get('controller','policy')!='policy' for job in jobs) and not args.standing_diagnostic:
         raise ValueError('Non-policy controllers require explicit diagnostic mode')
+    if perturbation is not None:perturbation.validate(jobs,args)
     command=env.unwrapped.command_manager.get_term('motion')
     for job in jobs:
         motion_id=int(job['motion_id']);steps=int(job['steps'])
@@ -27,6 +28,7 @@ def run(env,policy,policy_nn,args,checkpoint,cfg):
         obs,_=env.reset()
         if resetter is not None:resetter.reset(torch.ones(1,device=env.unwrapped.device,dtype=torch.bool))
         report={'steps':0,'termination_counts':{},'motion_metrics':{}}
+        perturbation_records=[]
         telemetry=MimicTelemetry(env.unwrapped,output.with_suffix('.npz'))
         writer=None
         if args.standing_diagnostic and args.enable_cameras:
@@ -41,8 +43,11 @@ def run(env,policy,policy_nn,args,checkpoint,cfg):
                     from standing_diagnostic import reference_actions
                     actions=reference_actions(env.unwrapped,command)
                 else:actions=policy(obs)
+                kick=perturbation.apply(env.unwrapped,job,step,args.seed) if perturbation is not None else None
                 telemetry.begin(actions)
                 obs,_,dones,_=env.step(actions);telemetry.end(dones)
+                if kick is not None:
+                    perturbation.after_step(env.unwrapped,kick);perturbation_records.append(kick)
                 report['steps']+=1
                 if writer is not None and step%2==0:writer.append_data(env.unwrapped.render())
                 manager=env.unwrapped.termination_manager
@@ -62,6 +67,9 @@ def run(env,policy,policy_nn,args,checkpoint,cfg):
             control_runtime=snapshot(cfg),batch_protocol='single_startup_per_seed_reset_per_clip_v1',
             upper_body_termination=bool(args.evaluation_upper_body_termination),
             note='Startup physical randomization shared across clips within seed. Compare only matched batch protocol.')
+        if perturbation is not None:
+            report['perturbations']=perturbation_records
+            report['requested_push_speed']=job['push_speed']
         output.write_text(json.dumps(report,indent=2)+'\n')
         print('BATCH_COMPLETED',output,flush=True)
 
