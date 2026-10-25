@@ -49,7 +49,11 @@ def run(env,policy,policy_nn,args,checkpoint,cfg,perturbation=None):
                 if kick is not None:
                     perturbation.after_step(env.unwrapped,kick);perturbation_records.append(kick)
                 report['steps']+=1
-                if writer is not None and step%2==0:writer.append_data(env.unwrapped.render())
+                if writer is not None and step%2==0:
+                    if perturbation is not None and args.viewer_eye is not None:
+                        origin=env.unwrapped.scene['robot'].data.root_pos_w[0].cpu().numpy()
+                        env.unwrapped.sim.set_camera_view(eye=origin+np.array(args.viewer_eye),target=origin+np.array(args.viewer_lookat))
+                    writer.append_data(env.unwrapped.render())
                 manager=env.unwrapped.termination_manager
                 for name in manager.active_terms:
                     count=int(manager.get_term(name).sum().item())
