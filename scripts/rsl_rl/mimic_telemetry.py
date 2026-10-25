@@ -26,6 +26,13 @@ def high_frequency_fraction(values, sample_rate, valid, cutoff=8.0):
     return float(power[freq >= cutoff].sum() / total) if total > 1e-15 else 0.0
 
 
+def rigid_point_velocity(points, com_position, com_velocity, angular_velocity):
+    """World-frame velocity at points on a rigid body, using its COM state."""
+    import torch
+    r = points-com_position
+    return com_velocity+torch.cross(angular_velocity.expand_as(r),r,dim=-1)
+
+
 class MimicTelemetry:
     def __init__(self, env, path):
         if env.num_envs != 1:
@@ -45,6 +52,12 @@ class MimicTelemetry:
             self.upper_names = ['left_upper_arm', 'left_force_arm', 'left_wrist',
                                 'right_upper_arm', 'right_force_arm', 'right_wrist']
             self.upper_indexes = [self.command.cfg.body_names.index(n) for n in self.upper_names]
+        if os.environ.get('P9_CONTACT_POINT_TELEMETRY') == '1':
+            from pxr import UsdPhysics
+            import omni.usd
+            stage = omni.usd.get_context().get_stage()
+            print('CONTACT_GROUND_PRIMS', [str(p.GetPath()) for p in stage.Traverse() if str(p.GetPath()).startswith('/World/ground') and p.HasAPI(UsdPhysics.CollisionAPI)])
+            print('CONTACT_FILTER_COUNTS', [env.scene['diagnostic_'+n].contact_physx_view.filter_count for n in ('left_foot','right_foot')])
         self.active = False
         self.original_update = env.scene.update
         def update(dt):
@@ -95,6 +108,36 @@ class MimicTelemetry:
             foot_quaternion=self.array(d.body_quat_w[0, self.feet]),
             foot_angular_velocity=self.array(d.body_ang_vel_w[0, self.feet]),
             root_height=float(d.root_pos_w[0, 2].item())))
+
+        if os.environ.get('P9_CONTACT_POINT_TELEMETRY') == '1':
+            import torch
+            point_velocities, counts, centers, normal_loads = [], [], [], []
+            for body_id, name in zip(self.feet, ('left_foot', 'right_foot')):
+                sensor = self.env.scene['diagnostic_'+name]
+                normal_forces, points, _, _, count, start = sensor.contact_physx_view.get_contact_data(dt=self.env.cfg.sim.dt)
+                count, start = count.flatten(), start.flatten()
+                selected = []; load = 0.
+                for n,s in zip(count,start):
+                    n,s = int(n),int(s)
+                    if n:
+                        f = normal_forces[s:s+n].flatten()
+                        valid = f > 1e-6
+                        load += float(f[valid].sum().item())
+                        if valid.any():selected.append(points[s:s+n][valid])
+                normal_loads.append(load)
+                if selected:
+                    p = torch.cat(selected)
+                    # PhysX body linear velocity is COM velocity, while body_pos_w is link origin.
+                    v = rigid_point_velocity(p,d.body_com_pos_w[0,body_id],
+                        d.body_lin_vel_w[0,body_id],d.body_ang_vel_w[0,body_id])
+                    point_velocities.append(float(torch.sqrt((v[:,:2]**2).sum(-1).mean()).item()))
+                    centers.append(self.array(p.mean(0)))
+                    counts.append(len(p))
+                else:
+                    point_velocities.append(float('nan'));centers.append(np.full(3,np.nan));counts.append(0)
+            self.physics[-1].update(contact_point_xy_rms_velocity=np.asarray(point_velocities),
+                contact_point_count=np.asarray(counts),contact_point_center=np.asarray(centers),
+                contact_point_normal_load=np.asarray(normal_loads))
 
     def end(self, dones):
         self.active = False

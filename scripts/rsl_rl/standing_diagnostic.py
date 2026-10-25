@@ -11,6 +11,15 @@ def configure(cfg,physics_dt):
  cfg.events.physics_material.params.update(static_friction_range=(1.,1.),dynamic_friction_range=(1.,1.),restitution_range=(0.,0.),num_buckets=1)
  # Arm tracking failure is not a physical fall criterion in the PD ablation.
  cfg.terminations.ee_body_pos=None
+ # Separate per-foot sensors are required for filtered contact points.
+ import os
+ if os.environ.get('P9_CONTACT_POINT_TELEMETRY') == '1':
+  from isaaclab.sensors import ContactSensorCfg
+  for foot in ('left_foot','right_foot'):
+   setattr(cfg.scene, 'diagnostic_'+foot, ContactSensorCfg(
+    prim_path='{ENV_REGEX_NS}/Robot/'+foot, update_period=0.,
+    filter_prim_paths_expr=['/World/ground/terrain/GroundPlane/CollisionPlane'], track_contact_points=True,
+    max_contact_data_count_per_prim=64))
 
 def reference_actions(env,command):
  action=env.action_manager.get_term('JointPositionAction')
