@@ -21,7 +21,9 @@ for case,limit in [('corrected_static',109.1526566),('corrected_upper',35.055562
  d=c['diagnostics'][case]
  gates[case+'_complete']=d['seconds']>=20 and not any(d['terminations'].values())
  gates[case+'_drift_original']=d['drift_mm']<limit if case=='corrected_static' else d['drift_mm']<=limit
- gates[case+'_drift_baseline']=d['drift_mm']<b['diagnostics'][case]['drift_mm'] if case=='corrected_static' else d['drift_mm']<=b['diagnostics'][case]['drift_mm']
+ reference=b['diagnostics'][case]
+ comparable=gates[case+'_complete'] and reference['seconds']>=20 and not any(reference['terminations'].values())
+ gates[case+'_drift_baseline']=(d['drift_mm']<reference['drift_mm'] if case=='corrected_static' else d['drift_mm']<=reference['drift_mm']) if comparable else None
 for group,target in [('standing_upper',6),('flat_forward',23),('turning',3)]:
  gates[group]=c['categories'][group]['clean']>=target
 original=json.loads((ROOT/'validation_artifacts/head_locked_20261024/evaluation_colored/neck_only/comparison.json').read_text())
