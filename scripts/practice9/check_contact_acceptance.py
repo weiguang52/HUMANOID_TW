@@ -1,11 +1,18 @@
 """Predeclared numerical gates. Passing is not a substitute for visual/independent validation."""
 from pathlib import Path
 import json
+import argparse
 import numpy as np
 ROOT=Path(__file__).resolve().parents[2]
-D=ROOT/'validation_artifacts/contact_ablation_20261025'
+parser=argparse.ArgumentParser()
+parser.add_argument('--experiment',default='contact_ablation_20261025')
+parser.add_argument('--candidate',default='contact')
+args=parser.parse_args()
+if Path(args.experiment).name!=args.experiment or Path(args.candidate).name!=args.candidate:
+ raise ValueError('Experiment and candidate must be single path components')
+D=ROOT/'validation_artifacts'/args.experiment
 results={}
-for variant in ['baseline','contact']:
+for variant in ['baseline',args.candidate]:
  p=D/variant/'evaluation_colored/neck_only'
  c=json.loads((p/'comparison.json').read_text())
  assert len(c['rows'])==42
@@ -16,7 +23,7 @@ for variant in ['baseline','contact']:
    drift=float(np.linalg.norm(a['anchor_actual'][-1,:2]-a['anchor_actual'][50,:2])*1000)
   diagnostics[case]={'seconds':meta['seconds'],'terminations':meta['termination_counts'],'drift_mm':drift}
  results[variant]={'categories':c['categories'],'diagnostics':diagnostics}
-b=results['baseline'];c=results['contact'];gates={}
+b=results['baseline'];c=results[args.candidate];gates={}
 for case,limit in [('corrected_static',109.1526566),('corrected_upper',35.0555629)]:
  d=c['diagnostics'][case]
  gates[case+'_complete']=d['seconds']>=20 and not any(d['terminations'].values())
