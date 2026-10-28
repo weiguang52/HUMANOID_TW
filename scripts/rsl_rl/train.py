@@ -46,6 +46,8 @@ parser.add_argument(
 )
 parser.add_argument("--physics_mean_slip", action="store_true", help="Opt-in slip reward averaged over all physics steps.")
 parser.add_argument("--physics_slip_minimum_load", type=float, default=1.0)
+parser.add_argument("--physics_slip_history_samples", type=int, default=1)
+parser.add_argument("--allow_physics_slip_history_change", action="store_true")
 parser.add_argument("--allow_physics_slip_load_change", action="store_true", help="Explicit new reward experiment when resuming a different loaded-foot threshold.")
 parser.add_argument("--train_ankle_filter_alpha", type=float, default=None, help="Opt-in per-environment ankle action filter during training.")
 parser.add_argument("--train_reference_speed_teacher_export", type=str, default=None, help="Opt-in frozen teacher speed mixture before existing ankle filter during training.")
@@ -252,8 +254,9 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             raise ValueError('Resume must preserve physics-rate slip reward')
         saved_physics_slip=Path(resume_path).parent/'params/physics_slip.json'
         if saved_physics_slip.exists():
-            from physics_slip_reward import validate_load_resume
+            from physics_slip_reward import validate_load_resume,validate_history_resume
             validate_load_resume(json.loads(saved_physics_slip.read_text()),args_cli.physics_slip_minimum_load,args_cli.allow_physics_slip_load_change)
+            validate_history_resume(json.loads(saved_physics_slip.read_text()),args_cli.physics_slip_history_samples,args_cli.allow_physics_slip_history_change)
         saved_filter=Path(resume_path).parent/'params/action_filter.json'
         if saved_filter.exists() and args_cli.train_ankle_filter_alpha != json.loads(saved_filter.read_text())['alpha']:
             raise ValueError('Resume must preserve checkpoint training action filter')
@@ -279,13 +282,14 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         path.parent.mkdir(parents=True,exist_ok=True)
         path.write_text(json.dumps(env.leg_action_filter.audit,indent=2))
 
-    from physics_slip_reward import validate_minimum_load
+    from physics_slip_reward import validate_minimum_load,validate_history_samples
     validate_minimum_load(args_cli.physics_slip_minimum_load)
-    if not args_cli.physics_mean_slip and (args_cli.physics_slip_minimum_load!=1. or args_cli.allow_physics_slip_load_change):
+    validate_history_samples(args_cli.physics_slip_history_samples)
+    if not args_cli.physics_mean_slip and (args_cli.physics_slip_minimum_load!=1. or args_cli.allow_physics_slip_load_change or args_cli.physics_slip_history_samples!=1 or args_cli.allow_physics_slip_history_change):
         raise ValueError('Slip load configuration requires physics_mean_slip')
     if args_cli.physics_mean_slip:
         from physics_slip_reward import install
-        physics_slip_audit=install(env,minimum_load=args_cli.physics_slip_minimum_load)
+        physics_slip_audit=install(env,minimum_load=args_cli.physics_slip_minimum_load,history_samples=args_cli.physics_slip_history_samples)
         path=Path(log_dir)/'params/physics_slip.json';path.parent.mkdir(parents=True,exist_ok=True)
         path.write_text(json.dumps(physics_slip_audit,indent=2))
 

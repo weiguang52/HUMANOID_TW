@@ -4,7 +4,7 @@
   "coordinate_contract": "tw123_yaw_waist_v3",
   "accepted_policy": "head_locked original model27995 with4-ankle IIR alpha0.5",
   "new_policy_promoted": false,
-  "latest_experiment": "load_aligned_20261027",
+  "latest_experiment": "contact_history_20261028",
   "training": {
     "seeds": [
       42,
@@ -13,13 +13,12 @@
     "environments": 1024,
     "fixed_iterations": 500,
     "final_iteration": 28494,
-    "completed_before_shutdown": true
+    "completed_before_shutdown": false,
+    "status": "running",
+    "history_samples": 3,
+    "minimum_load_N": 5.0
   },
-  "quality_status": "rejected_recovery_closeout_complete",
-  "known_failures": [
-    "seed42 fixed24 slip improves but leg HF increases0.7152%",
-    "seed123 loses flat000832 evaluation_seed42 at7.74s vs10.60s accepted"
-  ],
+  "quality_status": "training_unverified",
   "recovery": {
     "driver_before": "580.126.09",
     "driver_after": "580.105.08",
@@ -27,16 +26,25 @@
     "teacher_export": "isolated immutable equivalent export verified against original checkpoint weights and captured teacher observations; original JIT bytes not restored; strict original binding unchanged"
   },
   "verification": {
-    "fresh_core_tests": 8,
+    "fresh_core_tests": 9,
     "passed": true,
-    "actual_training_smoke_reload_deploy": "passed before shutdown",
+    "actual_training_smoke_reload_deploy": "passed current contact history experiment",
     "remaining": [
-      "evidence-based next optimization",
-      "final colored front/side and original skeleton video delivery"
+      "finish fixed500 training both seeds",
+      "full65 and full24 paired quality gates",
+      "colored front/side and original skeleton video verification"
     ],
-    "full65_audit": "passed both training seeds; quality rejection remains"
+    "full65_audit": "pending current experiment; prior load_aligned reconstruction passed with quality rejection"
   },
   "experiment_profiles": "opt-in variants include rejected historical trials; do not treat scripts as accepted policies",
   "evidence_page": "https://app.notion.com/p/403325d8231d8172995bf19510b8d760",
-  "updated_at": "2026-10-28T13:06:36+08:00"
+  "updated_at": "2026-10-28T13:27:00+08:00",
+  "previous_experiment": {
+    "name": "load_aligned_20261027",
+    "quality_status": "rejected_recovery_closeout_complete",
+    "failures": [
+      "seed42 fixed24 slip improves but leg HF increases0.7152%",
+      "seed123 loses flat000832 evaluation_seed42 at7.74s vs10.60s accepted"
+    ]
+  }
 }
