@@ -12,10 +12,83 @@ from rsl_rl.algorithms import PPO
 
 UPSTREAM_UPDATE_SHA256 = '507b4a88853dc6eda17c7c2e79bd081430c97ec8ca2e2efc24572729c94907b0'
 
+
+HIP_ANCHOR_NAMES = ('left_hip_pitch_joint', 'left_hip_roll_joint',
+                    'right_hip_pitch_joint', 'right_hip_roll_joint')
+
+def hip_anchor_weights(names, multiplier):
+    if not math.isfinite(multiplier) or multiplier < 1:
+        raise ValueError('Hip multiplier must be finite and at least one')
+    if len(set(names)) != len(names) or any(names.count(n) != 1 for n in HIP_ANCHOR_NAMES):
+        raise ValueError('Expected unique action names including all four hips')
+    return [float(multiplier) if n in HIP_ANCHOR_NAMES else 1.0 for n in names]
+
+ARM_ANCHOR_NAMES = tuple(side + '_' + joint for side in ('left', 'right')
+    for joint in ('shoulder_pitch_joint', 'shoulder_roll_joint',
+                  'shoulder_yaw_joint', 'elbow_pitch_joint', 'wrist_pitch'))
+
+def arm_anchor_weights(names, multiplier, existing=None):
+    if not math.isfinite(multiplier) or multiplier < 1:
+        raise ValueError('Arm multiplier must be finite and at least one')
+    if len(names) != 30 or len(set(names)) != len(names) or any(names.count(n) != 1 for n in ARM_ANCHOR_NAMES):
+        raise ValueError('Expected unique30 action names including all10 arm joints')
+    weights = [1.0] * len(names) if existing is None else list(existing)
+    if len(weights) != len(names) or any(not math.isfinite(w) or w <= 0 for w in weights):
+        raise ValueError('Existing anchor weights must be finite positive and match actions')
+    return [w * float(multiplier) if n in ARM_ANCHOR_NAMES else w for n, w in zip(names, weights)]
+
+def validate_arm_resume(saved, multiplier):
+    if not math.isfinite(multiplier) or multiplier < 1:
+        raise ValueError('Arm multiplier must be finite and at least one')
+    previous = saved.get('arm_multiplier', 1.0)
+    if previous != 1.0 and previous != multiplier:
+        raise ValueError('Resume must explicitly preserve saved arm anchor multiplier')
+
+def candidate_anchor_weights(names, multiplier, existing=None):
+    from candidate_action_scope import make_scope_contract
+    if isinstance(multiplier, bool) or not isinstance(multiplier, (int, float)) or not math.isfinite(multiplier) or multiplier < 1:
+        raise ValueError('Candidate multiplier must be finite numeric and at least one')
+    scope = make_scope_contract(names, 'lower_body_waist')
+    weights = [1.0] * 30 if existing is None else [float(v) for v in existing]
+    if len(weights) != 30 or any(not math.isfinite(w) or w <= 0 for w in weights):
+        raise ValueError('Existing candidate anchor weights must be finite positive30')
+    selected = set(scope['candidate_joint_names'])
+    return [w * float(multiplier) if n in selected else w for n, w in zip(scope['action_joint_names'], weights)]
+
+
+def validate_candidate_resume(saved, multiplier, allow_frozen_initialization=False):
+    if not isinstance(saved, dict):
+        raise ValueError('Expected saved anchor metadata')
+    if isinstance(multiplier, bool) or not isinstance(multiplier, (int, float)) or not math.isfinite(multiplier) or multiplier < 1:
+        raise ValueError('Candidate multiplier must be finite numeric and at least one')
+    previous = saved.get('candidate_multiplier', 1.0)
+    if isinstance(previous, bool) or not isinstance(previous, (int, float)) or not math.isfinite(previous) or previous < 1:
+        raise ValueError('Invalid saved candidate multiplier')
+    if previous != 1:
+        if saved.get('candidate_scope') != 'lower_body_waist':
+            raise ValueError('Saved candidate anchor requires exact action partition')
+        names = saved.get('action_joint_names')
+        if saved.get('action_weights') != candidate_anchor_weights(names, previous):
+            raise ValueError('Saved candidate anchor weights/order inconsistent')
+    if previous != multiplier and not allow_frozen_initialization:
+        raise ValueError('Resume must preserve candidate anchor multiplier; only exact frozen teacher may initialize a new value')
+
+
+def anchor_mse(student, teacher, weights=None):
+    if student.shape != teacher.shape:
+        raise ValueError('Student/teacher action dimensions differ')
+    error = (student-teacher).square()
+    if weights is not None:
+        if weights.ndim != 1 or weights.numel() != student.shape[-1]:
+            raise ValueError('Action weights do not match policy action dimensions')
+        error = error * weights
+    return error.mean()
+
 class AnchoredPPO(PPO):
     def update(self) -> dict[str, float]:
         """Run optimization epochs over stored batches and return mean losses."""
         mean_anchor_loss = 0.0
+        mean_temporal_loss = 0.0
         mean_value_loss = 0
         mean_surrogate_loss = 0
         mean_entropy = 0
@@ -119,9 +192,48 @@ class AnchoredPPO(PPO):
             loss = surrogate_loss + self.value_loss_coef * value_loss - self.entropy_coef * entropy.mean()
             with torch.no_grad():
                 teacher_mean = self.anchor_teacher(batch.observations)
-            anchor_loss = (self.actor.output_mean-teacher_mean).square().mean()
+            anchor_loss = anchor_mse(self.actor.output_mean, teacher_mean, self.anchor_action_weights)
             loss = loss + self.anchor_coefficient*anchor_loss
             mean_anchor_loss += anchor_loss.detach().item()
+            if self.anchor_temporal_coefficient:
+                if self.anchor_temporal_order == 1:
+                    from temporal_anchor import PREVIOUS_POLICY, PREVIOUS_VALID, temporal_anchor_mse
+                    previous_obs = batch.observations.clone(False)
+                    previous_obs['policy'] = batch.observations[PREVIOUS_POLICY]
+                    with torch.no_grad():
+                        teacher_previous = self.anchor_teacher(previous_obs)
+                    student_current = self.actor.output_mean
+                    student_previous = self.actor(previous_obs)
+                    temporal_loss = temporal_anchor_mse(student_current, teacher_mean,
+                        student_previous, teacher_previous, batch.observations[PREVIOUS_VALID])
+                else:
+                    from second_order_anchor import PREVIOUS, OLDER, VALID, second_order_anchor_mse
+                    previous_obs = batch.observations.clone(False)
+                    previous_obs['policy'] = batch.observations[PREVIOUS]
+                    older_obs = batch.observations.clone(False)
+                    older_obs['policy'] = batch.observations[OLDER]
+                    if self.anchor_temporal_target=='teacher_relative':
+                        with torch.no_grad():
+                            teacher_previous = self.anchor_teacher(previous_obs)
+                            teacher_older = self.anchor_teacher(older_obs)
+                    student_current = self.actor.output_mean
+                    if getattr(self, 'anchor_temporal_observation_source', 'policy') == 'clean_critic':
+                        from clean_temporal_policy import CLEAN
+                        current_obs = batch.observations.clone(False)
+                        current_obs['policy'] = batch.observations[CLEAN]
+                        student_current = self.actor(current_obs)
+                    student_previous = self.actor(previous_obs)
+                    student_older = self.actor(older_obs)
+                    if self.anchor_temporal_target=='teacher_relative':
+                        temporal_loss = second_order_anchor_mse(student_current, teacher_mean,
+                            student_previous, teacher_previous, student_older, teacher_older,
+                            batch.observations[VALID])
+                    else:
+                        from second_order_anchor import student_mean_curvature_mse
+                        temporal_loss = student_mean_curvature_mse(student_current,
+                            student_previous,student_older,batch.observations[VALID])
+                loss = loss + self.anchor_temporal_coefficient*temporal_loss
+                mean_temporal_loss += temporal_loss.detach().item()
 
 
             # Symmetry loss
@@ -226,13 +338,21 @@ class AnchoredPPO(PPO):
             loss_dict["symmetry"] = mean_symmetry_loss
 
         loss_dict["anchor_mse"] = mean_anchor_loss/num_updates
+        if self.anchor_temporal_coefficient:
+            loss_dict["anchor_temporal_mse"] = mean_temporal_loss/num_updates
         return loss_dict
 
 
-def install_anchor(alg, coefficient, teacher_state=None):
+def install_anchor(alg, coefficient, teacher_state=None, action_weights=None, temporal_coefficient=0.0, temporal_order=1, temporal_target="teacher_relative"):
     if not math.isfinite(coefficient) or coefficient < 0:
         raise ValueError('Anchor coefficient must be finite and nonnegative')
-    if coefficient == 0:
+    if not math.isfinite(temporal_coefficient) or temporal_coefficient < 0:
+        raise ValueError('Temporal coefficient must be finite and nonnegative')
+    if temporal_order not in (1,2) or (temporal_order==2 and temporal_coefficient==0):
+        raise ValueError('Temporal order2 requires a positive temporal coefficient')
+    from temporal_target_contract import validate_target
+    validate_target(temporal_coefficient,temporal_order,temporal_target)
+    if coefficient == 0 and temporal_coefficient == 0:
         return {'enabled':False,'coefficient':0.0}
     if type(alg) is not PPO or alg.actor.is_recurrent or alg.critic.is_recurrent:
         raise ValueError('Audited only for feed-forward PPO')
@@ -252,8 +372,30 @@ def install_anchor(alg, coefficient, teacher_state=None):
     teacher.requires_grad_(False)
     teacher_ids={id(p) for p in teacher.parameters()}
     assert not any(id(p) in teacher_ids for g in alg.optimizer.param_groups for p in g['params'])
+    alg.anchor_action_weights = None
+    if action_weights is not None:
+        weights = torch.as_tensor(action_weights, device=alg.device, dtype=torch.float32)
+        if weights.ndim != 1 or not weights.numel() or not torch.isfinite(weights).all() or not (weights > 0).all():
+            raise ValueError('Action weights must be a finite positive vector')
+        alg.anchor_action_weights = weights.detach().clone()
+    alg.anchor_temporal_coefficient=float(temporal_coefficient)
+    alg.anchor_temporal_order=int(temporal_order)
+    alg.anchor_temporal_target=temporal_target
     alg.anchor_teacher=teacher
     alg.anchor_coefficient=float(coefficient)
     alg.__class__=AnchoredPPO
-    return {'enabled':True,'coefficient':coefficient,'kind':'deterministic_action_mean_mse',
-            'teacher_frozen':True,'upstream_update_sha256':UPSTREAM_UPDATE_SHA256}
+    audit = {'enabled':True,'coefficient':coefficient,'kind':'deterministic_action_mean_mse',
+             'teacher_frozen':True,'upstream_update_sha256':UPSTREAM_UPDATE_SHA256}
+    if alg.anchor_action_weights is not None:
+        audit['action_weights'] = alg.anchor_action_weights.cpu().tolist()
+        audit['reduction'] = 'mean over batch and all action dimensions; no weight-sum normalization'
+    if temporal_coefficient:
+        audit['temporal_coefficient'] = float(temporal_coefficient)
+        audit['temporal_kind'] = 'valid consecutive teacher-relative mean-action increments; training-only auxiliary observations'
+        if temporal_order==2:
+            audit['temporal_order']=2
+            audit['temporal_kind']='valid three-observation teacher-relative mean-action second differences; no dt scaling'
+    if temporal_target=='student_mean':
+        audit['temporal_target']='student_mean'
+        audit['temporal_kind']='valid three-observation student mean second differences; no teacher subtraction or dt scaling'
+    return audit

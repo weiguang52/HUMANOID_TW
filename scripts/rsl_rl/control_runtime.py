@@ -37,3 +37,20 @@ def restore(cfg,checkpoint):
     for name,values in payload['actuators'].items():
         for field,key in [('stiffness','P9_PD_STIFFNESS_MULT'),('damping','P9_PD_DAMPING_MULT')]:
             if key not in os.environ: setattr(cfg.scene.robot.actuators[name],field,values[field])
+
+
+def apply_ankle_yaw_damping_override(cfg):
+    """Explicit evaluation ablation, applied after checkpoint restoration."""
+    key='P9_ANKLE_YAW_DAMPING_MULT'
+    if key not in os.environ:return
+    import math
+    multiplier=float(os.environ[key])
+    if not math.isfinite(multiplier) or multiplier<=0:raise ValueError('Invalid ankle yaw damping multiplier')
+    actuator=cfg.scene.robot.actuators['leg_major']
+    names=list(actuator.joint_names_expr)
+    expected={'left_ankle_yaw_joint','right_ankle_yaw_joint'}
+    if not expected.issubset(names):raise ValueError('Exact ankle yaw joint names required')
+    if not isinstance(actuator.damping,(float,int)):raise ValueError('Expected scalar checkpoint leg damping')
+    base=actuator.damping
+    actuator.damping={name:base*multiplier if name in expected else base for name in names}
+    print('[ANKLE_DAMPING_ABLATION] '+json.dumps({'multiplier':multiplier,'effective':actuator.damping}))

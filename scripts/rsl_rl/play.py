@@ -61,6 +61,7 @@ parser.add_argument("--disable_observation_noise", action="store_true", help="Di
 parser.add_argument("--seed", type=int, default=None, help="Seed the evaluation environment.")
 parser.add_argument("--evaluation_steps", type=int, default=None, help="Bound headless evaluation without recording video.")
 parser.add_argument("--telemetry_output", type=str, default=None, help="Save control/physics-rate mimic diagnostics (one environment).")
+parser.add_argument("--ankle_filter_alpha", type=float, default=None, help="Opt-in causal ankle action filter, single environment; 0 < alpha <= 1.")
 parser.add_argument("--evaluation_batch", type=str, help="JSON jobs; one simulator startup per seed, no video.")
 parser.add_argument("--diagnostic_perturbation", action="store_true", help="Audited5s root velocity kick; requires standing diagnostic batch.")
 parser.add_argument("--standing_diagnostic", action="store_true", help="Controlled TW198 test, not benchmark evaluation.")
@@ -78,6 +79,11 @@ if args_cli.telemetry_output and not (args_cli.evaluation_steps or args_cli.vide
     parser.error("telemetry requires --evaluation_steps or --video")
 if args_cli.evaluation_batch and (args_cli.video or args_cli.seed is None):
     parser.error("batch requires an explicit seed and does not support video")
+if args_cli.ankle_filter_alpha is not None:
+    if not 0 < args_cli.ankle_filter_alpha <= 1:
+        parser.error("--ankle_filter_alpha must be in (0,1]")
+    if args_cli.evaluation_batch:
+        parser.error("Configure batch filters in job JSON, not --ankle_filter_alpha")
 # always enable cameras to record video
 if args_cli.video:
     args_cli.enable_cameras = True
@@ -164,10 +170,38 @@ def main():
     resume_path = handle_deprecated_rsl_rl_checkpoint(resume_path, installed_version)
 
     from control_runtime import restore as restore_control_runtime, snapshot as control_snapshot
+    from pathlib import Path
+    import json
+    contact_path=Path(resume_path).parent/'params/contact_feedback.json'
+    contact_contract=json.loads(contact_path.read_text()) if contact_path.exists() else None
+    if contact_contract is not None:
+        from contact_policy import validate_contact_contract
+        validate_contact_contract(contact_contract)
+        os.environ['P9_CONTACT_POINT_TELEMETRY']='1'
+    filter_contract=Path(resume_path).parent/'params/action_filter.json'
+    if filter_contract.exists():
+        contract=json.loads(filter_contract.read_text())
+        if args_cli.evaluation_batch:
+            jobs=json.loads(Path(args_cli.evaluation_batch).read_text())
+            if any(j.get('leg_filter_alpha')!=contract['alpha'] or j.get('leg_filter_scope')!='ankles' or j.get('leg_filter_mode','absolute')!='absolute' for j in jobs):
+                raise ValueError('Batch jobs must preserve checkpoint training action filter')
+        elif args_cli.ankle_filter_alpha is None:
+            args_cli.ankle_filter_alpha=contract['alpha']
+        elif args_cli.ankle_filter_alpha!=contract['alpha']:
+            raise ValueError('Requested filter differs from trained filter contract')
+    from training_speed_blend import validate_checkpoint_jobs as validate_training_speed_jobs
+    validate_training_speed_jobs(resume_path,json.loads(Path(args_cli.evaluation_batch).read_text()) if args_cli.evaluation_batch else [])
+    from filter_evaluation_contract import validate_checkpoint_jobs
+    validate_checkpoint_jobs(resume_path,json.loads(Path(args_cli.evaluation_batch).read_text()) if args_cli.evaluation_batch else [])
     restore_control_runtime(env_cfg, resume_path)
+    from control_runtime import apply_ankle_yaw_damping_override
+    apply_ankle_yaw_damping_override(env_cfg)
     if args_cli.standing_diagnostic:
         from standing_diagnostic import configure
         configure(env_cfg,args_cli.diagnostic_physics_dt)
+    else:
+        from standing_diagnostic import configure_contact_sensors
+        configure_contact_sensors(env_cfg)
     log_dir = os.path.dirname(resume_path)
 
     if args_cli.robot_usd:
@@ -185,7 +219,7 @@ def main():
         raise ValueError("Runtime coloring retired; build_colored_usd.py then use --robot_usd")
 
     # create isaac environment
-    env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if (args_cli.video or (args_cli.standing_diagnostic and args_cli.enable_cameras)) else None)
+    env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if (args_cli.video or ((args_cli.standing_diagnostic or args_cli.evaluation_batch) and args_cli.enable_cameras)) else None)
 
     # convert to single-agent instance if required by the RL algorithm
     if isinstance(env.unwrapped, DirectMARLEnv):
@@ -209,6 +243,11 @@ def main():
 
     # wrap around environment for rsl-rl
     env = RslRlVecEnvWrapper(env, clip_actions=agent_cfg.clip_actions)
+    if contact_contract is not None:
+        from contact_policy import ContactPolicyObservations
+        env=ContactPolicyObservations(env,contact_contract['mode'],sensor_prefix='diagnostic_')
+        env.get_observations()
+        if env.base_dim!=contact_contract['base_dim']:raise ValueError('Original policy input dimension changed')
 
     print(f"[INFO]: Loading model checkpoint from: {resume_path}")
     # load previously trained model
@@ -268,6 +307,23 @@ def main():
     obs = env.get_observations()
     if version("rsl-rl-lib").startswith("2.3."):
         obs, _ = env.get_observations()
+    action_filter = None
+    if args_cli.ankle_filter_alpha is not None:
+        from policy_action_filter import LegActionFilter
+        if env.unwrapped.num_envs != 1:
+            raise ValueError("Ankle filter replay currently requires one environment")
+        manager = env.unwrapped.action_manager
+        if len(manager.active_terms) != 1:
+            raise ValueError("Ankle filter requires one joint action term")
+        term = manager.get_term(manager.active_terms[0])
+        action_filter = LegActionFilter(list(term._joint_names), env.unwrapped.device,
+                                        args_cli.ankle_filter_alpha, "ankles")
+        if args_cli.seed is not None:
+            env.seed(args_cli.seed)
+        obs, _ = env.reset()
+        resetter = policy if hasattr(policy, "reset") else policy_nn
+        if resetter is not None:
+            resetter.reset(torch.ones(1, device=env.unwrapped.device, dtype=torch.bool))
     timestep = 0
     evaluation = {"steps": 0, "termination_counts": {}, "motion_metrics": {}}
     telemetry = None
@@ -293,10 +349,14 @@ def main():
         with torch.inference_mode():
             # agent stepping
             actions = policy(obs)
+            if action_filter is not None:
+                actions = action_filter(actions)
             if telemetry is not None:
                 telemetry.begin(actions)
             # env stepping
             obs, _, dones, _ = env.step(actions)
+            if action_filter is not None:
+                action_filter.reset(dones)
             if camera_follow is not None:
                 camera_reset = bool(dones[0].item())
             if telemetry is not None:
@@ -337,6 +397,8 @@ def main():
         evaluation["motion_metrics"] = {name: value / steps for name, value in evaluation["motion_metrics"].items()}
         evaluation.update(control_runtime=control_snapshot(env_cfg), camera_follow_tau=args_cli.viewer_follow_tau, checkpoint=resume_path, motion_id=args_cli.evaluation_motion_id,
                           seconds=evaluation["steps"] * dt, num_envs=env.unwrapped.num_envs)
+        if action_filter is not None:
+            evaluation["action_filter"] = action_filter.audit
         Path(args_cli.evaluation_output).write_text(json.dumps(evaluation, indent=2) + "\n")
     # close the simulator
     env.close()

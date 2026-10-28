@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-28",
+  "project": "TW-RL",
+  "coordinate_contract": "tw123_yaw_waist_v3",
+  "accepted_policy": "head_locked original model27995 with4-ankle IIR alpha0.5",
+  "new_policy_promoted": false,
+  "latest_experiment": "load_aligned_20261027",
+  "training": {
+    "seeds": [
+      42,
+      123
+    ],
+    "environments": 1024,
+    "fixed_iterations": 500,
+    "final_iteration": 28494,
+    "completed_before_shutdown": true
+  },
+  "quality_status": "rejected_pending_recovery_closeout",
+  "known_failures": [
+    "seed42 fixed24 slip improves but leg HF increases0.7152%",
+    "seed123 loses flat000832 evaluation_seed42 at7.74s vs10.60s accepted"
+  ],
+  "recovery": {
+    "driver_before": "580.126.09",
+    "driver_after": "580.105.08",
+    "independent21": "fresh matched baseline and candidates planned, previous outputs archived",
+    "teacher_export": "baseline playback reexport changed JIT bytes; original checkpoint weights8/8 exact; candidate strict binding rejected; isolated equivalent-export audit remains pending"
+  },
+  "verification": {
+    "fresh_core_tests": 8,
+    "passed": true,
+    "actual_training_smoke_reload_deploy": "passed before shutdown",
+    "remaining": [
+      "finish independent21 and full65 audit",
+      "resolve isolated teacher export binding without changing checkpoint",
+      "evidence-based next optimization",
+      "final colored front/side and original skeleton video delivery"
+    ]
+  },
+  "experiment_profiles": "opt-in variants include rejected historical trials; do not treat scripts as accepted policies",
+  "evidence_page": "https://app.notion.com/p/403325d8231d8172995bf19510b8d760"
+}

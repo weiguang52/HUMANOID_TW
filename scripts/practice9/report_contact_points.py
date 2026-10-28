@@ -11,7 +11,8 @@ for model in ['original','baseline']:
    p=R/model/view/f'motion_{mid}.npz'
    if not p.exists():continue
    a=np.load(p);b=np.load(OLD/model/'batch_42'/f'motion_{mid}_v00.npz')
-   t=a['control_step']*float(a['control_dt']);force=a['contact_point_normal_load'];speed=a['contact_point_xy_rms_velocity'];count=a['contact_point_count']
+   t=a['control_step']*float(a['control_dt']);force=a['contact_point_normal_load'];speed=a['contact_point_xy_rms_velocity']*1000; # m/s to mm/s
+   count=a['contact_point_count']
    windows=[]
    for lo,hi in [(1,5),(5,10),(10,15),(15,20)]:
     mask=(t>=lo)&(t<hi);d=np.diff(a['foot_position'][:,:,:2],axis=0)*1000

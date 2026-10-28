@@ -11,6 +11,9 @@ def configure(cfg,physics_dt):
  cfg.events.physics_material.params.update(static_friction_range=(1.,1.),dynamic_friction_range=(1.,1.),restitution_range=(0.,0.),num_buckets=1)
  # Arm tracking failure is not a physical fall criterion in the PD ablation.
  cfg.terminations.ee_body_pos=None
+ configure_contact_sensors(cfg)
+
+def configure_contact_sensors(cfg):
  # Separate per-foot sensors are required for filtered contact points.
  import os
  if os.environ.get('P9_CONTACT_POINT_TELEMETRY') == '1':
