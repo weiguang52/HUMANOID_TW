@@ -293,6 +293,9 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         path=Path(log_dir)/'params/physics_slip.json';path.parent.mkdir(parents=True,exist_ok=True)
         path.write_text(json.dumps(physics_slip_audit,indent=2))
 
+    from lookback_contract import prepare as prepare_lookback
+    lookback_audit=prepare_lookback(env_cfg,log_dir,resume_path if agent_cfg.resume else None)
+
     from highpass_reward_contract import prepare as prepare_highpass_reward
     highpass_reward_audit=prepare_highpass_reward(env_cfg,log_dir,resume_path if agent_cfg.resume else None)
 
@@ -549,6 +552,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         (Path(log_dir)/'physics_slip_completed.json').write_text(json.dumps({
             'completed_windows':accumulator.completed_windows,
             'unconsumed_samples':accumulator.count},indent=2))
+    from lookback_contract import finish as finish_lookback
+    finish_lookback(env,log_dir,lookback_audit)
     from highpass_reward_contract import finish as finish_highpass_reward
     finish_highpass_reward(env,log_dir,highpass_reward_audit)
     env.close()

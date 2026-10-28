@@ -315,6 +315,15 @@ class MotionCommand(CommandTerm):
                 failure_score, self.kernel.view(1, 1, -1)
             ).view(-1)
 
+        share=self.cfg.adaptive_lookback_share
+        if not 0.0<=share<=1.0:raise ValueError('Lookback share outside[0,1]')
+        if share>0:
+            from .lookback_sampling import preceding_failure_score
+            transformed=preceding_failure_score(failure_score,self.bin_visit_count,self.motion.bin_motion_ids,self.motion.bin_local_starts,share)
+            self._lookback_calls=getattr(self,'_lookback_calls',0)+1
+            self._lookback_changed_calls=getattr(self,'_lookback_changed_calls',0)+int(torch.any(transformed!=failure_score))
+            failure_score=transformed
+
         sampling_probabilities = balanced_sampling_probabilities(
             failure_score,
             self.motion.bin_weights,
@@ -502,6 +511,7 @@ class MotionCommandCfg(CommandTermCfg):
     adaptive_kernel_size: int = 1
     adaptive_lambda: float = 0.8
     adaptive_uniform_ratio: float = 0.1
+    adaptive_lookback_share: float = 0.0
     adaptive_alpha: float = 0.001
     adaptive_unvisited_score: float = 1.0
     adaptive_max_probability: float | None = None
