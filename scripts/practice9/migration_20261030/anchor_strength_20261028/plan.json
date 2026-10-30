@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-28T14:46:25.674687+00:00",
+  "parent": "gae_trace_20261028",
+  "hypothesis": "Stronger teacher mean anchoring may reduce harmful policy deviation while preserving learned slip/HF improvements; not established as causal fix.",
+  "single_training_change": {
+    "policy_anchor_coefficient": {
+      "old": 1.0,
+      "new": 2.0
+    }
+  },
+  "unchanged": [
+    "original27995 initialization",
+    "seeds42/123",
+    "500 PPO iterations",
+    "1024 environments",
+    "24 rollout steps",
+    "lambda0.99",
+    "all rewards and action partition",
+    "all65 evaluation cases and thresholds",
+    "fixed final checkpoint selection"
+  ],
+  "acceptance": "Both seeds must improve canonical slip/HF, preserve each accepted fixed and independent success and20s retention; full-body/fidelity and colored front/side/source videos reviewed before any acceptance. No automatic promotion.",
+  "status": "preflight_prepared",
+  "next": "Prepare isolated smoke/reload/deployment preflight and verify exact config difference before formal run.",
+  "seed": 42,
+  "training_seed": 42
+}

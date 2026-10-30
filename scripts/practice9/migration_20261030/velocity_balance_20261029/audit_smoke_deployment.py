@@ -1,0 +1,20 @@
+from pathlib import Path
+import json,numpy as np,torch,hashlib,datetime,sys
+sys.path.insert(0,'/root/gpufree-data/projects/HUMANOID_TW/scripts/rsl_rl')
+from candidate_action_scope import mix_scoped_actions
+from training_speed_blend import validate_checkpoint_jobs
+b=Path(__file__).parent;d=b/'smoke_deployment';assert (d/'status').read_text().strip()=='completed'
+job=json.loads((d/'jobs.json').read_text())[0];p=Path(job['output']);assert 'BATCH_COMPLETED '+str(p) in (d/'run.log').read_text();cp=Path((b/'actual_smoke/final_checkpoint').read_text().strip());audit=json.loads((b/'smoke_audit.json').read_text());assert hashlib.sha256(cp.read_bytes()).hexdigest()==audit['checkpoint_sha256'];contract=json.loads((cp.parent/'params/training_speed_blend.json').read_text());assert validate_checkpoint_jobs(cp,[job])['contract']==contract
+meta=json.loads(p.read_text());physical=np.load(p.with_suffix('.npz'));z=np.load(p.with_suffix('.policy_observations.npz'));blend=np.load(p.with_suffix('.blend.npz'));scope=contract['candidate_action_scope'];names=physical['joint_names'].tolist();assert names==scope['action_joint_names'];assert meta['training_speed_blend_contract']['contract']==contract and meta['policy_blend']['candidate_action_scope']==scope
+keys=z['observation_keys'].tolist();obs=z['observation_'+str(keys.index('policy'))][:,0].copy();assert obs.shape==(256,203);assert np.array_equal(obs[:,:195],z['observation_'+str(keys.index('contact_base_policy'))][:,0]);torch.set_num_threads(1)
+student_path=cp.parent/'exported/policy.pt';student=torch.jit.load(str(student_path),map_location='cpu').eval();teacher=torch.jit.load(contract['teacher_export'],map_location='cpu').eval();actor=torch.load(cp,map_location='cpu',weights_only=False)['actor_state_dict'];checks={k:torch.equal(actor[k],v) for k,v in student.state_dict().items()};assert len(checks)==8 and all(checks.values())
+with torch.inference_mode():
+ raw=student(torch.from_numpy(obs));gold=teacher(torch.from_numpy(obs[:,:195].copy()));trace=blend['speed_and_candidate_weight'][:,0];speed,weight=trace[:,0],trace[:,1];u=np.clip((speed-.05)/.05,0,1);assert np.allclose(weight,u*u*(3-2*u),atol=2e-7,rtol=1e-6);mixed=mix_scoped_actions(gold,raw,torch.from_numpy(weight.copy()),scope['scope'],names).numpy()
+selected=np.array(['ankle' in n for n in names]);frozen=np.array([n in scope['teacher_joint_names'] for n in names]);assert selected.sum()==4 and frozen.sum()==13
+previous=None;out=[]
+for i,action in enumerate(mixed):
+ value=action.copy()
+ if previous is not None:value[selected]=.5*action[selected]+.5*previous[selected]
+ out.append(value);previous=None if physical['terminal'][i] else value.copy()
+out=np.stack(out);assert np.allclose(out,physical['action'],atol=1e-5,rtol=1e-5);assert np.allclose(physical['action'][:,frozen],gold.numpy()[:,frozen],atol=1e-5,rtol=1e-5);assert (weight>0).any() and (weight==0).any();assert np.isfinite(out).all()
+result={'passed':True,'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'steps':256,'checkpoint':str(cp),'checkpoint_sha256':audit['checkpoint_sha256'],'student_input':203,'teacher_input':195,'candidate_dimensions':17,'teacher_dimensions':13,'max_action_reconstruction_delta':float(abs(out-physical['action']).max()),'teacher13_cpu_reconstruction_max_delta':float(abs(physical['action'][:,frozen]-gold.numpy()[:,frozen]).max()),'student8_parameters_exact_checkpoint':checks,'active_steps':int((weight>0).sum()),'teacher_fallback_steps':int((weight==0).sum()),'physical_resets':int(physical['terminal'].sum()),'contract':contract,'quality_verified':False,'scope':'Actual256-step simulator probe, actual observations to exactJIT teacher/student to17/13 partition to original4ankleIIR and delivered actions. CPU/GPU tolerance1e-5+rtol1e-5; not full motion/multi-seed quality or acceptance.'};(b/'smoke_deployment_audit.json').write_text(json.dumps(result,indent=2));print(json.dumps({k:v for k,v in result.items() if k not in ['contract','student8_parameters_exact_checkpoint']},indent=2))

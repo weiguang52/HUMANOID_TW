@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-28T16:48:15.450146+00:00",
+  "parent": "anchor_strength_20261028",
+  "new_experiment": "velocity_balance_20261029",
+  "single_change": {
+    "env.rewards.motion_body_lin_vel.weight": {
+      "old": 2.0,
+      "new": 3.0
+    }
+  },
+  "evidence": "Five named fixed flat motions have lower direction progress in both training seeds. Existing reward is base/chest world linear velocity exponential with std0.0521314647m/s; no claim reward is missing or saturated.",
+  "hypothesis": "Higher existing velocity tracking weight may reduce slower-travel tradeoff while preserving slip/HF and retention; must be tested, not established cause.",
+  "unchanged": [
+    "original27995 initialization",
+    "teacher mean anchor2",
+    "lambda0.99",
+    "lookback0.5",
+    "pathweight-1",
+    "seeds42/123",
+    "1024env500iterations24steps",
+    "all65 tests and canonical metrics",
+    "fixed final checkpoint selection",
+    "student action scope"
+  ],
+  "acceptance": "Both seeds improve canonical slip/HF with no lost accepted case; preserve20s retention; full24 direction/path/body/arms fidelity and actual colored front/side/source comparison remain required. No promotion or threshold change.",
+  "status": "preflight_prepared",
+  "seed": 42,
+  "training_seed": 42
+}

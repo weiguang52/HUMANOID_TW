@@ -1,0 +1,37 @@
+{
+  "utc": "2026-10-28T18:20:44.095688+00:00",
+  "parent": "anchor_strength_20261028",
+  "new_experiment": "orientation_balance_20261029",
+  "single_change": {
+    "env.rewards.motion_global_anchor_ori.weight": {
+      "old": 0.75,
+      "new": 1.125
+    }
+  },
+  "evidence": "Passive matched8 eval42 chest orientation RMSE11.7683/12.6272/13.2049deg, no reward saturation; not training distribution or causal proof.",
+  "hypothesis": "Increase existing global chest orientation tracking weight to test fidelity recovery without stacking failed velocity weight3.",
+  "unchanged": [
+    "original27995 initialization",
+    "teacher mean anchor2",
+    "lambda0.99",
+    "lookback0.5",
+    "pathweight-1",
+    "seeds42/123",
+    "1024env500iterations24steps",
+    "all65 tests and canonical metrics",
+    "fixed final checkpoint selection",
+    "student action scope"
+  ],
+  "acceptance": "Both seeds improve canonical slip/HF with no lost accepted case; preserve20s retention; full24 direction/path/body/arms fidelity and actual colored front/side/source comparison remain required. No promotion or threshold change.",
+  "status": "paused_by_user_after_smoke",
+  "seed": 42,
+  "training_seed": 42,
+  "pause_utc": "2026-10-28T18:22:17.487306+00:00",
+  "remaining": [
+    "reload audit",
+    "deployment256 audit",
+    "formal two seeds500",
+    "all65 each plus fidelity",
+    "video review"
+  ]
+}
