@@ -62,7 +62,8 @@ def audit_world_model(trainer, transitions):
         entry = {
             "windows": windows,
             "seconds": horizon * trainer.env.step_dt,
-            "finite_fraction": float(finite.float().mean()),
+            "finite_count": int(finite.sum()),
+            "finite_fraction": int(finite.sum()) / windows,
         }
         if bool(finite.all()):
             root_error = torch.linalg.vector_norm(
