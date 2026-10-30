@@ -228,3 +228,13 @@ New metadata tags `past_only_shared_bias_reset_padding_v2` and records the expli
 history migration along with context/replay lineage. Evaluation requires all
 three final contracts. Prior runs remain evidence of diagnostics, not accepted
 fully corrected training. No policy has been promoted.
+
+Active final profile after all confirmed fixes:
+`pilot_replayfix_v2_1700/2026-10-31_03-58-23`, PID546388,
+tmux `tw_supermimic_replayfix_v2`, final endpoint1700. Its corresponding waiting
+queue is `tw_supermimic_replayfix_v2_eval`, using checkpoint1600->1700 audit and
+fixed7 test clips. Both coordinates/physical speed and context/replay/history
+contract tags are checked. Source checkpoint700 SHA256:
+`6c2d9fbf9a2ced03d342571fc8ff413a99bf47aa36d9176a9611d863250c9a35`.
+Final source/bias/horizon fixes are inherited by the evaluation entrypoint; old
+partially corrected checkpoints are rejected for final validation.
