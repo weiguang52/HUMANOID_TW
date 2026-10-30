@@ -98,6 +98,26 @@ def main():
         + "".join(rows)
         + "</table>"
     )
+    body += "<h2>World-model predictions under recorded real actions</h2><p>Open-loop windows of 1, 8 and 32 control steps (0.02, 0.16 and 0.64 seconds), within each actual episode. Overlapping windows are not independent trials. No reset crossing or padding of short episodes. Speed-cap violations refer to learned predictions, not the bounded simulator.</p>"
+    body += "<table><tr><th>Clip / agent</th><th>Horizon</th><th>Windows</th><th>Finite fraction</th><th>Root error p95 mm</th><th>Joint RMSE rad</th><th>Predicted speed violations</th></tr>"
+    for row in report["rows"]:
+        for horizon, item in row.get("world_model_rollouts", {}).items():
+            root = item.get("root_position_error_p95_m")
+            joint = item.get("joint_position_rmse_rad")
+            violation = item.get("predicted_joint_speed_cap_violation_fraction")
+            values = [
+                html.escape(row["id"] + " / " + row["agent"]),
+                horizon,
+                str(item["windows"]),
+                str(item.get("finite_fraction", "-")),
+                "-" if root is None else f"{root * 1000:.2f}",
+                "-" if joint is None else f"{joint:.4f}",
+                "-" if violation is None else f"{violation * 100:.2f}%",
+            ]
+            body += (
+                "<tr>" + "".join("<td>" + value + "</td>" for value in values) + "</tr>"
+            )
+    body += "</table>"
     body += "<h2>Joint color legend</h2><table><tr><th>Joint</th><th>Child link</th><th>Color</th></tr>"
     for r in palette:
         body += f'<tr><td>{html.escape(r["joint"])}</td><td>{html.escape(r["link"])}</td><td style="background:{html.escape(r["hex"])}">{html.escape(r["hex"])}</td></tr>'

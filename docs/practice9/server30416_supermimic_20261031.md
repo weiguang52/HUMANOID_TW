@@ -137,3 +137,28 @@ coordinate/asset/motion/speed contracts remain checked. The migration flag is
 required when loading a legacy checkpoint without a context-layout tag, and
 source checkpoint hash/iteration and old/new offsets are stored in new metadata.
 Final evaluation must use the corrected run's endpoint, not the interrupted run.
+
+Corrected continuation is live: PID542408, tmux `tw_supermimic_contextfix`, run
+`/root/gpufree-data/twrl_runs/supermimic_tw_20261031/pilot_contextfix_1000/2026-10-31_03-23-24`.
+Metadata confirms source checkpoint300 SHA256
+`741dbc4adda051ef2e628cf27c2b1d55f660df39f19ff3901237d2d3420e2494`,
+legacy bias offset2 -> corrected offset1, layout
+`mean_friction_encoder_bias_com_v1`. Corrected metrics have progressed beyond320.
+Replacement queue `tw_supermimic_contextfix_eval` waits for the actual new PID
+and uses this run's final checkpoint. The original queue is canceled.
+
+Evaluation additionally records real state/action/context/next-state transition
+NPZs per episode and measures world-model open-loop predictions under the recorded
+real actions at horizons1/8/32. It reports finite fractions, root error in meters,
+joint/velocity RMSE and predicted speed-cap violations, without projecting learned
+predictions or padding short episodes. Three tests against known exact dynamics,
+known meter/radian offsets, short episodes and non-finite predictions pass. These
+are measurement tests, not evidence of actual model accuracy; real accuracy remains
+pending the corrected checkpoint/evaluation.
+
+All7 holdout motion references also passed geometry diagnostic over6295 frames:
+max position difference1.0044e-7m, orientation1.0856e-6rad against the colored
+MuJoCo model; this confirms reference/asset FK agreement, not policy performance.
+A loopback-only video HTTP service and SSH local forward at127.0.0.1:18768 were
+checked with HTTP HEAD200. Files remain on the server; final evaluation index
+will be served under `/supermimic_tw_20261031/pilot_contextfix_1000/evaluation/`.

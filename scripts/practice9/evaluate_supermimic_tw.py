@@ -13,8 +13,8 @@ import torch
 from mjlab.envs import ManagerBasedRlEnv
 from PIL import Image, ImageDraw, ImageFont
 from supermimic.algo.config import SuperMimicCfg
-from supermimic.algo.trainer import SuperMimicTrainer
 from supermimic.algo.state import encoder_bias_from_context
+from supermimic.algo.trainer import SuperMimicTrainer
 from supermimic.config.tw.env_cfgs import tw_supermimic_env_cfg
 from supermimic.config.tw.velocity_limits import (
     LIMITS,
@@ -33,6 +33,71 @@ def labelled(frame, text):
 
 
 @torch.no_grad()
+def audit_world_model(trainer, transitions):
+    """Open-loop predictions under recorded real actions, without reset crossings."""
+    data = {
+        k: torch.tensor(np.stack(v), device=trainer.device)
+        for k, v in transitions.items()
+    }
+    result = {}
+    count = len(transitions["state"])
+    for horizon in (1, 8, 32):
+        windows = count - horizon + 1
+        if windows <= 0:
+            result[str(horizon)] = {
+                "windows": 0,
+                "note": "Episode shorter than horizon",
+            }
+            continue
+        prediction = data["state"][:windows]
+        for offset in range(horizon):
+            prediction = trainer.world_model(
+                prediction,
+                data["action"][offset : offset + windows],
+                data["context"][offset : offset + windows],
+            )
+        target = data["next_state"][horizon - 1 : horizon - 1 + windows]
+        finite = torch.isfinite(prediction).all(dim=-1)
+        entry = {
+            "windows": windows,
+            "seconds": horizon * trainer.env.step_dt,
+            "finite_fraction": float(finite.float().mean()),
+        }
+        if bool(finite.all()):
+            root_error = torch.linalg.vector_norm(
+                prediction[:, :3] - target[:, :3], dim=-1
+            )
+            joint_error = prediction[:, 13:43] - target[:, 13:43]
+            velocity_error = prediction[:, 43:73] - target[:, 43:73]
+            limits = torch.tensor(
+                [LIMITS[n] for n in trainer.spec.joint_names], device=trainer.device
+            )
+            entry.update(
+                {
+                    "root_position_error_mean_m": float(root_error.mean()),
+                    "root_position_error_p95_m": float(
+                        torch.quantile(root_error, 0.95)
+                    ),
+                    "joint_position_rmse_rad": float(
+                        joint_error.square().mean().sqrt()
+                    ),
+                    "joint_velocity_rmse_rad_s": float(
+                        velocity_error.square().mean().sqrt()
+                    ),
+                    "predicted_joint_speed_cap_violation_fraction": float(
+                        (prediction[:, 43:73].abs() > limits + 1e-5).float().mean()
+                    ),
+                }
+            )
+        else:
+            entry["failure"] = (
+                "Non-finite imagined states; accuracy metrics not reported"
+            )
+        result[str(horizon)] = entry
+    return result
+
+
+@torch.no_grad()
 def evaluate(args):
     assert args.max_steps > 0
     assert not (args.output / "results.json").exists(), (
@@ -46,6 +111,7 @@ def evaluate(args):
     extra = checkpoint["cfg"].get("extra", {})
     assert extra.get("tw_joint_coordinate_contract") == "tw123_yaw_waist_v3"
     assert extra.get("tw_joint_speed_limits") == LIMITS
+    assert extra.get("tw_context_layout") == "mean_friction_encoder_bias_com_v1"
     asset = Path(os.environ["TW_SUPERMIMIC_MJCF"])
     color_audit = json.loads(asset.with_suffix(".color_audit.json").read_text())
     assert color_audit["passed"]
@@ -109,6 +175,9 @@ def evaluate(args):
                 )
                 frames = {"front": [], "side": []}
                 samples = []
+                transitions = {
+                    key: [] for key in ("state", "next_state", "action", "context")
+                }
                 failure = False
                 truncation = False
                 reasons = []
@@ -135,6 +204,14 @@ def evaluate(args):
                     assert torch.isfinite(action).all()
                     assert torch.isfinite(command.robot_body_pos_w).all()
                     assert torch.isfinite(command.robot_joint_vel).all()
+                    next_state = trainer.extractor.state()
+                    for key, value in (
+                        ("state", state),
+                        ("next_state", next_state),
+                        ("action", action),
+                        ("context", context),
+                    ):
+                        transitions[key].append(value[0].cpu().numpy().copy())
                     trainer.last_action = action
                     pos_error = torch.linalg.vector_norm(
                         command.robot_body_pos_w - command.body_pos_w, dim=-1
@@ -236,6 +313,12 @@ def evaluate(args):
                         path = args.output / f"{row['id']}_{agent}_{view}.mp4"
                         mediapy.write_video(str(path), view_frames, fps=50)
                         result[view + "_video"] = path.name
+                transition_path = args.output / f"{row['id']}_{agent}_transitions.npz"
+                np.savez_compressed(
+                    transition_path, **{k: np.stack(v) for k, v in transitions.items()}
+                )
+                result["transition_file"] = transition_path.name
+                result["world_model_rollouts"] = audit_world_model(trainer, transitions)
                 reports.append(result)
                 print(json.dumps(result), flush=True)
                 (args.output / "results.partial.json").write_text(
