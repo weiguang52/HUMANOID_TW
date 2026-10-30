@@ -162,3 +162,38 @@ MuJoCo model; this confirms reference/asset FK agreement, not policy performance
 A loopback-only video HTTP service and SSH local forward at127.0.0.1:18768 were
 checked with HTTP HEAD200. Files remain on the server; final evaluation index
 will be served under `/supermimic_tw_20261031/pilot_contextfix_1000/evaluation/`.
+
+---
+## Replay boundary defect and final corrected trial budget (2026-10-31 03:48 CST)
+
+Code review reproduced another upstream correctness issue: sample_windows retries
+32 times but, for an environment with no eligible long window, falls back to the
+latest position without rechecking reset boundaries. A controlled two-environment
+reproducer returned252 reset-crossing windows out of512 (one env had2-step
+failures, the other valid12-step history). This proves the fallback is invalid;
+the actual number of affected windows in the previous live run was not logged
+and remains unknown. Do not claim the reproducer's rate as the live training rate.
+
+Replaced fallback with a cached pool of genuinely live, full-length, contiguous
+windows across eligible environments, invalidated after each buffer write. Every
+returned batch is checked for crossings; no valid full window causes a clear
+error rather than shortening the horizon or inventing transitions. Added tests
+for short episodes, no valid windows, and ring overwrite/cache invalidation.
+All37 fast tests pass. Logs now include actual valid-WM-window pool size and
+actual sampled reset-crossing count. Imagination and WM horizons remain32/8.
+
+Canceled the waiting contextfix evaluation queue, verified finite checkpoint700
+and optimizer states, then gracefully interrupted the contextfix worker. Both
+old runs and interrupt checkpoints remain preserved, explicitly marked stopped
+for correctness fixes. Resume profile `resume_tw_supermimic_replayfix.sh` retains
+checkpoint700 networks/optimizer states, fixes replay sampling and preserves the
+context-migration lineage. Explicit replay-migration metadata is required.
+
+The final endpoint is predeclared as1700:700 inherited iterations plus1000 updates
+with both corrections active. This avoids counting defective-prefix updates as
+a full corrected trial. The new phase retains the checkpoint's actual three
+optimizer learning rates, held constant without an upward LR reset. This is a
+bounded continuation experiment with a changed schedule, not a paper-default
+full-scale replication or a fresh-from-scratch1000-iteration run. Final fixed
+7-motion evaluation will use this1700 endpoint, never a retrospectively chosen
+best checkpoint. Policy promotion remains disabled.

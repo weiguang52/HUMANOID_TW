@@ -112,6 +112,7 @@ def evaluate(args):
     assert extra.get("tw_joint_coordinate_contract") == "tw123_yaw_waist_v3"
     assert extra.get("tw_joint_speed_limits") == LIMITS
     assert extra.get("tw_context_layout") == "mean_friction_encoder_bias_com_v1"
+    assert extra.get("tw_replay_window_contract") == "episode_contiguous_pool_v2"
     asset = Path(os.environ["TW_SUPERMIMIC_MJCF"])
     color_audit = json.loads(asset.with_suffix(".color_audit.json").read_text())
     assert color_audit["passed"]

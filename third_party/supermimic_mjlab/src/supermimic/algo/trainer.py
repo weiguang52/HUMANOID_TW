@@ -418,6 +418,8 @@ class SuperMimicTrainer:
             window_error = float(torch.stack(errors).mean().sqrt().item())
         return {
             "world_model/loss": float(torch.tensor(losses).mean().item()),
+            "replay/valid_wm_windows": float(self.buffer.valid_window_counts[k + 1]),
+            "replay/cross_reset_windows": float(self.buffer.last_cross_reset_count),
             "world_model/window_error": window_error,
             "world_model/term_loss": float(torch.tensor(term_losses).mean().item())
             if term_losses
