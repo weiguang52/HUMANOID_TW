@@ -25,6 +25,13 @@ if TYPE_CHECKING:
     from mjlab.envs import ManagerBasedRlEnv
 
 
+def encoder_bias_from_context(context: torch.Tensor, num_joints: int) -> torch.Tensor:
+    """Context contract: one mean friction, J encoder biases, three COM offsets."""
+    if context.shape[-1] != 1 + num_joints + 3:
+        raise ValueError("Unexpected SuperMimic context width")
+    return context[..., 1 : 1 + num_joints]
+
+
 def _model_name_id(model: mujoco.MjModel, obj_type: mujoco.mjtObj, name: str) -> int:
     obj_id = mujoco.mj_name2id(model, obj_type, name)
     if obj_id >= 0:

@@ -14,6 +14,7 @@ from mjlab.envs import ManagerBasedRlEnv
 from PIL import Image, ImageDraw, ImageFont
 from supermimic.algo.config import SuperMimicCfg
 from supermimic.algo.trainer import SuperMimicTrainer
+from supermimic.algo.state import encoder_bias_from_context
 from supermimic.config.tw.env_cfgs import tw_supermimic_env_cfg
 from supermimic.config.tw.velocity_limits import (
     LIMITS,
@@ -93,7 +94,10 @@ def evaluate(args):
                 state = trainer.extractor.state()
                 context = trainer.extractor.context()
                 obs = trainer.proprio(
-                    state, trainer.last_action, context[:, 2:32], add_noise=False
+                    state,
+                    trainer.last_action,
+                    encoder_bias_from_context(context, trainer.spec.num_joints),
+                    add_noise=False,
                 )
                 trainer.history[:] = obs[:, None, :].expand_as(trainer.history)
                 q = env.scene["robot"].data.root_link_quat_w[0].cpu().numpy()
@@ -112,7 +116,10 @@ def evaluate(args):
                     state = trainer.extractor.state()
                     context = trainer.extractor.context()
                     obs = trainer.proprio(
-                        state, trainer.last_action, context[:, 2:32], add_noise=False
+                        state,
+                        trainer.last_action,
+                        encoder_bias_from_context(context, trainer.spec.num_joints),
+                        add_noise=False,
                     )
                     trainer.history = torch.cat(
                         [trainer.history[:, 1:], obs[:, None]], dim=1

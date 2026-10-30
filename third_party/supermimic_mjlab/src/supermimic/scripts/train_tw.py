@@ -36,6 +36,7 @@ class TrainArgs:
     log_dir: str = "logs/supermimic"
     experiment_name: str = "tw_supermimic"
     resume: str | None = None
+    resume_context_migration: bool = False
     sm: SuperMimicCfg = field(default_factory=tw_supermimic_cfg)
 
 
@@ -111,6 +112,7 @@ def main() -> None:
                 json.dumps(files).encode()
             ).hexdigest(),
             "tw_joint_speed_limits": LIMITS,
+            "tw_context_layout": "mean_friction_encoder_bias_com_v1",
             "tw_runtime": "mjlab1.6.0/mujoco3.11.0/warp1.18.0/torch2.7.0+cu128",
         }
     )
@@ -127,6 +129,23 @@ def main() -> None:
         ):
             if previous_extra.get(key) != cfg.extra[key]:
                 raise ValueError(f"TW resume contract mismatch: {key}")
+        if previous_extra.get("tw_context_layout") != cfg.extra["tw_context_layout"]:
+            if (
+                not args.resume_context_migration
+                or previous_extra.get("tw_context_layout") is not None
+            ):
+                raise ValueError(
+                    "Context layout changed; explicit legacy context migration required"
+                )
+            cfg.extra["tw_context_migration"] = {
+                "source_checkpoint_sha256": hashlib.sha256(
+                    Path(args.resume).read_bytes()
+                ).hexdigest(),
+                "source_iteration": int(previous["iteration"]),
+                "previous_bias_offset": 2,
+                "corrected_bias_offset": 1,
+                "note": "Preserve learned parameters/optimizers; correct legacy bias/COM slice. Replay and simulator rebuilt.",
+            }
         del previous
     cfg.device = args.device
     cfg.seed = args.seed

@@ -22,6 +22,7 @@ import torch
 
 from supermimic.algo.buffer import ReplayBuffer
 from supermimic.algo.config import SuperMimicCfg
+from supermimic.algo.state import encoder_bias_from_context
 from supermimic.algo.networks import (
     ActorCritic,
     ActorCriticCfg,
@@ -208,7 +209,7 @@ class SuperMimicTrainer:
         self.env.reset()
         state = self.extractor.state()
         context = self.extractor.context()
-        bias = context[:, 2 : 2 + self.spec.num_joints]
+        bias = encoder_bias_from_context(context, self.spec.num_joints)
         obs = self.proprio(state, self.last_action, bias, add_noise=False)
         self.history[:] = obs[:, None, :].expand_as(self.history)
         self.episode_start_clip[:] = self.command.clip_ids
@@ -244,7 +245,7 @@ class SuperMimicTrainer:
         for _ in range(steps):
             state = self.extractor.state()
             context = self.extractor.context()
-            bias = context[:, 2 : 2 + self.spec.num_joints]
+            bias = encoder_bias_from_context(context, self.spec.num_joints)
             obs = self.proprio(state, self.last_action, bias, add_noise=True)
             self.history = torch.cat([self.history[:, 1:], obs[:, None]], dim=1)
             goal = self.command.goal()
@@ -309,7 +310,7 @@ class SuperMimicTrainer:
                 self.env.reset(env_ids=done_ids)
                 new_state = self.extractor.state()[done_ids]
                 new_context = self.extractor.context()[done_ids]
-                new_bias = new_context[:, 2 : 2 + self.spec.num_joints]
+                new_bias = encoder_bias_from_context(new_context, self.spec.num_joints)
                 new_obs = self.proprio(
                     new_state,
                     torch.zeros_like(self.last_action[done_ids]),
@@ -542,7 +543,9 @@ class SuperMimicTrainer:
                     # survival weight propagates gradient back into the policy.
                     term_prob = self.world_model.termination_prob(state, goal)
                     obs = self.proprio(
-                        state, prev_action, context[:, 2 : 2 + self.spec.num_joints]
+                        state,
+                        prev_action,
+                        encoder_bias_from_context(context, self.spec.num_joints),
                     )
                     history = torch.cat([history[:, 1:], obs[:, None]], dim=1)
                     action = self.actor_critic.act(

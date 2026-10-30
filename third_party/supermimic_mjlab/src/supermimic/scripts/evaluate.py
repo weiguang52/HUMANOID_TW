@@ -11,6 +11,7 @@ import tyro
 
 from mjlab.envs import ManagerBasedRlEnv
 from supermimic.algo.config import SuperMimicCfg
+from supermimic.algo.state import encoder_bias_from_context
 from supermimic.algo.trainer import SuperMimicTrainer
 from supermimic.config.g1.env_cfgs import (
   unitree_g1_supermimic_env_cfg,
@@ -80,7 +81,7 @@ def main() -> None:
   for _ in range(args.max_steps):
     state = trainer.extractor.state()
     context = trainer.extractor.context()
-    bias = context[:, 2 : 2 + trainer.spec.num_joints]
+    bias = encoder_bias_from_context(context, trainer.spec.num_joints)
     obs = trainer.proprio(state, trainer.last_action, bias, add_noise=False)
     trainer.history = torch.cat([trainer.history[:, 1:], obs[:, None]], dim=1)
     goal = command.goal()
@@ -124,7 +125,7 @@ def main() -> None:
       new_obs = trainer.proprio(
         new_state,
         torch.zeros_like(trainer.last_action[done_ids]),
-        new_context[:, 2 : 2 + trainer.spec.num_joints],
+        encoder_bias_from_context(new_context, trainer.spec.num_joints),
         add_noise=False,
       )
       trainer.history[done_ids] = new_obs[:, None, :].expand(

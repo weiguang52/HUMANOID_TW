@@ -110,3 +110,30 @@ reported explicitly and cannot be treated as 20-second drift measurements.
 Final status remains `evaluated_pending_visual_review` until actual review.
 Scripts: `finish_tw_supermimic_pilot.sh`, `evaluate_supermimic_tw.py`,
 `verify_supermimic_videos.py`. Full behavior/video verification is still pending.
+
+---
+## Encoder-bias context defect and checkpoint continuation (2026-10-31 03:23 CST)
+
+Further interface inspection found an upstream off-by-one bug: StateExtractor
+emits `[mean_friction, J encoder_bias values, COM_xyz]`, while trainer/play/eval
+read bias from column2 instead of column1. The first bias was discarded and COMx
+leaked into the last joint's proprioception. Added a shared width-checked accessor
+and a regression test against the actual context producer using distinct bias
+and COM values. Fast tests now31 pass. This supersedes the earlier clean-runtime
+assessment: it was a sensor/randomization contract issue, not a simulator crash.
+
+Canceled only the waiting evaluation queue, verified checkpoint300 loads with
+finite networks and optimizer states, then gracefully interrupted the running
+pilot and retained checkpoint_interrupt plus checkpoints100/200/300. The original
+run is explicitly `interrupted_for_encoder_bias_contract_fix_at_checkpoint300`.
+
+`resume_tw_supermimic_contextfix.sh` will resume the fully saved checkpoint300
+into a separate run/state directory, preserving all three optimizer states and
+networks, with the corrected bias accessor. It continues toward total iteration
+1000 (700 corrected continuation iterations; the first300 used the legacy bias
+slice). This is an explicit observation-randomization contract migration, not
+bit-identical continuation or a fresh1000-iteration corrected run. Physical
+coordinate/asset/motion/speed contracts remain checked. The migration flag is
+required when loading a legacy checkpoint without a context-layout tag, and
+source checkpoint hash/iteration and old/new offsets are stored in new metadata.
+Final evaluation must use the corrected run's endpoint, not the interrupted run.
