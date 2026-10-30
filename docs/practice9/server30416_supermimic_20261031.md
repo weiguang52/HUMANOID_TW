@@ -74,3 +74,39 @@ Pending: bounded 1000-iteration method-transfer pilot (256
 envs, WM batch512/10 updates, policy batch512/chunk128, unchanged H32/window8),
 fixed test-set evaluation, source-reference plus colored front/side videos and
 visual checks. No SuperMimic quality acceptance or policy promotion yet.
+
+---
+## Evaluation preparation (2026-10-31 03:17 CST)
+
+Pilot is live in tmux `tw_supermimic_pilot`; process536787, run directory
+`/root/gpufree-data/twrl_runs/supermimic_tw_20261031/pilot_1000/2026-10-31_03-02-46`.
+First checkpoint100 saved. Training remains an experiment, not accepted quality.
+
+`build_supermimic_colored_mjcf.py` produced a separate precolored MJCF using the
+existing precolored USD palette (MuJoCo cannot load USD directly). XML proof
+allows only geom rgba changes; all other compiled numeric arrays match exactly.
+Fixed hand parts inherit parent-link color. No runtime material binding.
+A two-step rendering-pipeline check using checkpoint100 produced both front
+and side H264 960x640/50fps videos with exact frame counts. Initial image review
+confirmed colors, whole-body framing and distinct frontal/side cameras; this is
+not a temporal check of moving hands or turns, and not policy acceptance.
+
+All 7 existing original HumanML3D reference videos were rechecked by the required
+renderer/cache/hash and ffprobe workflow. Fixed holdout data already selected
+12 sources before model outcomes; only 7 passed retarget quality, with the
+original 5 rejections retained, no replacements. Current 332 training clips and
+7 test clips have disjoint source_family sets and mirror-normalized IDs. Do not
+call all mixed turning/bending/arm test clips flat walking.
+
+Queued tmux `tw_supermimic_evaluate` waits for the known live training process.
+It does not restart training. On success it checks checkpoint900->final updates,
+then evaluates exactly the final1000 checkpoint on all 7 fixed test clips with
+trained and zero-action agents. Episodes stop at first termination, without
+best-of restart. Every episode gets colored front/side videos, per-frame body,
+joint and anchor errors, and an index linking original source videos and the
+joint-color legend. Cameras follow translation and retain initial world heading;
+front starts along robot +X, side along initial -Y. Early failure durations are
+reported explicitly and cannot be treated as 20-second drift measurements.
+Final status remains `evaluated_pending_visual_review` until actual review.
+Scripts: `finish_tw_supermimic_pilot.sh`, `evaluate_supermimic_tw.py`,
+`verify_supermimic_videos.py`. Full behavior/video verification is still pending.
