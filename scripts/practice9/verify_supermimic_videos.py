@@ -46,12 +46,18 @@ def main():
             num, den = map(float, stream["r_frame_rate"].split("/"))
             assert abs(num / den - 50) < 1e-6
             assert (int(stream["width"]), int(stream["height"])) == (960, 640)
+            subprocess.run(
+                ['ffmpeg', '-v', 'error', '-xerror', '-i', str(path), '-f', 'null', '-'],
+                check=True,
+                stdout=subprocess.DEVNULL,
+            )
             audits.append(
                 dict(
                     id=row["id"],
                     agent=row["agent"],
                     view=view,
                     video=str(path),
+                    full_decode_passed=True,
                     **stream,
                 )
             )

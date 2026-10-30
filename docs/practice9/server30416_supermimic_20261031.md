@@ -313,3 +313,37 @@ checkpoint every100. The wrapper verifies actual final iteration/physics tag
 before reporting success. The final worker uses that run's `run_dir`, audits
 900->1000 and evaluates the fixed final checkpoint on all7 clips plus zero
 baseline. Effects, full video review and final delivery remain unverified.
+
+### Additional visual checks: kinematic reference versus policy
+
+`scripts/practice9/render_supermimic_reference.py` renders the fixed seven
+retargeted holdout clips with the same colored robot asset at50fps. It writes
+qpos directly and does not integrate dynamics or run a policy. Every frame is
+labelled `REFERENCE / NOT POLICY`; these videos cannot count as balance or
+learned tracking success. It checks named-joint mapping and every reference
+body's FK against the loaded robot on all rendered frames. Presentation adds
+only floor/light; original robot mesh/colors remain. Cameras follow translation
+and keep the initial world heading through turns.
+
+```bash
+source scripts/practice9/activate_supermimic_environment.sh
+export MUJOCO_GL=egl
+python scripts/practice9/render_supermimic_reference.py \
+  --manifest /root/gpufree-data/datasets/practice9/independent_holdout_20261025/test.json \
+  --mjcf /root/gpufree-data/datasets/practice9/supermimic_tw_20261031/robot/tw30_colored.xml \
+  --output /root/gpufree-data/datasets/practice9/supermimic_tw_20261031/kinematic_reference
+```
+
+Completed output is protected from overwrite. Policy-video verification now also
+requires successful whole-file ffmpeg decoding, in addition to H264, resolution,
+50fps and exact frame count. Encoding/FK checks do not replace visual inspection
+of the learned policy, nor prove successful physics-based imitation.
+
+Reference QA completed on2026-10-31 at05:48CST: all7clips/14videos rendered,
+full decode/frame/codec checks passed, max all-frame body-FK error1.005e-7m.
+Representative front/side frames across all7 clips were visually reviewed,
+including arm extension, turning and bending; no obvious detached parts or
+whole-body cropping were visible in those samples. This is sampled-frame visual
+review, not manual inspection of every frame. Audits and original-source links
+are under data `supermimic_tw_20261031/kinematic_reference/`; this is independent
+of final learned-policy evaluation, which remains pending.
