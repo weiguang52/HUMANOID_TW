@@ -1,0 +1,83 @@
+"""Names copied from the TW Isaac asset; preserve coordinate contract."""
+
+COORDINATES_VERSION = "tw123_yaw_waist_v3"
+CUSTOM_HUMANOID_30DOF_JOINT_NAMES = [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_pitch_joint",
+    "left_ankle_yaw_joint",
+    "left_ankle_pitch_joint",
+    "left_foot_roll",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_pitch_joint",
+    "right_ankle_yaw_joint",
+    "right_ankle_pitch_joint",
+    "right_foot_roll",
+    "waist_yaw",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_pitch_joint",
+    "right_wrist_pitch",
+    "neck",
+    "neck_linkage_roll",
+    "head_pitch",
+]
+CUSTOM_HUMANOID_TRACKING_BODY_NAMES = [
+    "base_link",
+    "left_thigh",
+    "left_mid_leg",
+    "left_foot",
+    "right_thigh",
+    "right_mid_leg",
+    "right_foot",
+    "chest",
+    "left_upper_arm",
+    "left_force_arm",
+    "left_wrist",
+    "right_upper_arm",
+    "right_force_arm",
+    "right_wrist",
+]
+LEG_MAJOR_JOINTS = [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_pitch_joint",
+    "left_ankle_yaw_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_pitch_joint",
+    "right_ankle_yaw_joint",
+]
+FOOT_JOINTS = [
+    "left_ankle_pitch_joint",
+    "left_foot_roll",
+    "right_ankle_pitch_joint",
+    "right_foot_roll",
+]
+WAIST_JOINTS = ["waist_yaw", "waist_roll_joint", "waist_pitch_joint"]
+ARM_JOINTS = [
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_pitch_joint",
+    "right_wrist_pitch",
+]
+NECK_JOINTS = ["neck", "neck_linkage_roll", "head_pitch"]
