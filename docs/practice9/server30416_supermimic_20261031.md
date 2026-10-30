@@ -197,3 +197,34 @@ bounded continuation experiment with a changed schedule, not a paper-default
 full-scale replication or a fresh-from-scratch1000-iteration run. Final fixed
 7-motion evaluation will use this1700 endpoint, never a retrospectively chosen
 best checkpoint. Policy promotion remains disabled.
+
+---
+## Replay-proprio consumer completion (2026-10-31 CST)
+
+The first bias fix missed a second hardcoded slice inside `_history_from_buffer`.
+This was a review omission: earlier context-v1 tagging did not prove every consumer
+was corrected. Further review also found that imagined-start history already
+included the current observation, which the actor loop then appended again.
+At the oldest ring-buffer state, previous action could incorrectly come from the
+newest slot. These are observation-history contract errors, not evidence that
+all previously collected physical transitions were invalid.
+
+History now uses the shared bias accessor, contains only past states before the
+actor appends current state once, uses the correctly preceding actions, pads
+reset prefixes with the new episode's initial observation, and clamps missing
+past history to the oldest available state with zero unknown previous action.
+It never reads overwritten future ring slots. Five consumer tests with explicit
+frame/action labels, distinct bias/COM values, reset boundaries, single-state
+history and ring overwrite pass. Full fast suite passed41 before the final added
+consumer case; all5 consumer tests then passed. No duplicated hardcoded offset2
+bias reads remain in the adapted trainer/play/eval paths.
+
+Stopped the brief replayfix-v1 run and its waiting queue, preserving its interrupt
+checkpoint, and marked it stopped for history completion. The final profile is
+`resume_tw_supermimic_replayfix_v2.sh`, still restoring the fully saved contextfix
+checkpoint700 and keeping the predeclared endpoint1700 (1000 fully corrected
+updates), all three inherited learning rates4.623164685952555e-5 held constant.
+New metadata tags `past_only_shared_bias_reset_padding_v2` and records the explicit
+history migration along with context/replay lineage. Evaluation requires all
+three final contracts. Prior runs remain evidence of diagnostics, not accepted
+fully corrected training. No policy has been promoted.

@@ -466,8 +466,14 @@ class SuperMimicTrainer:
         states, actions, dones = self.buffer.gather_states(
             starts["env_ids"], starts["positions"], before=1
         )
+        oldest = (
+            self.buffer.ptr[starts["env_ids"]] - self.buffer.count[starts["env_ids"]]
+        )
+        has_previous = ((starts["positions"] - oldest) % self.buffer.capacity) > 0
         prev_action = torch.where(
-            dones[:, 0:1], torch.zeros_like(actions[:, 0]), actions[:, 0]
+            dones[:, 0:1] | ~has_previous[:, None],
+            torch.zeros_like(actions[:, 0]),
+            actions[:, 0],
         )
         starts["prev_action"] = prev_action
         starts["history"] = self._history_from_buffer(
@@ -478,27 +484,52 @@ class SuperMimicTrainer:
     def _history_from_buffer(
         self, env_ids: torch.Tensor, positions: torch.Tensor
     ) -> torch.Tensor:
+        # Return history strictly BEFORE the sampled current state. The actor
+        # loop appends current proprioception once, exactly as real collection.
         n = self.history_len
-        states, actions, dones = self.buffer.gather_states(env_ids, positions, before=n)
-        bias = self.buffer.contexts[env_ids, positions][:, 2 : 2 + self.spec.num_joints]
-        history = []
-        for j in range(n):
-            history.append(
-                self.proprio(states[:, j + 1], actions[:, j], bias, add_noise=True)
-            )
+        oldest = self.buffer.ptr[env_ids] - self.buffer.count[env_ids]
+        current = (positions - oldest) % self.buffer.capacity
+        offsets = torch.arange(-n, 0, device=positions.device)
+        logical = current[:, None] + offsets[None, :]
+        physical = (oldest[:, None] + logical.clamp_min(0)) % self.buffer.capacity
+        previous = (oldest[:, None] + (logical - 1).clamp_min(0)) % self.buffer.capacity
+        states = self.buffer.states[env_ids[:, None], physical]
+        actions = self.buffer.actions[env_ids[:, None], previous]
+        reset_before = self.buffer.dones[env_ids[:, None], previous] & (logical > 0)
+        zero_previous = (logical <= 0) | reset_before
+        actions = torch.where(
+            zero_previous[..., None], torch.zeros_like(actions), actions
+        )
+        bias = encoder_bias_from_context(
+            self.buffer.contexts[env_ids, positions], self.spec.num_joints
+        )
+        history = [
+            self.proprio(states[:, j], actions[:, j], bias, add_noise=True)
+            for j in range(n)
+        ]
         history_t = torch.stack(history, dim=1)
+        # Repeat the first observation after the latest reset into its prefix;
+        # no observation from the prior episode or overwritten ring data survives.
         for k in range(n):
-            mask = dones[:, k]
-            if not bool(mask.any()):
-                continue
+            mask = reset_before[:, k]
+            if bool(mask.any()):
+                history_t[:, : k + 1] = torch.where(
+                    mask[:, None, None],
+                    history_t[:, k : k + 1].clone(),
+                    history_t[:, : k + 1],
+                )
+        previous_current = (positions - 1) % self.buffer.capacity
+        current_reset = self.buffer.dones[env_ids, previous_current] & (current > 0)
+        if bool(current_reset.any()):
             reset_obs = self.proprio(
-                states[:, k + 1],
-                torch.zeros_like(actions[:, k]),
+                self.buffer.states[env_ids, positions],
+                torch.zeros_like(self.buffer.actions[env_ids, positions]),
                 bias,
                 add_noise=True,
             )
-            for j in range(k + 1):
-                history_t[:, j] = torch.where(mask[:, None], reset_obs, history_t[:, j])
+            history_t = torch.where(
+                current_reset[:, None, None], reset_obs[:, None, :], history_t
+            )
         return history_t
 
     def _update_policy(self) -> dict[str, float]:

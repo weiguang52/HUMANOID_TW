@@ -115,6 +115,7 @@ def main() -> None:
             "tw_joint_speed_limits": LIMITS,
             "tw_context_layout": "mean_friction_encoder_bias_com_v1",
             "tw_replay_window_contract": "episode_contiguous_pool_v2",
+            "tw_history_contract": "past_only_shared_bias_reset_padding_v2",
             "tw_runtime": "mjlab1.6.0/mujoco3.11.0/warp1.18.0/torch2.7.0+cu128",
         }
     )
@@ -172,6 +173,26 @@ def main() -> None:
             }
         elif "tw_replay_migration" in previous_extra:
             cfg.extra["tw_replay_migration"] = previous_extra["tw_replay_migration"]
+        if (
+            previous_extra.get("tw_history_contract")
+            != cfg.extra["tw_history_contract"]
+        ):
+            if (
+                not args.resume_replay_migration
+                or previous_extra.get("tw_history_contract") is not None
+            ):
+                raise ValueError(
+                    "Replay observation-history contract changed; explicit migration required"
+                )
+            cfg.extra["tw_history_migration"] = {
+                "source_checkpoint_sha256": hashlib.sha256(
+                    Path(args.resume).read_bytes()
+                ).hexdigest(),
+                "source_iteration": int(previous["iteration"]),
+                "note": "Past-only actor history, shared encoder-bias accessor, reset/oldest-state padding; no duplicate current observation.",
+            }
+        elif "tw_history_migration" in previous_extra:
+            cfg.extra["tw_history_migration"] = previous_extra["tw_history_migration"]
         del previous
     cfg.device = args.device
     cfg.seed = args.seed
