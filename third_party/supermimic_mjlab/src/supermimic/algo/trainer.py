@@ -777,6 +777,17 @@ class SuperMimicTrainer:
 
     def _log_iteration(self, logs: dict[str, float], iteration_time: float) -> None:
         cfg = self.cfg
+        if any(not math.isfinite(float(value)) for value in logs.values()):
+            raise FloatingPointError(
+                f"Non-finite training metrics at iteration {self.iteration}"
+            )
+        with (self.log_dir / "metrics.jsonl").open("a") as handle:
+            handle.write(
+                json.dumps(
+                    {"iteration": self.iteration, "env_steps": self.env_steps, **logs}
+                )
+                + "\n"
+            )
         width = 86
         pad = 34
         it = self.iteration
@@ -946,6 +957,15 @@ class SuperMimicTrainer:
                 "world_model": self.world_model.state_dict(),
                 "actor_critic": self.actor_critic.state_dict(),
                 "cfg": asdict(self.cfg),
+                "wm_optimizer": self.wm_optimizer.state_dict(),
+                "actor_optimizer": self.actor_optimizer.state_dict(),
+                "critic_optimizer": self.critic_optimizer.state_dict(),
+                "step_accumulator": self._step_accumulator,
+                "generator_state": self._rng.get_state(),
+                "torch_rng_state": torch.get_rng_state(),
+                "cuda_rng_states": torch.cuda.get_rng_state_all()
+                if torch.cuda.is_available()
+                else [],
             },
             path,
         )
@@ -954,15 +974,30 @@ class SuperMimicTrainer:
 
     def load(self, path: str | Path) -> None:
         checkpoint = torch.load(path, map_location=self.device)
-        self.world_model.load_state_dict(checkpoint["world_model"], strict=False)
+        self.world_model.load_state_dict(checkpoint["world_model"], strict=True)
         missing, unexpected = self.actor_critic.load_state_dict(
-            checkpoint["actor_critic"], strict=False
+            checkpoint["actor_critic"], strict=True
         )
         if missing or unexpected:
             print(
                 f"[WARN] Loaded checkpoint with missing={len(missing)} "
                 f"unexpected={len(unexpected)} keys."
             )
+        for name in ("wm_optimizer", "actor_optimizer", "critic_optimizer"):
+            if name not in checkpoint:
+                raise ValueError(
+                    f"Checkpoint lacks {name}; exact optimizer continuation unavailable"
+                )
+            getattr(self, name).load_state_dict(checkpoint[name])
+        self._step_accumulator = float(checkpoint["step_accumulator"])
+        self._rng.set_state(checkpoint["generator_state"].cpu())
+        torch.set_rng_state(checkpoint["torch_rng_state"].cpu())
+        if checkpoint["cuda_rng_states"]:
+            torch.cuda.set_rng_state_all(
+                [state.cpu() for state in checkpoint["cuda_rng_states"]]
+            )
+        # Replay and simulator state are intentionally rebuilt by initialize/warmup.
+        # This is optimizer continuation, not bit-identical simulator replay.
         self.iteration = int(checkpoint.get("iteration", 0))
         self.env_steps = int(checkpoint.get("env_steps", 0))
         print(f"[INFO] Loaded checkpoint {path} (iteration {self.iteration})")

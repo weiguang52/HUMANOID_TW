@@ -12,6 +12,9 @@ from .contract import CUSTOM_HUMANOID_TRACKING_BODY_NAMES
 def tw_supermimic_env_cfg(motion_files, num_envs=1024, play=False):
     cfg = unitree_g1_supermimic_env_cfg(motion_files, num_envs=num_envs, play=play)
     cfg.scene.entities["robot"] = get_tw_robot_cfg()
+    # Actual TW mesh contacts exceed the G1 buffer (59 at initial assembly).
+    cfg.sim.nconmax = 128
+    cfg.sim.njmax = 512
     cfg.viewer.body_name = "chest"
     cfg.viewer.distance = 1.0
     cfg.actions["joint_pos"].scale = ACTION_SCALE

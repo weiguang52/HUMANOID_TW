@@ -9,6 +9,10 @@ from pathlib import Path
 import tyro
 
 from mjlab.envs import ManagerBasedRlEnv
+from supermimic.config.tw.velocity_limits import (
+    enable_tw_velocity_limits,
+    disable_tw_velocity_limits,
+)
 from supermimic.algo.config import SuperMimicCfg
 from supermimic.algo.trainer import SuperMimicTrainer
 from supermimic.config.tw.env_cfgs import (
@@ -91,7 +95,39 @@ def main() -> None:
     env_cfg.episode_length_s = args.episode_length_s
     env_cfg.seed = args.seed
 
+    import hashlib
+    import json
+    import os
+    from supermimic.config.tw.velocity_limits import LIMITS
+
     cfg = args.sm
+    cfg.extra.update(
+        {
+            "tw_joint_coordinate_contract": "tw123_yaw_waist_v3",
+            "tw_mjcf_sha256": hashlib.sha256(
+                Path(os.environ["TW_SUPERMIMIC_MJCF"]).read_bytes()
+            ).hexdigest(),
+            "tw_motion_input_sha256": hashlib.sha256(
+                json.dumps(files).encode()
+            ).hexdigest(),
+            "tw_joint_speed_limits": LIMITS,
+            "tw_runtime": "mjlab1.6.0/mujoco3.11.0/warp1.18.0/torch2.7.0+cu128",
+        }
+    )
+    if args.resume is not None:
+        import torch
+
+        previous = torch.load(args.resume, map_location="cpu", weights_only=False)
+        previous_extra = previous["cfg"].get("extra", {})
+        for key in (
+            "tw_joint_coordinate_contract",
+            "tw_mjcf_sha256",
+            "tw_motion_input_sha256",
+            "tw_joint_speed_limits",
+        ):
+            if previous_extra.get(key) != cfg.extra[key]:
+                raise ValueError(f"TW resume contract mismatch: {key}")
+        del previous
     cfg.device = args.device
     cfg.seed = args.seed
     cfg.log_dir = args.log_dir
@@ -106,6 +142,7 @@ def main() -> None:
         cfg.lr_decay_iters = cfg.num_iterations
 
     env = ManagerBasedRlEnv(env_cfg, device=args.device)
+    enable_tw_velocity_limits(env)
     trainer = SuperMimicTrainer(env, cfg, log_dir=cfg.log_dir)
     if args.resume is not None:
         trainer.load(args.resume)
@@ -118,6 +155,7 @@ def main() -> None:
     finally:
         trainer.close()
         env.close()
+        disable_tw_velocity_limits(env)
 
 
 if __name__ == "__main__":

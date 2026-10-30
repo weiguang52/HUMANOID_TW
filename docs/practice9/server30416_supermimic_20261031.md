@@ -31,3 +31,46 @@ Source scripts/practice9/activate_supermimic_environment.sh for the separate env
 The unconstrained install initially selected Torch2.15/CUDA13.2; the intended runtime is fixed to Torch2.7.0+cu128,mjlab1.6.0,mujoco3.11.0,warp1.18.0. Installer and initial errors are retained in the research state. The original Isaac environment is not modified.
 
 Next: finish independent dependency installation/pip check; run unchanged upstream tests and the local adapter tests; compare differentiable FK with MuJoCo,assemble the actual TW Entity and prove action order/PD/effort/armature/contact/velocity behavior; run the complete collect-fit-imagine loop and checkpoint reload on actual TW motions. Then train a meaningful pilot,compare simulator performance and world-model errors,check standing/arms/turning and walking fidelity,and deliver colored front/side plus original HumanML3D skeleton videos. Preserve source timing and label any retarget timing differences. Cross-simulator friction and velocity limits are not yet equivalent to original PhysX. Reward scale and dynamic consistency must be measured,not assumed from G1 defaults. No overall acceptance or automatic promotion before actual results.
+
+---
+## Runtime and full-method verification (2026-10-31 CST)
+
+Independent runtime installation completed with mjlab 1.6.0, MuJoCo 3.11.0,
+Warp 1.18.0 and Torch 2.7.0+cu128; `pip check` reports no broken requirements.
+Upstream fast tests: 20; adapted fork: initially 27, then 29 including speed-cap
+projection checks. Actual TW Entity construction also exposed/fixed a required
+collision priority. TW contacts needed nconmax=128/njmax=512 (59 initial
+contacts exceeded G1's nconmax=35).
+
+The first actual Warp zero-action check reached 7.9053 rad/s despite original
+PhysX group caps of 2 or 3 rad/s. TW now explicitly projects the integrated joint
+velocity before position integration, using a per-simulation Warp acceleration
+scratch array; floating-root acceleration is unchanged. This hook checks the
+installed integrator source fingerprint, requires implicitfast, and recaptures
+CUDA graphs. Other unregistered simulations retain upstream integration.
+This is an explicit engine adaptation, not a claim of identical PhysX contact
+or constraint solving. In 8 environments/100 control steps, all 30 per-joint
+caps passed and peak speed was 3.0 rad/s. Zero actions still caused 42 termination
+events, so this test does not establish policy quality.
+
+A real collect/fit/imagine smoke used all 332 clips/153960 frames, 32 environments,
+H=32 and world-model window=8, full network widths, reduced batches and four
+iterations. All losses were finite, bad actor gradients were zero, and a
+checkpoint-to-checkpoint audit confirmed actual encoder, decoder, critic and
+world-model parameter updates. Adam steps progressed WM 4->8, actor 2->4 and
+critic 8->16 between iterations 2 and 4. This is execution evidence, not learning
+convergence. Checkpoint SHA256:
+`32bed35c595f30bab1164abc1db4d9d0198ee13ae7330278557624125e351c3c`.
+
+The fork now saves/restores optimizer states, RNG state and fractional collection
+step accumulator, rejects missing optimizer states and requires strict parameter
+loading. Replay, simulator state and return-sampler statistics are rebuilt on
+resume; continuation is not bit-identical replay. TW production entrypoint also
+records/checks coordinate, MJCF, ordered-motion-input and speed-limit contracts.
+
+Reload passed: iterations 4->6, WM Adam 8->12, actor 4->6, critic 16->24, all parameter groups changed and remained finite. Reload checkpoint SHA256: `889424fb666b6491a2f451faf011ae16670046f9e521538b6def4886339482e9`.
+
+Pending: bounded 1000-iteration method-transfer pilot (256
+envs, WM batch512/10 updates, policy batch512/chunk128, unchanged H32/window8),
+fixed test-set evaluation, source-reference plus colored front/side videos and
+visual checks. No SuperMimic quality acceptance or policy promotion yet.

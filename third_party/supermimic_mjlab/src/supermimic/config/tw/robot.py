@@ -64,6 +64,7 @@ def get_tw_robot_cfg():
                 contype=0,
                 conaffinity=1,
                 condim=3,
+                priority=1,
                 friction=(1.0,),
             ),
         ),
