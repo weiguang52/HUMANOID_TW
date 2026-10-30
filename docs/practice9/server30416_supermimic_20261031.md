@@ -1,6 +1,8 @@
 # Server30416 migration and initial TW SuperMimic adapter
 
-Status: original Isaac training configuration verified; SuperMimic full package tests, training and effects are still pending. This document does not promote any policy.
+Current status (2026-10-31 05:13 CST): migration and original Isaac smoke/recovery passed. Physics-v3 SuperMimic now passes a continuous20-second default-pose calibration, coupled speed-impulse checks,44 fast tests and actual full-method smoke/recovery. The fresh1000-iteration trial and final7-motion effects/videos remain pending. No policy is promoted.
+
+**Use `run_tw_supermimic_physics_v3.sh` after sourcing `activate_supermimic_environment.sh`. Pre-v3 SuperMimic runs are invalid for policy acceptance because of the default-pose and velocity-projection defects documented below. The earlier1700 continuation plan is canceled. Checkpoints remain preserved for diagnosis.**
 
 ## Storage and original training
 All project files, environments, models, motion data, temporary files and runtime caches belong under /root/gpufree-data. Read dependencies from the existing /opt/conda bootstrap only. Source scripts/practice9/activate_data_environment.sh before original Isaac runs. The isolated migration check launcher supports smoke/reload and refuses overwriting existing outputs.
@@ -238,3 +240,76 @@ contract tags are checked. Source checkpoint700 SHA256:
 `6c2d9fbf9a2ced03d342571fc8ff413a99bf47aa36d9176a9611d863250c9a35`.
 Final source/bias/horizon fixes are inherited by the evaluation entrypoint; old
 partially corrected checkpoints are rejected for final validation.
+
+---
+## Physics-v3 correction and verified restart basis (2026-10-31 05:13 CST)
+
+A required static calibration contradicted the earlier runtime checks: zero
+commands launched the base upward and terminated at0.1s. GPU stepping/cap/finite
+tests had been too narrow to establish physically valid control. All pre-v3
+SuperMimic training and waiting queues were stopped, preserved and invalidated.
+This includes my own adapter defect; earlier positive runtime statements must
+not be interpreted as physical or policy acceptance.
+
+Two interacting causes were verified. mjlab's first-match initial-state resolver
+let `.*:0` shadow the two shoulder defaults. At the intended +/-90-degree pose,
+zero commands actually produced opposite7.85398Nm shoulder torques. Explicit
+named defaults for all30 joints now yield only1.19e-7Nm numerical residual.
+Also, my independent joint-velocity clipping ignored the floating-base inertia
+coupling and changed free momentum. Both captured and eager variants reproduced
+this; it was not a CUDA-graph-only issue.
+
+The replacement solves a full mass-metric box-constrained velocity projection
+before native position integration. It eliminates free velocities with the6x6
+root mass block, solves the30-joint Schur-complement QP, and recovers the internal
+impulse reaction at the root. Per-call convergence, free generalized momentum,
+finite state and non-increasing kinetic energy are checked. Constraint math uses
+FP64 so policy TF32 does not weaken physics. Native `_advance` integration code is
+vendored with its original Apache header and source fingerprint; only the
+projection call is inserted. Eager Warp/Torch shared-stream execution is used;
+CUDA graph capture is disabled for this adapter. Contact/velocity constraints
+are operator-split, so exact PhysX solver equivalence is not claimed.
+
+Native CSR inertia reconstruction matched CPU full inertia within1.77e-8;
+minimum tested eigenvalue was0.000236. Continuous static calibration:
+1000 control steps/20s, no termination, max height change2.149mm, horizontal
+drift2.880mm, orientation change0.01166rad, max joint speed0.265rad/s. This used
+no learned policy and counts as no HumanML3D success. A forced +/-10rad/s initial
+joint-speed probe exercised the constraint: residual4.50e-7, free-momentum error
+2.50e-8, energy increase0; all measured post-step speed bounds passed. The
+8-env/100-step real-motion runtime check also passed all30 speed bounds and
+finite states (23 zero-policy terminations remain failures, not successes).
+
+Lazy CUDA linalg needed the independent environment's `torch/lib` in its loader
+path. Activation now exports only that data-disk path and the new env's `lib`,
+with no original Isaac library injection. Actual CUDA solves pass. The adapted
+fork is now installed editable by default; `python -I` resolves the repo fork,
+not the immutable upstream research source. `pip check` passes.
+
+Reward widths now use the existing TW task's core physical scales: position
+0.15m, body/root orientation0.5/0.4rad, linear/angular velocity0.75m/s and2rad/s.
+SuperMimic's reward form/weights and horizon32/window8 remain. G1 defaults are
+preserved for G1. Training data are332 `walking`-label clips from331 source
+families,153960 frames at50Hz; those labels do not prove uniformly straight
+walking. The fixed7 holdout contains3 standing-upper and4 mixed walking clips.
+
+Physics-v3 plus TW reward scales completed actual4-iteration collect/fit/imagine
+smoke and2 resumed iterations. Audits confirmed finite changing WM/encoder/
+decoder/critic parameters and Adam continuation WM8->12, actor4->6, critic16->24.
+Across resumed physical stepping, max projection residual9.61e-6, free-momentum
+error5.05e-8 and no kinetic-energy increase were reported. State/action joint
+orders and physical/reward contracts are saved and checked on resume.44 fast
+tests passed with zero failures/errors. Reports are under
+`/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/`:
+`static_mass_metric/report.json`, `impulse_mass_metric_fp64/report.json`,
+`physics_v3_runtime_audit.json`, `physics_v3_smoke_audit.json`,
+`physics_v3_reload_audit.json`; logs/JUnit are in data `projects/supermimic_research`.
+
+Fresh physics-v3 training is required: older networks learned invalid dynamics
+and a different default-observation offset, so they are not reused. Profile
+`run_tw_supermimic_physics_v3.sh` starts seed42,256envs,1000 iterations, all332
+clips, full network widths, WM512/10 updates, policy512/chunk128, H32/window8,
+checkpoint every100. The wrapper verifies actual final iteration/physics tag
+before reporting success. The final worker uses that run's `run_dir`, audits
+900->1000 and evaluates the fixed final checkpoint on all7 clips plus zero
+baseline. Effects, full video review and final delivery remain unverified.

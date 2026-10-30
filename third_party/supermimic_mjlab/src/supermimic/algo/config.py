@@ -18,6 +18,14 @@ class SuperMimicCfg:
   this implementation; every value is configurable from the command line.
   """
 
+    # Robot-specific metric scales; defaults preserve upstream G1 behavior.
+    reward_body_pos_std: float = 0.3
+    reward_root_pos_std: float = 0.3
+    reward_body_ori_std: float = 0.4
+    reward_root_ori_std: float = 0.4
+    reward_body_lin_vel_std: float = 1.0
+    reward_body_ang_vel_std: float = 3.14
+
     # Data collection.
     buffer_steps: int = 1000
     """Replay-buffer length in simulator steps per environment (Table A.5)."""

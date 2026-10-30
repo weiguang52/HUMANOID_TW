@@ -60,6 +60,7 @@ def test_open_loop_horizons_match_recorded_dynamics_without_off_by_one():
         assert row["root_position_error_mean_m"] < 1e-6
         assert row["joint_position_rmse_rad"] < 1e-6
         assert row["joint_velocity_rmse_rad_s"] < 1e-6
+        assert row["root_orientation_error_p95_rad"] < 1e-6
 
 
 def test_measurement_keeps_meters_radians_and_short_episodes():
@@ -67,11 +68,23 @@ def test_measurement_keeps_meters_radians_and_short_episodes():
     for state in rows["next_state"]:
         state[0] += 1.0
         state[13:43] += 0.5
+        state[3:7] = np.array([np.sqrt(0.5), 0.0, 0.0, np.sqrt(0.5)], dtype=np.float32)
+        state[7:10] += 0.25
+        state[10:13] += 0.75
     result = module.audit_world_model(trainer, rows)
     np.testing.assert_allclose(
         result["1"]["root_position_error_mean_m"], 1.0, atol=1e-6
     )
     np.testing.assert_allclose(result["1"]["joint_position_rmse_rad"], 0.5, atol=1e-6)
+    np.testing.assert_allclose(
+        result["1"]["root_orientation_error_p95_rad"], np.pi / 2, atol=1e-6
+    )
+    np.testing.assert_allclose(
+        result["1"]["root_linear_velocity_rmse_m_s"], 0.25, atol=1e-6
+    )
+    np.testing.assert_allclose(
+        result["1"]["root_angular_velocity_rmse_rad_s"], 0.75, atol=1e-6
+    )
     assert result["8"]["windows"] == 0 and result["32"]["windows"] == 0
 
 

@@ -7,6 +7,7 @@ from mjlab.actuator import BuiltinPositionActuatorCfg
 from mjlab.entity import EntityArticulationInfoCfg, EntityCfg
 from mjlab.utils.spec_config import CollisionCfg
 from .contract import (
+    CUSTOM_HUMANOID_30DOF_JOINT_NAMES,
     LEG_MAJOR_JOINTS,
     FOOT_JOINTS,
     WAIST_JOINTS,
@@ -48,10 +49,17 @@ def get_tw_robot_cfg():
         spec_fn=get_spec,
         init_state=EntityCfg.InitialStateCfg(
             pos=(0.0, 0.0, 0.264),
+            # mjlab resolves the first matching pattern. A broad ".*": 0
+            # would shadow the shoulder defaults and command the wrong pose.
             joint_pos={
-                ".*": 0.0,
-                "left_shoulder_roll_joint": -math.pi / 2,
-                "right_shoulder_roll_joint": math.pi / 2,
+                name: (
+                    -math.pi / 2
+                    if name == "left_shoulder_roll_joint"
+                    else math.pi / 2
+                    if name == "right_shoulder_roll_joint"
+                    else 0.0
+                )
+                for name in CUSTOM_HUMANOID_30DOF_JOINT_NAMES
             },
             joint_vel={".*": 0.0},
         ),

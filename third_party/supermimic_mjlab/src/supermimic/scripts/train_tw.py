@@ -12,6 +12,7 @@ from mjlab.envs import ManagerBasedRlEnv
 from supermimic.config.tw.velocity_limits import (
     enable_tw_velocity_limits,
     disable_tw_velocity_limits,
+    velocity_projection_stats,
 )
 from supermimic.algo.config import SuperMimicCfg
 from supermimic.algo.trainer import SuperMimicTrainer
@@ -100,7 +101,7 @@ def main() -> None:
     import hashlib
     import json
     import os
-    from supermimic.config.tw.velocity_limits import LIMITS
+    from supermimic.config.tw.velocity_limits import LIMITS, PHYSICS_CONTRACT
 
     cfg = args.sm
     cfg.extra.update(
@@ -113,6 +114,12 @@ def main() -> None:
                 json.dumps(files).encode()
             ).hexdigest(),
             "tw_joint_speed_limits": LIMITS,
+            "tw_physics_contract": PHYSICS_CONTRACT,
+            "tw_reward_scales": {
+                key: value
+                for key, value in vars(cfg).items()
+                if key.startswith("reward_")
+            },
             "tw_context_layout": "mean_friction_encoder_bias_com_v1",
             "tw_replay_window_contract": "episode_contiguous_pool_v2",
             "tw_history_contract": "past_only_shared_bias_reset_padding_v2",
@@ -129,6 +136,8 @@ def main() -> None:
             "tw_mjcf_sha256",
             "tw_motion_input_sha256",
             "tw_joint_speed_limits",
+            "tw_physics_contract",
+            "tw_reward_scales",
         ):
             if previous_extra.get(key) != cfg.extra[key]:
                 raise ValueError(f"TW resume contract mismatch: {key}")
@@ -209,12 +218,21 @@ def main() -> None:
 
     env = ManagerBasedRlEnv(env_cfg, device=args.device)
     enable_tw_velocity_limits(env)
+    cfg.extra["tw_action_joint_names"] = list(
+        env.action_manager.get_term("joint_pos").target_names
+    )
+    cfg.extra["tw_state_joint_names"] = list(env.scene["robot"].joint_names)
+    if args.resume is not None:
+        for key in ("tw_action_joint_names", "tw_state_joint_names"):
+            if previous_extra.get(key) != cfg.extra[key]:
+                raise ValueError(f"TW resume ordering mismatch: {key}")
     trainer = SuperMimicTrainer(env, cfg, log_dir=cfg.log_dir)
     if args.resume is not None:
         trainer.load(args.resume)
     try:
         trainer.train()
         trainer.save("checkpoint_final.pt")
+        print("TW_PROJECTION_STATS", velocity_projection_stats(env), flush=True)
     except KeyboardInterrupt:
         print("[INFO] Interrupted; saving checkpoint_interrupt.pt ...", flush=True)
         trainer.save("checkpoint_interrupt.pt")

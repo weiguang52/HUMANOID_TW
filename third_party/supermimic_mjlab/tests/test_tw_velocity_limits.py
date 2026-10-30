@@ -1,38 +1,64 @@
-"""Physical speed caps: preserve floating-base acceleration and cap both signs."""
+"""Floating-base speed constraints must conserve momentum and remove energy."""
 
-import numpy as np
-import warp as wp
-from supermimic.config.tw.velocity_limits import _bounded_acceleration, LIMITS
+import torch
+from supermimic.config.tw.velocity_projection import project_velocity_mass_metric
+from supermimic.config.tw.velocity_limits import LIMITS
 
 
-def test_velocity_projection_before_position_integration():
-    velocity = np.array(
-        [[10.0, 1.0, -1.0, 0.0], [-5.0, -1.0, 1.0, 0.0]], dtype=np.float32
+def test_coupled_root_reaction_matches_analytic_solution():
+    mass = torch.tensor([[[2.0, 1.0], [1.0, 2.0]]], dtype=torch.float64)
+    velocity = torch.tensor([[0.0, 4.0]], dtype=torch.float64)
+    actual, stats = project_velocity_mass_metric(
+        velocity, mass, torch.tensor([0.0, 2.0]), free_dofs=1
     )
-    acceleration = np.array(
-        [[100.0, 10000.0, -10000.0, 10.0], [-100.0, -10000.0, 10000.0, -10.0]],
-        dtype=np.float32,
-    )
-    dt = np.array([0.005], dtype=np.float32)
-    caps = np.array([0.0, 2.0, 3.0, 2.0], dtype=np.float32)
-    with wp.ScopedDevice("cpu"):
-        v = wp.array(velocity, dtype=float)
-        a = wp.array(acceleration, dtype=float)
-        output = wp.empty_like(a)
-        wp.launch(
-            _bounded_acceleration,
-            dim=velocity.shape,
-            inputs=[wp.array(dt), v, a, wp.array(caps)],
-            outputs=[output],
+    torch.testing.assert_close(actual, torch.tensor([[1.0, 2.0]], dtype=torch.float64))
+    assert stats["momentum_error"] < 1e-12
+    assert stats["energy_increase"] == 0.0
+
+
+def test_full_30dof_projection_preserves_free_momentum_energy_and_bounds():
+    torch.manual_seed(42)
+    batch = 8
+    transform = torch.eye(36, dtype=torch.float64).expand(batch, -1, -1).clone()
+    transform[:, :6, 6:] = torch.randn(batch, 6, 30, dtype=torch.float64) * 0.05
+    base = (
+        torch.diag(
+            torch.tensor(
+                [0.8, 0.8, 0.8, 0.002, 0.002, 0.002] + [0.001] * 30, dtype=torch.float64
+            )
         )
-        projected_a = output.numpy()
-    expected = np.clip(velocity + dt[0] * acceleration, -caps, caps)
-    expected[:, 0] = velocity[:, 0] + dt[0] * acceleration[:, 0]
-    np.testing.assert_allclose(projected_a[:, 0], acceleration[:, 0], rtol=0, atol=0)
-    bounded_v = velocity + dt[0] * projected_a
-    np.testing.assert_allclose(bounded_v, expected, atol=1e-6)
-    # The integrator subsequently uses this velocity for positions, not the uncapped one.
-    np.testing.assert_allclose(dt[0] * bounded_v, dt[0] * expected, atol=1e-8)
+        .expand(batch, -1, -1)
+        .clone()
+    )
+    a = torch.randn(batch, 30, 30, dtype=torch.float64) * 0.005
+    base[:, 6:, 6:] += a.transpose(-1, -2) @ a
+    mass = transform.transpose(-1, -2) @ base @ transform
+    velocity = torch.randn(batch, 36, dtype=torch.float64) * 8
+    caps = torch.tensor([0.0] * 6 + [2.0] * 30, dtype=torch.float64)
+    actual, stats = project_velocity_mass_metric(velocity, mass, caps)
+    assert (actual[:, 6:].abs() <= 2.0).all()
+    before = (mass @ velocity.unsqueeze(-1)).squeeze(-1)
+    after = (mass @ actual.unsqueeze(-1)).squeeze(-1)
+    torch.testing.assert_close(after[:, :6], before[:, :6], atol=1e-10, rtol=1e-10)
+    assert ((actual * after).sum(-1) <= (velocity * before).sum(-1) + 1e-10).all()
+    naive = velocity.clone()
+    naive[:, 6:] = naive[:, 6:].clamp(-2.0, 2.0)
+    assert (
+        (mass @ naive.unsqueeze(-1)).squeeze(-1)[:, :6] - before[:, :6]
+    ).abs().max() > 0.001
+    assert stats["residual"] <= 1e-5
+
+
+def test_inactive_limits_leave_all_velocity_bits_unchanged():
+    velocity = torch.tensor([[100.0, 0.1]], dtype=torch.float64)
+    actual, stats = project_velocity_mass_metric(
+        velocity,
+        torch.eye(2, dtype=torch.float64)[None],
+        torch.tensor([0.0, 2.0]),
+        free_dofs=1,
+    )
+    assert actual is velocity
+    assert not stats["active"]
 
 
 def test_original_tw_joint_group_caps():

@@ -24,5 +24,6 @@ source /opt/conda/etc/profile.d/conda.sh
 conda activate "$GPUFREE_DATA_ROOT/conda_envs/env_supermimic" || return 1
 unset PYTHONHOME
 export PYTHONPATH="$GPUFREE_DATA_ROOT/projects/HUMANOID_TW/third_party/supermimic_mjlab/src"
-unset LD_LIBRARY_PATH
+# Keep lazy CUDA linear-algebra loading inside this independent data-disk env.
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib/python3.11/site-packages/torch/lib:$CONDA_PREFIX/lib"
 cd "$GPUFREE_DATA_ROOT/projects/HUMANOID_TW"

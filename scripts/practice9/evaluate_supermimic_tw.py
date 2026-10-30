@@ -18,6 +18,7 @@ from supermimic.algo.trainer import SuperMimicTrainer
 from supermimic.config.tw.env_cfgs import tw_supermimic_env_cfg
 from supermimic.config.tw.velocity_limits import (
     LIMITS,
+    PHYSICS_CONTRACT,
     disable_tw_velocity_limits,
     enable_tw_velocity_limits,
 )
@@ -67,6 +68,11 @@ def audit_world_model(trainer, transitions):
             root_error = torch.linalg.vector_norm(
                 prediction[:, :3] - target[:, :3], dim=-1
             )
+            predicted_quat = torch.nn.functional.normalize(prediction[:, 3:7], dim=-1)
+            target_quat = torch.nn.functional.normalize(target[:, 3:7], dim=-1)
+            root_angle = 2 * torch.acos(
+                (predicted_quat * target_quat).sum(-1).abs().clamp(0.0, 1.0)
+            )
             joint_error = prediction[:, 13:43] - target[:, 13:43]
             velocity_error = prediction[:, 43:73] - target[:, 43:73]
             limits = torch.tensor(
@@ -77,6 +83,16 @@ def audit_world_model(trainer, transitions):
                     "root_position_error_mean_m": float(root_error.mean()),
                     "root_position_error_p95_m": float(
                         torch.quantile(root_error, 0.95)
+                    ),
+                    "root_orientation_error_mean_rad": float(root_angle.mean()),
+                    "root_orientation_error_p95_rad": float(
+                        torch.quantile(root_angle, 0.95)
+                    ),
+                    "root_linear_velocity_rmse_m_s": float(
+                        (prediction[:, 7:10] - target[:, 7:10]).square().mean().sqrt()
+                    ),
+                    "root_angular_velocity_rmse_rad_s": float(
+                        (prediction[:, 10:13] - target[:, 10:13]).square().mean().sqrt()
                     ),
                     "joint_position_rmse_rad": float(
                         joint_error.square().mean().sqrt()
@@ -111,6 +127,7 @@ def evaluate(args):
     extra = checkpoint["cfg"].get("extra", {})
     assert extra.get("tw_joint_coordinate_contract") == "tw123_yaw_waist_v3"
     assert extra.get("tw_joint_speed_limits") == LIMITS
+    assert extra.get("tw_physics_contract") == PHYSICS_CONTRACT
     assert extra.get("tw_context_layout") == "mean_friction_encoder_bias_com_v1"
     assert extra.get("tw_replay_window_contract") == "episode_contiguous_pool_v2"
     assert extra.get("tw_history_contract") == "past_only_shared_bias_reset_padding_v2"

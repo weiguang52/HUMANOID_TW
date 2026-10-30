@@ -97,7 +97,15 @@ class SuperMimicTrainer:
             self.spec.tracked_body_indices,
             self.anchor_index,
             self.spec.soft_joint_pos_limits,
-            TrackingRewardCfg(dt=env.step_dt),
+            TrackingRewardCfg(
+                dt=env.step_dt,
+                body_pos_std=cfg.reward_body_pos_std,
+                root_pos_std=cfg.reward_root_pos_std,
+                body_ori_std=cfg.reward_body_ori_std,
+                root_ori_std=cfg.reward_root_ori_std,
+                body_lin_vel_std=cfg.reward_body_lin_vel_std,
+                body_ang_vel_std=cfg.reward_body_ang_vel_std,
+            ),
         ).to(self.device)
         self.proprio = ProprioFeatures(
             self.spec.num_joints,

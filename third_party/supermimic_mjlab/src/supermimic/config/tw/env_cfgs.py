@@ -49,5 +49,12 @@ def tw_supermimic_cfg():
     cfg.context_torso_body_name = "chest"
     cfg.context_left_foot_geom_pattern = r"^left_foot_collision(_\d+)?$"
     cfg.context_right_foot_geom_pattern = r"^right_foot_collision(_\d+)?$"
+    # Carry existing TW core metric scales into the SuperMimic reward form.
+    cfg.reward_body_pos_std = 0.15
+    cfg.reward_root_pos_std = 0.15
+    cfg.reward_body_ori_std = 0.5
+    cfg.reward_root_ori_std = 0.4
+    cfg.reward_body_lin_vel_std = 0.75
+    cfg.reward_body_ang_vel_std = 2.0
     cfg.experiment_name = "tw_supermimic"
     return cfg
