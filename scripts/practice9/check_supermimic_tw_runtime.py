@@ -38,7 +38,7 @@ def main():
             result = env.step(torch.zeros((args.num_envs, 30), device="cuda:0"))
             assert torch.isfinite(robot.data.joint_pos).all()
             assert torch.isfinite(robot.data.joint_vel).all()
-            assert torch.isfinite(robot.data.root_pos_w).all()
+            assert torch.isfinite(robot.data.root_link_pos_w).all()
             maximum = max(maximum, float(robot.data.joint_vel.abs().max()))
             assert torch.all(robot.data.joint_vel.abs() <= limits + 1e-5)
             terminations += int(result[2].sum())
