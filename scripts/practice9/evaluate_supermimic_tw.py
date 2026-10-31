@@ -206,6 +206,7 @@ def evaluate(args):
                 )
                 frames = {"front": [], "side": []}
                 samples = []
+                contact_samples = []
                 transitions = {
                     key: [] for key in ("state", "next_state", "action", "context")
                 }
@@ -242,6 +243,12 @@ def evaluate(args):
                     assert torch.isfinite(command.robot_body_pos_w).all()
                     assert torch.isfinite(command.robot_joint_vel).all()
                     next_state = trainer.extractor.state()
+                    if args.native_contacts:
+                        from supermimic_native_contacts import native_foot_contacts
+                        before_contact_read = next_state.clone()
+                        feet = native_foot_contacts(env)
+                        assert torch.equal(before_contact_read, trainer.extractor.state())
+                        contact_samples.append(dict(step=step+1, feet=feet))
                     for key, value in (
                         ("state", state),
                         ("next_state", next_state),
@@ -351,6 +358,12 @@ def evaluate(args):
                         path = args.output / f"{row['id']}_{agent}_{view}.mp4"
                         mediapy.write_video(str(path), view_frames, fps=50)
                         result[view + "_video"] = path.name
+                if args.native_contacts:
+                    assert len(contact_samples) == len(samples)
+                    result['native_contact_file'] = f"{row['id']}_{agent}_native_contacts.json"
+                    (args.output / result['native_contact_file']).write_text(json.dumps(dict(
+                        source='mujoco_warp.get_data_into then mj_contactForce; no CPU forward/step',
+                        state_read_unchanged=True, samples=contact_samples)))
                 transition_path = args.output / f"{row['id']}_{agent}_transitions.npz"
                 np.savez_compressed(
                     transition_path, **{k: np.stack(v) for k, v in transitions.items()}
@@ -392,4 +405,5 @@ if __name__ == "__main__":
         "--agents", nargs="+", choices=["trained", "zero", "trained_head_zero"], default=["trained", "zero"]
     )
     parser.add_argument("--video", action="store_true")
+    parser.add_argument("--native-contacts", action="store_true", help="Read actual GPU sole contacts without changing control")
     evaluate(parser.parse_args())
