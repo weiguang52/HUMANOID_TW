@@ -74,7 +74,7 @@ try:
     with torch.no_grad():
      predicted=t.world_model(s,u,ctx);result=env.step(u);actual=t.extractor.state().clone()
      rp=reward(predicted,u,reference);ra=reward(actual,u,reference)
-    records.append(dict(replay_state_max_error=float((s-s0).abs().max()),epsilon=eps,joint=j,sign=sign,state=s[0].cpu().numpy(),
+    records.append(dict(context=ctx[0].detach().cpu().numpy().copy(),action=u[0].detach().cpu().numpy().copy(),replay_state_max_error=float((s-s0).abs().max()),epsilon=eps,joint=j,sign=sign,state=s[0].cpu().numpy(),
      next_state=actual[0].cpu().numpy(),predicted=predicted[0].cpu().numpy(),
      actual_reward=float(ra),predicted_reward=float(rp),terminated=bool((result[2]|result[3])[0])))
    print(eps,j,flush=True)
@@ -100,4 +100,6 @@ try:
   report['rows'].append(row)
  (a.output/'results.json').write_text(json.dumps(report,indent=2));print(json.dumps(report),flush=True)
 finally:
+ if records and not (a.output/'paired_responses.npz').exists():
+  np.savez_compressed(a.output/'partial_responses.npz',**{k:np.array([row[k] for row in records]) for k in records[0]})
  env.close();disable_tw_velocity_limits(env)

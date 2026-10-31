@@ -43,11 +43,19 @@ try:
  reference=_squeeze(t.library.gather(torch.zeros(count,device='cuda:0',dtype=torch.long),torch.full((count,),plan.get('warmup_steps',0),device='cuda:0',dtype=torch.long),1))
  actions=torch.zeros((count,30),device='cuda:0')
  actions[torch.arange(count),torch.tensor(trace['joint'])]=torch.tensor(trace['epsilon']*trace['sign'],device='cuda:0',dtype=torch.float32)
+ contexts=ctx.expand(count,-1)
+ if 'context' in trace:
+  contexts=torch.tensor(trace['context'],device='cuda:0')
+  torch.testing.assert_close(contexts,ctx.expand_as(contexts),rtol=0,atol=1e-7)
+ if 'action' in trace:
+  recorded_actions=torch.tensor(trace['action'],device='cuda:0')
+  torch.testing.assert_close(recorded_actions,actions,rtol=0,atol=0)
+  actions=recorded_actions
  def reward(state,u):
   b=t.forward_kinematics(state[:,:3],state[:,3:7],state[:,7:10],state[:,10:13],state[:,13:43],state[:,43:])
   return t.reward.forward_from_bodies(state,u,torch.zeros_like(u),reference,*b)[0]
  with torch.no_grad():
-  predicted=t.world_model(states,actions,ctx.expand(count,-1));actual=torch.tensor(trace['next_state'],device='cuda:0')
+  predicted=t.world_model(states,actions,contexts);actual=torch.tensor(trace['next_state'],device='cuda:0')
   actual_reward=reward(actual,actions)
   torch.testing.assert_close(actual_reward,torch.tensor(trace['actual_reward'],device='cuda:0',dtype=torch.float32),rtol=0,atol=1e-7)
   predicted_reward=reward(predicted,actions).cpu().numpy()
@@ -65,7 +73,7 @@ try:
    x=trace['next_state'][ids,sl];y=pred[ids,sl]
    row[name]=compare((x[1::2]-x[::2])/(2*eps),(y[1::2]-y[::2])/(2*eps))
   rows.append(row)
- np.savez_compressed(a.output/'model_responses.npz',predicted=pred,predicted_reward=predicted_reward,context=ctx.cpu().numpy())
- report=dict(rows=rows,collection=str(a.collection),dynamics_sha256=hashlib.sha256(a.dynamics_checkpoint.read_bytes()).hexdigest(),actual_reward_reconstruction='passed atol1e-7',scope='Same recorded physical branches; context reconstructed under identical deterministic events-disabled setup and warmup, original trace did not store context. Tracking reward only; no oracle correction or policy update.')
+ np.savez_compressed(a.output/'model_responses.npz',predicted=pred,predicted_reward=predicted_reward,context=contexts.cpu().numpy())
+ report=dict(recorded_context='context' in trace,recorded_actions='action' in trace,rows=rows,collection=str(a.collection),dynamics_sha256=hashlib.sha256(a.dynamics_checkpoint.read_bytes()).hexdigest(),actual_reward_reconstruction='passed atol1e-7',scope='Same recorded physical branches; Recorded context/actions used when present and checked against deterministic replay; legacy traces reconstruct context and action, which remains a provenance limitation. Tracking reward only; no oracle correction or policy update.')
  (a.output/'results.json').write_text(json.dumps(report,indent=2));print(json.dumps(report),flush=True)
 finally:env.close();disable_tw_velocity_limits(env)
