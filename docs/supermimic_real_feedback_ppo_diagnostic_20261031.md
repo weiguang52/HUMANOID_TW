@@ -481,3 +481,21 @@ max difference2.384e-7; constructed horizontal-translation property error1.863e-
 This is not prediction or control acceptance. Same H8/H1, action/state Jacobian
 and velocity-value losses; formal1000 matched pair keeps all original gates and
 reports all native pose/velocity responses. No policy promotion.
+
+### 2026-10-31T16:43:37+00:00 : horizontal symmetry result and conditioning plan
+
+Horizontal-equivariant final1000 candidate passes all18 trajectory nonregression
+checks against its matched control, but still fails3 vs initial H8 (H1 angular
+velocity, H8 root orientation/angular velocity) and4 branch checks. Rejected.
+Native-pose validation confirms XY angular responses reduced from control
+0.000498/0.000811rad/s to1.763e-7/4.526e-8, matching native noise-scale response.
+This fixes a spurious position dependency, not complete model/control validation.
+
+Preregistered next quaternion feature-conditioning experiment keeps physical
+state/outputs, non-network normalization, existing losses and XY symmetry fixed.
+Fixed mean/std use4505 original fit states only. A training-only affine feature
+pre-hook plus first-layer compensation must preserve the initial function;
+remove hook and algebraically export ordinary raw-coordinate weights. Verify
+round-trip inference. Conditioned-coordinate optimizer must be labelled or
+removed rather than represented as ordinary raw-coordinate resume state.
+No implementation started. Evidence: quaternion_conditioning_fit_v1/plan.json.
