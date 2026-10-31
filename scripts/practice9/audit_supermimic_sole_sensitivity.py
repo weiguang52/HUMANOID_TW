@@ -8,15 +8,21 @@ from supermimic.algo.config import SuperMimicCfg
 from supermimic.algo.trainer import SuperMimicTrainer
 from supermimic.config.tw.env_cfgs import tw_supermimic_env_cfg
 from supermimic.config.tw.velocity_limits import enable_tw_velocity_limits,disable_tw_velocity_limits
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--additional-dynamics-checkpoint',type=Path);a=p.parse_args()
 assert not a.output.exists();a.output.mkdir()
 cases=['standing_retention_zero_readout_v1','standing_policy_anchor_v1'];base=Path('/root/gpufree-data/twrl_runs/supermimic_tw_20261031')
 models={k:torch.load(base/k/'calibrated_retained/checkpoint_final.pt',map_location='cuda:0',weights_only=False) for k in cases}
+if a.additional_dynamics_checkpoint is not None:
+ extra_model=torch.load(a.additional_dynamics_checkpoint,map_location='cuda:0',weights_only=False)
+ assert extra_model['kind']=='offline_dynamics_calibration_not_policy_checkpoint' and extra_model['calibration_updates']==1000
+ models['additional_offline_dynamics']=extra_model
 c=models[cases[-1]];cfg=SuperMimicCfg(**c['cfg']);cfg.compile=False;cfg.wm_anchor_collection=None;cfg.policy_anchor_collection=None
 asset=Path(os.environ['TW_SUPERMIMIC_MJCF']);assert hashlib.sha256(asset.read_bytes()).hexdigest()==cfg.extra['tw_mjcf_sha256']
 manifest=Path('/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/static_probe/manifest.json');m=json.loads(manifest.read_text());assert m['synthetic_diagnostic']
 collections=['action_response_v2','action_response_replay_v2_warmup10','action_response_replay_v2_warmup50','action_response_replay_v2_warmup100','action_response_smallscale_warmup50']
 plan=dict(collections=collections,models={k:hashlib.sha256((base/k/'calibrated_retained/checkpoint_final.pt').read_bytes()).hexdigest() for k in cases},scope='All existing fixed one-step branches; sole score=sum(1-world_z_cosine), diagnostic only. No model, policy or reward updates; not full control-gradient or causality proof.')
+if a.additional_dynamics_checkpoint is not None:
+ plan['models']['additional_offline_dynamics']=hashlib.sha256(a.additional_dynamics_checkpoint.read_bytes()).hexdigest()
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 e=tw_supermimic_env_cfg([m['motions'][0]['file']],num_envs=1,play=True);e.seed=42;e.events={};e.auto_reset=False;e.commands['motion'].pose_range={};e.commands['motion'].velocity_range={};e.commands['motion'].joint_position_range=(0.,0.)
 env=ManagerBasedRlEnv(e,device='cuda:0');enable_tw_velocity_limits(env);t=SuperMimicTrainer(env,cfg,log_dir=a.output/'runtime');t.load(base/cases[-1]/'calibrated_retained/checkpoint_final.pt');t.initialize()
