@@ -349,3 +349,19 @@ coordinate summaries are retained. Raw matrices and spectral results agree.
 Preregistered root_state_response_fit_v1/plan.json compares coefficient0/1 for
 added root-state Jacobian loss with identical previous terms and forward budget.
 No implementation or fitting has started; smoke and source audit remain required.
+
+### 2026-10-31T15:33:47+00:00 : root-state response smoke
+
+Implemented root-state response supervision using fit48 axis conditions only.
+Central differences match the independent native float64 calculation; input
+and output Jacobian coordinates use immutable parent state standard deviations.
+The gradient is finite/nonzero(norm0.140855). Both four-update smoke arms passed
+independent frozen22-tensor, updated8-tensor, optimizer-step4 and artifact-kind
+checks. No policy artifact or prediction acceptance is implied.
+The formal matched pair keeps H8/H1/action response and explicit pose structure,
+adds64 root-state endpoint predictions equally in both arms, and changes only
+root-state coefficient0/1. Metadata now explicitly separates576 base full-state
+targets from704 prediction endpoints per update; original target count omitted
+paired endpoints as full-state targets because their loss is a Jacobian loss.
+The full runner retains all original audits and adds all native root-state
+conditions without introducing a new relaxed gate or automatic promotion.

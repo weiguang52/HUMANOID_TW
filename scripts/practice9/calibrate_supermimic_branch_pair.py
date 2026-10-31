@@ -6,10 +6,13 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--root-state-coefficient',type=float,choices=[0.,1.]);p.add_argument('--root-state-collection',type=Path)
 p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.root_state_coefficient is not None:assert a.root_state_collection is not None and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
+else:assert a.root_state_collection is None
 if a.response_coefficient is not None:assert math.isfinite(a.response_coefficient) and a.response_coefficient>=0
 if a.response_coefficient not in [None,0.,1.]:assert a.response_scale_audit is not None
 if a.response_coefficient is not None:assert a.arm=='candidate' and a.response_fit_audit is not None
@@ -86,6 +89,14 @@ response_loss=None
 if a.response_coefficient is not None:
  from supermimic_antithetic_response import AntitheticResponseLoss
  response_loss=AntitheticResponseLoss(a.branches,a.response_fit_audit)
+plan['base_state_targets_per_update']=576
+plan['prediction_endpoints_per_update']=576+(64 if a.response_coefficient is not None else 0)+(64 if a.root_state_coefficient is not None else 0)
+root_state_loss=None
+if a.root_state_coefficient is not None:
+ from supermimic_root_state_response import RootStateResponseLoss
+ root_state_loss=RootStateResponseLoss(a.root_state_collection,cfg)
+ plan.update(root_state_coefficient=a.root_state_coefficient,root_state_batch=16,root_state_fit_files=root_state_loss.files,root_state_collection_plan_sha256=hashlib.sha256((a.root_state_collection/'plan.json').read_bytes()).hexdigest(),differing_variable='Root-state Jacobian coefficient0 vs1; equal extra64 endpoints per update')
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
 try:
@@ -97,8 +108,12 @@ try:
   if response_loss is not None:
    response_value,root_response,joint_response=response_loss(m)
    loss=loss+a.response_coefficient*response_value
+  root_state_value=None
+  if root_state_loss is not None:
+   root_state_value=root_state_loss(m)
+   loss=loss+a.root_state_coefficient*root_state_value
   assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
-  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None)),flush=True)
+  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None)),flush=True)
  for key,value in m.state_dict().items():
   assert torch.isfinite(value).all()
   if not key.startswith('net.'):assert torch.equal(value.cpu(),w[key]),key
