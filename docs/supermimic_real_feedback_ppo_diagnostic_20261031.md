@@ -333,3 +333,19 @@ error9.909e-7 below original1e-5 tolerance. These are state perturbations,
 not action perturbations or episode windows. Full collection uses fit warmups
 5/25/75/150 and temporal-validation15/35/125/175, declared before simulation.
 The diagnostic does not establish motion-source generalization or train policy.
+
+### 2026-10-31T15:29:29+00:00 : native state sensitivity evidence
+
+Full native collection completed40 files/480 transitions, no terminations;
+requested-state error1.49e-8 and replay error3.62e-6 passed independent audit.
+Frozen root-state response comparison includes all declared conditions and
+three fixed models, without fitting. Held root6x6 velocity-subblock spectral
+radius median is0.91723 native,0.98972 initial H8,0.98722 structured response,
+and0.97827 measured-weight. These are partial local derivatives, not whole
+system or closed-loop stability proofs. They support investigating missing
+state-response damping supervision, distinct from action-response training.
+V2 reports response errors in declared normalized input coordinates; v1 raw
+coordinate summaries are retained. Raw matrices and spectral results agree.
+Preregistered root_state_response_fit_v1/plan.json compares coefficient0/1 for
+added root-state Jacobian loss with identical previous terms and forward budget.
+No implementation or fitting has started; smoke and source audit remain required.
