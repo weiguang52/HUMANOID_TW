@@ -7,8 +7,11 @@ p=argparse.ArgumentParser(description=__doc__)
 for key in ['artifact','source-checkpoint','collection','output']:p.add_argument('--'+key,type=Path,required=True)
 a=p.parse_args();assert not a.output.exists()
 c=torch.load(a.source_checkpoint,map_location='cpu',weights_only=False);d=torch.load(a.artifact,map_location='cpu',weights_only=False)
-assert d['kind']=='offline_dynamics_calibration_not_policy_checkpoint' and d['calibration_updates']==1000
+assert d['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint'] and d['calibration_updates']==1000
 assert d['calibration_plan']['source_checkpoint_sha256']==hashlib.sha256(a.source_checkpoint.read_bytes()).hexdigest()
+if d['kind']=='offline_pose_velocity_calibration_not_policy_checkpoint':
+ assert d['prediction_contract']==d['calibration_plan']['prediction_contract']
+ assert d['prediction_contract']['contract']=='pose_from_velocity_fit_alpha_v1'
 assert not any(k in d for k in ['actor_critic','actor_optimizer','critic_optimizer'])
 count=0
 def finite(x):

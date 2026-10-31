@@ -7,13 +7,17 @@ from supermimic.algo.networks import WorldModel,WorldModelCfg
 from supermimic.algo.kinematics import DifferentiableKinematics,build_kinematic_tree
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['pair-root','branches','asset','parent']:p.add_argument('--'+key,type=Path,required=True)
-p.add_argument('--pose-integration-fit-audit',type=Path);p.add_argument('--output',type=Path);a=p.parse_args();output=a.output or a.pair_root/'branch_validation.json';assert not output.exists()
+p.add_argument('--candidate-checkpoint',type=Path);p.add_argument('--pose-integration-fit-audit',type=Path);p.add_argument('--output',type=Path);a=p.parse_args();output=a.output or a.pair_root/'branch_validation.json';assert not output.exists()
 paths={'parent':a.parent,**{arm:a.pair_root/arm/'fit/world_model_calibrated.pt' for arm in ['control','candidate']}}
-models={};configs={}
+if a.candidate_checkpoint is not None:
+ paths['reference_candidate']=paths['candidate'];paths['candidate']=a.candidate_checkpoint
+models={};configs={};contracts={}
 for name,path in paths.items():
- c=torch.load(path,map_location='cpu',weights_only=False);assert c['kind']=='offline_dynamics_calibration_not_policy_checkpoint' and c['calibration_updates']==1000;cfg=c['cfg'];w=c['world_model'];configs[name]=cfg
+ c=torch.load(path,map_location='cpu',weights_only=False);assert c['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint'] and c['calibration_updates']==1000;cfg=c['cfg'];w=c['world_model'];configs[name]=cfg;contracts[name]=c.get('prediction_contract')
  assert cfg['extra']['tw_mjcf_sha256']==hashlib.sha256(a.asset.read_bytes()).hexdigest()
- model=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();model.load_state_dict(w);model.eval();models[name]=model
+ model=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();model.load_state_dict(w);model.eval();
+ from supermimic_pose_integration_diagnostic import apply_offline_prediction_contract
+ models[name]=apply_offline_prediction_contract(model,c)
 if a.pose_integration_fit_audit is not None:
  from supermimic_pose_integration_diagnostic import PoseIntegrationDiagnostic
  models['candidate_independent']=models['candidate'];paths['candidate_independent']=paths['candidate']
@@ -87,4 +91,5 @@ small=[dict(warmup=x['warmup'],epsilon=x['epsilon']) for x in conditions if x['m
 if small:checks.append(dict(kind='insufficient_physical_signal',conditions=small,passed=False))
 report=dict(passed=all(x['passed'] for x in checks),scope='All1200 held temporal branch/zero transitions and8 derivative conditions; not independent-motion or control acceptance. Sole score stable2qxySquared. Oracle bias correction uses measured zero response, diagnostic only, never deployed or counted as prediction/control success; no gate tuning or promotion.',model_sha256={k:hashlib.sha256(v.read_bytes()).hexdigest() for k,v in paths.items()},sources=sources,state_metrics=state_metrics,derivative_metrics=derivative_metrics,conditions=conditions,checks=checks,promoted=False)
 if a.pose_integration_fit_audit is not None:report['pose_integration_diagnostic']=models['candidate'].metadata
+report['prediction_contracts']=contracts
 output.write_text(json.dumps(report,indent=2,allow_nan=False));print(json.dumps(dict(passed=report['passed'],checks=checks,derivative_metrics=derivative_metrics)))

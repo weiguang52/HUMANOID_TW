@@ -6,7 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
-p.add_argument('--arm',choices=['control','candidate'],required=True);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
+p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 torch.manual_seed(42);c=torch.load(a.parent,map_location='cpu',weights_only=False);assert c['kind']=='offline_dynamics_calibration_not_policy_checkpoint' and c['calibration_plan']['window']==8 and c['calibration_updates']==1000
 w=c['world_model'];cfg=c['cfg'];plan=dict(seed=42,updates=1000,batch=128,window=8,arm=a.arm,trajectory_batch=64,one_step_batch=64,targets_per_update=576,lr=.0001,source_checkpoint_sha256=hashlib.sha256(a.parent.read_bytes()).hexdigest(),one_step_source='original_fit' if a.arm=='control' else 'orthogonal_fit_including_zero',frozen=['termination','normalizers'],policy_artifact=False,selection='Final1000 only; no checkpoint selection, no validation fit')
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
@@ -42,19 +42,34 @@ assert len(one['state'])==(3305 if a.arm=='control' else 1200)
 m=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();m.load_state_dict(w)
 for v in m.parameters():v.requires_grad_(False)
 for v in m.net.parameters():v.requires_grad_(True)
+predictor=m;prediction_contract=None
+if a.pose_integration_fit_audit is not None:
+ assert a.arm=='candidate'
+ from supermimic_pose_integration_diagnostic import PoseVelocityModel,CONTRACT
+ audit=json.loads(a.pose_integration_fit_audit.read_text());assert audit['fit_frames']==4505
+ recorded={(r['source'],r['file']):r['sha256'] for r in audit['sources'] if r['split']=='fit'}
+ expected={('trajectory',r['file']):r['sha256'] for r in files};expected.update({('branch',r['file']):r['sha256'] for r in one_files});assert recorded==expected
+ prediction_contract=dict(contract=CONTRACT,alpha=audit['alpha'],dt=audit['plan']['dt'],fit_audit_sha256=hashlib.sha256(a.pose_integration_fit_audit.read_bytes()).hexdigest(),fit_frames=4505)
+ predictor=PoseVelocityModel(m,prediction_contract);plan['prediction_contract']=prediction_contract
+ plan['differing_variable']='Pose reconstructed from predicted velocities during both H8 and H1 fitting; same parent/data/samplers/budget as previous candidate control'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
 try:
  for update in range(1,1001):
   idx=torch.randint(len(traj['state']),(64,),device='cuda:0',generator=tg);pred=traj['state'][idx];rollout=0
-  for j in range(8):pred=m(pred,traj['action'][idx,j],traj['context'][idx,j]);rollout=rollout+m.state_loss(pred,traj['next_state'][idx,j])/8
-  oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og);h1=m.state_loss(m(one['state'][oi],one['action'][oi],one['context'][oi]),one['next_state'][oi]);loss=.5*rollout+.5*h1
+  for j in range(8):pred=predictor(pred,traj['action'][idx,j],traj['context'][idx,j]);rollout=rollout+m.state_loss(pred,traj['next_state'][idx,j])/8
+  oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og);h1=m.state_loss(predictor(one['state'][oi],one['action'][oi],one['context'][oi]),one['next_state'][oi]);loss=.5*rollout+.5*h1
   assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
   if update%100==0:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn))),flush=True)
  for key,value in m.state_dict().items():
   assert torch.isfinite(value).all()
   if not key.startswith('net.'):assert torch.equal(value.cpu(),w[key]),key
- torch.save(dict(kind='offline_dynamics_calibration_not_policy_checkpoint',world_model=m.state_dict(),cfg=cfg,calibration_plan=plan,calibration_updates=1000,optimizer=opt.state_dict()),a.output/'world_model_calibrated.pt')
+ artifact=dict(kind='offline_dynamics_calibration_not_policy_checkpoint',world_model=m.state_dict(),cfg=cfg,calibration_plan=plan,calibration_updates=1000,optimizer=opt.state_dict())
+ if prediction_contract is not None:
+  from supermimic_pose_integration_diagnostic import POSE_KIND
+  artifact['kind']=POSE_KIND;artifact['prediction_contract']=prediction_contract
+ torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:
- torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict()),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise
+ torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict(),prediction_contract=prediction_contract),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise

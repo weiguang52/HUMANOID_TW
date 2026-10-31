@@ -12,6 +12,8 @@ c=torch.load(a.checkpoint,map_location='cpu',weights_only=False);w=c['world_mode
 assert mapping['state_joint_names']==extra['tw_state_joint_names']
 assert mapping['action_joint_names']==extra['tw_action_joint_names']
 m=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();m.load_state_dict(w,strict=True);m.eval()
+from supermimic_pose_integration_diagnostic import apply_offline_prediction_contract
+m=apply_offline_prediction_contract(m,c)
 if a.pose_integration_fit_audit is not None:
  from supermimic_pose_integration_diagnostic import PoseIntegrationDiagnostic
  m=PoseIntegrationDiagnostic(m,a.pose_integration_fit_audit,hashlib.sha256(a.checkpoint.read_bytes()).hexdigest())
@@ -27,6 +29,7 @@ for r in json.loads((a.collection/'results.json').read_text())['rows']:
  rows.append(dict(r,world_model=metrics,constant_velocity=baseline))
 report=dict(checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),rows=rows,scope='Frozen old model; development source families separated for future fitting. Old policy trained on both partitions, so not a fresh generalization test. No fitting, reset-crossing or padding.')
 if a.pose_integration_fit_audit is not None:report['pose_integration_diagnostic']=m.metadata
+if c.get('prediction_contract') is not None:report['prediction_contract']=c['prediction_contract']
 a.output.write_text(json.dumps(report,indent=2)+'\n')
 for split in ('fit','validation'):
  rr=[r for r in rows if r['split']==split];print(split,len(rr),'H32 root p95 median',float(np.median([r['world_model']['32']['root_position_error_p95_m'] for r in rr if r['world_model']['32']['windows']>0])))
