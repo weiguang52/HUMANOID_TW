@@ -7,8 +7,8 @@ from mjlab.envs import ManagerBasedRlEnv
 from supermimic.config.tw.env_cfgs import tw_supermimic_env_cfg
 from supermimic.config.tw.velocity_limits import enable_tw_velocity_limits,disable_tw_velocity_limits,LIMITS
 from supermimic.algo.state import SuperMimicStateSpec,StateExtractor
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--manifest',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--mapping-only',action='store_true');a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
-m=json.loads(a.manifest.read_text());assert m['synthetic_diagnostic'];plan=dict(seeds=[42,44,43,45],fit_seeds=[42,44],validation_seeds=[43,45],amplitudes=[0,.02,.05,.1],frequency_hz=[.2,1.],ramp_s=1.,steps=1000,note='Fixed before sampling. Synthetic forcing-seed split, not motion-source generalization; no learned policy. Original terminations retained.')
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--manifest',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--seeds',type=int,nargs=4,default=[42,44,43,45]);p.add_argument('--mapping-only',action='store_true');a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
+m=json.loads(a.manifest.read_text());assert m['synthetic_diagnostic'];plan=dict(seeds=a.seeds,fit_seeds=a.seeds[:2],validation_seeds=a.seeds[2:],amplitudes=[0,.02,.05,.1],frequency_hz=[.2,1.],ramp_s=1.,steps=1000,note='Fixed before sampling. Synthetic forcing-seed split, not motion-source generalization; no learned policy. Original terminations retained.')
 plan['manifest']=str(a.manifest);plan['manifest_sha256']=hashlib.sha256(a.manifest.read_bytes()).hexdigest();plan['action_semantics']='reference initial pose converted through actual action ids/offset/scale plus fixed perturbation'
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 cfg=tw_supermimic_env_cfg([m['motions'][0]['file']],num_envs=1,play=True);cfg.events={};cfg.seed=42;cfg.auto_reset=False
