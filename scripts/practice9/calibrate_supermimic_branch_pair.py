@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motion-collection',type=Path);p.add_argument('--motion-audit',type=Path)
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -18,6 +19,10 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_h8_mix is not None:
+ assert a.dynamic_h1_mix is None and a.arm=='candidate' and a.sole_geometry==1 and a.geometry_velocity is None
+ assert a.root_pose_coefficient==a.root_state_coefficient==a.velocity_anchor_coefficient==a.response_coefficient==1 and a.xy_invariance==1
+ assert a.motion_collection is not None and a.motion_audit is not None and a.root_pose_scale_audit is None
 if a.dynamic_h1_mix is not None:assert a.arm=='candidate' and a.sole_geometry==1 and a.geometry_velocity is None and a.root_pose_coefficient==1
 if a.geometry_velocity is not None:assert a.sole_geometry==1 and a.root_pose_coefficient==1 and a.root_pose_scale_audit is None
 if a.sole_geometry is not None:
@@ -88,6 +93,14 @@ if scale_measurement is not None:
 traj={k:torch.tensor(np.stack(v),device='cuda:0') for k,v in traj.items()};one={k:torch.tensor(np.concatenate([d[k] for d in one]),device='cuda:0') for k in traj}
 assert len(one['state'])==(3305 if a.arm=='control' else 1200)
 (a.output/'fit_input.json').write_text(json.dumps(dict(traces=used,windows=len(traj['state']),trajectory_files=files,one_step_count=len(one['state']),one_step_files=one_files),indent=2))
+motion=None
+if a.motion_h8_mix is not None:
+ from supermimic_motion_windows import load_motion_fit_windows
+ motion_info=json.loads((a.motion_collection/'input.json').read_text())
+ assert motion_info['asset_sha256']==cfg['extra']['tw_mjcf_sha256'] and motion_info['physics']==cfg['extra']['tw_physics_contract']
+ motion,motion_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping)
+ plan.update(motion_h8_mix=a.motion_h8_mix,motion_generator_seed=48,motion_collection=str(a.motion_collection.resolve()),motion_audit=str(a.motion_audit.resolve()),motion_input=motion_meta)
+ (a.output/'motion_input.json').write_text(json.dumps(motion_meta,indent=2))
 dynamic=None;dynamic_files=[]
 if a.dynamic_h1_mix is not None:
  fit_rows={row['trace']:row for row in rows if row['split']=='fit'}
@@ -247,16 +260,25 @@ if a.root_pose_scale_audit is not None:
 if a.dynamic_h1_mix is not None:
  plan['differing_variable']='H1 source mix0 vs0.5 dynamic trajectory targets; same64 H1 and768 total endpoints'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.motion_h8_mix is not None:
+ plan['differing_variable']='H8 source64 static vs32 static+32 motion fit windows; H1 branch64 and768 endpoints unchanged'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+mg=torch.Generator(device='cuda:0').manual_seed(48) if a.motion_h8_mix is not None else None
 dg=torch.Generator(device='cuda:0').manual_seed(47) if a.dynamic_h1_mix is not None else None
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
 try:
  for update in range(1,a.updates+1):
-  idx=torch.randint(len(traj['state']),(64,),device='cuda:0',generator=tg);pred=traj['state'][idx];rollout=0
+  idx=torch.randint(len(traj['state']),(64,),device='cuda:0',generator=tg)
+  rollout_batch={k:v[idx] for k,v in traj.items()}
+  if a.motion_h8_mix is not None:
+   mi=torch.randint(len(motion['state']),(32,),device='cuda:0',generator=mg)
+   if a.motion_h8_mix:rollout_batch={k:torch.cat([v[:32],motion[k][mi]],dim=0) for k,v in rollout_batch.items()}
+  pred=rollout_batch['state'];rollout=0
   velocity_rollout=0
   for j in range(8):
-   pred=predictor(pred,traj['action'][idx,j],traj['context'][idx,j]);rollout=rollout+m.state_loss(pred,traj['next_state'][idx,j])/8
-   if a.velocity_anchor_coefficient is not None:velocity_rollout=velocity_rollout+velocity_value_loss(pred,traj['next_state'][idx,j])/8
+   pred=predictor(pred,rollout_batch['action'][:,j],rollout_batch['context'][:,j]);rollout=rollout+m.state_loss(pred,rollout_batch['next_state'][:,j])/8
+   if a.velocity_anchor_coefficient is not None:velocity_rollout=velocity_rollout+velocity_value_loss(pred,rollout_batch['next_state'][:,j])/8
   oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og)
   h1_batch={k:v[oi] for k,v in one.items()}
   if a.dynamic_h1_mix is not None:

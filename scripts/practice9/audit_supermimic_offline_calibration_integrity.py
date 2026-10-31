@@ -68,5 +68,14 @@ if 'dynamic_h1_mix' in d['calibration_plan']:
  extra=json.loads((a.artifact.parent/'dynamic_h1_input.json').read_text())
  assert extra['files']==expected and extra['count']==1305
  assert plan['prediction_endpoints_per_update']==768
+if 'motion_h8_mix' in d['calibration_plan']:
+ plan=d['calibration_plan'];assert plan['motion_h8_mix'] in [0,1] and plan['motion_generator_seed']==48
+ assert 'dynamic_h1_mix' not in plan and plan['prediction_endpoints_per_update']==768
+ from supermimic_motion_windows import load_motion_fit_windows
+ motion_info=json.loads((Path(plan['motion_collection'])/'input.json').read_text())
+ assert motion_info['asset_sha256']==d['cfg']['extra']['tw_mjcf_sha256'] and motion_info['physics']==d['cfg']['extra']['tw_physics_contract']
+ pool,meta=load_motion_fit_windows(Path(plan['motion_collection']),Path(plan['motion_audit']),mapping,device='cpu')
+ assert meta==plan['motion_input']==json.loads((a.artifact.parent/'motion_input.json').read_text())
+ assert len(pool['state'])==716 and not meta['validation_arrays_loaded']
 report=dict(passed=True,artifact_sha256=hashlib.sha256(a.artifact.read_bytes()).hexdigest(),finite_tensor_count=count,window=window,fit_windows=windows,fit_files=files,frozen_nonnet_tensors=frozen,changed_dynamics_tensors=changed,policy_artifact=False,promoted=False)
 a.output.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k not in ['fit_files','frozen_nonnet_tensors','changed_dynamics_tensors']}))

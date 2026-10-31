@@ -720,3 +720,9 @@ Independent audit: warm164/1525 exceed1e-5 (max.0033547, cumulative changed inpu
 ### 2026-10-31T19:28:27.800313+00:00 Cache-consistent motion collection
 
 Optional refresh-command-cache collection requires explicit current_state_current_frame_v1 plan contract, refreshes relative-body targets after reset/forward, records every pre-step command_body_pos and tracked-body order/env origin. Independent audit verifies cached target Z against source frame body Z plus origin to1e-6, source family/file/frame/split exact first8 selection and fixed7 separation, fixed planned windows, mappings/finite/caps/continuity/terminal records. Legacy invocation remains supported and original v1 data retained. New2clip3step smoke passed including cache-Z audit. Full32 snippets use unchanged source/phases/actions/physics/thresholds in separate motion_pd_collection_cache_v2; no learned-policy or success claim.
+
+
+---
+### 2026-10-31T19:34:13.285789+00:00 Motion H8 mixture implementation
+
+Correct window counts:828 fit states yield716 H8 and337 H32 windows; an earlier prose note confused337 with H8, actual preregistration/data always716. Same fresh588 source, height-only geometry and all prior coefficients1. Control H8 batch64 old windows; candidate32 old+32 audited motion fit windows, independent seed48 draws in both arms, original seed42/43/44/45/46 draws unchanged. H1 remains64 original branches and768 total prediction endpoints/update. Loader opens only16fit files from4families, binds source hashes, audit/cache contract, physical asset/contract, mapping and terminal/continuity checks. Four-update paired smoke passed: legacy control world_model tensors bit-identical, candidate changes only8 dynamics network tensors; original frozen normalizers/termination and geometry/XY invariants retained. Formal1000 both arms follows unchanged18 trajectory/9 branch gates and separate new-motion H1/H8/H32 with explicit eligible windows. No policy fitting or promotion.
