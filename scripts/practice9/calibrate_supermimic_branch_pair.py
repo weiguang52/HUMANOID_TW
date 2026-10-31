@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--quaternion-conditioning',type=int,choices=[0,1])
 p.add_argument('--xy-invariance',type=int,choices=[0,1])
 p.add_argument('--velocity-anchor-coefficient',type=float,choices=[0.,1.])
 p.add_argument('--root-state-coefficient',type=float,choices=[0.,1.]);p.add_argument('--root-state-collection',type=Path)
@@ -13,6 +14,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.quaternion_conditioning is not None:assert a.xy_invariance==1
 if a.xy_invariance is not None:assert a.velocity_anchor_coefficient==1 and a.root_state_coefficient==1 and a.response_coefficient==1
 if a.velocity_anchor_coefficient is not None:assert a.root_state_coefficient==1 and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
 if a.root_state_coefficient is not None:assert a.root_state_collection is not None and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
@@ -125,6 +127,32 @@ if a.xy_invariance is not None:
   m.net[0].weight.register_hook(mask_xy_gradient)
  plan.update(xy_invariance=bool(a.xy_invariance),xy_reference_physical=[0.,0.],xy_reference_initial_max_error=initial_error,differing_variable='Dynamics-only horizontal translation equivariance0 vs1; standard serialized weights, no inference hook')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+q_hook=None
+q_training_state=None
+if a.quaternion_conditioning is not None:
+ fit_q=torch.cat([torch.tensor(d['state'][:,3:7],device='cuda:0') for d in original]+[one['state'][:,3:7]])
+ assert fit_q.shape==(4505,4)
+ q_mean=fit_q.mean(0);q_std=fit_q.std(0,unbiased=False)
+ assert torch.isfinite(q_std).all() and (q_std>0).all()
+ sample_ids=torch.linspace(0,len(traj['state'])-1,64,device='cuda:0').long()
+ q_query=traj['state'][sample_ids];q_action=traj['action'][sample_ids,0];q_context=traj['context'][sample_ids,0]
+ def q_forward_hook(module,args):
+  x=args[0].clone();x[...,3:7]=(x[...,3:7]-q_mean)/q_std
+  return (x,)
+ with torch.no_grad():
+  for _ in range(5):m(q_query,q_action,q_context)
+  q_before=m(q_query,q_action,q_context)
+  if a.quaternion_conditioning:
+   first=m.net[0];raw=first.weight[:,3:7].clone()
+   first.bias.add_(raw@q_mean);first.weight[:,3:7].mul_(q_std)
+   q_hook=first.register_forward_pre_hook(q_forward_hook)
+  for _ in range(5):m(q_query,q_action,q_context)
+  q_error=float((m(q_query,q_action,q_context)-q_before).abs().max())
+  assert q_error<=1e-5,q_error
+ plan.update(quaternion_conditioning=bool(a.quaternion_conditioning),quaternion_fit_frames=4505,
+  quaternion_mean=q_mean.tolist(),quaternion_std=q_std.tolist(),quaternion_initial_max_error=q_error,
+  differing_variable='Training-only quaternion feature coordinates0 vs1; raw-coordinate inference export')
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
 try:
@@ -149,11 +177,28 @@ try:
    loss=loss+a.root_state_coefficient*root_state_value
   assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
   if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
+ if q_hook is not None:
+  with torch.no_grad():
+   for _ in range(5):m(q_query,q_action,q_context)
+   trained_prediction=m(q_query,q_action,q_context)
+   q_training_state={k:v.detach().cpu().clone() for k,v in m.net[0].state_dict().items()}
+   first=m.net[0];first.weight[:,3:7].div_(q_std)
+   first.bias.sub_(first.weight[:,3:7]@q_mean)
+   q_hook.remove();q_hook=None
+   for _ in range(5):m(q_query,q_action,q_context)
+   export_error=float((m(q_query,q_action,q_context)-trained_prediction).abs().max())
+   assert export_error<=1e-5,export_error
+  plan['quaternion_raw_export_max_error']=export_error
+  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
  if a.xy_invariance:assert torch.count_nonzero(m.net[0].weight[:,:2])==0
  for key,value in m.state_dict().items():
   assert torch.isfinite(value).all()
   if not key.startswith('net.'):assert torch.equal(value.cpu(),w[key]),key
  artifact=dict(kind='offline_dynamics_calibration_not_policy_checkpoint',world_model=m.state_dict(),cfg=cfg,calibration_plan=plan,calibration_updates=a.updates,optimizer=opt.state_dict())
+ if a.quaternion_conditioning:
+  artifact['training_coordinate_optimizer']=artifact.pop('optimizer')
+  artifact['training_coordinate_first_linear']=q_training_state
+  artifact['optimizer_coordinate_contract']='Conditioned quaternion features; not raw-coordinate resume optimizer'
  if prediction_contract is not None:
   from supermimic_pose_integration_diagnostic import POSE_KIND
   artifact['kind']=POSE_KIND;artifact['prediction_contract']=prediction_contract
@@ -161,4 +206,5 @@ try:
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:
+ plan['interrupted_quaternion_hook_active']=q_hook is not None
  torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict(),prediction_contract=prediction_contract),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise
