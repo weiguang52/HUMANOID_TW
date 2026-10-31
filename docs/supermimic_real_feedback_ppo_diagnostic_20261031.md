@@ -166,3 +166,17 @@ optimizer resume passed independent artifact checks (1024 real transitions,
 26 Adam states, frozen world model and normalizers); native-normal agreement
 was 3.5762786865234375e-7. Formal results are pending. This is not a SuperMimic
 world-model success or a replacement for fixed-seven, three-seed validation.
+
+### 2026-10-31 22:35 CST: dynamic reference audit
+
+All 332 training references were audited using the current MJCF sole box and
+stored body transforms. Sampled native FK foot positions agree within
+5.945e-8 m; fixed-seven IDs are excluded. 331 clips have both soles exceed
+10 mm clearance at some frame. Across 663 foot records with corners within
+2 mm of ground, the median per-record 95th-percentile tilt is 18.590 degrees
+(maximum 47.163); 457 exceed 15 degrees. These descriptive bins are not gates.
+Near-ground samples include toe-off and landing: this does not establish a
+retargeting defect or dynamically feasible walking. Next inspect sustained
+support and original source semantics before preparing a walking curriculum.
+Script: scripts/practice9/audit_supermimic_training_soles.py; evidence remains
+on the data disk in longterm_diagnostics/training_sole_clearance_audit.json.
