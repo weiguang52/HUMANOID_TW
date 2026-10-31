@@ -120,3 +120,36 @@ At the old13/24deg stance the penalty is approximately0.0046 per step, about7.5%
 Use `run_supermimic_sole_normal_diagnostic.sh smoke`, `resume_smoke` and `formal`. Formal output is `longterm_diagnostics/sole_normal_ppo_v1/trained`. The runner locks the run, preserves completed checkpoints for recovery, audits the final training artifact, evaluates only final update1000 for learned/PD20s with front/side colors and native contacts, and verifies exact video frames/full decoding. Physical contact, drift, pose and recovery still need review; no promotion follows artifact verification automatically.
 
 Compare the final candidate with the preserved coefficient0 baseline on original20s gates and on the same R/S/A factorial, retaining all groups and the strict numerical-repeatability caveat. Static foot orientation improvements alone do not prove full-motion tracking, world-model consistency or three-training-seed acceptance.
+
+## Coefficient2 final result and matched recovery diagnosis
+
+Final checkpoint SHA256 `9c8569f1adcaf31982235c26c9be0864c2c1e9dd04193e67ea3821cd7e95957b`. All1000 updates/8192000 transitions and optimizer/frozen-normalizer/world-model checks pass. Quaternion normals agree with native GPU sole-box rotations to4.1723251e-7. Learned and PD each complete20s without original termination; all four videos are H264/50fps/960x640/1000 frames and fully decoded. Twelve fixed sampled frames were inspected, not every frame.
+
+|Full actual20s|Coefficient0|Coefficient2 squared|
+|---|---:|---:|
+|RootXY max|38.732mm|18.822mm|
+|Root tilt max|8.780deg|5.195deg|
+|Mean body error|41.965mm|24.063mm|
+|Mean joint error|6.074deg|4.396deg|
+|Last10s sole tilt median L/R|13.105/24.314deg|7.555/4.912deg|
+|Loaded points each foot, every last10s frame|2|2|
+|Per-foot contact hull area ratio median|0|0|
+
+Tilts and tracking improve, but both feet persist on an edge. The current PD has3 non-collinear loaded corners per foot with hull area ratio~0.5 and~0.42deg tilt; the earlier PD has4/~1 with nearly identical pose/drift. Preserve this contact allocation variation; positive-point hull area does not measure continuous pressure. No promotion or flat-foot acceptance follows.
+
+The matched512-episode factorial uses bit-identical noise arrays and exactly matching initial states, with no PD ending differences across runs:
+
+|R/S/A|Coefficient0 learned|Coefficient2 learned|PD|
+|---|---:|---:|---:|
+|000|32|32|32|
+|001|22|29|0|
+|010|32|32|32|
+|011|26|26|0|
+|100|18|22|0|
+|101|4|13|0|
+|110|17|23|0|
+|111|6|12|0|
+
+All counts are out of32 in one fixed developer protocol, policy training seed42 only. Archive invariants pass; strict atol1e-5 numeric sensor-toggle pairing remains failed (candidate maximum1.14083e-4), as explicitly recorded. This is not population significance, three-training-seed or independent-motion acceptance. `factorial_comparison.json` retains every group and the caveat.
+
+`review_supermimic_standing_evaluation.py` generates metrics, native contact convex-hull areas, fixed-frame montages and the colored front/side review page with30-axis legend and camera/source conventions. Known square/triangle/line areas are checked. `compare_supermimic_factorials.py` verifies fixed inputs/noise/initials before reporting all groups. Neither tool promotes a policy.
