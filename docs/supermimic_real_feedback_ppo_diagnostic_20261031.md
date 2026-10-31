@@ -468,3 +468,16 @@ translation equivariance by zero first-layerXY columns with reference-origin
 bias compensation and gradient masks, no state-format or inference-hook change.
 All normalization/termination parameters remain frozen and original gates fixed.
 No fitting started; initial-function, smoke and tensor checks still required.
+
+### 2026-10-31T16:35:10+00:00 : horizontal symmetry smoke
+
+Dynamics-only XY equivariance implemented as zero first-linear input columns0/1,
+reference-origin bias compensation and matching gradient mask; ordinary exported
+weights enforce the property without inference hooks. Positional outputs retain
+actual rootXY and term-net positional-goal dependence is untouched.
+Both four-update smoke arms pass frozen norms/termination, Adam-step4,704
+endpoint metadata and candidate zero-column checks. Initial reference function
+max difference2.384e-7; constructed horizontal-translation property error1.863e-9.
+This is not prediction or control acceptance. Same H8/H1, action/state Jacobian
+and velocity-value losses; formal1000 matched pair keeps all original gates and
+reports all native pose/velocity responses. No policy promotion.
