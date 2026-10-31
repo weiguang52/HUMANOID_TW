@@ -36,17 +36,18 @@ try:
   result=env.step(torch.zeros((1,30),device='cuda:0'));assert not bool((result[2]|result[3])[0])
  ctx=t.extractor.context().detach();s=t.extractor.state().detach()
  with np.load(a.collection/'paired_responses.npz') as z:trace={k:z[k].copy() for k in z.files}
- assert len(trace['state'])==120 and all(np.isfinite(v).all() for v in trace.values())
+ count=len(plan['epsilons'])*60
+ assert len(trace['state'])==count and all(np.isfinite(v).all() for v in trace.values())
  states=torch.tensor(trace['state'],device='cuda:0')
  torch.testing.assert_close(states,s.expand_as(states),rtol=0,atol=1e-5)
- reference=_squeeze(t.library.gather(torch.zeros(120,device='cuda:0',dtype=torch.long),torch.full((120,),plan.get('warmup_steps',0),device='cuda:0',dtype=torch.long),1))
- actions=torch.zeros((120,30),device='cuda:0')
- actions[torch.arange(120),torch.tensor(trace['joint'])]=torch.tensor(trace['epsilon']*trace['sign'],device='cuda:0',dtype=torch.float32)
+ reference=_squeeze(t.library.gather(torch.zeros(count,device='cuda:0',dtype=torch.long),torch.full((count,),plan.get('warmup_steps',0),device='cuda:0',dtype=torch.long),1))
+ actions=torch.zeros((count,30),device='cuda:0')
+ actions[torch.arange(count),torch.tensor(trace['joint'])]=torch.tensor(trace['epsilon']*trace['sign'],device='cuda:0',dtype=torch.float32)
  def reward(state,u):
   b=t.forward_kinematics(state[:,:3],state[:,3:7],state[:,7:10],state[:,10:13],state[:,13:43],state[:,43:])
   return t.reward.forward_from_bodies(state,u,torch.zeros_like(u),reference,*b)[0]
  with torch.no_grad():
-  predicted=t.world_model(states,actions,ctx.expand(120,-1));actual=torch.tensor(trace['next_state'],device='cuda:0')
+  predicted=t.world_model(states,actions,ctx.expand(count,-1));actual=torch.tensor(trace['next_state'],device='cuda:0')
   actual_reward=reward(actual,actions)
   torch.testing.assert_close(actual_reward,torch.tensor(trace['actual_reward'],device='cuda:0',dtype=torch.float32),rtol=0,atol=1e-7)
   predicted_reward=reward(predicted,actions).cpu().numpy()

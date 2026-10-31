@@ -14,13 +14,14 @@ p.add_argument('--manifest',type=Path,required=True)
 p.add_argument('--checkpoint',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--warmup-steps',type=int,default=0)
-a=p.parse_args();assert 0<=a.warmup_steps<=900;assert not a.output.exists();a.output.mkdir(parents=True)
+p.add_argument('--epsilons',type=float,nargs='+',default=[.02,.05])
+a=p.parse_args();assert a.epsilons and all(0<x<=.1 for x in a.epsilons) and len(set(a.epsilons))==len(a.epsilons);assert 0<=a.warmup_steps<=900;assert not a.output.exists();a.output.mkdir(parents=True)
 m=json.loads(a.manifest.read_text());assert m['synthetic_diagnostic']
 c=torch.load(a.checkpoint,map_location='cuda:0',weights_only=False)
 assert c['cfg']['extra']['tw_physics_contract']==PHYSICS_CONTRACT
 asset=Path(os.environ['TW_SUPERMIMIC_MJCF'])
 assert hashlib.sha256(asset.read_bytes()).hexdigest()==c['cfg']['extra']['tw_mjcf_sha256']
-plan=dict(replay_state_atol=1e-5,reproducibility_repeats=5,warmup_steps=a.warmup_steps,source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),epsilons=[.02,.05],action_center='zero normalized residual',steps=1,
+plan=dict(replay_state_atol=1e-5,reproducibility_repeats=5,warmup_steps=a.warmup_steps,source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),epsilons=a.epsilons,action_center='zero normalized residual',steps=1,
  checkpoint=str(a.checkpoint),checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),
  manifest_sha256=hashlib.sha256(a.manifest.read_bytes()).hexdigest(),
  scope='Diagnostic after fixed zero-action warmup replay, central differences; no training or policy acceptance')
@@ -44,12 +45,15 @@ def reward(s,action,reference):
  return t.reward.forward_from_bodies(s,action,torch.zeros_like(action),reference,*b)[0]
 try:
  s0,context=reset();reference=_squeeze(t.library.gather(torch.tensor([0],device='cuda:0'),torch.tensor([a.warmup_steps],device='cuda:0'),1))
- repeat_errors=[]
+ repeat_errors=[];repeat_zero_rewards=[]
  for _ in range(plan['reproducibility_repeats']):
   sr,cr=reset();repeat_errors.append((sr-s0).abs().max().item())
   torch.testing.assert_close(sr,s0,rtol=0,atol=plan['replay_state_atol'])
   torch.testing.assert_close(cr,context,rtol=0,atol=1e-7)
- (a.output/'replay_reproducibility.json').write_text(json.dumps({'max_state_abs_errors':repeat_errors,'atol':plan['replay_state_atol'],'scope':'Mixed state coordinates; numerical replay check only, not a control acceptance threshold'}))
+  with torch.no_grad():
+   u=torch.zeros((1,30),device='cuda:0');env.step(u)
+   repeat_zero_rewards.append(float(reward(t.extractor.state(),u,reference)))
+ (a.output/'replay_reproducibility.json').write_text(json.dumps({'zero_action_repeat_rewards':repeat_zero_rewards,'max_state_abs_errors':repeat_errors,'atol':plan['replay_state_atol'],'scope':'Mixed state coordinates; numerical replay check only, not a control acceptance threshold'}))
  reset()
  zero=torch.zeros((1,30),device='cuda:0')
  with torch.no_grad():
