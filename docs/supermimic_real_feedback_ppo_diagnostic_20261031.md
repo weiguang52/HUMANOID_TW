@@ -300,3 +300,22 @@ for branches and0.08502 for trajectories. These descriptive distances do not
 prove adequate coverage or independent motion generalization. Stop coefficient
 trials; next inspect state-response sensitivity and autoregressive error growth.
 Evidence: response_balance_fit_v1/review.json and response_state_coverage_v1.
+
+### 2026-10-31T15:20:33+00:00 : root feedback oracle diagnosis
+
+Read-only oracle feedback ablations cover all4222 H32 windows across eight
+existing temporal-validation traces for both structured and measured-weight
+models. First-step predictions are identical across all modes; weights and
+normalizers unchanged. Replacing previous-frame root linear velocity with
+truth reduces median trace H32 position p95 from64.12/83.08mm to2.919/4.379mm;
+root angular velocity replacement gives18.789/19.253mm. Joint velocity gives
+60.775/78.628mm. These are oracle hybrid states, possibly physically
+inconsistent, not deployable models or evidence of real control success.
+Results identify root velocity feedback as a priority for native state-response
+measurement, not a proven physical cause or permission to replace predictions
+with truth. Existing mjlab root-link velocity writer was inspected: it accepts
+world-frame linear/angular velocity, matching the73-state extractor, and
+converts angular velocity into native free-joint body coordinates internally.
+Next use paired native root-velocity perturbations under the original physics
+contract and terminations, with declared temporal fit/validation partitions.
+No such native collection has started yet. Evidence: response_feedback_error_v1.
