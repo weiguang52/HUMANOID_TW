@@ -400,3 +400,15 @@ Overall rejected:4 trajectory gates vs initial and source, plus3 unchanged
 velocity/sole-response additional-improvement gates. H32 root-position p95
 median59.23mm; fixed correction does not solve state-dependent error.
 Evidence: velocity_mean_correction_v1. No policy promotion.
+
+### 2026-10-31T15:58:35+00:00 : conditional velocity anchor smoke
+
+Implemented preregistered conditional velocity-value anchor. It equally averages
+parent-normalized root-linear, root-angular and joint velocity MSE, half from
+existing H8 predictions/targets and half from H1. No additional forward passes
+or true future states as model inputs. Existing H8/H1 and both derivative
+losses, pose contract, data and samplers are unchanged; coefficient0/1 only.
+Both four-update smoke arms passed frozen22 tensors, updated8 predictor tensors,
+Adam step4, fit-only root-state sources and704 prediction endpoint metadata.
+This is validity evidence only; formal1000 update results remain pending.
+Standing real-physics PPO independently reached847/1000; no interim selection.

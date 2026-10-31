@@ -6,11 +6,13 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--velocity-anchor-coefficient',type=float,choices=[0.,1.])
 p.add_argument('--root-state-coefficient',type=float,choices=[0.,1.]);p.add_argument('--root-state-collection',type=Path)
 p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.velocity_anchor_coefficient is not None:assert a.root_state_coefficient==1 and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
 if a.root_state_coefficient is not None:assert a.root_state_collection is not None and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
 else:assert a.root_state_collection is None
 if a.response_coefficient is not None:assert math.isfinite(a.response_coefficient) and a.response_coefficient>=0
@@ -97,13 +99,26 @@ if a.root_state_coefficient is not None:
  root_state_loss=RootStateResponseLoss(a.root_state_collection,cfg)
  plan.update(root_state_coefficient=a.root_state_coefficient,root_state_batch=16,root_state_fit_files=root_state_loss.files,root_state_collection_plan_sha256=hashlib.sha256((a.root_state_collection/'plan.json').read_bytes()).hexdigest(),differing_variable='Root-state Jacobian coefficient0 vs1; equal extra64 endpoints per update')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+def velocity_value_loss(pred,target):
+ error=m.state_norm.normalize(pred)-m.state_norm.normalize(target)
+ return (error[:,7:10].square().mean()+error[:,10:13].square().mean()+error[:,43:73].square().mean())/3
+if a.velocity_anchor_coefficient is not None:
+ plan.update(velocity_anchor_coefficient=a.velocity_anchor_coefficient,velocity_anchor_rule='Equal parent-normalized root linear/root angular/joint velocity group MSE, half H8/half H1; same predictions and targets',differing_variable='Velocity value anchor coefficient0 vs1 only; no extra forward endpoints')
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
 try:
  for update in range(1,a.updates+1):
   idx=torch.randint(len(traj['state']),(64,),device='cuda:0',generator=tg);pred=traj['state'][idx];rollout=0
-  for j in range(8):pred=predictor(pred,traj['action'][idx,j],traj['context'][idx,j]);rollout=rollout+m.state_loss(pred,traj['next_state'][idx,j])/8
-  oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og);h1=m.state_loss(predictor(one['state'][oi],one['action'][oi],one['context'][oi]),one['next_state'][oi]);loss=.5*rollout+.5*h1
+  velocity_rollout=0
+  for j in range(8):
+   pred=predictor(pred,traj['action'][idx,j],traj['context'][idx,j]);rollout=rollout+m.state_loss(pred,traj['next_state'][idx,j])/8
+   if a.velocity_anchor_coefficient is not None:velocity_rollout=velocity_rollout+velocity_value_loss(pred,traj['next_state'][idx,j])/8
+  oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og);one_pred=predictor(one['state'][oi],one['action'][oi],one['context'][oi]);h1=m.state_loss(one_pred,one['next_state'][oi]);loss=.5*rollout+.5*h1
+  velocity_anchor_value=None
+  if a.velocity_anchor_coefficient is not None:
+   velocity_anchor_value=.5*(velocity_rollout+velocity_value_loss(one_pred,one['next_state'][oi]))
+   loss=loss+a.velocity_anchor_coefficient*velocity_anchor_value
   response_value=None
   if response_loss is not None:
    response_value,root_response,joint_response=response_loss(m)
@@ -113,7 +128,7 @@ try:
    root_state_value=root_state_loss(m)
    loss=loss+a.root_state_coefficient*root_state_value
   assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
-  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None)),flush=True)
+  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
  for key,value in m.state_dict().items():
   assert torch.isfinite(value).all()
   if not key.startswith('net.'):assert torch.equal(value.cpu(),w[key]),key
