@@ -365,3 +365,22 @@ targets from704 prediction endpoints per update; original target count omitted
 paired endpoints as full-state targets because their loss is a Jacobian loss.
 The full runner retains all original audits and adds all native root-state
 conditions without introducing a new relaxed gate or automatic promotion.
+
+### 2026-10-31T15:43:51+00:00 : corrected damping but biased short-horizon prediction
+
+Root-state supervision corrected held local velocity-subblock radius to0.91565
+(native0.91723, matched control0.98722). All six H32 nonregression checks pass
+vs both initial parent and matched control: root-position p95 median59.93mm
+vs70.26/64.12mm, root-orientation0.28735rad vs0.29428/0.32042rad.
+Overall still rejected:4 trajectory failures vs parent,5 vs control,9 branch
+failures. Velocity action derivatives remain close to control but do not meet
+another20% improvement requirement; short-horizon absolute errors also fail.
+
+Fit-only root-linear/root-angular/joint velocity common-bias fractions are
+83.9/89.3/76.1%; temporal-validation83.5/87.0/72.3%. A preregistered next
+post-fit diagnostic will subtract the unique fitH1 mean velocity error over all
+1200 original fit action-branch transitions, altering only36 output bias entries.
+No optimizer, coefficient search or validation fit; all other weights remain
+frozen. Verify Jacobian preservation and all unchanged gates before conclusions.
+This operation is planned, not implemented, and is not another1000-update fit.
+Evidence: root_state_fit_coverage_v1 and velocity_mean_correction_v1/plan.json.
