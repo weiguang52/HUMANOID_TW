@@ -30,4 +30,5 @@ printf 'evaluating\n' > "$S/status"
 python -u scripts/practice9/evaluate_supermimic_tw.py \
  --manifest /root/gpufree-data/datasets/practice9/supermimic_tw_20261031/static_probe/manifest.json \
  --checkpoint "$C" --output "$S/evaluation" --max-steps 1000 --agents trained zero --video > "$S/evaluation.log" 2>&1
+python scripts/practice9/verify_supermimic_episode_media.py --evaluation "$S/evaluation" > "$S/media_integrity.log" 2>&1
 printf 'evaluated_pending_review\n' > "$S/status"
