@@ -542,3 +542,10 @@ Baseline minimum foot corners are around -0.49 to -0.56mm. At level2 (+1mm root 
 ### 2026-10-31T17:07:02.136869+00:00 | Differentiable sole clearance verified
 
 Implemented reusable native-asset-derived box corner height feature, keeping robot state73 and physical geometry unchanged. CPU native versus differentiable GPU FK verified for all480 archived pose branch input states: maximum height error3.9144652e-8m below fixed1e-6m. Every state passed horizontal translation invariance, quaternion-sign invariance, finite gradients and summed root-height gradient16 (16 corners). No force inference, contact labels, runtime policy modification or acceptance claim. Evidence: root_pose_response_fit_v1/differentiable_clearance_audit.json. Next audit fit/validation clearance coverage before defining a model feature experiment; no default policy promotion.
+
+---
+### 2026-10-31T17:09:15.755425+00:00 | Clearance coverage audit
+
+Source-hash-verified fit groups:3305 trajectory states,1200 action branch states,240 root-velocity-response states,240 root-pose-response states. All240 held root-pose input states queried without parameter fitting. Nearest16-corner RMS height distance p95: trajectory0.55334mm; action branches0.97091mm; root-velocity branches0.97091mm; root-pose branches0.035640mm (max0.036052mm). The pose-response fit source already includes nearby geometry, weakening a wholly-unseen-clearance explanation; does not establish full state/action/velocity/contact-force coverage.
+
+Evidence: root_pose_response_fit_v1/clearance_coverage.json. Next predeclare a geometry-feature model comparison preserving original state73/physical system and initial predictions, with explicit artifact/loader contract, matched parameters/budget, fit-only statistics and unchanged H1/H8/H32/branch gates. Do not use held validation for normalizer fitting. No new training or promotion from this audit.
