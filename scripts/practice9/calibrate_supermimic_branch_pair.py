@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
 p.add_argument('--root-pose-coefficient',type=float);p.add_argument('--root-pose-scale-audit',type=Path);p.add_argument('--root-pose-collection',type=Path)
@@ -17,6 +18,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.dynamic_h1_mix is not None:assert a.arm=='candidate' and a.sole_geometry==1 and a.geometry_velocity is None and a.root_pose_coefficient==1
 if a.geometry_velocity is not None:assert a.sole_geometry==1 and a.root_pose_coefficient==1 and a.root_pose_scale_audit is None
 if a.sole_geometry is not None:
  assert a.root_pose_coefficient is not None and a.quaternion_conditioning is None and a.geometry_asset is not None and a.geometry_contract_probe is not None
@@ -86,6 +88,17 @@ if scale_measurement is not None:
 traj={k:torch.tensor(np.stack(v),device='cuda:0') for k,v in traj.items()};one={k:torch.tensor(np.concatenate([d[k] for d in one]),device='cuda:0') for k in traj}
 assert len(one['state'])==(3305 if a.arm=='control' else 1200)
 (a.output/'fit_input.json').write_text(json.dumps(dict(traces=used,windows=len(traj['state']),trajectory_files=files,one_step_count=len(one['state']),one_step_files=one_files),indent=2))
+dynamic=None;dynamic_files=[]
+if a.dynamic_h1_mix is not None:
+ fit_rows={row['trace']:row for row in rows if row['split']=='fit'}
+ selected=[i for i,name in enumerate(used) if fit_rows[name]['mode']!='amplitude_0.00']
+ assert len(selected)==6
+ dynamic={k:torch.tensor(np.concatenate([original[i][k] for i in selected]),device='cuda:0') for k in one}
+ assert len(dynamic['state'])==1305
+ dynamic_files=[files[i] for i in selected]
+ plan.update(dynamic_h1_mix=a.dynamic_h1_mix,dynamic_h1_count=1305,dynamic_h1_files=dynamic_files,
+  dynamic_h1_rule='First32 original branch samples plus32 nonzero-amplitude fit trajectory samples only for candidate; control retains all64 branch samples',dynamic_h1_generator_seed=47)
+ (a.output/'dynamic_h1_input.json').write_text(json.dumps(dict(files=dynamic_files,count=1305,selection='Fit and nonzero forcing amplitude, no validation or failure filtering'),indent=2))
 m=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();m.load_state_dict(w)
 for v in m.parameters():v.requires_grad_(False)
 for v in m.net.parameters():v.requires_grad_(True)
@@ -231,6 +244,10 @@ if a.root_pose_scale_audit is not None:
  plan.update(root_pose_scale_audit_sha256=hashlib.sha256(a.root_pose_scale_audit.read_bytes()).hexdigest(),
   root_pose_scale_rule=scale['rule'],differing_variable='Root pose coefficient1 vs one frozen full-fit parent gradient-norm ratio')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.dynamic_h1_mix is not None:
+ plan['differing_variable']='H1 source mix0 vs0.5 dynamic trajectory targets; same64 H1 and768 total endpoints'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+dg=torch.Generator(device='cuda:0').manual_seed(47) if a.dynamic_h1_mix is not None else None
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
 try:
@@ -240,10 +257,16 @@ try:
   for j in range(8):
    pred=predictor(pred,traj['action'][idx,j],traj['context'][idx,j]);rollout=rollout+m.state_loss(pred,traj['next_state'][idx,j])/8
    if a.velocity_anchor_coefficient is not None:velocity_rollout=velocity_rollout+velocity_value_loss(pred,traj['next_state'][idx,j])/8
-  oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og);one_pred=predictor(one['state'][oi],one['action'][oi],one['context'][oi]);h1=m.state_loss(one_pred,one['next_state'][oi]);loss=.5*rollout+.5*h1
+  oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og)
+  h1_batch={k:v[oi] for k,v in one.items()}
+  if a.dynamic_h1_mix is not None:
+   di=torch.randint(len(dynamic['state']),(32,),device='cuda:0',generator=dg)
+   if a.dynamic_h1_mix:h1_batch={k:torch.cat([v[:32],dynamic[k][di]],dim=0) for k,v in h1_batch.items()}
+  one_pred=predictor(h1_batch['state'],h1_batch['action'],h1_batch['context'])
+  h1=m.state_loss(one_pred,h1_batch['next_state']);loss=.5*rollout+.5*h1
   velocity_anchor_value=None
   if a.velocity_anchor_coefficient is not None:
-   velocity_anchor_value=.5*(velocity_rollout+velocity_value_loss(one_pred,one['next_state'][oi]))
+   velocity_anchor_value=.5*(velocity_rollout+velocity_value_loss(one_pred,h1_batch['next_state']))
    loss=loss+a.velocity_anchor_coefficient*velocity_anchor_value
   response_value=None
   if response_loss is not None:

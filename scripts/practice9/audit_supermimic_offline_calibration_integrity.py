@@ -55,5 +55,18 @@ for name in fit:
   windows+=max(0,n-window+1)
  files.append(dict(file=name,sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
 assert windows==inputs['windows']
+if 'dynamic_h1_mix' in d['calibration_plan']:
+ plan=d['calibration_plan'];assert plan['dynamic_h1_mix'] in [0,1] and plan['dynamic_h1_generator_seed']==47
+ selected=[r for r in rows if r['split']=='fit' and r['mode']!='amplitude_0.00']
+ expected=[];count_dynamic=0
+ for row in selected:
+  path=a.collection/row['trace']
+  expected.append(dict(file=row['trace'],sha256=hashlib.sha256(path.read_bytes()).hexdigest()))
+  with np.load(path,allow_pickle=False) as z:count_dynamic+=len(z['state'])
+ assert len(expected)==6 and count_dynamic==plan['dynamic_h1_count']==1305
+ assert expected==plan['dynamic_h1_files']
+ extra=json.loads((a.artifact.parent/'dynamic_h1_input.json').read_text())
+ assert extra['files']==expected and extra['count']==1305
+ assert plan['prediction_endpoints_per_update']==768
 report=dict(passed=True,artifact_sha256=hashlib.sha256(a.artifact.read_bytes()).hexdigest(),finite_tensor_count=count,window=window,fit_windows=windows,fit_files=files,frozen_nonnet_tensors=frozen,changed_dynamics_tensors=changed,policy_artifact=False,promoted=False)
 a.output.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k not in ['fit_files','frozen_nonnet_tensors','changed_dynamics_tensors']}))

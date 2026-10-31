@@ -672,3 +672,9 @@ All16 warm trajectories/all7775 transitions and fixed479 cold cases completed; a
 On identical restored cold validation states/actions/context, candidate model root angular RMSE0.12457649rad/s vs native-to-archive0.00000149985rad/s; original parent model0.10264966. Fit cohort candidate0.04910750 vs native0.00000091421. This bounds replay discrepancy on the fixed subset and does not explain most model error there, but is not full-motion/control acceptance. Evidence: dynamic_state_replay_v1/independent_audit/audit.json.
 
 Fit accounting:3305 trajectory states include2000 zero/1305 dynamic;3249 H8 windows include1986 zero. Direct H1 pool currently1200 static-warmup action branches only. Next preregister H1 distribution0 vs half dynamic/half existing branches, same64 budget, independent seed47 for dynamic sampling, no validation or new features. Fresh588 parent/height-only geometry, all prior losses1 and original gates; plan dynamic_h1_mixture_fit_v1/plan.json, not implemented or trained. No promotion; fixed7/multiseed/video goal still incomplete.
+
+
+---
+### 2026-10-31T18:54:03.940122+00:00 Dynamic H1 mixture implementation
+
+Fixed matched comparison: both arms start source588 with height-only geometry and prior loss coefficients1. H1 control keeps64 action branches; candidate uses32 branches plus32 dynamic fit states from6 nonzero-amplitude files (1305 states). Independent seed47 preserves original sampling generators; total768 endpoints/update and1000 final updates unchanged. Four-update smoke audit passed: legacy control weights bit-identical; candidate changes only8 dynamics network tensors; frozen tensors, source hashes and loaders checked. This is not held-out accuracy or policy acceptance. Original trajectory/branch gates and all failed native replay cases remain unchanged. Formal paired run is the next step.
