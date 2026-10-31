@@ -26,6 +26,7 @@ class SuperMimicCfg:
     reward_body_lin_vel_std: float = 1.0
     reward_body_ang_vel_std: float = 3.14
 
+    imagined_velocity_penalty: float = 0.0
     # Data collection.
     buffer_steps: int = 1000
     """Replay-buffer length in simulator steps per environment (Table A.5)."""

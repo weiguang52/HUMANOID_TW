@@ -614,6 +614,14 @@ class SuperMimicTrainer:
                         body_lin_vel,
                         body_ang_vel,
                     )
+                    if cfg.imagined_velocity_penalty:
+                        from .velocity_feasibility import velocity_violation_cost
+                        caps_by_name = cfg.extra.get("tw_joint_speed_limits", {})
+                        if set(self.spec.joint_names) - caps_by_name.keys():
+                            raise ValueError("Missing physical joint speed caps")
+                        caps = next_state.new_tensor([caps_by_name[n] for n in self.spec.joint_names])
+                        cost = velocity_violation_cost(next_state[:, 13 + self.spec.num_joints :], caps)
+                        reward = reward - cfg.imagined_velocity_penalty * cost
                     chunk_rewards.append(reward)
                     chunk_terms.append(term_prob)
                     chunk_states.append(next_state)
