@@ -647,3 +647,12 @@ Two4-update velocity input0/1 smoke arms pass independent source/freeze/optimize
 ### 2026-10-31T18:18:27.198098+00:00 | Velocity-feature full-budget control complete
 
 Control completed1000, original integrity passed (SHA256722656b51fa2559c9a8bdadd48865d6b52d0a79313fdcb0f408dc9ccf4a67ceb), full trajectory audit complete. Compared velocity-disabled new24-feature control against prior16-feature height-only final: all18 original nonregression checks pass; H32 position26.7601055->26.7606443mm (small numeric variation, not claimed bit-identical model). Evidence: sole_velocity_feature_fit_v1/legacy_height_control_gate.json. Current matched control remains this trial control, no baseline replacement. Velocity-enabled candidate PID703942 verified live under original runner, no restart. Final candidate/native response and fixed7/multiseed/video requirements remain pending; no promotion.
+
+---
+### 2026-10-31T18:31:11.720774+00:00 | Velocity feature rejected; dynamic replay next
+
+Both1000 arms and all prescribed audits complete. Candidate SHA256334702937f36b382691800852ca78ff095b4366943bcecc2429ca4b57069df33. Initial-parent2/18 fail, matched2/18 fail, branch4/9 fail. H32 root position26.76064->20.94303mm and root linear RMSE0.032278->0.022652m/s improve; orientation0.170146->0.186308rad worsens9.50%, H8 angular RMSE +5.27% violates unchanged5% limit. Reject, no promotion.
+
+Read-only residual decomposition complete across all archived fit/temporal-validation states, weights unchanged. Candidate root angular common-bias fraction branch fit80.89%/validation77.61%, but trajectory fit10.32%/validation5.35%; constant offset cannot explain most dynamic error. Candidate trajectory aggregate angular RMSE0.03881fit/0.11771validation vs original parent0.02668/0.06287. These are all-frame aggregates, distinct from gate median-per-trace numbers. Input coverage reports original137 normalized features, not added geometry; scope clarified in script. Evidence: sole_velocity_residual_bias_audit_v1/audit.json.
+
+Next preregistered native dynamic replay, not another feature/weight search: all16 saved trajectories in original order/all7775 steps warm; cold state reconstruction at fixed first20/every50/final indices, no cherry picking. State73/context34 matching and actual native next-state errors, source/current physics equivalence and original terminations checked. Plan dynamic_state_replay_v1/plan.json; not yet executed. Full fixed7/3-seed/video objective remains incomplete.

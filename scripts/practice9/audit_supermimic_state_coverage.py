@@ -72,6 +72,8 @@ for path in a.checkpoint:
             termination_hidden=tuple(cfg["wm_term_hidden_dims"]),
         )
     ).cuda()
+    from supermimic_geometry_model import configure_offline_geometry
+    base=configure_offline_geometry(base,c)
     base.load_state_dict(w)
     base.eval()
     model = apply_offline_prediction_contract(base, c)
@@ -171,7 +173,7 @@ for path in a.checkpoint:
         }
     )
 report = {
-    "scope": "Temporal static-state holdouts only; descriptive coverage and common-bias fractions are not acceptance gates. No fitting, weight selection, or policy promotion.",
+    "scope": "Temporal static-state holdouts only; input distances use original137 state/action/context features, not added geometry features. Descriptive coverage and common-bias fractions are not acceptance gates. No fitting, weight selection, or policy promotion.",
     "sources": sources,
     "models": models,
     "weights_and_normalizers_unchanged": True,
