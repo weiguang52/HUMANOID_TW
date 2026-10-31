@@ -577,3 +577,8 @@ First inventory execution failed caption path lookup before writing; corrected r
 ### 2026-10-31T17:23:33.918152+00:00 | Geometry control audit device reconstruction fix
 
 Control completed1000, then independent integrity audit failed exact net.0.input_std equality. Original final checkpoint retained, candidate not yet started. Independent probe: CPU versus CUDA sqrt of frozen source variance differs by max1.1920929e-7; saved training buffer equals CUDA reconstruction exactly and differs from CPU. Training itself checked immutable buffers against its initial CUDA snapshot exactly. Fix auditor to construct expected source buffers on original CUDA device, then compare CPU copies exactly; do not relax equality or change weights. Failure log and std_device_initialization_probe.json retained. Resume script skips existing final control fit, audits it with v2 log, then starts candidate and unchanged gate chain; no retraining or checkpoint selection.
+
+---
+### 2026-10-31T17:26:12.855137+00:00 | Final gate summary provenance
+
+Candidate training PID700057 and resume runner PID699909 verified live. Added read-only final gate summarizer binding final checkpoint hashes to independent integrity/branch audit evidence; reports original-parent, matched-control and held-branch failures separately, never policy promotion or final goal completion. Executed on completed rejected root_pose_response_fit_v1: original3/18, matched3/18, branch5/9 reproduced. Queued geometry summary against actual live runner PID, without restarting training or selecting intermediate artifacts. Evidence: root_pose_response_fit_v1/gate_summary.json; geometry summary pending actual completion.
