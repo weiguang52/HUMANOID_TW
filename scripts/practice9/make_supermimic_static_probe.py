@@ -17,7 +17,10 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--asset", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--arm-roll-deg", type=float, default=90.0)
+    p.add_argument("--pose-json", type=Path)
     a = p.parse_args()
+    assert 0 <= a.arm_roll_deg <= 90
     assert not a.output.exists(), "Refusing to overwrite diagnostic reference"
     model = mujoco.MjModel.from_xml_path(str(a.asset))
     data = mujoco.MjData(model)
@@ -29,8 +32,15 @@ def main():
         if model.jnt_type[j] != mujoco.mjtJoint.mjJNT_FREE
     ]
     default = {name: 0.0 for name in joints}
-    default["left_shoulder_roll_joint"] = -math.pi / 2
-    default["right_shoulder_roll_joint"] = math.pi / 2
+    default["left_shoulder_roll_joint"] = -math.radians(a.arm_roll_deg)
+    default["right_shoulder_roll_joint"] = math.radians(a.arm_roll_deg)
+    if a.pose_json:
+        pose=json.loads(a.pose_json.read_text())
+        assert pose['geometry_pass']
+        assert set(pose['joint_targets']) <= set(joints)
+        default.update(pose['joint_targets'])
+        data.qpos[2]=pose['root_z_m']
+        data.qpos[0]=pose.get('root_x_m',0.0)
     for name in joints:
         data.qpos[model.joint(name).qposadr[0]] = default[name]
     mujoco.mj_forward(model, data)
@@ -57,11 +67,13 @@ def main():
     )
     manifest = dict(
         synthetic_diagnostic=True,
+        arm_roll_abs_deg=a.arm_roll_deg,
+        pose_override_sha256=hashlib.sha256(a.pose_json.read_bytes()).hexdigest() if a.pose_json else None,
         joint_coordinate_contract=COORDINATES_VERSION,
         target_fps=50,
         source_asset=str(a.asset),
         source_asset_sha256=hashlib.sha256(a.asset.read_bytes()).hexdigest(),
-        note="Synthetic exact default pose. No HumanML3D source. Separate from the fixed332 training and7 test motions; cannot count as learned-policy success.",
+        note="Synthetic explicit pose. No HumanML3D source. Separate from the fixed332 training and7 test motions; cannot count as learned-policy success.",
         motions=[
             dict(
                 id=path.stem,
