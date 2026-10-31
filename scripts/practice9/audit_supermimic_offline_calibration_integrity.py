@@ -28,8 +28,8 @@ if d['kind']=='offline_sole_geometry_dynamics_not_policy_checkpoint':
  from supermimic.algo.networks import WorldModel,WorldModelCfg
  cfg=c['cfg'];w=c['world_model']
  parent=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims'])))
- parent.load_state_dict(w);install_geometry_input(parent,d['geometry_contract'],cfg)
- c=dict(c,world_model=parent.state_dict())
+ parent.load_state_dict(w);parent=parent.cuda();install_geometry_input(parent,d['geometry_contract'],cfg)
+ c=dict(c,world_model={k:v.cpu() for k,v in parent.state_dict().items()})
  for key,value in d['world_model'].items():
   if key.startswith('net.0.') and key not in ['net.0.weight','net.0.bias']:assert torch.equal(value,c['world_model'][key]),key
  assert torch.count_nonzero(d['world_model']['net.0.weight'][:,:2])==0
