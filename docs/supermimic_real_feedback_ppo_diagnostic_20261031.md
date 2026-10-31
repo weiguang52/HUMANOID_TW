@@ -384,3 +384,19 @@ No optimizer, coefficient search or validation fit; all other weights remain
 frozen. Verify Jacobian preservation and all unchanged gates before conclusions.
 This operation is planned, not implemented, and is not another1000-update fit.
 Evidence: root_state_fit_coverage_v1 and velocity_mean_correction_v1/plan.json.
+
+### 2026-10-31T15:53:27+00:00 : analytic mean correction rejected overall
+
+Analytical36-output velocity mean correction used all1200 original fit branch
+transitions, no optimizer or validation fitting. Only final velocity biases
+changed; other weights/norms and pose contract preserved. No stale optimizer.
+The source1000-update counter is provenance, not new optimization. First strict
+unwarmed test found quaternion repeat rounding8.94e-8 before modification;
+warmup resolved it without relaxing equality checks. All failures retained.
+Final metadata clarification has bitwise identical corrected weights.
+All six held-branch absolute state checks now pass. Root-linear RMSE4.282 to
+1.821mm/s, root-angular0.01711 to0.006301rad/s, joint0.008815 to0.004759rad/s.
+Overall rejected:4 trajectory gates vs initial and source, plus3 unchanged
+velocity/sole-response additional-improvement gates. H32 root-position p95
+median59.23mm; fixed correction does not solve state-dependent error.
+Evidence: velocity_mean_correction_v1. No policy promotion.
