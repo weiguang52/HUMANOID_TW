@@ -608,3 +608,10 @@ Two4-update coefficient1 vs measured smoke arms pass768 endpoints, frozen non-ne
 ### 2026-10-31T17:47:24.022454+00:00 | Full-budget coefficient1 repeat verification
 
 Balance-trial control completed1000 and original integrity/trajectory audits; measured-coefficient candidate PID701469 confirmed live with coefficient5.401478318597007 and immutable measurement file argument. Compared new coefficient1 control against prior geometry candidate (also coefficient1): all18 key protocol fields and fit file hashes match; every world_model tensor is bit-identical, and all18 reported trajectory aggregate metrics equal exactly. This is a same-seed repeat, not three independent seeds. Evidence: sole_geometry_pose_balance_fit_v1/control_repeat_review.json and control_repeat_gate.json. No gate replacement, weight promotion or intermediate checkpoint selection.
+
+---
+### 2026-10-31T17:53:32.714680+00:00 | Fixed pose-gradient scale rejected
+
+Both1000 arms and all original audits complete. Measured coefficient5.401478318597007 candidate SHA2563d22a5f52dd5f559ba1b2f73f21eeffa53fee2c6f83e45b8fa6c07994d6f47a0. Gate failures: initial2/18, matched3/18, branch5/9. H32 orientation0.170158->0.205384rad (+20.70%); root position26.7601->26.5709mm and root linear RMSE0.0322859->0.0275715m/s improve, but do not override failures.
+
+Native pose-response validation median root-linear response RMSE0.000262560->0.000241973m/s while angular0.00279882->0.00336572rad/s worsens. Vertical-input angular response RMSE0.00606485->0.00805557rad/s. Scalar balancing is not a demonstrated remedy; no global coefficient search. Next fit-only per-output-group normalization and gradient audit, without assuming causality or changing gates. Evidence: sole_geometry_pose_balance_fit_v1/gate_summary.json, review.json, response_variation.json and original native response audits. All checkpoints/failures retained; geometry coefficient1 remains a rejected diagnostic comparator, not promoted policy. Final fixed7/3-seed/video requirements incomplete.
