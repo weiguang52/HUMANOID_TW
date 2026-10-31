@@ -7,7 +7,7 @@ from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
-p.add_argument('--root-pose-coefficient',type=float,choices=[0.,1.]);p.add_argument('--root-pose-collection',type=Path)
+p.add_argument('--root-pose-coefficient',type=float);p.add_argument('--root-pose-scale-audit',type=Path);p.add_argument('--root-pose-collection',type=Path)
 p.add_argument('--quaternion-conditioning',type=int,choices=[0,1])
 p.add_argument('--xy-invariance',type=int,choices=[0,1])
 p.add_argument('--velocity-anchor-coefficient',type=float,choices=[0.,1.])
@@ -17,11 +17,14 @@ p.add_argument('--response-coefficient',type=float);p.add_argument('--response-f
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
 if a.sole_geometry is not None:
- assert a.root_pose_coefficient==1 and a.quaternion_conditioning is None and a.geometry_asset is not None and a.geometry_contract_probe is not None
+ assert a.root_pose_coefficient is not None and a.quaternion_conditioning is None and a.geometry_asset is not None and a.geometry_contract_probe is not None
 else:assert a.geometry_asset is None and a.geometry_contract_probe is None
 if a.quaternion_conditioning is not None:assert a.xy_invariance==1
-if a.root_pose_coefficient is not None:assert a.root_pose_collection is not None and a.xy_invariance==1 and a.quaternion_conditioning is None
-else:assert a.root_pose_collection is None
+if a.root_pose_coefficient is not None:
+ assert math.isfinite(a.root_pose_coefficient) and a.root_pose_coefficient>=0
+ assert a.root_pose_collection is not None and a.xy_invariance==1 and a.quaternion_conditioning is None
+ if a.root_pose_coefficient not in [0.,1.]:assert a.root_pose_scale_audit is not None and a.sole_geometry==1
+else:assert a.root_pose_scale_audit is None and a.root_pose_collection is None
 if a.xy_invariance is not None:assert a.velocity_anchor_coefficient==1 and a.root_state_coefficient==1 and a.response_coefficient==1
 if a.velocity_anchor_coefficient is not None:assert a.root_state_coefficient==1 and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
 if a.root_state_coefficient is not None:assert a.root_state_collection is not None and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
@@ -193,7 +196,25 @@ if a.root_pose_coefficient is not None:
  plan['differing_variable']='Root-pose response coefficient0 vs1 only; identical fit conditions and extra64 endpoints'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 if geometry_contract is not None:
- plan['differing_variable']='Sole geometry features enabled0 vs1; same added parameters, targets and FK computation'
+ plan['differing_variable']='Explicit geometry input flag and loss coefficients recorded; paired variable defined in experiment plan'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.root_pose_scale_audit is not None:
+ scale=json.loads(a.root_pose_scale_audit.read_text())
+ assert scale['weights_unchanged'] and scale['new_optimizer_updates']==0
+ assert scale['primary_h8_windows']==3249 and scale['primary_h1_states']==1200 and scale['pose_conditions']==48
+ assert scale['source_checkpoint_sha256']==plan['source_checkpoint_sha256']
+ assert scale['coefficient']==a.root_pose_coefficient
+ assert scale['primary_gradient_norm']>0 and scale['pose_gradient_norm']>0
+ assert abs(scale['coefficient']-scale['primary_gradient_norm']/scale['pose_gradient_norm'])<1e-12
+ assert scale['initialization_geometry_contract']==geometry_contract
+ assert scale['prediction_contract']==prediction_contract
+ expected={('trajectory',v['file']):v['sha256'] for v in files}
+ expected.update({('branch',v['file']):v['sha256'] for v in one_files})
+ recorded={(v['group'],Path(v['file']).name):v['sha256'] for v in scale['sources']}
+ assert expected==recorded
+ assert scale['pose_fit_files']==root_pose_loss.files
+ plan.update(root_pose_scale_audit_sha256=hashlib.sha256(a.root_pose_scale_audit.read_bytes()).hexdigest(),
+  root_pose_scale_rule=scale['rule'],differing_variable='Root pose coefficient1 vs one frozen full-fit parent gradient-norm ratio')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
