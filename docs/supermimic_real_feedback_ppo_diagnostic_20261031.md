@@ -283,3 +283,20 @@ failure is retained. Four-update smoke passed frozen tensors, finite weights,
 optimizer steps and immutable control hash checks. Its loss is not acceptance.
 Formal response_balance_fit_v1 changes only coefficient vs the structured
 coefficient1 control29a82c79..., with original data/samplers/1000 budget/gates.
+
+### 2026-10-31T15:15:47+00:00 : rejected balanced fit and coverage diagnosis
+
+The measured-weight candidate de9b9d4b... failed6/18 trajectory gates against
+both initial parent and the coefficient1 structured control, plus5/9 branch
+gates. H32 root-position p95 median83.08mm vs control64.12mm. No promotion.
+Held-branch root-linear RMSE improved3.301 to1.375mm/s, but root-angular
+response RMSE worsened0.1183 to0.3596. Weight balancing did not solve rollout.
+
+Read-only state-coverage audit evaluated both models on all existing static fit
+and temporal-validation trajectories/branches, preserving weights and norms.
+In held branches, common root-linear bias share dropped76.3% to19.0%; trajectory
+validation share39.1% to1.4%. Normalized nearest-fit input RMS p95 was0.002057
+for branches and0.08502 for trajectories. These descriptive distances do not
+prove adequate coverage or independent motion generalization. Stop coefficient
+trials; next inspect state-response sensitivity and autoregressive error growth.
+Evidence: response_balance_fit_v1/review.json and response_state_coverage_v1.
