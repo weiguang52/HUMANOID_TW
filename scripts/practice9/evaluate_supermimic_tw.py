@@ -175,7 +175,7 @@ def evaluate(args):
     )
     enable_tw_velocity_limits(env)
     trainer = SuperMimicTrainer(env, cfg, log_dir=args.output)
-    trainer.load(args.checkpoint)
+    trainer.load(args.checkpoint, evaluation_only=True)
     trainer.initialize()
     trainer.actor_critic.eval()
     command = trainer.command
@@ -376,6 +376,7 @@ def evaluate(args):
                     json.dumps(reports, indent=2) + "\n"
                 )
         report = {
+            "checkpoint_kind": checkpoint.get("kind", "supermimic_policy"),
             "checkpoint": str(args.checkpoint),
             "checkpoint_sha256": hashlib.sha256(
                 args.checkpoint.read_bytes()

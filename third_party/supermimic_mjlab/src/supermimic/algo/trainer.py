@@ -1105,8 +1105,11 @@ class SuperMimicTrainer:
         print(f"[INFO] Saved checkpoint to {path}", flush=True)
         return path
 
-    def load(self, path: str | Path) -> None:
+    def load(self, path: str | Path, *, evaluation_only: bool = False) -> None:
         checkpoint = torch.load(path, map_location=self.device)
+        real_ppo = checkpoint.get("kind") == "real_physics_ppo_diagnostic_policy_v1"
+        if real_ppo and not evaluation_only:
+            raise ValueError("Real-physics PPO diagnostic requires its own optimizer resume; use evaluation_only=True for inference")
         self.world_model.load_state_dict(checkpoint["world_model"], strict=True)
         missing, unexpected = self.actor_critic.load_state_dict(
             checkpoint["actor_critic"], strict=True
@@ -1116,6 +1119,10 @@ class SuperMimicTrainer:
                 f"[WARN] Loaded checkpoint with missing={len(missing)} "
                 f"unexpected={len(unexpected)} keys."
             )
+        if real_ppo:
+            self.iteration = int(checkpoint["iteration"])
+            self.env_steps = int(checkpoint["env_steps"])
+            return
         for name in ("wm_optimizer", "actor_optimizer", "critic_optimizer"):
             if name not in checkpoint:
                 raise ValueError(

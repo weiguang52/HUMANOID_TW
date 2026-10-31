@@ -37,6 +37,7 @@ for r in rows:
  body.append(f'<h2>{html.escape(r["id"])} / {html.escape(r["agent"])}</h2><p>Actual {n}/requested {r["planned_steps"]} steps; {r["duration_s"]:.2f}s. Termination: {html.escape(str(r["termination_reasons"]))}</p>'+''.join(links))
 (root/'episode_media_integrity.json').write_text(json.dumps(dict(passed=True,checkpoint_sha256=report['checkpoint_sha256'],episodes=len(rows),videos=checks,visual_review='Pending; encoding checks do not establish physical success'),indent=2))
 intro='<h1>Fixed final-checkpoint physical evaluation</h1><p>First original termination stops each episode. Short clips are failures, not 20-second demonstrations. Zero means nominal PD targets, not zero torque. No promotion or full-motion acceptance is implied.</p>'
+if report.get('checkpoint_kind')=='real_physics_ppo_diagnostic_policy_v1':intro+='<p>Real-feedback PPO learnability diagnostic using SuperMimic policy modules; this is not a SuperMimic algorithm success.</p>'
 if manifest.get('synthetic_diagnostic'):intro+='<p>Synthetic static development reference; this is not a HumanML3D source or independent-motion validation.</p>'
 (root/'verified_index.html').write_text('<!doctype html><meta charset="utf-8"><title>TW evaluation</title>'+intro+''.join(body))
 print(json.dumps(dict(episodes=len(rows),videos=len(checks),passed=True)))
