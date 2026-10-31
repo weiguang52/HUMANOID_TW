@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--root-pose-coefficient',type=float,choices=[0.,1.]);p.add_argument('--root-pose-collection',type=Path)
 p.add_argument('--quaternion-conditioning',type=int,choices=[0,1])
 p.add_argument('--xy-invariance',type=int,choices=[0,1])
 p.add_argument('--velocity-anchor-coefficient',type=float,choices=[0.,1.])
@@ -15,6 +16,8 @@ p.add_argument('--response-coefficient',type=float);p.add_argument('--response-f
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
 if a.quaternion_conditioning is not None:assert a.xy_invariance==1
+if a.root_pose_coefficient is not None:assert a.root_pose_collection is not None and a.xy_invariance==1 and a.quaternion_conditioning is None
+else:assert a.root_pose_collection is None
 if a.xy_invariance is not None:assert a.velocity_anchor_coefficient==1 and a.root_state_coefficient==1 and a.response_coefficient==1
 if a.velocity_anchor_coefficient is not None:assert a.root_state_coefficient==1 and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
 if a.root_state_coefficient is not None:assert a.root_state_collection is not None and a.response_coefficient==1 and a.pose_integration_fit_audit is not None
@@ -103,6 +106,16 @@ if a.root_state_coefficient is not None:
  root_state_loss=RootStateResponseLoss(a.root_state_collection,cfg)
  plan.update(root_state_coefficient=a.root_state_coefficient,root_state_batch=16,root_state_fit_files=root_state_loss.files,root_state_collection_plan_sha256=hashlib.sha256((a.root_state_collection/'plan.json').read_bytes()).hexdigest(),differing_variable='Root-state Jacobian coefficient0 vs1; equal extra64 endpoints per update')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+root_pose_loss=None
+if a.root_pose_coefficient is not None:
+ from supermimic_root_pose_response import RootPoseResponseLoss
+ root_pose_loss=RootPoseResponseLoss(a.root_pose_collection,cfg)
+ plan.update(root_pose_coefficient=a.root_pose_coefficient,root_pose_batch=16,
+  root_pose_fit_files=root_pose_loss.files,root_pose_collection_plan_sha256=hashlib.sha256((a.root_pose_collection/'plan.json').read_bytes()).hexdigest(),
+  root_pose_rule='Central response times declared physical base perturbation divided by fixed parent output std; no validation fitting')
+ plan['prediction_endpoints_per_update']+=64
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+
 def velocity_value_loss(pred,target):
  error=m.state_norm.normalize(pred)-m.state_norm.normalize(target)
  return (error[:,7:10].square().mean()+error[:,10:13].square().mean()+error[:,43:73].square().mean())/3
@@ -153,6 +166,9 @@ if a.quaternion_conditioning is not None:
   quaternion_mean=q_mean.tolist(),quaternion_std=q_std.tolist(),quaternion_initial_max_error=q_error,
   differing_variable='Training-only quaternion feature coordinates0 vs1; raw-coordinate inference export')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.root_pose_coefficient is not None:
+ plan['differing_variable']='Root-pose response coefficient0 vs1 only; identical fit conditions and extra64 endpoints'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
 try:
@@ -175,8 +191,12 @@ try:
   if root_state_loss is not None:
    root_state_value=root_state_loss(m)
    loss=loss+a.root_state_coefficient*root_state_value
+  root_pose_value=None
+  if root_pose_loss is not None:
+   root_pose_value=root_pose_loss(m)
+   loss=loss+a.root_pose_coefficient*root_pose_value
   assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
-  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
+  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
  if q_hook is not None:
   with torch.no_grad():
    for _ in range(5):m(q_query,q_action,q_context)
