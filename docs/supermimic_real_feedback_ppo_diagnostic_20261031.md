@@ -195,3 +195,17 @@ All 332 source-caption files were located and their hashes saved in the remote
 training_motion_source_inventory.json; inherited walking labels alone do not
 prove pure walking. Inspect the six segments and source videos before deciding
 whether reference correction is justified. No walking-policy claim is made.
+
+### 2026-10-31 22:47 CST: antithetic response fit prerequisites
+
+The remote antithetic_response_fit_v1/plan.json pre-registers matched control
+and candidate fits: same H8/H1 base losses, parent, data, 1000 updates and
+forward budget; response-MSE coefficient 0 versus 1 is the sole variable.
+Root angular and joint velocity response groups use immutable parent state
+normalization scales. No optimization has started. Existing trajectory H1/H8/H32
+and held temporal branch gates remain unchanged; static calibration is not proof
+of walking dynamics. Normalizers, termination and policy remain frozen.
+The new fit-pair auditor passed all 240 axis conditions (960 branch endpoints),
+including fit-file hashes, sign swaps, action-axis order, finite targets and
+no branch terminations. Maximum reset replay error was 4.47343e-6, below the
+original collection tolerance 1e-5. No validation data were used in this audit.
