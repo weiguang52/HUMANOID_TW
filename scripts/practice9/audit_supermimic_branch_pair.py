@@ -13,7 +13,7 @@ if a.candidate_checkpoint is not None:
  paths['reference_candidate']=paths['candidate'];paths['candidate']=a.candidate_checkpoint
 models={};configs={};contracts={}
 for name,path in paths.items():
- c=torch.load(path,map_location='cpu',weights_only=False);assert c['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint'] and c['calibration_updates']==1000;cfg=c['cfg'];w=c['world_model'];configs[name]=cfg;contracts[name]=c.get('prediction_contract')
+ c=torch.load(path,map_location='cpu',weights_only=False);assert c['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint','offline_yaw_canonical_dynamics_not_policy_checkpoint'] and c['calibration_updates']==1000;cfg=c['cfg'];w=c['world_model'];configs[name]=cfg;contracts[name]=c.get('prediction_contract')
  assert cfg['extra']['tw_mjcf_sha256']==hashlib.sha256(a.asset.read_bytes()).hexdigest()
  model=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();
  from supermimic_geometry_model import configure_offline_geometry

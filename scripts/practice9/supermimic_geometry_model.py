@@ -4,6 +4,7 @@ from pathlib import Path
 import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 from supermimic_sole_clearance import SoleClearance
+from supermimic_yaw_canonical import KIND as YAW_KIND
 GEOMETRY_KIND='offline_sole_geometry_dynamics_not_policy_checkpoint'
 GEOMETRY_CONTRACT='sole_bottom_height_penetration_mm_v1'
 GEOMETRY_VELOCITY_CONTRACT='sole_bottom_height_penetration_velocity_v2'
@@ -55,19 +56,19 @@ def install_geometry_input(model,metadata,cfg):
  model.net[0]=GeometryInputLinear(model.net[0],model.state_norm,geometry,metadata['enabled'])
  return model
 def load_geometry_artifact(artifact,device='cuda:0'):
- if artifact.get('kind')!=GEOMETRY_KIND:raise ValueError('Explicit geometry offline artifact kind required')
+ if artifact.get('kind') not in [GEOMETRY_KIND,YAW_KIND]:raise ValueError('Explicit geometry offline artifact kind required')
  cfg=artifact['cfg'];w=artifact['world_model'];meta=artifact['geometry_contract']
  model=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,
   goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),
   termination_hidden=tuple(cfg['wm_term_hidden_dims']))).to(device)
  install_geometry_input(model,meta,cfg);model.load_state_dict(w,strict=True)
- from supermimic_pose_integration_diagnostic import PoseVelocityModel
- return model,PoseVelocityModel(model,artifact['prediction_contract'])
+ from supermimic_pose_integration_diagnostic import apply_offline_prediction_contract
+ return model,apply_offline_prediction_contract(model,artifact)
 def configure_offline_geometry(model,artifact):
  metadata=artifact.get('geometry_contract')
  if metadata is None:
-  if artifact.get('kind')==GEOMETRY_KIND:raise ValueError('Geometry artifact lacks geometry contract')
+  if artifact.get('kind') in [GEOMETRY_KIND,YAW_KIND]:raise ValueError('Geometry artifact lacks geometry contract')
   return model
- if artifact.get('kind')!=GEOMETRY_KIND:raise ValueError('Unexpected geometry contract on ordinary artifact')
+ if artifact.get('kind') not in [GEOMETRY_KIND,YAW_KIND]:raise ValueError('Unexpected geometry contract on ordinary artifact')
  if 'calibration_plan' in artifact:assert metadata==artifact['calibration_plan']['geometry_contract']
  return install_geometry_input(model,metadata,artifact['cfg'])

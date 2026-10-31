@@ -7,9 +7,9 @@ p=argparse.ArgumentParser(description=__doc__)
 for key in ['artifact','source-checkpoint','collection','output']:p.add_argument('--'+key,type=Path,required=True)
 a=p.parse_args();assert not a.output.exists()
 c=torch.load(a.source_checkpoint,map_location='cpu',weights_only=False);d=torch.load(a.artifact,map_location='cpu',weights_only=False)
-assert d['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint'] and d['calibration_updates']==1000
+assert d['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint','offline_yaw_canonical_dynamics_not_policy_checkpoint'] and d['calibration_updates']==1000
 assert d['calibration_plan']['source_checkpoint_sha256']==hashlib.sha256(a.source_checkpoint.read_bytes()).hexdigest()
-if d['kind'] in ['offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint']:
+if d['kind'] in ['offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint','offline_yaw_canonical_dynamics_not_policy_checkpoint']:
  assert d['prediction_contract']==d['calibration_plan']['prediction_contract']
  assert d['prediction_contract']['contract']=='pose_from_velocity_fit_alpha_v1'
 assert not any(k in d for k in ['actor_critic','actor_optimizer','critic_optimizer'])
@@ -22,7 +22,7 @@ def finite(x):
  elif isinstance(x,(list,tuple)):
   for v in x:finite(v)
 finite(d)
-if d['kind']=='offline_sole_geometry_dynamics_not_policy_checkpoint':
+if d['kind'] in ['offline_sole_geometry_dynamics_not_policy_checkpoint','offline_yaw_canonical_dynamics_not_policy_checkpoint']:
  from supermimic_geometry_model import load_geometry_artifact,install_geometry_input
  model,_=load_geometry_artifact(d,device='cpu')
  from supermimic.algo.networks import WorldModel,WorldModelCfg
@@ -77,5 +77,9 @@ if 'motion_h8_mix' in d['calibration_plan']:
  pool,meta=load_motion_fit_windows(Path(plan['motion_collection']),Path(plan['motion_audit']),mapping,device='cpu')
  assert meta==plan['motion_input']==json.loads((a.artifact.parent/'motion_input.json').read_text())
  assert len(pool['state'])==716 and not meta['validation_arrays_loaded']
+if d['kind']=='offline_yaw_canonical_dynamics_not_policy_checkpoint':
+ from supermimic_yaw_canonical import coordinate_metadata
+ meta=d['coordinate_contract'];assert meta==coordinate_metadata(meta['enabled'])==d['calibration_plan']['coordinate_contract']
+ assert d['calibration_plan']['yaw_canonical']==meta['enabled'] and d['calibration_plan']['motion_h8_mix']==1
 report=dict(passed=True,artifact_sha256=hashlib.sha256(a.artifact.read_bytes()).hexdigest(),finite_tensor_count=count,window=window,fit_windows=windows,fit_files=files,frozen_nonnet_tensors=frozen,changed_dynamics_tensors=changed,policy_artifact=False,promoted=False)
 a.output.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k not in ['fit_files','frozen_nonnet_tensors','changed_dynamics_tensors']}))

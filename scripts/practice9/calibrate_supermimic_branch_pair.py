@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--yaw-canonical',type=int,choices=[0,1]);p.add_argument('--yaw-contract-probe',type=Path)
 p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motion-collection',type=Path);p.add_argument('--motion-audit',type=Path)
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
@@ -19,6 +20,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.yaw_canonical is not None:assert a.motion_h8_mix==1 and a.yaw_contract_probe is not None and a.pose_integration_fit_audit is not None
 if a.motion_h8_mix is not None:
  assert a.dynamic_h1_mix is None and a.arm=='candidate' and a.sole_geometry==1 and a.geometry_velocity is None
  assert a.root_pose_coefficient==a.root_state_coefficient==a.velocity_anchor_coefficient==a.response_coefficient==1 and a.xy_invariance==1
@@ -263,6 +265,17 @@ if a.dynamic_h1_mix is not None:
 if a.motion_h8_mix is not None:
  plan['differing_variable']='H8 source64 static vs32 static+32 motion fit windows; H1 branch64 and768 endpoints unchanged'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+response_model=m;coordinate_contract=None
+if a.yaw_canonical is not None:
+ from supermimic_yaw_canonical import YawCanonicalModel,coordinate_metadata
+ proof=json.loads(a.yaw_contract_probe.read_text());assert proof['numpy_oracle_passed'] and len(proof['queries'])==144
+ source_proof=[x for x in proof['reports'] if x['checkpoint_sha256']==plan['source_checkpoint_sha256']]
+ assert len(source_proof)==1 and source_proof[0]['structural_checks_passed'] and source_proof[0]['weights_unchanged'] and source_proof[0]['finite_state_and_action_gradients']
+ coordinate_contract=coordinate_metadata(a.yaw_canonical)
+ response_model=YawCanonicalModel(m,bool(a.yaw_canonical))
+ predictor=PoseVelocityModel(response_model,prediction_contract)
+ plan.update(yaw_canonical=bool(a.yaw_canonical),coordinate_contract=coordinate_contract,yaw_probe_sha256=hashlib.sha256(a.yaw_contract_probe.read_bytes()).hexdigest(),historical_float32_probe_failures_retained=not proof['all_structural_checks_passed'],differing_variable='Explicit yaw frame0 vs1 before pose integration; all value and response losses share same physical velocity predictor')
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 mg=torch.Generator(device='cuda:0').manual_seed(48) if a.motion_h8_mix is not None else None
 dg=torch.Generator(device='cuda:0').manual_seed(47) if a.dynamic_h1_mix is not None else None
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
@@ -292,15 +305,15 @@ try:
    loss=loss+a.velocity_anchor_coefficient*velocity_anchor_value
   response_value=None
   if response_loss is not None:
-   response_value,root_response,joint_response=response_loss(m)
+   response_value,root_response,joint_response=response_loss(response_model)
    loss=loss+a.response_coefficient*response_value
   root_state_value=None
   if root_state_loss is not None:
-   root_state_value=root_state_loss(m)
+   root_state_value=root_state_loss(response_model)
    loss=loss+a.root_state_coefficient*root_state_value
   root_pose_value=None
   if root_pose_loss is not None:
-   root_pose_value=root_pose_loss(m)
+   root_pose_value=root_pose_loss(response_model)
    loss=loss+a.root_pose_coefficient*root_pose_value
   assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
   if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
@@ -334,9 +347,12 @@ try:
  if geometry_contract is not None:
   from supermimic_geometry_model import GEOMETRY_KIND
   artifact.update(kind=GEOMETRY_KIND,geometry_contract=geometry_contract,smoke_only=a.updates!=1000)
+ if coordinate_contract is not None:
+  from supermimic_yaw_canonical import KIND as YAW_KIND
+  artifact.update(kind=YAW_KIND,coordinate_contract=coordinate_contract)
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:
  plan['interrupted_quaternion_hook_active']=q_hook is not None
  plan['interrupted_geometry_contract']=geometry_contract
- torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict(),prediction_contract=prediction_contract),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise
+ torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict(),prediction_contract=prediction_contract,coordinate_contract=coordinate_contract),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise

@@ -3,6 +3,7 @@ import torch
 from torch import nn
 from mjlab.utils.lab_api.math import quat_mul
 CONTRACT='root_xy_yaw_canonical_world_velocity_v1'
+KIND='offline_yaw_canonical_dynamics_not_policy_checkpoint'
 
 def rotate_vector(v,c,s):
  return torch.cat([c*v[:,:1]-s*v[:,1:2],s*v[:,:1]+c*v[:,1:2],v[:,2:3]],dim=1)
@@ -37,3 +38,19 @@ class YawCanonicalModel(nn.Module):
   if not self.enabled:return self.model(state,action,context)
   local,frame=canonicalize_state(state)
   return restore_state(self.model(local.to(self.model.state_norm.mean.dtype),action,context),frame,output_dtype=state.dtype)
+
+
+def coordinate_metadata(enabled):
+ return dict(contract=CONTRACT,enabled=bool(enabled),coordinate_dtype='float64',network_dtype='float32',xy_reference_physical=[0.,0.],quaternion_hemisphere='nonnegative_w',order='raw_model_then_pose_integration',heading_projection_min=1e-12,scope='offline_only')
+
+def apply_coordinate_contract(model,artifact):
+ meta=artifact.get('coordinate_contract');plan=artifact.get('calibration_plan',{})
+ if meta is None:
+  if artifact.get('kind')==KIND or 'yaw_canonical' in plan or 'coordinate_contract' in plan:raise ValueError('Missing declared coordinate contract')
+  return model
+ if artifact.get('kind')!=KIND:raise ValueError('Coordinate contract requires explicit offline geometry artifact')
+ if not isinstance(meta,dict) or type(meta.get('enabled')) is not bool:raise ValueError('Invalid coordinate enabled flag')
+ if meta!=coordinate_metadata(meta['enabled']):raise ValueError('Unsupported coordinate contract')
+ if plan.get('coordinate_contract')!=meta or type(plan.get('yaw_canonical')) is not bool or plan['yaw_canonical']!=meta['enabled']:raise ValueError('Coordinate plan/metadata mismatch')
+ if artifact.get('geometry_contract',{}).get('enabled') is not True:raise ValueError('Coordinate trial requires enabled height geometry')
+ return YawCanonicalModel(model,meta['enabled'])
