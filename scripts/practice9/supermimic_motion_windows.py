@@ -4,7 +4,8 @@ from pathlib import Path
 import numpy as np
 import torch
 
-def load_motion_fit_windows(collection,audit_path,mapping,device='cuda:0'):
+def load_motion_fit_windows(collection,audit_path,mapping,device='cuda:0',window=8):
+ assert window in [8,32]
  collection=Path(collection).resolve();audit_path=Path(audit_path).resolve()
  audit=json.loads(audit_path.read_text());assert audit['passed'] and not audit['smoke']
  assert audit_path.parent==collection.parent
@@ -31,9 +32,10 @@ def load_motion_fit_windows(collection,audit_path,mapping,device='cuda:0'):
   for k,width in [('state',73),('action',30),('context',34),('next_state',73)]:assert data[k].shape==(n,width) and np.isfinite(data[k]).all()
   assert np.array_equal(data['next_state'][:-1],data['state'][1:])
   files.append(dict(file=row['trace'],sha256=sha,states=n,source_family=row['source_family']));states+=n
-  for start in range(n-7):
+  for start in range(n-window+1):
    windows['state'].append(data['state'][start])
-   for k in keys[1:]:windows[k].append(data[k][start:start+8])
- assert len(files)==16 and states==828 and len(windows['state'])==716
- meta=dict(files=files,states=states,windows=716,fit_families=sorted(fit_families),validation_families_metadata_only=sorted(val_families),audit_sha256=hashlib.sha256(audit_path.read_bytes()).hexdigest(),source_plan_sha256=info['plan_sha256'],results_sha256=hashlib.sha256((collection/'results.json').read_bytes()).hexdigest(),mapping_sha256=hashlib.sha256((collection/'control_mapping.json').read_bytes()).hexdigest(),validation_arrays_loaded=False)
+   for k in keys[1:]:windows[k].append(data[k][start:start+window])
+ assert len(files)==16 and states==828 and len(windows['state'])=={8:716,32:337}[window]
+ meta=dict(files=files,states=states,windows=len(windows['state']),fit_families=sorted(fit_families),validation_families_metadata_only=sorted(val_families),audit_sha256=hashlib.sha256(audit_path.read_bytes()).hexdigest(),source_plan_sha256=info['plan_sha256'],results_sha256=hashlib.sha256((collection/'results.json').read_bytes()).hexdigest(),mapping_sha256=hashlib.sha256((collection/'control_mapping.json').read_bytes()).hexdigest(),validation_arrays_loaded=False)
+ if window==32:meta.update(window=32,eligible_episodes=sum(x['states']>=32 for x in files),short_episodes_retained_in_h8=[x['file'] for x in files if x['states']<32])
  return {k:torch.tensor(np.stack(v),device=device) for k,v in windows.items()},meta

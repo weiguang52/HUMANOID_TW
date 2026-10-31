@@ -81,5 +81,19 @@ if d['kind']=='offline_yaw_canonical_dynamics_not_policy_checkpoint':
  from supermimic_yaw_canonical import coordinate_metadata
  meta=d['coordinate_contract'];assert meta==coordinate_metadata(meta['enabled'])==d['calibration_plan']['coordinate_contract']
  assert d['calibration_plan']['yaw_canonical']==meta['enabled'] and d['calibration_plan']['motion_h8_mix']==1
+if 'mixed_horizon' in d['calibration_plan']:
+ plan=d['calibration_plan'];assert type(plan['mixed_horizon']) is bool and plan['long_generators']==[49,50]
+ assert plan['actual_prediction_points_min']==plan['actual_prediction_points_max']==768 and plan['actual_prediction_points_total']==768000
+ assert plan['rollout_endpoints']==512 and plan['trajectory_batch']*8+plan['long_trajectory_batch']*32==512
+ assert plan['one_step_batch']==64 and plan['prediction_endpoints_per_update']==768 and plan['yaw_canonical'] and plan['motion_h8_mix']==1
+ assert plan['long_static_files']==files
+ count_long=0
+ for item in files:
+  with np.load(a.collection/item['file'],allow_pickle=False) as z:count_long+=max(0,len(z['state'])-31)
+ assert count_long==plan['long_static_windows']==3057
+ long_pool,long_meta=load_motion_fit_windows(Path(plan['motion_collection']),Path(plan['motion_audit']),mapping,device='cpu',window=32)
+ assert long_meta==plan['long_motion_input'] and len(long_pool['state'])==337 and long_meta['eligible_episodes']==14
+ assert long_meta['files']==plan['motion_input']['files'] and len(long_meta['short_episodes_retained_in_h8'])==2
+ assert json.loads((a.artifact.parent/'long_horizon_input.json').read_text())==dict(static_files=files,static_windows=3057,motion=long_meta)
 report=dict(passed=True,artifact_sha256=hashlib.sha256(a.artifact.read_bytes()).hexdigest(),finite_tensor_count=count,window=window,fit_windows=windows,fit_files=files,frozen_nonnet_tensors=frozen,changed_dynamics_tensors=changed,policy_artifact=False,promoted=False)
 a.output.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k not in ['fit_files','frozen_nonnet_tensors','changed_dynamics_tensors']}))

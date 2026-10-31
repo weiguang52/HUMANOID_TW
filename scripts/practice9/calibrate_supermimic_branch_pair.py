@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--mixed-horizon',type=int,choices=[0,1])
 p.add_argument('--yaw-canonical',type=int,choices=[0,1]);p.add_argument('--yaw-contract-probe',type=Path)
 p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motion-collection',type=Path);p.add_argument('--motion-audit',type=Path)
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
@@ -20,6 +21,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.mixed_horizon is not None:assert a.yaw_canonical==1 and a.motion_h8_mix==1
 if a.yaw_canonical is not None:assert a.motion_h8_mix==1 and a.yaw_contract_probe is not None and a.pose_integration_fit_audit is not None
 if a.motion_h8_mix is not None:
  assert a.dynamic_h1_mix is None and a.arm=='candidate' and a.sole_geometry==1 and a.geometry_velocity is None
@@ -103,6 +105,18 @@ if a.motion_h8_mix is not None:
  motion,motion_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping)
  plan.update(motion_h8_mix=a.motion_h8_mix,motion_generator_seed=48,motion_collection=str(a.motion_collection.resolve()),motion_audit=str(a.motion_audit.resolve()),motion_input=motion_meta)
  (a.output/'motion_input.json').write_text(json.dumps(motion_meta,indent=2))
+long_static=None;long_motion=None
+if a.mixed_horizon is not None:
+ pools={k:[] for k in traj}
+ for episode in original:
+  for start in range(len(episode['state'])-31):
+   pools['state'].append(episode['state'][start])
+   for k in ['action','context','next_state']:pools[k].append(episode[k][start:start+32])
+ long_static={k:torch.tensor(np.stack(v),device='cuda:0') for k,v in pools.items()}
+ assert len(long_static['state'])==3057
+ long_motion,long_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=32)
+ plan.update(mixed_horizon=bool(a.mixed_horizon),long_static_windows=3057,long_static_files=files,long_motion_input=long_meta,long_generators=[49,50],rollout_endpoints=512,trajectory_batch=32 if a.mixed_horizon else 64,long_trajectory_batch=8 if a.mixed_horizon else 0,batch=104 if a.mixed_horizon else 128)
+ (a.output/'long_horizon_input.json').write_text(json.dumps(dict(static_files=files,static_windows=3057,motion=long_meta),indent=2))
 dynamic=None;dynamic_files=[]
 if a.dynamic_h1_mix is not None:
  fit_rows={row['trace']:row for row in rows if row['split']=='fit'}
@@ -276,22 +290,48 @@ if a.yaw_canonical is not None:
  predictor=PoseVelocityModel(response_model,prediction_contract)
  plan.update(yaw_canonical=bool(a.yaw_canonical),coordinate_contract=coordinate_contract,yaw_probe_sha256=hashlib.sha256(a.yaw_contract_probe.read_bytes()).hexdigest(),historical_float32_probe_failures_retained=not proof['all_structural_checks_passed'],differing_variable='Explicit yaw frame0 vs1 before pose integration; all value and response losses share same physical velocity predictor')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.mixed_horizon is not None:
+ plan['differing_variable']='Same512 rollout endpoints:64H8 vs32H8+8H32; H1 and all response targets unchanged'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+lg=torch.Generator(device='cuda:0').manual_seed(49) if a.mixed_horizon is not None else None
+lm=torch.Generator(device='cuda:0').manual_seed(50) if a.mixed_horizon is not None else None
 mg=torch.Generator(device='cuda:0').manual_seed(48) if a.motion_h8_mix is not None else None
 dg=torch.Generator(device='cuda:0').manual_seed(47) if a.dynamic_h1_mix is not None else None
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
+point_tally=None;point_history=[]
+if a.mixed_horizon is not None:
+ point_tally={'points':0}
+ def count_prediction_points(module,args):point_tally['points']+=len(args[0])
+ m.register_forward_pre_hook(count_prediction_points)
 update=0
 try:
  for update in range(1,a.updates+1):
+  if point_tally is not None:point_tally['points']=0
   idx=torch.randint(len(traj['state']),(64,),device='cuda:0',generator=tg)
   rollout_batch={k:v[idx] for k,v in traj.items()}
   if a.motion_h8_mix is not None:
    mi=torch.randint(len(motion['state']),(32,),device='cuda:0',generator=mg)
    if a.motion_h8_mix:rollout_batch={k:torch.cat([v[:32],motion[k][mi]],dim=0) for k,v in rollout_batch.items()}
+  long_batch=None
+  if a.mixed_horizon is not None:
+   si=torch.randint(len(long_static['state']),(4,),device='cuda:0',generator=lg)
+   li=torch.randint(len(long_motion['state']),(4,),device='cuda:0',generator=lm)
+   if a.mixed_horizon:
+    rollout_batch={k:torch.cat([v[:16],v[32:48]],dim=0) for k,v in rollout_batch.items()}
+    long_batch={k:torch.cat([v[si],long_motion[k][li]],dim=0) for k,v in long_static.items()}
+    assert len(rollout_batch['state'])*8+len(long_batch['state'])*32==512
   pred=rollout_batch['state'];rollout=0
   velocity_rollout=0
   for j in range(8):
    pred=predictor(pred,rollout_batch['action'][:,j],rollout_batch['context'][:,j]);rollout=rollout+m.state_loss(pred,rollout_batch['next_state'][:,j])/8
    if a.velocity_anchor_coefficient is not None:velocity_rollout=velocity_rollout+velocity_value_loss(pred,rollout_batch['next_state'][:,j])/8
+  if long_batch is not None:
+   long_pred=long_batch['state'];long_rollout=0;long_velocity=0
+   for j in range(32):
+    long_pred=predictor(long_pred,long_batch['action'][:,j],long_batch['context'][:,j])
+    long_rollout=long_rollout+m.state_loss(long_pred,long_batch['next_state'][:,j])/32
+    long_velocity=long_velocity+velocity_value_loss(long_pred,long_batch['next_state'][:,j])/32
+   rollout=.5*(rollout+long_rollout);velocity_rollout=.5*(velocity_rollout+long_velocity)
   oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og)
   h1_batch={k:v[oi] for k,v in one.items()}
   if a.dynamic_h1_mix is not None:
@@ -315,6 +355,9 @@ try:
   if root_pose_loss is not None:
    root_pose_value=root_pose_loss(response_model)
    loss=loss+a.root_pose_coefficient*root_pose_value
+  if point_tally is not None:
+   assert point_tally['points']==plan['prediction_endpoints_per_update']==768
+   point_history.append(point_tally['points'])
   assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
   if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
  if q_hook is not None:
@@ -335,6 +378,10 @@ try:
  for key,value in m.state_dict().items():
   assert torch.isfinite(value).all()
   if not key.startswith('net.'):assert torch.equal(value.cpu(),w[key]),key
+ if point_tally is not None:
+  assert len(point_history)==a.updates
+  plan.update(actual_prediction_points_min=min(point_history),actual_prediction_points_max=max(point_history),actual_prediction_points_total=sum(point_history))
+  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
  artifact=dict(kind='offline_dynamics_calibration_not_policy_checkpoint',world_model=m.state_dict(),cfg=cfg,calibration_plan=plan,calibration_updates=a.updates,optimizer=opt.state_dict())
  if a.quaternion_conditioning:
   artifact['training_coordinate_optimizer']=artifact.pop('optimizer')
