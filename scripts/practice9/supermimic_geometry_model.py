@@ -32,6 +32,7 @@ class GeometryVelocityInputLinear(GeometryInputLinear):
  def geometry_features(self,x):
   raw=x[:,:73]*self.input_std+self.input_mean
   raw=torch.where(self.input_frozen,x[:,:73],raw)
+  raw=raw.clone();raw[:,:2]=0
   height,velocity=self.geometry.height_and_velocity(raw)
   h=height[...,[0,2,4,6]].reshape(len(x),8)/.001
   v=velocity[...,[0,2,4,6]].reshape(len(x),8)/self.velocity_scale
@@ -45,6 +46,7 @@ def install_geometry_input(model,metadata,cfg):
  if metadata['contract']==GEOMETRY_VELOCITY_CONTRACT:
   from supermimic_sole_corner_velocity import SoleCornerVelocity
   assert metadata['enabled'] is True and isinstance(metadata['velocity_enabled'],bool)
+  assert metadata.get('xy_reference_physical',[0.,0.])==[0.,0.]
   assert metadata['policy_dt_s']==.02 and abs(metadata['velocity_scale_m_s']*metadata['policy_dt_s']-.001)<1e-15
   geometry=SoleCornerVelocity(asset,cfg['extra']['tw_state_joint_names']).to(model.net[0].weight.device)
   model.net[0]=GeometryVelocityInputLinear(model.net[0],model.state_norm,geometry,metadata['velocity_enabled'],metadata['velocity_scale_m_s'])

@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
 p.add_argument('--root-pose-coefficient',type=float);p.add_argument('--root-pose-scale-audit',type=Path);p.add_argument('--root-pose-collection',type=Path)
 p.add_argument('--quaternion-conditioning',type=int,choices=[0,1])
@@ -16,6 +17,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.geometry_velocity is not None:assert a.sole_geometry==1 and a.root_pose_coefficient==1 and a.root_pose_scale_audit is None
 if a.sole_geometry is not None:
  assert a.root_pose_coefficient is not None and a.quaternion_conditioning is None and a.geometry_asset is not None and a.geometry_contract_probe is not None
 else:assert a.geometry_asset is None and a.geometry_contract_probe is None
@@ -154,6 +156,16 @@ if a.sole_geometry is not None:
  assert probe['source_sha256']==plan['source_checkpoint_sha256']
  geometry_contract=dict(contract=GEOMETRY_CONTRACT,enabled=bool(a.sole_geometry),height_scale_m=.001,
   ground_height_m=0,asset=str(a.geometry_asset.resolve()),asset_sha256=hashlib.sha256(a.geometry_asset.read_bytes()).hexdigest())
+ if a.geometry_velocity is not None:
+  from supermimic_geometry_model import GEOMETRY_VELOCITY_CONTRACT
+  assert probe['contract']==GEOMETRY_VELOCITY_CONTRACT and probe['height_features_enabled_both'] and probe['first_input_dim']==161 and probe['velocity_feature_xy_invariance_checked']
+  raw_path=Path(probe['raw_probe_file']).resolve();assert raw_path.is_relative_to(a.geometry_contract_probe.parent.resolve())
+  assert hashlib.sha256(raw_path.read_bytes()).hexdigest()==probe['raw_probe_sha256']
+  raw=json.loads(raw_path.read_text());assert raw['passed'] and raw['source_sha256']==probe['source_sha256']
+  for item in probe['initial_artifacts']:
+   artifact_path=a.geometry_contract_probe.parent/(item['arm']+'_initial.pt')
+   assert hashlib.sha256(artifact_path.read_bytes()).hexdigest()==item['sha256']
+  geometry_contract.update(contract=GEOMETRY_VELOCITY_CONTRACT,velocity_enabled=bool(a.geometry_velocity),velocity_scale_m_s=.05,policy_dt_s=.02,xy_reference_physical=[0.,0.])
  with torch.no_grad():
   for _ in range(5):m(query,query_action,query_context)
   geometry_before=m(query,query_action,query_context)
@@ -197,6 +209,9 @@ if a.root_pose_coefficient is not None:
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 if geometry_contract is not None:
  plan['differing_variable']='Explicit geometry input flag and loss coefficients recorded; paired variable defined in experiment plan'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.geometry_velocity is not None:
+ plan['differing_variable']='Bottom corner vertical velocity input enabled0 vs1; height inputs and all loss coefficients fixed'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 if a.root_pose_scale_audit is not None:
  scale=json.loads(a.root_pose_scale_audit.read_text())
