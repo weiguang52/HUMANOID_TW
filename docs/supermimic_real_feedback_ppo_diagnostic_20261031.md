@@ -102,3 +102,21 @@ The archive's512 finite contiguous traces, initial state/context matching, exact
 A separate128-episode same-condition PD repeat has identical initial states/actions and ending steps; maximum root position difference4.813e-6m and angular-velocity difference1.2112e-4rad/s are of similar order. One repeat does not establish a statistical error bound or bitwise reproducibility. Sensor-noise benefit is not inferred from22 versus26 completions. The first repeat attempt had incorrect declared agent metadata and was interrupted/preserved as `repeat_pd_v1_failed_metadata`; the corrected repeat is separate. Original512 episodes were not rerun or changed.
 
 The learned policy has some recovery capacity but remains unacceptable for tilted edge support and incomplete robustness. The next single training change is a reference-sole-normal penalty, with all other settings fixed; the physical termination gates are unchanged. None of these developer diagnostics fulfills the final fixed7-motion/three-training-seed target.
+
+## Predeclared reference-sole-normal penalty experiment
+
+The next training variable is `--sole-normal-penalty 2`. All other original real-feedback PPO settings are fixed: same original SM parent92a3be6e..., fresh final-readout zeroing, source normalization tensors frozen,256 worlds,seed42,1000 updates,8192000 actual transitions, fixed std0.1, original sensor noise/reset/events/physics/terminations. The smoke checkpoint is not a formal training parent. There is no joint masking, new degree of freedom, geometry or mass edit.
+
+For the two feet, the new reward is
+
+`base_reward - 2 * dt * mean_feet(||normal_actual - normal_reference||^2)`.
+
+Both normals are signed world-space local-Z axes of the sole boxes. The constant synthetic reference is explicitly checked; the feature is not silently applied to general motion training. Native compiled model checks establish that each box is owned by its expected foot body with identity local rotation. Every sampled step compares the quaternion-derived normal with actual GPU geom_xmat (atol1e-6). Squared signed-normal distance distinguishes an upside-down sole from a correctly oriented one, remains yaw-invariant for a vertical reference and avoids acos gradients. Reward shaping also affects the existing return sampler through actual episode returns; the sampler algorithm itself is unchanged.
+
+At the old13/24deg stance the penalty is approximately0.0046 per step, about7.5% of the observed mean base reward. This is a fixed initial coefficient, not selected using the new final result. It does not alter physical termination or evaluation gates. The default coefficient0 keeps the original reward tensor itself, without a sole computation.
+
+`supermimic_sole_normal.py` verifies identity/yaw cost0,90deg cost2,180deg cost4 and finite gradients. The eight-world/four-update smoke was interrupted at update2 and resumed with the actual PPO optimizer to update4; both checkpoints and segment audits are preserved. Native normal error is at most2.9802322e-7, reward composition and penalty/cost scale pass independent checks, all26 Adam states have64 steps,12 normalization tensors and world-model tensors remain unchanged. Its final checkpoint SHA256 is `6824fc04d2611fdb48d535271468f718ccc87fa6ca963093dd0fd7ca9a080921`. The first pre-update rollout's base reward differs from the old coefficient0 smoke by only3.49246e-10, with8 endings in each; this supports unchanged initial sampling without claiming full GPU bitwise determinism.
+
+Use `run_supermimic_sole_normal_diagnostic.sh smoke`, `resume_smoke` and `formal`. Formal output is `longterm_diagnostics/sole_normal_ppo_v1/trained`. The runner locks the run, preserves completed checkpoints for recovery, audits the final training artifact, evaluates only final update1000 for learned/PD20s with front/side colors and native contacts, and verifies exact video frames/full decoding. Physical contact, drift, pose and recovery still need review; no promotion follows artifact verification automatically.
+
+Compare the final candidate with the preserved coefficient0 baseline on original20s gates and on the same R/S/A factorial, retaining all groups and the strict numerical-repeatability caveat. Static foot orientation improvements alone do not prove full-motion tracking, world-model consistency or three-training-seed acceptance.

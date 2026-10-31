@@ -123,6 +123,24 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs):
             assert row["diagnostic_env_steps"] == row["update"] * expected_envs * 32
         assert row["reset_live_max_error"] <= 1e-6
         assert set(row["losses"]) == {"value", "surrogate", "entropy"}
+    sole_coefficient = float(plan.get("sole_normal_penalty", 0.0))
+    for row in rows:
+        if "base_reward_mean" in row:
+            assert (
+                abs(
+                    row["reward_mean"]
+                    - row["base_reward_mean"]
+                    + row["sole_penalty_mean"]
+                )
+                <= 1e-7
+            )
+            assert (
+                abs(
+                    row["sole_penalty_mean"]
+                    - sole_coefficient * 0.02 * row["sole_cost_mean"]
+                )
+                <= 1e-7
+            )
     training_audit = json.loads((run / "audit.json").read_text())
     assert training_audit["checkpoint_sha256"] == digest(path)
     assert training_audit["completed_updates"] == expected_updates
@@ -135,6 +153,14 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs):
         "timeout_bootstrap_unit_check",
     ):
         assert training_audit[key] is True
+    if sole_coefficient:
+        assert plan["sole_normal_contract"] == "reference_body_z_normal_static_v1"
+        assert training_audit["sole_normal_penalty"] == sole_coefficient
+        assert training_audit["sole_native_max_error"] <= 1e-6
+        assert all(training_audit["sole_math_check"].values())
+        assert training_audit["sole_native_checks_current_segment"] == 32 * (
+            expected_updates - training_audit["resumed_from_update"]
+        )
     group_changes = {}
     for prefix in PARAMETER_PREFIXES:
         values = [
@@ -161,6 +187,9 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs):
         "trainable_parameter_tensors": len(parameters),
         "normalizer_tensors": len(normalizers),
         "world_model_unchanged": True,
+        "sole_normal_penalty": sole_coefficient,
+        "sole_native_max_error": training_audit.get("sole_native_max_error"),
+        "sole_reward_composition_checked": bool(sole_coefficient),
         "source_parameter_changes": group_changes,
         "manifest_hash_checked": manifest_path.exists(),
         "completed_training_segments_have_unique_contiguous_updates": True,

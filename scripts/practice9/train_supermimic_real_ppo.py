@@ -38,12 +38,14 @@ def main():
     p.add_argument("--num-envs", type=int, default=8)
     p.add_argument("--updates", type=int, default=4)
     p.add_argument("--resume", type=Path)
+    p.add_argument("--sole-normal-penalty", type=float, default=0.0)
     p.add_argument(
         "--stop-after",
         type=int,
         help="Smoke-only interrupted budget; resume keeps the original total plan",
     )
     a = p.parse_args()
+    assert math.isfinite(a.sole_normal_penalty) and 0 <= a.sole_normal_penalty <= 5
     a.output.mkdir(parents=True, exist_ok=True)
     if (a.output / "metrics.jsonl").exists() and not a.resume:
         raise ValueError("Existing run: resume explicitly, never overwrite")
@@ -60,6 +62,14 @@ def main():
     cfg.experiment_name = "real_physics_ppo_diagnostic"
     rows = json.loads(a.manifest.read_text())["motions"]
     files = [r["file"] for r in rows]
+    if a.sole_normal_penalty:
+        assert json.loads(a.manifest.read_text())["synthetic_diagnostic"]
+        assert len(files) == 1
+        with np.load(files[0], allow_pickle=False) as reference:
+            for key in ["joint_pos", "body_pos_w", "body_quat_w"]:
+                assert np.allclose(reference[key], reference[key][0], rtol=0, atol=1e-7)
+            for key in ["joint_vel", "body_lin_vel_w", "body_ang_vel_w"]:
+                assert np.max(np.abs(reference[key])) < 1e-7
     plan = {
         "kind": KIND,
         "parent_sha256": sha(a.parent),
@@ -79,6 +89,8 @@ def main():
         "fixed_source_normalizers": True,
         "all_actions_trainable": True,
         "world_model_used_for_policy_update": False,
+        "sole_normal_penalty": a.sole_normal_penalty,
+        "sole_normal_contract": "reference_body_z_normal_static_v1",
         "actual_transitions": a.num_envs * 32 * a.updates,
         "scope": "Diagnostic; different real-sample budget; not a matched algorithm comparison or final acceptance",
     }
@@ -94,7 +106,10 @@ def main():
     t = SuperMimicTrainer(env, cfg, log_dir=a.output / "runtime")
     t.load(a.parent)
     t.initialize()
-    collector = RealFeedbackCollector(t)
+    collector = RealFeedbackCollector(t, sole_normal_penalty=a.sole_normal_penalty)
+    from supermimic_sole_normal import check_known_rotations
+
+    sole_math_check = check_known_rotations()
     obs = collector.observe()
     alg = construct_ppo(t.actor_critic, obs, a.num_envs, cfg.gamma, cfg.action_noise)
     # Test nonzero parent outputs, before zeroing the readout.
@@ -241,6 +256,9 @@ def main():
                     "env_steps": t.env_steps,
                     "diagnostic_env_steps": t.env_steps - source["env_steps"],
                     "reward_mean": float(np.mean(collector.rewards[offset:])),
+                    "base_reward_mean": float(np.mean(collector.base_rewards[offset:])),
+                    "sole_penalty_mean": float(np.mean(collector.penalties[offset:])),
+                    "sole_cost_mean": float(np.mean(collector.sole_costs[offset:])),
                     "done_count": collector.done_count,
                     "timeout_count": collector.timeout_count,
                     "completed_seconds_mean": float(
@@ -269,6 +287,14 @@ def main():
             "completed_updates": update,
             "checkpoint_sha256": sha(final),
             "adapter_parent_equivalence": True,
+            "sole_math_check": sole_math_check,
+            "sole_native_max_error": collector.sole.max_native_error
+            if collector.sole
+            else 0.0,
+            "sole_normal_penalty": a.sole_normal_penalty,
+            "sole_native_checks_current_segment": collector.sole.calls
+            if collector.sole
+            else 0,
             "world_model_calls": wm_calls[0],
             "world_model_unchanged": True,
             "normalizers_frozen": True,

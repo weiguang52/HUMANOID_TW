@@ -89,8 +89,16 @@ def bootstrap_timeouts(reward, terminated, truncated, terminal_value, gamma):
 
 
 class RealFeedbackCollector:
-    def __init__(self, trainer):
+    def __init__(self, trainer, sole_normal_penalty=0.0):
         self.t = trainer
+        self.sole = None
+        if sole_normal_penalty:
+            from supermimic_sole_normal import SoleNormalPenalty
+
+            self.sole = SoleNormalPenalty(trainer, sole_normal_penalty)
+        self.base_rewards = []
+        self.penalties = []
+        self.sole_costs = []
         self.done_count = 0
         self.timeout_count = 0
         self.reset_live_max_error = 0.0
@@ -131,6 +139,20 @@ class RealFeedbackCollector:
         next_state = t.extractor.state().clone()
         reference = _squeeze(t.library.gather(clip, times, 1))
         reward, _ = t.reward(next_state, action, previous, reference)
+        base_reward = reward
+        if self.sole is not None:
+            penalty, cost = self.sole(reference)
+            reward = base_reward - penalty
+            self.penalties.append(float(penalty.mean()))
+            self.sole_costs.append(float(cost.mean()))
+        else:
+            self.penalties.append(0.0)
+            self.sole_costs.append(0.0)
+            assert reward is base_reward
+        self.base_rewards.append(float(base_reward.mean()))
+        torch.testing.assert_close(
+            reward.mean(), base_reward.mean() - self.penalties[-1], rtol=0, atol=1e-7
+        )
         assert torch.isfinite(reward).all()
         t.last_action = action.detach().clone()
         idx = t.episode_len
