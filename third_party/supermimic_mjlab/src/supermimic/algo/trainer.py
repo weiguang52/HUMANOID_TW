@@ -131,6 +131,30 @@ class SuperMimicTrainer:
             device=self.device,
         )
 
+        self.wm_anchor = None
+        self.wm_anchor_batch = 0
+        if cfg.wm_anchor_collection is not None:
+            from .anchor_windows import AnchorWindows
+            self.wm_anchor_batch = int(cfg.wm_batch_size * cfg.wm_anchor_fraction)
+            if not 0 < self.wm_anchor_batch < cfg.wm_batch_size:
+                raise ValueError('Anchor fraction must retain online windows')
+            self.wm_anchor = AnchorWindows(
+                cfg.wm_anchor_collection, cfg.wm_window, self.spec.joint_names,
+                env.action_manager.get_term('joint_pos').target_names,
+                self.device, cfg.seed,
+            )
+            term = env.action_manager.get_term('joint_pos')
+            for name, actual in [('offset', term._offset), ('scale', term._scale)]:
+                torch.testing.assert_close(
+                    torch.as_tensor(self.wm_anchor.mapping[name], device=self.device).reshape(-1).expand_as(actual),
+                    actual, rtol=0, atol=1e-7,
+                )
+            self.log_dir.mkdir(parents=True, exist_ok=True)
+            import json
+            (self.log_dir / 'anchor_source.json').write_text(
+                json.dumps(self.wm_anchor.metadata, indent=2)
+            )
+
         self.world_model = WorldModel(
             WorldModelCfg(
                 state_dim=self.spec.state_dim,
@@ -378,9 +402,15 @@ class SuperMimicTrainer:
         term_losses = []
         self.world_model.train()
         for _ in range(cfg.wm_updates_per_iter):
-            env_ids, positions = self.buffer.sample_windows(cfg.wm_batch_size, k + 1)
+            env_ids, positions = self.buffer.sample_windows(cfg.wm_batch_size - self.wm_anchor_batch, k + 1)
             states, actions, _ = self.buffer.gather_states(env_ids, positions, before=k)
             context = self.buffer.contexts[env_ids, positions]
+            if self.wm_anchor is not None:
+                anchor_states, anchor_actions, anchor_context = self.wm_anchor.sample(self.wm_anchor_batch)
+                states = torch.cat([states, anchor_states], dim=0)
+                actions = torch.cat([actions, anchor_actions], dim=0)
+                context = torch.cat([context, anchor_context], dim=0)
+                assert states.shape[0] == cfg.wm_batch_size
             pred = states[:, 0]
             loss = torch.zeros((), device=self.device)
             for j in range(k):
@@ -429,6 +459,7 @@ class SuperMimicTrainer:
             "replay/valid_wm_windows": float(self.buffer.valid_window_counts[k + 1]),
             "replay/cross_reset_windows": float(self.buffer.last_cross_reset_count),
             "world_model/window_error": window_error,
+            "world_model/anchor_batch": float(self.wm_anchor_batch),
             "world_model/term_loss": float(torch.tensor(term_losses).mean().item())
             if term_losses
             else 0.0,
@@ -1007,6 +1038,8 @@ class SuperMimicTrainer:
                 "iteration": self.iteration,
                 "env_steps": self.env_steps,
                 "world_model": self.world_model.state_dict(),
+                "wm_anchor_rng_state": self.wm_anchor.generator.get_state() if self.wm_anchor is not None else None,
+                "wm_anchor_source": self.wm_anchor.metadata if self.wm_anchor is not None else None,
                 "actor_critic": self.actor_critic.state_dict(),
                 "cfg": asdict(self.cfg),
                 "wm_optimizer": self.wm_optimizer.state_dict(),
@@ -1041,6 +1074,12 @@ class SuperMimicTrainer:
                     f"Checkpoint lacks {name}; exact optimizer continuation unavailable"
                 )
             getattr(self, name).load_state_dict(checkpoint[name])
+        if self.wm_anchor is not None and checkpoint.get("wm_anchor_source") is not None:
+            for key in ('contract', 'window', 'windows', 'fit_files', 'mapping_sha256'):
+                if self.wm_anchor.metadata[key] != checkpoint['wm_anchor_source'][key]:
+                    raise ValueError(f'Anchor data changed on resume: {key}')
+        if self.wm_anchor is not None and checkpoint.get("wm_anchor_rng_state") is not None:
+            self.wm_anchor.generator.set_state(checkpoint["wm_anchor_rng_state"].cpu())
         self._step_accumulator = float(checkpoint["step_accumulator"])
         self._rng.set_state(checkpoint["generator_state"].cpu())
         torch.set_rng_state(checkpoint["torch_rng_state"].cpu())

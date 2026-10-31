@@ -141,6 +141,7 @@ def evaluate(args):
     )
     assert color_audit["source_mjcf_sha256"] == extra["tw_mjcf_sha256"]
     cfg = SuperMimicCfg(**checkpoint["cfg"])
+    cfg.wm_anchor_collection = None  # Training-only data are not needed for inference.
     cfg.compile = False
     cfg.experiment_name = "evaluation_runtime"
     cfg.device = "cuda:0"

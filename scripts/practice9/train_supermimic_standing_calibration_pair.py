@@ -11,7 +11,8 @@ from supermimic.config.tw.velocity_limits import enable_tw_velocity_limits,disab
 p=argparse.ArgumentParser(description=__doc__)
 for name in ['checkpoint','dynamics-checkpoint','manifest','output','run-root']:
  p.add_argument('--'+name,type=Path,required=True)
-p.add_argument('--branch',choices=['control','calibrated'],required=True)
+p.add_argument('--branch',choices=['control','calibrated','calibrated_retained'],required=True)
+p.add_argument('--anchor-collection',type=Path)
 a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 configure_torch_backends()
 c=torch.load(a.checkpoint,map_location='cpu',weights_only=False)
@@ -29,6 +30,10 @@ files=tuple(row['file'] for row in m['motions'])
 assert extra['tw_motion_input_sha256']==hashlib.sha256(json.dumps(files).encode()).hexdigest()
 cfg.num_iterations=1100;cfg.save_interval=100;cfg.experiment_name=a.branch;cfg.log_dir=str(a.run_root)
 assert not (a.run_root/a.branch).exists()
+if a.branch=='calibrated_retained':
+ assert a.anchor_collection is not None
+ cfg.wm_anchor_collection=str(a.anchor_collection.resolve());cfg.wm_anchor_fraction=.5
+else:assert a.anchor_collection is None
 plan=dict(branch=a.branch,updates=100,initial_iteration=1000,final_iteration=1100,seed=42,num_envs=256,
  source_checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),
  calibrated_sha256=hashlib.sha256(a.dynamics_checkpoint.read_bytes()).hexdigest(),
@@ -36,6 +41,9 @@ plan=dict(branch=a.branch,updates=100,initial_iteration=1000,final_iteration=110
  learning_rate='Preserve source cosine schedule and final ratio, no restart of schedule',
  selection='Final1100 only; evaluate original20s window, stop at first original termination; no automatic promotion',
  limitation='Single training seed continuation, not3 independent training seeds')
+if a.branch=='calibrated_retained':
+ plan['differing_variable']='Relative to prior calibrated arm, half same-size dynamics batch uses fit-only anchor windows; all other mechanisms unchanged'
+ plan['anchor_collection']=cfg.wm_anchor_collection;plan['anchor_fraction']=.5
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 e=tw_supermimic_env_cfg(files,num_envs=256,play=False);e.seed=42;e.episode_length_s=30.
 env=ManagerBasedRlEnv(e,device=cfg.device);enable_tw_velocity_limits(env)
@@ -44,7 +52,11 @@ try:
  assert list(env.action_manager.get_term('joint_pos').target_names)==extra['tw_action_joint_names']
  t=SuperMimicTrainer(env,cfg,log_dir=a.run_root);t.load(a.checkpoint)
  for k,v in t.actor_critic.state_dict().items():assert torch.equal(v.cpu(),c['actor_critic'][k]),k
- if a.branch=='calibrated':t.world_model.load_state_dict(d['world_model'],strict=True)
+ if a.branch.startswith('calibrated'):t.world_model.load_state_dict(d['world_model'],strict=True)
+ if t.wm_anchor is not None:
+  plan['anchor_source']=t.wm_anchor.metadata
+  plan['dynamics_batch']=dict(total=cfg.wm_batch_size,fit=t.wm_anchor_batch,online=cfg.wm_batch_size-t.wm_anchor_batch)
+  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
  t.wm_optimizer.state.clear()
  cfg.extra['tw_standing_calibration_pilot']=plan
  (a.output/'status').write_text('training\n')

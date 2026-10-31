@@ -51,6 +51,8 @@ class SuperMimicCfg:
     goal_frames: int = 10
 
     # World model.
+    wm_anchor_collection: str | None = None
+    wm_anchor_fraction: float = 0.5
     wm_window: int = 8
     wm_batch_size: int = 2048
     wm_updates_per_iter: int = 10
