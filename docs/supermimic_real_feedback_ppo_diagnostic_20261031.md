@@ -248,3 +248,22 @@ fit-only prediction contract with 4505 fit frames. Smoke retains a separate
 non-policy artifact kind even when prediction metadata are present. Formal
 structured artifacts require their explicit prediction wrapper; raw weights
 alone are not equivalent. Original all-horizon and branch gates remain fixed.
+
+### 2026-10-31 23:04 CST: structured-response fit rejected; loss audit
+
+Structured candidate29a82c79... failed5/18 trajectory checks vs initial H8,
+4/18 vs the reused response-only candidate, and3/9 branch checks. The latter
+include root-linear absolute error plus insufficient additional20% velocity
+response improvement; velocity response itself did not regress. Counts against
+different controls must not be compared as the same improvement measure.
+The same initial-H8 comparison changed from11 failures (response-only) to5.
+No promotion. Existing response_pose_fit_v1/review.json retains all failures.
+
+Extended fit-only loss decomposition to accept explicit compared checkpoints
+and include all240 antithetic conditions. Structured model objective consists
+of baseH8/H1 loss3.683%, root response63.390%, joint response32.927%.
+This identifies objective-scale imbalance as a hypothesis, not proof that
+changing weights will pass. Next measure parent fit-only scales before fixing
+any coefficient; do not tune against validation. The first audit wrote its
+complete report then failed in console formatting of the new row schema;
+that log/report are retained. The corrected v2 audit completed independently.

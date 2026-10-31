@@ -7,6 +7,7 @@ from supermimic.algo.networks import WorldModel,WorldModelCfg
 from supermimic_pose_integration_diagnostic import apply_offline_prediction_contract
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['root','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--independent-checkpoint',type=Path);p.add_argument('--integrated-checkpoint',type=Path);p.add_argument('--response-fit-audit',type=Path)
 a=p.parse_args();assert not a.output.exists();a.output.mkdir()
 plan=dict(scope='All fit transitions only; decompose exact existing loss, no parameter selection, policy training or causal claim',non_quaternion_dimensions=69,groups={'root_position':3,'root_linear_velocity':3,'root_angular_velocity':3,'joint_position':30,'joint_velocity':30},quaternion_multiplier=4)
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
@@ -28,7 +29,7 @@ for d in trace_records['trajectory']:
   for k in ['action','context','next_state']:seq[k].append(d[k][i:i+8])
 seq={k:torch.tensor(np.stack(v),device='cuda:0') for k,v in seq.items()};assert len(seq['state'])==3249
 scales={}
-models={'independent':a.root/'standing_branch_pair_v1/candidate/fit/world_model_calibrated.pt','integrated':a.root/'pose_velocity_fit_v1/fit/world_model_calibrated.pt'};rows=[]
+models={'independent':a.independent_checkpoint or a.root/'standing_branch_pair_v1/candidate/fit/world_model_calibrated.pt','integrated':a.integrated_checkpoint or a.root/'pose_velocity_fit_v1/fit/world_model_calibrated.pt'};rows=[]
 for name,path in models.items():
  c=torch.load(path,map_location='cpu',weights_only=False);w=c['world_model'];cfg=c['cfg'];base=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();base.load_state_dict(w);base.eval();model=apply_offline_prediction_contract(base,c)
  scales[name]=(base.state_norm.var+base.state_norm.eps).sqrt().cpu().tolist()
@@ -52,5 +53,20 @@ for name,path in models.items():
  branch=next(r for r in rows if r['model']==name and r['source']=='branch');mixed={k:.5*accum[k]+.5*branch['groups'][k]['loss_contribution'] for k in accum};mq=.5*quat+.5*branch['quaternion_loss'];ml=.5*loss+.5*branch['total_loss']
  assert abs(sum(mixed.values())+mq-ml)<=max(1e-10,ml*1e-5)
  rows.append(dict(model=name,source='actual_mixed_objective',groups={k:dict(loss_contribution=v,fraction_total=v/ml) for k,v in mixed.items()},quaternion_loss=mq,quaternion_fraction=mq/ml,total_loss=ml))
+ if a.response_fit_audit is not None:
+  from supermimic_antithetic_response import AntitheticResponseLoss
+  response=AntitheticResponseLoss(a.root/'orthogonal_branches_v1',a.response_fit_audit)
+  with torch.no_grad():
+   data=response.data
+   pred=base(data['state'].reshape(-1,73),data['action'].reshape(-1,30),data['context'].reshape(-1,34)).reshape(240,4,73)
+   delta=response.derivative(pred)-response.target
+   std=(base.state_norm.var+base.state_norm.eps).sqrt()
+   std=torch.where(base.state_norm.frozen_mask,torch.ones_like(std),std)
+   err=delta/std
+   root_loss=float(.5*err[:,10:13].square().mean());joint_loss=float(.5*err[:,43:73].square().mean())
+   coefficient=float(c['calibration_plan']['response_coefficient']);full=ml+coefficient*(root_loss+joint_loss)
+  rows.append(dict(model=name,source='full_response_objective_all240_fit_conditions',base_loss=ml,response_coefficient=coefficient,root_response_loss=root_loss,joint_response_loss=joint_loss,total_loss=full,base_fraction=ml/full,root_response_fraction=coefficient*root_loss/full,joint_response_fraction=coefficient*joint_loss/full))
 report=dict(plan=plan,frozen_state_normalizer_std=scales,sources=provenance,rows=rows,promoted=False);(a.output/'audit.json').write_text(json.dumps(report,indent=2,allow_nan=False))
-for r in rows:print(r['model'],r['source'],r['total_loss'],{k:round(v['fraction_total']*100,2) for k,v in r['groups'].items()},'quat%',round(r['quaternion_fraction']*100,2))
+for r in rows:
+ if 'groups' in r:print(r['model'],r['source'],r['total_loss'],{k:round(v['fraction_total']*100,2) for k,v in r['groups'].items()},'quat%',round(r['quaternion_fraction']*100,2))
+ else:print(json.dumps(r))
