@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
 p.add_argument('--root-pose-coefficient',type=float,choices=[0.,1.]);p.add_argument('--root-pose-collection',type=Path)
 p.add_argument('--quaternion-conditioning',type=int,choices=[0,1])
 p.add_argument('--xy-invariance',type=int,choices=[0,1])
@@ -15,6 +16,9 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.sole_geometry is not None:
+ assert a.root_pose_coefficient==1 and a.quaternion_conditioning is None and a.geometry_asset is not None and a.geometry_contract_probe is not None
+else:assert a.geometry_asset is None and a.geometry_contract_probe is None
 if a.quaternion_conditioning is not None:assert a.xy_invariance==1
 if a.root_pose_coefficient is not None:assert a.root_pose_collection is not None and a.xy_invariance==1 and a.quaternion_conditioning is None
 else:assert a.root_pose_collection is None
@@ -140,6 +144,25 @@ if a.xy_invariance is not None:
   m.net[0].weight.register_hook(mask_xy_gradient)
  plan.update(xy_invariance=bool(a.xy_invariance),xy_reference_physical=[0.,0.],xy_reference_initial_max_error=initial_error,differing_variable='Dynamics-only horizontal translation equivariance0 vs1; standard serialized weights, no inference hook')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+geometry_contract=None;geometry_frozen={}
+if a.sole_geometry is not None:
+ from supermimic_geometry_model import install_geometry_input,GEOMETRY_CONTRACT
+ probe=json.loads(a.geometry_contract_probe.read_text());assert probe['passed']
+ assert probe['source_sha256']==plan['source_checkpoint_sha256']
+ geometry_contract=dict(contract=GEOMETRY_CONTRACT,enabled=bool(a.sole_geometry),height_scale_m=.001,
+  ground_height_m=0,asset=str(a.geometry_asset.resolve()),asset_sha256=hashlib.sha256(a.geometry_asset.read_bytes()).hexdigest())
+ with torch.no_grad():
+  for _ in range(5):m(query,query_action,query_context)
+  geometry_before=m(query,query_action,query_context)
+  install_geometry_input(m,geometry_contract,cfg)
+  if a.xy_invariance:m.net[0].weight.register_hook(mask_xy_gradient)
+  for _ in range(5):m(query,query_action,query_context)
+  geometry_error=float((m(query,query_action,query_context)-geometry_before).abs().max())
+  assert geometry_error<=1e-5,geometry_error
+ geometry_frozen={k:v.detach().clone() for k,v in m.state_dict().items() if k.startswith('net.0.') and k not in ['net.0.weight','net.0.bias']}
+ plan.update(geometry_contract=geometry_contract,geometry_initial_error=geometry_error,
+  geometry_probe_sha256=hashlib.sha256(a.geometry_contract_probe.read_bytes()).hexdigest())
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 q_hook=None
 q_training_state=None
 if a.quaternion_conditioning is not None:
@@ -168,6 +191,9 @@ if a.quaternion_conditioning is not None:
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 if a.root_pose_coefficient is not None:
  plan['differing_variable']='Root-pose response coefficient0 vs1 only; identical fit conditions and extra64 endpoints'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if geometry_contract is not None:
+ plan['differing_variable']='Sole geometry features enabled0 vs1; same added parameters, targets and FK computation'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
 update=0
@@ -211,6 +237,7 @@ try:
   plan['quaternion_raw_export_max_error']=export_error
   (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
  if a.xy_invariance:assert torch.count_nonzero(m.net[0].weight[:,:2])==0
+ for key,value in geometry_frozen.items():assert torch.equal(m.state_dict()[key],value),key
  for key,value in m.state_dict().items():
   assert torch.isfinite(value).all()
   if not key.startswith('net.'):assert torch.equal(value.cpu(),w[key]),key
@@ -223,8 +250,12 @@ try:
   from supermimic_pose_integration_diagnostic import POSE_KIND
   artifact['kind']=POSE_KIND;artifact['prediction_contract']=prediction_contract
  if a.updates!=1000:artifact['kind']='offline_smoke_not_policy_checkpoint'
+ if geometry_contract is not None:
+  from supermimic_geometry_model import GEOMETRY_KIND
+  artifact.update(kind=GEOMETRY_KIND,geometry_contract=geometry_contract,smoke_only=a.updates!=1000)
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:
  plan['interrupted_quaternion_hook_active']=q_hook is not None
+ plan['interrupted_geometry_contract']=geometry_contract
  torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict(),prediction_contract=prediction_contract),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise

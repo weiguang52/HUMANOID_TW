@@ -11,7 +11,10 @@ assert not a.output.exists()
 c=torch.load(a.checkpoint,map_location='cpu',weights_only=False);w=c['world_model'];cfg=c['cfg'];extra=cfg['extra'];mapping=json.loads((a.collection/'control_mapping.json').read_text())
 assert mapping['state_joint_names']==extra['tw_state_joint_names']
 assert mapping['action_joint_names']==extra['tw_action_joint_names']
-m=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();m.load_state_dict(w,strict=True);m.eval()
+m=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda();
+from supermimic_geometry_model import configure_offline_geometry
+m=configure_offline_geometry(m,c)
+m.load_state_dict(w,strict=True);m.eval()
 from supermimic_pose_integration_diagnostic import apply_offline_prediction_contract
 m=apply_offline_prediction_contract(m,c)
 if a.pose_integration_fit_audit is not None:

@@ -7,9 +7,9 @@ p=argparse.ArgumentParser(description=__doc__)
 for key in ['artifact','source-checkpoint','collection','output']:p.add_argument('--'+key,type=Path,required=True)
 a=p.parse_args();assert not a.output.exists()
 c=torch.load(a.source_checkpoint,map_location='cpu',weights_only=False);d=torch.load(a.artifact,map_location='cpu',weights_only=False)
-assert d['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint'] and d['calibration_updates']==1000
+assert d['kind'] in ['offline_dynamics_calibration_not_policy_checkpoint','offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint'] and d['calibration_updates']==1000
 assert d['calibration_plan']['source_checkpoint_sha256']==hashlib.sha256(a.source_checkpoint.read_bytes()).hexdigest()
-if d['kind']=='offline_pose_velocity_calibration_not_policy_checkpoint':
+if d['kind'] in ['offline_pose_velocity_calibration_not_policy_checkpoint','offline_sole_geometry_dynamics_not_policy_checkpoint']:
  assert d['prediction_contract']==d['calibration_plan']['prediction_contract']
  assert d['prediction_contract']['contract']=='pose_from_velocity_fit_alpha_v1'
 assert not any(k in d for k in ['actor_critic','actor_optimizer','critic_optimizer'])
@@ -22,6 +22,18 @@ def finite(x):
  elif isinstance(x,(list,tuple)):
   for v in x:finite(v)
 finite(d)
+if d['kind']=='offline_sole_geometry_dynamics_not_policy_checkpoint':
+ from supermimic_geometry_model import load_geometry_artifact,install_geometry_input
+ model,_=load_geometry_artifact(d,device='cpu')
+ from supermimic.algo.networks import WorldModel,WorldModelCfg
+ cfg=c['cfg'];w=c['world_model']
+ parent=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims'])))
+ parent.load_state_dict(w);install_geometry_input(parent,d['geometry_contract'],cfg)
+ c=dict(c,world_model=parent.state_dict())
+ for key,value in d['world_model'].items():
+  if key.startswith('net.0.') and key not in ['net.0.weight','net.0.bias']:assert torch.equal(value,c['world_model'][key]),key
+ assert torch.count_nonzero(d['world_model']['net.0.weight'][:,:2])==0
+ assert not d['smoke_only'] and d['geometry_contract']==d['calibration_plan']['geometry_contract']
 assert d['world_model'].keys()==c['world_model'].keys()
 frozen=[];changed=[]
 for k,v in d['world_model'].items():

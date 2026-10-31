@@ -558,3 +558,10 @@ Added16 features at the dynamics first layer: eight local-bottom box corner sign
 Probe v1 passed; v2 adds physical-state reconstruction verification rather than replacing failed outputs. All4505 original fit states: initial predictions bit-identical to parent for both arms; save/load roundtrip exact; normalized-input reconstruction feature error3.2603741e-8m. Candidate feature weight gradient finite/nonzero; control gradient zero. No optimizer training or accuracy claim.
 
 Inspection found ordinary policy loader lacked an explicit offline-kind guard (earlier shape/missing-field rejection was insufficient isolation). Added early rejection of offline_* before any model weights are loaded; exercised actual trainer.load against both saved experiment artifacts with a receiver lacking model attributes, obtaining the intended ValueError. Explicit offline geometry loader succeeds. Evidence: sole_geometry_contract_v2/audit.json; v1 retained. Next connect opt-in fitter and independent audits, then matched final-only training; no policy promotion.
+
+---
+### 2026-10-31T17:16:41.495685+00:00 | Geometry model fitter/audits smoke
+
+Connected opt-in geometry features to existing fitter and explicit offline geometry artifact loader in all four trajectory/branch/native response auditors. Integrity auditor reconstructs source geometry buffers independently, checks immutable FK/input-normalization buffers, non-net freeze, exact metadata and zero XY input columns. Re-registered XY gradient mask on replaced first layer. Original numerical gates unchanged.
+
+Both4-update arms pass independent smoke:768 endpoints/update, frozen original non-net tensors, finite raw/pose-integrated outputs, optimizer4 steps, zero XY columns. Control feature-column norm0; candidate0.0375853. Original no-feature fit rerun produces bit-identical weights to prior4-update artifact. Evidence: sole_geometry_fit_v1/smoke_integrity.json. Formal plan: two fresh original H8-parent arms,1000 updates each, all prior losses fixed including pose response1, same added parameters/FK budget, final-only original H1/H8/H32 and branch gates. No policy promotion.

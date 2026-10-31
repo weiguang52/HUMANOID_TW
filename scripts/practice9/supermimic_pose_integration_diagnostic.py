@@ -29,7 +29,7 @@ class PoseIntegrationDiagnostic(PoseVelocityModel):
 
 def apply_offline_prediction_contract(model,artifact):
  metadata=artifact.get('prediction_contract')
- if artifact.get('kind')==POSE_KIND:
+ if artifact.get('kind') in [POSE_KIND,'offline_sole_geometry_dynamics_not_policy_checkpoint']:
   if not isinstance(metadata,dict) or metadata.get('contract')!=CONTRACT:raise ValueError('Pose-velocity artifact requires its explicit prediction contract')
   return PoseVelocityModel(model,metadata)
  if metadata is not None:raise ValueError('Unexpected prediction contract on an ordinary model')

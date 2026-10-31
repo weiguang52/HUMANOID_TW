@@ -79,6 +79,8 @@ for path in a.checkpoint:
             termination_hidden=tuple(cfg["wm_term_hidden_dims"]),
         )
     ).cuda()
+    from supermimic_geometry_model import configure_offline_geometry
+    base=configure_offline_geometry(base,c)
     base.load_state_dict(w)
     base.eval()
     model = apply_offline_prediction_contract(base, c)

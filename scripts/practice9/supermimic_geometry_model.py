@@ -40,3 +40,11 @@ def load_geometry_artifact(artifact,device='cuda:0'):
  install_geometry_input(model,meta,cfg);model.load_state_dict(w,strict=True)
  from supermimic_pose_integration_diagnostic import PoseVelocityModel
  return model,PoseVelocityModel(model,artifact['prediction_contract'])
+def configure_offline_geometry(model,artifact):
+ metadata=artifact.get('geometry_contract')
+ if metadata is None:
+  if artifact.get('kind')==GEOMETRY_KIND:raise ValueError('Geometry artifact lacks geometry contract')
+  return model
+ if artifact.get('kind')!=GEOMETRY_KIND:raise ValueError('Unexpected geometry contract on ordinary artifact')
+ if 'calibration_plan' in artifact:assert metadata==artifact['calibration_plan']['geometry_contract']
+ return install_geometry_input(model,metadata,artifact['cfg'])
