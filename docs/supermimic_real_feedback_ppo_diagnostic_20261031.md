@@ -267,3 +267,19 @@ changing weights will pass. Next measure parent fit-only scales before fixing
 any coefficient; do not tune against validation. The first audit wrote its
 complete report then failed in console formatting of the new row schema;
 that log/report are retained. The corrected v2 audit completed independently.
+
+### 2026-10-31 23:09 CST: fit-only coefficient measurement
+
+A frozen initial-H8 parent with the same explicit pose structure was measured
+on all3249 fit H8 windows,1200 H1 transitions and240 paired response conditions.
+No optimizer or validation selection ran; all weights and normalizers match
+source. Base loss4.7231721401e-5 / response loss0.154362171888 yields the single
+predeclared coefficient0.0003059798966495334. The rule equalizes initial parent
+loss magnitudes, not validation thresholds or gradients. No coefficient sweep.
+The coefficient and fit sources are cryptographically bound to the source
+measurement, parent, integration audit and pair audit in the calibration plan.
+A deliberate doubled coefficient was rejected before optimization; that expected
+failure is retained. Four-update smoke passed frozen tensors, finite weights,
+optimizer steps and immutable control hash checks. Its loss is not acceptance.
+Formal response_balance_fit_v1 changes only coefficient vs the structured
+coefficient1 control29a82c79..., with original data/samplers/1000 budget/gates.

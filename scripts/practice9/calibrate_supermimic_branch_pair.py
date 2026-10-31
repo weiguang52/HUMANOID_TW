@@ -1,20 +1,36 @@
 """Matched-budget final-only offline comparison; sole variable is H1 data source."""
-import argparse,hashlib,json
+import argparse,hashlib,json,math
 from pathlib import Path
 import numpy as np
 import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
-p.add_argument('--response-coefficient',type=float,choices=[0.,1.]);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
+p.add_argument('--response-scale-audit',type=Path)
+p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.response_coefficient is not None:assert math.isfinite(a.response_coefficient) and a.response_coefficient>=0
+if a.response_coefficient not in [None,0.,1.]:assert a.response_scale_audit is not None
 if a.response_coefficient is not None:assert a.arm=='candidate' and a.response_fit_audit is not None
 else:assert a.updates==1000 and a.response_fit_audit is None
 torch.manual_seed(42);c=torch.load(a.parent,map_location='cpu',weights_only=False);assert c['kind']=='offline_dynamics_calibration_not_policy_checkpoint' and c['calibration_plan']['window']==8 and c['calibration_updates']==1000
 w=c['world_model'];cfg=c['cfg'];plan=dict(seed=42,updates=1000,batch=128,window=8,arm=a.arm,trajectory_batch=64,one_step_batch=64,targets_per_update=576,lr=.0001,source_checkpoint_sha256=hashlib.sha256(a.parent.read_bytes()).hexdigest(),one_step_source='original_fit' if a.arm=='control' else 'orthogonal_fit_including_zero',frozen=['termination','normalizers'],policy_artifact=False,selection='Final1000 only; no checkpoint selection, no validation fit')
 plan['updates']=a.updates
 if a.response_coefficient is not None:plan.update(response_coefficient=a.response_coefficient,response_batch=16,response_fit_audit_sha256=hashlib.sha256(a.response_fit_audit.read_bytes()).hexdigest(),differing_variable='Response coefficient0 vs1; identical four-endpoint sampling and forward budget')
+scale_measurement=None
+if a.response_scale_audit is not None:
+ scale_measurement=json.loads(a.response_scale_audit.read_text())
+ raw_path=Path(scale_measurement['source_measurement_file'])
+ assert raw_path.resolve().is_relative_to(a.response_scale_audit.parent.resolve())
+ assert hashlib.sha256(raw_path.read_bytes()).hexdigest()==scale_measurement['source_measurement_sha256']
+ raw=json.loads(raw_path.read_text())
+ assert raw['coefficient']==scale_measurement['coefficient']==a.response_coefficient
+ assert raw['parent_sha256']==plan['source_checkpoint_sha256']
+ assert scale_measurement['integration_audit_sha256']==hashlib.sha256(a.pose_integration_fit_audit.read_bytes()).hexdigest()
+ assert scale_measurement['pair_audit_sha256']==hashlib.sha256(a.response_fit_audit.read_bytes()).hexdigest()
+ assert abs(raw['coefficient']*raw['response_loss']-raw['base_loss'])<1e-15
+ plan.update(response_scale_audit_sha256=hashlib.sha256(a.response_scale_audit.read_bytes()).hexdigest(),response_weight_rule='Frozen-parent fit-only base/response ratio; no validation selection')
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 def load(path):
  with np.load(path,allow_pickle=False) as z:d={k:z[k].copy() for k in ['state','action','context','next_state']}
@@ -42,6 +58,10 @@ else:
   path=(a.branches/row['file']).resolve();assert path.is_relative_to(a.branches.resolve());digest=hashlib.sha256(path.read_bytes()).hexdigest();assert digest==hashes[row['file']]
   one.append(load(path));one_files.append(dict(file=row['file'],sha256=digest))
  assert len(one)==20
+if scale_measurement is not None:
+ expected={('trajectory',v['file']):v['sha256'] for v in files}
+ expected.update({('branch',v['file']):v['sha256'] for v in one_files})
+ assert expected=={(v['source'],v['file']):v['sha256'] for v in scale_measurement['sources']}
 traj={k:torch.tensor(np.stack(v),device='cuda:0') for k,v in traj.items()};one={k:torch.tensor(np.concatenate([d[k] for d in one]),device='cuda:0') for k in traj}
 assert len(one['state'])==(3305 if a.arm=='control' else 1200)
 (a.output/'fit_input.json').write_text(json.dumps(dict(traces=used,windows=len(traj['state']),trajectory_files=files,one_step_count=len(one['state']),one_step_files=one_files),indent=2))
@@ -58,6 +78,9 @@ if a.pose_integration_fit_audit is not None:
  prediction_contract=dict(contract=CONTRACT,alpha=audit['alpha'],dt=audit['plan']['dt'],fit_audit_sha256=hashlib.sha256(a.pose_integration_fit_audit.read_bytes()).hexdigest(),fit_frames=4505)
  predictor=PoseVelocityModel(m,prediction_contract);plan['prediction_contract']=prediction_contract
  plan['differing_variable']='Pose reconstructed from predicted velocities during both H8 and H1 fitting; same parent/data/samplers/budget as previous candidate control'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if scale_measurement is not None:
+ plan['differing_variable']='Fit-only measured response coefficient vs1; same explicit prediction structure and data budget'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 response_loss=None
 if a.response_coefficient is not None:
