@@ -209,3 +209,13 @@ The new fit-pair auditor passed all 240 axis conditions (960 branch endpoints),
 including fit-file hashes, sign swaps, action-axis order, finite targets and
 no branch terminations. Maximum reset replay error was 4.47343e-6, below the
 original collection tolerance 1e-5. No validation data were used in this audit.
+
+### 2026-10-31 22:50 CST: response loss smoke completed
+
+Implemented optional response loss while preserving the original branch fitter
+when no response flag is provided. Both coefficient-0/1 four-update smoke arms
+completed. Independent artifact inspection confirms 22 non-network tensors
+unchanged, eight predictor tensors changed, finite weights and Adam step 4.
+Smoke artifacts have a distinct non-policy kind and cannot imply full calibration.
+The final-only 1000-update matched runner includes the existing trajectory and
+branch auditors and frozen gate comparisons. Neither model is promoted.
