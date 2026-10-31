@@ -29,3 +29,16 @@ contact_response_errors_v2 aligns all780native GPU contact samples to their own 
 Integrated root angular-velocity one-step RMSE is0.02426rad/s versus0.11999rad/s in the two observed support groups. But actual state changes and forcing amplitudes differ, so raw error growth is not contact causality. Within all7validation amplitude/support strata, the learned prediction is worse than a constant-angular-velocity baseline. For amplitude0.02, baseline versus model is0.00411/0.02710rad/s with3plus points and0.00567/0.03103with fewer points; amplitude0.05 fewer-point0.05185/0.09668; amplitude0.1 fewer-point0.08235/0.24353. Nominal zero forcing is0.00134/0.01668. Full per-frame and per-forcing results retained. The baseline assesses prediction only, not a control skill.
 
 Next isolate solver-history effects before assuming a missing geometric feature or changing loss weights. Source review shows velocity projection followed by storing qacc_warmstart, while the learned state does not include this solver cache. This observation alone is not a physics bug: a dedicated one-step probe is required before any physics change. All original physics and policies remain untouched.
+
+
+## Isolated warmstart probe
+
+warmstart_probe_v1 completes all10precommitted state/amplitude cases,61actions each, across native/initial-cache-zero/native-repeat conditions:30raw batches,1830one-step responses. PD warmups0/10/50/100 and fixed forcing seed42/amplitude0.05 warmup25; amplitudes0.02/0.05 include zero and every30action axes±. Only qacc_warmstart is cleared before the first substep of the isolated test. Solver flags, iterations, velocity projection, production physics and policies are unchanged.
+
+Warmstart is enabled;8cases have a nonzero original cache. Visible state/context before and after intervention are exactly unchanged; repeated starts satisfy the unchanged1e-5 numerical bound. All planned actions, cache before/after, finite data, original terminations and source hashes are verified, with no termination.
+
+Across all610matched action states, root angular-velocity output difference after clearing cache isRMSE1.501e-6rad/s, versus native-repeat1.359e-6. Model error is0.04644rad/s. Restricting to the8nonzero-cache cases gives1.676e-6 intervention,1.518e-6 repeat and0.04755model error. The cache effect is at repeat-noise scale and cannot explain the observed model gap in these tested states. This is not a proof about every hidden solver field or arbitrary histories.
+
+The same abrupt-action probe has a constant-angular-velocity error of0.08696rad/s (all cases), larger than the learned-model error. Thus earlier poor steady-forcing results do not establish that the model always loses to constant velocity. Both data regimes must be accounted for before selecting another intervention.
+
+No warmstart state augmentation or production-physics fix is justified by this probe. Next verify the actual PD target-error/torque mapping as a possible structured input, rather than immediately reweight root loss or alter the solver. Probe sources/results/audit/nonzero_cache_summary/stage_result are all retained remotely.
