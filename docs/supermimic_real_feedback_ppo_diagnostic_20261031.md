@@ -219,3 +219,19 @@ unchanged, eight predictor tensors changed, finite weights and Adam step 4.
 Smoke artifacts have a distinct non-policy kind and cannot imply full calibration.
 The final-only 1000-update matched runner includes the existing trajectory and
 branch auditors and frozen gate comparisons. Neither model is promoted.
+
+### 2026-10-31 22:55 CST: response fit and frozen integration results
+
+Final response fitting improved held root-angular action-response cosine from
+0.73904 to 0.99760 and RMSE 1.14447 to 0.11928; joint velocity response RMSE
+0.07621 to 0.03865. It nevertheless failed 11/18 trajectory checks vs parent,
+13/18 vs matched control, and 6/9 branch checks. H32 root position p95 median
+rose to 79.28 mm (parent70.26, control66.24). No promotion.
+Frozen velocity-derived pose integration then reduced sole-normal response
+RMSE 0.03561 to 0.007106 (cosine0.89594) and sole-cost RMSE0.0004184 to
+0.0001326. Still failed 8 trajectory checks vs initial/control, 4 vs unwrapped
+candidate, and branch absolute root-linear/joint velocity checks. This is an
+explicit diagnostic prediction contract, not deployable raw-weight success.
+Evidence remains in antithetic_response_fit_v1 and antithetic_pose_integration_v1.
+The next hypothesis is to fit the pose-velocity structure during optimization
+alongside the same response loss, changing only prediction structure.
