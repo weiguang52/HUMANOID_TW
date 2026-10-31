@@ -508,3 +508,8 @@ All 512 first episodes / 16 profile-agent groups archived; archive invariants pa
 Trained 20s completions, baseline -> candidate, each /32: R0S0A0 32->32; R0S0A1 29->26; R0S1A0 32->32; R0S1A1 26->28; R1S0A0 22->20; R1S0A1 13->13; R1S1A0 23->22; R1S1A1 12->9. Do not infer sensor-noise benefit from these pairs. Candidate rejected as a general improvement; not promoted. Raw traces/checkpoint retained. Final-motion and multi-seed acceptance remain incomplete.
 
 Evidence: `/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/sole_distance_ppo_v1/factorial_comparison.json`, `/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/sole_distance_ppo_v1/factorial_review.json`. Next: test predeclared quaternion feature-conditioning with raw-coordinate export and unchanged physical/model gates.
+
+---
+### 2026-10-31T16:52:33.343638+00:00 | Quaternion export audit
+
+Added read-only raw/conditioned first-layer export reconstruction audit. Smoke artifact checked against all 4505 original fit states with source hashes verified: max forward difference 7.152557373046875e-7, below unchanged 1e-5 export tolerance. This is serialization equivalence only, not held-out accuracy/control acceptance. Evidence: longterm_diagnostics/quaternion_conditioning_fit_v1/smoke_export_all_fit.json. Formal control completed 1000 updates and entered independent integrity/trajectory audits; candidate follows in the existing tmux runner.
