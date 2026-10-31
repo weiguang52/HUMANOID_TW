@@ -20,7 +20,7 @@ c=models[cases[-1]];cfg=SuperMimicCfg(**c['cfg']);cfg.compile=False;cfg.wm_ancho
 asset=Path(os.environ['TW_SUPERMIMIC_MJCF']);assert hashlib.sha256(asset.read_bytes()).hexdigest()==cfg.extra['tw_mjcf_sha256']
 manifest=Path('/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/static_probe/manifest.json');m=json.loads(manifest.read_text());assert m['synthetic_diagnostic']
 collections=['action_response_v2','action_response_replay_v2_warmup10','action_response_replay_v2_warmup50','action_response_replay_v2_warmup100','action_response_smallscale_warmup50']
-plan=dict(collections=collections,models={k:hashlib.sha256((base/k/'calibrated_retained/checkpoint_final.pt').read_bytes()).hexdigest() for k in cases},scope='All existing fixed one-step branches; sole score=sum(1-world_z_cosine), diagnostic only. No model, policy or reward updates; not full control-gradient or causality proof.')
+plan=dict(score_numerics='stable_2_qxy_squared_v2',collections=collections,models={k:hashlib.sha256((base/k/'calibrated_retained/checkpoint_final.pt').read_bytes()).hexdigest() for k in cases},scope='All existing fixed one-step branches; sole score=sum(1-world_z_cosine), diagnostic only. No model, policy or reward updates; not full control-gradient or causality proof.')
 if a.additional_dynamics_checkpoint is not None:
  plan['models']['additional_offline_dynamics']=hashlib.sha256(a.additional_dynamics_checkpoint.read_bytes()).hexdigest()
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
@@ -31,8 +31,9 @@ try:
  indices=[t.kinematics.body_names.index(s+'_foot') for s in ['left','right']]
  for side in ['left','right']:
   gid=mujoco.mj_name2id(env.sim.mj_model,mujoco.mjtObj.mjOBJ_GEOM,'robot/'+side+'_foot_collision');np.testing.assert_allclose(env.sim.mj_model.geom_quat[gid],[1,0,0,0],atol=1e-7,rtol=0)
- def cosines(s):
-  _,q=t.kinematics(s[:,:3],s[:,3:7],s[:,13:43]);q=torch.nn.functional.normalize(q[:,indices],dim=-1);return 1-2*q[:,:,1:3].square().sum(-1)
+ def tilt_terms(s):
+  _,q=t.kinematics(s[:,:3],s[:,3:7],s[:,13:43]);q=torch.nn.functional.normalize(q[:,indices],dim=-1);return 2*q[:,:,1:3].square().sum(-1)
+ def cosines(s):return 1-tilt_terms(s)
  def compare(x,y):
   den=np.linalg.norm(x)*np.linalg.norm(y)
   return dict(actual_norm=float(np.linalg.norm(x)),model_norm=float(np.linalg.norm(y)),cosine=float(x@y/den) if den>1e-15 else None,rmse=float(np.sqrt(np.mean((x-y)**2))))
@@ -57,12 +58,12 @@ try:
   action=torch.zeros((len(states),30),device='cuda:0');action[torch.arange(len(states)),torch.tensor(data['joint'],device='cuda:0')]=torch.tensor(data['epsilon']*data['sign'],device='cuda:0',dtype=torch.float32)
   if 'action' in data:torch.testing.assert_close(action,torch.tensor(data['action'],device='cuda:0'),rtol=0,atol=0)
   context=torch.tensor(data['context'],device='cuda:0') if 'context' in data else default_context.expand(len(states),-1)
-  actual_score=(1-cosines(actual)).sum(-1).detach().cpu().numpy()
+  actual_score=tilt_terms(actual).sum(-1).detach().cpu().numpy()
   predicted={}
   for name,model in models.items():
    for key in ['tw_state_joint_names','tw_action_joint_names','tw_physics_contract','tw_joint_coordinate_contract']:assert model['cfg']['extra'][key]==cfg.extra[key]
    t.world_model.load_state_dict(model['world_model'],strict=True);t.world_model.eval()
-   with torch.no_grad():predicted[name]=(1-cosines(t.world_model(states,action,context))).sum(-1).cpu().numpy()
+   with torch.no_grad():predicted[name]=tilt_terms(t.world_model(states,action,context)).sum(-1).cpu().numpy()
   for eps in cp['epsilons']:
    ids=np.flatnonzero(data['epsilon']==eps);assert len(ids)==60
    assert data['joint'][ids].tolist()==np.repeat(np.arange(30),2).tolist() and data['sign'][ids].tolist()==[-1,1]*30

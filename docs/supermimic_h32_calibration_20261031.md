@@ -20,3 +20,5 @@ Remote evidence root: /root/gpufree-data/datasets/practice9/supermimic_tw_202610
 - sole_sensitivity_h32_v1 and sole_sensitivity_h8offline_v1: all11gradient rows and source hashes.
 
 Next: inspect independent action excitation in fit versus online data before another training modification. Full7motion original-duration acceptance and3independent training seeds remain unmet. No strategy promoted.
+
+Numerical follow-up: use stable-form sole_sensitivity_h8offline_v2 and sole_sensitivity_h32_v2, which compute the equivalent2*sum(qx²+qy²) without small-angle cancellation. Offline sensitivity remains weak; H32 rejection and original rollout gates are unchanged. See supermimic_action_excitation_20261031.md.
