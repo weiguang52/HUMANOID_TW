@@ -54,7 +54,27 @@ for motion in manifest["motions"]:
         normals = rotate(q, np.array([[0.0, 0.0, 1.0]]))[:, 0]
         tilt = np.degrees(np.arccos(np.clip(normals[:, 2], -1, 1)))
         near = z <= 0.002
+        fps = float(d["fps"].item())
+        speed = np.linalg.norm(np.gradient(pos.astype(float), 1 / fps, axis=0), axis=1)
+        omega = np.linalg.norm(d["body_ang_vel_w"][:, idx], axis=1)
+        quiet = near & (speed <= 0.03) & (omega <= 0.5)
+        edge = quiet & (tilt > 15)
+        changes = np.diff(np.r_[False, edge, False].astype(int))
+        starts = np.flatnonzero(changes == 1)
+        ends = np.flatnonzero(changes == -1)
+        runs = [
+            {"start": int(a), "end_exclusive": int(b), "seconds": float((b - a) / fps)}
+            for a, b in zip(starts, ends, strict=True)
+        ]
         feet[side] = {
+            "quiet_near_ground_frames": int(quiet.sum()),
+            "quiet_tilt_p95_deg": float(np.percentile(tilt[quiet], 95))
+            if quiet.any()
+            else None,
+            "quiet_tilt_over15_runs": runs,
+            "quiet_tilt_over15_longest_s": max(
+                (v["seconds"] for v in runs), default=0.0
+            ),
             "minimum_mm": float(z.min() * 1000),
             "maximum_mm": float(z.max() * 1000),
             "p95_mm": float(np.percentile(z, 95) * 1000),
@@ -77,7 +97,7 @@ for motion in manifest["motions"]:
     )
 out = (
     root
-    / "supermimic_tw_20261031/longterm_diagnostics/training_sole_clearance_audit.json"
+    / "supermimic_tw_20261031/longterm_diagnostics/training_sole_support_audit_v2.json"
 )
 result = {
     "manifest": str(p),
@@ -87,6 +107,7 @@ result = {
     "model_sha256": hashlib.sha256(
         (root / "supermimic_tw_20261031/robot/tw30.xml").read_bytes()
     ).hexdigest(),
+    "quiet_filter_description": "Descriptive only: corner min z <=2mm, body-origin finite-difference speed <=0.03m/s, angular speed <=0.5rad/s. Tilt>15deg contiguous durations recorded. Not force-based contacts or an acceptance gate.",
     "scope": "All 332 training clips. Descriptive 2/5/10mm bins are not acceptance gates; no test selection, no training started. Reference kinematics do not prove dynamically feasible support.",
     "motions": rows,
 }

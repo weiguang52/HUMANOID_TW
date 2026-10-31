@@ -180,3 +180,18 @@ retargeting defect or dynamically feasible walking. Next inspect sustained
 support and original source semantics before preparing a walking curriculum.
 Script: scripts/practice9/audit_supermimic_training_soles.py; evidence remains
 on the data disk in longterm_diagnostics/training_sole_clearance_audit.json.
+
+### 2026-10-31 22:38 CST: sustained near-ground reference screen
+
+The v2 audit retains the original clearance report and writes a separate
+training_sole_support_audit_v2.json. A descriptive quiet-foot screen requires
+corner height <=2 mm, finite-difference foot-origin speed <=0.03 m/s and
+angular speed <=0.5 rad/s. Six single-foot records have >15-degree tilt for
+at least 0.2 s: 004487 L .32 s, 006328 L .38 s, 006603 L .36 s,
+011056 L .30 s, 012325 L 1.98 s, 013033 L 1.30 s. All original clips remain.
+These are kinematic indicators, not force-based contact labels or new gates.
+Prior near-ground tilt counts must not be equated to sustained bad support.
+All 332 source-caption files were located and their hashes saved in the remote
+training_motion_source_inventory.json; inherited walking labels alone do not
+prove pure walking. Inspect the six segments and source videos before deciding
+whether reference correction is justified. No walking-policy claim is made.
