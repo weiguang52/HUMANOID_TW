@@ -13,6 +13,7 @@ for name in ['checkpoint','dynamics-checkpoint','manifest','output','run-root']:
  p.add_argument('--'+name,type=Path,required=True)
 p.add_argument('--branch',choices=['control','calibrated','calibrated_retained'],required=True)
 p.add_argument('--anchor-collection',type=Path)
+p.add_argument('--policy-anchor-collection',type=Path)
 p.add_argument('--zero-readout',action='store_true')
 p.add_argument('--pilot-updates',type=int,choices=[4,100],default=100)
 p.add_argument('--num-envs',type=int,choices=[8,256],default=256)
@@ -37,6 +38,15 @@ if a.branch=='calibrated_retained':
  assert a.anchor_collection is not None
  cfg.wm_anchor_collection=str(a.anchor_collection.resolve());cfg.wm_anchor_fraction=.5
 else:assert a.anchor_collection is None
+if a.policy_anchor_collection is not None:
+ assert a.branch=='calibrated_retained' and a.zero_readout and len(files)==1
+ import numpy as np
+ with np.load(files[0],allow_pickle=False) as ref:
+  for key in ['joint_pos','body_pos_w','body_quat_w']:
+   assert np.allclose(ref[key],ref[key][0],rtol=0,atol=1e-7)
+  for key in ['joint_vel','body_lin_vel_w','body_ang_vel_w']:assert np.abs(ref[key]).max()<1e-7
+ cfg.policy_anchor_collection=str(a.policy_anchor_collection.resolve());cfg.policy_anchor_fraction=.5
+ cfg.extra['tw_policy_anchor_reference_sha256']=hashlib.sha256(Path(files[0]).read_bytes()).hexdigest()
 plan=dict(branch=a.branch,updates=a.pilot_updates,initial_iteration=1000,final_iteration=cfg.num_iterations,seed=42,num_envs=a.num_envs,
  source_checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),
  calibrated_sha256=hashlib.sha256(a.dynamics_checkpoint.read_bytes()).hexdigest(),
@@ -47,6 +57,9 @@ plan=dict(branch=a.branch,updates=a.pilot_updates,initial_iteration=1000,final_i
 if a.branch=='calibrated_retained':
  plan['differing_variable']='Relative to prior calibrated arm, half same-size dynamics batch uses fit-only anchor windows; all other mechanisms unchanged'
  plan['anchor_collection']=cfg.wm_anchor_collection;plan['anchor_fraction']=.5
+if a.policy_anchor_collection is not None:
+ plan['differing_variable']='Relative to zero-readout retained arm, half same-size policy imagination-start batch uses fit-only past-history windows; all other mechanisms unchanged'
+ plan['policy_anchor_collection']=cfg.policy_anchor_collection;plan['policy_anchor_fraction']=.5
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 e=tw_supermimic_env_cfg(files,num_envs=a.num_envs,play=False);e.seed=42;e.episode_length_s=30.
 env=ManagerBasedRlEnv(e,device=cfg.device);enable_tw_velocity_limits(env)
@@ -71,11 +84,20 @@ try:
   (a.output/'initialization_check.json').write_text(json.dumps(initial,indent=2))
   plan['actor_initialization_check']=initial
   (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+ if t.policy_anchor is not None:
+  plan['policy_anchor_source']=t.policy_anchor.metadata
+  count=int(cfg.policy_batch_size*cfg.policy_anchor_fraction)
+  plan['policy_start_batch']=dict(total=cfg.policy_batch_size,fit=count,online=cfg.policy_batch_size-count)
+  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
  t.wm_optimizer.state.clear()
  cfg.extra['tw_standing_calibration_pilot']=plan
  (a.output/'status').write_text('training\n')
  try:
-  t.train();assert t.iteration==cfg.num_iterations;t.save('checkpoint_final.pt')
+  t.train();assert t.iteration==cfg.num_iterations
+  if t.policy_anchor is not None:
+   assert t._last_policy_anchor_count==int(cfg.policy_batch_size*cfg.policy_anchor_fraction)
+   (a.output/'policy_anchor_check.json').write_text(json.dumps(dict(actual_fit_start_count=t._last_policy_anchor_count,total=cfg.policy_batch_size,history_contract='past_only_shared_bias_reset_padding_v2',source=t.policy_anchor.metadata),indent=2))
+  t.save('checkpoint_final.pt')
   (a.output/'status').write_text('trained_not_evaluated\n')
  except BaseException:
   t.save('checkpoint_interrupt.pt');(a.output/'status').write_text('failed\n');raise

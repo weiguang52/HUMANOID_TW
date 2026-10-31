@@ -150,10 +150,37 @@ class SuperMimicTrainer:
                     actual, rtol=0, atol=1e-7,
                 )
             self.log_dir.mkdir(parents=True, exist_ok=True)
-            import json
             (self.log_dir / 'anchor_source.json').write_text(
                 json.dumps(self.wm_anchor.metadata, indent=2)
             )
+
+        self.policy_anchor = None
+        self._last_policy_anchor_count = 0
+        if cfg.policy_anchor_collection is not None:
+            from .anchor_windows import AnchorWindows
+            if not 0 < int(cfg.policy_batch_size * cfg.policy_anchor_fraction) < cfg.policy_batch_size:
+                raise ValueError('Policy anchor fraction must retain online starts')
+            if list(self.library.clip_names) != ['synthetic_static_default']:
+                raise ValueError('Policy anchors currently support the verified static reference only')
+            self.policy_anchor = AnchorWindows(
+                cfg.policy_anchor_collection, self.history_len + 1, self.spec.joint_names,
+                env.action_manager.get_term('joint_pos').target_names, self.device, cfg.seed + 1,
+            )
+            term = env.action_manager.get_term('joint_pos')
+            for name, actual in [('offset', term._offset), ('scale', term._scale)]:
+                torch.testing.assert_close(torch.as_tensor(self.policy_anchor.mapping[name], device=self.device).reshape(-1).expand_as(actual), actual, rtol=0, atol=1e-7)
+            zero_id = torch.zeros(1, device=self.device, dtype=torch.long)
+            reference = self.library.gather(zero_id, zero_id, 1)
+            initial = self.policy_anchor.initial_states
+            torch.testing.assert_close(initial[:, 13:43], reference['joint_pos'][0, 0].expand_as(initial[:, 13:43]), rtol=0, atol=1e-5)
+            root = torch.cat([reference['body_pos'][0, 0, 0], reference['body_quat'][0, 0, 0]])
+            torch.testing.assert_close(initial[:, :7], root.expand_as(initial[:, :7]), rtol=0, atol=1e-5)
+            self.policy_anchor.metadata['policy_history_contract'] = 'past_only_shared_bias_reset_padding_v2'
+            if 'tw_policy_anchor_reference_sha256' not in cfg.extra:
+                raise ValueError('Policy anchors require a verified static reference SHA')
+            self.policy_anchor.metadata['reference_sha256'] = cfg.extra['tw_policy_anchor_reference_sha256']
+            self.log_dir.mkdir(parents=True, exist_ok=True)
+            (self.log_dir / 'policy_anchor_source.json').write_text(json.dumps(self.policy_anchor.metadata, indent=2))
 
         self.world_model = WorldModel(
             WorldModelCfg(
@@ -501,7 +528,11 @@ class SuperMimicTrainer:
         )
 
     def _sample_imagination_starts(self, batch_size: int) -> dict[str, torch.Tensor]:
-        starts = self.buffer.sample_starts(batch_size, generator=self._rng)
+        anchor_count = int(batch_size * self.cfg.policy_anchor_fraction) if self.policy_anchor is not None else 0
+        if not 0 <= anchor_count < batch_size:
+            raise ValueError('Invalid policy anchor batch size')
+        self._last_policy_anchor_count = anchor_count
+        starts = self.buffer.sample_starts(batch_size - anchor_count, generator=self._rng)
         states, actions, dones = self.buffer.gather_states(
             starts["env_ids"], starts["positions"], before=1
         )
@@ -518,6 +549,21 @@ class SuperMimicTrainer:
         starts["history"] = self._history_from_buffer(
             starts["env_ids"], starts["positions"]
         )
+        if self.policy_anchor is not None:
+            from .anchor_windows import policy_history_parts
+            states, actions, context, times = self.policy_anchor.sample_with_times(anchor_count)
+            current, previous, past_states, past_actions = policy_history_parts(states, actions, self.history_len)
+            bias = encoder_bias_from_context(context, self.spec.num_joints)
+            history = torch.stack([
+                self.proprio(past_states[:, j], past_actions[:, j], bias, add_noise=True)
+                for j in range(self.history_len)
+            ], dim=1)
+            anchors = dict(state=current, context=context, clip_ids=torch.zeros_like(times), time_steps=times,
+                           prev_action=previous, history=history,
+                           env_ids=torch.full_like(times, -1), positions=torch.full_like(times, -1))
+            assert starts.keys() == anchors.keys()
+            starts = {key: torch.cat([value, anchors[key]], dim=0) for key, value in starts.items()}
+            assert all(value.shape[0] == batch_size for value in starts.values())
         return starts
 
     def _history_from_buffer(
@@ -1040,6 +1086,8 @@ class SuperMimicTrainer:
                 "world_model": self.world_model.state_dict(),
                 "wm_anchor_rng_state": self.wm_anchor.generator.get_state() if self.wm_anchor is not None else None,
                 "wm_anchor_source": self.wm_anchor.metadata if self.wm_anchor is not None else None,
+                "policy_anchor_rng_state": self.policy_anchor.generator.get_state() if self.policy_anchor is not None else None,
+                "policy_anchor_source": self.policy_anchor.metadata if self.policy_anchor is not None else None,
                 "actor_critic": self.actor_critic.state_dict(),
                 "cfg": asdict(self.cfg),
                 "wm_optimizer": self.wm_optimizer.state_dict(),
@@ -1080,6 +1128,11 @@ class SuperMimicTrainer:
                     raise ValueError(f'Anchor data changed on resume: {key}')
         if self.wm_anchor is not None and checkpoint.get("wm_anchor_rng_state") is not None:
             self.wm_anchor.generator.set_state(checkpoint["wm_anchor_rng_state"].cpu())
+        if self.policy_anchor is not None and checkpoint.get('policy_anchor_source') is not None:
+            for key in ('contract', 'window', 'windows', 'fit_files', 'mapping_sha256', 'policy_history_contract', 'reference_sha256'):
+                if self.policy_anchor.metadata[key] != checkpoint['policy_anchor_source'][key]:
+                    raise ValueError(f'Policy anchor data changed on resume: {key}')
+            self.policy_anchor.generator.set_state(checkpoint['policy_anchor_rng_state'].cpu())
         self._step_accumulator = float(checkpoint["step_accumulator"])
         self._rng.set_state(checkpoint["generator_state"].cpu())
         torch.set_rng_state(checkpoint["torch_rng_state"].cpu())

@@ -51,6 +51,8 @@ class SuperMimicCfg:
     goal_frames: int = 10
 
     # World model.
+    policy_anchor_collection: str | None = None
+    policy_anchor_fraction: float = 0.5
     wm_anchor_collection: str | None = None
     wm_anchor_fraction: float = 0.5
     wm_window: int = 8
