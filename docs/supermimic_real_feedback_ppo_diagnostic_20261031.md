@@ -443,3 +443,28 @@ state/context/archive checks, no terminations: requested-state error1.016e-7,
 replay error1.621e-7. This is native response data, not policy success.
 The formal fixed temporal fit/validation collection is ready; all contact-mode
 changes will be retained. Standing real-physics PPO reached977/1000.
+
+### 2026-10-31T16:29:25+00:00 : final standing video review and native position dependence
+
+Smooth-distance real-PPO final1000 completed and independently audited:
+checkpoint505ea53d443f394e5c8182c993b61d87170473f4c49efc53d7a3f8374345362c,
+8192000 real transitions, frozen world model/norms. Learned and zero-action PD
+both complete20s. Four colored front/side H264 videos each1000 frames pass full
+FFmpeg decode. Actual six-frame montage review per agent: upright, visible parts
+attached, learned torso inclines relative to PD, extended-arm reference remains.
+Learned rootXY max8.623mm, tilt max6.985deg, body mean16.362mm. Last10s left
+8.514deg/two loaded points500frames/area0; right0.621deg/four points500frames/
+area ratio0.99994. Persistent left edge support is not accepted. Not walking,
+not SuperMimic success; synthetic reference has no HumanML3D source.
+Review page on forwarded18768 verified HTTP200. Fixed R/S/A factorial next,
+same32 worlds, original noise arrays and all eight conditions, final model only.
+
+Native root-pose collection480 transitions passed independent audit, no terms;
+max state-write1.69e-7/replay4.82e-6. Frozen models show spurious XY-dependent
+angular response: latest0.000498/0.000811rad/s per declared0.5mm input scale,
+native roughly1.63e-7/4.52e-8. Do not headline relative ratios near zero.
+Preregistered translation_invariant_fit_v1 will enforce dynamics-only horizontal
+translation equivariance by zero first-layerXY columns with reference-origin
+bias compensation and gradient masks, no state-format or inference-hook change.
+All normalization/termination parameters remain frozen and original gates fixed.
+No fitting started; initial-function, smoke and tensor checks still required.
