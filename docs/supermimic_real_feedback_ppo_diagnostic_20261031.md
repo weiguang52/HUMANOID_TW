@@ -32,3 +32,22 @@ Checkpoint kind `real_physics_ppo_diagnostic_policy_v1` is rejected by normal Su
 Run `bash scripts/practice9/run_supermimic_real_ppo_diagnostic.sh` inside tmux. The script takes a lock, recovers only explicitly completed diagnostic checkpoints, preserves incomplete evaluation for inspection, evaluates only final update1000, and records status without promotion.
 
 At final update1000, evaluate original20-second window for learned and nominal-PD agents, stop on first original termination, save front/side H26450fps videos, actual traces and native contacts. Verify exact frame counts and full decoding, then inspect frames and compare actual common durations, root tilt/drift and actions honestly. No intermediate checkpoint selection. A completed nominal static episode would justify further perturbation/multiple-seed and small-step diagnostics, not full-motion acceptance. Failure requires examining actual rollout/control evidence rather than changing thresholds or replacing tests.
+
+## Independent final artifact audit
+
+`audit_supermimic_real_ppo_artifact.py` reads CPU tensors only and independently checks the supplied parent, manifest and each motion hash; exact fixed plan and real-transition budget; unique contiguous per-update metrics; finite serialized tensors/losses; absence of stale SuperMimic optimizers; all26 trainable parameter tensors' Adam moments and expected16 optimizer steps per PPO update; unchanged source world model and12 normalizer tensors. It refuses to overwrite prior evidence and rejects ambiguous duplicate/reordered logs instead of silently choosing an attempt. This verifies training artifacts only, not physical stability.
+
+The preserved interrupted/resumed four-update smoke passes:1024 actual transitions,64 Adam steps for each of26 trainable tensors,12 unchanged normalizer tensors, unchanged world model, all source/manifest/motion hashes checked. All encoder/decoder/critic tensors differ from parent, though differences from parent include the declared readout initialization and do not measure skill.
+
+Formal invocation after the final checkpoint exists:
+
+```bash
+python scripts/practice9/audit_supermimic_real_ppo_artifact.py \
+  --run /root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/real_ppo_standing_v1 \
+  --parent /root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_velocity_v2_seed42/2026-10-31_09-24-01/checkpoint_final.pt \
+  --manifest /root/gpufree-data/datasets/practice9/supermimic_tw_20261031/static_probe/manifest.json \
+  --expected-updates 1000 --expected-envs 256 \
+  --output /root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/real_ppo_standing_v1/artifact_integrity.json
+```
+
+This requires8192000 new real transitions and16000 Adam steps per trainable tensor; the currently running training source snapshot stays unchanged. A separate CPU-only waiter can run this after the confirmed training PID exits, in parallel with the already arranged final evaluation.
