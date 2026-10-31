@@ -319,3 +319,17 @@ converts angular velocity into native free-joint body coordinates internally.
 Next use paired native root-velocity perturbations under the original physics
 contract and terminations, with declared temporal fit/validation partitions.
 No such native collection has started yet. Evidence: response_feedback_error_v1.
+
+### 2026-10-31T15:23:56+00:00 : native root velocity branch smoke
+
+Implemented native root-link velocity branches under the original v3 physics,
+zero-action PD and termination rules. Twelve worlds cover six root velocity
+axes with antithetic signs and swapped assignments. Linear deltas0.005/0.010
+m/s and angular deltas0.020/0.040rad/s are written in world coordinates;
+all other73-state components and context are independently checked unchanged.
+Smoke warmup5 collected60 one-step transitions, no terminations. Independent
+archive audit passed: maximum requested-state error1.118e-8, reset replay
+error9.909e-7 below original1e-5 tolerance. These are state perturbations,
+not action perturbations or episode windows. Full collection uses fit warmups
+5/25/75/150 and temporal-validation15/35/125/175, declared before simulation.
+The diagnostic does not establish motion-source generalization or train policy.
