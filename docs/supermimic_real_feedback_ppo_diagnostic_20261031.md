@@ -582,3 +582,10 @@ Control completed1000, then independent integrity audit failed exact net.0.input
 ### 2026-10-31T17:26:12.855137+00:00 | Final gate summary provenance
 
 Candidate training PID700057 and resume runner PID699909 verified live. Added read-only final gate summarizer binding final checkpoint hashes to independent integrity/branch audit evidence; reports original-parent, matched-control and held-branch failures separately, never policy promotion or final goal completion. Executed on completed rejected root_pose_response_fit_v1: original3/18, matched3/18, branch5/9 reproduced. Queued geometry summary against actual live runner PID, without restarting training or selecting intermediate artifacts. Evidence: root_pose_response_fit_v1/gate_summary.json; geometry summary pending actual completion.
+
+---
+### 2026-10-31T17:31:33.520457+00:00 | Geometry feature final review: long-horizon gain, still rejected
+
+Both fixed1000 arms complete, independent integrity and full prescribed audits complete. Candidate SHA25687430b0009be5c8e4e8ea868f49e90f3df6bafc012aa7a3beea4d5f482598998. Matched trajectory18/18 nonregression checks pass. H32 root position p95 median63.4666->26.7601mm; orientation0.279122->0.170158rad; root linear RMSE0.0934784->0.0322859m/s; root angular RMSE0.423317->0.183823rad/s. Initial-parent gate still2/18 fail (H1 root angular, H8 orientation); branch6/9 fail (root angular/joint position/joint velocity absolute and all three required derivative improvements). Not accepted or promoted.
+
+Native pose-response variation now greater, but not reliably correct: validation vertical-input angular response condition std control0.00004324 -> candidate0.00077601rad/s vs native0.00110959. Full response RMSE worsens0.00328666->0.00606485rad/s. Representation expresses more variation, but value/Jacobian constraints remain insufficiently consistent; not proof of a unique root cause. Evidence: sole_geometry_fit_v1/gate_summary.json, review.json, response_variation.json. Next fit-only loss/gradient conflict audit before another optimizer change. All checkpoints/failures retained; independent motion, >=3 seeds and videos still outstanding.
