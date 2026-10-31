@@ -9,7 +9,7 @@ for key in ['parent','collection','branches','output']:p.add_argument('--'+key,t
 p.add_argument('--response-coefficient',type=float,choices=[0.,1.]);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
-if a.response_coefficient is not None:assert a.arm=='candidate' and a.response_fit_audit is not None and a.pose_integration_fit_audit is None
+if a.response_coefficient is not None:assert a.arm=='candidate' and a.response_fit_audit is not None
 else:assert a.updates==1000 and a.response_fit_audit is None
 torch.manual_seed(42);c=torch.load(a.parent,map_location='cpu',weights_only=False);assert c['kind']=='offline_dynamics_calibration_not_policy_checkpoint' and c['calibration_plan']['window']==8 and c['calibration_updates']==1000
 w=c['world_model'];cfg=c['cfg'];plan=dict(seed=42,updates=1000,batch=128,window=8,arm=a.arm,trajectory_batch=64,one_step_batch=64,targets_per_update=576,lr=.0001,source_checkpoint_sha256=hashlib.sha256(a.parent.read_bytes()).hexdigest(),one_step_source='original_fit' if a.arm=='control' else 'orthogonal_fit_including_zero',frozen=['termination','normalizers'],policy_artifact=False,selection='Final1000 only; no checkpoint selection, no validation fit')
@@ -80,10 +80,10 @@ try:
   assert torch.isfinite(value).all()
   if not key.startswith('net.'):assert torch.equal(value.cpu(),w[key]),key
  artifact=dict(kind='offline_dynamics_calibration_not_policy_checkpoint',world_model=m.state_dict(),cfg=cfg,calibration_plan=plan,calibration_updates=a.updates,optimizer=opt.state_dict())
- if a.updates!=1000:artifact['kind']='offline_smoke_not_policy_checkpoint'
  if prediction_contract is not None:
   from supermimic_pose_integration_diagnostic import POSE_KIND
   artifact['kind']=POSE_KIND;artifact['prediction_contract']=prediction_contract
+ if a.updates!=1000:artifact['kind']='offline_smoke_not_policy_checkpoint'
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:

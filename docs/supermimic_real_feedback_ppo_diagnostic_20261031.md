@@ -235,3 +235,16 @@ explicit diagnostic prediction contract, not deployable raw-weight success.
 Evidence remains in antithetic_response_fit_v1 and antithetic_pose_integration_v1.
 The next hypothesis is to fit the pose-velocity structure during optimization
 alongside the same response loss, changing only prediction structure.
+
+### 2026-10-31 22:58 CST: fit explicit pose structure with response loss
+
+The response_pose_fit_v1 preregistration changes only whether pose derives
+from velocities during fitting. Response coefficient1, source parent, fit data,
+seed42, 1000 updates and samplers stay fixed. The previous response candidate
+(be0b85e7...) is reused as the exact declared control, never checkpoint-selected.
+Four-update structured smoke passed: 22 frozen non-network tensors identical,
+eight predictor tensors updated, finite weights, four Adam steps, explicit
+fit-only prediction contract with 4505 fit frames. Smoke retains a separate
+non-policy artifact kind even when prediction metadata are present. Formal
+structured artifacts require their explicit prediction wrapper; raw weights
+alone are not equivalent. Original all-horizon and branch gates remain fixed.
