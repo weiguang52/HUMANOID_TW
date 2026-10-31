@@ -523,3 +523,10 @@ Both arms completed 1000 updates and all prescribed audits. Candidate SHA256 644
 ### 2026-10-31T16:57:22.075568+00:00 | Native pose-response supervision
 
 After rejection of quaternion conditioning, add fit-only root-pose response loss coefficient0/1 with same 64 extra endpoints in both arms (768 total per update). Normalize physical central response by declared base_delta and frozen parent velocity std, not near-zero native relative error. No quaternion conditioning; preserve XY invariance and prior loss/data/parent. Independent float64 target check max error1.19648308e-6 <=2e-5; gradient finite nonzero0.0004389913. Two 4-update smoke arms pass frozen non-net parameters, zero XY columns, optimizer steps and source contracts. Smoke ran before a metadata-only differing_variable description correction; arithmetic unchanged. Fixed1000 final-only fits and unchanged original audits follow. No policy promotion. Evidence: root_pose_response_fit_v1/plan.json, response_loss_probe.json, smoke_integrity.json.
+
+---
+### 2026-10-31T17:01:34.863463+00:00 | Pose-response trial rejected; variation audit
+
+Root-pose supervision candidate completed1000 with original gates: paired trajectory3/18 fail, original-parent3/18 fail, branch5/9 fail. H32 root position p95 median58.432->63.471mm. Candidate SHA2562dd8556a7b3b1945066afa07963e0e2644e9becfa729504a3a6dd6387a994774; rejected, no promotion.
+
+Read-only response-variation audit across all fixed conditions: validation vertical-input angular response native condition std0.00110959rad/s, candidate0.00004324rad/s. Candidate full response RMSE0.00328670rad/s vs control0.00514270rad/s; a fit-only constant-response diagnostic gives0.00134944rad/s. This is evidence of insufficient predicted response variation, not proof of the cause or deployable correction. Preserve fit-only mean, never fit validation. Next inspect state-dependent/contact-dependent representation and fit coverage before another gradient experiment. Evidence: root_pose_response_fit_v1/review.json and response_variation.json. Final independent motion/multi-seed requirements remain incomplete.
