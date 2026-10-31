@@ -431,3 +431,15 @@ original physics/terminations. Deltas0.5/1mm translation,1/2mrad rotation,
 fixed existing temporal partitions and swapped signs. No collection started.
 Evidence: velocity_anchor_fit_v1/review.json, quaternion_input_scale.json,
 and root_pose_branches_v1_protocol/plan.json. No policy promotion.
+
+### 2026-10-31T16:11:53+00:00 : native root-pose smoke verified
+
+Implemented root-pose interventions with world rotation left-multiplication,
+position displacement, and explicit rewrite of unchanged world root velocities
+after pose update. Joint state/context remain fixed. Translation0.5/1mm and
+rotation1/2mrad, all six axes and swapped signs, original gates retained.
+Smoke60 native transitions passed independent NumPy quaternion composition,
+state/context/archive checks, no terminations: requested-state error1.016e-7,
+replay error1.621e-7. This is native response data, not policy success.
+The formal fixed temporal fit/validation collection is ready; all contact-mode
+changes will be retained. Standing real-physics PPO reached977/1000.
