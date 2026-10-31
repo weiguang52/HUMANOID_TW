@@ -156,6 +156,11 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs):
     if sole_coefficient:
         assert plan["sole_normal_contract"] == "reference_body_z_normal_static_v1"
         assert training_audit["sole_normal_penalty"] == sole_coefficient
+        loss = plan.get("sole_normal_loss", "squared")
+        assert loss in ["squared", "smooth_distance"]
+        assert training_audit.get("sole_normal_loss", "squared") == loss
+        if loss == "smooth_distance":
+            assert plan["sole_normal_smoothing"] == 0.01
         assert training_audit["sole_native_max_error"] <= 1e-6
         assert all(training_audit["sole_math_check"].values())
         assert training_audit["sole_native_checks_current_segment"] == 32 * (
@@ -188,6 +193,7 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs):
         "normalizer_tensors": len(normalizers),
         "world_model_unchanged": True,
         "sole_normal_penalty": sole_coefficient,
+        "sole_normal_loss": plan.get("sole_normal_loss", "squared"),
         "sole_native_max_error": training_audit.get("sole_native_max_error"),
         "sole_reward_composition_checked": bool(sole_coefficient),
         "source_parameter_changes": group_changes,

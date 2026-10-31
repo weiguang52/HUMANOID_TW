@@ -89,13 +89,15 @@ def bootstrap_timeouts(reward, terminated, truncated, terminal_value, gamma):
 
 
 class RealFeedbackCollector:
-    def __init__(self, trainer, sole_normal_penalty=0.0):
+    def __init__(self, trainer, sole_normal_penalty=0.0, sole_normal_loss="squared"):
         self.t = trainer
         self.sole = None
         if sole_normal_penalty:
             from supermimic_sole_normal import SoleNormalPenalty
 
-            self.sole = SoleNormalPenalty(trainer, sole_normal_penalty)
+            self.sole = SoleNormalPenalty(
+                trainer, sole_normal_penalty, sole_normal_loss
+            )
         self.base_rewards = []
         self.penalties = []
         self.sole_costs = []

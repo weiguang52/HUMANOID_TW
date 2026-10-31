@@ -153,3 +153,16 @@ The matched512-episode factorial uses bit-identical noise arrays and exactly mat
 All counts are out of32 in one fixed developer protocol, policy training seed42 only. Archive invariants pass; strict atol1e-5 numeric sensor-toggle pairing remains failed (candidate maximum1.14083e-4), as explicitly recorded. This is not population significance, three-training-seed or independent-motion acceptance. `factorial_comparison.json` retains every group and the caveat.
 
 `review_supermimic_standing_evaluation.py` generates metrics, native contact convex-hull areas, fixed-frame montages and the colored front/side review page with30-axis legend and camera/source conventions. Known square/triangle/line areas are checked. `compare_supermimic_factorials.py` verifies fixed inputs/noise/initials before reporting all groups. Neither tool promotes a policy.
+
+### 2026-10-31 22:33 CST: smooth-distance single-variable probe
+
+The coefficient-2 squared-normal run remains an unaccepted standing diagnostic:
+20 s nominal survival, but both feet retain two-point edge support. Walking and
+full-body imitation are not established. A new pre-registered probe changes only
+the normal cost to d2 / (sqrt(d2 + 0.01**2) + 0.01), keeping coefficient 2,
+source parent, seed, real-physics PPO budget and all existing termination gates.
+The smoothing constant is not an acceptance tolerance. Four-update smoke and
+optimizer resume passed independent artifact checks (1024 real transitions,
+26 Adam states, frozen world model and normalizers); native-normal agreement
+was 3.5762786865234375e-7. Formal results are pending. This is not a SuperMimic
+world-model success or a replacement for fixed-seven, three-seed validation.

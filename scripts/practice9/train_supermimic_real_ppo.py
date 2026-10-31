@@ -40,6 +40,9 @@ def main():
     p.add_argument("--resume", type=Path)
     p.add_argument("--sole-normal-penalty", type=float, default=0.0)
     p.add_argument(
+        "--sole-normal-loss", choices=["squared", "smooth_distance"], default="squared"
+    )
+    p.add_argument(
         "--stop-after",
         type=int,
         help="Smoke-only interrupted budget; resume keeps the original total plan",
@@ -91,6 +94,8 @@ def main():
         "world_model_used_for_policy_update": False,
         "sole_normal_penalty": a.sole_normal_penalty,
         "sole_normal_contract": "reference_body_z_normal_static_v1",
+        "sole_normal_loss": a.sole_normal_loss,
+        "sole_normal_smoothing": 0.01,
         "actual_transitions": a.num_envs * 32 * a.updates,
         "scope": "Diagnostic; different real-sample budget; not a matched algorithm comparison or final acceptance",
     }
@@ -106,10 +111,14 @@ def main():
     t = SuperMimicTrainer(env, cfg, log_dir=a.output / "runtime")
     t.load(a.parent)
     t.initialize()
-    collector = RealFeedbackCollector(t, sole_normal_penalty=a.sole_normal_penalty)
+    collector = RealFeedbackCollector(
+        t,
+        sole_normal_penalty=a.sole_normal_penalty,
+        sole_normal_loss=a.sole_normal_loss,
+    )
     from supermimic_sole_normal import check_known_rotations
 
-    sole_math_check = check_known_rotations()
+    sole_math_check = check_known_rotations(a.sole_normal_loss)
     obs = collector.observe()
     alg = construct_ppo(t.actor_critic, obs, a.num_envs, cfg.gamma, cfg.action_noise)
     # Test nonzero parent outputs, before zeroing the readout.
@@ -292,6 +301,7 @@ def main():
             if collector.sole
             else 0.0,
             "sole_normal_penalty": a.sole_normal_penalty,
+            "sole_normal_loss": a.sole_normal_loss,
             "sole_native_checks_current_segment": collector.sole.calls
             if collector.sole
             else 0,

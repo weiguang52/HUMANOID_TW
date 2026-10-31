@@ -14,17 +14,22 @@ def normals_from_quat(quat):
     )
 
 
-def normal_alignment_cost(actual, reference):
-    """Mean over the two feet of signed unit-normal squared distance, in [0,4]."""
-    return (
-        (normals_from_quat(actual) - normals_from_quat(reference))
-        .square()
-        .sum(-1)
-        .mean(-1)
-    )
+SMOOTHING = 0.01
 
 
-def check_known_rotations():
+def normal_alignment_cost(actual, reference, loss="squared"):
+    """Mean signed-normal error; fixed smoothing is not an acceptance threshold."""
+    d2 = (normals_from_quat(actual) - normals_from_quat(reference)).square().sum(-1)
+    if loss == "squared":
+        value = d2
+    elif loss == "smooth_distance":
+        value = d2 / (torch.sqrt(d2 + SMOOTHING**2) + SMOOTHING)
+    else:
+        raise ValueError(loss)
+    return value.mean(-1)
+
+
+def check_known_rotations(loss="squared"):
     v = math.sqrt(0.5)
     q = torch.tensor(
         [[1, 0, 0, 0], [v, 0, 0, v], [v, v, 0, 0], [0, 1, 0, 0]], dtype=torch.float64
@@ -32,29 +37,50 @@ def check_known_rotations():
     q = q[:, None].repeat(1, 2, 1).requires_grad_()
     ref = torch.zeros_like(q)
     ref[..., 0] = 1
-    cost = normal_alignment_cost(q, ref)
+    cost = normal_alignment_cost(q, ref, loss)
+    expected = (
+        [0.0, 0.0, 2.0, 4.0]
+        if loss == "squared"
+        else [
+            0.0,
+            0.0,
+            math.sqrt(2 + SMOOTHING**2) - SMOOTHING,
+            math.sqrt(4 + SMOOTHING**2) - SMOOTHING,
+        ]
+    )
     torch.testing.assert_close(
-        cost,
-        torch.tensor([0.0, 0.0, 2.0, 4.0], dtype=torch.float64),
-        rtol=0,
-        atol=1e-12,
+        cost, torch.tensor(expected, dtype=torch.float64), rtol=0, atol=1e-12
     )
     cost.sum().backward()
     assert torch.isfinite(q.grad).all()
+    tiny = torch.tensor(
+        [[[1.0, 1e-9, 0.0, 0.0], [1.0, 0.0, 0.0, 0.0]]],
+        dtype=torch.float32,
+        requires_grad=True,
+    )
+    tiny_ref = torch.zeros_like(tiny)
+    tiny_ref[..., 0] = 1
+    small = normal_alignment_cost(tiny, tiny_ref, loss)
+    assert bool((small >= 0).all())
+    small.sum().backward()
+    assert torch.isfinite(tiny.grad).all()
     return {
         "identity_and_yaw_zero": True,
-        "tilt90_cost2": True,
-        "flipped180_cost4": True,
+        "tilt90_cost_correct": True,
+        "flipped180_cost_correct": True,
         "gradient_finite": True,
+        "float32_near_zero_nonnegative_finite": True,
     }
 
 
 class SoleNormalPenalty:
-    def __init__(self, trainer, coefficient):
+    def __init__(self, trainer, coefficient, loss="squared"):
         import mujoco
         import numpy as np
 
         assert math.isfinite(coefficient) and coefficient > 0
+        assert loss in ("squared", "smooth_distance")
+        self.loss = loss
         self.t = trainer
         self.coefficient = coefficient
         self.max_native_error = 0.0
@@ -87,7 +113,7 @@ class SoleNormalPenalty:
         error = float((native - predicted).abs().max())
         self.max_native_error = max(self.max_native_error, error)
         torch.testing.assert_close(predicted, native, rtol=0, atol=1e-6)
-        cost = normal_alignment_cost(q, ref)
+        cost = normal_alignment_cost(q, ref, self.loss)
         assert torch.isfinite(cost).all() and bool(
             ((cost >= 0) & (cost <= 4 + 1e-6)).all()
         )
