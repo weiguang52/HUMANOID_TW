@@ -250,7 +250,9 @@ def main():
     p.add_argument("--num-envs", type=int, default=32)
     p.add_argument("--max-steps", type=int, default=1000)
     p.add_argument("--smoke", action="store_true")
+    p.add_argument("--pd-repeat", action="store_true")
     args = p.parse_args()
+    assert not (args.smoke and args.pd_repeat)
     assert not args.output.exists(), "Preserve previous attempts"
     assert (args.smoke and args.num_envs == 4 and args.max_steps == 40) or (
         not args.smoke and args.num_envs == 32 and args.max_steps == 1000
@@ -307,6 +309,9 @@ def main():
     ]
     if args.smoke:
         profiles = [profiles[0], profiles[-1]]
+    if args.pd_repeat:
+        profiles = [x for x in profiles if not x[2]]
+    agents = ["zero"] if args.pd_repeat else ["zero", "trained"]
     args.output.mkdir(parents=True)
     np.savez_compressed(
         args.output / "fixed_noise.npz",
@@ -323,7 +328,7 @@ def main():
         "sensor_noise_seed": 20042,
         "sensor_noise_distribution": "Independent uniform, same source amplitudes; fixed NumPy draws, no simulator RNG consumption",
         "profiles": profiles,
-        "agents": ["zero", "trained"],
+        "agents": agents,
         "num_envs": args.num_envs,
         "max_steps": args.max_steps,
         "checkpoint_sha256": digest(args.checkpoint),
@@ -335,6 +340,8 @@ def main():
         "policy_frozen": True,
         "scope": "One training seed42, synthetic static reference, not independent motions or three training seeds; first episode only; original termination thresholds; dead worlds parked with live-state assertions",
     }
+    if args.pd_repeat:
+        plan["mode"] = "pd_numerical_repeat_control"
     (args.output / "plan.json").write_text(json.dumps(plan, indent=2))
     (args.output / "source_config.json").write_text(
         json.dumps(asdict(SuperMimicCfg(**source["cfg"])), indent=2)
@@ -343,7 +350,7 @@ def main():
     rows = []
     summaries = []
     for profile in profiles:
-        for agent in ["zero", "trained"]:
+        for agent in agents:
             group, summary = run_case(
                 args,
                 source,

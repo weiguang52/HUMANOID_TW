@@ -81,3 +81,24 @@ Fixed action draws use NumPy seed10042, Gaussian std0.1. Sensor draws use seed20
 The initial smoke caught command clock1 after reset. Its logs/configs remain in `smoke_v1_failed_clock`; the revised collector first verifies that the reference is constant with zero velocities, then standardizes only the clock to0 without changing perturbed physical state. The second smoke (4 worlds,40 steps,two extreme profiles,two agents) passes16 finite contiguous first-episode traces and active-world parking assertions. Nominal initial state matches the previous single-world replay exactly; first action differs by6.6012e-5 under batched floating-point inference, which is recorded rather than claimed bit-identical. Smoke duration is0.8s and is not counted as20s acceptance.
 
 Run the smoke/formal modes through `run_supermimic_learned_factorial.sh`. New caches and artifacts stay on the data disk. Do not restart completed output directories or choose a checkpoint based on intermediate results.
+
+## Factorial512 results and numerical pairing limitation
+
+Each entry is completed20s first episodes out of32; policy seed42 only, no random events. R=initial reset perturbations, S=uniform sensor noise, A=Gaussian action noise.
+
+|R/S/A|Learned|PD|
+|---|---:|---:|
+|000|32|32|
+|001|22|0|
+|010|32|32|
+|011|26|0|
+|100|18|0|
+|101|4|0|
+|110|17|0|
+|111|6|0|
+
+The archive's512 finite contiguous traces, initial state/context matching, exact PD action-noise application, speed limits and completion accounting pass independent checks. The strict PD sensor-toggle full-state atol1e-5 check fails and remains explicitly failed: `independent_integrity.json` has `passed=false`, `archive_invariants_passed=true`, `numeric_pairing_passed=false`. Maximum root position difference is9.298e-6m and root angular-velocity difference1.6725e-4rad/s, with identical completion/termination steps. The original failed verifier source and report are preserved.
+
+A separate128-episode same-condition PD repeat has identical initial states/actions and ending steps; maximum root position difference4.813e-6m and angular-velocity difference1.2112e-4rad/s are of similar order. One repeat does not establish a statistical error bound or bitwise reproducibility. Sensor-noise benefit is not inferred from22 versus26 completions. The first repeat attempt had incorrect declared agent metadata and was interrupted/preserved as `repeat_pd_v1_failed_metadata`; the corrected repeat is separate. Original512 episodes were not rerun or changed.
+
+The learned policy has some recovery capacity but remains unacceptable for tilted edge support and incomplete robustness. The next single training change is a reference-sole-normal penalty, with all other settings fixed; the physical termination gates are unchanged. None of these developer diagnostics fulfills the final fixed7-motion/three-training-seed target.

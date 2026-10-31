@@ -19,6 +19,7 @@ probe_root="$probe_data_root/datasets/practice9/supermimic_tw_20261031/longterm_
 export TW_SUPERMIMIC_MJCF="$probe_data_root/datasets/practice9/supermimic_tw_20261031/robot/tw30.xml"
 case "${1:-}" in
  smoke) probe_args=(--num-envs 4 --max-steps 40 --smoke); probe_name=smoke ;;
+ repeat) probe_args=(--num-envs 32 --max-steps 1000 --pd-repeat); probe_name=repeat_pd ;;
  formal) probe_args=(--num-envs 32 --max-steps 1000); probe_name=probe ;;
  *) echo 'Specify smoke or formal' >&2; exit 1 ;;
 esac
