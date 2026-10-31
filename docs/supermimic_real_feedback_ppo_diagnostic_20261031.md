@@ -412,3 +412,22 @@ Both four-update smoke arms passed frozen22 tensors, updated8 predictor tensors,
 Adam step4, fit-only root-state sources and704 prediction endpoint metadata.
 This is validity evidence only; formal1000 update results remain pending.
 Standing real-physics PPO independently reached847/1000; no interim selection.
+
+### 2026-10-31T16:09:10+00:00 : velocity anchor result and root-pose diagnosis
+
+Conditional velocity-anchor final1000 fit remains rejected:3 trajectory gates
+vs initial parent (H1 root angular velocity, H8 root orientation/angular velocity),
+3 vs matched control, and3 additional-improvement branch gates. All six held
+branch absolute-state checks pass. Candidate3c6c21b3955a72127e2e6a4af9c55e9917d28e5c59808ce4eb1c070a12d514df.
+The source collection was re-read: events disabled; forcing is recorded30-axis
+sinusoidal action only, no unrecorded external force injection was found there.
+This does not prove every possible hidden simulator state is irrelevant.
+Fit-only quaternion input scale over4505 states is std[w,x,y,z]=
+[0.0060222,0.0023550,0.0337446,0.0207831]. Frozen quaternion features therefore
+have quite different scales, a conditioning hypothesis to test, not a proven bug.
+Preregistered native root-pose6-axis probe will preserve world root velocity
+when changing orientation (rewrite velocity after pose), all joint state, and
+original physics/terminations. Deltas0.5/1mm translation,1/2mrad rotation,
+fixed existing temporal partitions and swapped signs. No collection started.
+Evidence: velocity_anchor_fit_v1/review.json, quaternion_input_scale.json,
+and root_pose_branches_v1_protocol/plan.json. No policy promotion.
