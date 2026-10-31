@@ -42,3 +42,16 @@ Across all610matched action states, root angular-velocity output difference afte
 The same abrupt-action probe has a constant-angular-velocity error of0.08696rad/s (all cases), larger than the learned-model error. Thus earlier poor steady-forcing results do not establish that the model always loses to constant velocity. Both data regimes must be accounted for before selecting another intervention.
 
 No warmstart state augmentation or production-physics fix is justified by this probe. Next verify the actual PD target-error/torque mapping as a possible structured input, rather than immediately reweight root loss or alter the solver. Probe sources/results/audit/nonzero_cache_summary/stage_result are all retained remotely.
+
+
+## Native PD/control chain verification
+
+pd_chain_probe_v1 checks all30actuator axes in61worlds, warmups0/10steps and amplitudes0.02/0.05/8.0:6batches,366one-step probe worlds. The large amplitude only verifies saturation algebra; it is not policy training or a skill test. No gains, force limits, solver settings or production weights changed.
+
+The actual compiled model has fixed gain, affine bias, no actuator dynamics, joint transmissions with unit gear, disabled control clamping and enabled force clamping. All gain/bias/range values match the TW factory. Action order is mapped by joint names independently of actuator/state order. Raw normalized actions→offset/scale→processed targets→MuJoCo ctrl match exactly, as do actuator forces projected into joint DoFs.
+
+Native cached force versus affine PD+force clamp differs by at most5.96e-7Nm. Direct stateless PD using recorded post-step joint position/velocity differs by at most6.26e-7Nm. Each stress case exercises60intended saturated components; small cases have none. No terminations were observed, but this does not establish20s stability.
+
+Timing correction: the original collector metadata described cached actuator inputs as the last pre-integration substep. Source review and raw data show env.step runs sim.forward after integration. Cached actuator length and velocity are exactly equal to recorded post-step joint states across all6cases. The original metadata and exact source matching its recorded hash are retained; audit.json explicitly corrects the timing description. Future collectors record physics timestep and decimation.
+
+This verifies the simulator control mapping and the instantaneous torque law, not hardware parameter truth or the average torque over a control interval. It does not explain the learned model's root-response gap. Before adding physical input features, use these verified target-error/torque mappings and account for actual contact geometry; do not attribute the problem to an unverified PD-order bug.
