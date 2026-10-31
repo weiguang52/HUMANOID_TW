@@ -121,6 +121,15 @@ def evaluate(args):
         "Refusing to overwrite completed evaluation"
     )
     manifest = json.loads(args.manifest.read_text())
+    head_names = ['neck', 'neck_linkage_roll', 'head_pitch']
+    if 'trained_head_zero' in args.agents:
+        assert manifest.get('synthetic_diagnostic'), 'Head-zero diagnostic is synthetic-static only'
+        for item in manifest['motions']:
+            with np.load(item['file'], allow_pickle=False) as ref:
+                names = ref['joint_names'].tolist()
+                assert np.all(np.abs(ref['joint_pos'][:, [names.index(n) for n in head_names]]) < 1e-7)
+                assert np.all(np.abs(ref['joint_vel']) < 1e-7), 'No moving reference masking'
+
     assert manifest["joint_coordinate_contract"] == "tw123_yaw_waist_v3"
     rows = manifest["motions"]
     assert rows and len({r["id"] for r in rows}) == len(rows)
@@ -218,9 +227,15 @@ def evaluate(args):
                         trainer.actor_critic.act(
                             trainer.history.reshape(1, -1), command.goal()
                         )
-                        if agent == "trained"
+                        if agent in ("trained", "trained_head_zero")
                         else torch.zeros((1, 30), device="cuda:0")
                     )
+                    if agent == 'trained_head_zero':
+                        indices = [extra['tw_action_joint_names'].index(n) for n in head_names]
+                        term = env.action_manager.get_term('joint_pos')
+                        assert bool((term._offset[:, indices].abs() < 1e-7).all())
+                        action = action.clone()
+                        action[:, indices] = 0.0
                     _, _, terminated, truncated, _ = env.step(action)
                     assert torch.isfinite(action).all()
                     assert torch.isfinite(command.robot_body_pos_w).all()
@@ -303,6 +318,7 @@ def evaluate(args):
                     "terminated": failure,
                     "truncated": truncation,
                     "termination_reasons": reasons,
+                    "nominal_head_command_mask": head_names if agent == "trained_head_zero" else [],
                     "completed_requested_window": (
                         len(samples) == planned_steps and not failure
                     ),
@@ -372,7 +388,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--max-steps", type=int, default=1000)
     parser.add_argument(
-        "--agents", nargs="+", choices=["trained", "zero"], default=["trained", "zero"]
+        "--agents", nargs="+", choices=["trained", "zero", "trained_head_zero"], default=["trained", "zero"]
     )
     parser.add_argument("--video", action="store_true")
     evaluate(parser.parse_args())
