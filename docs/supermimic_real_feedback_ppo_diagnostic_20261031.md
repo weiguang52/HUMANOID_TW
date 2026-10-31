@@ -51,3 +51,33 @@ python scripts/practice9/audit_supermimic_real_ppo_artifact.py \
 ```
 
 This requires8192000 new real transitions and16000 Adam steps per trainable tensor; the currently running training source snapshot stays unchanged. A separate CPU-only waiter can run this after the confirmed training PID exits, in parallel with the already arranged final evaluation.
+
+## Final1000 result: nominal duration passes, tilted support rejected
+
+Final checkpoint SHA256 `182fe0bdc89fbcdbfb38bde63b0c088903f9b71a4123d7813b176dd574202207`. Independent artifact audit passes8192000 new real transitions,16000 Adam steps on each of26 trainable parameter tensors,12 unchanged normalizer tensors and unchanged source world model. No world-model call was used for training. All1000 metric updates are unique and contiguous.
+
+Both learned and nominal-PD agents complete1000/1000 steps (20s), without original terminations. All four front/side videos are H264/50fps/960x640,1000 frames, fully decoded. Twelve fixed sampled frames (start/mid/end per view/agent) were inspected; this is not an assertion of human inspection of every frame.
+
+| Full actual20s | Learned | Nominal PD |
+|---|---:|---:|
+| Root horizontal displacement max |38.732mm|2.880mm|
+| Root displacement at end |29.334mm|2.064mm|
+| Root tilt max |8.780deg|0.669deg|
+| Mean body position error |41.965mm|2.921mm|
+| Mean joint angle error |6.074deg|0.054deg|
+| Last10s left/right sole tilt median |13.105/24.314deg|0.421/0.426deg|
+| Last10s loaded contact points each foot |2 in every frame|4 in every frame|
+
+The policy widens its stance and persists on tilted foot edges. The duration improvement from the prior1.68s learned policy is real, but this is not accepted as reliable flat-foot standing and was not promoted. The nominal PD evidence contradicts a claim that the geometry can only support point contacts. Loaded point counts alone do not measure a continuous pressure area or hardware stability. Different real-sample budgets and optimizers prevent a matched algorithm superiority claim.
+
+Artifacts are under the remote `longterm_diagnostics/real_ppo_standing_v1/evaluation`: `standing_metrics.json`, `standing_contact_summary.json`, `visual_review.json`, raw traces/contacts, montage images and `reviewed_index.html`. The reviewed page includes all30 joint-color legend entries, camera conventions, an explicit synthetic-source label and the PD comparison. Colors are baked offline from the previously saved precolored USD palette into a physics-identical MJCF. No runtime material binding or HumanML3D-source claim is made.
+
+## Frozen-policy factorial follow-up
+
+`collect_supermimic_learned_factorial.py` separates original reset perturbations, source-amplitude uniform sensor noise, and Gaussian action noise in a2x2x2 factorial, for learned and PD agents,32 worlds each. Every case starts at reference frame0 and records only its first original20s episode, stopping on original terminations. Randomized events are disabled to isolate these factors, so this does not reproduce the full training distribution. The same policy seed42 is used; this is not three independent training seeds or independent-motion validation.
+
+Fixed action draws use NumPy seed10042, Gaussian std0.1. Sensor draws use seed20042, independent uniform component amplitudes0.01/0.5/0.2/0.05, with zero noise on previous-action features. The source proprioception layout is preserved. Fixed arrays do not consume simulator/reset random numbers; all cases of the same reset factor assert matching initial state/context. Ended worlds are parked without resetting or modifying active worlds' state/context/clocks, and only first-episode prefixes are saved. Actor/normalizer tensors remain exactly frozen, the world model is never called, speed caps and finite/contiguous traces are checked.
+
+The initial smoke caught command clock1 after reset. Its logs/configs remain in `smoke_v1_failed_clock`; the revised collector first verifies that the reference is constant with zero velocities, then standardizes only the clock to0 without changing perturbed physical state. The second smoke (4 worlds,40 steps,two extreme profiles,two agents) passes16 finite contiguous first-episode traces and active-world parking assertions. Nominal initial state matches the previous single-world replay exactly; first action differs by6.6012e-5 under batched floating-point inference, which is recorded rather than claimed bit-identical. Smoke duration is0.8s and is not counted as20s acceptance.
+
+Run the smoke/formal modes through `run_supermimic_learned_factorial.sh`. New caches and artifacts stay on the data disk. Do not restart completed output directories or choose a checkpoint based on intermediate results.
