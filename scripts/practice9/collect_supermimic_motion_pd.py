@@ -9,11 +9,12 @@ from supermimic.config.tw.velocity_limits import enable_tw_velocity_limits,disab
 from supermimic.algo.state import SuperMimicStateSpec,StateExtractor
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--plan',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true')
+p.add_argument('--refresh-command-cache',action='store_true')
 a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
-plan=json.loads(a.plan.read_text());motions=plan['motions'];assert len(motions)==8
+plan=json.loads(a.plan.read_text());assert not a.refresh_command_cache or plan.get('command_cache_contract')=='current_state_current_frame_v1';motions=plan['motions'];assert len(motions)==8
 assert len({x['source_family'] for x in motions})==8
 for x in motions:assert hashlib.sha256(Path(x['file']).read_bytes()).hexdigest()==x['sha256']
-(a.output/'input.json').write_text(json.dumps(dict(plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
+(a.output/'input.json').write_text(json.dumps(dict(refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
 cfg=tw_supermimic_env_cfg([x['file'] for x in motions],num_envs=1,play=True)
 cfg.events={};cfg.seed=42;cfg.auto_reset=False
 cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
@@ -25,7 +26,7 @@ extract=StateExtractor(env,spec,torso_body_name='chest',left_foot_geom_pattern=r
 caps=torch.tensor([LIMITS[n] for n in robot.joint_names],device='cuda:0')
 assert term.cfg.clip is None,'Need explicit clipped-target audit before collection'
 assert torch.all(torch.as_tensor(term._scale)!=0)
-(a.output/'control_mapping.json').write_text(json.dumps(dict(state_joint_names=list(robot.joint_names),action_joint_names=[robot.joint_names[i] for i in order.cpu().tolist()],offset=term._offset.cpu().tolist(),scale=term._scale.cpu().tolist(),clip=repr(term.cfg.clip),step_dt=env.step_dt),indent=2))
+(a.output/'control_mapping.json').write_text(json.dumps(dict(tracked_body_names=list(cmd.cfg.body_names),env_origin=env.scene.env_origins.cpu().tolist(),state_joint_names=list(robot.joint_names),action_joint_names=[robot.joint_names[i] for i in order.cpu().tolist()],offset=term._offset.cpu().tolist(),scale=term._scale.cpu().tolist(),clip=repr(term.cfg.clip),step_dt=env.step_dt),indent=2))
 reports=[]
 try:
  for clip_id,motion in enumerate(motions[:2] if a.smoke else motions):
@@ -33,8 +34,11 @@ try:
   for fraction in phases:
    frame=int((motion['frames']-1)*fraction);steps=min(3 if a.smoke else plan['max_steps'],motion['frames']-frame-1)
    env.reset();cmd.reset_to_frame(torch.tensor([0],device='cuda:0'),clip_id,frame);env.sim.forward()
+   if a.refresh_command_cache:cmd.update_relative_body_poses()
    records={k:[] for k in ['state','action','context','next_state','desired_joint_pos','terminated','truncated']};reasons=[];max_error=0.
+   if a.refresh_command_cache:records['command_body_pos']=[]
    for step in range(steps):
+    if a.refresh_command_cache:cached_target=cmd.body_pos_relative_w.clone()
     desired=cmd.joint_pos.clone();target=desired[:,order]
     action=(target-term._offset)/term._scale
     error=float((action*term._scale+term._offset-target).abs().max());assert error<=1e-6;max_error=max(max_error,error)
@@ -42,6 +46,7 @@ try:
     assert torch.all(robot.data.joint_vel.abs()<=caps+1e-5)
     for k,v in [('state',state),('action',action),('context',context),('next_state',nxt),('desired_joint_pos',desired),('terminated',result[2][:,None]),('truncated',result[3][:,None])]:
      assert torch.isfinite(v).all();records[k].append(v[0].detach().cpu().numpy().copy())
+    if a.refresh_command_cache:records['command_body_pos'].append(cached_target[0].detach().cpu().numpy().copy())
     if bool((result[2]|result[3])[0]):
      reasons=[n for n in env.termination_manager.active_terms if bool(env.termination_manager.get_term(n)[0])];break
    name=motion['id']+'_frame'+str(frame)+'.npz'

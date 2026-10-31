@@ -8,6 +8,7 @@ for key in ['plan','collection','output']:p.add_argument('--'+key,type=Path,requ
 a=p.parse_args();assert not a.output.exists()
 plan=json.loads(a.plan.read_text());root=a.collection
 info=json.loads((root/'input.json').read_text());assert info['plan_sha256']==hashlib.sha256(a.plan.read_bytes()).hexdigest()
+if plan.get('command_cache_contract')=='current_state_current_frame_v1':assert info['refresh_command_cache']
 mapping=json.loads((root/'control_mapping.json').read_text());assert mapping['clip']=='None' and mapping['step_dt']==.02
 names=mapping['state_joint_names'];assert len(names)==len(set(names))==30
 order=[names.index(x) for x in mapping['action_joint_names']];assert sorted(order)==list(range(30))
@@ -26,6 +27,9 @@ for x in sorted(json.loads(train.read_text())['motions'],key=lambda x:x['id']):
  seen.add(x['source_family']);selected.append(x)
  if len(selected)==8:break
 assert [x['id'] for x in selected]==[x['id'] for x in plan['motions']]
+for i,(expected,motion) in enumerate(zip(selected,plan['motions'])):
+ assert all(expected[k]==motion[k] for k in ['id','source_family','file','frames'])
+ assert motion['split']==('fit' if i%2==0 else 'validation')
 assert all(x['id'] not in held_ids and x['source_family'] not in held_families for x in plan['motions'])
 by_id={m['id']:m for m in motions};reports=[]
 for row in rows:
@@ -33,6 +37,7 @@ for row in rows:
  refpath=Path(m['file']);assert hashlib.sha256(refpath.read_bytes()).hexdigest()==m['sha256']==row['reference_sha256']
  path=root/row['trace'];assert path.resolve().is_relative_to(root.resolve());assert hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
  with np.load(path,allow_pickle=False) as z:d={k:z[k] for k in z.files}
+ assert row['planned_steps']==min(3 if info['smoke'] else plan['max_steps'],m['frames']-row['frame']-1)
  n=row['steps'];assert 0<n<=row['planned_steps'];assert all(len(v)==n and np.isfinite(v).all() for v in d.values())
  for k,w in [('state',73),('next_state',73),('action',30),('context',34),('desired_joint_pos',30),('terminated',1),('truncated',1)]:assert d[k].shape==(n,w)
  assert np.array_equal(d['next_state'][:-1],d['state'][1:])
@@ -45,8 +50,12 @@ for row in rows:
   refnames=ref['joint_names'].tolist();idx=[refnames.index(x) for x in names]
   expected_target=ref['joint_pos'][row['frame']:row['frame']+n][:,idx]
   timing=float(np.max(np.abs(d['desired_joint_pos']-expected_target)));assert timing<=1e-6,timing
+  if info.get('refresh_command_cache',False):
+   bodyidx=[ref['body_names'].tolist().index(x) for x in mapping['tracked_body_names']]
+   expected_z=ref['body_pos_w'][row['frame']:row['frame']+n][:,bodyidx,2]+np.asarray(mapping['env_origin'])[0,2]
+   cache_error=float(np.max(np.abs(d['command_body_pos'][:,:,2]-expected_z)));assert cache_error<=1e-6,cache_error
   initial=float(np.max(np.abs(d['state'][0,13:43]-expected_target[0])));assert initial<=1e-6
- reports.append(dict(trace=row['trace'],steps=n,terminated=bool(done[-1]),target_inverse_max_error=inverse,reference_target_max_error=timing,initial_joint_max_error=initial))
+ reports.append(dict(command_cache_z_checked=info.get('refresh_command_cache',False),command_cache_z_max_error=cache_error if info.get('refresh_command_cache',False) else None,trace=row['trace'],steps=n,terminated=bool(done[-1]),target_inverse_max_error=inverse,reference_target_max_error=timing,initial_joint_max_error=initial))
 assert not ({m['source_family'] for m in motions if m['split']=='fit'} & {m['source_family'] for m in motions if m['split']=='validation'})
 a.output.write_text(json.dumps(dict(passed=True,smoke=info['smoke'],rows=reports,scope='Reference timing/mapping, finite native traces, caps and original terminal records only; no learned walking, physical feasibility or policy acceptance'),indent=2))
 print('MOTION_PD_AUDIT_PASSED',len(reports))
