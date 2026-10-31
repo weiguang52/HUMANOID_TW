@@ -1107,6 +1107,8 @@ class SuperMimicTrainer:
 
     def load(self, path: str | Path, *, evaluation_only: bool = False) -> None:
         checkpoint = torch.load(path, map_location=self.device)
+        if str(checkpoint.get("kind", "")).startswith("offline_"):
+            raise ValueError("Offline calibration artifacts cannot load as policy checkpoints")
         real_ppo = checkpoint.get("kind") == "real_physics_ppo_diagnostic_policy_v1"
         if real_ppo and not evaluation_only:
             raise ValueError("Real-physics PPO diagnostic requires its own optimizer resume; use evaluation_only=True for inference")
