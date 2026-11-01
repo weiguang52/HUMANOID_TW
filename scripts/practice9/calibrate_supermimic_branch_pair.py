@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--training-input-scale',type=int,choices=[0,1]);p.add_argument('--input-scale-audit',type=Path)
 p.add_argument('--motion-root-mix',type=int,choices=[0,1]);p.add_argument('--motion-root-collection',type=Path)
 p.add_argument('--motion-h1-mix',type=int,choices=[0,1])
 p.add_argument('--mixed-horizon',type=int,choices=[0,1])
@@ -23,6 +24,8 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.training_input_scale is not None:assert a.motion_root_mix==1 and a.input_scale_audit is not None
+else:assert a.input_scale_audit is None
 if a.motion_root_mix is not None:assert a.motion_h1_mix==1 and a.motion_root_collection is not None
 else:assert a.motion_root_collection is None
 if a.motion_h1_mix is not None:assert a.mixed_horizon==0 and a.yaw_canonical==1 and a.motion_h8_mix==1
@@ -317,6 +320,24 @@ if a.motion_h1_mix is not None:
 if a.motion_root_mix is not None:
  plan['differing_variable']='Root response16static vs8static+8motion; all768 endpoints unchanged'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+input_transform=None;input_training_state=None;input_query=None
+if a.training_input_scale is not None:
+ from supermimic_training_input_scale import TrainingInputScale,fit_scale,RULE,INDICES
+ proof=json.loads(a.input_scale_audit.read_text());assert proof['passed'] and proof['optimizer_updates']==0 and not proof['validation_arrays_loaded']
+ assert proof['source_sha256']==plan['source_checkpoint_sha256'] and proof['static_files']==files and proof['motion_input']==plan['motion_h1_input']
+ assert proof['rule']==RULE and proof['indices']==INDICES and all(x['parameter_perturbation_verified'] for x in proof['rows'])
+ static_input={k:torch.tensor(np.concatenate([d[k] for d in original]),device='cuda:0') for k in ['state','action','context']}
+ scale=fit_scale(m,static_input,motion_one)
+ assert torch.equal(scale.cpu(),torch.tensor(proof['scale']))
+ input_query={k:torch.cat([static_input[k],motion_one[k],motion_root_loss.data[k].reshape(-1,motion_root_loss.data[k].shape[-1])]) for k in static_input}
+ def scale_predictions():
+  return torch.cat([predictor(*[input_query[k][start:start+128] for k in ['state','action','context']]) for start in range(0,6437,128)])
+ with torch.no_grad():
+  before_scale=scale_predictions();input_transform=TrainingInputScale(m.net[0],scale,bool(a.training_input_scale));after_scale=scale_predictions()
+  input_initial_error=float((after_scale-before_scale).abs().max());assert input_initial_error<=1e-5
+  if not a.training_input_scale:assert torch.equal(after_scale,before_scale)
+ plan.update(training_input_scale=bool(a.training_input_scale),input_scale_rule=RULE,input_scale_values=scale.cpu().tolist(),input_scale_audit_sha256=hashlib.sha256(a.input_scale_audit.read_bytes()).hexdigest(),input_scale_audit=str(a.input_scale_audit.resolve()),input_scale_initial_max_error=input_initial_error,differing_variable='Training-only joint/action RMS coordinates0vs1; original inference export, all768 endpoints unchanged')
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 hg=torch.Generator(device='cuda:0').manual_seed(51) if a.motion_h1_mix is not None else None
 lg=torch.Generator(device='cuda:0').manual_seed(49) if a.mixed_horizon is not None else None
 lm=torch.Generator(device='cuda:0').manual_seed(50) if a.mixed_horizon is not None else None
@@ -404,6 +425,15 @@ try:
    assert export_error<=1e-5,export_error
   plan['quaternion_raw_export_max_error']=export_error
   (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+ if input_transform is not None:
+  with torch.no_grad():
+   before_export=scale_predictions()
+   if a.training_input_scale:input_training_state={k:v.detach().cpu().clone() for k,v in m.net[0].state_dict().items()}
+   input_transform.export();after_export=scale_predictions()
+   input_export_error=float((before_export-after_export).abs().max());assert input_export_error<=1e-5
+   if not a.training_input_scale:assert torch.equal(before_export,after_export)
+  plan['input_scale_export_max_error']=input_export_error
+  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
  if a.xy_invariance:assert torch.count_nonzero(m.net[0].weight[:,:2])==0
  for key,value in geometry_frozen.items():assert torch.equal(m.state_dict()[key],value),key
  for key,value in m.state_dict().items():
@@ -414,6 +444,10 @@ try:
   plan.update(actual_prediction_points_min=min(point_history),actual_prediction_points_max=max(point_history),actual_prediction_points_total=sum(point_history))
   (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
  artifact=dict(kind='offline_dynamics_calibration_not_policy_checkpoint',world_model=m.state_dict(),cfg=cfg,calibration_plan=plan,calibration_updates=a.updates,optimizer=opt.state_dict())
+ if a.training_input_scale:
+  artifact['training_coordinate_optimizer']=artifact.pop('optimizer')
+  artifact['training_coordinate_first_linear']=input_training_state
+  artifact['optimizer_coordinate_contract']='training_joint_action_rms_v1_not_raw_resume'
  if a.quaternion_conditioning:
   artifact['training_coordinate_optimizer']=artifact.pop('optimizer')
   artifact['training_coordinate_first_linear']=q_training_state
@@ -431,6 +465,7 @@ try:
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:
+ plan['interrupted_input_scale_active']=bool(input_transform is not None and input_transform.enabled)
  plan['interrupted_quaternion_hook_active']=q_hook is not None
  plan['interrupted_geometry_contract']=geometry_contract
- torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict(),prediction_contract=prediction_contract,coordinate_contract=coordinate_contract),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise
+ torch.save(dict(kind='offline_interrupted_not_policy',world_model=m.state_dict(),calibration_plan=plan,calibration_updates=update,optimizer=opt.state_dict(),prediction_contract=prediction_contract,coordinate_contract=coordinate_contract,input_training_state=input_training_state,input_optimizer_coordinates='training_joint_action_rms_v1' if a.training_input_scale else None),a.output/'interrupt.pt');(a.output/'status').write_text('failed\n');raise

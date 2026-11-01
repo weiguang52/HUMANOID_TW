@@ -110,5 +110,20 @@ if 'motion_root_mix' in d['calibration_plan']:
  assert meta==plan['motion_root_input'] and meta['conditions']==576 and len(meta['files'])==192 and not meta['validation_arrays_loaded']
  assert json.loads((a.artifact.parent/'motion_root_input.json').read_text())==meta
  assert plan['actual_prediction_points_total']==768000 and plan['prediction_endpoints_per_update']==768
+if 'training_input_scale' in d['calibration_plan']:
+ from supermimic_training_input_scale import RULE,INDICES
+ plan=d['calibration_plan'];assert type(plan['training_input_scale']) is bool and plan['motion_root_mix'] is True
+ proof_path=Path(plan['input_scale_audit']);proof=json.loads(proof_path.read_text())
+ assert hashlib.sha256(proof_path.read_bytes()).hexdigest()==plan['input_scale_audit_sha256'] and proof['passed']
+ assert proof['rule']==plan['input_scale_rule']==RULE and proof['indices']==INDICES and proof['scale']==plan['input_scale_values']
+ assert proof['static_files']==files and proof['motion_input']==plan['motion_h1_input'] and proof['source_sha256']==plan['source_checkpoint_sha256']
+ assert plan['input_scale_initial_max_error']<=1e-5 and plan['input_scale_export_max_error']<=1e-5
+ if plan['training_input_scale']:
+  assert 'optimizer' not in d and d['optimizer_coordinate_contract']=='training_joint_action_rms_v1_not_raw_resume'
+  training=d['training_coordinate_first_linear'];scale=torch.tensor(plan['input_scale_values'])
+  torch.testing.assert_close(d['world_model']['net.0.weight'],training['weight']/scale,atol=1e-5,rtol=0)
+  assert torch.equal(d['world_model']['net.0.bias'],training['bias'])
+  assert all(float(x['step'])==1000 for x in d['training_coordinate_optimizer']['state'].values())
+ else:assert 'training_coordinate_optimizer' not in d and 'optimizer_coordinate_contract' not in d
 report=dict(passed=True,artifact_sha256=hashlib.sha256(a.artifact.read_bytes()).hexdigest(),finite_tensor_count=count,window=window,fit_windows=windows,fit_files=files,frozen_nonnet_tensors=frozen,changed_dynamics_tensors=changed,policy_artifact=False,promoted=False)
 a.output.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k not in ['fit_files','frozen_nonnet_tensors','changed_dynamics_tensors']}))
