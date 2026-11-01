@@ -36,7 +36,7 @@ def finite(value):
         assert math.isfinite(value), "Non-finite scalar"
 
 
-def audit(run, parent, manifest_path, expected_updates, expected_envs):
+def audit(run, parent, manifest_path, expected_updates, expected_envs, expected_seed=42):
     path = run / "checkpoint_final.pt"
     source = torch.load(parent, map_location="cpu", weights_only=False)
     final = torch.load(path, map_location="cpu", weights_only=False)
@@ -48,7 +48,7 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs):
     assert (
         plan["rollout_steps"] == 32 and plan["epochs"] == 4 and plan["minibatches"] == 4
     )
-    assert plan["seed"] == 42 and plan["learning_rate"] == 1e-4
+    assert plan["seed"] == expected_seed and plan["learning_rate"] == 1e-4
     assert plan["noise_std"] == source["cfg"]["action_noise"] == 0.1
     assert (
         plan["gamma"] == source["cfg"]["gamma"] == 0.99
@@ -208,12 +208,13 @@ def main():
     parser.add_argument("--parent", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--expected-updates", type=int, required=True)
+    parser.add_argument("--expected-seed", type=int, default=42)
     parser.add_argument("--expected-envs", type=int, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     assert not args.output.exists(), "Preserve prior audits"
     result = audit(
-        args.run, args.parent, args.manifest, args.expected_updates, args.expected_envs
+        args.run, args.parent, args.manifest, args.expected_updates, args.expected_envs, args.expected_seed
     )
     args.output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result), flush=True)

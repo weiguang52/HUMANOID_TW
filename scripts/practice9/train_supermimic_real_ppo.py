@@ -35,6 +35,7 @@ def main():
     p.add_argument("--parent", type=Path, required=True)
     p.add_argument("--manifest", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--seed", type=int, default=42)
     p.add_argument("--num-envs", type=int, default=8)
     p.add_argument("--updates", type=int, default=4)
     p.add_argument("--resume", type=Path)
@@ -48,6 +49,7 @@ def main():
         help="Smoke-only interrupted budget; resume keeps the original total plan",
     )
     a = p.parse_args()
+    assert 0 <= a.seed < 2**31
     assert math.isfinite(a.sole_normal_penalty) and 0 <= a.sole_normal_penalty <= 5
     a.output.mkdir(parents=True, exist_ok=True)
     if (a.output / "metrics.jsonl").exists() and not a.resume:
@@ -79,7 +81,7 @@ def main():
         "manifest_sha256": sha(a.manifest),
         "motion_sha256": {f: sha(f) for f in files},
         "num_envs": a.num_envs,
-        "seed": 42,
+        "seed": a.seed,
         "updates": a.updates,
         "rollout_steps": 32,
         "epochs": 4,
@@ -104,7 +106,7 @@ def main():
     else:
         (a.output / "plan.json").write_text(json.dumps(plan, indent=2))
     env_cfg = tw_supermimic_env_cfg(files, num_envs=a.num_envs, play=False)
-    env_cfg.seed = 42
+    env_cfg.seed = a.seed
     env_cfg.auto_reset = False
     env = ManagerBasedRlEnv(env_cfg, device="cuda:0")
     enable_tw_velocity_limits(env)
@@ -159,10 +161,10 @@ def main():
         torch.set_rng_state(checkpoint["torch_rng_state"].cpu())
         torch.cuda.set_rng_state_all([x.cpu() for x in checkpoint["cuda_rng_states"]])
     else:
-        random.seed(42)
-        np.random.seed(42)
-        torch.manual_seed(42)
-        torch.cuda.manual_seed_all(42)
+        random.seed(a.seed)
+        np.random.seed(a.seed)
+        torch.manual_seed(a.seed)
+        torch.cuda.manual_seed_all(a.seed)
     # Exact terminal-value bootstrap semantics, including simultaneous termination.
     torch.testing.assert_close(
         bootstrap_timeouts(
