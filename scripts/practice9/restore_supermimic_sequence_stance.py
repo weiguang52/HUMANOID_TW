@@ -41,9 +41,18 @@ for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows
  weights=np.repeat(known,12)/np.tile(tol,n);W=sp.diags(weights);regularizer=plan['restoration_prior_weight']*R;penalty=regularizer.T@regularizer
  with np.load(Path(plan['constraint_seed'])/(item['id']+'_constraint_seed.npz')) as z:x=z['delta'].ravel().copy()
  fr,_,Jf,_=geometry(x);direction=np.random.default_rng(42).normal(size=x.shape)*np.tile(np.r_[np.repeat(.0001,3),np.repeat(.001,14)],n);eps=1e-4;fp=geometry(x+eps*direction,False)[0];fm=geometry(x-eps*direction,False)[0];fd_error=float(abs((fp-fm)/(2*eps)-Jf@direction).max());assert fd_error<1e-7
+ collision=None;collision_fd_error=None
+ if plan.get('collision_constraints'):
+  from supermimic_sequence_collision_height import SequenceCollisionHeight
+  collision=SequenceCollisionHeight(m,qbase,lqa,cols)
+  test=x+direction;heights,H=collision.evaluate(test);cp=collision.evaluate(test+eps*direction,False)[0];cm=collision.evaluate(test-eps*direction,False)[0];collision_fd_error=float(abs((cp-cm)/(2*eps)-H@direction).max());assert collision_fd_error<1e-7,collision_fd_error
  history=[];status='iteration_budget_exhausted';iterations=2 if a.smoke else plan['numerics']['iterations'];A=sp.vstack([sp.eye(n*17),V],format='csc')
  for iteration in range(iterations):
-  old=float(np.linalg.norm(weights*fr)**2+np.linalg.norm(regularizer@x)**2);J=W@Jf;P=2*(J.T@J+penalty);gradient=2*(J.T@(weights*fr)+penalty@x);l=np.r_[np.maximum(lo-x,-trust),-.06-original_delta-V@x];u=np.r_[np.minimum(hi-x,trust),.06-original_delta-V@x];cs=1/np.sqrt(np.maximum(P.diagonal(),1e-12));C=sp.diags(cs);B=A@C;rs=1/np.maximum(np.asarray(abs(B).max(axis=1).toarray()).ravel(),1e-12);D=sp.diags(rs);solver=osqp.OSQP();solver.setup(P=sp.triu(C@P@C,format='csc'),q=cs*gradient,A=(D@B).tocsc(),l=rs*l,u=rs*u,verbose=False,eps_abs=1e-8,eps_rel=1e-8,max_iter=100000,polishing=True);sol=solver.solve();entry=dict(iteration=iteration,qp_status=sol.info.status,qp_iterations=sol.info.iter,merit_before=old)
+  old=float(np.linalg.norm(weights*fr)**2+np.linalg.norm(regularizer@x)**2);J=W@Jf;P=2*(J.T@J+penalty);gradient=2*(J.T@(weights*fr)+penalty@x);l=np.r_[np.maximum(lo-x,-trust),-.06-original_delta-V@x];u=np.r_[np.minimum(hi-x,trust),.06-original_delta-V@x]
+  A=sp.vstack([sp.eye(n*17),V],format='csc')
+  if collision is not None:
+   heights,H=collision.evaluate(x);A=sp.vstack([A,H],format='csc');l=np.r_[l,-.0005+1e-6-heights];u=np.r_[u,np.repeat(np.inf,len(heights))]
+  cs=1/np.sqrt(np.maximum(P.diagonal(),1e-12));C=sp.diags(cs);B=A@C;rs=1/np.maximum(np.asarray(abs(B).max(axis=1).toarray()).ravel(),1e-12);D=sp.diags(rs);solver=osqp.OSQP();solver.setup(P=sp.triu(C@P@C,format='csc'),q=cs*gradient,A=(D@B).tocsc(),l=rs*l,u=rs*u,verbose=False,eps_abs=1e-8,eps_rel=1e-8,max_iter=100000,polishing=True);sol=solver.solve();entry=dict(iteration=iteration,qp_status=sol.info.status,qp_iterations=sol.info.iter,merit_before=old)
   if sol.info.status_val!=1:
    status='qp_failed_preserve';history.append(entry);sp.save_npz(dest/'failed_P.npz',P);sp.save_npz(dest/'failed_A.npz',A);np.savez_compressed(dest/'failed_vectors.npz',gradient=gradient,lower=l,upper=u);break
   step=cs*sol.x;violation=float(max(0,(l-A@step).max(),(A@step-u).max()));entry['unscaled_constraint_violation']=violation
@@ -51,11 +60,15 @@ for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows
   accepted=False
   for h in range(11):
    alpha=2.**(-h);candidate=x+alpha*step;nf=geometry(candidate,False)[0];new=float(np.linalg.norm(weights*nf)**2+np.linalg.norm(regularizer@candidate)**2)
+   if collision is not None:
+    candidate_heights=collision.evaluate(candidate,False)[0]
+    if candidate_heights.min()<-.0005:continue
    if new<old-1e-9:
     x=candidate;fr,_,Jf,_=geometry(x);accepted=True;entry.update(alpha=alpha,merit_after=new);break
+  if collision is not None:entry['nonlinear_collision_min_m']=float(collision.evaluate(x,False)[0].min())
   vectors=fr.reshape(n,2,6)[known.astype(bool)];position=float(np.linalg.norm(vectors[:,:,:3],axis=2).max());orientation=float(np.linalg.norm(vectors[:,:,3:],axis=2).max());entry.update(known_foot_position_max_m=position,known_foot_orientation_max_rad=orientation);history.append(entry);np.savez_compressed(dest/('iteration_%02d.npz'%iteration),delta=x.reshape(n,17));(dest/'history.json').write_text(json.dumps(history,indent=2)+'\n');print(item['id'],entry,flush=True)
   if not accepted:status='line_search_no_progress';break
   actual_violation=float(max(0,(lo-x).max(),(x-hi).max(),(-.06-original_delta-V@x).max(),(V@x-(.06-original_delta)).max()));assert actual_violation<=1e-7
   if position<=1e-5 and orientation<=1e-4:status='foot_target_tolerances_reached_pending_independent_audit';break
- (dest/'history.json').write_text(json.dumps(history,indent=2)+'\n');np.savez_compressed(dest/'final_correction.npz',delta=x.reshape(n,17));q=ref['joint_pos'][:,lower].astype(float)+x.reshape(n,17)[:,3:];speed=float((abs(np.diff(q,axis=0))/.06).max());assert speed<=1+1e-5/3;row=dict(id=item['id'],split=item['split'],frames=n,known_frames=int(known.sum()),status=status,iterations=len(history),speed_ratio=speed,directional_foot_error=fd_error);reports.append(row);(a.output/'partial.json').write_text(json.dumps(dict(rows=reports),indent=2)+'\n');ref.close()
+ (dest/'history.json').write_text(json.dumps(history,indent=2)+'\n');np.savez_compressed(dest/'final_correction.npz',delta=x.reshape(n,17));q=ref['joint_pos'][:,lower].astype(float)+x.reshape(n,17)[:,3:];speed=float((abs(np.diff(q,axis=0))/.06).max());assert speed<=1+1e-5/3;row=dict(id=item['id'],split=item['split'],frames=n,known_frames=int(known.sum()),status=status,iterations=len(history),speed_ratio=speed,directional_foot_error=fd_error,collision_directional_error=collision_fd_error);reports.append(row);(a.output/'partial.json').write_text(json.dumps(dict(rows=reports),indent=2)+'\n');ref.close()
 (a.output/'results.json').write_text(json.dumps(dict(scope='Feasibility restoration diagnostic only; last iterate, all failures retained. Feet intermediate may be infeasible. No dynamics/physics/training acceptance.',rows=reports),indent=2)+'\n')
