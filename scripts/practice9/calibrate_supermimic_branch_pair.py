@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--motion-root-mix',type=int,choices=[0,1]);p.add_argument('--motion-root-collection',type=Path)
 p.add_argument('--motion-h1-mix',type=int,choices=[0,1])
 p.add_argument('--mixed-horizon',type=int,choices=[0,1])
 p.add_argument('--yaw-canonical',type=int,choices=[0,1]);p.add_argument('--yaw-contract-probe',type=Path)
@@ -22,6 +23,8 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_root_mix is not None:assert a.motion_h1_mix==1 and a.motion_root_collection is not None
+else:assert a.motion_root_collection is None
 if a.motion_h1_mix is not None:assert a.mixed_horizon==0 and a.yaw_canonical==1 and a.motion_h8_mix==1
 if a.mixed_horizon is not None:assert a.yaw_canonical==1 and a.motion_h8_mix==1
 if a.yaw_canonical is not None:assert a.motion_h8_mix==1 and a.yaw_contract_probe is not None and a.pose_integration_fit_audit is not None
@@ -166,6 +169,12 @@ if a.root_state_coefficient is not None:
  root_state_loss=RootStateResponseLoss(a.root_state_collection,cfg)
  plan.update(root_state_coefficient=a.root_state_coefficient,root_state_batch=16,root_state_fit_files=root_state_loss.files,root_state_collection_plan_sha256=hashlib.sha256((a.root_state_collection/'plan.json').read_bytes()).hexdigest(),differing_variable='Root-state Jacobian coefficient0 vs1; equal extra64 endpoints per update')
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+motion_root_loss=None
+if a.motion_root_mix is not None:
+ from supermimic_motion_root_response import MotionRootResponseLoss
+ motion_root_loss=MotionRootResponseLoss(a.motion_root_collection,cfg)
+ plan.update(motion_root_mix=bool(a.motion_root_mix),motion_root_collection=str(a.motion_root_collection.resolve()),motion_root_input=motion_root_loss.meta,motion_root_generator=52)
+ (a.output/'motion_root_input.json').write_text(json.dumps(motion_root_loss.meta,indent=2))
 root_pose_loss=None
 if a.root_pose_coefficient is not None:
  from supermimic_root_pose_response import RootPoseResponseLoss
@@ -305,6 +314,9 @@ if a.mixed_horizon is not None:
 if a.motion_h1_mix is not None:
  plan['differing_variable']='H1 branch64 vs branch32+motion32; H8 and all768 endpoints unchanged'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.motion_root_mix is not None:
+ plan['differing_variable']='Root response16static vs8static+8motion; all768 endpoints unchanged'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 hg=torch.Generator(device='cuda:0').manual_seed(51) if a.motion_h1_mix is not None else None
 lg=torch.Generator(device='cuda:0').manual_seed(49) if a.mixed_horizon is not None else None
 lm=torch.Generator(device='cuda:0').manual_seed(50) if a.mixed_horizon is not None else None
@@ -365,7 +377,10 @@ try:
    loss=loss+a.response_coefficient*response_value
   root_state_value=None
   if root_state_loss is not None:
-   root_state_value=root_state_loss(response_model)
+   if motion_root_loss is not None:
+    ri=motion_root_loss.sample()
+    root_state_value=.5*(root_state_loss(response_model,used_batch=8)+motion_root_loss(response_model,ri)) if a.motion_root_mix else root_state_loss(response_model)
+   else:root_state_value=root_state_loss(response_model)
    loss=loss+a.root_state_coefficient*root_state_value
   root_pose_value=None
   if root_pose_loss is not None:

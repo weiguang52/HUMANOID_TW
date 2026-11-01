@@ -31,3 +31,18 @@ def load_motion_root_response(root,cfg,split='fit',device='cuda:0'):
  return data,torch.tensor(den,device=device,dtype=torch.float32)[:,None],torch.tensor(axes,device=device),meta
 
 def derivative(values,den):return (values[:,1,7:13]-values[:,0,7:13]+values[:,2,7:13]-values[:,3,7:13])/den
+
+class MotionRootResponseLoss:
+ def __init__(self,root,cfg,device='cuda:0'):
+  self.data,self.den,self.axes,self.meta=load_motion_root_response(root,cfg,'fit',device)
+  self.generator=torch.Generator(device=device).manual_seed(52)
+  self.target=derivative(self.data['next_state'],self.den).detach()
+ def sample(self):return torch.randint(576,(8,),device=self.den.device,generator=self.generator)
+ def __call__(self,model,idx):
+  assert len(idx)==8
+  pred=model(*[self.data[k][idx].reshape(-1,width) for k,width in [('state',73),('action',30),('context',34)]]).reshape(8,4,73)
+  std=(model.state_norm.var[7:13]+model.state_norm.eps).sqrt()
+  std=torch.where(model.state_norm.frozen_mask[7:13],torch.ones_like(std),std)
+  error=(derivative(pred,self.den[idx])-self.target[idx])*std[self.axes[idx],None]/std[None,:]
+  loss=error.square().mean();assert torch.isfinite(loss)
+  return loss

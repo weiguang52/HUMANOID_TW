@@ -64,10 +64,14 @@ class RootStateResponseLoss:
             v[:, 1, 7:13] - v[:, 0, 7:13] + v[:, 2, 7:13] - v[:, 3, 7:13]
         ) / self.den
 
-    def __call__(self, model, batch=16):
+    def __call__(self, model, batch=16, used_batch=None):
         idx = torch.randint(
             48, (batch,), generator=self.generator, device=self.den.device
         )
+        if used_batch is not None:
+            assert 0 < used_batch <= batch
+            idx = idx[:used_batch]
+            batch = used_batch
         d = self.data
         pred = model(
             d["state"][idx].reshape(-1, 73),

@@ -6,10 +6,10 @@ from supermimic_geometry_model import configure_offline_geometry
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 from supermimic_pose_integration_diagnostic import apply_offline_prediction_contract
 from supermimic_motion_root_response import load_motion_root_response,derivative
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--pair',default='motion_h1_anchor_fit_v1');p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
 a=p.parse_args();assert not a.output.exists();a.output.mkdir()
 r=a.root;reports=[];evidence=[]
-for arm,relative in [('source','standing_wm_calibration_v1/fit/world_model_calibrated.pt'),('control','motion_h1_anchor_fit_v1/control/fit/world_model_calibrated.pt'),('candidate','motion_h1_anchor_fit_v1/candidate/fit/world_model_calibrated.pt')]:
+for arm,relative in [('source','standing_wm_calibration_v1/fit/world_model_calibrated.pt'),('control',a.pair+'/control/fit/world_model_calibrated.pt'),('candidate',a.pair+'/candidate/fit/world_model_calibrated.pt')]:
  path=r/relative;c=torch.load(path,map_location='cpu',weights_only=False);cfg=c['cfg'];w=c['world_model']
  m=WorldModel(WorldModelCfg(state_dim=73,action_dim=30,context_dim=34,goal_dim=w['goal_norm.mean'].numel(),hidden_dims=tuple(cfg['wm_hidden_dims']),termination_hidden=tuple(cfg['wm_term_hidden_dims']))).cuda()
  configure_offline_geometry(m,c);m.load_state_dict(w,strict=True);m.eval();predict=apply_offline_prediction_contract(m,c)

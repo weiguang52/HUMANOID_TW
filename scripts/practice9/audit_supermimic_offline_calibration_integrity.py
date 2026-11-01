@@ -102,5 +102,13 @@ if 'motion_h1_mix' in d['calibration_plan']:
  assert len(h1_pool['state'])==828 and h1_meta==plan['motion_h1_input']
  assert h1_meta['files']==plan['motion_input']['files'] and not h1_meta['validation_arrays_loaded']
  assert json.loads((a.artifact.parent/'motion_h1_input.json').read_text())==h1_meta
+if 'motion_root_mix' in d['calibration_plan']:
+ from supermimic_motion_root_response import load_motion_root_response
+ plan=d['calibration_plan'];assert type(plan['motion_root_mix']) is bool and plan['motion_h1_mix'] is True
+ assert plan['motion_root_generator']==52 and plan['root_state_batch']==16 and plan['root_state_coefficient']==1
+ data,den,axes,meta=load_motion_root_response(Path(plan['motion_root_collection']),d['cfg'],device='cpu')
+ assert meta==plan['motion_root_input'] and meta['conditions']==576 and len(meta['files'])==192 and not meta['validation_arrays_loaded']
+ assert json.loads((a.artifact.parent/'motion_root_input.json').read_text())==meta
+ assert plan['actual_prediction_points_total']==768000 and plan['prediction_endpoints_per_update']==768
 report=dict(passed=True,artifact_sha256=hashlib.sha256(a.artifact.read_bytes()).hexdigest(),finite_tensor_count=count,window=window,fit_windows=windows,fit_files=files,frozen_nonnet_tensors=frozen,changed_dynamics_tensors=changed,policy_artifact=False,promoted=False)
 a.output.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k not in ['fit_files','frozen_nonnet_tensors','changed_dynamics_tensors']}))
