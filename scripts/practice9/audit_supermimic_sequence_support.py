@@ -34,7 +34,7 @@ for (item,pr),reported in zip(selected,results['rows']):
   cap=np.array([3. if i in lower else 2. for i in range(len(names))]); adjacent=np.abs(np.diff(q[:,qa],axis=0))/dt
   bounds=max(0,float((m.jnt_range[ids,0]-q[:,qa]).max()),float((q[:,qa]-m.jnt_range[ids,1]).max()))
   samples={s['frame']:s for g in pr['source_contact_support'] if g['mask']=='both_feet_phase_known' for s in g['samples']}
-  coms=[]; oldcom=[]; poserr=[]; orierr=[]; heights=[]
+  coms=[]; oldcom=[]; poserr=[]; orierr=[]; heights=[]; declared_dynamic_targets={}
   for i in range(n):
    d.qpos[:]=original[i]; mujoco.mj_kinematics(m,d); mujoco.mj_comPos(m,d)
    poses=[(d.geom_xpos[g].copy(),d.geom_xmat[g].reshape(3,3).copy()) for g in feet]
@@ -42,6 +42,12 @@ for (item,pr),reported in zip(selected,results['rows']):
     for k,side in enumerate(['left','right']):
      if side not in samples[i]['selected_sides']:continue
      position,rotation=poses[k];position=position.copy();position[2]=m.geom_size[feet[k],2]+.0002;yaw=np.arctan2(rotation[1,0],rotation[0,0]);poses[k]=(position,Rotation.from_euler('z',yaw).as_matrix())
+   if plan.get('dynamic_contract') and i in samples:
+    target_points=[]
+    for k,side in enumerate(['left','right']):
+     if side not in samples[i]['selected_sides']:continue
+     size=m.geom_size[feet[k]];local=np.array([[sx*size[0],sy*size[1],-size[2]] for sx in [-1,1] for sy in [-1,1]]);position,rotation=poses[k];target_points.extend((local@rotation.T+position)[:,:2])
+    declared_dynamic_targets[i]=np.array(target_points).mean(0)
    oldcom.append((d.xipos*m.body_mass[:,None]).sum(0)/m.body_mass.sum())
    d.qpos[:]=q[i]; mujoco.mj_kinematics(m,d); mujoco.mj_comPos(m,d)
    coms.append((d.xipos*m.body_mass[:,None]).sum(0)/m.body_mass.sum())
@@ -73,7 +79,7 @@ for (item,pr),reported in zip(selected,results['rows']):
    if force[2]>0:
     cop=np.array([-torque[1],torque[0]])/force[2]; margin=float(np.min(-(eq[:,:2]@cop+eq[:,2])/np.linalg.norm(eq[:,:2],axis=1)))
    else: cop=None; margin=None
-   target=np.array(s['selected_hull_xy_m']).mean(0)
+   target=declared_dynamic_targets.get(i,np.array(s['selected_hull_xy_m']).mean(0))
    if cop is not None:coperrors.append(cop-target)
    errors.append(np.array(coms[i])[:2]-target); olderrors.append(np.array(oldcom[i])[:2]-target)
    wrench.append(dict(frame=i,sides=s['selected_sides'],fz_n=float(force[2]),cop_xy_m=None if cop is None else cop.tolist(),margin_m=margin,actual_or_source_hull_xy_m=points.tolist(),original_source_hull_margin_m=None if cop is None else float(np.min(-(source_equations[:,:2]@cop+source_equations[:,2])/np.linalg.norm(source_equations[:,:2],axis=1))),outside=margin is None or margin < -1e-10))
