@@ -43,7 +43,20 @@ for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows
   if linear_violation>1e-7:status='unscaled_linear_constraints_failed';history.append(entry);break
   accepted=False
   for h in range(11):
-   alpha=2.**(-h);candidate=x+alpha*step;nf,nc,_,_=geometry(candidate,False);new=merit(candidate,nf,nc)
+   alpha=2.**(-h);candidate=x+alpha*step
+   if plan.get('nonlinear_foot_retraction'):
+    # Projection is diagnostic only; every original whole-sequence constraint is checked below.
+    for projection_iteration in range(plan['nonlinear_foot_retraction']['iterations']):
+     pf,_,pj,_=geometry(candidate);vectors=pf.reshape(n,2,6)
+     if np.linalg.norm(vectors[:,:,:3],axis=2).max()<1e-8 and np.linalg.norm(vectors[:,:,3:],axis=2).max()<1e-7:break
+     correction=np.zeros(n*17);scale=np.r_[np.repeat(.005,3),np.repeat(.05,14)]
+     for frame in range(n):
+      block=pj[frame*12:(frame+1)*12,frame*17:(frame+1)*17].toarray()/tol[:,None]
+      correction[frame*17:(frame+1)*17]=scale*np.linalg.lstsq(block*scale[None,:],-pf[frame*12:(frame+1)*12]/tol,rcond=1e-10)[0]
+     candidate=candidate+correction
+    projected_violation=float(max(0,(lo-candidate).max(),(candidate-hi).max(),(-.06-original_delta-V@candidate).max(),(V@candidate-(.06-original_delta)).max(),(abs(candidate-x)-trust).max()))
+    if projected_violation>1e-7:continue
+   nf,nc,_,_=geometry(candidate,False);new=merit(candidate,nf,nc)
    foot_vectors=nf.reshape(n,2,6);position_norm=float(np.linalg.norm(foot_vectors[:,:,:3],axis=2).max());orientation_norm=float(np.linalg.norm(foot_vectors[:,:,3:],axis=2).max())
    if new<old-1e-9 and position_norm<=1e-5 and orientation_norm<=1e-4:
     x=candidate;fr,cr,Jf,Jc=geometry(x);accepted=True;entry.update(alpha=alpha,merit_after=new,foot_position_max_m=float(abs(fr.reshape(n,12)[:,[0,1,2,6,7,8]]).max()),foot_orientation_max_rad=float(abs(fr.reshape(n,12)[:,[3,4,5,9,10,11]]).max()),com_known_rms_m=float(np.sqrt(np.mean(cr.reshape(n,2)[known.astype(bool)]**2))*.001));break
