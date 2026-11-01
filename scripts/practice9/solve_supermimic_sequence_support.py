@@ -7,12 +7,18 @@ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--plan',type=Path
 def log_inverse(phi):
  t=np.linalg.norm(phi);x,y,z=phi;P=np.array([[0,-z,y],[z,0,-x],[-y,x,0]]);c=1/12 if t<1e-6 else 1/t**2-(1+np.cos(t))/(2*t*np.sin(t));return np.eye(3)-.5*P+c*P@P
 for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows']):
- assert item['id']==pr['id'];f=Path(item['file']);assert hashlib.sha256(f.read_bytes()).hexdigest()==item['sha256'];dest=a.output/item['id'];dest.mkdir();ref=np.load(f);names=ref['joint_names'].tolist();lower=[i for i,n in enumerate(names) if n.startswith(('left_hip','right_hip','left_knee','right_knee','left_ankle','right_ankle','left_foot','right_foot'))];qa=[int(m.joint(n).qposadr[0]) for n in names];lqa=[qa[i] for i in lower];lv=[int(m.joint(names[i]).dofadr[0]) for i in lower];jids=[m.joint(names[i]).id for i in lower];cols=[0,1,2]+lv;n=len(ref['joint_pos']);dt=1/float(ref['fps'].item());assert dt==.02 and len(lower)==14;qbase=np.zeros((n,m.nq));qbase[:,:3]=ref['root_pos'];qbase[:,3:7]=ref['root_quat_wxyz'];qbase[:,qa]=ref['joint_pos'];footposes=[];targets=np.zeros((n,2));known=np.zeros(n)
+ assert item['id']==pr['id']
+ if plan.get('source_split') and item['split']!=plan['source_split']:continue
+ f=Path(item['file']);assert hashlib.sha256(f.read_bytes()).hexdigest()==item['sha256'];dest=a.output/item['id'];dest.mkdir();ref=np.load(f);names=ref['joint_names'].tolist();lower=[i for i,n in enumerate(names) if n.startswith(('left_hip','right_hip','left_knee','right_knee','left_ankle','right_ankle','left_foot','right_foot'))];qa=[int(m.joint(n).qposadr[0]) for n in names];lqa=[qa[i] for i in lower];lv=[int(m.joint(names[i]).dofadr[0]) for i in lower];jids=[m.joint(names[i]).id for i in lower];cols=[0,1,2]+lv;n=len(ref['joint_pos']);dt=1/float(ref['fps'].item());assert dt==.02 and len(lower)==14;qbase=np.zeros((n,m.nq));qbase[:,:3]=ref['root_pos'];qbase[:,3:7]=ref['root_quat_wxyz'];qbase[:,qa]=ref['joint_pos'];footposes=[];targets=np.zeros((n,2));known=np.zeros(n)
  for i in range(n):
   d.qpos[:]=qbase[i];mujoco.mj_kinematics(m,d);footposes.append([(d.geom_xpos[g].copy(),d.geom_xmat[g].reshape(3,3).copy()) for g in feet])
  for s in next(g['samples'] for g in pr['source_contact_support'] if g['mask']=='both_feet_phase_known'):targets[s['frame']]=np.array(s['selected_hull_xy_m']).mean(0);known[s['frame']]=1
  D1=sp.diags([-np.ones(n-1),np.ones(n-1)],[0,1],shape=(n-1,n),format='csc');D2=sp.diags([np.ones(n-2),-2*np.ones(n-2),np.ones(n-2)],[0,1,2],shape=(n-2,n),format='csc');V=sp.kron(D1,sp.hstack([sp.csc_matrix((14,3)),sp.eye(14)],format='csc'),format='csc');original_delta=np.diff(ref['joint_pos'][:,lower].astype(float),axis=0).ravel();lo=np.column_stack([np.broadcast_to([-.06,-.06,-.031],(n,3)),np.maximum(-.8,m.jnt_range[jids,0]-qbase[:,lqa])]).ravel();hi=np.column_stack([np.broadcast_to([.06,.06,.031],(n,3)),np.minimum(.8,m.jnt_range[jids,1]-qbase[:,lqa])]).ravel();R=sp.vstack([sp.kron(sp.eye(n),sp.diags(np.r_[np.repeat(1/.05,3),np.repeat(1/.8,14)])),sp.kron(D1,sp.diags(np.r_[np.repeat(1/(dt*.2),3),np.repeat(1/dt,14)])),sp.kron(D2,sp.diags(np.r_[np.repeat(1/(dt*dt*2),3),np.repeat(1/(dt*dt*10),14)]))],format='csc');RtR=R.T@R;trust=np.tile(np.r_[np.repeat(.005,3),np.repeat(.05,14)],n);ftol=np.tile(tol,n)
- def geometry(x,jacobian=True):
+ dynamic_cop=plan.get('tracking_objective')=='required_inverse_cop'
+ if dynamic_cop:
+  from supermimic_sequence_inverse_cop import SequenceInverseCOP
+  engine=SequenceInverseCOP(a.asset,qbase,lqa,qa,[int(m.joint(name).dofadr[0]) for name in names],dt)
+ def geometry(x,jacobian=True,objective_jacobian=True):
   x=x.reshape(n,17);fr=[];cr=[];jf=[];jc=[]
   for i in range(n):
    d.qpos[:]=qbase[i];d.qpos[:3]+=x[i,:3];d.qpos[lqa]+=x[i,3:];mujoco.mj_kinematics(m,d);mujoco.mj_comPos(m,d);frows=[];jrows=[]
@@ -23,7 +29,11 @@ for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows
    fr.append(np.concatenate(frows));cr.append((d.subtree_com[base,:2]-targets[i])*known[i]/.001)
    if jacobian:
     jcom=np.zeros((3,m.nv));mujoco.mj_jacSubtreeCom(m,d,jcom,base);jf.append(np.vstack(jrows));jc.append(jcom[:2,cols]*known[i]/.001)
-  return np.concatenate(fr),np.concatenate(cr),sp.block_diag(jf,format='csc') if jacobian else None,sp.block_diag(jc,format='csc') if jacobian else None
+  objective=np.concatenate(cr);objective_J=sp.block_diag(jc,format='csc') if jacobian else None
+  if dynamic_cop:
+   cop,force=engine.evaluate(x.reshape(n,17));objective=((cop-targets)*known[:,None]/.001).ravel()
+   if jacobian and objective_jacobian:objective_J=sp.diags(np.repeat(known,2)/.001)@engine.jacobian(x.reshape(n,17))
+  return np.concatenate(fr),objective,sp.block_diag(jf,format='csc') if jacobian else None,objective_J
  def merit(x,fr,cr):return float(cr@cr+np.linalg.norm(R@x)**2+10000*np.maximum(abs(fr)/ftol-1,0)@np.maximum(abs(fr)/ftol-1,0))
  with np.load(Path(plan['constraint_seed'])/(item['id']+'_constraint_seed.npz')) as z:x=z['delta'].ravel().copy()
  fr,cr,Jf,Jc=geometry(x);direction=np.tile(np.r_[[.0001,-.0001,.0001],np.repeat(.001,14)],n);eps=1e-5;fp,cp,_,_=geometry(x+eps*direction,False);fm,cm,_,_=geometry(x-eps*direction,False);fd_error=float(abs((fp-fm)/(2*eps)-Jf@direction).max());com_fd_error=float(abs((cp-cm)/(2*eps)-Jc@direction).max());assert fd_error<1e-7 and com_fd_error<1e-4;history=[];status='iteration_budget_exhausted';iterations=2 if a.smoke else plan['numerics']['iterations']
@@ -47,7 +57,7 @@ for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows
    if plan.get('nonlinear_foot_retraction'):
     # Projection is diagnostic only; every original whole-sequence constraint is checked below.
     for projection_iteration in range(plan['nonlinear_foot_retraction']['iterations']):
-     pf,_,pj,_=geometry(candidate);vectors=pf.reshape(n,2,6)
+     pf,_,pj,_=geometry(candidate,objective_jacobian=False);vectors=pf.reshape(n,2,6)
      if np.linalg.norm(vectors[:,:,:3],axis=2).max()<1e-8 and np.linalg.norm(vectors[:,:,3:],axis=2).max()<1e-7:break
      correction=np.zeros(n*17);scale=np.r_[np.repeat(.005,3),np.repeat(.05,14)]
      for frame in range(n):
@@ -57,11 +67,16 @@ for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows
     projected_violation=float(max(0,(lo-candidate).max(),(candidate-hi).max(),(-.06-original_delta-V@candidate).max(),(V@candidate-(.06-original_delta)).max(),(abs(candidate-x)-trust).max()))
     if projected_violation>1e-7:continue
    nf,nc,_,_=geometry(candidate,False);new=merit(candidate,nf,nc)
+   if dynamic_cop and np.any(engine.evaluate(candidate.reshape(n,17))[1][known.astype(bool),2]<=0):continue
    foot_vectors=nf.reshape(n,2,6);position_norm=float(np.linalg.norm(foot_vectors[:,:,:3],axis=2).max());orientation_norm=float(np.linalg.norm(foot_vectors[:,:,3:],axis=2).max())
    if new<old-1e-9 and position_norm<=1e-5 and orientation_norm<=1e-4:
     x=candidate;fr,cr,Jf,Jc=geometry(x);accepted=True;entry.update(alpha=alpha,merit_after=new,foot_position_max_m=float(abs(fr.reshape(n,12)[:,[0,1,2,6,7,8]]).max()),foot_orientation_max_rad=float(abs(fr.reshape(n,12)[:,[3,4,5,9,10,11]]).max()),com_known_rms_m=float(np.sqrt(np.mean(cr.reshape(n,2)[known.astype(bool)]**2))*.001));break
+  
+  if dynamic_cop and 'com_known_rms_m' in entry:entry['cop_known_rms_m']=entry.pop('com_known_rms_m')
   history.append(entry);np.savez_compressed(dest/('iteration_%02d.npz'%iteration),delta=x.reshape(n,17));(dest/'history.json').write_text(json.dumps(history,indent=2)+'\n');print(item['id'],entry,flush=True)
   if not accepted:status='line_search_no_progress';break
   violation=float(max(0,(lo-x).max(),(x-hi).max(),(-.06-original_delta-V@x).max(),(V@x-(.06-original_delta)).max()));assert violation<=1e-7,violation
- (dest/'history.json').write_text(json.dumps(history,indent=2)+'\n');np.savez_compressed(dest/'final_correction.npz',delta=x.reshape(n,17));q=ref['joint_pos'][:,lower].astype(float)+x.reshape(n,17)[:,3:];speed=float((abs(np.diff(q,axis=0))/.06).max());assert speed<=1+1e-5/3;row=dict(id=item['id'],split=item['split'],frames=n,status=status,iterations=len(history),directional_foot_jacobian_error=fd_error,directional_com_jacobian_error=com_fd_error,speed_ratio=speed,foot_position_vector_max_m=float(np.linalg.norm(fr.reshape(n,2,6)[:,:,:3],axis=2).max()),foot_orientation_vector_max_rad=float(np.linalg.norm(fr.reshape(n,2,6)[:,:,3:],axis=2).max()),foot_position_component_max_m=float(abs(fr.reshape(n,12)[:,[0,1,2,6,7,8]]).max()),com_known_rms_m=float(np.sqrt(np.mean(cr.reshape(n,2)[known.astype(bool)]**2))*.001));reports.append(row);(a.output/'partial.json').write_text(json.dumps(dict(rows=reports),indent=2)+'\n');ref.close()
+ (dest/'history.json').write_text(json.dumps(history,indent=2)+'\n');np.savez_compressed(dest/'final_correction.npz',delta=x.reshape(n,17));q=ref['joint_pos'][:,lower].astype(float)+x.reshape(n,17)[:,3:];speed=float((abs(np.diff(q,axis=0))/.06).max());assert speed<=1+1e-5/3;row=dict(id=item['id'],split=item['split'],frames=n,status=status,iterations=len(history),directional_foot_jacobian_error=fd_error,directional_com_jacobian_error=com_fd_error,speed_ratio=speed,foot_position_vector_max_m=float(np.linalg.norm(fr.reshape(n,2,6)[:,:,:3],axis=2).max()),foot_orientation_vector_max_rad=float(np.linalg.norm(fr.reshape(n,2,6)[:,:,3:],axis=2).max()),foot_position_component_max_m=float(abs(fr.reshape(n,12)[:,[0,1,2,6,7,8]]).max()),com_known_rms_m=float(np.sqrt(np.mean(cr.reshape(n,2)[known.astype(bool)]**2))*.001));
+ if dynamic_cop:row['cop_known_rms_m']=row.pop('com_known_rms_m');row['directional_cop_jacobian_error']=row.pop('directional_com_jacobian_error');row['tracking_objective']='required_inverse_cop'
+ reports.append(row);(a.output/'partial.json').write_text(json.dumps(dict(rows=reports),indent=2)+'\n');ref.close()
 (a.output/'results.json').write_text(json.dumps(dict(scope='Sequence optimization diagnostics only. Corrections are not training references; nonlinear geometry/collision/full derivatives/wrench/physics acceptance still required.',rows=reports),indent=2)+'\n');print('SEQUENCE_DIAGNOSTIC_FINISHED',reports)
