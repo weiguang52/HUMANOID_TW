@@ -6,7 +6,7 @@ from scipy.spatial.transform import Rotation
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--plan',type=Path,required=True);p.add_argument('--asset',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true');a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True);plan=json.loads(a.plan.read_text());srcpath=Path(plan['source_plan']);phasepath=Path(plan['phase_review']);assert hashlib.sha256(srcpath.read_bytes()).hexdigest()==plan['source_plan_sha256'];assert hashlib.sha256(phasepath.read_bytes()).hexdigest()==plan['phase_review_sha256'];src=json.loads(srcpath.read_text());phase=json.loads(phasepath.read_text());m=mujoco.MjModel.from_xml_path(str(a.asset));d=mujoco.MjData(m);feet=[m.geom(s+'_foot_collision').id for s in ['left','right']];base=m.body('base_link').id;reports=[];tol=np.tile(np.r_[np.repeat(1e-5,3),np.repeat(1e-4,3)],2)
 def log_inverse(phi):
  t=np.linalg.norm(phi);x,y,z=phi;P=np.array([[0,-z,y],[z,0,-x],[-y,x,0]]);c=1/12 if t<1e-6 else 1/t**2-(1+np.cos(t))/(2*t*np.sin(t));return np.eye(3)-.5*P+c*P@P
-for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows']):
+for item,pr in zip(src['motions'][:1] if a.smoke or plan.get('first_source_only') else src['motions'],phase['rows']):
  assert item['id']==pr['id']
  if plan.get('source_split') and item['split']!=plan['source_split']:continue
  f=Path(item['file']);assert hashlib.sha256(f.read_bytes()).hexdigest()==item['sha256'];dest=a.output/item['id'];dest.mkdir();ref=np.load(f);names=ref['joint_names'].tolist();lower=[i for i,n in enumerate(names) if n.startswith(('left_hip','right_hip','left_knee','right_knee','left_ankle','right_ankle','left_foot','right_foot'))];qa=[int(m.joint(n).qposadr[0]) for n in names];lqa=[qa[i] for i in lower];lv=[int(m.joint(names[i]).dofadr[0]) for i in lower];jids=[m.joint(names[i]).id for i in lower];cols=[0,1,2]+lv;n=len(ref['joint_pos']);dt=1/float(ref['fps'].item());assert dt==.02 and len(lower)==14;qbase=np.zeros((n,m.nq));qbase[:,:3]=ref['root_pos'];qbase[:,3:7]=ref['root_quat_wxyz'];qbase[:,qa]=ref['joint_pos'];footposes=[];targets=np.zeros((n,2));known=np.zeros(n)
@@ -56,7 +56,8 @@ for item,pr in zip(src['motions'][:1] if a.smoke else src['motions'],phase['rows
   if sol.info.status_val!=1:
    status='qp_failed_preserve';history.append(entry);sp.save_npz(dest/'failed_P.npz',P);sp.save_npz(dest/'failed_A.npz',A);np.savez_compressed(dest/'failed_vectors.npz',gradient=gradient,lower=l,upper=u);break
   step=cs*sol.x;violation=float(max(0,(l-A@step).max(),(A@step-u).max()));entry['unscaled_constraint_violation']=violation
-  if violation>1e-7:status='linear_constraint_failed';history.append(entry);break
+  if violation>1e-7:
+   lower_violation=l-A@step;upper_violation=A@step-u;worst=int(np.argmax(np.maximum(lower_violation,upper_violation)));entry.update(worst_constraint_row=worst,worst_constraint_kind='variable_or_trust' if worst<n*17 else ('adjacent_velocity' if worst<n*17+14*(n-1) else 'collision_height'),worst_lower_violation=float(lower_violation[worst]),worst_upper_violation=float(upper_violation[worst]),primal_residual=float(sol.info.prim_res),dual_residual=float(sol.info.dual_res));status='linear_constraint_failed';history.append(entry);sp.save_npz(dest/'linear_failed_P.npz',P);sp.save_npz(dest/'linear_failed_A.npz',A);np.savez_compressed(dest/'linear_failed_vectors.npz',gradient=gradient,lower=l,upper=u,step=step,solver_x=sol.x,column_scale=cs,row_scale=rs,current_correction=x);break
   accepted=False
   for h in range(11):
    alpha=2.**(-h);candidate=x+alpha*step;nf=geometry(candidate,False)[0];new=float(np.linalg.norm(weights*nf)**2+np.linalg.norm(regularizer@candidate)**2)
