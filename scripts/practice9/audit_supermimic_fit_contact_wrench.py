@@ -6,6 +6,7 @@ from scipy.optimize import linprog
 from scipy.spatial.transform import Rotation
 p=argparse.ArgumentParser(description=__doc__)
 for k in ['plan','asset','state','output']:p.add_argument('--'+k,type=Path,required=True)
+p.add_argument('--arms',nargs='+',default=['original','retracted_com_fit20','retracted_cop_fit20'])
 a=p.parse_args();assert not a.output.exists();h=lambda f:hashlib.sha256(Path(f).read_bytes()).hexdigest();plan=json.loads(a.plan.read_text());assert h(plan['source_plan'])==plan['source_plan_sha256'] and h(plan['phase_review'])==plan['phase_review_sha256'];sources=json.loads(Path(plan['source_plan']).read_text());phases=json.loads(Path(plan['phase_review']).read_text());m=mujoco.MjModel.from_xml_path(str(a.asset));m.geom_contype[:]=0;m.geom_conaffinity[:]=0;d=mujoco.MjData(m);rows=[]
 def cross(v):
  x,y,z=v;return np.array([[0,-z,y],[z,0,-x],[-y,x,0]])
@@ -15,7 +16,7 @@ for item,pr in zip(sources['motions'],phases['rows']):
  assert h(item['file'])==item['sha256']
  with np.load(item['file']) as z:
   names=z['joint_names'].tolist();qa=[int(m.joint(n).qposadr[0]) for n in names];va=[int(m.joint(n).dofadr[0]) for n in names];lower=[qa[i] for i,n in enumerate(names) if n.startswith(('left_hip','right_hip','left_knee','right_knee','left_ankle','right_ankle','left_foot','right_foot'))];n=len(z['joint_pos']);dt=1/float(z['fps'].item());original=np.zeros((n,m.nq));original[:,:3]=z['root_pos'];original[:,3:7]=z['root_quat_wxyz'];original[:,qa]=z['joint_pos'];samples=next(g['samples'] for g in pr['source_contact_support'] if g['mask']=='both_feet_phase_known')
-  for arm in ['original','retracted_com_fit20','retracted_cop_fit20']:
+  for arm in a.arms:
    q=original.copy();correction_hash=None
    if arm!='original':
     cp=a.state/arm/item['id']/'final_correction.npz';correction_hash=h(cp)
