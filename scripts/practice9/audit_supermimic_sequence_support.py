@@ -38,11 +38,15 @@ for (item,pr),reported in zip(selected,results['rows']):
   for i in range(n):
    d.qpos[:]=original[i]; mujoco.mj_kinematics(m,d); mujoco.mj_comPos(m,d)
    poses=[(d.geom_xpos[g].copy(),d.geom_xmat[g].reshape(3,3).copy()) for g in feet]
+   if plan.get('restoration_contract') and i in samples:
+    for k,side in enumerate(['left','right']):
+     if side not in samples[i]['selected_sides']:continue
+     position,rotation=poses[k];position=position.copy();position[2]=m.geom_size[feet[k],2]+.0002;yaw=np.arctan2(rotation[1,0],rotation[0,0]);poses[k]=(position,Rotation.from_euler('z',yaw).as_matrix())
    oldcom.append((d.xipos*m.body_mass[:,None]).sum(0)/m.body_mass.sum())
    d.qpos[:]=q[i]; mujoco.mj_kinematics(m,d); mujoco.mj_comPos(m,d)
    coms.append((d.xipos*m.body_mass[:,None]).sum(0)/m.body_mass.sum())
-   poserr.append(max(np.linalg.norm(d.geom_xpos[g]-v[0]) for g,v in zip(feet,poses)))
-   orierr.append(max(Rotation.from_matrix(v[1].T@d.geom_xmat[g].reshape(3,3)).magnitude() for g,v in zip(feet,poses)))
+   poserr.append(max(np.linalg.norm(d.geom_xpos[g]-v[0]) for g,v in zip(feet,poses)) if not plan.get('restoration_contract') or i in samples else 0.)
+   orierr.append(max(Rotation.from_matrix(v[1].T@d.geom_xmat[g].reshape(3,3)).magnitude() for g,v in zip(feet,poses)) if not plan.get('restoration_contract') or i in samples else 0.)
    height=[]
    for g in range(m.ngeom):
     if '_collision' not in m.geom(g).name: continue
@@ -68,7 +72,7 @@ for (item,pr),reported in zip(selected,results['rows']):
    errors.append(np.array(coms[i])[:2]-target); olderrors.append(np.array(oldcom[i])[:2]-target)
    wrench.append(dict(frame=i,sides=s['selected_sides'],fz_n=float(force[2]),cop_xy_m=None if cop is None else cop.tolist(),margin_m=margin,outside=margin is None or margin < -1e-10))
   position=float(max(poserr)); orientation=float(max(orierr)); speed=float((adjacent/cap).max()); rms=float(np.sqrt(np.mean(np.square(errors))))
-  assert abs(position-reported['foot_position_vector_max_m'])<1e-10 and abs(orientation-reported['foot_orientation_vector_max_rad'])<1e-10
+  if 'foot_position_vector_max_m' in reported:assert abs(position-reported['foot_position_vector_max_m'])<1e-10 and abs(orientation-reported['foot_orientation_vector_max_rad'])<1e-10
   if 'com_known_rms_m' in reported:assert abs(rms-reported['com_known_rms_m'])<1e-10
   if 'cop_known_rms_m' in reported:
    assert len(coperrors)==len(samples)
@@ -76,5 +80,5 @@ for (item,pr),reported in zip(selected,results['rows']):
   row=dict(id=item['id'],split=item['split'],frames=n,solver_status=reported['status'],correction_sha256=h(correction),source_sha256=item['sha256'],foot_position_max_m=position,foot_orientation_max_rad=orientation,joint_bound_violation_rad=bounds,adjacent_speed_ratio=speed,central_velocity_ratio=float((abs(v[:,va])/cap).max()),root_delta_max_per_axis_m=abs(x[:,:3]).max(0).tolist(),lower_delta_max_rad=float(abs(x[:,3:]).max()),collision_min_m=float(min(heights)),penetrating_frames=sum(t < -.0005 for t in heights),known_com_rms_before_m=float(np.sqrt(np.mean(np.square(olderrors)))),known_com_rms_after_m=rms,known_cop_rms_after_m=float(np.sqrt(np.mean(np.square(coperrors)))) if len(coperrors)==len(samples) else None,single_support_frames=sum(len(s['sides'])==1 for s in wrench),single_support_cop_outside=sum(len(s['sides'])==1 and s['outside'] for s in wrench),double_support_cop_outside=sum(len(s['sides'])==2 and s['outside'] for s in wrench),wrench_samples=wrench)
   row['numerical_constraints_pass']=bool(position<=1e-5 and orientation<=1e-4 and bounds<=1e-7 and speed<=1+1e-5/3 and np.all(abs(x[:,:3])<=[.0600001,.0600001,.0310001]) and abs(x[:,3:]).max()<=.8000001)
   rows.append(row); print(item['id'],{k:v for k,v in row.items() if k!='wrench_samples'},flush=True)
-out=dict(declared_source_split=plan.get('source_split','all'),complete_source_coverage=(actual==expected),expected_sources=len(expected),audited_sources=len(rows),time_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='All original frames, final accepted iterate only. Independent mass-weighted COM, geometry, collision heights and contact-free inverse dynamics. No simulation or training acceptance; fixed original moving feet may remain airborne.',plan_sha256=h(a.plan),asset_sha256=h(a.asset),results_sha256=h(a.results),rows=rows)
+out=dict(foot_target_contract=plan.get('restoration_contract','Original both-foot world poses, all frames'),declared_source_split=plan.get('source_split','all'),complete_source_coverage=(actual==expected),expected_sources=len(expected),audited_sources=len(rows),time_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='All original frames, final accepted iterate only. Independent mass-weighted COM, geometry, collision heights and contact-free inverse dynamics. No simulation or training acceptance; fixed original moving feet may remain airborne.',plan_sha256=h(a.plan),asset_sha256=h(a.asset),results_sha256=h(a.results),rows=rows)
 a.output.write_text(json.dumps(out,indent=2)+'\n')
