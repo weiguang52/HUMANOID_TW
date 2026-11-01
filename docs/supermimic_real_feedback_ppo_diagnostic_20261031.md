@@ -779,3 +779,8 @@ Script audit_supermimic_recurrence_fit.py checked all337 audited fit H32 windows
 ### 2026-11-01T02:39:19.601420+00:00 motion H1 anchoring rejected
 
 Both arms1000 updates/integrity passed; control bit-identical legacy yaw/H8. Candidate 2cc3a41f55a8d328254ef8925dcdd16c90ac7a518bd98d948b6e006b2d98cb65. Parent4/18, matched5/18, held-branch7/9 failed. Candidate fixed144 FP32 coordinate audit passed unchanged1e-5, control failed. Motion validation H1 position p95 3.087->1.620mm and angular RMSE0.492260->0.391513rad/s improve, H8 position31.637->27.924mm improves; H32 position156.239->175.821mm and angular RMSE1.599855->1.677116 worsen, orientation0.937600->0.797405rad improves. Fit H32 position90.799->71.064mm improves. No promotion; frozen fit-only recurrence audit next. Evidence motion_h1_anchor_fit_v1/final_gate_summary.json, motion_pair_medians.json, review.json. Original physical fixed7 and three-seed acceptance incomplete.
+
+---
+### 2026-11-01T02:41:23.952981+00:00 H1 recurrence diagnosis
+
+Frozen all337 fit H32 windows, finite outputs, unchanged weights, no validation arrays. Step32 teacher-forced linear RMSE0.022050->0.007643m/s and angular0.173815->0.119840rad/s improve, but free recurrent linear0.189099->0.281642 and angular0.683704->0.973965 worsen. Local accuracy does not imply rollout stability. Four matched H8/H32 velocity gradient cosines remain positive (candidate0.404--0.898). Evidence motion_h1_recurrence_audit_v1/results/audit.json. Next isolate predicted root pose/velocity/joint feedback with frozen fit-only diagnostics before another training change. No promotion. Remote087b234 push was verified by ls-remote.
