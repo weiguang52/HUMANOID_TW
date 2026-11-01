@@ -28,6 +28,16 @@ if plan.get('strict_linear_foot_equalities'):
  # Stricter linear equalities inside original foot tolerances; other bounds/objective unchanged.
  replace('-ftol-fr[active]', '-fr[active]')
  replace('ftol-fr[active]', '-fr[active]')
+if plan.get('coupled_foot_retraction'):
+ assert plan.get('strict_linear_foot_equalities')
+ start=s.index('   for _ in range(4):')
+ end=s.index('   bound_error=',start)
+ original=s[start:end]
+ replace(original, """   from supermimic_coupled_foot_retraction import retract
+   candidate,projection_records,projection_ok=retract(candidate,x,geometry,collision,mask,lo,hi,trust,V,original_delta,dest/('projection_%02d_%02d'%(iteration,h)))
+   entry.setdefault('coupled_retractions',[]).append(dict(alpha=alpha,records=projection_records,success=projection_ok))
+   if not projection_ok:trials.append(dict(alpha=alpha,rejected='coupled_projection_qp'));continue
+""")
 # Default replay adds observability only; explicit equality smoke is a stricter QP. Plan hashes
 # bind original solver and exact last accepted correction; no output is promoted.
 sys.argv=[str(source),'--plan',str(a.plan),'--asset',str(a.asset),'--output',str(a.output)]
