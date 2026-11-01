@@ -1,2 +1,5 @@
 # Optional sparse sequence diagnostics; install in the data-disk SuperMimic env.
 osqp==1.1.3
+
+# Optional explicit grounded QP backend, installed without upgrading existing environment dependencies.
+clarabel==0.11.1
