@@ -6,6 +6,7 @@ from supermimic_geometry_model import load_geometry_artifact
 from supermimic_motion_windows import load_motion_fit_windows
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--root',type=Path,required=True)
+p.add_argument('--pair',default='mixed_horizon_fit_v1')
 p.add_argument('--output',type=Path,required=True)
 a=p.parse_args();assert not a.output.exists();a.output.mkdir()
 r=a.root;collection=r/'motion_pd_collection_cache_v2/full'
@@ -14,7 +15,7 @@ w,meta=load_motion_fit_windows(collection,collection.parent/'full_audit.json',ma
 assert len(w['state'])==337
 reports=[]
 for arm in ['control','candidate']:
- path=r/'mixed_horizon_fit_v1'/arm/'fit/world_model_calibrated.pt'
+ path=r/a.pair/arm/'fit/world_model_calibrated.pt'
  c=torch.load(path,map_location='cpu',weights_only=False)
  m,predict=load_geometry_artifact(c);m.eval()
  for param in m.parameters():param.requires_grad_(False)
