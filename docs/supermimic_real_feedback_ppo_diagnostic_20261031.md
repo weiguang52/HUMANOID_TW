@@ -887,3 +887,15 @@ Actual dynamic sampling covered 48 distinct clip indices, not all332. Original a
 |Critic|0.772376 / 5.363653|223.910019 / 901.121643|0.493317|
 
 The original frozen parent normalizers yield much larger dynamic goal/critic inputs. This is direct range evidence, not proof that normalizers alone cause termination. Next: inspect dimension-wise means/variances and frame construction; establish fit-only normalizers from the original training sources, preserve frozen dimensions, and test a single-variable matched comparison with fixed7 never used for fitting. Keep original-source-normalizer baseline and all failures. Do not increase budgets blindly or change thresholds.
+
+
+---
+## 2026-11-01T12:27Z: training-only goal-normalizer construction audit
+
+Dimension-wise input probe v2 retained prior evidence and independently passed both static/dynamic 1024-transition artifact audits. Parent goal750 dimensions have690 variances below1e-5; critic857 has723. Non-orientation dynamic goal components were amplified while orientation60 dimensions retained nonzero parent variance.
+
+`calibrate_supermimic_training_goal_norm.py` produced an explicitly offline, non-policy calibration from all332 original training references,153960 frames,10 future frames with original terminal clamping. FP64 streaming moments replace690 non-orientation/nonfrozen goal dimensions;60 orientation dimensions remain bit-identical to the source. No simulator steps or fixed7 array reads. Output SHA256 `946bae8cdd4c28cb150b37b545d1d46c36bdd3b95537df9941e29a604fba09c6`; data-disk folder `longterm_diagnostics/training_goal_norm_calibration_v1`. Fitted nearzero variance dimensions54, median variance0.0227950462. Source manifest/isolation/file hashes were checked.
+
+Initial NumPy permutation-invariant joint-moment subset check passed but did not prove name mapping or anchor statistics. The subsequent `audit_supermimic_training_goal_norm.py` independently used original MJCF joint names, TW named default shoulders, all training arrays, NumPy moments and SciPy inverse quaternion transforms for anchor position/linear/angular velocities. It checked all690 replaced dimensions and all60 preserved dimensions. Max mean error5.95017e-8, variance2.97607e-8, below predeclared moment bound1e-6. See `independent_named_audit.json`. This bound audits numerical statistics, not existing physical-control thresholds. No threshold was changed.
+
+Next gate: explicit hash-bound calibration loading for a matched real-PPO experiment, applying the same goal statistics to the actor and critic goal slice only. Preserve all other source statistics/weights, original-normalizer control, fixed training budget and final-update-only evaluation. Run smoke integrity and offline-file rejection checks before full training. This does not establish causal improvement or full SuperMimic acceptance.

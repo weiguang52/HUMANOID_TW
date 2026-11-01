@@ -21,7 +21,7 @@ original_observe = RealFeedbackCollector.observe
 
 
 def stats(name, value):
-    value = value.detach().float().abs().reshape(-1).cpu()
+    value = value.detach().float().reshape(-1, value.shape[-1]).cpu()
     normalized.setdefault(name, []).append(value)
 
 
@@ -68,8 +68,9 @@ finally:
     ManagerBasedRlEnv.step = original_step
     report = {}
     for name, values in normalized.items():
-        v = torch.cat(values)
-        report[name] = {'count':v.numel(), 'finite':bool(torch.isfinite(v).all()), 'p50':float(v.quantile(.5)), 'p95':float(v.quantile(.95)), 'p99':float(v.quantile(.99)), 'max':float(v.max()), 'fraction_over_10':float((v>10).float().mean())}
+        matrix = torch.cat(values)
+        v = matrix.abs().reshape(-1)
+        report[name] = {'dimension_mean':matrix.mean(0).tolist(), 'dimension_variance':matrix.var(0,unbiased=False).tolist(), 'dimension_abs_max':matrix.abs().amax(0).tolist(), 'count':v.numel(), 'finite':bool(torch.isfinite(v).all()), 'p50':float(v.quantile(.5)), 'p95':float(v.quantile(.95)), 'p99':float(v.quantile(.99)), 'max':float(v.max()), 'fraction_over_10':float((v>10).float().mean())}
     counts = Counter(x['clip'] for x in records)
     reason_counts = Counter(name for x in records for name in x['reasons'])
     a.evidence.write_text(json.dumps({'status':status, 'scope':'Instrumented tiny run; observation samples include reset padding and are not independent. Synchronization may alter GPU numerical replay. No RNG draws added. Not walking acceptance.', 'transition_count':len(records), 'sampled_clip_transition_counts':dict(counts), 'termination_term_counts':dict(reason_counts), 'terminated_transitions':sum(x['terminated'] for x in records), 'truncated_transitions':sum(x['truncated'] for x in records), 'normalization':report, 'transitions':records}, indent=2)+'\n')
