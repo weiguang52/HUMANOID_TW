@@ -1106,3 +1106,7 @@ Stricter foot-nullspace variant reaches100k solved inaccurate despite original c
 
 ---
 2026-11-02: Strict linear foot equality smoke completed fixed2 iterations from exact failed000152 final hash; both alpha.125 accepted, COP38.0517->35.5820->33.3423mm. Independent all681frame audit passes original foot/joint/search/adjacent+central speed/ground gates; speed ratio.99993164, minheight+.2mm; requiredCOP still outside32/34single+3double, so no physical acceptance. Auditor explicit --source-id requires --partial and fit; output preserves original4 expected/1audited/complete_source_coveragefalse (verified), preventing targeted coverage misuse. Started strict_foot_equality_fit20, fixed20 from same original failed final hash (not smoke output), same stricterQP only, last accepted state. Original sources/physical gates unchanged; no validation/export/promotion.
+
+
+---
+2026-11-02: Added explicit targeted fit-source coverage to full-wrench auditor; default all-fit behavior unchanged. Tested against completed strict-foot2-step smoke000152:207 known frames, optimistic full force+torque corner LP infeasible35 (original failed-final36), other solver failures0; original4expected/1audited/complete_source_coveragefalse verified. This necessary-condition failure rejects physical/training acceptance despite numerical improvement. Queued targeted full-wrench audit after live strict-foot20 solver765606 via tmux grounded_strict_fit20_wrench; validate final ID000152/all681frames before audit, preserve failures, no promotion. Current20-step task remains live.
