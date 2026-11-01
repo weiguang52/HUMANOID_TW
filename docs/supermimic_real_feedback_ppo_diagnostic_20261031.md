@@ -871,3 +871,19 @@ After the standing runner released its lock, tmux `dynamic_ppo_preflight` ran th
 Artifacts: `longterm_diagnostics/dynamic_real_ppo_preflight_v1/{plan.json,queue.sh,sampling_contract_audit.json,artifact_integrity.json,smoke/metrics.jsonl}`. Source review corrected a prior note: manifest weights are not consumed by this entrypoint. Return-based reset sampling starts uniformly across 3238 one-second bins, then uses uniform/negative-return-softmax/past mixture 0.5/0.4/0.1. Listing 332 files does not prove actual coverage in this smoke.
 
 Next: instrument actual dynamic reset/reference coverage, original termination reasons and normalized actor/critic/goal ranges without changing policy or simulator contracts; compare against nominal/static ranges before choosing a staged weight-shift/step intervention. Review retargeted foot lift and loaded sole contact on those actual samples. Preserve all failed runs, all checkpoints, and original fixed7 windows/thresholds. Full SuperMimic world-model acceptance, dynamic fixed7 success and >=3 training-seed validation remain unmet. No policy promotion.
+
+
+---
+## 2026-11-01T12:10Z: observed dynamic inputs and original termination reasons
+
+`probe_supermimic_real_ppo_inputs.py` wraps the existing collector/environment for instrumentation; it does not change rewards, original termination gates or sampler draws. Normalizer forward calls are read-only, with CPU/CUDA RNG equality assertions around observations. Additional synchronization can change GPU replay; no bitwise physical equivalence is claimed. Separate static and dynamic runs each completed 8 environments x 32 steps x 4 updates = 1024 transitions; both independent serialized artifact audits passed. All artifacts remain under data-disk `longterm_diagnostics/dynamic_input_probe_v1`.
+
+Actual dynamic sampling covered 48 distinct clip indices, not all332. Original active termination counts: motion_end6, ee_body_pos23, anchor_pos18 (term counts may overlap). Static counts: ee_body_pos41, motion_end2. These tiny fresh-policy runs are not standing or walking performance acceptance.
+
+| Absolute normalized input | Static p95 / max | Dynamic p95 / max | Dynamic fraction >10 |
+|---|---|---|---|
+|Proprioception|1.370515 / 3.934577|3.566596 / 24.301748|0.021305|
+|Goal|0.354730 / 3.382708|248.250519 / 901.121643|0.561698|
+|Critic|0.772376 / 5.363653|223.910019 / 901.121643|0.493317|
+
+The original frozen parent normalizers yield much larger dynamic goal/critic inputs. This is direct range evidence, not proof that normalizers alone cause termination. Next: inspect dimension-wise means/variances and frame construction; establish fit-only normalizers from the original training sources, preserve frozen dimensions, and test a single-variable matched comparison with fixed7 never used for fitting. Keep original-source-normalizer baseline and all failures. Do not increase budgets blindly or change thresholds.
