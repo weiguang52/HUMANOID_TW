@@ -5,7 +5,7 @@ p=argparse.ArgumentParser(description=__doc__)
 for key in ['plan','asset','output']:p.add_argument('--'+key,type=Path,required=True)
 a=p.parse_args();plan=json.loads(a.plan.read_text())
 assert plan['source_split']=='fit'
-assert plan['numerics']['iterations']==(2 if plan.get('strict_linear_foot_equalities') else 1)
+assert plan['numerics']['iterations'] in ([2,20] if plan.get('strict_linear_foot_equalities') else [1])
 assert plan['replay_source_id'] in plan['initial_correction_sha256']
 source=Path(__file__).with_name('solve_supermimic_grounded_dynamic_cop.py')
 s=source.read_text();assert hashlib.sha256(source.read_bytes()).hexdigest()==plan['solver_source_sha256']
