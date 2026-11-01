@@ -6,6 +6,7 @@ import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--motion-h1-mix',type=int,choices=[0,1])
 p.add_argument('--mixed-horizon',type=int,choices=[0,1])
 p.add_argument('--yaw-canonical',type=int,choices=[0,1]);p.add_argument('--yaw-contract-probe',type=Path)
 p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motion-collection',type=Path);p.add_argument('--motion-audit',type=Path)
@@ -21,6 +22,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_h1_mix is not None:assert a.mixed_horizon==0 and a.yaw_canonical==1 and a.motion_h8_mix==1
 if a.mixed_horizon is not None:assert a.yaw_canonical==1 and a.motion_h8_mix==1
 if a.yaw_canonical is not None:assert a.motion_h8_mix==1 and a.yaw_contract_probe is not None and a.pose_integration_fit_audit is not None
 if a.motion_h8_mix is not None:
@@ -105,6 +107,13 @@ if a.motion_h8_mix is not None:
  motion,motion_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping)
  plan.update(motion_h8_mix=a.motion_h8_mix,motion_generator_seed=48,motion_collection=str(a.motion_collection.resolve()),motion_audit=str(a.motion_audit.resolve()),motion_input=motion_meta)
  (a.output/'motion_input.json').write_text(json.dumps(motion_meta,indent=2))
+motion_one=None
+if a.motion_h1_mix is not None:
+ motion_one,motion_one_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=1)
+ motion_one={k:(v[:,0] if k!='state' else v) for k,v in motion_one.items()}
+ assert len(motion_one['state'])==828
+ plan.update(motion_h1_mix=bool(a.motion_h1_mix),motion_h1_generator=51,motion_h1_input=motion_one_meta)
+ (a.output/'motion_h1_input.json').write_text(json.dumps(motion_one_meta,indent=2))
 long_static=None;long_motion=None
 if a.mixed_horizon is not None:
  pools={k:[] for k in traj}
@@ -293,6 +302,10 @@ if a.yaw_canonical is not None:
 if a.mixed_horizon is not None:
  plan['differing_variable']='Same512 rollout endpoints:64H8 vs32H8+8H32; H1 and all response targets unchanged'
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+if a.motion_h1_mix is not None:
+ plan['differing_variable']='H1 branch64 vs branch32+motion32; H8 and all768 endpoints unchanged'
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+hg=torch.Generator(device='cuda:0').manual_seed(51) if a.motion_h1_mix is not None else None
 lg=torch.Generator(device='cuda:0').manual_seed(49) if a.mixed_horizon is not None else None
 lm=torch.Generator(device='cuda:0').manual_seed(50) if a.mixed_horizon is not None else None
 mg=torch.Generator(device='cuda:0').manual_seed(48) if a.motion_h8_mix is not None else None
@@ -337,6 +350,9 @@ try:
   if a.dynamic_h1_mix is not None:
    di=torch.randint(len(dynamic['state']),(32,),device='cuda:0',generator=dg)
    if a.dynamic_h1_mix:h1_batch={k:torch.cat([v[:32],dynamic[k][di]],dim=0) for k,v in h1_batch.items()}
+  if a.motion_h1_mix is not None:
+   hi=torch.randint(828,(32,),device='cuda:0',generator=hg)
+   if a.motion_h1_mix:h1_batch={k:torch.cat([v[:32],motion_one[k][hi]],dim=0) for k,v in h1_batch.items()}
   one_pred=predictor(h1_batch['state'],h1_batch['action'],h1_batch['context'])
   h1=m.state_loss(one_pred,h1_batch['next_state']);loss=.5*rollout+.5*h1
   velocity_anchor_value=None

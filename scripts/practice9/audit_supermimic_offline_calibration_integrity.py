@@ -95,5 +95,12 @@ if 'mixed_horizon' in d['calibration_plan']:
  assert long_meta==plan['long_motion_input'] and len(long_pool['state'])==337 and long_meta['eligible_episodes']==14
  assert long_meta['files']==plan['motion_input']['files'] and len(long_meta['short_episodes_retained_in_h8'])==2
  assert json.loads((a.artifact.parent/'long_horizon_input.json').read_text())==dict(static_files=files,static_windows=3057,motion=long_meta)
+if 'motion_h1_mix' in d['calibration_plan']:
+ plan=d['calibration_plan'];assert type(plan['motion_h1_mix']) is bool and plan['motion_h1_generator']==51
+ assert plan['mixed_horizon'] is False and plan['trajectory_batch']==64 and plan['long_trajectory_batch']==0
+ h1_pool,h1_meta=load_motion_fit_windows(Path(plan['motion_collection']),Path(plan['motion_audit']),mapping,device='cpu',window=1)
+ assert len(h1_pool['state'])==828 and h1_meta==plan['motion_h1_input']
+ assert h1_meta['files']==plan['motion_input']['files'] and not h1_meta['validation_arrays_loaded']
+ assert json.loads((a.artifact.parent/'motion_h1_input.json').read_text())==h1_meta
 report=dict(passed=True,artifact_sha256=hashlib.sha256(a.artifact.read_bytes()).hexdigest(),finite_tensor_count=count,window=window,fit_windows=windows,fit_files=files,frozen_nonnet_tensors=frozen,changed_dynamics_tensors=changed,policy_artifact=False,promoted=False)
 a.output.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k not in ['fit_files','frozen_nonnet_tensors','changed_dynamics_tensors']}))
