@@ -6,14 +6,18 @@ for key in ['plan','asset','output']:p.add_argument('--'+key,type=Path,required=
 a=p.parse_args();plan=json.loads(a.plan.read_text())
 assert plan['source_split']=='fit'
 assert plan['numerics']['iterations'] in ([2,20] if plan.get('strict_linear_foot_equalities') else [1])
-assert plan['replay_source_id'] in plan['initial_correction_sha256']
+if plan.get('all_fit_sources'):
+ expected_fit_ids={item['id'] for item in json.loads(Path(plan['source_plan']).read_text())['motions'] if item['split']=='fit'}
+ assert not plan.get('replay_source_id') and set(plan['initial_correction_sha256'])==expected_fit_ids
+else:assert plan['replay_source_id'] in plan['initial_correction_sha256']
 source=Path(__file__).with_name('solve_supermimic_grounded_dynamic_cop.py')
 s=source.read_text();assert hashlib.sha256(source.read_bytes()).hexdigest()==plan['solver_source_sha256']
 def replace(old,new):
  global s
  assert s.count(old)==1,(old,s.count(old))
  s=s.replace(old,new)
-replace(" f=Path(item['file']);", " if item['id']!=plan['replay_source_id']:continue\n f=Path(item['file']);")
+if not plan.get('all_fit_sources'):
+ replace(" f=Path(item['file']);", " if item['id']!=plan['replay_source_id']:continue\n f=Path(item['file']);")
 replace('  accepted=False','  accepted=False;trials=[];entry[\'line_search_trials\']=trials\n  sp.save_npz(dest/\'replay_P.npz\',P);sp.save_npz(dest/\'replay_A.npz\',A);np.savez_compressed(dest/\'replay_vectors.npz\',gradient=gradient,lower=l,upper=u,step=step,x=x,column_scale=cs,row_scale=rs,objective_scale=objective_scale)')
 replace('   if bound_error>1e-7:continue', '''   components={'lower':lo-candidate,'upper':candidate-hi,'speed_negative':-.06-original_delta-V@candidate,'speed_positive':V@candidate-(.06-original_delta),'trust':abs(candidate-x)-trust}
    binding=max(components,key=lambda k:float(components[k].max()));idx=int(np.argmax(components[binding]));width=14 if binding.startswith('speed') else 17;component=idx%width
