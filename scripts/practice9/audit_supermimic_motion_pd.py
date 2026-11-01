@@ -59,6 +59,18 @@ for row in rows:
  with np.load(path,allow_pickle=False) as z:d={k:z[k] for k in z.files}
  assert row['planned_steps']==min(3 if info['smoke'] else plan['max_steps'],m['frames']-row['frame']-1)
  n=row['steps'];assert 0<n<=row['planned_steps'];assert all(len(v)==n and np.isfinite(v).all() for v in d.values())
+ if info.get('native_contacts',False):
+  contact_path=root/row['native_contact_file'];assert contact_path.resolve().is_relative_to(root.resolve())
+  contact=json.loads(contact_path.read_text());assert contact['state_read_unchanged']
+  assert len(contact['samples'])==n
+  assert [x['step'] for x in contact['samples']]==list(range(1,n+1))
+  for sample in contact['samples']:
+   assert set(sample['feet'])=={'left','right'}
+   for foot in sample['feet'].values():
+    assert foot['ground_normal_force_n']>=0 and np.isfinite(foot['ground_normal_force_n'])
+    assert np.isfinite(foot['position_w']).all() and np.isfinite(foot['rotation_w']).all()
+    assert foot['loaded_ground_points']>=0
+
  for k,w in [('state',73),('next_state',73),('action',30),('context',34),('desired_joint_pos',30),('terminated',1),('truncated',1)]:assert d[k].shape==(n,w)
  assert np.array_equal(d['next_state'][:-1],d['state'][1:])
  done=(d['terminated']|d['truncated']).reshape(-1);assert not done[:-1].any()

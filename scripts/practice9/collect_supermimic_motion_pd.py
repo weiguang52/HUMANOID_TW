@@ -10,11 +10,12 @@ from supermimic.algo.state import SuperMimicStateSpec,StateExtractor
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--plan',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true')
 p.add_argument('--refresh-command-cache',action='store_true')
+p.add_argument('--native-contacts',action='store_true')
 a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 plan=json.loads(a.plan.read_text());assert not a.refresh_command_cache or plan.get('command_cache_contract')=='current_state_current_frame_v1';motions=plan['motions'];assert len(motions)==8
 assert len({x['source_family'] for x in motions})==8
 for x in motions:assert hashlib.sha256(Path(x['file']).read_bytes()).hexdigest()==x['sha256']
-(a.output/'input.json').write_text(json.dumps(dict(refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
+(a.output/'input.json').write_text(json.dumps(dict(native_contacts=a.native_contacts,refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
 cfg=tw_supermimic_env_cfg([x['file'] for x in motions],num_envs=1,play=True)
 cfg.events={};cfg.seed=42;cfg.auto_reset=False
 cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
@@ -35,6 +36,7 @@ try:
    frame=int((motion['frames']-1)*fraction);steps=min(3 if a.smoke else plan['max_steps'],motion['frames']-frame-1)
    env.reset();cmd.reset_to_frame(torch.tensor([0],device='cuda:0'),clip_id,frame);env.sim.forward()
    if a.refresh_command_cache:cmd.update_relative_body_poses()
+   contact_records=[]
    records={k:[] for k in ['state','action','context','next_state','desired_joint_pos','terminated','truncated']};reasons=[];max_error=0.
    if a.refresh_command_cache:records['command_body_pos']=[]
    for step in range(steps):
@@ -44,6 +46,10 @@ try:
     error=float((action*term._scale+term._offset-target).abs().max());assert error<=1e-6;max_error=max(max_error,error)
     state=extract.state().clone();context=extract.context().clone();result=env.step(action);nxt=extract.state().clone()
     assert torch.all(robot.data.joint_vel.abs()<=caps+1e-5)
+    if a.native_contacts:
+     from supermimic_native_contacts import native_foot_contacts
+     feet=native_foot_contacts(env);assert torch.equal(nxt,extract.state()),'Contact observation mutated state'
+     contact_records.append(dict(step=step+1,feet=feet))
     for k,v in [('state',state),('action',action),('context',context),('next_state',nxt),('desired_joint_pos',desired),('terminated',result[2][:,None]),('truncated',result[3][:,None])]:
      assert torch.isfinite(v).all();records[k].append(v[0].detach().cpu().numpy().copy())
     if a.refresh_command_cache:records['command_body_pos'].append(cached_target[0].detach().cpu().numpy().copy())
@@ -53,6 +59,8 @@ try:
    arrays={k:np.stack(v) for k,v in records.items()};assert np.array_equal(arrays['next_state'][:-1],arrays['state'][1:])
    np.savez_compressed(a.output/name,**arrays)
    row=dict(id=motion['id'],split=motion['split'],source_family=motion['source_family'],reference_sha256=motion['sha256'],frame=frame,phase_fraction=fraction,planned_steps=steps,steps=len(arrays['state']),termination_reasons=reasons,trace=name,target_inverse_max_error=max_error,sha256=hashlib.sha256((a.output/name).read_bytes()).hexdigest(),learned_policy=False)
+   if a.native_contacts:
+    contact_file=name.replace('.npz','_native_contacts.json');(a.output/contact_file).write_text(json.dumps(dict(state_read_unchanged=True,samples=contact_records),indent=2)+'\n');row['native_contact_file']=contact_file
    reports.append(row);(a.output/'partial.json').write_text(json.dumps(dict(rows=reports),indent=2));print(json.dumps(row),flush=True)
  (a.output/'results.json').write_text(json.dumps(dict(rows=reports,scope='Native deterministic reference-target PD snippets; no learned walking, no policy acceptance; all failures retained'),indent=2))
  (a.output/'status').write_text('collected_pending_independent_audit\n')
