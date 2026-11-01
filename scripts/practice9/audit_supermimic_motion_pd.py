@@ -5,8 +5,28 @@ import numpy as np
 from supermimic.config.tw.velocity_limits import LIMITS
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['plan','collection','output']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--root-grounding-parent-plan',type=Path)
 a=p.parse_args();assert not a.output.exists()
 plan=json.loads(a.plan.read_text());root=a.collection
+source_plan=plan
+if a.root_grounding_parent_plan:
+ source_plan=json.loads(a.root_grounding_parent_plan.read_text())
+ assert len(source_plan['motions'])==len(plan['motions'])==8
+ for original,derived in zip(source_plan['motions'],plan['motions']):
+  assert all(original[k]==derived[k] for k in ['id','source_family','frames','split'])
+  original_path=Path(original['file']);derived_path=Path(derived['file'])
+  assert original_path.resolve()!=derived_path.resolve()
+  assert hashlib.sha256(original_path.read_bytes()).hexdigest()==original['sha256']
+  assert hashlib.sha256(derived_path.read_bytes()).hexdigest()==derived['sha256']
+  with np.load(original_path,allow_pickle=False) as x,np.load(derived_path,allow_pickle=False) as y:
+   assert set(x.files)==set(y.files)
+   delta=y['root_pos'][:,2].astype(float)-x['root_pos'][:,2]
+   assert abs(delta).max()<=.031
+   for k in x.files:
+    if k not in ['root_pos','body_pos_w','body_lin_vel_w']:assert np.array_equal(x[k],y[k])
+   for k in ['root_pos','body_pos_w','body_lin_vel_w']:assert np.array_equal(x[k][...,:2],y[k][...,:2])
+   assert np.max(abs((y['body_pos_w'][:,:,2]-x['body_pos_w'][:,:,2])-delta[:,None]))<1e-6
+   assert np.max(abs((y['body_lin_vel_w'][:,:,2]-x['body_lin_vel_w'][:,:,2])-np.gradient(delta,.02)[:,None]))<2e-6
 info=json.loads((root/'input.json').read_text());assert info['plan_sha256']==hashlib.sha256(a.plan.read_bytes()).hexdigest()
 if plan.get('command_cache_contract')=='current_state_current_frame_v1':assert info['refresh_command_cache']
 mapping=json.loads((root/'control_mapping.json').read_text());assert mapping['clip']=='None' and mapping['step_dt']==.02
@@ -18,8 +38,8 @@ expected={(m['id'],int((m['frames']-1)*f)) for m in motions for f in ([0.] if in
 assert len(rows)==len(expected) and {(x['id'],x['frame']) for x in rows}==expected
 base=Path('/root/gpufree-data/datasets/practice9')
 train=base/'training_speed_blend_20261026/train.json';held=base/'independent_holdout_20261025/test.json'
-assert hashlib.sha256(train.read_bytes()).hexdigest()==plan['train_manifest_sha256']
-assert hashlib.sha256(held.read_bytes()).hexdigest()==plan['fixed7_manifest_sha256']
+assert hashlib.sha256(train.read_bytes()).hexdigest()==source_plan['train_manifest_sha256']
+assert hashlib.sha256(held.read_bytes()).hexdigest()==source_plan['fixed7_manifest_sha256']
 held_rows=json.loads(held.read_text())['motions'];held_ids={x['id'] for x in held_rows};held_families={x['source_family'] for x in held_rows}
 seen=set();selected=[]
 for x in sorted(json.loads(train.read_text())['motions'],key=lambda x:x['id']):
@@ -27,7 +47,7 @@ for x in sorted(json.loads(train.read_text())['motions'],key=lambda x:x['id']):
  seen.add(x['source_family']);selected.append(x)
  if len(selected)==8:break
 assert [x['id'] for x in selected]==[x['id'] for x in plan['motions']]
-for i,(expected,motion) in enumerate(zip(selected,plan['motions'])):
+for i,(expected,motion) in enumerate(zip(selected,source_plan['motions'])):
  assert all(expected[k]==motion[k] for k in ['id','source_family','file','frames'])
  assert motion['split']==('fit' if i%2==0 else 'validation')
 assert all(x['id'] not in held_ids and x['source_family'] not in held_families for x in plan['motions'])
