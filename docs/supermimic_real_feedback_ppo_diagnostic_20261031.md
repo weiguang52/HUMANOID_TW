@@ -849,3 +849,25 @@ Preregis real_ppo_multiseed_standing_v1: same static posture/parent92a3be, basel
 ### 2026-11-01T04:16:23.863629+00:00 multiseed real-physics standing evidence collection
 
 Fixed hash0 old-old actor difference0.003253 and old-new0.002730,identical plan/torch RNG:hash fixation did not fix native replay. Preserve runtime_exact_regression_passed=false; AST/default operation equivalence and all5smoke/2reused42 artifact audits passed. Do not relabel bitwise test or policy acceptance. Proceed with preregistered independent real-physics research runs43/44 baseline0 versus smooth-distance2,same256*32*1000,source92a3be,all original physics/noise/reset/termination/normalizers unchanged,WMfrozen0calls. This collects statistical control evidence despite documented native replay limitation; does not resolve/waive strict pairing or promote a policy. Reuse immutable verified42 artifacts only. Sequential tmux real_ppo_multiseed_standing,100-update checkpoints,~6.8h newtraining plus nominalfront/side video and fixed512factorial evaluations each. Original strict1e-5factorial pairing failures retained independently; later runs can collect evidence but no causal/acceptance pass inferred. Data/cache all ondata disk,10GiB reserve; incomplete runs stop for explicit checkpoint recovery without overwrite/restart. Full fixed7/3seed finalgoal incomplete.
+
+
+---
+## 2026-11-01T12:05Z: fixed three-seed standing comparison and dynamic preflight
+
+All six prescribed final-update policies (baseline/smooth sole distance, seeds 42/43/44) completed training and nominal/factorial evaluation. The authoritative data-disk aggregate is `longterm_diagnostics/real_ppo_multiseed_standing_v1/multiseed_summary.json` under the existing SuperMimic artifact root. All nominal trained episodes reached 20 seconds; this is static T-arm standing, not walking. Front/side media decoded fully; sampled visual review does not replace full temporal review.
+
+Candidate minus baseline completed-20-second counts, profiles ordered 000,001,010,011,100,101,110,111 (reset/sensor/action toggles), 32 worlds per profile:
+
+| Training seed | Count differences |
+|---|---|
+|42|0,+4,0,+2,+2,+9,+5,+3|
+|43|0,+2,0,-3,+5,+4,0,+1|
+|44|0,-8,0,-1,-3,+4,+1,-1|
+
+Nominal joint-error deltas were -0.031524, +0.020989, +0.034654 rad respectively. Do not average away subgroup regressions or promote the candidate. Final seed44 candidate factorial archive invariants passed, but strict numeric pairing failed (max PD sensor-toggle state discrepancy 0.000102996826171875 versus unchanged 1e-5 bound). Its results SHA256 is `7ab863ba4ffbe041829f954fb5fc003df3d7f1530a333c399e0a115c5f0995b1`. Earlier numerical failures remain failures.
+
+After the standing runner released its lock, tmux `dynamic_ppo_preflight` ran the unchanged real-PPO entrypoint on the original 332-motion training manifest: seed42, 8 environments, 4 updates, 1024 real transitions, original parent with zeroed action readout, no static sole penalty. Serialized artifact audit passed; final SHA256 `0704ebe4f44085935f7f4c0b93ffce6b68f07f512fcac5df23773bcd6e89b95b`. World model and source normalizers remained frozen. 49 episodes ended, including 13 timeout events; mean duration of ended episodes was 0.386122s. This tiny run establishes executable updates, not a trained walking policy or a stable-performance estimate.
+
+Artifacts: `longterm_diagnostics/dynamic_real_ppo_preflight_v1/{plan.json,queue.sh,sampling_contract_audit.json,artifact_integrity.json,smoke/metrics.jsonl}`. Source review corrected a prior note: manifest weights are not consumed by this entrypoint. Return-based reset sampling starts uniformly across 3238 one-second bins, then uses uniform/negative-return-softmax/past mixture 0.5/0.4/0.1. Listing 332 files does not prove actual coverage in this smoke.
+
+Next: instrument actual dynamic reset/reference coverage, original termination reasons and normalized actor/critic/goal ranges without changing policy or simulator contracts; compare against nominal/static ranges before choosing a staged weight-shift/step intervention. Review retargeted foot lift and loaded sole contact on those actual samples. Preserve all failed runs, all checkpoints, and original fixed7 windows/thresholds. Full SuperMimic world-model acceptance, dynamic fixed7 success and >=3 training-seed validation remain unmet. No policy promotion.
