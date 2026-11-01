@@ -55,7 +55,16 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs, expected_
         and plan["lam"] == 0.95
         and plan["clip"] == 0.2
     )
-    assert plan["fixed_source_normalizers"] and plan["all_actions_trainable"]
+    assert plan["all_actions_trainable"]
+    expected_normalizers = source["actor_critic"]
+    if "goal_normalizer_calibration" in plan:
+        from supermimic_goal_norm_calibration import calibrated_normalizers
+        meta = plan["goal_normalizer_calibration"]
+        expected_normalizers, checked = calibrated_normalizers(source["actor_critic"], meta["file"], digest(parent), digest(manifest_path))
+        assert checked == meta
+        assert not plan["fixed_source_normalizers"] and plan["frozen_calibrated_normalizers"]
+    else:
+        assert plan["fixed_source_normalizers"]
     assert plan["world_model_used_for_policy_update"] is False
     assert final["cfg"]["extra"] == source["cfg"]["extra"]
     for key, value in source["cfg"].items():
@@ -83,7 +92,7 @@ def audit(run, parent, manifest_path, expected_updates, expected_envs, expected_
     normalizers = [key for key in actor if key.startswith(NORMALIZER_PREFIXES)]
     assert normalizers
     for key in normalizers:
-        assert torch.equal(actor[key], source["actor_critic"][key]), key
+        assert torch.equal(actor[key], expected_normalizers[key]), key
     parameters = {
         key: tensor
         for key, tensor in actor.items()

@@ -39,6 +39,7 @@ def main():
     p.add_argument("--num-envs", type=int, default=8)
     p.add_argument("--updates", type=int, default=4)
     p.add_argument("--resume", type=Path)
+    p.add_argument("--goal-normalizer-calibration", type=Path)
     p.add_argument("--sole-normal-penalty", type=float, default=0.0)
     p.add_argument(
         "--sole-normal-loss", choices=["squared", "smooth_distance"], default="squared"
@@ -101,6 +102,13 @@ def main():
         "actual_transitions": a.num_envs * 32 * a.updates,
         "scope": "Diagnostic; different real-sample budget; not a matched algorithm comparison or final acceptance",
     }
+    calibrated = None
+    if a.goal_normalizer_calibration:
+        from supermimic_goal_norm_calibration import calibrated_normalizers
+        calibrated, metadata = calibrated_normalizers(source["actor_critic"], a.goal_normalizer_calibration, sha(a.parent), sha(a.manifest))
+        plan["fixed_source_normalizers"] = False
+        plan["frozen_calibrated_normalizers"] = True
+        plan["goal_normalizer_calibration"] = metadata
     if (a.output / "plan.json").exists():
         assert json.loads((a.output / "plan.json").read_text()) == plan
     else:
@@ -113,6 +121,11 @@ def main():
     t = SuperMimicTrainer(env, cfg, log_dir=a.output / "runtime")
     t.load(a.parent)
     t.initialize()
+    if calibrated is not None:
+        with torch.no_grad():
+            current = t.actor_critic.state_dict()
+            for key, value in calibrated.items():
+                current[key].copy_(value)
     collector = RealFeedbackCollector(
         t,
         sole_normal_penalty=a.sole_normal_penalty,
