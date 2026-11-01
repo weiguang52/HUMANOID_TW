@@ -14,9 +14,9 @@ plan=json.loads(a.plan.read_text()); sources=Path(plan['source_plan']); phases=P
 assert h(sources)==plan['source_plan_sha256'] and h(phases)==plan['phase_review_sha256']
 src=json.loads(sources.read_text()); phase=json.loads(phases.read_text()); results=json.loads(a.results.read_text())
 selected=[(item,pr) for item,pr in zip(src['motions'],phase['rows']) if not plan.get('source_split') or item['split']==plan['source_split']]
-expected=[item['id'] for item,pr in selected]; actual=[r['id'] for r in results['rows']]
-assert actual==expected[:len(actual)] and actual
-assert a.partial or actual==expected
+expected=[item['id'] for item,pr in selected]; actual_source_ids=[r['id'] for r in results['rows']]
+assert actual_source_ids==expected[:len(actual_source_ids)] and actual_source_ids
+assert a.partial or actual_source_ids==expected
 m=mujoco.MjModel.from_xml_path(str(a.asset)); d=mujoco.MjData(m)
 # Local inverse-only model: no contacts/integration and no production asset edits.
 m.geom_contype[:]=0; m.geom_conaffinity[:]=0
@@ -90,7 +90,7 @@ for (item,pr),reported in zip(selected,results['rows']):
    assert len(coperrors)==len(samples)
    assert abs(float(np.sqrt(np.mean(np.square(coperrors))))-reported['cop_known_rms_m'])<1e-10
   row=dict(id=item['id'],split=item['split'],frames=n,solver_status=reported['status'],correction_sha256=h(correction),source_sha256=item['sha256'],foot_position_max_m=position,foot_orientation_max_rad=orientation,joint_bound_violation_rad=bounds,adjacent_speed_ratio=speed,central_velocity_ratio=float((abs(v[:,va])/cap).max()),root_delta_max_per_axis_m=abs(x[:,:3]).max(0).tolist(),lower_delta_max_rad=float(abs(x[:,3:]).max()),collision_min_m=float(min(heights)),penetrating_frames=sum(t < -.0005 for t in heights),known_com_rms_before_m=float(np.sqrt(np.mean(np.square(olderrors)))),known_com_rms_after_m=rms,known_cop_rms_after_m=float(np.sqrt(np.mean(np.square(coperrors)))) if len(coperrors)==len(samples) else None,single_support_frames=sum(len(s['sides'])==1 for s in wrench),single_support_cop_outside=sum(len(s['sides'])==1 and s['outside'] for s in wrench),double_support_cop_outside=sum(len(s['sides'])==2 and s['outside'] for s in wrench),wrench_samples=wrench)
-  row['numerical_constraints_pass']=bool(position<=1e-5 and orientation<=1e-4 and bounds<=1e-7 and speed<=1+1e-5/3 and np.all(abs(x[:,:3])<=[.0600001,.0600001,.0310001]) and abs(x[:,3:]).max()<=.8000001)
+  row['numerical_constraints_pass']=bool(position<=1e-5 and orientation<=1e-4 and bounds<=1e-7 and min(heights)>=-.0005 and float((abs(v[:,va])/cap).max())<=1+1e-5/3 and speed<=1+1e-5/3 and np.all(abs(x[:,:3])<=[.0600001,.0600001,.0310001]) and abs(x[:,3:]).max()<=.8000001)
   rows.append(row); print(item['id'],{k:v for k,v in row.items() if k!='wrench_samples'},flush=True)
-out=dict(cop_support_hull_contract='Actual corrected selected sole bottom corners' if plan.get('restoration_contract') else 'Original source-selected projected foot hull',foot_target_contract=plan.get('restoration_contract','Original both-foot world poses, all frames'),declared_source_split=plan.get('source_split','all'),complete_source_coverage=(actual==expected),expected_sources=len(expected),audited_sources=len(rows),time_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='All original frames, final accepted iterate only. Independent mass-weighted COM, geometry, collision heights and contact-free inverse dynamics. No simulation or training acceptance; fixed original moving feet may remain airborne.',plan_sha256=h(a.plan),asset_sha256=h(a.asset),results_sha256=h(a.results),rows=rows)
+out=dict(cop_support_hull_contract='Actual corrected selected sole bottom corners' if plan.get('restoration_contract') else 'Original source-selected projected foot hull',foot_target_contract=plan.get('restoration_contract','Original both-foot world poses, all frames'),declared_source_split=plan.get('source_split','all'),complete_source_coverage=(actual_source_ids==expected),expected_sources=len(expected),audited_sources=len(rows),time_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='All original frames, final accepted iterate only. Independent mass-weighted COM, geometry, collision heights and contact-free inverse dynamics. No simulation or training acceptance; fixed original moving feet may remain airborne.',plan_sha256=h(a.plan),asset_sha256=h(a.asset),results_sha256=h(a.results),rows=rows)
 a.output.write_text(json.dumps(out,indent=2)+'\n')
