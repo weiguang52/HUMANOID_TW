@@ -12,11 +12,12 @@ p.add_argument('--plan',type=Path,required=True);p.add_argument('--output',type=
 p.add_argument('--refresh-command-cache',action='store_true')
 p.add_argument('--native-contacts',action='store_true')
 p.add_argument('--native-generalized-state',action='store_true')
-a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
+p.add_argument('--native-solver-state',action='store_true')
+a=p.parse_args();assert not a.native_solver_state or a.native_generalized_state;assert not a.output.exists();a.output.mkdir(parents=True)
 plan=json.loads(a.plan.read_text());assert not a.refresh_command_cache or plan.get('command_cache_contract')=='current_state_current_frame_v1';motions=plan['motions'];assert len(motions)==8
 assert len({x['source_family'] for x in motions})==8
 for x in motions:assert hashlib.sha256(Path(x['file']).read_bytes()).hexdigest()==x['sha256']
-(a.output/'input.json').write_text(json.dumps(dict(native_generalized_state=a.native_generalized_state,native_contacts=a.native_contacts,refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
+(a.output/'input.json').write_text(json.dumps(dict(native_solver_state=a.native_solver_state,native_generalized_state=a.native_generalized_state,native_contacts=a.native_contacts,refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
 cfg=tw_supermimic_env_cfg([x['file'] for x in motions],num_envs=1,play=True)
 cfg.events={};cfg.seed=42;cfg.auto_reset=False
 cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
@@ -54,6 +55,7 @@ try:
    if a.refresh_command_cache:records['command_body_pos']=[]
    if a.native_generalized_state:
     for key in ['native_qpos','native_qvel','native_next_qpos','native_next_qvel']:records[key]=[]
+   if a.native_solver_state:records['native_qacc_warmstart']=[]
    for step in range(steps):
     if a.refresh_command_cache:cached_target=cmd.body_pos_relative_w.clone()
     desired=cmd.joint_pos.clone();target=desired[:,order]
@@ -61,6 +63,7 @@ try:
     error=float((action*term._scale+term._offset-target).abs().max());assert error<=1e-6;max_error=max(max_error,error)
     state=extract.state().clone();context=extract.context().clone()
     if a.native_generalized_state:native_before=native_coordinates()
+    if a.native_solver_state:records['native_qacc_warmstart'].append(env.sim.data.qacc_warmstart[:][0].detach().cpu().numpy().copy())
     result=env.step(action);nxt=extract.state().clone()
     if a.native_generalized_state:
      native_after=native_coordinates()
