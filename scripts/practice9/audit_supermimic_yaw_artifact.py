@@ -26,4 +26,5 @@ with torch.no_grad():
  for k,v in m.state_dict().items():assert torch.equal(v.cpu(),c['world_model'][k]),k
 out=dict(checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),query_sha256=hashlib.sha256(a.queries.read_bytes()).hexdigest(),coordinate_contract=c['coordinate_contract'],states=144,rows=rows,all_within_structure_atol=all(x['passed'] for x in rows),weights_unchanged=True,scope='Actual loader function at fixed144 float32 queries only; disabled control need not be equivariant. Failures retained at1e-5, no threshold change or physical/policy acceptance.')
 out['arithmetic_diagnostic']='float64_internal_float32_api' if a.internal_float64_diagnostic else 'original_artifact_contract'
+if c.get('precision_contract') is not None:out['precision_contract']=c['precision_contract']
 a.output.write_text(json.dumps(out,indent=2));print(json.dumps({k:v for k,v in out.items() if k!='rows'}),flush=True)

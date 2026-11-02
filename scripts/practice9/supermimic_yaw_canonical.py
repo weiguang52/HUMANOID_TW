@@ -40,17 +40,21 @@ class YawCanonicalModel(nn.Module):
   return restore_state(self.model(local.to(self.model.state_norm.mean.dtype),action,context),frame,output_dtype=state.dtype)
 
 
-def coordinate_metadata(enabled):
- return dict(contract=CONTRACT,enabled=bool(enabled),coordinate_dtype='float64',network_dtype='float32',xy_reference_physical=[0.,0.],quaternion_hemisphere='nonnegative_w',order='raw_model_then_pose_integration',heading_projection_min=1e-12,scope='offline_only')
+def coordinate_metadata(enabled,*,network_dtype='float32'):
+ assert network_dtype in ['float32','float64']
+ return dict(contract=CONTRACT,enabled=bool(enabled),coordinate_dtype='float64',network_dtype=network_dtype,xy_reference_physical=[0.,0.],quaternion_hemisphere='nonnegative_w',order='raw_model_then_pose_integration',heading_projection_min=1e-12,scope='offline_only')
 
 def apply_coordinate_contract(model,artifact):
  meta=artifact.get('coordinate_contract');plan=artifact.get('calibration_plan',{})
+ from supermimic_precision_contract import validate
+ declared_float64=validate(artifact)
+ if declared_float64 and model.state_norm.mean.dtype!=torch.float64:raise ValueError('Use complete declared prediction loader, not raw float32 coordinate helper')
  if meta is None:
   if artifact.get('kind')==KIND or 'yaw_canonical' in plan or 'coordinate_contract' in plan:raise ValueError('Missing declared coordinate contract')
   return model
  if artifact.get('kind')!=KIND:raise ValueError('Coordinate contract requires explicit offline geometry artifact')
  if not isinstance(meta,dict) or type(meta.get('enabled')) is not bool:raise ValueError('Invalid coordinate enabled flag')
- if meta!=coordinate_metadata(meta['enabled']):raise ValueError('Unsupported coordinate contract')
+ if meta!=coordinate_metadata(meta['enabled'],network_dtype='float64' if declared_float64 else 'float32'):raise ValueError('Unsupported coordinate contract')
  if plan.get('coordinate_contract')!=meta or type(plan.get('yaw_canonical')) is not bool or plan['yaw_canonical']!=meta['enabled']:raise ValueError('Coordinate plan/metadata mismatch')
  if artifact.get('geometry_contract',{}).get('enabled') is not True:raise ValueError('Coordinate trial requires enabled height geometry')
  return YawCanonicalModel(model,meta['enabled'])

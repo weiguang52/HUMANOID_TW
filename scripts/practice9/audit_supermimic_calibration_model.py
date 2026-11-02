@@ -37,6 +37,7 @@ report=dict(checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdiges
 if a.pose_integration_fit_audit is not None:report['pose_integration_diagnostic']=m.metadata
 if c.get('prediction_contract') is not None:report['prediction_contract']=c['prediction_contract']
 report['arithmetic_diagnostic']='float64_internal_float32_api' if a.internal_float64_diagnostic else 'original_artifact_contract'
+if c.get('precision_contract') is not None:report['precision_contract']=c['precision_contract']
 a.output.write_text(json.dumps(report,indent=2)+'\n')
 for split in ('fit','validation'):
  rr=[r for r in rows if r['split']==split];print(split,len(rr),'H32 root p95 median',float(np.median([r['world_model']['32']['root_position_error_p95_m'] for r in rr if r['world_model']['32']['windows']>0])))
