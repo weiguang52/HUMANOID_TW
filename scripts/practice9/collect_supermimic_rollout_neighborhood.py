@@ -11,6 +11,7 @@ from supermimic.algo.state import SuperMimicStateSpec,StateExtractor
 from supermimic_native_contacts import native_foot_contacts
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--queries',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true')
+p.add_argument('--diagnostic-cone',choices=['pyramidal','elliptic'],default='pyramidal')
 a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 plan=json.loads((a.queries/'query_plan.json').read_text());query_contract=plan.get('contract','rollout_neighborhood_v1');assert query_contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1','fit_dynamic_root_pose_full_v1','fit_native_world_yaw_symmetry_v1']
 assert plan['queries']=={'rollout_neighborhood_v1':192,'fit_dynamic_root_pose_probe_v1':336,'fit_dynamic_root_pose_full_v1':1200,'fit_native_world_yaw_symmetry_v1':240}[query_contract] and len(plan['rows'])==plan['queries'] and not plan['validation_arrays_loaded'] and not plan['training_approved']
@@ -26,9 +27,10 @@ asset=Path(os.environ['TW_SUPERMIMIC_MJCF']);assert hashlib.sha256(asset.read_by
 assert info['physics']==PHYSICS_CONTRACT
 cfg=tw_supermimic_env_cfg([x['file'] for x in fit_motions],num_envs=1,play=True);cfg.events={};cfg.seed=42;cfg.auto_reset=False
 cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
-before=asdict(cfg.sim.mujoco);cfg.sim.mujoco.jacobian='dense';after=asdict(cfg.sim.mujoco);assert [k for k in before if before[k]!=after[k]]==['jacobian']
+before=asdict(cfg.sim.mujoco);cfg.sim.mujoco.jacobian='dense';cfg.sim.mujoco.cone=a.diagnostic_cone;after=asdict(cfg.sim.mujoco);assert set(k for k in before if before[k]!=after[k])==({'jacobian'} if a.diagnostic_cone=='pyramidal' else {'jacobian','cone'})
 env=ManagerBasedRlEnv(cfg,device='cuda:0');enable_tw_velocity_limits(env)
 assert env.sim.mj_model.opt.jacobian==mujoco.mjtJacobian.mjJAC_DENSE and not env.sim.wp_model.is_sparse
+assert env.sim.mj_model.opt.cone==getattr(mujoco.mjtCone,'mjCONE_'+a.diagnostic_cone.upper())
 robot=env.scene['robot'];cmd=env.command_manager.get_term('motion');term=env.action_manager.get_term('joint_pos');ids=torch.tensor([0],device='cuda:0')
 spec=SuperMimicStateSpec.from_env(env,cmd.cfg.body_names);extract=StateExtractor(env,spec,torso_body_name='chest',left_foot_geom_pattern=r'^left_foot_collision(_\d+)?$',right_foot_geom_pattern=r'^right_foot_collision(_\d+)?$')
 mapping=json.loads((collection/'control_mapping.json').read_text());assert mapping['state_joint_names']==list(robot.joint_names) and mapping['action_joint_names']==list(term.target_names)
@@ -40,7 +42,7 @@ for name in robot.joint_names:
  ranges.append(env.sim.mj_model.jnt_range[jid].copy())
 ranges=np.array(ranges);records={k:[] for k in ['query','warm_source','repeat','state','action','context','next_state','native_qpos','native_qvel','native_warmstart','terminated','truncated','state_write_error','context_error','archived_next_error','input_speed_excess','input_joint_range_excess']};contacts=[]
 selected=plan['rows'][:{'rollout_neighborhood_v1':4,'fit_dynamic_root_pose_probe_v1':7,'fit_dynamic_root_pose_full_v1':25,'fit_native_world_yaw_symmetry_v1':5}[query_contract]] if a.smoke else plan['rows'];assert all(x['split']=='fit' for x in selected)
-metadata=dict(fit_only_reference_ids=[x['id'] for x in fit_motions],fit_reference_files=[dict(file=x['file'],sha256=x['sha256']) for x in fit_motions],manifest_sha256=hashlib.sha256(Path(plan['manifest']).read_bytes()).hexdigest(),query_contract=query_contract,query_plan_sha256=hashlib.sha256((a.queries/'query_plan.json').read_bytes()).hexdigest(),queries_sha256=plan['query_sha256'],asset_sha256=info['asset_sha256'],physics=PHYSICS_CONTRACT,mujoco_before=before,mujoco_after=after,runtime_dense=True,smoke=a.smoke,planned_records=len(selected)*4,training_approved=False,promotion_approved=False,scope='All fixed fit queries, source/zero warmstart each repeated twice. Source solver state is not known true for perturbed/predicted states. No input clamping/filtering, keep failures/terminations. No policy/model fitting.')
+metadata=dict(fit_only_reference_ids=[x['id'] for x in fit_motions],fit_reference_files=[dict(file=x['file'],sha256=x['sha256']) for x in fit_motions],manifest_sha256=hashlib.sha256(Path(plan['manifest']).read_bytes()).hexdigest(),query_contract=query_contract,query_plan_sha256=hashlib.sha256((a.queries/'query_plan.json').read_bytes()).hexdigest(),queries_sha256=plan['query_sha256'],asset_sha256=info['asset_sha256'],physics=PHYSICS_CONTRACT,mujoco_before=before,mujoco_after=after,runtime_dense=True,diagnostic_cone=a.diagnostic_cone,runtime_cone=int(env.sim.mj_model.opt.cone),smoke=a.smoke,planned_records=len(selected)*4,training_approved=False,promotion_approved=False,scope='All fixed fit queries, source/zero warmstart each repeated twice. Source solver state is not known true for perturbed/predicted states. No input clamping/filtering, keep failures/terminations. No policy/model fitting.')
 (a.output/'plan.json').write_text(json.dumps(metadata,indent=2));(a.output/'status').write_text('running')
 def save(name):np.savez_compressed(a.output/name,**{k:np.stack(v) for k,v in records.items()})
 try:
