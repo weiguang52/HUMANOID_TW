@@ -38,11 +38,19 @@ class MotionRootResponseLoss:
   self.generator=torch.Generator(device=device).manual_seed(52)
   self.target=derivative(self.data['next_state'],self.den).detach()
  def sample(self):return torch.randint(576,(8,),device=self.den.device,generator=self.generator)
- def __call__(self,model,idx):
+ def __call__(self,model,idx,endpoint_predictor=None,state_loss=None):
   assert len(idx)==8
   pred=model(*[self.data[k][idx].reshape(-1,width) for k,width in [('state',73),('action',30),('context',34)]]).reshape(8,4,73)
   std=(model.state_norm.var[7:13]+model.state_norm.eps).sqrt()
   std=torch.where(model.state_norm.frozen_mask[7:13],torch.ones_like(std),std)
   error=(derivative(pred,self.den[idx])-self.target[idx])*std[self.axes[idx],None]/std[None,:]
   loss=error.square().mean();assert torch.isfinite(loss)
-  return loss
+  if endpoint_predictor is None:
+   assert state_loss is None
+   return loss
+  assert state_loss is not None
+  state=self.data['state'][idx].reshape(-1,73)
+  endpoint=endpoint_predictor.integrate_prediction(state,pred.reshape(-1,73))
+  absolute=state_loss(endpoint,self.data['next_state'][idx].reshape(-1,73))
+  assert torch.isfinite(absolute)
+  return loss,absolute

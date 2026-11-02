@@ -14,7 +14,10 @@ class PoseVelocityModel(nn.Module):
   self.model=model;self.metadata=dict(metadata);self.alpha=dict(metadata['alpha']);self.dt=float(metadata['dt'])
   assert set(self.alpha)=={'translation','rotation','joint'} and self.dt==.02 and all(isinstance(v,(float,int)) and 0<=v<=1 for v in self.alpha.values())
  def forward(self,state,action,context):
-  pred=self.model(state,action,context);a=self.alpha;dt=self.dt
+  return self.integrate_prediction(state,self.model(state,action,context))
+ def integrate_prediction(self,state,pred):
+  """Apply the existing pose contract to an already computed endpoint."""
+  a=self.alpha;dt=self.dt
   position=state[:,:3]+dt*((1-a['translation'])*state[:,7:10]+a['translation']*pred[:,7:10])
   omega=(1-a['rotation'])*state[:,10:13]+a['rotation']*pred[:,10:13]
   quat=quat_mul(_rotvec_to_quat(dt*omega),state[:,3:7]);quat=torch.nn.functional.normalize(quat,dim=-1)

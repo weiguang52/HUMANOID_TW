@@ -18,6 +18,7 @@ p.add_argument('--motion-root-linear-loss',type=float,choices=[0.,1.])
 p.add_argument('--motion-linear-project-static',type=int,choices=[0,1])
 p.add_argument('--motion-linear-head-only',type=int,choices=[0,1])
 p.add_argument('--motion-velocity-group-loss',type=int,choices=[0,1])
+p.add_argument('--motion-root-endpoint-loss',type=int,choices=[0,1])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -30,6 +31,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_root_endpoint_loss is not None:assert a.motion_root_mix==1 and a.pose_integration_fit_audit is not None
 if a.motion_velocity_group_loss is not None:assert a.motion_root_linear_loss==1 and not a.motion_linear_head_only and not a.motion_linear_project_static
 if a.motion_linear_head_only is not None:assert a.motion_root_linear_loss==1 and not a.motion_linear_project_static
 if a.motion_linear_project_static is not None:assert a.motion_root_linear_loss==1 and a.motion_h8_mix==1 and a.mixed_horizon==0
@@ -190,6 +192,8 @@ if a.motion_root_mix is not None:
  motion_root_loss=MotionRootResponseLoss(a.motion_root_collection,cfg)
  plan.update(motion_root_mix=bool(a.motion_root_mix),motion_root_collection=str(a.motion_root_collection.resolve()),motion_root_input=motion_root_loss.meta,motion_root_generator=52)
  (a.output/'motion_root_input.json').write_text(json.dumps(motion_root_loss.meta,indent=2))
+if a.motion_root_endpoint_loss is not None:
+ plan.update(motion_root_endpoint_loss=bool(a.motion_root_endpoint_loss),motion_root_endpoint_rule='Coefficient1 existing normalized state_loss on the same32 root response endpoints after unchanged pose integration; one shared forward, no additional samples or predictions')
 root_pose_loss=None
 if a.root_pose_coefficient is not None:
  from supermimic_root_pose_response import RootPoseResponseLoss
@@ -435,7 +439,12 @@ try:
   if root_state_loss is not None:
    if motion_root_loss is not None:
     ri=motion_root_loss.sample()
-    root_state_value=.5*(root_state_loss(response_model,used_batch=8)+motion_root_loss(response_model,ri)) if a.motion_root_mix else root_state_loss(response_model)
+    if a.motion_root_endpoint_loss:
+     motion_response_value,endpoint_value=motion_root_loss(response_model,ri,endpoint_predictor=predictor,state_loss=m.state_loss)
+     root_state_value=.5*(root_state_loss(response_model,used_batch=8)+motion_response_value)
+     loss=loss+endpoint_value
+    else:
+     root_state_value=.5*(root_state_loss(response_model,used_batch=8)+motion_root_loss(response_model,ri)) if a.motion_root_mix else root_state_loss(response_model)
    else:root_state_value=root_state_loss(response_model)
    loss=loss+a.root_state_coefficient*root_state_value
   root_pose_value=None
