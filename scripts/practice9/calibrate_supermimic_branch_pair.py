@@ -16,6 +16,7 @@ p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motio
 p.add_argument('--motion-source-plan',type=Path)
 p.add_argument('--motion-root-linear-loss',type=float,choices=[0.,1.])
 p.add_argument('--motion-linear-project-static',type=int,choices=[0,1])
+p.add_argument('--motion-linear-head-only',type=int,choices=[0,1])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -28,6 +29,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_linear_head_only is not None:assert a.motion_root_linear_loss==1 and not a.motion_linear_project_static
 if a.motion_linear_project_static is not None:assert a.motion_root_linear_loss==1 and a.motion_h8_mix==1 and a.mixed_horizon==0
 if a.motion_root_linear_loss is not None:assert a.motion_h1_mix==1 and a.motion_source_plan is not None
 if a.motion_source_plan is not None:assert a.motion_h8_mix==1
@@ -357,6 +359,10 @@ if a.mixed_horizon is not None:
  point_tally={'points':0}
  def count_prediction_points(module,args):point_tally['points']+=len(args[0])
  m.register_forward_pre_hook(count_prediction_points)
+head_gradient_history=[]
+if a.motion_linear_head_only is not None:
+ plan.update(motion_linear_head_only=bool(a.motion_linear_head_only),motion_linear_gradient_rule='Extra root-linear H1 loss updates only final Linear rows3:6 when enabled; base losses still update all parameters before existing global clipping and Adam; no nonregression guarantee')
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 projection_history=[]
 if a.motion_linear_project_static is not None:
  plan.update(motion_linear_project_static=bool(a.motion_linear_project_static),projection_contract='Euclidean extra-gradient halfspace vs current static32 H8 state plus velocity group loss; applied before existing clipping/Adam; no nonlinear or Adam safety guarantee')
@@ -406,7 +412,7 @@ try:
   if a.motion_root_linear_loss:
    error=m.state_norm.normalize(one_pred[32:])-m.state_norm.normalize(h1_batch['next_state'][32:])
    motion_linear_value=error[:,7:10].square().mean()
-   loss=loss+a.motion_root_linear_loss*motion_linear_value
+   if not a.motion_linear_head_only:loss=loss+a.motion_root_linear_loss*motion_linear_value
   velocity_anchor_value=None
   if a.velocity_anchor_coefficient is not None:
    velocity_anchor_value=.5*(velocity_rollout+velocity_value_loss(one_pred,h1_batch['next_state']))
@@ -439,12 +445,27 @@ try:
    projected,proof=project_extra_gradient(extra,protected)
    projection_correction=[g-h for g,h in zip(projected,extra)]
    projection_history.append(dict(update=update,**proof))
+  head_extra=None
+  if a.motion_linear_head_only:
+   assert isinstance(m.net[-1],torch.nn.Linear) and m.net[-1].out_features==72
+   head_parameters=list(m.net[-1].parameters())
+   head_extra=torch.autograd.grad(motion_linear_value,head_parameters,retain_graph=True)
+   for value in head_extra:
+    outside=value.clone();outside[3:6]=0
+    assert torch.isfinite(value).all() and torch.count_nonzero(outside)==0
+   head_gradient_history.append(dict(update=update,nonhead_extra_gradient_applied=False,output_rows=[3,4,5],extra_gradient_norm=float(torch.sqrt(sum(v.square().sum() for v in head_extra)))))
   loss.backward()
+  if head_extra is not None:
+   with torch.no_grad():
+    for parameter,extra in zip(head_parameters,head_extra):parameter.grad.add_(extra,alpha=a.motion_root_linear_loss)
   if projection_correction is not None:
    with torch.no_grad():
     for parameter,correction in zip(parameters,projection_correction):parameter.grad.add_(correction)
   gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
-  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
+  if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss+a.motion_root_linear_loss*motion_linear_value) if a.motion_linear_head_only else float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
+ if a.motion_linear_head_only:
+  assert len(head_gradient_history)==a.updates
+  (a.output/'head_gradient_history.json').write_text(json.dumps(head_gradient_history,indent=2))
  if a.motion_linear_project_static:
   assert len(projection_history)==a.updates
   (a.output/'gradient_projection_history.json').write_text(json.dumps(projection_history,indent=2))
