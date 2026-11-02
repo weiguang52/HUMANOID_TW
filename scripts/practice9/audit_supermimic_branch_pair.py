@@ -7,8 +7,11 @@ from supermimic.algo.networks import WorldModel,WorldModelCfg
 from supermimic.algo.kinematics import DifferentiableKinematics,build_kinematic_tree
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['pair-root','branches','asset','parent']:p.add_argument('--'+key,type=Path,required=True)
+p.add_argument('--control-arm',default='control');p.add_argument('--candidate-arm',default='candidate')
 p.add_argument('--candidate-checkpoint',type=Path);p.add_argument('--pose-integration-fit-audit',type=Path);p.add_argument('--output',type=Path);a=p.parse_args();output=a.output or a.pair_root/'branch_validation.json';assert not output.exists()
-paths={'parent':a.parent,**{arm:a.pair_root/arm/'fit/world_model_calibrated.pt' for arm in ['control','candidate']}}
+assert all(len(Path(x).parts)==1 and x not in ['.','..'] for x in [a.control_arm,a.candidate_arm])
+assert a.control_arm!=a.candidate_arm
+paths={'parent':a.parent,'control':a.pair_root/a.control_arm/'fit/world_model_calibrated.pt','candidate':a.pair_root/a.candidate_arm/'fit/world_model_calibrated.pt'}
 if a.candidate_checkpoint is not None:
  paths['reference_candidate']=paths['candidate'];paths['candidate']=a.candidate_checkpoint
 models={};configs={};contracts={}
