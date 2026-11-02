@@ -19,6 +19,7 @@ p.add_argument('--motion-linear-project-static',type=int,choices=[0,1])
 p.add_argument('--motion-linear-head-only',type=int,choices=[0,1])
 p.add_argument('--motion-velocity-group-loss',type=int,choices=[0,1])
 p.add_argument('--motion-root-endpoint-loss',type=int,choices=[0,1])
+p.add_argument('--motion-neighborhood-h1-mix',type=int,choices=[0,1]);p.add_argument('--motion-neighborhood-collection',type=Path)
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -31,6 +32,8 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_neighborhood_h1_mix is not None:assert a.motion_h1_mix==1 and a.mixed_horizon==0 and a.motion_neighborhood_collection is not None and not a.motion_root_endpoint_loss
+else:assert a.motion_neighborhood_collection is None
 if a.motion_root_endpoint_loss is not None:assert a.motion_root_mix==1 and a.pose_integration_fit_audit is not None
 if a.motion_velocity_group_loss is not None:assert a.motion_root_linear_loss==1 and not a.motion_linear_head_only and not a.motion_linear_project_static
 if a.motion_linear_head_only is not None:assert a.motion_root_linear_loss==1 and not a.motion_linear_project_static
@@ -360,6 +363,14 @@ lm=torch.Generator(device='cuda:0').manual_seed(50) if a.mixed_horizon is not No
 mg=torch.Generator(device='cuda:0').manual_seed(48) if a.motion_h8_mix is not None else None
 dg=torch.Generator(device='cuda:0').manual_seed(47) if a.dynamic_h1_mix is not None else None
 opt=torch.optim.Adam(m.net.parameters(),lr=plan['lr']);tg=torch.Generator(device='cuda:0').manual_seed(42);og=torch.Generator(device='cuda:0').manual_seed(43)
+neighborhood=None;ng=None
+if a.motion_neighborhood_h1_mix is not None:
+ from supermimic_rollout_neighborhood_data import load_neighborhood_fit
+ neighborhood,neighborhood_meta=load_neighborhood_fit(a.motion_neighborhood_collection,cfg)
+ ng=torch.Generator(device='cuda:0').manual_seed(53)
+ plan.update(motion_neighborhood_h1_mix=bool(a.motion_neighborhood_h1_mix),motion_neighborhood_collection=str(a.motion_neighborhood_collection.resolve()),motion_neighborhood_input=neighborhood_meta,motion_neighborhood_generator=53,motion_neighborhood_rule='Replace last16 of existing32 motion H1 endpoints with16 fit native rollout-neighborhood labels; same64 H1/768 total predictions and all loss coefficients')
+ (a.output/'neighborhood_input.json').write_text(json.dumps(neighborhood_meta,indent=2))
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 point_tally=None;point_history=[]
 if a.mixed_horizon is not None:
  point_tally={'points':0}
@@ -416,6 +427,9 @@ try:
   if a.motion_h1_mix is not None:
    hi=torch.randint(len(motion_one['state']),(32,),device='cuda:0',generator=hg)
    if a.motion_h1_mix:h1_batch={k:torch.cat([v[:32],motion_one[k][hi]],dim=0) for k,v in h1_batch.items()}
+  if neighborhood is not None:
+   ni=torch.randint(len(neighborhood['state']),(16,),device='cuda:0',generator=ng)
+   if a.motion_neighborhood_h1_mix:h1_batch={k:torch.cat([v[:48],neighborhood[k][ni]],dim=0) for k,v in h1_batch.items()}
   one_pred=predictor(h1_batch['state'],h1_batch['action'],h1_batch['context'])
   h1=m.state_loss(one_pred,h1_batch['next_state']);loss=.5*rollout+.5*h1
   motion_linear_value=None
