@@ -20,6 +20,7 @@ p.add_argument('--motion-linear-head-only',type=int,choices=[0,1])
 p.add_argument('--motion-velocity-group-loss',type=int,choices=[0,1])
 p.add_argument('--motion-root-endpoint-loss',type=int,choices=[0,1])
 p.add_argument('--motion-neighborhood-h1-mix',type=int,choices=[0,1]);p.add_argument('--motion-neighborhood-collection',type=Path)
+p.add_argument('--motion-neighborhood-additive-loss',type=int,choices=[0,1])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -32,6 +33,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_neighborhood_additive_loss is not None:assert a.motion_neighborhood_h1_mix==0 and a.motion_root_linear_loss==1 and a.velocity_anchor_coefficient==1 and not a.motion_linear_head_only and not a.motion_linear_project_static and not a.motion_velocity_group_loss
 if a.motion_neighborhood_h1_mix is not None:assert a.motion_h1_mix==1 and a.mixed_horizon==0 and a.motion_neighborhood_collection is not None and not a.motion_root_endpoint_loss
 else:assert a.motion_neighborhood_collection is None
 if a.motion_root_endpoint_loss is not None:assert a.motion_root_mix==1 and a.pose_integration_fit_audit is not None
@@ -371,6 +373,11 @@ if a.motion_neighborhood_h1_mix is not None:
  plan.update(motion_neighborhood_h1_mix=bool(a.motion_neighborhood_h1_mix),motion_neighborhood_collection=str(a.motion_neighborhood_collection.resolve()),motion_neighborhood_input=neighborhood_meta,motion_neighborhood_generator=53,motion_neighborhood_rule='Replace last16 of existing32 motion H1 endpoints with16 fit native rollout-neighborhood labels; same64 H1/768 total predictions and all loss coefficients')
  (a.output/'neighborhood_input.json').write_text(json.dumps(neighborhood_meta,indent=2))
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+neighborhood_additive_history=[]
+if a.motion_neighborhood_additive_loss is not None:
+ plan.update(motion_neighborhood_additive_loss=bool(a.motion_neighborhood_additive_loss),motion_neighborhood_additive_rule='Keep all original768 predictions, both arms compute extra16 native neighborhood endpoints; add coefficient0/1 times(.125 state_loss + .125 velocity_group + .5 root_linear MSE), coefficients inherited from previous16 endpoint replacement')
+ plan['prediction_endpoints_per_update']+=16
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 point_tally=None;point_history=[]
 if a.mixed_horizon is not None:
  point_tally={'points':0}
@@ -465,8 +472,20 @@ try:
   if root_pose_loss is not None:
    root_pose_value=root_pose_loss(response_model)
    loss=loss+a.root_pose_coefficient*root_pose_value
+  if a.motion_neighborhood_additive_loss is not None:
+   near={k:v[ni] for k,v in neighborhood.items()}
+   near_pred=predictor(near['state'],near['action'],near['context'])
+   near_state=m.state_loss(near_pred,near['next_state'])
+   near_velocity=velocity_value_loss(near_pred,near['next_state'])
+   near_error=m.state_norm.normalize(near_pred)-m.state_norm.normalize(near['next_state'])
+   near_linear=near_error[:,7:10].square().mean()
+   near_value=.125*near_state+.125*near_velocity+.5*near_linear
+   assert torch.isfinite(near_value)
+   if a.motion_neighborhood_additive_loss:loss=loss+near_value
+   neighborhood_additive_history.append(dict(update=update,state_loss=float(near_state),velocity_group=float(near_velocity),root_linear=float(near_linear),weighted_loss=float(near_value),indices=ni.cpu().tolist()))
   if point_tally is not None:
-   assert point_tally['points']==plan['prediction_endpoints_per_update']==768
+   assert point_tally['points']==plan['prediction_endpoints_per_update']
+   assert point_tally['points']==(784 if a.motion_neighborhood_additive_loss is not None else 768)
    point_history.append(point_tally['points'])
   assert torch.isfinite(loss);opt.zero_grad()
   projection_correction=None
@@ -496,6 +515,9 @@ try:
     for parameter,correction in zip(parameters,projection_correction):parameter.grad.add_(correction)
   gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
   if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss+a.motion_root_linear_loss*motion_linear_value) if a.motion_linear_head_only else float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
+ if a.motion_neighborhood_additive_loss is not None:
+  assert len(neighborhood_additive_history)==a.updates
+  (a.output/'neighborhood_additive_history.json').write_text(json.dumps(neighborhood_additive_history,indent=2))
  if a.motion_velocity_group_loss:
   assert len(velocity_group_history)==a.updates
   (a.output/'velocity_group_history.json').write_text(json.dumps(velocity_group_history,indent=2))
