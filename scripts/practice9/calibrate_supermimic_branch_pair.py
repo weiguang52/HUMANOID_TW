@@ -12,6 +12,7 @@ p.add_argument('--motion-h1-mix',type=int,choices=[0,1])
 p.add_argument('--mixed-horizon',type=int,choices=[0,1])
 p.add_argument('--yaw-canonical',type=int,choices=[0,1]);p.add_argument('--yaw-contract-probe',type=Path)
 p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motion-collection',type=Path);p.add_argument('--motion-audit',type=Path)
+p.add_argument('--motion-source-plan',type=Path)
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -24,6 +25,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_source_plan is not None:assert a.motion_h8_mix==1
 if a.training_input_scale is not None:assert a.motion_root_mix==1 and a.input_scale_audit is not None
 else:assert a.input_scale_audit is None
 if a.motion_root_mix is not None:assert a.motion_h1_mix==1 and a.motion_root_collection is not None
@@ -110,14 +112,14 @@ if a.motion_h8_mix is not None:
  from supermimic_motion_windows import load_motion_fit_windows
  motion_info=json.loads((a.motion_collection/'input.json').read_text())
  assert motion_info['asset_sha256']==cfg['extra']['tw_mjcf_sha256'] and motion_info['physics']==cfg['extra']['tw_physics_contract']
- motion,motion_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping)
- plan.update(motion_h8_mix=a.motion_h8_mix,motion_generator_seed=48,motion_collection=str(a.motion_collection.resolve()),motion_audit=str(a.motion_audit.resolve()),motion_input=motion_meta)
+ motion,motion_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,source_plan_path=a.motion_source_plan)
+ plan.update(motion_source_plan=str(a.motion_source_plan.resolve()) if a.motion_source_plan else None,motion_h8_mix=a.motion_h8_mix,motion_generator_seed=48,motion_collection=str(a.motion_collection.resolve()),motion_audit=str(a.motion_audit.resolve()),motion_input=motion_meta)
  (a.output/'motion_input.json').write_text(json.dumps(motion_meta,indent=2))
 motion_one=None
 if a.motion_h1_mix is not None:
- motion_one,motion_one_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=1)
+ motion_one,motion_one_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=1,source_plan_path=a.motion_source_plan)
  motion_one={k:(v[:,0] if k!='state' else v) for k,v in motion_one.items()}
- assert len(motion_one['state'])==828
+ assert len(motion_one['state'])==(828 if a.motion_source_plan is None else motion_one_meta['states'])
  plan.update(motion_h1_mix=bool(a.motion_h1_mix),motion_h1_generator=51,motion_h1_input=motion_one_meta)
  (a.output/'motion_h1_input.json').write_text(json.dumps(motion_one_meta,indent=2))
 long_static=None;long_motion=None
@@ -129,7 +131,7 @@ if a.mixed_horizon is not None:
    for k in ['action','context','next_state']:pools[k].append(episode[k][start:start+32])
  long_static={k:torch.tensor(np.stack(v),device='cuda:0') for k,v in pools.items()}
  assert len(long_static['state'])==3057
- long_motion,long_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=32)
+ long_motion,long_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=32,source_plan_path=a.motion_source_plan)
  plan.update(mixed_horizon=bool(a.mixed_horizon),long_static_windows=3057,long_static_files=files,long_motion_input=long_meta,long_generators=[49,50],rollout_endpoints=512,trajectory_batch=32 if a.mixed_horizon else 64,long_trajectory_batch=8 if a.mixed_horizon else 0,batch=104 if a.mixed_horizon else 128)
  (a.output/'long_horizon_input.json').write_text(json.dumps(dict(static_files=files,static_windows=3057,motion=long_meta),indent=2))
 dynamic=None;dynamic_files=[]
