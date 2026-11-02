@@ -10,7 +10,8 @@ p=argparse.ArgumentParser(description=__doc__)
 for k in ['collection','manifest','output']:p.add_argument('--'+k,type=Path,required=True)
 p.add_argument('--phase',choices=['warm','cold'],required=True);p.add_argument('--smoke',action='store_true')
 p.add_argument('--refresh-command-cache',action='store_true')
-a=p.parse_args();assert not a.refresh_command_cache or a.phase=='cold';assert not a.output.exists();a.output.mkdir(parents=True)
+p.add_argument('--cold-all-frames',action='store_true')
+a=p.parse_args();assert not a.cold_all_frames or (a.phase=='cold' and not a.smoke);assert not a.refresh_command_cache or a.phase=='cold';assert not a.output.exists();a.output.mkdir(parents=True)
 manifest=json.loads(a.manifest.read_text());assert len(manifest['motions'])==8
 source=json.loads((a.collection/'results.json').read_text())['rows'];assert len(source)==32
 sources=[];loaded=[]
@@ -22,8 +23,9 @@ for row in source:
  for key,width in [('state',73),('action',30),('context',34),('next_state',73)]:assert data[key].shape==(n,width) and np.isfinite(data[key]).all()
  sources.append(dict(file=row['trace'],sha256=hashlib.sha256(path.read_bytes()).hexdigest(),frames=n,split=row['split']))
  loaded.append((row,data))
-plan=dict(refresh_command_cache=a.refresh_command_cache,phase=a.phase,smoke=a.smoke,source_files=sources,physics_contract=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest(),num_envs=1,dt=.02,
+plan=dict(cold_all_frames=a.cold_all_frames,refresh_command_cache=a.refresh_command_cache,phase=a.phase,smoke=a.smoke,source_files=sources,physics_contract=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest(),num_envs=1,dt=.02,
  selection='First/middle/final of all32 snippets for cold; all saved frames in original order for warm. Original reference clip/phase restored, no sample filtering. Smoke first2 traces/first3 warm or0/middle/final cold only.',native_replay_atol=1e-5,state_write_atol=2e-6,context_atol=1e-7,scope='Native dynamic evidence only, no data replacement, model fitting, gate tuning or policy promotion. Warm cumulative differences must be interpreted together with input drift.')
+if a.cold_all_frames:plan['selection']='Every archived transition of all32 snippets, original order; fresh reset and original phase restored per transition; no filtering.'
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');(a.output/'status').write_text('initializing\n')
 cfg=tw_supermimic_env_cfg([x['file'] for x in manifest['motions']],num_envs=1,play=True);cfg.events={};cfg.seed=42;cfg.auto_reset=False
 cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
@@ -55,6 +57,7 @@ try:
  for trace_index,(row,data) in enumerate(loaded[:2] if a.smoke else loaded):
   n=len(data['state'])
   selection=list(range(min(n,3))) if a.smoke and a.phase=='warm' else (sorted({0,n//2,n-1}) if a.smoke else (list(range(n)) if a.phase=='warm' else sorted({0,n//2,n-1})))
+  if a.cold_all_frames:selection=list(range(n))
   records={k:[] for k in ['index','restored_state','context','actual_next_state','recorded_next_state','input_error','context_error','terminated','truncated','root_angular_error']}
   filename=Path(row['trace']).stem+'_'+a.phase+'.npz';pending=(filename,records)
   if a.phase=='warm':reset(row)
