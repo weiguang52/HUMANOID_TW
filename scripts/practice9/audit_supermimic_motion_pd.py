@@ -6,9 +6,24 @@ from supermimic.config.tw.velocity_limits import LIMITS
 p=argparse.ArgumentParser(description=__doc__)
 for key in ['plan','collection','output']:p.add_argument('--'+key,type=Path,required=True)
 p.add_argument('--root-grounding-parent-plan',type=Path)
+p.add_argument('--grounded-reference-audit',type=Path)
 a=p.parse_args();assert not a.output.exists()
 plan=json.loads(a.plan.read_text());root=a.collection
 source_plan=plan
+if a.grounded_reference_audit:
+ assert not a.root_grounding_parent_plan
+ audit=json.loads(a.grounded_reference_audit.read_text())
+ assert audit['passed'] and audit['plan_sha256']==hashlib.sha256(a.plan.read_bytes()).hexdigest()
+ assert audit['asset_sha256']==plan['asset_sha256']
+ source_path=Path(plan['parent_plan'])
+ assert hashlib.sha256(source_path.read_bytes()).hexdigest()==plan['parent_plan_sha256']
+ source_plan=json.loads(source_path.read_text())
+ assert len(audit['rows'])==len(plan['motions'])==len(source_plan['motions'])==8
+ assert [x['id'] for x in audit['rows']]==[x['id'] for x in plan['motions']]
+ for original,derived in zip(source_plan['motions'],plan['motions']):
+  assert all(original[k]==derived[k] for k in ['id','source_family','frames','split'])
+  assert hashlib.sha256(Path(original['file']).read_bytes()).hexdigest()==original['sha256']==derived['original_sha256']
+  assert hashlib.sha256(Path(derived['file']).read_bytes()).hexdigest()==derived['sha256']
 if a.root_grounding_parent_plan:
  source_plan=json.loads(a.root_grounding_parent_plan.read_text())
  assert len(source_plan['motions'])==len(plan['motions'])==8
