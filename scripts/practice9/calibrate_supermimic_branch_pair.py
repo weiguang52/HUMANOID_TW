@@ -13,6 +13,7 @@ p.add_argument('--mixed-horizon',type=int,choices=[0,1])
 p.add_argument('--yaw-canonical',type=int,choices=[0,1]);p.add_argument('--yaw-contract-probe',type=Path)
 p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motion-collection',type=Path);p.add_argument('--motion-audit',type=Path)
 p.add_argument('--motion-source-plan',type=Path)
+p.add_argument('--motion-root-linear-loss',type=float,choices=[0.,1.])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -25,6 +26,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_root_linear_loss is not None:assert a.motion_h1_mix==1 and a.motion_source_plan is not None
 if a.motion_source_plan is not None:assert a.motion_h8_mix==1
 if a.training_input_scale is not None:assert a.motion_root_mix==1 and a.input_scale_audit is not None
 else:assert a.input_scale_audit is None
@@ -119,6 +121,7 @@ motion_one=None
 if a.motion_h1_mix is not None:
  motion_one,motion_one_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=1,source_plan_path=a.motion_source_plan)
  motion_one={k:(v[:,0] if k!='state' else v) for k,v in motion_one.items()}
+ if a.motion_root_linear_loss is not None:plan.update(motion_root_linear_loss=a.motion_root_linear_loss,motion_root_linear_rule='Additional parent-normalized root linear velocity MSE on existing last32 motion H1 predictions; no new endpoints or samples')
  assert len(motion_one['state'])==(828 if a.motion_source_plan is None else motion_one_meta['states'])
  plan.update(motion_h1_mix=bool(a.motion_h1_mix),motion_h1_generator=51,motion_h1_population=len(motion_one['state']),motion_h1_sampling_contract='uniform_all_audited_fit_states_v1',motion_h1_input=motion_one_meta)
  (a.output/'motion_h1_input.json').write_text(json.dumps(motion_one_meta,indent=2))
@@ -390,6 +393,11 @@ try:
    if a.motion_h1_mix:h1_batch={k:torch.cat([v[:32],motion_one[k][hi]],dim=0) for k,v in h1_batch.items()}
   one_pred=predictor(h1_batch['state'],h1_batch['action'],h1_batch['context'])
   h1=m.state_loss(one_pred,h1_batch['next_state']);loss=.5*rollout+.5*h1
+  motion_linear_value=None
+  if a.motion_root_linear_loss:
+   error=m.state_norm.normalize(one_pred[32:])-m.state_norm.normalize(h1_batch['next_state'][32:])
+   motion_linear_value=error[:,7:10].square().mean()
+   loss=loss+a.motion_root_linear_loss*motion_linear_value
   velocity_anchor_value=None
   if a.velocity_anchor_coefficient is not None:
    velocity_anchor_value=.5*(velocity_rollout+velocity_value_loss(one_pred,h1_batch['next_state']))
