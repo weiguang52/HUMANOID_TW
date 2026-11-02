@@ -19,7 +19,16 @@ for row in plan['rows']:
  r=Rotation.from_euler('z',angle,degrees=True)
  for key in ['qvel','warmstart']:
   x=q['source_native_'+key][i].copy();x[:3]=r.apply(x[:3]);np.testing.assert_allclose(x,q['query_native_'+key][i],rtol=0,atol=1e-6)
- assert np.array_equal(q['query_native_qpos'][i,7:],q['source_native_qpos'][i,7:])
+ native=q['source_native_qpos'][i];actual=q['query_native_qpos'][i]
+ np.testing.assert_allclose(actual[:3],r.apply(native[:3]),rtol=0,atol=1e-6)
+ expected_quat=(r*Rotation.from_quat(native[[4,5,6,3]])).as_quat()[[3,0,1,2]]
+ expected_quat*=1 if np.dot(expected_quat,actual[3:7])>=0 else -1
+ np.testing.assert_allclose(actual[3:7],expected_quat,rtol=0,atol=1e-6)
+ assert np.array_equal(actual[7:],native[7:])
+ if angle==0:
+  for key in ['qpos','qvel','warmstart']:assert np.array_equal(q['query_native_'+key][i],q['source_native_'+key][i])
+ zero=next(x['query'] for x in plan['rows'] if x['anchor_query']==row['anchor_query'] and x['yaw_degrees']==0)
+ for key in ['action','context']:assert np.array_equal(q[key][i],q[key][zero])
 lookup={(int(i),bool(w),int(rep)):j for j,(i,w,rep) in enumerate(zip(d['query'],d['warm_source'],d['repeat']))};groups={};records=[]
 for row in plan['rows']:
  i=row['query']
