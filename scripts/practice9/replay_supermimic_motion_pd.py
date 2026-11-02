@@ -12,7 +12,8 @@ p.add_argument('--phase',choices=['warm','cold'],required=True);p.add_argument('
 p.add_argument('--refresh-command-cache',action='store_true')
 p.add_argument('--cold-all-frames',action='store_true')
 p.add_argument('--restore-native-coordinates',action='store_true')
-a=p.parse_args();assert not a.restore_native_coordinates or a.phase=='cold';assert not a.cold_all_frames or (a.phase=='cold' and not a.smoke);assert not a.refresh_command_cache or a.phase=='cold';assert not a.output.exists();a.output.mkdir(parents=True)
+p.add_argument('--clear-native-transients',action='store_true')
+a=p.parse_args();assert not a.clear_native_transients or a.phase=='cold';assert not a.restore_native_coordinates or a.phase=='cold';assert not a.cold_all_frames or (a.phase=='cold' and not a.smoke);assert not a.refresh_command_cache or a.phase=='cold';assert not a.output.exists();a.output.mkdir(parents=True)
 manifest=json.loads(a.manifest.read_text());assert len(manifest['motions'])==8
 source=json.loads((a.collection/'results.json').read_text())['rows'];assert len(source)==32
 sources=[];loaded=[]
@@ -28,7 +29,7 @@ for row in source:
  for key,width in [('state',73),('action',30),('context',34),('next_state',73)]:assert data[key].shape==(n,width) and np.isfinite(data[key]).all()
  sources.append(dict(file=row['trace'],sha256=hashlib.sha256(path.read_bytes()).hexdigest(),frames=n,split=row['split']))
  loaded.append((row,data))
-plan=dict(restore_native_coordinates=a.restore_native_coordinates,cold_all_frames=a.cold_all_frames,refresh_command_cache=a.refresh_command_cache,phase=a.phase,smoke=a.smoke,source_files=sources,physics_contract=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest(),num_envs=1,dt=.02,
+plan=dict(clear_native_transients=a.clear_native_transients,restore_native_coordinates=a.restore_native_coordinates,cold_all_frames=a.cold_all_frames,refresh_command_cache=a.refresh_command_cache,phase=a.phase,smoke=a.smoke,source_files=sources,physics_contract=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest(),num_envs=1,dt=.02,
  selection='First/middle/final of all32 snippets for cold; all saved frames in original order for warm. Original reference clip/phase restored, no sample filtering. Smoke first2 traces/first3 warm or0/middle/final cold only.',native_replay_atol=1e-5,state_write_atol=2e-6,context_atol=1e-7,scope='Native dynamic evidence only, no data replacement, model fitting, gate tuning or policy promotion. Warm cumulative differences must be interpreted together with input drift.')
 if a.cold_all_frames:plan['selection']='Every archived transition of all32 snippets, original order; fresh reset and original phase restored per transition; no filtering.'
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');(a.output/'status').write_text('initializing\n')
@@ -52,6 +53,9 @@ def clear_history():
  for name in ['qacc_warmstart','qacc','qfrc_applied','xfrc_applied','ctrl','act']:
   value=getattr(env.sim.data,name,None)
   if isinstance(value,torch.Tensor):value.zero_();cleared.add(name)
+  elif a.clear_native_transients:
+   from mjlab.sim.sim_data import TorchArray
+   if isinstance(value,TorchArray):value[:]=torch.zeros_like(value[:]);cleared.add(name)
 
 def save_pending(filename,records):
  if records and records['index']:
