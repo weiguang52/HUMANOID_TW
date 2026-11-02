@@ -17,15 +17,17 @@ if 'fit_only_reference_ids' in meta:
  fit_reference_initialization_verified=True
 with np.load(a.queries/'queries.npz',allow_pickle=False) as z:q={k:z[k].copy() for k in z.files}
 with np.load(a.collection/'transitions.npz',allow_pickle=False) as z:d={k:z[k].copy() for k in z.files}
-contract=plan.get('contract','rollout_neighborhood_v1');assert contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1','fit_dynamic_root_pose_full_v1']
+contract=plan.get('contract','rollout_neighborhood_v1');assert contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1','fit_dynamic_root_pose_full_v1','fit_native_world_yaw_symmetry_v1']
 assert meta.get('query_contract','rollout_neighborhood_v1')==contract
-selected=plan['rows'][:{'rollout_neighborhood_v1':4,'fit_dynamic_root_pose_probe_v1':7,'fit_dynamic_root_pose_full_v1':25}[contract]] if meta['smoke'] else plan['rows'];indices=[x['query'] for x in selected]
+selected=plan['rows'][:{'rollout_neighborhood_v1':4,'fit_dynamic_root_pose_probe_v1':7,'fit_dynamic_root_pose_full_v1':25,'fit_native_world_yaw_symmetry_v1':5}[contract]] if meta['smoke'] else plan['rows'];indices=[x['query'] for x in selected]
 def native_anchor(row):return bool(row['is_native_anchor']) if 'is_native_anchor' in row else row['depth']==0
 expected=[(rep,warm,i) for rep in range(2) for warm in [True,False] for i in indices]
 actual=list(zip(d['repeat'].tolist(),d['warm_source'].tolist(),d['query'].tolist()));assert actual==expected and len(actual)==meta['planned_records']
 assert all(len(v)==len(actual) for v in d.values());assert all(np.isfinite(v).all() for v in d.values())
 for key in ['state','next_state']:assert d[key].shape==(len(actual),73)
 qi=d['query'];assert np.array_equal(d['action'],q['action'][qi])
+if 'query_native_qpos' in q:
+ assert np.array_equal(d['native_qpos'],q['query_native_qpos'][qi]) and np.array_equal(d['native_qvel'],q['query_native_qvel'][qi])
 contract=Path(__file__).resolve().parents[2]/'third_party/supermimic_mjlab/src/supermimic/config/tw/contract.py'
 groups={}
 for node in ast.parse(contract.read_text()).body:
@@ -56,7 +58,7 @@ for i in indices:
    assert np.array_equal(d['native_qpos'][x],q['source_native_qpos'][i]) and np.array_equal(d['native_qvel'][x],q['source_native_qvel'][i])
    anchor_errors.append(float(np.max(np.abs(d['next_state'][x]-q['source_next_state'][i]))))
  for warm in [True,False]:
-  x=lookup[(0,warm,i)];target=q['source_native_warmstart'][i] if warm else np.zeros(36,dtype=q['source_native_warmstart'].dtype)
+  x=lookup[(0,warm,i)];warm_key='query_native_warmstart' if 'query_native_warmstart' in q else 'source_native_warmstart';target=q[warm_key][i] if warm else np.zeros(36,dtype=q[warm_key].dtype)
   assert np.array_equal(d['native_warmstart'][x],target)
 checks=dict(state_write=bool((write<=2e-6).all()),context_write=bool((context<=1e-7).all()),repeat_native=bool(max(repeat_errors)<=1e-5),archived_native_anchors=bool(max(anchor_errors)<=1e-5),input_speed_caps=bool((d['input_speed_excess']<=1e-5).all()))
 result=dict(fit_reference_initialization_verified=fit_reference_initialization_verified,passed=all(checks.values()),checks=checks,smoke=meta['smoke'],queries=len(indices),records=len(actual),max_state_write_error=float(write.max()),max_context_error=float(context.max()),max_repeat_error=max(repeat_errors),max_archived_anchor_error=max(anchor_errors),max_warmstart_sensitivity=max(warm_errors),max_input_joint_range_excess=float(d['input_joint_range_excess'].max()),terminated_records=int(d['terminated'].sum()),transitions_sha256=hashlib.sha256((a.collection/'transitions.npz').read_bytes()).hexdigest(),training_approved=False,promotion_approved=False,scope='Structural/write/identical augmented-state repeat gates and archived anchors only. Warmstart sensitivity separately reported, not proof73-state Markov. Joint position range excess retained as advisory; all terminations kept. No physical-control acceptance.')
