@@ -14,6 +14,7 @@ p.add_argument('--yaw-canonical',type=int,choices=[0,1]);p.add_argument('--yaw-c
 p.add_argument('--motion-h8-mix',type=int,choices=[0,1]);p.add_argument('--motion-collection',type=Path);p.add_argument('--motion-audit',type=Path)
 p.add_argument('--motion-source-plan',type=Path)
 p.add_argument('--motion-root-linear-loss',type=float,choices=[0.,1.])
+p.add_argument('--motion-linear-project-static',type=int,choices=[0,1])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
 p.add_argument('--sole-geometry',type=int,choices=[0,1]);p.add_argument('--geometry-asset',type=Path);p.add_argument('--geometry-contract-probe',type=Path)
@@ -26,6 +27,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.motion_linear_project_static is not None:assert a.motion_root_linear_loss==1 and a.motion_h8_mix==1 and a.mixed_horizon==0
 if a.motion_root_linear_loss is not None:assert a.motion_h1_mix==1 and a.motion_source_plan is not None
 if a.motion_source_plan is not None:assert a.motion_h8_mix==1
 if a.training_input_scale is not None:assert a.motion_root_mix==1 and a.input_scale_audit is not None
@@ -354,6 +356,10 @@ if a.mixed_horizon is not None:
  point_tally={'points':0}
  def count_prediction_points(module,args):point_tally['points']+=len(args[0])
  m.register_forward_pre_hook(count_prediction_points)
+projection_history=[]
+if a.motion_linear_project_static is not None:
+ plan.update(motion_linear_project_static=bool(a.motion_linear_project_static),projection_contract='Euclidean extra-gradient halfspace vs current static32 H8 state plus velocity group loss; applied before existing clipping/Adam; no nonlinear or Adam safety guarantee')
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 update=0
 try:
  for update in range(1,a.updates+1):
@@ -373,9 +379,11 @@ try:
     assert len(rollout_batch['state'])*8+len(long_batch['state'])*32==512
   pred=rollout_batch['state'];rollout=0
   velocity_rollout=0
+  static_protected=0
   for j in range(8):
    pred=predictor(pred,rollout_batch['action'][:,j],rollout_batch['context'][:,j]);rollout=rollout+m.state_loss(pred,rollout_batch['next_state'][:,j])/8
    if a.velocity_anchor_coefficient is not None:velocity_rollout=velocity_rollout+velocity_value_loss(pred,rollout_batch['next_state'][:,j])/8
+   if a.motion_linear_project_static:static_protected=static_protected+(m.state_loss(pred[:32],rollout_batch['next_state'][:32,j])+velocity_value_loss(pred[:32],rollout_batch['next_state'][:32,j]))/8
   if long_batch is not None:
    long_pred=long_batch['state'];long_rollout=0;long_velocity=0
    for j in range(32):
@@ -420,8 +428,25 @@ try:
   if point_tally is not None:
    assert point_tally['points']==plan['prediction_endpoints_per_update']==768
    point_history.append(point_tally['points'])
-  assert torch.isfinite(loss);opt.zero_grad();loss.backward();gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
+  assert torch.isfinite(loss);opt.zero_grad()
+  projection_correction=None
+  if a.motion_linear_project_static:
+   from supermimic_gradient_projection import project_extra_gradient
+   parameters=list(m.net.parameters())
+   protected=torch.autograd.grad(static_protected,parameters,retain_graph=True)
+   extra=torch.autograd.grad(motion_linear_value,parameters,retain_graph=True)
+   projected,proof=project_extra_gradient(extra,protected)
+   projection_correction=[g-h for g,h in zip(projected,extra)]
+   projection_history.append(dict(update=update,**proof))
+  loss.backward()
+  if projection_correction is not None:
+   with torch.no_grad():
+    for parameter,correction in zip(parameters,projection_correction):parameter.grad.add_(correction)
+  gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
   if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
+ if a.motion_linear_project_static:
+  assert len(projection_history)==a.updates
+  (a.output/'gradient_projection_history.json').write_text(json.dumps(projection_history,indent=2))
  if q_hook is not None:
   with torch.no_grad():
    for _ in range(5):m(q_query,q_action,q_context)
