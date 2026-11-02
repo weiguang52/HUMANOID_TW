@@ -5,6 +5,7 @@ import numpy as np
 import torch
 from supermimic.algo.networks import WorldModel,WorldModelCfg
 p=argparse.ArgumentParser(description=__doc__)
+p.add_argument('--learning-rate',type=float,choices=[.00005,.0001],default=.0001)
 for key in ['parent','collection','branches','output']:p.add_argument('--'+key,type=Path,required=True)
 p.add_argument('--training-input-scale',type=int,choices=[0,1]);p.add_argument('--input-scale-audit',type=Path)
 p.add_argument('--motion-root-mix',type=int,choices=[0,1]);p.add_argument('--motion-root-collection',type=Path)
@@ -61,7 +62,7 @@ if a.response_coefficient not in [None,0.,1.]:assert a.response_scale_audit is n
 if a.response_coefficient is not None:assert a.arm=='candidate' and a.response_fit_audit is not None
 else:assert a.updates==1000 and a.response_fit_audit is None
 torch.manual_seed(42);c=torch.load(a.parent,map_location='cpu',weights_only=False);assert c['kind']=='offline_dynamics_calibration_not_policy_checkpoint' and c['calibration_plan']['window']==8 and c['calibration_updates']==1000
-w=c['world_model'];cfg=c['cfg'];plan=dict(seed=42,updates=1000,batch=128,window=8,arm=a.arm,trajectory_batch=64,one_step_batch=64,targets_per_update=576,lr=.0001,source_checkpoint_sha256=hashlib.sha256(a.parent.read_bytes()).hexdigest(),one_step_source='original_fit' if a.arm=='control' else 'orthogonal_fit_including_zero',frozen=['termination','normalizers'],policy_artifact=False,selection='Final1000 only; no checkpoint selection, no validation fit')
+w=c['world_model'];cfg=c['cfg'];plan=dict(seed=42,updates=1000,batch=128,window=8,arm=a.arm,trajectory_batch=64,one_step_batch=64,targets_per_update=576,lr=a.learning_rate,source_checkpoint_sha256=hashlib.sha256(a.parent.read_bytes()).hexdigest(),one_step_source='original_fit' if a.arm=='control' else 'orthogonal_fit_including_zero',frozen=['termination','normalizers'],policy_artifact=False,selection='Final1000 only; no checkpoint selection, no validation fit')
 plan['updates']=a.updates
 if a.response_coefficient is not None:plan.update(response_coefficient=a.response_coefficient,response_batch=16,response_fit_audit_sha256=hashlib.sha256(a.response_fit_audit.read_bytes()).hexdigest(),differing_variable='Response coefficient0 vs1; identical four-endpoint sampling and forward budget')
 scale_measurement=None
