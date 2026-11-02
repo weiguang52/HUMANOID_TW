@@ -4,10 +4,12 @@ from pathlib import Path
 import numpy as np
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--collection',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
 a=p.parse_args();assert not a.output.exists();r=a.collection;plan=json.loads((r/'plan.json').read_text());result=json.loads((r/'results.json').read_text());assert plan['smoke']==result['smoke']
-source_root=Path('/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/motion_pd_collection_cache_v2/full')
+source_root=Path(plan['source_collection']) if 'source_collection' in plan else Path('/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/motion_pd_collection_cache_v2/full')
 source=json.loads((source_root/'results.json').read_text())['rows'];assert source==plan['source_files']
-assert plan['source_plan_sha256']==hashlib.sha256((source_root.parent/'plan.json').read_bytes()).hexdigest()
+source_manifest=Path(plan['source_manifest']) if 'source_manifest' in plan else source_root.parent/'plan.json'
+assert plan['source_plan_sha256']==hashlib.sha256(source_manifest.read_bytes()).hexdigest()
 info=json.loads((source_root/'input.json').read_text());assert plan['asset_sha256']==info['asset_sha256'] and plan['physics']==info['physics']
+if 'source_manifest' in plan:assert info['plan_sha256']==plan['source_plan_sha256']
 assert json.loads((r/'control_mapping.json').read_text())==json.loads((source_root/'control_mapping.json').read_text())
 assert plan['num_envs']==(1 if plan.get('serial',False) else 12)
 assert plan['levels']==[1.,2.] and plan['base_delta']==[.005,.005,.005,.02,.02,.02]
@@ -25,6 +27,12 @@ for s in selected:
    assert row['split']==s['split'] and row['source_family']==s['source_family'] and row['count']==12
    path=(r/row['file']).resolve();assert path.is_relative_to(r.resolve());sha=hashlib.sha256(path.read_bytes()).hexdigest();assert sha==row['sha256']
    with np.load(path,allow_pickle=False) as z:d={k:z[k].copy() for k in z.files}
+   if plan.get('restore_native_state'):
+    with np.load(source_root/s['trace'],allow_pickle=False) as z:
+     for key,width in [('native_qpos',37),('native_qvel',36),('native_qacc_warmstart',36)]:
+      assert d[key].shape==(12,width)
+      if key!='native_qvel' or level==0:np.testing.assert_array_equal(d[key],np.repeat(z[key][i:i+1],12,0))
+      else:np.testing.assert_array_equal(d[key][:,6:],np.repeat(z[key][i:i+1,6:],12,0))
    assert all(np.isfinite(v).all() for v in d.values())
    for k,width in [('state',73),('desired',73),('action',30),('context',34),('next_state',73)]:assert d[k].shape==(12,width)
    signs=np.tile([-1.,1.],6)*(1 if assignment==0 else -1)

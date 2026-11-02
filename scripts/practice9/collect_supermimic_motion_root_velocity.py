@@ -8,13 +8,17 @@ from supermimic.config.tw.velocity_limits import enable_tw_velocity_limits,disab
 from supermimic.algo.state import SuperMimicStateSpec,StateExtractor
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true');p.add_argument('--serial',action='store_true')
-a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
-a.collection=a.root/'motion_pd_collection_cache_v2/full'
-manifest=json.loads((a.collection.parent/'plan.json').read_text())
+p.add_argument('--collection',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--restore-native-state',action='store_true')
+a=p.parse_args();assert (a.collection is None)==(a.manifest is None);assert not a.restore_native_state or (a.serial and a.collection is not None);assert not a.output.exists();a.output.mkdir(parents=True)
+a.collection=a.collection or a.root/'motion_pd_collection_cache_v2/full'
+manifest_path=a.manifest or a.collection.parent/'plan.json'
+manifest=json.loads(manifest_path.read_text())
 source=json.loads((a.collection/'results.json').read_text())['rows'];assert len(source)==32
 info=json.loads((a.collection/'input.json').read_text());assert info['physics']==PHYSICS_CONTRACT
 assert info['asset_sha256']==hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()
-plan=dict(contract='motion_root_velocity_branches_v1',smoke=a.smoke,source_files=source,source_plan_sha256=hashlib.sha256((a.collection.parent/'plan.json').read_bytes()).hexdigest(),levels=[1.,2.],base_delta=[.005,.005,.005,.02,.02,.02],assignments=2,num_envs=1 if a.serial else 12,serial=a.serial,selection='All32 original episodes, indices first/middle/final; smoke first fit episode index0 only',state_write_atol=2e-6,replay_atol=1e-5,asset_sha256=info['asset_sha256'],physics=PHYSICS_CONTRACT,scope='One-step branches only; original terminal flags retained, no optimization or acceptance.')
+if a.manifest is not None:assert info['plan_sha256']==hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+plan=dict(contract='motion_root_velocity_branches_v1',smoke=a.smoke,source_files=source,source_plan_sha256=hashlib.sha256(manifest_path.read_bytes()).hexdigest(),levels=[1.,2.],base_delta=[.005,.005,.005,.02,.02,.02],assignments=2,num_envs=1 if a.serial else 12,serial=a.serial,selection='All32 original episodes, indices first/middle/final; smoke first fit episode index0 only',state_write_atol=2e-6,replay_atol=1e-5,asset_sha256=info['asset_sha256'],physics=PHYSICS_CONTRACT,scope='One-step branches only; original terminal flags retained, no optimization or acceptance.')
+if a.manifest is not None:plan.update(source_collection=str(a.collection.resolve()),source_manifest=str(manifest_path.resolve()),restore_native_state=a.restore_native_state)
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 cfg=tw_supermimic_env_cfg([x['file'] for x in manifest['motions']],num_envs=1 if a.serial else 12,play=True);cfg.events={};cfg.seed=42;cfg.auto_reset=False
 cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
@@ -45,6 +49,10 @@ try:
  for row in selected:
   path=a.collection/row['trace'];assert hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
   with np.load(path,allow_pickle=False) as z:data={k:z[k].copy() for k in ['state','action','context']}
+  if a.restore_native_state:
+   with np.load(path,allow_pickle=False) as z:
+    for key,width in [('native_qpos',37),('native_qvel',36),('native_qacc_warmstart',36)]:
+     data[key]=z[key].copy();assert data[key].shape==(len(data['state']),width) and np.isfinite(data[key]).all()
   n=len(data['state']);indices=[0] if a.smoke else sorted({0,n//2,n-1})
   for index in indices:
    for level,assignment in [(0.,0),(1.,0),(1.,1),(2.,0),(2.,1)]:
@@ -56,20 +64,33 @@ try:
     delta[torch.arange(12,device='cuda:0'),torch.arange(6,device='cuda:0').repeat_interleave(2)]=signs*torch.tensor(plan['base_delta'],device='cuda:0').repeat_interleave(2)*level
     desired[:,7:13]+=delta
     states=[];contexts=[];nexts=[];terms=[];truncs=[]
+    native_records={k:[] for k in ['native_qpos','native_qvel','native_qacc_warmstart']} if a.restore_native_state else {}
     for sample in range(12) if a.serial else [None]:
      reset(row,index)
      ds=desired[sample:sample+1] if a.serial else desired
      act=action[sample:sample+1] if a.serial else action
      robot.write_joint_state_to_sim(ds[:,13:43],ds[:,43:73])
      robot.write_root_link_pose_to_sim(torch.cat([ds[:,:3]+env.scene.env_origins,ds[:,3:7]],1))
-     robot.write_root_link_velocity_to_sim(ds[:,7:13]);env.sim.forward();clear_history();env.episode_length_buf[:]=index;cmd.update_relative_body_poses()
+     robot.write_root_link_velocity_to_sim(ds[:,7:13]);env.sim.forward()
+     if a.restore_native_state:
+      from mjlab.utils.lab_api.math import quat_apply_inverse
+      nq=torch.tensor(data['native_qpos'][index:index+1],device='cuda:0')
+      nv=torch.tensor(data['native_qvel'][index:index+1],device='cuda:0')
+      perturb=delta[sample:sample+1]
+      nv[:,:3]+=perturb[:,:3];nv[:,3:6]+=quat_apply_inverse(nq[:,3:7],perturb[:,3:6])
+      env.sim.data.qpos[:]=nq;env.sim.data.qvel[:]=nv;env.sim.forward()
+     clear_history()
+     if a.restore_native_state:
+      env.sim.data.qacc_warmstart[:]=torch.tensor(data['native_qacc_warmstart'][index:index+1],device='cuda:0')
+      for key in native_records:native_records[key].append(getattr(env.sim.data,key.removeprefix('native_'))[:].clone())
+     env.episode_length_buf[:]=index;cmd.update_relative_body_poses()
      states.append(extract.state().clone());contexts.append(extract.context().clone())
      result=env.step(act);nexts.append(extract.state().clone());terms.append(result[2].clone());truncs.append(result[3].clone())
      assert torch.isfinite(nexts[-1]).all() and bool((robot.data.joint_vel.abs()<=caps+1e-5).all())
     state=torch.cat(states);ctx=torch.cat(contexts);actual=torch.cat(nexts);terminated=torch.cat(terms);truncated=torch.cat(truncs)
     context_error=float((ctx-torch.tensor(data['context'][index],device='cuda:0')).abs().max());assert context_error<=1e-7
     filename='%s_i%d_l%d_a%d.npz'%(Path(row['trace']).stem,index,level,assignment)
-    np.savez_compressed(a.output/filename,state=state.cpu().numpy(),desired=desired.cpu().numpy(),delta=delta.cpu().numpy(),action=action.cpu().numpy(),context=ctx.cpu().numpy(),next_state=actual.cpu().numpy(),terminated=terminated.cpu().numpy(),truncated=truncated.cpu().numpy())
+    np.savez_compressed(a.output/filename,**{k:torch.cat(v).cpu().numpy() for k,v in native_records.items()},state=state.cpu().numpy(),desired=desired.cpu().numpy(),delta=delta.cpu().numpy(),action=action.cpu().numpy(),context=ctx.cpu().numpy(),next_state=actual.cpu().numpy(),terminated=terminated.cpu().numpy(),truncated=truncated.cpu().numpy())
     reports.append(dict(file=filename,sha256=hashlib.sha256((a.output/filename).read_bytes()).hexdigest(),source_trace=row['trace'],source_family=row['source_family'],split=row['split'],index=index,level=level,assignment=assignment,count=12,write_error=float((state-desired).abs().max()),context_error=context_error,terminated_count=int(terminated.sum()),truncated_count=int(truncated.sum())))
    (a.output/'partial.json').write_text(json.dumps(reports,indent=2)+'\n')
   print(json.dumps(dict(trace=row['trace'],split=row['split'],batches=len(reports))),flush=True)
