@@ -11,11 +11,12 @@ p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--plan',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true')
 p.add_argument('--refresh-command-cache',action='store_true')
 p.add_argument('--native-contacts',action='store_true')
+p.add_argument('--native-generalized-state',action='store_true')
 a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 plan=json.loads(a.plan.read_text());assert not a.refresh_command_cache or plan.get('command_cache_contract')=='current_state_current_frame_v1';motions=plan['motions'];assert len(motions)==8
 assert len({x['source_family'] for x in motions})==8
 for x in motions:assert hashlib.sha256(Path(x['file']).read_bytes()).hexdigest()==x['sha256']
-(a.output/'input.json').write_text(json.dumps(dict(native_contacts=a.native_contacts,refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
+(a.output/'input.json').write_text(json.dumps(dict(native_generalized_state=a.native_generalized_state,native_contacts=a.native_contacts,refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
 cfg=tw_supermimic_env_cfg([x['file'] for x in motions],num_envs=1,play=True)
 cfg.events={};cfg.seed=42;cfg.auto_reset=False
 cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
@@ -28,6 +29,18 @@ caps=torch.tensor([LIMITS[n] for n in robot.joint_names],device='cuda:0')
 assert term.cfg.clip is None,'Need explicit clipped-target audit before collection'
 assert torch.all(torch.as_tensor(term._scale)!=0)
 (a.output/'control_mapping.json').write_text(json.dumps(dict(tracked_body_names=list(cmd.cfg.body_names),env_origin=env.scene.env_origins.cpu().tolist(),state_joint_names=list(robot.joint_names),action_joint_names=[robot.joint_names[i] for i in order.cpu().tolist()],offset=term._offset.cpu().tolist(),scale=term._scale.cpu().tolist(),clip=repr(term.cfg.clip),step_dt=env.step_dt),indent=2))
+def native_coordinates():
+ import warp as wp
+ values=[]
+ for name in ['qpos','qvel']:
+  raw=getattr(env.sim.data,name)
+  from mjlab.sim.sim_data import TorchArray
+  tensor=raw[:] if isinstance(raw,TorchArray) else (raw if isinstance(raw,torch.Tensor) else wp.to_torch(raw))
+  assert tensor.shape[0]==1 and tensor.ndim==2 and torch.isfinite(tensor).all()
+  values.append(tensor[0].detach().cpu().numpy().copy())
+ assert values[0].shape==(37,) and values[1].shape==(36,)
+ return values
+
 reports=[]
 try:
  for clip_id,motion in enumerate(motions[:2] if a.smoke else motions):
@@ -39,12 +52,19 @@ try:
    contact_records=[]
    records={k:[] for k in ['state','action','context','next_state','desired_joint_pos','terminated','truncated']};reasons=[];max_error=0.
    if a.refresh_command_cache:records['command_body_pos']=[]
+   if a.native_generalized_state:
+    for key in ['native_qpos','native_qvel','native_next_qpos','native_next_qvel']:records[key]=[]
    for step in range(steps):
     if a.refresh_command_cache:cached_target=cmd.body_pos_relative_w.clone()
     desired=cmd.joint_pos.clone();target=desired[:,order]
     action=(target-term._offset)/term._scale
     error=float((action*term._scale+term._offset-target).abs().max());assert error<=1e-6;max_error=max(max_error,error)
-    state=extract.state().clone();context=extract.context().clone();result=env.step(action);nxt=extract.state().clone()
+    state=extract.state().clone();context=extract.context().clone()
+    if a.native_generalized_state:native_before=native_coordinates()
+    result=env.step(action);nxt=extract.state().clone()
+    if a.native_generalized_state:
+     native_after=native_coordinates()
+     for key,value in zip(['native_qpos','native_qvel','native_next_qpos','native_next_qvel'],native_before+native_after):records[key].append(value)
     assert torch.all(robot.data.joint_vel.abs()<=caps+1e-5)
     if a.native_contacts:
      from supermimic_native_contacts import native_foot_contacts
