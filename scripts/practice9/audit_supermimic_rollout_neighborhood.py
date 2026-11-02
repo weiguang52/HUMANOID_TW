@@ -7,9 +7,20 @@ p.add_argument('--queries',type=Path,required=True);p.add_argument('--collection
 plan=json.loads((a.queries/'query_plan.json').read_text());meta=json.loads((a.collection/'plan.json').read_text());out=a.collection/'independent_audit.json';assert not out.exists()
 assert meta['query_plan_sha256']==hashlib.sha256((a.queries/'query_plan.json').read_bytes()).hexdigest()
 assert meta['queries_sha256']==plan['query_sha256']==hashlib.sha256((a.queries/'queries.npz').read_bytes()).hexdigest()
+fit_reference_initialization_verified=False
+if 'fit_only_reference_ids' in meta:
+ manifest=json.loads(Path(plan['manifest']).read_text());fit=[x for x in manifest['motions'] if x['split']=='fit'];assert len(fit)==4
+ assert meta['manifest_sha256']==hashlib.sha256(Path(plan['manifest']).read_bytes()).hexdigest()
+ assert meta['fit_only_reference_ids']==[x['id'] for x in fit]
+ assert meta['fit_reference_files']==[dict(file=x['file'],sha256=x['sha256']) for x in fit]
+ for x in fit:assert hashlib.sha256(Path(x['file']).read_bytes()).hexdigest()==x['sha256']
+ fit_reference_initialization_verified=True
 with np.load(a.queries/'queries.npz',allow_pickle=False) as z:q={k:z[k].copy() for k in z.files}
 with np.load(a.collection/'transitions.npz',allow_pickle=False) as z:d={k:z[k].copy() for k in z.files}
-selected=plan['rows'][:4] if meta['smoke'] else plan['rows'];indices=[x['query'] for x in selected]
+contract=plan.get('contract','rollout_neighborhood_v1');assert contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1']
+assert meta.get('query_contract','rollout_neighborhood_v1')==contract
+selected=plan['rows'][:(4 if contract=='rollout_neighborhood_v1' else 7)] if meta['smoke'] else plan['rows'];indices=[x['query'] for x in selected]
+def native_anchor(row):return bool(row['is_native_anchor']) if 'is_native_anchor' in row else row['depth']==0
 expected=[(rep,warm,i) for rep in range(2) for warm in [True,False] for i in indices]
 actual=list(zip(d['repeat'].tolist(),d['warm_source'].tolist(),d['query'].tolist()));assert actual==expected and len(actual)==meta['planned_records']
 assert all(len(v)==len(actual) for v in d.values());assert all(np.isfinite(v).all() for v in d.values())
@@ -41,12 +52,12 @@ for i in indices:
  for rep in [0,1]:
   x,y=[lookup[(rep,warm,i)] for warm in [True,False]]
   warm_errors.append(float(np.max(np.abs(d['next_state'][x]-d['next_state'][y]))))
-  if plan['rows'][i]['depth']==0:
+  if native_anchor(plan['rows'][i]):
    assert np.array_equal(d['native_qpos'][x],q['source_native_qpos'][i]) and np.array_equal(d['native_qvel'][x],q['source_native_qvel'][i])
    anchor_errors.append(float(np.max(np.abs(d['next_state'][x]-q['source_next_state'][i]))))
  for warm in [True,False]:
   x=lookup[(0,warm,i)];target=q['source_native_warmstart'][i] if warm else np.zeros(36,dtype=q['source_native_warmstart'].dtype)
   assert np.array_equal(d['native_warmstart'][x],target)
 checks=dict(state_write=bool((write<=2e-6).all()),context_write=bool((context<=1e-7).all()),repeat_native=bool(max(repeat_errors)<=1e-5),archived_native_anchors=bool(max(anchor_errors)<=1e-5),input_speed_caps=bool((d['input_speed_excess']<=1e-5).all()))
-result=dict(passed=all(checks.values()),checks=checks,smoke=meta['smoke'],queries=len(indices),records=len(actual),max_state_write_error=float(write.max()),max_context_error=float(context.max()),max_repeat_error=max(repeat_errors),max_archived_anchor_error=max(anchor_errors),max_warmstart_sensitivity=max(warm_errors),max_input_joint_range_excess=float(d['input_joint_range_excess'].max()),terminated_records=int(d['terminated'].sum()),transitions_sha256=hashlib.sha256((a.collection/'transitions.npz').read_bytes()).hexdigest(),training_approved=False,promotion_approved=False,scope='Structural/write/identical augmented-state repeat gates and archived anchors only. Warmstart sensitivity separately reported, not proof73-state Markov. Joint position range excess retained as advisory; all terminations kept. No physical-control acceptance.')
+result=dict(fit_reference_initialization_verified=fit_reference_initialization_verified,passed=all(checks.values()),checks=checks,smoke=meta['smoke'],queries=len(indices),records=len(actual),max_state_write_error=float(write.max()),max_context_error=float(context.max()),max_repeat_error=max(repeat_errors),max_archived_anchor_error=max(anchor_errors),max_warmstart_sensitivity=max(warm_errors),max_input_joint_range_excess=float(d['input_joint_range_excess'].max()),terminated_records=int(d['terminated'].sum()),transitions_sha256=hashlib.sha256((a.collection/'transitions.npz').read_bytes()).hexdigest(),training_approved=False,promotion_approved=False,scope='Structural/write/identical augmented-state repeat gates and archived anchors only. Warmstart sensitivity separately reported, not proof73-state Markov. Joint position range excess retained as advisory; all terminations kept. No physical-control acceptance.')
 out.write_text(json.dumps(result,indent=2));print(json.dumps(result))
