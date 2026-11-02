@@ -120,7 +120,7 @@ if a.motion_h1_mix is not None:
  motion_one,motion_one_meta=load_motion_fit_windows(a.motion_collection,a.motion_audit,mapping,window=1,source_plan_path=a.motion_source_plan)
  motion_one={k:(v[:,0] if k!='state' else v) for k,v in motion_one.items()}
  assert len(motion_one['state'])==(828 if a.motion_source_plan is None else motion_one_meta['states'])
- plan.update(motion_h1_mix=bool(a.motion_h1_mix),motion_h1_generator=51,motion_h1_input=motion_one_meta)
+ plan.update(motion_h1_mix=bool(a.motion_h1_mix),motion_h1_generator=51,motion_h1_population=len(motion_one['state']),motion_h1_sampling_contract='uniform_all_audited_fit_states_v1',motion_h1_input=motion_one_meta)
  (a.output/'motion_h1_input.json').write_text(json.dumps(motion_one_meta,indent=2))
 long_static=None;long_motion=None
 if a.mixed_horizon is not None:
@@ -386,7 +386,7 @@ try:
    di=torch.randint(len(dynamic['state']),(32,),device='cuda:0',generator=dg)
    if a.dynamic_h1_mix:h1_batch={k:torch.cat([v[:32],dynamic[k][di]],dim=0) for k,v in h1_batch.items()}
   if a.motion_h1_mix is not None:
-   hi=torch.randint(828,(32,),device='cuda:0',generator=hg)
+   hi=torch.randint(len(motion_one['state']),(32,),device='cuda:0',generator=hg)
    if a.motion_h1_mix:h1_batch={k:torch.cat([v[:32],motion_one[k][hi]],dim=0) for k,v in h1_batch.items()}
   one_pred=predictor(h1_batch['state'],h1_batch['action'],h1_batch['context'])
   h1=m.state_loss(one_pred,h1_batch['next_state']);loss=.5*rollout+.5*h1
