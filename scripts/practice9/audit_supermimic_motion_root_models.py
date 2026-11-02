@@ -7,6 +7,7 @@ from supermimic.algo.networks import WorldModel,WorldModelCfg
 from supermimic_pose_integration_diagnostic import apply_offline_prediction_contract
 from supermimic_motion_root_response import load_motion_root_response,derivative
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--pair',default='motion_h1_anchor_fit_v1');p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+p.add_argument('--motion-root-collection',type=Path)
 a=p.parse_args();assert not a.output.exists();a.output.mkdir()
 r=a.root;reports=[];evidence=[]
 for arm,relative in [('source','standing_wm_calibration_v1/fit/world_model_calibrated.pt'),('control',a.pair+'/control/fit/world_model_calibrated.pt'),('candidate',a.pair+'/candidate/fit/world_model_calibrated.pt')]:
@@ -16,7 +17,7 @@ for arm,relative in [('source','standing_wm_calibration_v1/fit/world_model_calib
  for v in m.parameters():v.requires_grad_(False)
  rows=[]
  for split in ['fit','validation']:
-  data,den,axes,meta=load_motion_root_response(r/'motion_root_velocity_branches_v1/serial_full',c['cfg'],split)
+  data,den,axes,meta=load_motion_root_response(a.motion_root_collection or r/'motion_root_velocity_branches_v1/serial_full',c['cfg'],split)
   preds=[]
   with torch.no_grad():
    for start in range(0,576,32):preds.append(predict(*[data[k][start:start+32].reshape(-1,width) for k,width in [('state',73),('action',30),('context',34)]]).reshape(-1,4,73))
@@ -29,4 +30,5 @@ for arm,relative in [('source','standing_wm_calibration_v1/fit/world_model_calib
  report=dict(arm=arm,sha256=hashlib.sha256(path.read_bytes()).hexdigest(),rows=rows);reports.append(report);print(json.dumps(report),flush=True)
  del m,predict,c
 out=dict(models=reports,evidence=evidence,weights_unchanged=True,optimizer_updates=0,scope='All fixed source-isolated motion-root conditions fit/validation, evaluation only. Root normalized derivative metric uses immutable source normalization, units mixed by axis. Finite branches near contact are not infinitesimal global Jacobians or policy stability acceptance.')
+if a.motion_root_collection is not None:out['motion_root_collection']=str(a.motion_root_collection.resolve())
 (a.output/'audit.json').write_text(json.dumps(out,indent=2)+'\n')
