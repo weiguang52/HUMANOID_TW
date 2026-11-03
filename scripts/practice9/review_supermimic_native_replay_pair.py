@@ -1,15 +1,20 @@
 """Review final native replay pair against unchanged development gates."""
 import argparse,json,hashlib,statistics,datetime
 from pathlib import Path
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);a=p.parse_args();r=a.root;out=r/'paired_metric_review.json';assert not out.exists()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--h32',action='store_true');p.add_argument('--reference-root',type=Path);a=p.parse_args();r=a.root;out=r/'paired_metric_review.json';assert not out.exists()
 integrity=json.loads((r/'final_native_integrity.json').read_text());assert integrity['passed']
-plans=[json.loads((r/arm/'fit/plan.json').read_text()) for arm in ['control','candidate']];diff={k for k in set(plans[0])|set(plans[1]) if plans[0].get(k)!=plans[1].get(k)};assert diff=={'native_replay_loss'}
-assert plans[0]['native_replay_loss'] is False and plans[1]['native_replay_loss'] is True
+plans=[json.loads((r/arm/'fit/plan.json').read_text()) for arm in ['control','candidate']];diff={k for k in set(plans[0])|set(plans[1]) if plans[0].get(k)!=plans[1].get(k)};assert diff==({'native_h32_mix','native_h32_short_batch','native_h32_long_batch'} if a.h32 else {'native_replay_loss'})
+if a.h32:
+ assert a.reference_root and plans[0]['native_h32_mix'] is False and plans[1]['native_h32_mix'] is True
+else:assert plans[0]['native_replay_loss'] is False and plans[1]['native_replay_loss'] is True
 hashes={arm:hashlib.sha256((r/'declared'/arm/'fit/world_model_calibrated.pt').read_bytes()).hexdigest() for arm in ['control','candidate']}
 metrics=['root_position_error_p95_m','root_orientation_error_p95_rad','root_linear_velocity_rmse_m_s','root_angular_velocity_rmse_rad_s','joint_position_rmse_rad','joint_velocity_rmse_rad_s'];summary={}
-for kind in ['static','dynamic','expanded']:
- reports={arm:json.loads((r/arm/(kind+'_after.json')).read_text()) for arm in hashes}
- for arm,report in reports.items():assert report['checkpoint_sha256']==hashes[arm]
+kinds=['static','dynamic','expanded']+(['original_static','original_dynamic'] if a.h32 else [])
+for kind in kinds:
+ basekind=kind.removeprefix('original_');reference=a.reference_root if kind.startswith('original_') else r
+ reports={'control':json.loads((reference/'control'/(basekind+'_after.json')).read_text()),'candidate':json.loads((r/'candidate'/(basekind+'_after.json')).read_text())}
+ expected_control=hashlib.sha256((reference/'declared/control/fit/world_model_calibrated.pt').read_bytes()).hexdigest()
+ assert reports['control']['checkpoint_sha256']==expected_control and reports['candidate']['checkpoint_sha256']==hashes['candidate']
  assert [(x['trace'],x['split']) for x in reports['control']['rows']]==[(x['trace'],x['split']) for x in reports['candidate']['rows']]
  checks=[]
  for horizon in ['1','8','32']:
@@ -25,6 +30,7 @@ for kind in ['static','dynamic','expanded']:
    c=values['control']['metrics'][metric];d=values['candidate']['metrics'][metric];checks.append(dict(horizon=int(horizon),metric=metric,control=c,candidate=d,limit=1.05*c,passed=d<=1.05*c))
  summary[kind]=dict(checks=checks,failed=sum(not x['passed'] for x in checks),scope='Fit diagnostic only, not generalization gate' if kind=='expanded' else 'Original validation <=5% nonregression gate')
 coordinates={arm:json.loads((r/arm/'declared_coordinate_audit.json').read_text())['all_within_structure_atol'] for arm in hashes};branch=json.loads((r/'declared/branch_validation.json').read_text())
-passed=all(summary[k]['failed']==0 for k in ['static','dynamic']) and all(coordinates.values()) and branch['passed']
-result=dict(reviewer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),single_variable_verified=True,checkpoint_sha256=hashes,trajectory=summary,coordinate=coordinates,branch_passed=branch['passed'],development_gate_passed=passed,policy_acceptance=False,promotion_approved=False,scope='All final1000 artifacts, original six metrics x3 horizons, <=1.05 validation ratios, original held branch thresholds and declared precision coordinate contract. No selection or policy promotion; supplementary root response, independent fixed7 and3seeds still required even if these gates pass.')
+original_branch=json.loads((r/'declared/reference_branch_validation.json').read_text()) if a.h32 else branch
+passed=all(v['failed']==0 for k,v in summary.items() if k!='expanded') and all(coordinates.values()) and branch['passed'] and original_branch['passed']
+result=dict(reviewer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),original_reference_root=str(a.reference_root) if a.reference_root else None,original_branch_passed=original_branch['passed'],single_variable_verified=True,checkpoint_sha256=hashes,trajectory=summary,coordinate=coordinates,branch_passed=branch['passed'],development_gate_passed=passed,policy_acceptance=False,promotion_approved=False,scope='All final1000 artifacts, original six metrics x3 horizons, <=1.05 validation ratios, original held branch thresholds and declared precision coordinate contract. No selection or policy promotion; supplementary root response, independent fixed7 and3seeds still required even if these gates pass.')
 out.write_text(json.dumps(result,indent=2));print(json.dumps(dict(development_gate_passed=passed,failed={k:v['failed'] for k,v in summary.items()},coordinates=coordinates,branch_passed=branch['passed'])))

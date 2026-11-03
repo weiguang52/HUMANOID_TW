@@ -20,7 +20,7 @@ p.add_argument('--motion-linear-head-only',type=int,choices=[0,1])
 p.add_argument('--motion-velocity-group-loss',type=int,choices=[0,1])
 p.add_argument('--motion-root-endpoint-loss',type=int,choices=[0,1])
 p.add_argument('--motion-neighborhood-h1-mix',type=int,choices=[0,1]);p.add_argument('--motion-neighborhood-collection',type=Path)
-p.add_argument('--native-replay-loss',type=int,choices=[0,1]);p.add_argument('--native-replay-root',type=Path)
+p.add_argument('--native-h32-mix',type=int,choices=[0,1]);p.add_argument('--native-replay-loss',type=int,choices=[0,1]);p.add_argument('--native-replay-root',type=Path)
 p.add_argument('--motion-neighborhood-additive-loss',type=int,choices=[0,1])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
@@ -34,6 +34,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.native_h32_mix is not None:assert a.native_replay_loss==1 and a.mixed_horizon==0 and a.motion_h8_mix==1 and not a.motion_linear_project_static
 if a.native_replay_loss is not None:assert a.native_replay_root is not None and a.motion_neighborhood_h1_mix is None and a.motion_root_linear_loss==1 and a.velocity_anchor_coefficient==1
 else:assert a.native_replay_root is None
 if a.motion_neighborhood_additive_loss is not None:assert a.motion_neighborhood_h1_mix==0 and a.motion_root_linear_loss==1 and a.velocity_anchor_coefficient==1 and not a.motion_linear_head_only and not a.motion_linear_project_static and not a.motion_velocity_group_loss
@@ -390,6 +391,14 @@ if a.native_replay_loss is not None:
  plan['prediction_endpoints_per_update']+=16
  (a.output/'native_replay_input.json').write_text(json.dumps(native_meta,indent=2))
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+native_long=None;native_long_rng=None;native_long_history=[]
+if a.native_h32_mix is not None:
+ from supermimic_native_replay_data import load_native_replay_windows
+ native_long,native_long_meta=load_native_replay_windows(a.native_replay_root,cfg)
+ native_long_rng=torch.Generator(device='cuda:0').manual_seed(56)
+ plan.update(native_h32_mix=bool(a.native_h32_mix),native_h32_input=native_long_meta,native_h32_generator=56,native_h32_rule='Replace last4 dynamic H8 with1 native H32:480/512 short+32/512 long loss; static32 H8 and all other losses retained; same784 endpoints',native_h32_short_batch=60 if a.native_h32_mix else 64,native_h32_long_batch=1 if a.native_h32_mix else 0)
+ (a.output/'native_h32_input.json').write_text(json.dumps(native_long_meta,indent=2))
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 point_tally=None;point_history=[]
 if a.mixed_horizon is not None:
  point_tally={'points':0}
@@ -424,6 +433,14 @@ try:
     rollout_batch={k:torch.cat([v[:16],v[32:48]],dim=0) for k,v in rollout_batch.items()}
     long_batch={k:torch.cat([v[si],long_motion[k][li]],dim=0) for k,v in long_static.items()}
     assert len(rollout_batch['state'])*8+len(long_batch['state'])*32==512
+  native_long_batch=None
+  if native_long is not None:
+   native_long_ids=torch.randint(len(native_long['state']),(1,),device='cuda:0',generator=native_long_rng)
+   if a.native_h32_mix:
+    assert len(rollout_batch['state'])==64
+    rollout_batch={k:v[:60] for k,v in rollout_batch.items()}
+    native_long_batch={k:v[native_long_ids] for k,v in native_long.items()}
+    assert len(rollout_batch['state'])*8+len(native_long_batch['state'])*32==512
   pred=rollout_batch['state'];rollout=0
   velocity_rollout=0
   static_protected=0
@@ -438,6 +455,16 @@ try:
     long_rollout=long_rollout+m.state_loss(long_pred,long_batch['next_state'][:,j])/32
     long_velocity=long_velocity+velocity_value_loss(long_pred,long_batch['next_state'][:,j])/32
    rollout=.5*(rollout+long_rollout);velocity_rollout=.5*(velocity_rollout+long_velocity)
+  native_long_value=None
+  if native_long_batch is not None:
+   native_long_pred=native_long_batch['state'];native_long_value=0;native_long_velocity=0
+   for j in range(32):
+    native_long_pred=predictor(native_long_pred,native_long_batch['action'][:,j],native_long_batch['context'][:,j])
+    native_long_value=native_long_value+m.state_loss(native_long_pred,native_long_batch['next_state'][:,j])/32
+    native_long_velocity=native_long_velocity+velocity_value_loss(native_long_pred,native_long_batch['next_state'][:,j])/32
+   rollout=(480/512)*rollout+(32/512)*native_long_value
+   velocity_rollout=(480/512)*velocity_rollout+(32/512)*native_long_velocity
+  if native_long is not None:native_long_history.append(dict(update=update,indices=native_long_ids.cpu().tolist(),loss=float(native_long_value) if native_long_value is not None else None))
   oi=torch.randint(len(one['state']),(64,),device='cuda:0',generator=og)
   h1_batch={k:v[oi] for k,v in one.items()}
   if a.dynamic_h1_mix is not None:
@@ -598,6 +625,7 @@ try:
  if coordinate_contract is not None:
   from supermimic_yaw_canonical import KIND as YAW_KIND
   artifact.update(kind=YAW_KIND,coordinate_contract=coordinate_contract)
+ if native_long_history:(a.output/'native_h32_history.json').write_text(json.dumps(native_long_history,indent=2))
  if native_history:(a.output/'native_replay_history.json').write_text(json.dumps(native_history,indent=2))
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')

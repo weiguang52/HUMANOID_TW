@@ -26,3 +26,19 @@ def load_native_replay(root,cfg,device='cuda:0'):
  data={k:torch.tensor(np.concatenate(v),device=device) for k,v in arrays.items()};assert len(data['state'])==4515
  meta=dict(states=4515,files=files,fit_families=sorted({r['source_family'] for r in rows}),validation_arrays_loaded=False,reference_export_approved=False,offline_transition_fit_only=True,collection_audit_sha256=hashlib.sha256(auditfile.read_bytes()).hexdigest(),query_repeat_audit_sha256=hashlib.sha256((yawroot/'full/independent_audit.json').read_bytes()).hexdigest(),source_plan_sha256=info['plan_sha256'],scope='All real native transitions including original terminal failures, no reference feasibility or policy acceptance claim.')
  return data,meta
+
+def load_native_replay_windows(root,cfg,device='cuda:0',window=32):
+ assert window==32
+ checked,meta=load_native_replay(root,cfg,device='cpu');del checked
+ arrays={k:[] for k in ['state','action','context','next_state']};eligible=[];short=[]
+ for source in meta['files']:
+  with np.load(source['file'],allow_pickle=False) as z:
+   n=len(z['state']);assert n==source['states']
+   if n<window:short.append(source['file']);continue
+   eligible.append(source['file'])
+   for start in range(n-window+1):
+    arrays['state'].append(z['state'][start].copy())
+    for key in ['action','context','next_state']:arrays[key].append(z[key][start:start+window].copy())
+ assert len(eligible)==83 and len(short)==13 and len(arrays['state'])==1588
+ data={k:torch.tensor(np.stack(v),device=device) for k,v in arrays.items()}
+ return data,dict(meta,window=window,windows=1588,eligible_files=eligible,short_files_retained_in_h1=short,selection='Every contiguous H32 window, original terminal transitions retained, no reset crossing or padding.')
