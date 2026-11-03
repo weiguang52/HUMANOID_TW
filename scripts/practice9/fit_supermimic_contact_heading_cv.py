@@ -10,7 +10,7 @@ from supermimic_geometry_model import load_geometry_artifact
 from supermimic_precision_contract import validate
 from supermimic_yaw_canonical import canonicalize_state,rotate_vector
 from supermimic_contact_heading import contact_heading_features,CONTRACT
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--queries',type=Path,required=True);p.add_argument('--collection',type=Path,required=True);p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--queries',type=Path,required=True);p.add_argument('--collection',type=Path,required=True);p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--response-only',action='store_true');a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 torch.set_num_threads(4);torch.use_deterministic_algorithms(True)
 plan=json.loads((a.queries/'query_plan.json').read_text());audit=json.loads((a.collection/'independent_audit.json').read_text());assert audit['passed'] and not audit['smoke'] and audit.get('diagnostic_cone','pyramidal')=='pyramidal'
 f=a.collection/'transitions.npz';assert hashlib.sha256(f.read_bytes()).hexdigest()==audit['transitions_sha256']
@@ -29,6 +29,14 @@ with torch.no_grad():
  x=torch.cat([local.float(),action,context],dim=1)
  indices=list(range(7,13))+list(range(43,73));scale=(raw.state_norm.var[indices]+raw.state_norm.eps).sqrt().float();scale=torch.where(raw.state_norm.frozen_mask[indices],torch.ones_like(scale),scale)
  assert torch.isfinite(scale).all() and (scale>0).all()
+ zero_lookup={(int(q),bool(w)):i for i,(q,w) in enumerate(zip(d['query'][selected],d['warm_source'][selected]))}
+ zero_ids=[]
+ for i in selected:
+  row=plan['rows'][int(d['query'][i])];zero=next(x['query'] for x in plan['rows'] if x['anchor_query']==row['anchor_query'] and x['yaw_degrees']==0)
+  zero_ids.append(zero_lookup[zero,bool(d['warm_source'][i])])
+ zero_ids=torch.tensor(zero_ids,device='cuda:0')
+ assert np.array_equal(families,families[zero_ids.cpu().numpy()])
+ if a.response_only:base=base-base[zero_ids];target=target-target[zero_ids]
  y=(target-base)/scale
 class Residual(nn.Module):
  def __init__(self):
@@ -46,19 +54,22 @@ for fold,family in enumerate(unique):
  for arm,enabled in [('constant',False),('heading',True)]:
   model=Residual().cuda();model.load_state_dict(initial);opt=torch.optim.Adam(model.parameters(),lr=5e-4);h=features if enabled else torch.zeros_like(features)
   with torch.no_grad():assert torch.count_nonzero(model(z,h))==0
+  def correction(ids):
+   result=model(z[ids],h[ids])
+   return result-model(z[zero_ids[ids]],h[zero_ids[ids]]) if a.response_only else result
   losses=[]
   for step in range(1000):
-   ids=train[batches[step].to('cuda:0')];loss=(model(z[ids],h[ids])-y[ids]).square().mean();assert torch.isfinite(loss);opt.zero_grad();loss.backward()
+   ids=train[batches[step].to('cuda:0')];loss=(correction(ids)-y[ids]).square().mean();assert torch.isfinite(loss);opt.zero_grad();loss.backward()
    assert all(p.grad is None or torch.isfinite(p.grad).all() for p in model.parameters());opt.step()
    if step%100==0:losses.append(float(loss.detach()))
-  with torch.no_grad():out=base+model(z,h)*scale
+  with torch.no_grad():out=base+correction(torch.arange(len(z),device='cuda:0'))*scale
   report=dict(train=metrics(out[train],target[train]),held_out=metrics(out[test],target[test]),angles={})
   for angle in plan['angles_degrees']:
    ids=torch.tensor([int(i) for i in test.cpu() if plan['rows'][int(d['query'][selected[int(i)]])]['yaw_degrees']==angle],device='cuda:0');report['angles'][str(angle)]=metrics(out[ids],target[ids])
-  path=a.output/f'fold{fold}_{arm}.pt';torch.save(dict(kind='offline_contact_heading_h1_residual_diagnostic_not_policy',contract=CONTRACT,heading_enabled=enabled,state_dict=model.cpu().state_dict(),input_mean=mean.cpu(),input_std=std.cpu(),output_scale=scale.cpu(),optimizer=opt.state_dict(),updates=1000,lr=5e-4,source_checkpoint=str(a.checkpoint),source_sha256=sha,held_out_family=family,training_families=fold_result['train_families'],batch_sha256=batch_sha,offline_only=True,resumable_policy_training=False,promotion_approved=False),path)
+  path=a.output/f'fold{fold}_{arm}.pt';torch.save(dict(kind='offline_contact_heading_h1_residual_diagnostic_not_policy',response_only=a.response_only,contract=CONTRACT,heading_enabled=enabled,state_dict=model.cpu().state_dict(),input_mean=mean.cpu(),input_std=std.cpu(),output_scale=scale.cpu(),optimizer=opt.state_dict(),updates=1000,lr=5e-4,source_checkpoint=str(a.checkpoint),source_sha256=sha,held_out_family=family,training_families=fold_result['train_families'],batch_sha256=batch_sha,offline_only=True,resumable_policy_training=False,promotion_approved=False),path)
   report['artifact']=str(path);report['loss_every100']=losses;fold_result['arms'][arm]=report
  results.append(fold_result);(a.output/'partial.json').write_text(json.dumps(results,indent=2));print(json.dumps(fold_result),flush=True)
 assert hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()==sha
 for k,v in raw.state_dict().items():assert torch.equal(v.cpu(),artifact['world_model'][k])
-summary=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_sha256=sha,data_sha256=audit['transitions_sha256'],folds=results,all_four_heading_improve=all(f['arms']['heading']['held_out']['scaled_mse']<f['arms']['constant']['held_out']['scaled_mse'] for f in results),optimizer_updates_per_arm_fold=1000,validation_arrays_loaded=False,source_family_isolation=True,original_h8_h32_checked=False,policy_acceptance=False,scope='Development fit-family cross-validation only; all final checkpoints reported, no checkpoint selection. A positive H1 result is insufficient to merge into dynamics or accept control.')
+summary=dict(response_only=a.response_only,metric_semantics='paired_velocity_response' if a.response_only else 'absolute_velocity',timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_sha256=sha,data_sha256=audit['transitions_sha256'],folds=results,all_four_heading_improve=all(f['arms']['heading']['held_out']['scaled_mse']<f['arms']['constant']['held_out']['scaled_mse'] for f in results),optimizer_updates_per_arm_fold=1000,validation_arrays_loaded=False,source_family_isolation=True,original_h8_h32_checked=False,policy_acceptance=False,scope='Development fit-family cross-validation only; all final checkpoints reported, no checkpoint selection. A positive H1 result is insufficient to merge into dynamics or accept control.')
 (a.output/'result.json').write_text(json.dumps(summary,indent=2));(a.output/'status').write_text('complete_diagnostic_not_policy');print('CV_COMPLETE',summary['all_four_heading_improve'],flush=True)
