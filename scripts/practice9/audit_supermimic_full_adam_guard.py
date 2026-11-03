@@ -1,0 +1,68 @@
+"""Replay the actual complete fit objective at frozen final weights; no training."""
+import argparse,ast,copy,hashlib,json,shlex,sys,datetime
+from pathlib import Path
+import torch
+p=argparse.ArgumentParser(description=__doc__)
+p.add_argument('--checkpoint',type=Path,required=True)
+p.add_argument('--output',type=Path,required=True)
+p.add_argument('--batches',type=int,default=16)
+a=p.parse_args();assert a.batches==16 and not a.output.exists();a.output.mkdir(parents=True)
+source=Path('scripts/practice9/calibrate_supermimic_branch_pair.py')
+runner=Path('scripts/practice9/run_supermimic_static_step_guard_pair.sh')
+command=next(x for x in runner.read_text().splitlines() if x.startswith('python -u '))
+argv=shlex.split(command.split(' > ',1)[0])[3:]
+for key,value in [('--updates','4'),('--output',str(a.output/'setup'))]:
+ argv[argv.index(key)+1]=value
+artifact=torch.load(a.checkpoint,map_location='cpu',weights_only=False)
+sha=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()
+rows=[];env={};source_state=copy.deepcopy(artifact['world_model'])
+def initialize():
+ m=env['m'];m.load_state_dict(source_state);env['opt'].load_state_dict(copy.deepcopy(artifact['optimizer']))
+ assert len(list(m.net.parameters()))==8
+ for key,value in m.state_dict().items():assert torch.equal(value.cpu(),source_state[key])
+def dot(xs,ys):return float(sum((x.double()*y.double()).sum() for x,y in zip(xs,ys)))
+def audit():
+ m=env['m'];params=list(m.net.parameters());loss=env['loss'];evaluate=env['evaluate_guard_static']
+ static=evaluate();gs=torch.autograd.grad(static,params);gf=torch.autograd.grad(loss,params)
+ assert all(torch.isfinite(x).all() for x in [*gs,*gf])
+ before=[x.detach().clone() for x in params];group=artifact['optimizer']['param_groups'][0]
+ assert len(artifact['optimizer']['param_groups'])==1 and group['weight_decay']==0 and not group['amsgrad']
+ result=dict(batch=env['update'],static_loss=float(static),full_loss=float(loss),gradient_cosine=dot(gs,gf)/(dot(gs,gs)*dot(gf,gf))**.5,directions={})
+ for name,gradient,reset in [('full_saved_momentum',gf,False),('full_zero_first_moment',gf,True),('static_saved_momentum',gs,False),('static_zero_first_moment',gs,True)]:
+  shadow=[torch.nn.Parameter(x.clone()) for x in before]
+  opt=torch.optim.Adam(shadow,lr=group['lr']);opt.load_state_dict(copy.deepcopy(artifact['optimizer']))
+  if reset:
+   for state in opt.state.values():state['exp_avg'].zero_()
+  for parameter,g in zip(shadow,gradient):parameter.grad=g.detach().clone()
+  norm=torch.nn.utils.clip_grad_norm_(shadow,env['cfg']['wm_grad_clip']);opt.step()
+  delta=[x.detach()-b for x,b in zip(shadow,before)]
+  probes=[]
+  with torch.no_grad():
+   for factor in [1.,.5,.25,0.]:
+    for parameter,start,end,d in zip(params,before,shadow,delta):parameter.copy_(start if factor==0 else end if factor==1 else start+factor*d)
+    value=float(evaluate());assert torch.isfinite(torch.tensor(value))
+    probes.append(dict(factor=factor,loss=value,nonincrease=value<=float(static)))
+   for parameter,start in zip(params,before):parameter.copy_(start)
+  result['directions'][name]=dict(static_slope=dot(gs,delta),full_slope=dot(gf,delta),gradient_norm=float(norm),probes=probes)
+ rows.append(result)
+ (a.output/'partial.json').write_text(json.dumps(rows,indent=2))
+ print(json.dumps(dict(batch=env['update'],directions={k:dict(static_slope=v['static_slope'],full_slope=v['full_slope'],first_acceptable=next(x['factor'] for x in v['probes'] if x['nonincrease'])) for k,v in result['directions'].items()})),flush=True)
+# Reuse the exact full objective AST. Stop each batch before backward/real Adam,
+# retain all upstream losses and samplers; never execute artifact export.
+tree=ast.parse(source.read_text());trial=next(n for n in tree.body if isinstance(n,ast.Try) and any(isinstance(z,ast.For) for z in n.body))
+loop=trial.body[0];assert isinstance(loop,ast.For) and ast.unparse(loop.target)=='update'
+loop.iter=ast.parse(f'range(1,{a.batches+1})',mode='eval').body
+cut=next(i for i,n in enumerate(loop.body) if isinstance(n,ast.Expr) and ast.unparse(n)=='loss.backward()')
+loop.body=loop.body[:cut]+ast.parse('_audit()').body
+prefix=tree.body[:tree.body.index(trial)]
+program=ast.Module(body=prefix+ast.parse('_initialize()').body+[loop],type_ignores=[]);ast.fix_missing_locations(program)
+plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
+(a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+sys.argv=[str(source)]+argv;sys.path.insert(0,str(source.parent.resolve()))
+env.update(__name__='__main__',__file__=str(source),_initialize=initialize,_audit=audit)
+exec(compile(program,str(source),'exec'),env)
+for key,value in env['m'].state_dict().items():assert torch.equal(value.cpu(),source_state[key])
+assert hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()==sha
+summary={name:dict(static_ascent=sum(r['directions'][name]['static_slope']>0 for r in rows),full_ascent=sum(r['directions'][name]['full_slope']>0 for r in rows),identity_only=sum(not any(p['nonincrease'] for p in r['directions'][name]['probes'][:-1]) for r in rows)) for name in rows[0]['directions']}
+(a.output/'audit.json').write_text(json.dumps(dict(plan=plan,rows=rows,summary=summary,source_weights_unchanged=True,source_optimizer_steps=0,policy_acceptance=False),indent=2))
+print(json.dumps(summary),flush=True)
