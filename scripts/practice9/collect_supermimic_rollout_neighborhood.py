@@ -14,13 +14,13 @@ p.add_argument('--queries',type=Path,required=True);p.add_argument('--output',ty
 p.add_argument('--diagnostic-cone',choices=['pyramidal','elliptic'],default='pyramidal')
 p.add_argument('--diagnostic-iterations',type=int,choices=[10,20,40],default=10)
 a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
-plan=json.loads((a.queries/'query_plan.json').read_text());query_contract=plan.get('contract','rollout_neighborhood_v1');assert query_contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1','fit_dynamic_root_pose_full_v1','fit_native_world_yaw_symmetry_v1']
-assert plan['queries']=={'rollout_neighborhood_v1':192,'fit_dynamic_root_pose_probe_v1':336,'fit_dynamic_root_pose_full_v1':1200,'fit_native_world_yaw_symmetry_v1':240}[query_contract] and len(plan['rows'])==plan['queries'] and not plan['validation_arrays_loaded'] and not plan['training_approved']
+plan=json.loads((a.queries/'query_plan.json').read_text());query_contract=plan.get('contract','rollout_neighborhood_v1');assert query_contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1','fit_dynamic_root_pose_full_v1','fit_native_world_yaw_symmetry_v1','expanded_fit_native_world_yaw_symmetry_v1']
+assert plan['queries']=={'rollout_neighborhood_v1':192,'fit_dynamic_root_pose_probe_v1':336,'fit_dynamic_root_pose_full_v1':1200,'fit_native_world_yaw_symmetry_v1':240,'expanded_fit_native_world_yaw_symmetry_v1':1440}[query_contract] and len(plan['rows'])==plan['queries'] and not plan['validation_arrays_loaded'] and not plan['training_approved']
 def native_anchor(row):return bool(row['is_native_anchor']) if 'is_native_anchor' in row else row['depth']==0
 qfile=a.queries/'queries.npz';assert hashlib.sha256(qfile.read_bytes()).hexdigest()==plan['query_sha256']
 with np.load(qfile,allow_pickle=False) as z:queries={k:z[k].copy() for k in z.files}
-manifest=json.loads(Path(plan['manifest']).read_text());assert len(manifest['motions'])==8
-fit_motions=[x for x in manifest['motions'] if x['split']=='fit'];assert len(fit_motions)==4
+manifest=json.loads(Path(plan['manifest']).read_text());assert len(manifest['motions'])==(24 if query_contract=='expanded_fit_native_world_yaw_symmetry_v1' else 8)
+fit_motions=[x for x in manifest['motions'] if x['split']=='fit'];assert len(fit_motions)==(24 if query_contract=='expanded_fit_native_world_yaw_symmetry_v1' else 4)
 assert {x['source_family'] for x in fit_motions}=={x['source_family'] for x in plan['rows']}
 for motion in fit_motions:assert hashlib.sha256(Path(motion['file']).read_bytes()).hexdigest()==motion['sha256']
 collection=Path(plan['collection']);info=json.loads((collection/'input.json').read_text())
@@ -48,7 +48,7 @@ for name in robot.joint_names:
  jid=mujoco.mj_name2id(env.sim.mj_model,mujoco.mjtObj.mjOBJ_JOINT,'robot/'+name);assert jid>=0
  ranges.append(env.sim.mj_model.jnt_range[jid].copy())
 ranges=np.array(ranges);records={k:[] for k in ['query','warm_source','repeat','state','action','context','next_state','native_qpos','native_qvel','native_warmstart','terminated','truncated','state_write_error','context_error','archived_next_error','input_speed_excess','input_joint_range_excess']};contacts=[]
-selected=plan['rows'][:{'rollout_neighborhood_v1':4,'fit_dynamic_root_pose_probe_v1':7,'fit_dynamic_root_pose_full_v1':25,'fit_native_world_yaw_symmetry_v1':5}[query_contract]] if a.smoke else plan['rows'];assert all(x['split']=='fit' for x in selected)
+selected=plan['rows'][:{'rollout_neighborhood_v1':4,'fit_dynamic_root_pose_probe_v1':7,'fit_dynamic_root_pose_full_v1':25,'fit_native_world_yaw_symmetry_v1':5,'expanded_fit_native_world_yaw_symmetry_v1':5}[query_contract]] if a.smoke else plan['rows'];assert all(x['split']=='fit' for x in selected)
 metadata=dict(fit_only_reference_ids=[x['id'] for x in fit_motions],fit_reference_files=[dict(file=x['file'],sha256=x['sha256']) for x in fit_motions],manifest_sha256=hashlib.sha256(Path(plan['manifest']).read_bytes()).hexdigest(),query_contract=query_contract,query_plan_sha256=hashlib.sha256((a.queries/'query_plan.json').read_bytes()).hexdigest(),queries_sha256=plan['query_sha256'],asset_sha256=info['asset_sha256'],physics=PHYSICS_CONTRACT,mujoco_before=before,mujoco_after=after,runtime_dense=True,diagnostic_cone=a.diagnostic_cone,runtime_cone=int(env.sim.mj_model.opt.cone),diagnostic_iterations=a.diagnostic_iterations,smoke=a.smoke,planned_records=len(selected)*4,training_approved=False,promotion_approved=False,scope='All fixed fit queries, source/zero warmstart each repeated twice. Source solver state is not known true for perturbed/predicted states. No input clamping/filtering, keep failures/terminations. No policy/model fitting.')
 (a.output/'plan.json').write_text(json.dumps(metadata,indent=2));(a.output/'status').write_text('running')
 def save(name):np.savez_compressed(a.output/name,**{k:np.stack(v) for k,v in records.items()})

@@ -5,7 +5,8 @@ import numpy as np
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source-queries',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 old=json.loads((a.source_queries/'query_plan.json').read_text());f=a.source_queries/'queries.npz';assert hashlib.sha256(f.read_bytes()).hexdigest()==old['query_sha256']
 with np.load(f,allow_pickle=False) as z:source={k:z[k].copy() for k in z.files}
-anchors=[x for x in old['rows'] if x['depth']==0];assert len(anchors)==48 and len({x['source_family'] for x in anchors})==4
+expanded=old.get('contract')=='expanded_fit_native_anchor_v1'
+anchors=[x for x in old['rows'] if x['depth']==0];assert len(anchors)==(288 if expanded else 48) and len({x['source_family'] for x in anchors})==(24 if expanded else 4)
 angles=[0,30,45,90,180]
 def rotate_vector(v,deg):
  out=v.copy()
@@ -37,7 +38,7 @@ for anchor in anchors:
   for key in source:records[key].append(state if key=='query_state' else source[key][i])
   for key,value in [('query_native_qpos',qpos),('query_native_qvel',qvel),('query_native_warmstart',warm)]:records[key].append(value)
   row={k:anchor[k] for k in ['trace','id','source_family','start','index','reference_frame','split']};row.update(query=len(rows),anchor_query=i,yaw_degrees=angle,is_native_anchor=angle==0,use_native_coordinates=True,has_archived_next_label=angle==0);rows.append(row)
-assert len(rows)==240
+assert len(rows)==(1440 if expanded else 240)
 f=a.output/'queries.npz';np.savez_compressed(f,**{k:np.stack(v) for k,v in records.items()})
-plan=dict(contract='fit_native_world_yaw_symmetry_v1',queries=240,angles_degrees=angles,rows=rows,sources=old['sources'],collection=old['collection'],manifest=old['manifest'],query_sha256=hashlib.sha256(f.read_bytes()).hexdigest(),source_query_plan_sha256=hashlib.sha256((a.source_queries/'query_plan.json').read_bytes()).hexdigest(),validation_arrays_loaded=False,optimizer_updates=0,training_approved=False,promotion_approved=False,scope='All48 fixed fit native anchors, global world rotations. Native translation qvel/qacc rotate; body angular/joint components unchanged. Original command references not rotated: terminations are not covariance tests. Source archived next is a label only atzero; other physical outputs must be measured.')
-(a.output/'query_plan.json').write_text(json.dumps(plan,indent=2));print(json.dumps(dict(queries=240,angles=angles,sha256=plan['query_sha256'])))
+plan=dict(contract='expanded_fit_native_world_yaw_symmetry_v1' if expanded else 'fit_native_world_yaw_symmetry_v1',queries=len(rows),angles_degrees=angles,rows=rows,sources=old['sources'],collection=old['collection'],manifest=old['manifest'],query_sha256=hashlib.sha256(f.read_bytes()).hexdigest(),source_query_plan_sha256=hashlib.sha256((a.source_queries/'query_plan.json').read_bytes()).hexdigest(),validation_arrays_loaded=False,optimizer_updates=0,training_approved=False,promotion_approved=False,scope='All predeclared fixed fit native anchors, global world rotations. Native translation qvel/qacc rotate; body angular/joint components unchanged. Original command references not rotated: terminations are not covariance tests. Source archived next is a label only atzero; other physical outputs must be measured.')
+(a.output/'query_plan.json').write_text(json.dumps(plan,indent=2));print(json.dumps(dict(queries=len(rows),angles=angles,sha256=plan['query_sha256'])))

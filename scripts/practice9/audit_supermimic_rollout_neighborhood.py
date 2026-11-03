@@ -9,7 +9,7 @@ assert meta['query_plan_sha256']==hashlib.sha256((a.queries/'query_plan.json').r
 assert meta['queries_sha256']==plan['query_sha256']==hashlib.sha256((a.queries/'queries.npz').read_bytes()).hexdigest()
 fit_reference_initialization_verified=False
 if 'fit_only_reference_ids' in meta:
- manifest=json.loads(Path(plan['manifest']).read_text());fit=[x for x in manifest['motions'] if x['split']=='fit'];assert len(fit)==4
+ manifest=json.loads(Path(plan['manifest']).read_text());fit=[x for x in manifest['motions'] if x['split']=='fit'];assert len(fit)==(24 if plan.get('contract')=='expanded_fit_native_world_yaw_symmetry_v1' else 4)
  assert meta['manifest_sha256']==hashlib.sha256(Path(plan['manifest']).read_bytes()).hexdigest()
  assert meta['fit_only_reference_ids']==[x['id'] for x in fit]
  assert meta['fit_reference_files']==[dict(file=x['file'],sha256=x['sha256']) for x in fit]
@@ -17,9 +17,9 @@ if 'fit_only_reference_ids' in meta:
  fit_reference_initialization_verified=True
 with np.load(a.queries/'queries.npz',allow_pickle=False) as z:q={k:z[k].copy() for k in z.files}
 with np.load(a.collection/'transitions.npz',allow_pickle=False) as z:d={k:z[k].copy() for k in z.files}
-contract=plan.get('contract','rollout_neighborhood_v1');assert contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1','fit_dynamic_root_pose_full_v1','fit_native_world_yaw_symmetry_v1']
+contract=plan.get('contract','rollout_neighborhood_v1');assert contract in ['rollout_neighborhood_v1','fit_dynamic_root_pose_probe_v1','fit_dynamic_root_pose_full_v1','fit_native_world_yaw_symmetry_v1','expanded_fit_native_world_yaw_symmetry_v1']
 assert meta.get('query_contract','rollout_neighborhood_v1')==contract
-selected=plan['rows'][:{'rollout_neighborhood_v1':4,'fit_dynamic_root_pose_probe_v1':7,'fit_dynamic_root_pose_full_v1':25,'fit_native_world_yaw_symmetry_v1':5}[contract]] if meta['smoke'] else plan['rows'];indices=[x['query'] for x in selected]
+selected=plan['rows'][:{'rollout_neighborhood_v1':4,'fit_dynamic_root_pose_probe_v1':7,'fit_dynamic_root_pose_full_v1':25,'fit_native_world_yaw_symmetry_v1':5,'expanded_fit_native_world_yaw_symmetry_v1':5}[contract]] if meta['smoke'] else plan['rows'];indices=[x['query'] for x in selected]
 def native_anchor(row):return bool(row['is_native_anchor']) if 'is_native_anchor' in row else row['depth']==0
 expected=[(rep,warm,i) for rep in range(2) for warm in [True,False] for i in indices]
 actual=list(zip(d['repeat'].tolist(),d['warm_source'].tolist(),d['query'].tolist()));assert actual==expected and len(actual)==meta['planned_records']
