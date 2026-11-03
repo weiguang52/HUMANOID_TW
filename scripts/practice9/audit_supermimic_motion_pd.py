@@ -53,18 +53,36 @@ expected={(m['id'],int((m['frames']-1)*f)) for m in motions for f in ([0.] if in
 assert len(rows)==len(expected) and {(x['id'],x['frame']) for x in rows}==expected
 base=Path('/root/gpufree-data/datasets/practice9')
 train=base/'training_speed_blend_20261026/train.json';held=base/'independent_holdout_20261025/test.json'
-assert hashlib.sha256(train.read_bytes()).hexdigest()==source_plan['train_manifest_sha256']
-assert hashlib.sha256(held.read_bytes()).hexdigest()==source_plan['fixed7_manifest_sha256']
+expanded=plan.get('contract')=='expanded_native_contact_sources_v1'
+if expanded:
+ assert source_plan['quotas']=={'KIT':18,'CMU':4,'EKUT':1,'ACCAD':1} and source_plan['selection_salt']=='tw-expanded-native-contact-v1:'
+ assert hashlib.sha256(train.read_bytes()).hexdigest()==source_plan['inputs']['train']['sha256']
+ assert hashlib.sha256(held.read_bytes()).hexdigest()==source_plan['inputs']['final7']['sha256']
+ blocked=set()
+ for key in ['historical_validation','development8','final7']:
+  spec=source_plan['inputs'][key];path=Path(spec['file']);assert hashlib.sha256(path.read_bytes()).hexdigest()==spec['sha256']
+  blocked.update(x['source_family'] for x in json.loads(path.read_text())['motions'])
+ representatives={}
+ for x in sorted(json.loads(train.read_text())['motions'],key=lambda x:x['id']):
+  if x['source_family'] not in blocked:representatives.setdefault(x['source_family'],x)
+ selected=[]
+ for corpus,count in [('KIT',18),('CMU',4),('EKUT',1),('ACCAD',1)]:
+  families=sorted([f for f in representatives if f.split('/')[2]==corpus],key=lambda f:hashlib.sha256(('tw-expanded-native-contact-v1:'+f).encode()).hexdigest())
+  selected.extend(representatives[f] for f in families[:count])
+ assert len(selected)==24 and not {x['source_family'] for x in plan['motions']}&blocked
+else:
+ assert hashlib.sha256(train.read_bytes()).hexdigest()==source_plan['train_manifest_sha256']
+ assert hashlib.sha256(held.read_bytes()).hexdigest()==source_plan['fixed7_manifest_sha256']
+ seen=set();selected=[]
+ for x in sorted(json.loads(train.read_text())['motions'],key=lambda x:x['id']):
+  if x.get('category')!='walking' or x['source_family'] in seen:continue
+  seen.add(x['source_family']);selected.append(x)
+  if len(selected)==8:break
 held_rows=json.loads(held.read_text())['motions'];held_ids={x['id'] for x in held_rows};held_families={x['source_family'] for x in held_rows}
-seen=set();selected=[]
-for x in sorted(json.loads(train.read_text())['motions'],key=lambda x:x['id']):
- if x.get('category')!='walking' or x['source_family'] in seen:continue
- seen.add(x['source_family']);selected.append(x)
- if len(selected)==8:break
 assert [x['id'] for x in selected]==[x['id'] for x in plan['motions']]
 for i,(expected,motion) in enumerate(zip(selected,source_plan['motions'])):
  assert all(expected[k]==motion[k] for k in ['id','source_family','file','frames'])
- assert motion['split']==('fit' if i%2==0 else 'validation')
+ assert motion['split']==('fit' if expanded or i%2==0 else 'validation')
 assert all(x['id'] not in held_ids and x['source_family'] not in held_families for x in plan['motions'])
 by_id={m['id']:m for m in motions};reports=[]
 for row in rows:
@@ -87,6 +105,13 @@ for row in rows:
     assert foot['loaded_ground_points']>=0
 
  for k,w in [('state',73),('next_state',73),('action',30),('context',34),('desired_joint_pos',30),('terminated',1),('truncated',1)]:assert d[k].shape==(n,w)
+ if expanded and info.get('native_generalized_state'):
+  for key,width in [('native_qpos',37),('native_next_qpos',37),('native_qvel',36),('native_next_qvel',36)]:assert d[key].shape==(n,width)
+  if info.get('native_solver_state'):assert d['native_qacc_warmstart'].shape==(n,36)
+  for state_key,qpos_key,qvel_key in [('state','native_qpos','native_qvel'),('next_state','native_next_qpos','native_next_qvel')]:
+   np.testing.assert_allclose(d[state_key][:,:3]+np.asarray(mapping['env_origin'])[0],d[qpos_key][:,:3],rtol=0,atol=1e-6)
+   np.testing.assert_allclose(d[state_key][:,13:43],d[qpos_key][:,7:],rtol=0,atol=1e-6)
+   np.testing.assert_allclose(d[state_key][:,43:73],d[qvel_key][:,6:],rtol=0,atol=1e-6)
  assert np.array_equal(d['next_state'][:-1],d['state'][1:])
  done=(d['terminated']|d['truncated']).reshape(-1);assert not done[:-1].any()
  assert n==row['planned_steps'] or done[-1]
