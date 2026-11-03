@@ -20,7 +20,7 @@ p.add_argument('--motion-linear-head-only',type=int,choices=[0,1])
 p.add_argument('--motion-velocity-group-loss',type=int,choices=[0,1])
 p.add_argument('--motion-root-endpoint-loss',type=int,choices=[0,1])
 p.add_argument('--motion-neighborhood-h1-mix',type=int,choices=[0,1]);p.add_argument('--motion-neighborhood-collection',type=Path)
-p.add_argument('--native-h32-mix',type=int,choices=[0,1]);p.add_argument('--native-replay-loss',type=int,choices=[0,1]);p.add_argument('--native-replay-root',type=Path)
+p.add_argument('--static-step-guard',type=int,choices=[0,1]);p.add_argument('--native-h32-mix',type=int,choices=[0,1]);p.add_argument('--native-replay-loss',type=int,choices=[0,1]);p.add_argument('--native-replay-root',type=Path)
 p.add_argument('--motion-neighborhood-additive-loss',type=int,choices=[0,1])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
@@ -34,6 +34,7 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.static_step_guard is not None:assert a.native_h32_mix==1 and not a.motion_linear_project_static and not a.motion_linear_head_only
 if a.native_h32_mix is not None:assert a.native_replay_loss==1 and a.mixed_horizon==0 and a.motion_h8_mix==1 and not a.motion_linear_project_static
 if a.native_replay_loss is not None:assert a.native_replay_root is not None and a.motion_neighborhood_h1_mix is None and a.motion_root_linear_loss==1 and a.velocity_anchor_coefficient==1
 else:assert a.native_replay_root is None
@@ -399,6 +400,11 @@ if a.native_h32_mix is not None:
  plan.update(native_h32_mix=bool(a.native_h32_mix),native_h32_input=native_long_meta,native_h32_generator=56,native_h32_rule='Replace last4 dynamic H8 with1 native H32:480/512 short+32/512 long loss; static32 H8 and all other losses retained; same784 endpoints',native_h32_short_batch=60 if a.native_h32_mix else 64,native_h32_long_batch=1 if a.native_h32_mix else 0)
  (a.output/'native_h32_input.json').write_text(json.dumps(native_long_meta,indent=2))
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+static_step_history=[]
+if a.static_step_guard is not None:
+ plan.update(static_step_guard=bool(a.static_step_guard),base_prediction_endpoints_per_update=plan['prediction_endpoints_per_update'],guard_prediction_endpoints_per_update=1280,static_step_guard_factors=[1.,.5,.25,0.],static_step_guard_rule='Both arms compute pre-step and4 post-step fit-static32 H8 probes; candidate retracts actual Adam step to first nonincreasing finite factor; moments advance even on zero parameter step')
+ plan['prediction_endpoints_per_update']+=1280
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 point_tally=None;point_history=[]
 if a.mixed_horizon is not None:
  point_tally={'points':0}
@@ -532,10 +538,21 @@ try:
    if a.native_replay_loss:loss=loss+native_value
    native_history.append(dict(update=update,weighted_loss=float(native_value),indices=native_ids.cpu().tolist()))
   if point_tally is not None:
-   assert point_tally['points']==plan['prediction_endpoints_per_update']
+   assert point_tally['points']==plan.get('base_prediction_endpoints_per_update',plan['prediction_endpoints_per_update'])
    assert point_tally['points']==(784 if a.motion_neighborhood_additive_loss is not None or a.native_replay_loss is not None else 768)
-   point_history.append(point_tally['points'])
+   if a.static_step_guard is None:point_history.append(point_tally['points'])
   assert torch.isfinite(loss);opt.zero_grad()
+  if a.static_step_guard is not None:
+   guard_parameters=list(m.net.parameters());guard_before=[p.detach().clone() for p in guard_parameters]
+   guard_batch={k:v[:32] for k,v in rollout_batch.items()};assert len(rollout_batch['state'])==60
+   def evaluate_guard_static():
+    state=guard_batch['state'];value=0
+    for j in range(8):
+     state=predictor(state,guard_batch['action'][:,j],guard_batch['context'][:,j]);target=guard_batch['next_state'][:,j]
+     value=value+(m.state_loss(state,target)+velocity_value_loss(state,target))/8
+    return value
+   with torch.no_grad():guard_baseline=float(evaluate_guard_static())
+   assert math.isfinite(guard_baseline)
   projection_correction=None
   if a.motion_linear_project_static:
    from supermimic_gradient_projection import project_extra_gradient
@@ -562,6 +579,12 @@ try:
    with torch.no_grad():
     for parameter,correction in zip(parameters,projection_correction):parameter.grad.add_(correction)
   gn=torch.nn.utils.clip_grad_norm_(m.net.parameters(),cfg['wm_grad_clip']);assert torch.isfinite(gn);opt.step()
+  if a.static_step_guard is not None:
+   from supermimic_static_step_guard import guard_actual_step
+   guard_proof=guard_actual_step(guard_parameters,guard_before,evaluate_guard_static,guard_baseline,bool(a.static_step_guard))
+   static_step_history.append(dict(update=update,static_indices=idx[:32].cpu().tolist(),**guard_proof))
+   assert point_tally is not None and point_tally['points']==plan['prediction_endpoints_per_update']==2064
+   point_history.append(point_tally['points'])
   if update%100==0 or update==a.updates:print(json.dumps(dict(update=update,loss=float(loss+a.motion_root_linear_loss*motion_linear_value) if a.motion_linear_head_only else float(loss),rollout_loss=float(rollout),one_step_loss=float(h1),gradient_norm=float(gn),response_loss=float(response_value) if response_value is not None else None,root_state_loss=float(root_state_value) if root_state_value is not None else None,root_pose_loss=float(root_pose_value) if root_pose_value is not None else None,velocity_anchor_loss=float(velocity_anchor_value) if velocity_anchor_value is not None else None)),flush=True)
  if a.motion_neighborhood_additive_loss is not None:
   assert len(neighborhood_additive_history)==a.updates
@@ -625,8 +648,10 @@ try:
  if coordinate_contract is not None:
   from supermimic_yaw_canonical import KIND as YAW_KIND
   artifact.update(kind=YAW_KIND,coordinate_contract=coordinate_contract)
+ if static_step_history:(a.output/'static_step_guard_history.json').write_text(json.dumps(static_step_history,indent=2))
  if native_long_history:(a.output/'native_h32_history.json').write_text(json.dumps(native_long_history,indent=2))
  if native_history:(a.output/'native_replay_history.json').write_text(json.dumps(native_history,indent=2))
+ if a.static_step_guard is not None:artifact['optimizer_update_contract']='fit_static_finite_step_retraction_v1' if a.static_step_guard else 'unmodified_adam_with_observer_probes_v1'
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:

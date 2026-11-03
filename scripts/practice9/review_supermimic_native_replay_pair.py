@@ -1,10 +1,12 @@
 """Review final native replay pair against unchanged development gates."""
 import argparse,json,hashlib,statistics,datetime
 from pathlib import Path
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--h32',action='store_true');p.add_argument('--reference-root',type=Path);a=p.parse_args();r=a.root;out=r/'paired_metric_review.json';assert not out.exists()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--step-guard',action='store_true');p.add_argument('--h32',action='store_true');p.add_argument('--reference-root',type=Path);a=p.parse_args();r=a.root;out=r/'paired_metric_review.json';assert not out.exists()
 integrity=json.loads((r/'final_native_integrity.json').read_text());assert integrity['passed']
-plans=[json.loads((r/arm/'fit/plan.json').read_text()) for arm in ['control','candidate']];diff={k for k in set(plans[0])|set(plans[1]) if plans[0].get(k)!=plans[1].get(k)};assert diff==({'native_h32_mix','native_h32_short_batch','native_h32_long_batch'} if a.h32 else {'native_replay_loss'})
-if a.h32:
+plans=[json.loads((r/arm/'fit/plan.json').read_text()) for arm in ['control','candidate']];diff={k for k in set(plans[0])|set(plans[1]) if plans[0].get(k)!=plans[1].get(k)};assert diff==({'static_step_guard'} if a.step_guard else {'native_h32_mix','native_h32_short_batch','native_h32_long_batch'} if a.h32 else {'native_replay_loss'})
+if a.step_guard:
+ assert a.h32 and a.reference_root and plans[0]['static_step_guard'] is False and plans[1]['static_step_guard'] is True
+elif a.h32:
  assert a.reference_root and plans[0]['native_h32_mix'] is False and plans[1]['native_h32_mix'] is True
 else:assert plans[0]['native_replay_loss'] is False and plans[1]['native_replay_loss'] is True
 hashes={arm:hashlib.sha256((r/'declared'/arm/'fit/world_model_calibrated.pt').read_bytes()).hexdigest() for arm in ['control','candidate']}
@@ -32,5 +34,10 @@ for kind in kinds:
 coordinates={arm:json.loads((r/arm/'declared_coordinate_audit.json').read_text())['all_within_structure_atol'] for arm in hashes};branch=json.loads((r/'declared/branch_validation.json').read_text())
 original_branch=json.loads((r/'declared/reference_branch_validation.json').read_text()) if a.h32 else branch
 passed=all(v['failed']==0 for k,v in summary.items() if k!='expanded') and all(coordinates.values()) and branch['passed'] and original_branch['passed']
-result=dict(reviewer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),original_reference_root=str(a.reference_root) if a.reference_root else None,original_branch_passed=original_branch['passed'],single_variable_verified=True,checkpoint_sha256=hashes,trajectory=summary,coordinate=coordinates,branch_passed=branch['passed'],development_gate_passed=passed,policy_acceptance=False,promotion_approved=False,scope='All final1000 artifacts, original six metrics x3 horizons, <=1.05 validation ratios, original held branch thresholds and declared precision coordinate contract. No selection or policy promotion; supplementary root response, independent fixed7 and3seeds still required even if these gates pass.')
+guard_steps={}
+if a.step_guard:
+ for arm in ['control','candidate']:
+  history=json.loads((r/arm/'fit/static_step_guard_history.json').read_text());assert len(history)==1000
+  guard_steps[arm]=dict(attempts=1000,full_steps=sum(x['applied_factor']==1 for x in history),reduced_steps=sum(0<x['applied_factor']<1 for x in history),zero_steps=sum(x['applied_factor']==0 for x in history),same_batch_nonincrease=sum(x['applied_nonincrease'] for x in history))
+result=dict(reviewer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),guard_step_counts=guard_steps,original_reference_root=str(a.reference_root) if a.reference_root else None,original_branch_passed=original_branch['passed'],single_variable_verified=True,checkpoint_sha256=hashes,trajectory=summary,coordinate=coordinates,branch_passed=branch['passed'],development_gate_passed=passed,policy_acceptance=False,promotion_approved=False,scope='All final1000 artifacts, original six metrics x3 horizons, <=1.05 validation ratios, original held branch thresholds and declared precision coordinate contract. No selection or policy promotion; supplementary root response, independent fixed7 and3seeds still required even if these gates pass.')
 out.write_text(json.dumps(result,indent=2));print(json.dumps(dict(development_gate_passed=passed,failed={k:v['failed'] for k,v in summary.items()},coordinates=coordinates,branch_passed=branch['passed'])))
