@@ -14,8 +14,10 @@ p.add_argument('--native-contacts',action='store_true')
 p.add_argument('--native-generalized-state',action='store_true')
 p.add_argument('--native-solver-state',action='store_true')
 a=p.parse_args();assert not a.native_solver_state or a.native_generalized_state;assert not a.output.exists();a.output.mkdir(parents=True)
-plan=json.loads(a.plan.read_text());assert not a.refresh_command_cache or plan.get('command_cache_contract')=='current_state_current_frame_v1';motions=plan['motions'];assert len(motions)==8
-assert len({x['source_family'] for x in motions})==8
+plan=json.loads(a.plan.read_text());assert not a.refresh_command_cache or plan.get('command_cache_contract')=='current_state_current_frame_v1';motions=plan['motions'];expanded=plan.get('contract')=='expanded_native_contact_sources_v1'
+expected_count=24 if expanded else 8
+assert len(motions)==expected_count and len({x['source_family'] for x in motions})==expected_count
+if expanded:assert all(x['split']=='fit' for x in motions) and not plan['training_export_approved']
 for x in motions:assert hashlib.sha256(Path(x['file']).read_bytes()).hexdigest()==x['sha256']
 (a.output/'input.json').write_text(json.dumps(dict(native_solver_state=a.native_solver_state,native_generalized_state=a.native_generalized_state,native_contacts=a.native_contacts,refresh_command_cache=a.refresh_command_cache,plan_sha256=hashlib.sha256(a.plan.read_bytes()).hexdigest(),smoke=a.smoke,physics=PHYSICS_CONTRACT,asset_sha256=hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()),indent=2))
 cfg=tw_supermimic_env_cfg([x['file'] for x in motions],num_envs=1,play=True)

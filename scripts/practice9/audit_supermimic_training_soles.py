@@ -1,4 +1,5 @@
 import hashlib
+import argparse
 import itertools
 import json
 from pathlib import Path
@@ -7,7 +8,11 @@ import mujoco
 import numpy as np
 
 root = Path("/root/gpufree-data/datasets/practice9")
-p = root / "training_speed_blend_20261026/train.json"
+parser = argparse.ArgumentParser(description="Reference foot geometry audit; no physical acceptance claim")
+parser.add_argument("--manifest", type=Path, default=root / "training_speed_blend_20261026/train.json")
+parser.add_argument("--output", type=Path)
+args = parser.parse_args()
+p = args.manifest
 manifest = json.loads(p.read_text())
 m = mujoco.MjModel.from_xml_path(str(root / "supermimic_tw_20261031/robot/tw30.xml"))
 
@@ -99,6 +104,9 @@ out = (
     root
     / "supermimic_tw_20261031/longterm_diagnostics/training_sole_support_audit_v2.json"
 )
+if args.output is not None:
+    out = args.output
+    assert not out.exists(), "Preserve prior audit"
 result = {
     "manifest": str(p),
     "manifest_sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
