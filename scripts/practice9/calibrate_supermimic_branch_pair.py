@@ -20,6 +20,7 @@ p.add_argument('--motion-linear-head-only',type=int,choices=[0,1])
 p.add_argument('--motion-velocity-group-loss',type=int,choices=[0,1])
 p.add_argument('--motion-root-endpoint-loss',type=int,choices=[0,1])
 p.add_argument('--motion-neighborhood-h1-mix',type=int,choices=[0,1]);p.add_argument('--motion-neighborhood-collection',type=Path)
+p.add_argument('--native-replay-loss',type=int,choices=[0,1]);p.add_argument('--native-replay-root',type=Path)
 p.add_argument('--motion-neighborhood-additive-loss',type=int,choices=[0,1])
 p.add_argument('--dynamic-h1-mix',type=int,choices=[0,1])
 p.add_argument('--geometry-velocity',type=int,choices=[0,1])
@@ -33,6 +34,8 @@ p.add_argument('--response-scale-audit',type=Path)
 p.add_argument('--response-coefficient',type=float);p.add_argument('--response-fit-audit',type=Path);p.add_argument('--updates',type=int,default=1000)
 p.add_argument('--arm',choices=['control','candidate'],required=True);p.add_argument('--pose-integration-fit-audit',type=Path);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 assert a.updates in [4,1000]
+if a.native_replay_loss is not None:assert a.native_replay_root is not None and a.motion_neighborhood_h1_mix is None and a.motion_root_linear_loss==1 and a.velocity_anchor_coefficient==1
+else:assert a.native_replay_root is None
 if a.motion_neighborhood_additive_loss is not None:assert a.motion_neighborhood_h1_mix==0 and a.motion_root_linear_loss==1 and a.velocity_anchor_coefficient==1 and not a.motion_linear_head_only and not a.motion_linear_project_static and not a.motion_velocity_group_loss
 if a.motion_neighborhood_h1_mix is not None:assert a.motion_h1_mix==1 and a.mixed_horizon==0 and a.motion_neighborhood_collection is not None and not a.motion_root_endpoint_loss
 else:assert a.motion_neighborhood_collection is None
@@ -378,6 +381,15 @@ if a.motion_neighborhood_additive_loss is not None:
  plan.update(motion_neighborhood_additive_loss=bool(a.motion_neighborhood_additive_loss),motion_neighborhood_additive_rule='Keep all original768 predictions, both arms compute extra16 native neighborhood endpoints; add coefficient0/1 times(.125 state_loss + .125 velocity_group + .5 root_linear MSE), coefficients inherited from previous16 endpoint replacement')
  plan['prediction_endpoints_per_update']+=16
  (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
+native_replay=None;native_history=[];native_rng=None
+if a.native_replay_loss is not None:
+ from supermimic_native_replay_data import load_native_replay
+ native_replay,native_meta=load_native_replay(a.native_replay_root,cfg)
+ native_rng=torch.Generator(device='cuda:0').manual_seed(55)
+ plan.update(native_replay_loss=bool(a.native_replay_loss),native_replay_input=native_meta,native_replay_generator=55,native_replay_rule='Keep768 original endpoints, both arms compute16 additional native labels; coefficient0/1 of inherited .125 state+.125 velocity_group+.5 root_linear')
+ plan['prediction_endpoints_per_update']+=16
+ (a.output/'native_replay_input.json').write_text(json.dumps(native_meta,indent=2))
+ (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 point_tally=None;point_history=[]
 if a.mixed_horizon is not None:
  point_tally={'points':0}
@@ -483,9 +495,18 @@ try:
    assert torch.isfinite(near_value)
    if a.motion_neighborhood_additive_loss:loss=loss+near_value
    neighborhood_additive_history.append(dict(update=update,state_loss=float(near_state),velocity_group=float(near_velocity),root_linear=float(near_linear),weighted_loss=float(near_value),indices=ni.cpu().tolist()))
+  if native_replay is not None:
+   native_ids=torch.randint(len(native_replay['state']),(16,),device='cuda:0',generator=native_rng)
+   native={k:v[native_ids] for k,v in native_replay.items()}
+   native_pred=predictor(native['state'],native['action'],native['context'])
+   native_error=m.state_norm.normalize(native_pred)-m.state_norm.normalize(native['next_state'])
+   native_value=.125*m.state_loss(native_pred,native['next_state'])+.125*velocity_value_loss(native_pred,native['next_state'])+.5*native_error[:,7:10].square().mean()
+   assert torch.isfinite(native_value)
+   if a.native_replay_loss:loss=loss+native_value
+   native_history.append(dict(update=update,weighted_loss=float(native_value),indices=native_ids.cpu().tolist()))
   if point_tally is not None:
    assert point_tally['points']==plan['prediction_endpoints_per_update']
-   assert point_tally['points']==(784 if a.motion_neighborhood_additive_loss is not None else 768)
+   assert point_tally['points']==(784 if a.motion_neighborhood_additive_loss is not None or a.native_replay_loss is not None else 768)
    point_history.append(point_tally['points'])
   assert torch.isfinite(loss);opt.zero_grad()
   projection_correction=None
@@ -577,6 +598,7 @@ try:
  if coordinate_contract is not None:
   from supermimic_yaw_canonical import KIND as YAW_KIND
   artifact.update(kind=YAW_KIND,coordinate_contract=coordinate_contract)
+ if native_history:(a.output/'native_replay_history.json').write_text(json.dumps(native_history,indent=2))
  torch.save(artifact,a.output/'world_model_calibrated.pt')
  (a.output/'status').write_text('calibrated_pending_audit\n')
 except BaseException:
