@@ -42,5 +42,5 @@ for row in plan['rows']:
 summary=[]
 for (angle,warm),rs in groups.items():
  summary.append(dict(angle=angle,warm_source=warm,n=len(rs),failed_1e_5=sum(x['max_component']>1e-5 for x in rs),max_component=max(x['max_component'] for x in rs),root_position_max_m=max(x['root_position_m'] for x in rs)))
-result=dict(summary=summary,records=records,independent_requested_transform_passed=True,training_approved=False,promotion_approved=False,scope='Physical covariance only; original command is not rotated, termination flags are retained but not a covariance gate. A failure does not establish friction-cone causality.')
+result=dict(transitions_sha256=audit['transitions_sha256'],query_plan_sha256=hashlib.sha256((a.queries/'query_plan.json').read_bytes()).hexdigest(),summary=summary,records=records,independent_requested_transform_passed=True,training_approved=False,promotion_approved=False,scope='Physical covariance only; original command is not rotated, termination flags are retained but not a covariance gate. A failure does not establish friction-cone causality.')
 (a.collection/'yaw_covariance_audit.json').write_text(json.dumps(result,indent=2));print(json.dumps(summary))

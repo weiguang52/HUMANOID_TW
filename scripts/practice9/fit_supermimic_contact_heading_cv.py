@@ -19,11 +19,17 @@ expanded=plan.get('contract')=='expanded_fit_native_world_yaw_symmetry_v1'
 if expanded:
  assert a.response_only and a.fold_plan
  covariance=json.loads((a.collection/'yaw_covariance_audit.json').read_text())
+ assert covariance['transitions_sha256']==audit['transitions_sha256']
+ assert covariance['query_plan_sha256']==hashlib.sha256((a.queries/'query_plan.json').read_bytes()).hexdigest()
+ expected={(angle,warm) for angle in [0,30,45,90,180] for warm in [True,False]}
+ assert len(covariance['summary'])==10 and {(x['angle'],x['warm_source']) for x in covariance['summary']}==expected
+ assert all(x['n']==288 for x in covariance['summary']) and len(covariance['records'])==2880
  assert all(x['failed_1e_5']==0 for x in covariance['summary'] if x['angle'] in [90,180]), 'Quarter-turn physics gate failed; do not fit fourfold features'
 selected=np.flatnonzero(d['repeat']==0);assert len(selected)==(2880 if expanded else 480)
 families=np.array([str(plan['rows'][int(d['query'][i])]['source_family']) for i in selected]);unique=sorted(set(families));assert len(unique)==(24 if expanded else 4) and all(x['split']=='fit' for x in plan['rows'])
 if a.fold_plan:
  folds=json.loads(a.fold_plan.read_text());assert folds['contract']=='source_family_heading_fourfold_v1'
+ assert (folds['updates'],folds['batch'],folds['lr'],folds['seed'],folds['hidden'],folds['response_only'])==(1000,128,5e-4,42,[128,128],True)
  assert hashlib.sha256(Path(folds['manifest']).read_bytes()).hexdigest()==folds['manifest_sha256']
  manifest=json.loads(Path(plan['manifest']).read_text());assert manifest['parent_source_plan_sha256']==folds['manifest_sha256']
  assert sorted(sum([f['held_out_families'] for f in folds['folds']],[]))==unique
