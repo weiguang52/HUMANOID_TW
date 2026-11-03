@@ -7,6 +7,8 @@ p.add_argument('--checkpoint',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--batches',type=int,default=16)
 p.add_argument('--common-descent',action='store_true')
+p.add_argument('--component-losses',action='store_true')
+p.add_argument('--response-common-descent',action='store_true')
 a=p.parse_args();assert a.batches==16 and not a.output.exists();a.output.mkdir(parents=True)
 source=Path('scripts/practice9/calibrate_supermimic_branch_pair.py')
 runner=Path('scripts/practice9/run_supermimic_static_step_guard_pair.sh')
@@ -29,6 +31,7 @@ def capture():
  assert len({id(g) for g in generators})==len(generators)
  rng_before=[(g,g.get_state().clone()) for g in generators]
 def evaluate_full():
+ global last_components
  saved=[(g,g.get_state().clone()) for g,_ in rng_before]
  sandbox=env.copy()
  for k,v in sandbox.items():
@@ -37,19 +40,39 @@ def evaluate_full():
  try:
   for g,state in rng_before:g.set_state(state)
   with torch.no_grad():exec(replay_program,sandbox)
+  last_components={key:float(sandbox[key]) for key in ['rollout','h1','response_value','root_state_value','root_pose_value','velocity_anchor_value','motion_linear_value'] if sandbox.get(key) is not None}
   return float(sandbox['loss'])
  finally:
   for g,state in saved:g.set_state(state)
 def audit():
  m=env['m'];params=list(m.net.parameters());loss=env['loss'];evaluate=env['evaluate_guard_static']
- static=evaluate();gs=torch.autograd.grad(static,params);gf=torch.autograd.grad(loss,params)
+ static=evaluate();gs=torch.autograd.grad(static,params);gf=torch.autograd.grad(loss,params,retain_graph=a.response_common_descent)
  assert all(torch.isfinite(x).all() for x in [*gs,*gf])
  before=[x.detach().clone() for x in params];group=artifact['optimizer']['param_groups'][0]
  assert len(artifact['optimizer']['param_groups'])==1 and group['weight_decay']==0 and not group['amsgrad']
  result=dict(batch=env['update'],static_loss=float(static),full_loss=float(loss),gradient_cosine=dot(gs,gf)/(dot(gs,gs)*dot(gf,gf))**.5,directions={})
  directions=[('full_saved_momentum',gf,False),('full_zero_first_moment',gf,True),('static_saved_momentum',gs,False),('static_zero_first_moment',gs,True)]
  if a.common_descent:directions.append(('common_unit_gradients',gf,False))
+ if a.response_common_descent:
+  assert a.component_losses and a.common_descent
+  gradients=[gs,gf]+[torch.autograd.grad(env[key],params,retain_graph=True) for key in ['response_value','root_state_value','root_pose_value']]
+  units=[[v/dot(g,g)**.5 for v in g] for g in gradients]
+  gram=torch.tensor([[dot(x,y) for y in units] for x in units],dtype=torch.float64)
+  weights=torch.full((5,),.2,dtype=torch.float64)
+  for _ in range(256):
+   vertex=torch.zeros_like(weights);vertex[torch.argmin(gram@weights)]=1
+   difference=vertex-weights;denominator=float(difference@gram@difference)
+   if denominator<=1e-30:break
+   step=max(0.,min(1.,-float(difference@gram@weights)/denominator))
+   weights+=step*difference
+  response_direction=[-sum(float(w)*unit[i] for w,unit in zip(weights,units)) for i in range(len(params))]
+  result['response_common_weights']=weights.tolist()
+  result['response_common_normalized_slopes']=(-gram@weights).tolist()
+  directions.append(('response_common_min_norm',gf,False))
  full_baseline=evaluate_full() if a.common_descent else None
+ if a.component_losses:
+  assert a.common_descent
+  result['component_baseline']=dict(last_components)
  if full_baseline is not None:assert abs(full_baseline-float(loss))<=1e-6*max(1.,abs(float(loss)))
  for name,gradient,reset in directions:
   shadow=[torch.nn.Parameter(x.clone()) for x in before]
@@ -59,8 +82,8 @@ def audit():
   for parameter,g in zip(shadow,gradient):parameter.grad=g.detach().clone()
   norm=torch.nn.utils.clip_grad_norm_(shadow,env['cfg']['wm_grad_clip']);opt.step()
   delta=[x.detach()-b for x,b in zip(shadow,before)]
-  if name=='common_unit_gradients':
-   direction=[-(s/dot(gs,gs)**.5+f/dot(gf,gf)**.5) for s,f in zip(gs,gf)]
+  if name in ['common_unit_gradients','response_common_min_norm']:
+   direction=response_direction if name=='response_common_min_norm' else [-(s/dot(gs,gs)**.5+f/dot(gf,gf)**.5) for s,f in zip(gs,gf)]
    scale=(dot(delta,delta)/dot(direction,direction))**.5
    delta=[v*scale for v in direction]
    with torch.no_grad():
@@ -68,11 +91,12 @@ def audit():
    delta=[x.detach()-b for x,b in zip(shadow,before)]
   probes=[]
   with torch.no_grad():
-   for factor in [1.,.5,.25,0.]:
+   for factor in ([1.,.5,.25,.125,.0625,.03125,.015625,.0078125,0.] if name=='response_common_min_norm' else [1.,.5,.25,0.]):
     for parameter,start,end,d in zip(params,before,shadow,delta):parameter.copy_(start if factor==0 else end if factor==1 else start+factor*d)
     value=float(evaluate());assert torch.isfinite(torch.tensor(value))
     full_value=evaluate_full() if a.common_descent else None
-    probes.append(dict(factor=factor,loss=value,nonincrease=value<=float(static),full_loss=full_value,both_nonincrease=value<=float(static) and full_value<=full_baseline if a.common_descent else None))
+    components=dict(last_components) if a.component_losses else None
+    probes.append(dict(component_losses=components,factor=factor,loss=value,nonincrease=value<=float(static),full_loss=full_value,both_nonincrease=value<=float(static) and full_value<=full_baseline if a.common_descent else None))
    for parameter,start in zip(params,before):parameter.copy_(start)
   result['directions'][name]=dict(static_slope=dot(gs,delta),full_slope=dot(gf,delta),gradient_norm=float(norm),probes=probes)
  rows.append(result)
@@ -89,7 +113,7 @@ cut=next(i for i,n in enumerate(loop.body) if isinstance(n,ast.Expr) and ast.unp
 loop.body=ast.parse('_capture()').body+loop.body[:cut]+ast.parse('_audit()').body
 prefix=tree.body[:tree.body.index(trial)]
 program=ast.Module(body=prefix+ast.parse('_initialize()').body+[loop],type_ignores=[]);ast.fix_missing_locations(program)
-plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,common_descent=a.common_descent,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
+plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 sys.argv=[str(source)]+argv;sys.path.insert(0,str(source.parent.resolve()))
 env.update(__name__='__main__',__file__=str(source),_initialize=initialize,_audit=audit,_capture=capture)
