@@ -1,10 +1,14 @@
 """Review final native replay pair against unchanged development gates."""
 import argparse,json,hashlib,statistics,datetime
 from pathlib import Path
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--all-component',action='store_true');p.add_argument('--step-guard',action='store_true');p.add_argument('--h32',action='store_true');p.add_argument('--reference-root',type=Path);a=p.parse_args();r=a.root;out=r/'paired_metric_review.json';assert not out.exists()
-integrity=json.loads((r/('fit_integrity.json' if a.all_component else 'final_native_integrity.json')).read_text());assert integrity['passed']
-plans=[json.loads((r/arm/'fit/plan.json').read_text()) for arm in ['control','candidate']];diff={k for k in set(plans[0])|set(plans[1]) if plans[0].get(k)!=plans[1].get(k)};assert diff==({'two_direction_step'} if a.all_component else {'static_step_guard'} if a.step_guard else {'native_h32_mix','native_h32_short_batch','native_h32_long_batch'} if a.h32 else {'native_replay_loss'})
-if a.all_component:
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--all-component',action='store_true');p.add_argument('--moment-reset',action='store_true');p.add_argument('--step-guard',action='store_true');p.add_argument('--h32',action='store_true');p.add_argument('--reference-root',type=Path);a=p.parse_args();r=a.root;out=r/'paired_metric_review.json';assert not out.exists()
+integrity=json.loads((r/('fit_integrity.json' if (a.all_component or a.moment_reset) else 'final_native_integrity.json')).read_text());assert integrity['passed']
+plans=[json.loads((r/arm/'fit/plan.json').read_text()) for arm in ['control','candidate']];diff={k for k in set(plans[0])|set(plans[1]) if plans[0].get(k)!=plans[1].get(k)};assert diff==({'first_moment_reset_enabled'} if a.moment_reset else {'two_direction_step'} if a.all_component else {'static_step_guard'} if a.step_guard else {'native_h32_mix','native_h32_short_batch','native_h32_long_batch'} if a.h32 else {'native_replay_loss'})
+if a.moment_reset:
+ assert a.h32 and a.reference_root and not a.all_component and not a.step_guard
+ assert plans[0]['first_moment_reset_enabled'] is False and plans[1]['first_moment_reset_enabled'] is True
+ assert plans[0]['static_step_guard'] is True and plans[1]['static_step_guard'] is True
+elif a.all_component:
  assert a.h32 and a.reference_root and not a.step_guard and plans[0]['two_direction_step'] is False and plans[1]['two_direction_step'] is True
 elif a.step_guard:
  assert a.h32 and a.reference_root and plans[0]['static_step_guard'] is False and plans[1]['static_step_guard'] is True
@@ -41,7 +45,7 @@ if a.all_component:
  for arm in ['control','candidate']:
   history=json.loads((r/arm/'fit/two_direction_history.json').read_text());assert len(history)==1000
   guard_steps[arm]=dict(attempts=1000,full_steps=sum(x['selected_factor']==1 for x in history),reduced_steps=sum(0<x['selected_factor']<1 for x in history),zero_steps=sum(x['selected_factor']==0 for x in history))
-if a.step_guard:
+if a.step_guard or a.moment_reset:
  for arm in ['control','candidate']:
   history=json.loads((r/arm/'fit/static_step_guard_history.json').read_text());assert len(history)==1000
   guard_steps[arm]=dict(attempts=1000,full_steps=sum(x['applied_factor']==1 for x in history),reduced_steps=sum(0<x['applied_factor']<1 for x in history),zero_steps=sum(x['applied_factor']==0 for x in history),same_batch_nonincrease=sum(x['applied_nonincrease'] for x in history))
