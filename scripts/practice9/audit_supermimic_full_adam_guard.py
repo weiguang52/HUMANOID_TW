@@ -1,4 +1,4 @@
-"""Replay the actual complete fit objective at frozen final weights; no training."""
+"""Replay the actual complete fit objective at frozen initial or final weights; no training."""
 import argparse,ast,copy,hashlib,json,shlex,sys,datetime
 from pathlib import Path
 import torch
@@ -6,6 +6,7 @@ p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--checkpoint',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--batches',type=int,default=16)
+p.add_argument('--initial-model',action='store_true',help='Audit the exact constructed pre-update model and fresh optimizer from the original runner; checkpoint must be its parent.')
 p.add_argument('--common-descent',action='store_true')
 p.add_argument('--component-losses',action='store_true')
 p.add_argument('--response-common-descent',action='store_true')
@@ -26,7 +27,14 @@ artifact=torch.load(a.checkpoint,map_location='cpu',weights_only=False)
 sha=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()
 rows=[];env={};source_state=copy.deepcopy(artifact['world_model'])
 def initialize():
- m=env['m'];m.load_state_dict(source_state);env['opt'].load_state_dict(copy.deepcopy(artifact['optimizer']))
+ global source_state
+ m=env['m']
+ if a.initial_model:
+  assert a.checkpoint.resolve()==Path(argv[argv.index('--parent')+1]).resolve()
+  source_state={key:value.detach().cpu().clone() for key,value in m.state_dict().items()}
+  artifact['optimizer']=copy.deepcopy(env['opt'].state_dict())
+ else:
+  m.load_state_dict(source_state);env['opt'].load_state_dict(copy.deepcopy(artifact['optimizer']))
  assert len(list(m.net.parameters()))==8
  for key,value in m.state_dict().items():assert torch.equal(value.cpu(),source_state[key])
 def dot(xs,ys):return float(sum((x.double()*y.double()).sum() for x,y in zip(xs,ys)))
@@ -241,7 +249,7 @@ cut=next(i for i,n in enumerate(loop.body) if isinstance(n,ast.Expr) and ast.unp
 loop.body=ast.parse('_capture()').body+loop.body[:cut]+ast.parse('_audit()').body
 prefix=tree.body[:tree.body.index(trial)]
 program=ast.Module(body=prefix+ast.parse('_initialize()').body+[loop],type_ignores=[]);ast.fix_missing_locations(program)
-plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,cross_batch=a.cross_batch,two_batch_direction=a.two_batch_direction,two_batch_static=a.two_batch_static,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
+plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,initial_model=a.initial_model,cross_batch=a.cross_batch,two_batch_direction=a.two_batch_direction,two_batch_static=a.two_batch_static,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen initial or final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 sys.argv=[str(source)]+argv;sys.path.insert(0,str(source.parent.resolve()))
 env.update(__name__='__main__',__file__=str(source),_initialize=initialize,_audit=audit,_capture=capture)
