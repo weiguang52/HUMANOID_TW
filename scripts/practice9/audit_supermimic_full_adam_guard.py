@@ -12,9 +12,10 @@ p.add_argument('--response-common-descent',action='store_true')
 p.add_argument('--adam-metric-common',action='store_true')
 p.add_argument('--all-component-common',action='store_true')
 p.add_argument('--project-full-descent',action='store_true')
+p.add_argument('--two-batch-static',action='store_true',help='Include independent next-batch static loss: full18 constraints.')
 p.add_argument('--two-batch-direction',action='store_true',help='Include next-fit full and seven component gradients; second static is not included.')
 p.add_argument('--cross-batch',action='store_true',help='Evaluate every frozen probe on the next fit RNG batch, without selection.')
-a=p.parse_args();assert a.batches==16 and not a.output.exists();a.output.mkdir(parents=True)
+a=p.parse_args();assert not a.two_batch_static or (a.two_batch_direction and a.cross_batch);assert a.batches==16 and not a.output.exists();a.output.mkdir(parents=True)
 source=Path('scripts/practice9/calibrate_supermimic_branch_pair.py')
 runner=Path('scripts/practice9/run_supermimic_static_step_guard_pair.sh')
 command=next(x for x in runner.read_text().splitlines() if x.startswith('python -u '))
@@ -35,8 +36,17 @@ def capture():
  generators += [env[k].generator for k in ['response_loss','root_state_loss','root_pose_loss','motion_root_loss'] if env.get(k) is not None]
  assert len({id(g) for g in generators})==len(generators)
  rng_before=[(g,g.get_state().clone()) for g in generators]
+def replay_static(sandbox):
+ batch={k:v[:32] for k,v in sandbox['rollout_batch'].items()}
+ state=batch['state'];value=0
+ for j in range(8):
+  state=sandbox['predictor'](state,batch['action'][:,j],batch['context'][:,j])
+  target=batch['next_state'][:,j]
+  value=value+(sandbox['m'].state_loss(state,target)+sandbox['velocity_value_loss'](state,target))/8
+ return value
+
 def evaluate_full():
- global last_components
+ global last_components,last_cross_static
  saved=[(g,g.get_state().clone()) for g,_ in rng_before]
  sandbox=env.copy()
  for k,v in sandbox.items():
@@ -46,6 +56,8 @@ def evaluate_full():
   for g,state in rng_before:g.set_state(state)
   with torch.no_grad():exec(replay_program,sandbox)
   last_components={key:float(sandbox[key]) for key in ['rollout','h1','response_value','root_state_value','root_pose_value','velocity_anchor_value','motion_linear_value'] if sandbox.get(key) is not None}
+  if a.two_batch_static:
+   with torch.no_grad():last_cross_static=float(replay_static(sandbox))
   return float(sandbox['loss'])
  finally:
   for g,state in saved:g.set_state(state)
@@ -55,7 +67,9 @@ def evaluate_cross():
  try:
   rng_before=rng_cross
   value=evaluate_full()
-  return value,dict(last_components)
+  parts=dict(last_components)
+  if a.two_batch_static:parts['static']=last_cross_static
+  return value,parts
  finally:
   rng_before=original
 
@@ -70,6 +84,8 @@ def cross_gradients(params):
   with torch.enable_grad():
    exec(replay_program,sandbox)
    keys=['loss','response_value','root_state_value','root_pose_value','rollout','h1','velocity_anchor_value','motion_linear_value']
+   if a.two_batch_static:
+    sandbox['cross_static']=replay_static(sandbox);keys.append('cross_static')
    gradients=[torch.autograd.grad(sandbox[k],params,retain_graph=i<len(keys)-1) for i,k in enumerate(keys)]
   return keys,gradients
  finally:
@@ -225,7 +241,7 @@ cut=next(i for i,n in enumerate(loop.body) if isinstance(n,ast.Expr) and ast.unp
 loop.body=ast.parse('_capture()').body+loop.body[:cut]+ast.parse('_audit()').body
 prefix=tree.body[:tree.body.index(trial)]
 program=ast.Module(body=prefix+ast.parse('_initialize()').body+[loop],type_ignores=[]);ast.fix_missing_locations(program)
-plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,cross_batch=a.cross_batch,two_batch_direction=a.two_batch_direction,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
+plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,cross_batch=a.cross_batch,two_batch_direction=a.two_batch_direction,two_batch_static=a.two_batch_static,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 sys.argv=[str(source)]+argv;sys.path.insert(0,str(source.parent.resolve()))
 env.update(__name__='__main__',__file__=str(source),_initialize=initialize,_audit=audit,_capture=capture)
