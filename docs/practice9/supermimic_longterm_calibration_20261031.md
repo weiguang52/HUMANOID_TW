@@ -310,3 +310,13 @@ Exact center validation normalized RMSE control->candidate: linear.144597->.1397
 Action derivative validation jointvelocity.167450->.166837,angular.475110->.474648 approximately maintained. All frozen audit model tensors unchanged.
 Evidence: motion_action_center_pair_v1/{fit_integrity.json,paired_metric_review.json,dynamic_action_center/audit.json,dynamic_action_response/audit.json,dynamic_action_offset/audit.json}.
 Next inspect fit coverage and joint loss effects before another full run. Fixed7/full durations/3training-seed acceptance remains unmet. Latest branch commits still not pushed: unresolved HTTPS authentication.
+
+---
+### 2026-11-06 05:18 Asia/Shanghai: dense fit coverage still rejected
+dense_motion_center_pair_v1 completed1000+1000; integrity passed with2144 endpoints/update,22frozen,8Adam,original paired indices and center replay verified. Only sparse48 versus dense895 fit sampling differs.
+Raw candidate f2882fc642011d6b179e2c1a1fe78a39749fa1b664cb5ce7e6f8593b94aeb1d5; declared candidate4df80e96fdd89b2f69c4ca46d37a5eeedd2804ccd9945a4d0b3736b54982a872.
+Review rejected: paired static0/18 failures,dynamic6/18,expanded-fit1/18; original static7/18,dynamic1/18; coordinate checks pass,both held branch checks fail. Dynamic H32 root121.436->158.425mm. No PPO or promotion.
+Full1740 frozen steps: other847 fit rootangular normalized error.112362->.083699,jointvelocity.070450->.050628 improve; rootlinear.050666->.055671 worsens. Other797 validation angular.175637->.171424,jointvelocity.110199->.104547 improve; rootlinear.081479->.095755 worsens.
+Exact48 validation centers all three worsen: linear.139797->.150405,angular.256189->.277202,jointvelocity.145998->.151270. Action derivative validation jointvelocity.166837->.162985 slightly improves. Frozen weights unchanged.
+Evidence paired_metric_review.json,dynamic_action_response/audit.json,dynamic_action_center/audit.json,dynamic_action_offset/audit.json,dense_center_coverage/audit.json. Center supervised legacy flag denotes sampled centers only,not validation fitting.
+Next inspect omitted root-linear component of added center loss against fit-only evidence. Do not claim coverage expansion alone solves calibration. Full fixed7/duration/3seed requirements remain unmet; branch still unpushed due HTTPS authentication.
