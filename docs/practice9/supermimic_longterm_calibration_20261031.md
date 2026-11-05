@@ -320,3 +320,10 @@ Full1740 frozen steps: other847 fit rootangular normalized error.112362->.083699
 Exact48 validation centers all three worsen: linear.139797->.150405,angular.256189->.277202,jointvelocity.145998->.151270. Action derivative validation jointvelocity.166837->.162985 slightly improves. Frozen weights unchanged.
 Evidence paired_metric_review.json,dynamic_action_response/audit.json,dynamic_action_center/audit.json,dynamic_action_offset/audit.json,dense_center_coverage/audit.json. Center supervised legacy flag denotes sampled centers only,not validation fitting.
 Next inspect omitted root-linear component of added center loss against fit-only evidence. Do not claim coverage expansion alone solves calibration. Full fixed7/duration/3seed requirements remain unmet; branch still unpushed due HTTPS authentication.
+
+---
+2026-11-06 05:25 Asia/Shanghai — root-linear dense-center paired experiment
+Goal: test the omitted root-linear velocity target without changing dense fit coverage, original objective, sample budget, or acceptance gates. Both arms use 895 fit states and 2144 prediction points/update; only the added normalized root-linear center MSE coefficient switches 0/1. No validation labels enter fitting.
+The fixed 4-update smoke passed: control weights and Adam state bitexact against the previous dense candidate, 22 frozen tensors and 8 Adam states checked, all paired indices identical and center seed replay verified. This establishes reproducibility, not policy quality.
+Next: fixed 1000 updates/arm, unchanged H1/H8/H32, coordinate and held-branch audits; retain rejected finals. Fixed7 full-duration and >=3 independent policy seeds remain unfulfilled. No policy promotion.
+State: longterm_diagnostics/linear_dense_center_pair_v1. Push remains unverified because remote HTTPS credentials are unavailable; local remote-server commits retained.
