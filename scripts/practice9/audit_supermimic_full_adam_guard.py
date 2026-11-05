@@ -12,6 +12,7 @@ p.add_argument('--response-common-descent',action='store_true')
 p.add_argument('--adam-metric-common',action='store_true')
 p.add_argument('--all-component-common',action='store_true')
 p.add_argument('--project-full-descent',action='store_true')
+p.add_argument('--cross-batch',action='store_true',help='Evaluate every frozen probe on the next fit RNG batch, without selection.')
 a=p.parse_args();assert a.batches==16 and not a.output.exists();a.output.mkdir(parents=True)
 source=Path('scripts/practice9/calibrate_supermimic_branch_pair.py')
 runner=Path('scripts/practice9/run_supermimic_static_step_guard_pair.sh')
@@ -47,7 +48,22 @@ def evaluate_full():
   return float(sandbox['loss'])
  finally:
   for g,state in saved:g.set_state(state)
+def evaluate_cross():
+ global rng_before
+ original=rng_before
+ try:
+  rng_before=rng_cross
+  value=evaluate_full()
+  return value,dict(last_components)
+ finally:
+  rng_before=original
+
 def audit():
+ global rng_cross
+ rng_cross=[(g,g.get_state().clone()) for g,_ in rng_before]
+ if a.cross_batch:
+  assert a.component_losses and a.common_descent
+  assert any(not torch.equal(state,other) for (_,state),(_,other) in zip(rng_before,rng_cross))
  m=env['m'];params=list(m.net.parameters());loss=env['loss'];evaluate=env['evaluate_guard_static']
  static=evaluate();gs=torch.autograd.grad(static,params);gf=torch.autograd.grad(loss,params,retain_graph=a.response_common_descent)
  assert all(torch.isfinite(x).all() for x in [*gs,*gf])
@@ -129,6 +145,10 @@ def audit():
   assert a.common_descent
   result['component_baseline']=dict(last_components)
  if full_baseline is not None:assert abs(full_baseline-float(loss))<=1e-6*max(1.,abs(float(loss)))
+ if a.cross_batch:
+  cross_baseline,cross_components=evaluate_cross()
+  result['cross_baseline']=dict(full_loss=cross_baseline,components=cross_components)
+  result['cross_rng_sha256']=[hashlib.sha256(state.cpu().numpy().tobytes()).hexdigest() for _,state in rng_cross]
  for name,gradient,reset in directions:
   shadow=[torch.nn.Parameter(x.clone()) for x in before]
   opt=torch.optim.Adam(shadow,lr=group['lr']);opt.load_state_dict(copy.deepcopy(artifact['optimizer']))
@@ -151,7 +171,10 @@ def audit():
     value=float(evaluate());assert torch.isfinite(torch.tensor(value))
     full_value=evaluate_full() if a.common_descent else None
     components=dict(last_components) if a.component_losses else None
-    probes.append(dict(component_losses=components,factor=factor,loss=value,nonincrease=value<=float(static),full_loss=full_value,both_nonincrease=value<=float(static) and full_value<=full_baseline if a.common_descent else None))
+    cross_value,cross_parts=evaluate_cross() if a.cross_batch else (None,None)
+    if a.cross_batch and factor==0:
+     assert cross_value==cross_baseline and cross_parts==cross_components
+    probes.append(dict(cross_full_loss=cross_value,cross_components=cross_parts,component_losses=components,factor=factor,loss=value,nonincrease=value<=float(static),full_loss=full_value,both_nonincrease=value<=float(static) and full_value<=full_baseline if a.common_descent else None))
    for parameter,start in zip(params,before):parameter.copy_(start)
   result['directions'][name]=dict(static_slope=dot(gs,delta),full_slope=dot(gf,delta),gradient_norm=float(norm),probes=probes)
  rows.append(result)
@@ -168,7 +191,7 @@ cut=next(i for i,n in enumerate(loop.body) if isinstance(n,ast.Expr) and ast.unp
 loop.body=ast.parse('_capture()').body+loop.body[:cut]+ast.parse('_audit()').body
 prefix=tree.body[:tree.body.index(trial)]
 program=ast.Module(body=prefix+ast.parse('_initialize()').body+[loop],type_ignores=[]);ast.fix_missing_locations(program)
-plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
+plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,cross_batch=a.cross_batch,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 sys.argv=[str(source)]+argv;sys.path.insert(0,str(source.parent.resolve()))
 env.update(__name__='__main__',__file__=str(source),_initialize=initialize,_audit=audit,_capture=capture)
