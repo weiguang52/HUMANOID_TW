@@ -7,6 +7,7 @@ p.add_argument('--checkpoint',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--batches',type=int,default=16)
 p.add_argument('--initial-model',action='store_true',help='Audit the exact constructed pre-update model and fresh optimizer from the original runner; checkpoint must be its parent.')
+p.add_argument('--gradient-breakdown',action='store_true',help='Record frozen per-layer objective gradient competition; requires baseline-only.')
 p.add_argument('--baseline-only',action='store_true',help='Record fixed objective components and sampler hashes without gradient probes.')
 p.add_argument('--common-descent',action='store_true')
 p.add_argument('--component-losses',action='store_true')
@@ -18,6 +19,7 @@ p.add_argument('--two-batch-static',action='store_true',help='Include independen
 p.add_argument('--two-batch-direction',action='store_true',help='Include next-fit full and seven component gradients; second static is not included.')
 p.add_argument('--cross-batch',action='store_true',help='Evaluate every frozen probe on the next fit RNG batch, without selection.')
 a=p.parse_args();assert not a.two_batch_static or (a.two_batch_direction and a.cross_batch);assert a.batches==16 and not a.output.exists();a.output.mkdir(parents=True)
+assert not a.gradient_breakdown or a.baseline_only
 source=Path('scripts/practice9/calibrate_supermimic_branch_pair.py')
 runner=Path('scripts/practice9/run_supermimic_static_step_guard_pair.sh')
 command=next(x for x in runner.read_text().splitlines() if x.startswith('python -u '))
@@ -106,6 +108,17 @@ def audit():
   assert not a.cross_batch
   with torch.no_grad():static=float(env['evaluate_guard_static']())
   row=dict(batch=env['update'],static_loss=static,full_loss=float(env['loss']),directions={},component_baseline={k:float(env[k]) for k in ['rollout','h1','response_value','root_state_value','root_pose_value','velocity_anchor_value','motion_linear_value']},first_rng_sha256=[hashlib.sha256(state.cpu().numpy().tobytes()).hexdigest() for _,state in rng_before])
+  if a.gradient_breakdown:
+   params=list(env['m'].net.parameters());assert len(params)==8
+   values={'static':env['evaluate_guard_static'](),'full':env['loss'],**{k:env[k] for k in row['component_baseline']}}
+   grads={k:torch.autograd.grad(v,params,retain_graph=True) for k,v in values.items()}
+   pairs=[('static','full'),('response_value','rollout'),('response_value','root_state_value'),('response_value','velocity_anchor_value'),('root_state_value','rollout')]
+   groups={'shared_hidden':lambda g:g[:6],'root_linear_head':lambda g:[x[3:6] for x in g[-2:]],'root_angular_head':lambda g:[x[6:9] for x in g[-2:]],'joint_velocity_head':lambda g:[x[39:69] for x in g[-2:]]}
+   breakdown={}
+   for group,select in groups.items():
+    squared={k:dot(select(g),select(g)) for k,g in grads.items()}
+    breakdown[group]={'gradient_norm':{k:v**.5 for k,v in squared.items()},'cosine':{u+'__'+v:dot(select(grads[u]),select(grads[v]))/max((squared[u]*squared[v])**.5,1e-300) for u,v in pairs}}
+   row['gradient_breakdown']=breakdown
   rows.append(row);(a.output/'partial.json').write_text(json.dumps(rows,indent=2));print(json.dumps(dict(batch=row['batch'],full_loss=row['full_loss'],static_loss=static)),flush=True)
   return
  rng_cross=[(g,g.get_state().clone()) for g,_ in rng_before]
@@ -256,7 +269,7 @@ cut=next(i for i,n in enumerate(loop.body) if isinstance(n,ast.Expr) and ast.unp
 loop.body=ast.parse('_capture()').body+loop.body[:cut]+ast.parse('_audit()').body
 prefix=tree.body[:tree.body.index(trial)]
 program=ast.Module(body=prefix+ast.parse('_initialize()').body+[loop],type_ignores=[]);ast.fix_missing_locations(program)
-plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,baseline_only=a.baseline_only,initial_model=a.initial_model,cross_batch=a.cross_batch,two_batch_direction=a.two_batch_direction,two_batch_static=a.two_batch_static,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen initial or final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
+plan=dict(timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(a.checkpoint),checkpoint_sha256=sha,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),runner_sha256=hashlib.sha256(runner.read_bytes()).hexdigest(),batches=a.batches,baseline_only=a.baseline_only,gradient_breakdown=a.gradient_breakdown,initial_model=a.initial_model,cross_batch=a.cross_batch,two_batch_direction=a.two_batch_direction,two_batch_static=a.two_batch_static,common_descent=a.common_descent,component_losses=a.component_losses,response_common_descent=a.response_common_descent,adam_metric_common=a.adam_metric_common,all_component_common=a.all_component_common,project_full_descent=a.project_full_descent,argv=argv,scope='All actual fit losses/samplers at frozen initial or final weights; shadow Adam only, no source optimizer steps. Reset-first-moment retains second moments and step count; hypothetical diagnosis, not proposed accepted optimizer. Finite probes measure same fit-static batch only. Existing setup may load reference metadata; no validation loss used. Not a historical reconstruction of the 745 zero steps or closed-loop proof.')
 (a.output/'plan.json').write_text(json.dumps(plan,indent=2))
 sys.argv=[str(source)]+argv;sys.path.insert(0,str(source.parent.resolve()))
 env.update(__name__='__main__',__file__=str(source),_initialize=initialize,_audit=audit,_capture=capture)
