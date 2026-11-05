@@ -300,3 +300,13 @@ Dynamic response validation normalized RMSE (control -> candidate): root linear 
 Evidence under `/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/motion_action_response_pair_v1`: fit_integrity.json, paired_metric_review.json, response_summary.json, dynamic_action_offset/audit.json. New frozen diagnostic script `scripts/practice9/audit_supermimic_motion_action_offset.py` audits all 192 conditions per model and asserts source model tensors unchanged. All failed finals retained. Next: verify absolute predictions at archived unperturbed dynamic action centers, then design a single-variable fit-only correction if justified. Long-term fixed7/full-duration/three-training-seed requirements are still unmet.
 
 Push remains blocked by HTTPS authentication; no claim that these latest commits reached origin.
+
+---
+### 2026-11-06 03:46 Asia/Shanghai: center supervision rejected
+motion_action_center_pair_v1: both fixed1000 arms completed. Integrity passed: control weights/Adam bitexact prior candidate,22 frozen tensors,8 Adam states,2144 endpoints/update,center coefficient0/1 only.
+Review failures: static9/18,dynamic7/18,expanded-fit7/18,original-static12/18,original-dynamic1/18. Coordinates pass; both branch comparisons fail. No PPO or promotion.
+Dynamic H32 root147.478->121.436mm improves,static29.498->36.140mm and dynamic orientation.554866->.727941rad worsen.
+Exact center validation normalized RMSE control->candidate: linear.144597->.139797,angular.243330->.256189,jointvelocity.158642->.145998. Fit angular.122794->.099141,jointvelocity.085229->.066307 improve.
+Action derivative validation jointvelocity.167450->.166837,angular.475110->.474648 approximately maintained. All frozen audit model tensors unchanged.
+Evidence: motion_action_center_pair_v1/{fit_integrity.json,paired_metric_review.json,dynamic_action_center/audit.json,dynamic_action_response/audit.json,dynamic_action_offset/audit.json}.
+Next inspect fit coverage and joint loss effects before another full run. Fixed7/full durations/3training-seed acceptance remains unmet. Latest branch commits still not pushed: unresolved HTTPS authentication.
