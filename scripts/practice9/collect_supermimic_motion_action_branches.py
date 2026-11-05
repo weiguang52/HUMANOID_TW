@@ -1,0 +1,99 @@
+"""Native motion-action paired branches; no model fitting."""
+import argparse,hashlib,json,os
+from pathlib import Path
+import numpy as np,torch
+from mjlab.envs import ManagerBasedRlEnv
+from supermimic.config.tw.env_cfgs import tw_supermimic_env_cfg
+from supermimic.config.tw.velocity_limits import enable_tw_velocity_limits,disable_tw_velocity_limits,LIMITS,PHYSICS_CONTRACT
+from supermimic.algo.state import SuperMimicStateSpec,StateExtractor
+p=argparse.ArgumentParser(description=__doc__)
+p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--smoke',action='store_true');p.add_argument('--serial',action='store_true')
+p.add_argument('--collection',type=Path);p.add_argument('--manifest',type=Path);p.add_argument('--restore-native-state',action='store_true')
+a=p.parse_args();assert (a.collection is None)==(a.manifest is None);assert not a.restore_native_state or (a.serial and a.collection is not None);assert not a.output.exists();a.output.mkdir(parents=True)
+a.collection=a.collection or a.root/'motion_pd_collection_cache_v2/full'
+manifest_path=a.manifest or a.collection.parent/'plan.json'
+manifest=json.loads(manifest_path.read_text())
+source=json.loads((a.collection/'results.json').read_text())['rows'];assert len(source)==32
+info=json.loads((a.collection/'input.json').read_text());assert info['physics']==PHYSICS_CONTRACT
+assert info['asset_sha256']==hashlib.sha256(Path(os.environ['TW_SUPERMIMIC_MJCF']).read_bytes()).hexdigest()
+if a.manifest is not None:assert info['plan_sha256']==hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+plan=dict(contract='motion_action_branches_v1',smoke=a.smoke,source_files=source,source_plan_sha256=hashlib.sha256(manifest_path.read_bytes()).hexdigest(),levels=[.02,.05],base_delta=[1.]*30,assignments=2,num_envs=1 if a.serial else 60,serial=a.serial,selection='All32 original episodes, indices first/middle/final; smoke first fit episode index0 only; paired actions around original PD command; state unperturbed',state_write_atol=2e-6,replay_atol=1e-5,asset_sha256=info['asset_sha256'],physics=PHYSICS_CONTRACT,scope='One-step branches only; original terminal flags retained, no optimization or acceptance.')
+if a.manifest is not None:plan.update(source_collection=str(a.collection.resolve()),source_manifest=str(manifest_path.resolve()),restore_native_state=a.restore_native_state)
+(a.output/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
+cfg=tw_supermimic_env_cfg([x['file'] for x in manifest['motions']],num_envs=1 if a.serial else 60,play=True);cfg.events={};cfg.seed=42;cfg.auto_reset=False
+cfg.commands['motion'].pose_range={};cfg.commands['motion'].velocity_range={};cfg.commands['motion'].joint_position_range=(0.,0.)
+env=ManagerBasedRlEnv(cfg,device='cuda:0');enable_tw_velocity_limits(env)
+robot=env.scene['robot'];cmd=env.command_manager.get_term('motion');term=env.action_manager.get_term('joint_pos');ids=torch.arange(1 if a.serial else 60,device='cuda:0')
+spec=SuperMimicStateSpec.from_env(env,cmd.cfg.body_names)
+extract=StateExtractor(env,spec,torso_body_name='chest',left_foot_geom_pattern=r'^left_foot_collision(_\d+)?$',right_foot_geom_pattern=r'^right_foot_collision(_\d+)?$')
+mapping=json.loads((a.collection/'control_mapping.json').read_text())
+assert mapping['state_joint_names']==list(robot.joint_names) and mapping['action_joint_names']==list(term.target_names)
+for key in ['offset','scale']:np.testing.assert_allclose(getattr(term,'_'+key).cpu().numpy(),np.broadcast_to(np.array(mapping[key]),getattr(term,'_'+key).shape),rtol=0,atol=1e-7)
+assert abs(env.step_dt-.02)<1e-9
+caps=torch.tensor([LIMITS[n] for n in robot.joint_names],device='cuda:0');reports=[];cleared=set();pending=None
+
+clip_ids={x['id']:i for i,x in enumerate(manifest['motions'])}
+def reset(row,index=0):
+ env.reset();cmd.reset_to_frame(ids,clip_ids[row['id']],row['frame']+index);env.sim.forward()
+
+def clear_history():
+ for name in ['qacc_warmstart','qacc','qfrc_applied','xfrc_applied','ctrl','act']:
+  value=getattr(env.sim.data,name,None)
+  if isinstance(value,torch.Tensor):value.zero_();cleared.add(name)
+
+(a.output/'control_mapping.json').write_text((a.collection/'control_mapping.json').read_text())
+reports=[]
+try:
+ (a.output/'status').write_text('running\n')
+ selected=[x for x in source if x['split']=='fit'][:1] if a.smoke else source
+ for row in selected:
+  path=a.collection/row['trace'];assert hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
+  with np.load(path,allow_pickle=False) as z:data={k:z[k].copy() for k in ['state','action','context']}
+  if a.restore_native_state:
+   with np.load(path,allow_pickle=False) as z:
+    for key,width in [('native_qpos',37),('native_qvel',36),('native_qacc_warmstart',36)]:
+     data[key]=z[key].copy();assert data[key].shape==(len(data['state']),width) and np.isfinite(data[key]).all()
+  n=len(data['state']);indices=[0] if a.smoke else sorted({0,n//2,n-1})
+  for index in indices:
+   for level,assignment in [(0.,0),(.02,0),(.02,1),(.05,0),(.05,1)]:
+    reset(row,index)
+    desired=torch.tensor(data['state'][index:index+1],device='cuda:0').repeat(60,1)
+    action=torch.tensor(data['action'][index:index+1],device='cuda:0').repeat(60,1)
+    delta=torch.zeros(60,30,device='cuda:0')
+    signs=torch.tensor([-1.,1.]*30,device='cuda:0')*(1 if assignment==0 else -1)
+    delta[torch.arange(60,device='cuda:0'),torch.arange(30,device='cuda:0').repeat_interleave(2)]=signs*torch.tensor(plan['base_delta'],device='cuda:0').repeat_interleave(2)*level
+    action+=delta
+    states=[];contexts=[];nexts=[];terms=[];truncs=[]
+    native_records={k:[] for k in ['native_qpos','native_qvel','native_qacc_warmstart']} if a.restore_native_state else {}
+    for sample in range(60) if a.serial else [None]:
+     reset(row,index)
+     ds=desired[sample:sample+1] if a.serial else desired
+     act=action[sample:sample+1] if a.serial else action
+     robot.write_joint_state_to_sim(ds[:,13:43],ds[:,43:73])
+     robot.write_root_link_pose_to_sim(torch.cat([ds[:,:3]+env.scene.env_origins,ds[:,3:7]],1))
+     robot.write_root_link_velocity_to_sim(ds[:,7:13]);env.sim.forward()
+     if a.restore_native_state:
+      from mjlab.utils.lab_api.math import quat_apply_inverse
+      nq=torch.tensor(data['native_qpos'][index:index+1],device='cuda:0')
+      nv=torch.tensor(data['native_qvel'][index:index+1],device='cuda:0')
+      env.sim.data.qpos[:]=nq;env.sim.data.qvel[:]=nv;env.sim.forward()
+     clear_history()
+     if a.restore_native_state:
+      env.sim.data.qacc_warmstart[:]=torch.tensor(data['native_qacc_warmstart'][index:index+1],device='cuda:0')
+      for key in native_records:native_records[key].append(getattr(env.sim.data,key.removeprefix('native_'))[:].clone())
+     env.episode_length_buf[:]=index;cmd.update_relative_body_poses()
+     states.append(extract.state().clone());contexts.append(extract.context().clone())
+     result=env.step(act);nexts.append(extract.state().clone());terms.append(result[2].clone());truncs.append(result[3].clone())
+     assert torch.isfinite(nexts[-1]).all() and bool((robot.data.joint_vel.abs()<=caps+1e-5).all())
+    state=torch.cat(states);ctx=torch.cat(contexts);actual=torch.cat(nexts);terminated=torch.cat(terms);truncated=torch.cat(truncs)
+    context_error=float((ctx-torch.tensor(data['context'][index],device='cuda:0')).abs().max());assert context_error<=1e-7
+    filename='%s_i%d_eps%.3f_a%d.npz'%(Path(row['trace']).stem,index,level,assignment)
+    np.savez_compressed(a.output/filename,**{k:torch.cat(v).cpu().numpy() for k,v in native_records.items()},state=state.cpu().numpy(),desired=desired.cpu().numpy(),delta=delta.cpu().numpy(),action=action.cpu().numpy(),context=ctx.cpu().numpy(),next_state=actual.cpu().numpy(),terminated=terminated.cpu().numpy(),truncated=truncated.cpu().numpy())
+    reports.append(dict(file=filename,sha256=hashlib.sha256((a.output/filename).read_bytes()).hexdigest(),source_trace=row['trace'],source_family=row['source_family'],split=row['split'],index=index,level=level,assignment=assignment,count=60,write_error=float((state-desired).abs().max()),context_error=context_error,terminated_count=int(terminated.sum()),truncated_count=int(truncated.sum())))
+   (a.output/'partial.json').write_text(json.dumps(reports,indent=2)+'\n')
+  print(json.dumps(dict(trace=row['trace'],split=row['split'],batches=len(reports))),flush=True)
+ result=dict(smoke=a.smoke,rows=reports,endpoints=len(reports)*60,write_failures=sum(x['write_error']>2e-6 for x in reports),scope=plan['scope'])
+ (a.output/'results.json').write_text(json.dumps(result,indent=2)+'\n');(a.output/'status').write_text('completed_pending_audit\n');print(json.dumps({k:v for k,v in result.items() if k!='rows'}),flush=True)
+except BaseException:
+ (a.output/'status').write_text('failed\n');raise
+finally:env.close();disable_tw_velocity_limits(env)
