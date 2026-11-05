@@ -286,3 +286,17 @@ errors and response behavior before selecting another single-variable change.
 PPO remains gated on physical prediction consistency. Code is committed remotely;
 new-branch push is still unverified because HTTPS authentication failed. A local
 commit does not establish a successful push. Do not record tokens in this file.
+
+
+---
+### 2026-11-06 02:18 Asia/Shanghai — dynamic action response is improved, full calibration still rejected
+
+Branch: supermimic/tw-adaptation-20261104. `motion_action_response_pair_v1` completed both fixed 1000 updates. Integrity passed: original control weights/Adam bitexact, 22 frozen tensors, eight Adam states, paired indices, sole coefficient 0/1 difference, 2128 endpoints/update. Raw candidate SHA256 f418e0616182a05cc248c1577eb99418f3f8da9fdd713a548274716708d92737; declared candidate 314b5e00278e706b3d58157e4a3d2a4d888ab7c3e06c849d870755932e6ba28f.
+
+Full review rejected: static 4/18 and dynamic 6/18 regressions relative to paired control; expanded fit diagnostic 9/18; original-reference static 6/18 and dynamic 1/18. Coordinates pass, held response branches fail. Dynamic H32 root-position p95 trajectory median 129.501 -> 147.478 mm. Static H32 candidate 29.498 mm alone does not establish acceptance. No PPO or promotion.
+
+Dynamic response validation normalized RMSE (control -> candidate): root linear .239084 -> .212535; root angular .692180 -> .475110; joint velocity .617161 -> .167450. Frozen offset decomposition at the same archived perturbed endpoints finds joint-velocity centered error .0215444 -> .00574442 but symmetric-mean error .126453 -> .158635. Mean per-condition offset MSE fraction .915258 -> .996883. Each condition has an exact MSE decomposition assertion; symmetric means approximate local action centers and are not exact zero-perturbation evaluations. These descriptive results support investigating absolute next-state offset alongside action derivatives, not claiming a proven causal explanation of all rollout errors. Fit-only decisions and unchanged validation gates remain required.
+
+Evidence under `/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/motion_action_response_pair_v1`: fit_integrity.json, paired_metric_review.json, response_summary.json, dynamic_action_offset/audit.json. New frozen diagnostic script `scripts/practice9/audit_supermimic_motion_action_offset.py` audits all 192 conditions per model and asserts source model tensors unchanged. All failed finals retained. Next: verify absolute predictions at archived unperturbed dynamic action centers, then design a single-variable fit-only correction if justified. Long-term fixed7/full-duration/three-training-seed requirements are still unmet.
+
+Push remains blocked by HTTPS authentication; no claim that these latest commits reached origin.
