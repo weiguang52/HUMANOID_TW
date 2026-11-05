@@ -327,3 +327,9 @@ Goal: test the omitted root-linear velocity target without changing dense fit co
 The fixed 4-update smoke passed: control weights and Adam state bitexact against the previous dense candidate, 22 frozen tensors and 8 Adam states checked, all paired indices identical and center seed replay verified. This establishes reproducibility, not policy quality.
 Next: fixed 1000 updates/arm, unchanged H1/H8/H32, coordinate and held-branch audits; retain rejected finals. Fixed7 full-duration and >=3 independent policy seeds remain unfulfilled. No policy promotion.
 State: longterm_diagnostics/linear_dense_center_pair_v1. Push remains unverified because remote HTTPS credentials are unavailable; local remote-server commits retained.
+
+---
+2026-11-06 06:44 Asia/Shanghai — root-linear dense-center pair rejected
+Both fixed1000 arms completed with paired integrity passed (22 frozen tensors, 8 Adam states, 2144 points/update, sampled indices replayed). Control weights+Adam are bitexact against prior dense candidate. Raw candidate SHA256 527ae017a9dfa05e19621365b1535cc903e79a1f5e725f2b8b20584b4bd0d7d0.
+Unchanged reviewer rejects: paired static8/18, dynamic6/18, expanded fit diagnostic5/18 failures; original static12/18 and dynamic1/18 failures. Both coordinate audits pass; held branches fail. Dynamic H32 root position improves 158.425 ->117.985mm, but static35.578 ->38.599mm regresses. Dynamic H1/H8 angular errors also regress. No policy promotion or PPO restart.
+Supplementary center/offset/all1740 coverage audits continue in their existing queue. Next decision must use these results to distinguish center bias, derivative response and fit/validation behavior; do not launch blind coefficient tuning or change gates. Fixed7 full-duration and >=3 policy seeds remain unfulfilled.
