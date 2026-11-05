@@ -211,3 +211,78 @@ First collector v1 completed nominal_zero then stopped at backend's mandatory re
 Zero-readout formal evaluation fully completed: learned84steps1.68s original ee_body_pos; zero1000steps20s. Four H26450fps videos fully decoded, exact84/1000 frames. Six evenly spaced trained front/side video-time samples plus zero start/end reviewed: early near-upright stance, pronounced late lean; no full frame-by-frame or ground-impact claim. Common0.74s versus retained control: root XY max60.04 to14.40mm, tilt52.51 to2.22deg; still no20s skill pass. Actual action abs max0.15889 and28.5317% of components outside empirical fit ranges (prior2.8277/82.8829%). Both18-metric model nonregression reports passed, but absolute H32 validation episode root p95 ranges9.88--123.59mm; relative gate success does not prove universal predictive accuracy. Combined index standing_retention_zero_readout_v1/index.html. No policy promotion; final7-motion and3-independent-training-seed acceptance remain unmet.
 
 Source inspection also confirms fit anchors currently feed only dynamics updates; imagination starts use only online replay. Next investigate healthy-standing coverage of policy-start sampling and a prespecified data-mixture test before lowering reset/noise ranges. No new curriculum or policy-start mixture implemented in this entry, and no validation threshold changes.
+
+---
+## 2026-11-05: current continuation state (TW-RL / Notion004)
+
+The long-term goal is active and incomplete. No learned policy is accepted or
+promoted. Earlier runnable PPO/standing pilots are failed evidence, not a usable
+walking baseline. Do not resume PPO with a rejected world model. Final acceptance
+still requires all fixed seven independent motions for their original durations,
+without the original termination trigger, at least three independent training
+seeds, matched baselines, front/side videos and original motion provenance.
+Keep the original physics, samples, horizons and numerical gates.
+
+All paths below are relative to the remote data directory
+`/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics`.
+All work and caches stay on the data disk; never copy mounted data/media locally.
+The repository is `/root/gpufree-data/projects/HUMANOID_TW`, SSH port 30416,
+branch `supermimic/tw-adaptation-20261104`. Credentials do not belong in this file.
+Notion004: https://app.notion.com/p/403325d8231d8172995bf19510b8d760
+
+### Latest rejected full experiment
+
+`two_batch_full18_pair_v1`: both fixed 1000-update arms completed; matched control
+weights/optimizer, frozen fields, paired RNG and finite same-batch constraints
+passed integrity checks. Independent evaluation rejected the candidate: 6/18
+static, 18/18 dynamic, 8/18 original-reference static and 11/18 original-reference
+dynamic checks failed; held branch gates also failed. Coordinate contracts passed.
+The expanded fit diagnostic failed 18/18 comparisons, but is not a generalization
+gate. See `fit_integrity.json`, `paired_metric_review.json`,
+`root_state_response/audit.json`, `root_pose_response/audit.json`. Retain both
+final checkpoints and all failed experiments; do not choose an intermediate.
+
+The frozen 16-batch comparison is saved in
+`two_batch_full18_initial_gradient_diagnostic_v3/initial_final_comparison.json`.
+Full-objective means: constructed initial model 2.29016814, final control
+0.07282845, final candidate 0.27429338. Static means: 0.000301907,
+0.000432276, 0.000206100 respectively. The candidate improved over initialization
+but learned dynamics substantially less well than the control. Do not claim it
+is globally worse than initialization. All three audits verified unchanged source
+weights and zero source optimizer steps. Same trainer/runner hashes and fixed
+batch sequence were used; historical reports do not include first-batch RNG
+hashes. Failed initial-load attempts v1/v2 are preserved. The actual initial model
+must be constructed by the original runner (153 inputs), not loaded directly
+from its unadapted 137-input parent.
+
+### Current experiment, not yet accepted
+
+`moment_reset_static_guard_pair_v1`: both arms retain the original complete
+objective and original static finite-step guard. The sole candidate variable is
+clearing Adam `exp_avg` immediately before each real step; second moments, step
+counts, learning rate, clipping and samplers remain unchanged. This follows the
+frozen final-control diagnostic: saved-momentum full steps increased static loss
+16/16 times, while zero-first-moment steps offered simultaneous finite static/full
+descent on 16/16 batches. This is a hypothesis, not physical validation.
+
+The separate 4-update smoke passed `smoke4/fit_integrity.json`: control weights
+and optimizer are bit-exact to the original guarded trainer, 22 frozen tensors
+match, eight Adam step counts are four, native/static indices match and the first
+step guard is identical. Candidate resets are zero on step one, eight thereafter.
+`reviewer_compatibility.json` confirms the extended reviewer reproduces every
+historical full18 decision (excluding timestamp and reviewer hash).
+
+Live formal tmux session: `moment_reset_pair`, fixed 1000 updates per arm, followed
+by integrity and unchanged static/dynamic/expanded H1/H8/H32, coordinate, branch
+and original-reference checks. Inspect the actual process plus `control_fit.log`,
+`candidate_fit.log` and `status`; do not infer failure from a quiet log or stale
+status. `moment_reset_supplementary` waits for that session and passed fit integrity
+before root velocity/pose response audits of parent, original reference and both
+final models. Never restart a normal run. Primary entry point:
+`scripts/practice9/run_supermimic_moment_reset_pair.sh`.
+
+Next: verify final integrity and all independent reports; inspect fit/validation
+errors and response behavior before selecting another single-variable change.
+PPO remains gated on physical prediction consistency. Code is committed remotely;
+new-branch push is still unverified because HTTPS authentication failed. A local
+commit does not establish a successful push. Do not record tokens in this file.
