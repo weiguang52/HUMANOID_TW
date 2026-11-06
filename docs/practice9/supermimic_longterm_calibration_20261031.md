@@ -424,7 +424,7 @@ Prepared audit_supermimic_wide_root_models.py to compare the same three immutabl
 Queue tmux wide_root_models, live bash PID47937, waits for the actual acquisition tmux to end and requires audited_no_training before loading the complete proof; state wide_root_models_v1/status and queue.log. Failure stops the queue; no fitting, checkpoint selection, PPO or promotion occurs. Goal remains Active, unaccepted; necessary commits are remote, push remains blocked by previously verified GitHub authentication.
 
 ---
-2026-11-06 09:38 Asia/Shanghai — wide acquisition verified; controlled continuation smoke passed
+2026-11-06 09:36 Asia/Shanghai — wide acquisition verified; controlled continuation smoke passed
 
 All1,056 native batches/12,672 endpoints completed with zero archive/write/repeat/native-replay/termination failures; all480 original-level batches regress to the old archive. Frozen three-model evaluation at all levels completed. Initial metric check failed at4.14e-9 because new denominator inference usedfloat64 versus the legacy explicitfloat32 then promotion. Preserved failure and restored exact legacy arithmetic; original endpoint/response comparisons then agree within7e-17 without changing1e-10 threshold. Wide labels alone do not prove that coverage causes long-horizon drift, and improved finite responses need not improve rollout stability.
 
