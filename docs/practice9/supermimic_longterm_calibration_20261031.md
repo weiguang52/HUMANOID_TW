@@ -618,3 +618,22 @@ historical reference SHA256:
 Different serialization hashes do not imply different tensor/optimizer contents.
 Candidate1000 and the complete paired and supplementary diagnostics remain
 pending. No policy acceptance or PPO launch; original final gates unchanged.
+
+### 2026-11-06 16:27 Asia/Shanghai — static coupled candidate rejected
+
+Both fixed1000 arms completed; paired integrity passed. Candidate raw SHA256:
+`f3d6e74d1061af8731996c22490730bd8f37bc727110dc3d8367978ae9136387`.
+Declared candidate: `add8f62743295bfd16174e832d9824ccbd08e2e4cc25843416a695c01ce3f579`.
+`static_coupled_response_pair_v1/paired_metric_review.json` rejects the candidate:
+paired static12/18 and dynamic7/18 fail; expanded fit-only4/18 fail;
+original-reference static13/18 fail and dynamic0/18 fail. Both coordinate
+checks pass; held branches fail. Gates and final acceptance remain unchanged.
+Validation trajectory median H32 root-position P95 improves static48.062 to
+44.066mm, dynamic143.267 to139.019mm. However static H1 linear-velocity RMSE
+increases .006492 to.007291m/s and joint velocity .027347 to.029703rad/s;
+dynamic H32 angular velocity increases1.468126 to1.641061rad/s and joint
+velocity .073920 to.087957rad/s. Original static root-position29.838mm
+remains better. Local position improvement is not stable-control acceptance.
+The supplementary queue started native response diagnostics (PID60804 at16:27).
+Complete coverage, exposure, feedback and endpoint decomposition before
+choosing another single-variable hypothesis. No PPO or policy promotion.
