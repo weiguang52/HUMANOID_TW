@@ -3,10 +3,11 @@ import ast
 from pathlib import Path
 from supermimic_wide_root_response import load_wide_root_response,LEVELS
 source=Path('scripts/practice9/audit_supermimic_rollout_exposure.py');tree=ast.parse(source.read_text());cut=next(i for i,n in enumerate(tree.body) if isinstance(n,ast.For) and isinstance(n.target,ast.Name) and n.target.id=='checkpoint')
-exec(compile(ast.fix_missing_locations(ast.Module(body=tree.body[:cut],type_ignores=[])),str(source),'exec'))
+prefix=tree.body[:cut];argpos=next(i for i,n in enumerate(prefix) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='a' for t in n.targets));prefix[argpos:argpos]=ast.parse("p.add_argument('--original-level-audit',type=Path)").body
+exec(compile(ast.fix_missing_locations(ast.Module(body=prefix,type_ignores=[])),str(source),'exec'))
 out['script_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest();out['scope']='All verified wide native root branches, source-isolated fit/validation and all levels; no terminal filtering, optimizer or policy acceptance. Large contact finite responses are not infinitesimal Jacobians.'
 def derivative(v,den,sl):return (v[:,1,sl]-v[:,0,sl]+v[:,2,sl]-v[:,3,sl])/den
-old_path=a.collection.parent.parent/'hidden_moment_native_root_feedback_v1/audit/audit.json';old=json.loads(old_path.read_text());references={m['sha256']:m for m in old['models']}
+old_path=a.original_level_audit or a.collection.parent.parent/'hidden_moment_native_root_feedback_v1/audit/audit.json';old=json.loads(old_path.read_text());references={m['sha256']:m for m in old['models']};out['original_level_audit_sha256']=hashlib.sha256(old_path.read_bytes()).hexdigest()
 for checkpoint in a.checkpoint:
  sys.argv=[str(loader),'--collection',str(a.collection),'--checkpoint',str(checkpoint),'--output',str(a.output/'unused.json')];env={'__name__':'__main__','__file__':str(loader)};exec(program,env);model=env['m'];before={k:v.clone() for k,v in model.state_dict().items()};rows=[];sha=hashlib.sha256(checkpoint.read_bytes()).hexdigest()
  for split in ['fit','validation']:
