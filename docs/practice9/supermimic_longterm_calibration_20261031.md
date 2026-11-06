@@ -713,3 +713,19 @@ reference f3d6e74d1061af8731996c22490730bd8f37bc727110dc3d8367978ae9136387.
 Serialization hashes differ while tensor/optimizer states match exactly.
 Candidate1000, paired integrity, full model gates and supplemental diagnostics
 remain pending. No effect conclusion, PPO launch or policy promotion.
+
+### 2026-11-06 18:18 Asia/Shanghai — common-bias candidate improves but rejected
+
+Both1000 arms and integrity complete. Candidate raw SHA256
+`e85f1a7263d5c3ab7d24180fb766950cc73a7a5cf4aa6c15ef4f0c84c10bf936`;
+declared `9d09136e6d396f13cf8b4e19a1b0f90af87a53eaef78d2bff5a058f1b8c3c393`.
+Paired static0/18 and dynamic0/18 fail; original-reference static6/18 fail,
+dynamic0/18 fail; expanded fit-only5/18 regress. Both coordinates pass,
+held branches fail and development_gate_passed=false. No promotion/PPO.
+H32 validation-trajectory-median root position P95 improves static44.0658 to
+31.9667mm, dynamic139.0185 to110.4678mm. Static H32 linear velocity .051296 to
+.035248m/s, angular .266589 to.205816rad/s, joint .016074 to.013298rad/s improve.
+Original static failures: H1 orientation/angular velocity/joint position/joint
+velocity, H8 joint velocity, H32 position31.9667mm exceeds unchanged31.3303mm
+limit (original29.8384mm). Complete supplementary endpoint/response and branch
+failure diagnosis before next intervention; final7 motions/3 seeds unmet.
