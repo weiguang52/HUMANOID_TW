@@ -8,8 +8,9 @@ out['script_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest();out
 for checkpoint in a.checkpoint:
  sys.argv=[str(loader),'--collection',str(a.collection),'--checkpoint',str(checkpoint),'--output',str(a.output/'unused.json')];env={'__name__':'__main__','__file__':str(loader)};exec(program,env);model=env['m'];before={k:v.clone() for k,v in model.state_dict().items()};integration=next(x for x in model.modules() if isinstance(x,PoseVelocityModel));alpha=integration.alpha['translation'];dt=integration.dt;rows=[]
  for row in json.loads((a.collection/'results.json').read_text())['rows']:
-  path=(a.collection/row['trace']).resolve();assert path.is_relative_to(a.collection.resolve());digest=hashlib.sha256(path.read_bytes()).hexdigest();assert digest==row['sha256']
+  path=(a.collection/row['trace']).resolve();assert path.is_relative_to(a.collection.resolve());digest=hashlib.sha256(path.read_bytes()).hexdigest();assert digest==(row['sha256'] if 'sha256' in row else manifest['traces'][row['trace']])
   with np.load(path) as z:data={k:torch.as_tensor(z[k].copy(),device='cuda') for k in ['state','action','context','next_state']}
+  assert torch.equal(data['state'][1:],data['next_state'][:-1])
   count=len(data['state'])-31;entry={}
   if count>0:
    state=data['state'][:count].clone();exposures=[];terms={k:torch.zeros(count,3,device='cuda',dtype=torch.float64) for k in ['native_integration','one_step_bias','input_feedback','old_velocity_feedback','rounding']}
