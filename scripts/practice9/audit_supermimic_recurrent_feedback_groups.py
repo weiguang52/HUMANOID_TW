@@ -5,7 +5,7 @@ source=Path('scripts/practice9/audit_supermimic_rollout_exposure.py')
 tree=ast.parse(source.read_text());cut=next(i for i,n in enumerate(tree.body) if isinstance(n,ast.For) and isinstance(n.target,ast.Name) and n.target.id=='checkpoint')
 exec(compile(ast.fix_missing_locations(ast.Module(body=tree.body[:cut],type_ignores=[])),str(source),'exec'))
 out['script_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest();out['scope']='H32 fixed native windows; replace only selected model-input state groups with recorded truth, integrate predicted velocities on each branch own state. Oracle diagnostic, not deployable, no fitting or acceptance.'
-groups={'none':[], 'root_pose':[(0,7)], 'root_velocity':[(7,13)], 'joint_position':[(13,43)], 'joint_velocity':[(43,73)], 'all':[(0,73)]}
+groups={'none':[], 'root_pose':[(0,7)], 'root_velocity':[(7,13)], 'root_linear_velocity':[(7,10)], 'root_angular_velocity':[(10,13)], 'root_position':[(0,3)], 'root_orientation':[(3,7)], 'joint_position':[(13,43)], 'joint_velocity':[(43,73)], 'all':[(0,73)]}
 for checkpoint in a.checkpoint:
  sys.argv=[str(loader),'--collection',str(a.collection),'--checkpoint',str(checkpoint),'--output',str(a.output/'unused.json')];env={'__name__':'__main__','__file__':str(loader)};exec(program,env);model=env['m'];before={k:v.clone() for k,v in model.state_dict().items()};integration=next(x for x in model.modules() if isinstance(x,PoseVelocityModel));rows=[]
  for row in json.loads((a.collection/'results.json').read_text())['rows']:
