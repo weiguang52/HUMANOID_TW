@@ -729,3 +729,21 @@ Original static failures: H1 orientation/angular velocity/joint position/joint
 velocity, H8 joint velocity, H32 position31.9667mm exceeds unchanged31.3303mm
 limit (original29.8384mm). Complete supplementary endpoint/response and branch
 failure diagnosis before next intervention; final7 motions/3 seeds unmet.
+
+### 2026-11-06 18:29 Asia/Shanghai — common hypothesis not confirmed
+
+All common-pair supplementary audits completed. At16x validation endpoints,
+root common normalized MSE increases linear5.98521e-5 to8.78018e-5 and angular
+6.45821e-5 to8.19449e-5; joint odd1.22795e-6 to1.25742e-6 roughly retained.
+Fit common errors also increase. Last100 sampled training common-linear half
+loss control2.57814e-5 vs candidate4.00100e-5 (candidate first1002.33777e-5).
+Static H32 root-position P95 fit median28.2715 to35.1344mm worsens although
+validation44.0658 to31.9667mm improves. Teacher-integrated fit5.44761 to4.65263mm,
+validation7.02746 to7.07613mm. Do not claim common-bias correction caused the
+validation improvement or equate temporal static splits with source independence.
+`static_common_formula_check_v1/audit.json` passes16 fixed draws: actual F32
+training yaw model common loss matches an independently recomputed formula
+bitexact; retained root+joint+common total matches bitexact, weights unchanged,
+zero optimizer updates. This rules out this formula mismatch, not optimization
+or coverage failures. Next analyze short-horizon static error/fit coverage before
+another intervention. Current candidate remains rejected; final acceptance unmet.
