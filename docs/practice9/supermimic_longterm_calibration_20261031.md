@@ -749,7 +749,7 @@ or coverage failures. Next analyze short-horizon static error/fit coverage befor
 another intervention. Current candidate remains rejected; final acceptance unmet.
 
 ---
-### 2026-11-06 18:40 Asia/Shanghai — dense static H1 coverage and frozen full-objective probe
+### 2026-11-06 18:39 Asia/Shanghai — dense static H1 coverage and frozen full-objective probe
 
 Status: incomplete; no policy acceptance or promotion. The actual common-pair fit_input hashes verify 20 static branch files (1200 transitions) for H1, versus 8 original fit trajectories (3305 transitions, 3249 H8 windows). Static H1 retains 32 branch points plus 32 motion points; original static trajectories remain supervised through H8. This is a coverage distinction, not proof of the failure cause. Evidence: `longterm_diagnostics/static_h1_coverage_v1/audit.json`.
 
