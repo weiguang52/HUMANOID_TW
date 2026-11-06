@@ -4,16 +4,18 @@ from pathlib import Path
 import numpy as np
 import torch
 from supermimic_pose_integration_diagnostic import PoseVelocityModel
-p=argparse.ArgumentParser();p.add_argument('--collection',type=Path,required=True);p.add_argument('--checkpoint',type=Path,action='append',required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
+p=argparse.ArgumentParser();p.add_argument('--collection',type=Path,required=True);p.add_argument('--checkpoint',type=Path,action='append',required=True);p.add_argument('--trace-manifest',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 loader=Path('scripts/practice9/audit_supermimic_calibration_model.py');tree=ast.parse(loader.read_text());cut=next(i for i,n in enumerate(tree.body) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='trainer' for t in n.targets));program=compile(ast.fix_missing_locations(ast.Module(body=tree.body[:cut],type_ignores=[])),str(loader),'exec')
-out={'timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'loader_sha256':hashlib.sha256(loader.read_bytes()).hexdigest(),'models':[],'scope':'All valid fixed H1/H8/H32 windows, matched recorded actions/context; teacher forcing uses real state only for model input, integrates predicted velocities independently; native endpoint velocity integration defect retained; no fitting or policy acceptance'}
+manifest=json.loads(a.trace_manifest.read_text()) if a.trace_manifest else None
+if manifest:assert manifest['collection']==str(a.collection) and manifest['results_sha256']==hashlib.sha256((a.collection/'results.json').read_bytes()).hexdigest()
+out={'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'metric_precision':'original API dtype for endpoint metrics; float64 for additional velocity accumulation','trace_manifest_sha256':hashlib.sha256(a.trace_manifest.read_bytes()).hexdigest() if a.trace_manifest else None,'timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'loader_sha256':hashlib.sha256(loader.read_bytes()).hexdigest(),'models':[],'scope':'All valid fixed H1/H8/H32 windows, matched recorded actions/context; teacher forcing uses real state only for model input, integrates predicted velocities independently; native endpoint velocity integration defect retained; no fitting or policy acceptance'}
 def metric(pred,target):
- q=torch.nn.functional.normalize(pred[:,3:7].double(),dim=-1);tq=torch.nn.functional.normalize(target[:,3:7].double(),dim=-1)
- return {'root_position_p95_m':float(torch.quantile((pred[:,:3].double()-target[:,:3].double()).norm(dim=-1),.95)),'root_orientation_p95_rad':float(torch.quantile(2*torch.acos((q*tq).sum(-1).abs().clamp(0,1)),.95)),**{k:float((pred[:,sl].double()-target[:,sl].double()).square().mean().sqrt()) for k,sl in [('root_linear_rmse',slice(7,10)),('root_angular_rmse',slice(10,13)),('joint_position_rmse',slice(13,43)),('joint_velocity_rmse',slice(43,73))]}}
+ q=torch.nn.functional.normalize(pred[:,3:7],dim=-1);tq=torch.nn.functional.normalize(target[:,3:7],dim=-1)
+ return {'root_position_p95_m':float(torch.quantile((pred[:,:3]-target[:,:3]).norm(dim=-1),.95)),'root_orientation_p95_rad':float(torch.quantile(2*torch.acos((q*tq).sum(-1).abs().clamp(0,1)),.95)),**{k:float((pred[:,sl]-target[:,sl]).square().mean().sqrt()) for k,sl in [('root_linear_rmse',slice(7,10)),('root_angular_rmse',slice(10,13)),('joint_position_rmse',slice(13,43)),('joint_velocity_rmse',slice(43,73))]}}
 for checkpoint in a.checkpoint:
  sys.argv=[str(loader),'--collection',str(a.collection),'--checkpoint',str(checkpoint),'--output',str(a.output/'unused.json')];env={'__name__':'__main__','__file__':str(loader)};exec(program,env);model=env['m'];before={k:v.clone() for k,v in model.state_dict().items()};integration=next(x for x in model.modules() if isinstance(x,PoseVelocityModel));rows=[]
  for row in json.loads((a.collection/'results.json').read_text())['rows']:
-  path=(a.collection/row['trace']).resolve();assert path.is_relative_to(a.collection.resolve());digest=hashlib.sha256(path.read_bytes()).hexdigest();assert digest==row['sha256']
+  path=(a.collection/row['trace']).resolve();assert path.is_relative_to(a.collection.resolve());digest=hashlib.sha256(path.read_bytes()).hexdigest();assert digest==(row['sha256'] if 'sha256' in row else manifest['traces'][row['trace']])
   with np.load(path) as z:data={k:torch.as_tensor(z[k].copy(),device='cuda') for k in ['state','action','context','next_state']}
   assert torch.equal(data['state'][1:],data['next_state'][:-1]);n=len(data['state']);results={}
   with torch.no_grad():
