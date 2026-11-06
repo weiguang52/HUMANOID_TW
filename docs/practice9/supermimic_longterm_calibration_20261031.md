@@ -683,3 +683,21 @@ error, coefficient1. Response terms retained. This directly tests common-bias
 supervision on the same endpoints; no new training, coefficient search, validation
 selection, optimizer reset or acceptance. Optional probe adds auditor SHA256 and
 fit-input provenance; baseline directions remain unchanged. Final gates unchanged.
+
+### 2026-11-06 16:54 Asia/Shanghai — root-common paired smoke passed
+
+Frozen common-direction audits completed16 fit batches on all three models;
+all prior direction metrics reproduce exactly. Root linear common error decreases
+relative to original full direction on parent16/control13/candidate16 batches;
+angular decreases16/16 each. Local single-step evidence only.
+`static_response_common_pair_v1/proposal.json` freezes sole root-common0/1
+coefficient, retains root/joint response1 and all original objectives. Same Hcontrol
+parent/Adam2000, seed64, fit-only48 conditions/16 files,2176 points per update,
+no extra forwards. Both formal arms fixed1000 updates, original gates unchanged.
+Smoke4 passes: repeated control and historical Jcandidate4 model plus complete
+Adam bitexact,22 frozen tensors,8 Adam states2004, all samplers paired, sole
+variable verified. Raw control65a90751d6d647e913808f8d09da74186d19601be6421fd9fa9cf8860ffd50e9;
+candidate325464f59ebd391f625a98f0eaed04cdb56a0596921c4e346e275c6a875f44d2.
+Formal control must also match Jcandidate1000. Reviewer thresholds unchanged by
+exact reverse field-map source equivalence. Full model and supplementary audits
+queued after training; no PPO or policy promotion. Notion004 updated.
