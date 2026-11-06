@@ -449,3 +449,12 @@ Both fixed1000 finals passed training integrity but failed the unchanged develop
 Validation trajectory-median H32 root-position P95: control192.701 -> candidate155.765 mm dynamic improvement, but46.836 ->56.235 mm static regression. Dynamic failure is H1 root-orientation P95 .0253833 -> .0270562 rad, beyond original1.05 upper limit .0266524. All final artifacts and failures retained. Partial dynamic improvement is not accepted stability.
 
 Evidence wide_root_response_pair_v1/paired_metric_review.json. Supplementary frozen native-root response PID49812 is live, followed by all wide amplitudes and original-level arithmetic consistency. No further fitting is queued; finish supplementary evidence before choosing the next single-variable intervention. Long-term fixed7/full durations/3seeds/videos remains unverified and goal Active.
+
+---
+2026-11-06 11:00 Asia/Shanghai — wide response benefit verified, rejected outcome unchanged
+
+Final supplementary native and wide response audits completed for all three models, both partitions and all1,440 four-endpoint conditions per split. Final pair old-level metrics reproduce independent audits exactly, weights remain frozen, all terminated endpoints (~27.01%) retained. Validation all-level normalized root-response MSE .1015073 -> .0885739; absolute root-angular RMSE .853499 -> .787886 rad/s. Validation root-response MSE improves at every individual acquired level. This does not override static/orientation/branch gate failures.
+
+FIT original levels1/2 root-response MSE regresses .082509/.036268 -> .126089/.043642. Replacement of the sampling pool may dilute original local constraints, but this observation does not prove the cause of static drift. Do not accept only favorable amplitudes or dynamic metrics. Evidence wide_root_response_pair_v1/wide_root_response/audit.json and native_root_response/audit.json.
+
+Detailed frozen audit tmux wide_root_detailed_audits started11:00 (root-state response PID50097); subsequent static root-pose, dynamic action response, exact center/offset and all1,740 native one-step state comparisons reuse unchanged source-isolated collections. Hashes/weights and all groups retained, no fitting or terminal filtering. Finish these checks before deciding whether a preserving-original-sampling intervention is justified; no additional training is currently queued. Long-term goal remains Active and incomplete.
