@@ -45,11 +45,7 @@ Evidence: `smoke4/fit_integrity.json`, final `fit_integrity.json`, `paired_metri
 [Detailed calibration history](docs/practice9/supermimic_longterm_calibration_20261031.md). Final policy acceptance remains fixed7 source-isolated motions, full original durations, no original terminations, at least3 independent seeds, same-condition baseline and front/side videos. These requirements remain unmet.
 ### Git handoff status
 
-Final push attempted2026-11-06 20:19 Asia/Shanghai with proxy environment cleared; GitHub connection timed out after45 seconds. Local commits are preserved but remote synchronization is unverified. From the repository, retry:
-
-```bash
-git push -u origin supermimic/tw-adaptation-20261104
-```
+Push verified on 2026-11-06 20:31 Asia/Shanghai through a temporary SSH reverse tunnel to the local SOCKS proxy. GitHub branch matched commit709bc82aa661b6ec82ad957637abefd39bd9a7dc before this documentation update. No data-disk files were copied locally. Temporary networking is closed after verification; no persistent proxy setting is required.
 
 <!-- TW_SUPERMIMIC_HANDOFF_END -->
 
