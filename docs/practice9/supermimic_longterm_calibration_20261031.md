@@ -440,3 +440,12 @@ Reviewer adds an explicit wide-root plan flag and unchanged original trajectory/
 wide_root_response_pair_v1/fit_integrity.json passed: both1000 updates, Adam3000,22 frozen tensors,2144 endpoints/update, original and added amplitude/anchor/axis sampler replay. Raw hashes: control8574e57a49f3e88c25da24c124025add618922ebf44e9fe998212a37cd88466b; candidate3094670a3f47dcc30769da56cc8d0116f73045b09742c6db7325252cd21af6b6. Formal repeated-control bitexactness remains null; only the4-step smoke was repeated. This is training-integrity evidence, not evidence of control improvement or policy acceptance.
 
 Primary original H1/H8/H32/coordinate/branch/reference evaluation remains live (control expanded PID49225 at this observation). Supplementary native-root then all-wide-level evaluation is queued as tmux wide_root_supplementary, bash49280, waiting for the actual primary tmux to finish and a reviewed_no_policy_promotion status. Wide-model audit accepts an explicit original-level audit with its hash, requiring those same final models' old-level metrics to reproduce within unchanged1e-10 arithmetic check. No fitting, terminal filtering, checkpoint selection or policy promotion. New optional argument syntax parsed; queued end-to-end invocation remains unverified until it runs. Long-term fixed7/full-duration/3-seed/video acceptance remains incomplete.
+
+---
+2026-11-06 10:58 Asia/Shanghai — wide root-response continuation REJECTED by primary gates
+
+Both fixed1000 finals passed training integrity but failed the unchanged development review: static10/18, dynamic1/18, expanded fit diagnostic1/18, original-reference static12/18, original-reference dynamic0/18. Both coordinate contracts pass; paired and original-reference held-branch requirements do not pass. No promotion.
+
+Validation trajectory-median H32 root-position P95: control192.701 -> candidate155.765 mm dynamic improvement, but46.836 ->56.235 mm static regression. Dynamic failure is H1 root-orientation P95 .0253833 -> .0270562 rad, beyond original1.05 upper limit .0266524. All final artifacts and failures retained. Partial dynamic improvement is not accepted stability.
+
+Evidence wide_root_response_pair_v1/paired_metric_review.json. Supplementary frozen native-root response PID49812 is live, followed by all wide amplitudes and original-level arithmetic consistency. No further fitting is queued; finish supplementary evidence before choosing the next single-variable intervention. Long-term fixed7/full durations/3seeds/videos remains unverified and goal Active.
