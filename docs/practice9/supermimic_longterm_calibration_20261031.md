@@ -411,3 +411,14 @@ Existing velocity branches reach only +/- .01 m/s linear and .04 rad/s angular. 
 wide_native_root_velocity_v1 smoke:132 endpoints,11 batches, zero write/repeat/replay/termination failures; all5 original-level batches regress to the verified old archive. smoke_integrity_v2.json also verifies that the final proof file is written only after both original checks and overlap regression pass. The base-only report is separately named and cannot stand in for the wide final proof.
 
 Full acquisition started09:12 in tmux wide_root_velocity_full: all32 traces, first/middle/final anchors,11 batches per anchor, expected1,056 batches/12,672 endpoints. Only root-velocity amplitudes change; original PD actions, native state/warmstart, diagnostic dense Jacobian physics, and source isolation remain. Original termination outputs retained. Runner transitions collecting -> auditing -> audited_no_training only after full integrity and all480 original-level regression checks pass; errors set failed. No fitting or PPO is launched automatically. Do not restart a live collector. Long-term full7/3-seed acceptance remains unfulfilled.
+
+---
+2026-11-06 09:15 Asia/Shanghai — wide frozen evaluation prepared and queued
+
+Previous goal turn was progress (coverage evidence, verified smoke, full native acquisition started). The collector remains live as PID47834 in wide_root_velocity_full;132/1,056 batches from four source episodes are logged. It was not restarted.
+
+Prepared supermimic_wide_root_response.py: loading requires the complete12,672-endpoint proof, zero failures,480 original-level regressions, correct physics/asset/mapping, frozen source-isolated partitions and all input hashes. Default split is fit; validation is explicitly evaluation only. It retains terminal endpoints rather than filtering them.
+
+Prepared audit_supermimic_wide_root_models.py to compare the same three immutable models at each of levels1,2,8,32,64. It reports root/joint finite-response MSE, absolute velocity RMSE and all terminal fractions. Original levels1/2 must reproduce the prior frozen audit within1e-10 (numerical comparison only; original acceptance gates unchanged). All1,440 four-endpoint conditions per split and all48 anchors are retained; models and input files must remain unchanged. Syntax parsed; full end-to-end evaluation remains UNVERIFIED until acquisition finishes.
+
+Queue tmux wide_root_models, live bash PID47937, waits for the actual acquisition tmux to end and requires audited_no_training before loading the complete proof; state wide_root_models_v1/status and queue.log. Failure stops the queue; no fitting, checkpoint selection, PPO or promotion occurs. Goal remains Active, unaccepted; necessary commits are remote, push remains blocked by previously verified GitHub authentication.
