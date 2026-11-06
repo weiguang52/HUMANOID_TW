@@ -1,5 +1,51 @@
 # Unitree RL Lab
 
+<!-- TW_SUPERMIMIC_HANDOFF_START -->
+## TW SuperMimic adaptation handoff
+
+Branch: `supermimic/tw-adaptation-20261104`. This section describes the TW robot; the upstream Unitree instructions below do not establish TW policy acceptance.
+
+**No accepted TW SuperMimic control policy exists.** Previous policy pilots passed 0/7 fixed independent motions. Lower world-model error does not demonstrate stable standing, walking or whole-body imitation.
+
+Implemented: TW30 state/action mapping and nominal shoulders, sole geometry, world-frame angular velocity writes, pose/velocity integration, XY/yaw structure contracts, native replay and paired offline calibration/audits. Total URDF mass is approximately0.841 kg; no hardware mass reference exists.
+
+Latest completed `static_response_common_pair_v1`: static validation H32 root-position trajectory-median P95 improved44.07 to31.97 mm; dynamic139.02 to110.47 mm. Original static limit31.33 mm still fails; original static6/18 metrics and paired branch8/9 checks fail. No promotion. Short-step pose/angular/joint errors, accumulated drift and branch response generalization remain unresolved.
+
+### Final current run: training and primary evaluation completed, rejected
+
+`dense_static_pair_v1`: resume final common candidate/full Adam3000; fixed1000 updates per arm. Retain all old losses; only added dense static H1 supervision coefficient0/1 differs. Both2208 predictions/update, including32 original-static fit points from3305 transitions. Smoke4 control/candidate/repeat-control passes; repeated control model/full Adam bitexact.
+
+Both arms completed1000 updates. Full integrity passes22 frozen tensors,8 Adam states at4000, identical paired samplers and2208 forward points/update. No historical1000 control repeat is available; smoke4 repeat is bitexact.
+
+| Check | Failed / total |
+| --- | --- |
+| Paired static validation | 0/18 |
+| Paired dynamic validation | 8/18 |
+| Expanded fit diagnostic (not generalization) | 11/18 |
+| Original-reference static validation | 7/18 |
+| Original-reference dynamic validation | 0/18 |
+| Held branch checks | 7/9 |
+
+Both declared coordinate audits pass. Static H32 root-position trajectory-median P95: control56.46 vs candidate46.58 mm; original reference29.84 mm. Dynamic:137.76 vs133.39 mm. Despite these improvements, the complete gate fails. Candidate is an offline dynamics model, not an accepted policy; no new stable-control effect or policy video is claimed.
+
+Raw final hashes: control `31cea15a7072baffe7471b6d48c1b214e7c9958d2d728c7f0c06f9ade0891d83`; candidate `fed6e7365301e3a0502b4c20d2f26cfad5a4742e5d678adddb8abc9b9965c946`.
+
+User requests stopping the long-term goal after this run and evaluation; no new experiment will be started. All scheduled supplementary audits completed on 2026-11-06; report/model hashes and frozen-state checks verified. No training or audit tmux sessions remain. The long-term acceptance remains unmet; stop follow-up as requested after code handoff. See [final review evidence](docs/practice9/supermimic_dense_static_final_review.json).
+
+### Environment and evidence
+
+All data/cache/artifacts stay on remote data disk `/root/gpufree-data`; preserve Isaac environment. Repo: `projects/HUMANOID_TW`; Python environment: `conda_envs/env_supermimic`.
+
+Experiment root under data disk: `datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/dense_static_pair_v1`. Tmux: `dense_static_pair`, `dense_static_supp`.
+
+Runner: `scripts/practice9/run_supermimic_dense_static_pair.sh`. Existing-output guards prevent overwrite; use new output paths for reproduction, do not restart this run.
+
+Evidence: `smoke4/fit_integrity.json`, final `fit_integrity.json`, `paired_metric_review.json`, `declared/branch_validation.json`, `static_endpoint_bias/audit.json`, `static_rollout_exposure/audit.json`. Missing reports are not passes.
+
+[Detailed calibration history](docs/practice9/supermimic_longterm_calibration_20261031.md). Final policy acceptance remains fixed7 source-isolated motions, full original durations, no original terminations, at least3 independent seeds, same-condition baseline and front/side videos. These requirements remain unmet.
+<!-- TW_SUPERMIMIC_HANDOFF_END -->
+
+
 [![IsaacSim](https://img.shields.io/badge/IsaacSim-5.1.0-silver.svg)](https://docs.omniverse.nvidia.com/isaacsim/latest/overview.html)
 [![Isaac Lab](https://img.shields.io/badge/IsaacLab-2.3.0-silver)](https://isaac-sim.github.io/IsaacLab)
 [![License](https://img.shields.io/badge/license-Apache2.0-yellow.svg)](https://opensource.org/license/apache-2-0)

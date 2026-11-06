@@ -1,0 +1,812 @@
+{
+  "timestamp": "2026-11-06T20:08:25.712909",
+  "experiment": "dense_static_pair_v1",
+  "primary_review": {
+    "reviewer_sha256": "0258e7fc98177877937a8146244f518cb19488c367a0473711df5ff812dfe433",
+    "timestamp_utc": "2026-11-06T12:07:08.207856+00:00",
+    "guard_step_counts": {},
+    "original_reference_root": "/root/gpufree-data/datasets/practice9/supermimic_tw_20261031/longterm_diagnostics/expanded_native_replay_pair_v1",
+    "original_branch_passed": false,
+    "single_variable_verified": true,
+    "checkpoint_sha256": {
+      "control": "44eadb9d187154cde8a1b442bac2de827397bc9333d2547f10ce5b9e538f9112",
+      "candidate": "d385749094fd2134c054daf2d4de35593f08c865372088f0c4fa63f91a5a63ee"
+    },
+    "trajectory": {
+      "static": {
+        "checks": [
+          {
+            "horizon": 1,
+            "metric": "root_position_error_p95_m",
+            "control": 0.00029806151724187657,
+            "candidate": 0.00025498633476672694,
+            "limit": 0.0003129645931039704,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.007288195542059839,
+            "candidate": 0.006910528871230781,
+            "limit": 0.007652605319162831,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.007440131856128573,
+            "candidate": 0.006759657873772085,
+            "limit": 0.007812138448935003,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.1306488998234272,
+            "candidate": 0.11774855107069016,
+            "limit": 0.13718134481459857,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0005497168021975085,
+            "candidate": 0.0004615614889189601,
+            "limit": 0.000577202642307384,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.028851669281721115,
+            "candidate": 0.024249033071100712,
+            "limit": 0.030294252745807174,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_position_error_p95_m",
+            "control": 0.0039670601254329085,
+            "candidate": 0.004038954735733569,
+            "limit": 0.004165413131704554,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.0775966476649046,
+            "candidate": 0.0763408225029707,
+            "limit": 0.08147648004814982,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.016137706115841866,
+            "candidate": 0.013604903127998114,
+            "limit": 0.01694459142163396,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.16425546631217003,
+            "candidate": 0.15220830217003822,
+            "limit": 0.17246823962777855,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.001959613407962024,
+            "candidate": 0.0018617940368130803,
+            "limit": 0.0020575940783601255,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.013756450498476624,
+            "candidate": 0.010892365826293826,
+            "limit": 0.014444273023400456,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_position_error_p95_m",
+            "control": 0.05646151024848223,
+            "candidate": 0.046579452231526375,
+            "limit": 0.05928458576090634,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.25726301223039627,
+            "candidate": 0.24206827580928802,
+            "limit": 0.2701261628419161,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.06615897174924612,
+            "candidate": 0.050147032365202904,
+            "limit": 0.06946692033670843,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.3217767998576164,
+            "candidate": 0.2547111287713051,
+            "limit": 0.3378656398504973,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0027616285951808095,
+            "candidate": 0.002694752300158143,
+            "limit": 0.00289971002493985,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.013939969008788466,
+            "candidate": 0.011737215332686901,
+            "limit": 0.01463696745922789,
+            "passed": true
+          }
+        ],
+        "failed": 0,
+        "scope": "Original validation <=5% nonregression gate"
+      },
+      "dynamic": {
+        "checks": [
+          {
+            "horizon": 1,
+            "metric": "root_position_error_p95_m",
+            "control": 0.0010306911717634648,
+            "candidate": 0.0009721263486426324,
+            "limit": 0.0010822257303516381,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.03293580189347267,
+            "candidate": 0.027868490666151047,
+            "limit": 0.034582591988146304,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.02383117750287056,
+            "candidate": 0.02426919713616371,
+            "limit": 0.02502273637801409,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.5816079676151276,
+            "candidate": 0.5727508366107941,
+            "limit": 0.6106883659958839,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0024944926844909787,
+            "candidate": 0.0027359804371371865,
+            "limit": 0.0026192173187155276,
+            "passed": false
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.1272021159529686,
+            "candidate": 0.13900700211524963,
+            "limit": 0.13356222175061702,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_position_error_p95_m",
+            "control": 0.02535495162010193,
+            "candidate": 0.02869818639010191,
+            "limit": 0.026622699201107027,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.2890731692314148,
+            "candidate": 0.24422773718833923,
+            "limit": 0.30352682769298556,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.1139531098306179,
+            "candidate": 0.12739599123597145,
+            "limit": 0.1196507653221488,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.9342617690563202,
+            "candidate": 0.9017911851406097,
+            "limit": 0.9809748575091363,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.010321104433387518,
+            "candidate": 0.011561809573322535,
+            "limit": 0.010837159655056895,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.08061753958463669,
+            "candidate": 0.07917336747050285,
+            "limit": 0.08464841656386853,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_position_error_p95_m",
+            "control": 0.13776011019945145,
+            "candidate": 0.13339243829250336,
+            "limit": 0.144648115709424,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.7092233300209045,
+            "candidate": 0.7157613933086395,
+            "limit": 0.7446844965219498,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.4166664779186249,
+            "candidate": 0.4248483330011368,
+            "limit": 0.43749980181455617,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 1.6591505408287048,
+            "candidate": 1.8933852314949036,
+            "limit": 1.7421080678701402,
+            "passed": false
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.009516407735645771,
+            "candidate": 0.011355691123753786,
+            "limit": 0.00999222812242806,
+            "passed": false
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.0735846571624279,
+            "candidate": 0.0783396027982235,
+            "limit": 0.0772638900205493,
+            "passed": false
+          }
+        ],
+        "failed": 8,
+        "scope": "Original validation <=5% nonregression gate"
+      },
+      "expanded": {
+        "checks": [
+          {
+            "horizon": 1,
+            "metric": "root_position_error_p95_m",
+            "control": 0.0007588893349748105,
+            "candidate": 0.0007484883826691657,
+            "limit": 0.0007968338017235511,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.01610844675451517,
+            "candidate": 0.016961460933089256,
+            "limit": 0.01691386909224093,
+            "passed": false
+          },
+          {
+            "horizon": 1,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.01841922290623188,
+            "candidate": 0.01865920890122652,
+            "limit": 0.019340184051543474,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.3397551476955414,
+            "candidate": 0.3650737553834915,
+            "limit": 0.3567429050803185,
+            "passed": false
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0020666876807808876,
+            "candidate": 0.002316413214430213,
+            "limit": 0.002170022064819932,
+            "passed": false
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.10587530955672264,
+            "candidate": 0.12002803385257721,
+            "limit": 0.11116907503455878,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_position_error_p95_m",
+            "control": 0.021428681910037994,
+            "candidate": 0.024392109364271164,
+            "limit": 0.022500116005539895,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.18889254331588745,
+            "candidate": 0.2028542011976242,
+            "limit": 0.19833717048168184,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.09307610988616943,
+            "candidate": 0.10020847618579865,
+            "limit": 0.09772991538047791,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.6968869268894196,
+            "candidate": 0.735502153635025,
+            "limit": 0.7317312732338905,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.007802899228408933,
+            "candidate": 0.009302329737693071,
+            "limit": 0.00819304418982938,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.07748910412192345,
+            "candidate": 0.08066723495721817,
+            "limit": 0.08136355932801963,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_position_error_p95_m",
+            "control": 0.10846266150474548,
+            "candidate": 0.10682633519172668,
+            "limit": 0.11388579457998277,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.5637323260307312,
+            "candidate": 0.5844783186912537,
+            "limit": 0.5919189423322678,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.25397810339927673,
+            "candidate": 0.24658295512199402,
+            "limit": 0.2666770085692406,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 1.126390814781189,
+            "candidate": 1.1848177909851074,
+            "limit": 1.1827103555202485,
+            "passed": false
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.008328227326273918,
+            "candidate": 0.009846009314060211,
+            "limit": 0.008744638692587615,
+            "passed": false
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.06578197330236435,
+            "candidate": 0.06572449207305908,
+            "limit": 0.06907107196748256,
+            "passed": true
+          }
+        ],
+        "failed": 11,
+        "scope": "Fit diagnostic only, not generalization gate"
+      },
+      "original_static": {
+        "checks": [
+          {
+            "horizon": 1,
+            "metric": "root_position_error_p95_m",
+            "control": 0.0004213444117340259,
+            "candidate": 0.00025498633476672694,
+            "limit": 0.0004424116323207272,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.005890681175515056,
+            "candidate": 0.006910528871230781,
+            "limit": 0.006185215234290809,
+            "passed": false
+          },
+          {
+            "horizon": 1,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.009759261505678296,
+            "candidate": 0.006759657873772085,
+            "limit": 0.010247224580962212,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.09946082159876823,
+            "candidate": 0.11774855107069016,
+            "limit": 0.10443386267870665,
+            "passed": false
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0004997274372726679,
+            "candidate": 0.0004615614889189601,
+            "limit": 0.0005247138091363013,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.025494175031781197,
+            "candidate": 0.024249033071100712,
+            "limit": 0.026768883783370258,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_position_error_p95_m",
+            "control": 0.0033687703544273973,
+            "candidate": 0.004038954735733569,
+            "limit": 0.0035372088721487673,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.07483298145234585,
+            "candidate": 0.0763408225029707,
+            "limit": 0.07857463052496315,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.010990839917212725,
+            "candidate": 0.013604903127998114,
+            "limit": 0.01154038191307336,
+            "passed": false
+          },
+          {
+            "horizon": 8,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.15397214889526367,
+            "candidate": 0.15220830217003822,
+            "limit": 0.16167075634002687,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0019566172268241644,
+            "candidate": 0.0018617940368130803,
+            "limit": 0.0020544480881653725,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.011696211993694305,
+            "candidate": 0.010892365826293826,
+            "limit": 0.01228102259337902,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_position_error_p95_m",
+            "control": 0.029838417656719685,
+            "candidate": 0.046579452231526375,
+            "limit": 0.03133033853955567,
+            "passed": false
+          },
+          {
+            "horizon": 32,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.24187876284122467,
+            "candidate": 0.24206827580928802,
+            "limit": 0.2539727009832859,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.04176324512809515,
+            "candidate": 0.050147032365202904,
+            "limit": 0.043851407384499906,
+            "passed": false
+          },
+          {
+            "horizon": 32,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.23256180435419083,
+            "candidate": 0.2547111287713051,
+            "limit": 0.24418989457190038,
+            "passed": false
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0028240589890629053,
+            "candidate": 0.002694752300158143,
+            "limit": 0.0029652619385160508,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.01648808130994439,
+            "candidate": 0.011737215332686901,
+            "limit": 0.01731248537544161,
+            "passed": true
+          }
+        ],
+        "failed": 7,
+        "scope": "Original validation <=5% nonregression gate"
+      },
+      "original_dynamic": {
+        "checks": [
+          {
+            "horizon": 1,
+            "metric": "root_position_error_p95_m",
+            "control": 0.0020614737877622247,
+            "candidate": 0.0009721263486426324,
+            "limit": 0.002164547477150336,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.027972061187028885,
+            "candidate": 0.027868490666151047,
+            "limit": 0.02937066424638033,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.04366033524274826,
+            "candidate": 0.02426919713616371,
+            "limit": 0.04584335200488567,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 0.6057199239730835,
+            "candidate": 0.5727508366107941,
+            "limit": 0.6360059201717377,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.0034870554227381945,
+            "candidate": 0.0027359804371371865,
+            "limit": 0.0036614081938751044,
+            "passed": true
+          },
+          {
+            "horizon": 1,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.16949987411499023,
+            "candidate": 0.13900700211524963,
+            "limit": 0.17797486782073976,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_position_error_p95_m",
+            "control": 0.030454806052148342,
+            "candidate": 0.02869818639010191,
+            "limit": 0.03197754635475576,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.3717935383319855,
+            "candidate": 0.24422773718833923,
+            "limit": 0.39038321524858477,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.13754316419363022,
+            "candidate": 0.12739599123597145,
+            "limit": 0.14442032240331173,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 1.1600735187530518,
+            "candidate": 0.9017911851406097,
+            "limit": 1.2180771946907043,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.018712212331593037,
+            "candidate": 0.011561809573322535,
+            "limit": 0.01964782294817269,
+            "passed": true
+          },
+          {
+            "horizon": 8,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.10082467645406723,
+            "candidate": 0.07917336747050285,
+            "limit": 0.1058659102767706,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_position_error_p95_m",
+            "control": 0.15859781205654144,
+            "candidate": 0.13339243829250336,
+            "limit": 0.16652770265936853,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_orientation_error_p95_rad",
+            "control": 0.7592549920082092,
+            "candidate": 0.7157613933086395,
+            "limit": 0.7972177416086197,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_linear_velocity_rmse_m_s",
+            "control": 0.4181654751300812,
+            "candidate": 0.4248483330011368,
+            "limit": 0.43907374888658524,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "root_angular_velocity_rmse_rad_s",
+            "control": 2.0499380826950073,
+            "candidate": 1.8933852314949036,
+            "limit": 2.152434986829758,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_position_rmse_rad",
+            "control": 0.020286002196371555,
+            "candidate": 0.011355691123753786,
+            "limit": 0.021300302306190132,
+            "passed": true
+          },
+          {
+            "horizon": 32,
+            "metric": "joint_velocity_rmse_rad_s",
+            "control": 0.09196463599801064,
+            "candidate": 0.0783396027982235,
+            "limit": 0.09656286779791116,
+            "passed": true
+          }
+        ],
+        "failed": 0,
+        "scope": "Original validation <=5% nonregression gate"
+      }
+    },
+    "coordinate": {
+      "control": true,
+      "candidate": true
+    },
+    "branch_passed": false,
+    "development_gate_passed": false,
+    "policy_acceptance": false,
+    "promotion_approved": false,
+    "scope": "All final1000 artifacts, original six metrics x3 horizons, <=1.05 validation ratios, original held branch thresholds and declared precision coordinate contract. No selection or policy promotion; supplementary root response, independent fixed7 and3seeds still required even if these gates pass."
+  },
+  "fit_integrity": {
+    "passed": true,
+    "updates": 1000,
+    "control_weights_optimizer_bitexact": false,
+    "historical_control_same_updates_bitexact": false,
+    "control_repeat_scope": "Repeated4 control model and full Adam exact; no historical1000 reference for this new continuation. Formal arms verify same resume,paired samplers,budgets",
+    "frozen_tensors": 22,
+    "adam_states_verified": 8,
+    "original_paired_indices_equal": true,
+    "center_indices_replay_verified": true,
+    "single_variable_verified": true,
+    "points_per_update": 2208,
+    "policy_acceptance": false,
+    "checkpoint_sha256": {
+      "control": "31cea15a7072baffe7471b6d48c1b214e7c9958d2d728c7f0c06f9ade0891d83",
+      "candidate": "fed6e7365301e3a0502b4c20d2f26cfad5a4742e5d678adddb8abc9b9965c946"
+    }
+  },
+  "supplementary_complete": true,
+  "stop_after_current_run_requested": true,
+  "supplementary_report_sha256": {
+    "dense_center_coverage/audit.json": "db3a1e2119424012e6df2c9da89b6a34a46f056a26be11581c6203afa71fe2d8",
+    "dynamic_action_center/audit.json": "fdec85d2f9bb4a22ad95541f87136145cafbcdd6a2c8cf981d445e19baaac049",
+    "dynamic_action_offset/audit.json": "81c0fe32e71bebdefb76ea2d741fa26a87c022175c8906907413cba8e0604876",
+    "dynamic_action_response/audit.json": "d16624f88e6a63c1f232846511716a0303ae39239be4d10c0c56eda55beb0ef7",
+    "native_root_response/audit.json": "94a654822930010b4ba28f73ad81152d3a11b06124beb7f990446fecc6d199e6",
+    "root_pose_response/audit.json": "11790eec3606d034d283f2244a148d246e315a17ff031504fceab11bffad4d75",
+    "root_state_response/audit.json": "91db489f92ba3429bbe86972f25728dc1da06ed05a9a7570a448265f3de42a2e",
+    "static_endpoint_bias/audit.json": "b970fbe3eafd84f23b7714227c486d5f77e8a6f18b7f244cafae91b41687567d",
+    "static_feedback_groups/audit.json": "0ba7efa43efd0de1ec9b27e9a9c79681b3e0db79e7423e8dcf35ed53c7654ce7",
+    "static_rollout_exposure/audit.json": "8aa6fd1fddd1a6d561b322f30ae15f65307f623599a8693fbac89aadb048d68d",
+    "static_wide_native_response/audit.json": "1c426109069f97bb53c014271c8cf943f4b08e2c15f7840125ef5e7cd9353bdc",
+    "wide_root_response/audit.json": "eb81d744ed8c5c4deaee82af021654ee7059d1c281c5e42658b64e4e6895c47c"
+  },
+  "final_checked_at": "2026-11-06T20:18:37.150233"
+}
