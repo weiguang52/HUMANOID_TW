@@ -490,3 +490,10 @@ Four-update smoke for both arms plus repeated control passed: repeated weights A
 Raw control SHA06b201bd1e283685e1fd47bced7976d513f53d57a6a59c7d0f14316cc8122324; Adam3000,2,176,000 actual prediction points. CPU comparison verifies ALL model weights and optimizer state bitexact against previous wide_root_response_pair_v1/control1000 SHA8574e57a49f3e88c25da24c124025add618922ebf44e9fe998212a37cd88466b. Extra coefficient0 forward therefore preserves the original full training result; this is measured1000-step control evidence, not an extrapolation from smoke. Evidence additive_wide_root_pair_v1/control_reference_integrity.json.
 
 Candidate PID51593 started sequentially in the same tmux at fixed1000, coefficient1; do not restart a live trainer. Pair outcome and full original gate review remain pending, no promotion. Long-term goal remains Active and incomplete.
+
+---
+2026-11-06 12:38:50 Asia/Shanghai | Additive wide pair1000 finished; offline evaluation running
+
+Both formal arms completed the fixed1000 updates. fit_integrity.json passed:22 frozen tensors,8 Adam states,2176 points/update, original paired indices and center replay consistent, sole additional-wide coefficient variable verified. Candidate raw SHA256 d66bad324b0374088d0204a9f5850592b4717e6c94f24b15efd6f582c8c7f3ea; control raw06b201bd1e283685e1fd47bced7976d513f53d57a6a59c7d0f14316cc8122324. Formal auditor repeated-control scope remains4 smoke updates; separate control_reference_integrity.json already proves control1000 model and Adam bitexact to historical Wcontrol1000. These scopes must not be conflated.
+
+Primary offline evaluation is active under tmux additive_wide_root_pair. A supplemental frozen queue (tmux additive_wide_supplementary) waits for primary session completion AND reviewed_no_policy_promotion, then checks narrow/wide native root responses and detailed static root/dynamic action/all native state coverage. Queue scripts stay in the experiment directory, bash -n passed; no training edits or output overwrites. All artifacts remain on the data disk. No PPO/promotion or policy acceptance; fixed7 full durations,3 seeds and videos remain unfulfilled.
