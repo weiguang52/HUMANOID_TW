@@ -4,6 +4,9 @@ from pathlib import Path
 import numpy as np
 import torch
 collection=Path(sys.argv[sys.argv.index('--collection')+1]);output=Path(sys.argv[sys.argv.index('--output')+1])
+reference_override=None
+if '--response-reference' in sys.argv:
+ i=sys.argv.index('--response-reference');reference_override=Path(sys.argv[i+1]);del sys.argv[i:i+2]
 proof=json.loads((collection/'integrity.json').read_text());plan=json.loads((collection/'plan.json').read_text())
 assert proof['passed'] and len(proof['files'])==72 and proof['retained_original_files']==40
 assert plan['contract']=='wide_static_root_velocity_branches_v1' and plan['levels']==[1.,2.,8.,16.]
@@ -28,7 +31,7 @@ env={'__name__':'__main__','__file__':str(source),'_endpoint_metrics':endpoint_m
 exec(compile(ast.fix_missing_locations(tree),str(source),'exec'),env)
 d=json.loads((output/'audit.json').read_text());assert len(d['models'])==3
 for m in d['models']:assert m['weights_and_norms_unchanged'] and len(m['conditions'])==32
-reference=collection.parent.parent/'static_wide_response_pair_v1/static_wide_native_response/audit.json';ref=json.loads(reference.read_text())
+reference=reference_override or collection.parent.parent/'static_wide_response_pair_v1/static_wide_native_response/audit.json';ref=json.loads(reference.read_text())
 assert [m['sha256'] for m in d['models']]==[m['sha256'] for m in ref['models']]
 for new,old in zip(d['models'],ref['models']):
  stripped=[{k:v for k,v in row.items() if k!='endpoint_error_decomposition'} for row in new['conditions']];assert stripped==old['conditions']
