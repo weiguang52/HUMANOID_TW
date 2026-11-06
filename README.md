@@ -43,6 +43,14 @@ Runner: `scripts/practice9/run_supermimic_dense_static_pair.sh`. Existing-output
 Evidence: `smoke4/fit_integrity.json`, final `fit_integrity.json`, `paired_metric_review.json`, `declared/branch_validation.json`, `static_endpoint_bias/audit.json`, `static_rollout_exposure/audit.json`. Missing reports are not passes.
 
 [Detailed calibration history](docs/practice9/supermimic_longterm_calibration_20261031.md). Final policy acceptance remains fixed7 source-isolated motions, full original durations, no original terminations, at least3 independent seeds, same-condition baseline and front/side videos. These requirements remain unmet.
+### Git handoff status
+
+Final push attempted2026-11-06 20:19 Asia/Shanghai with proxy environment cleared; GitHub connection timed out after45 seconds. Local commits are preserved but remote synchronization is unverified. From the repository, retry:
+
+```bash
+git push -u origin supermimic/tw-adaptation-20261104
+```
+
 <!-- TW_SUPERMIMIC_HANDOFF_END -->
 
 
