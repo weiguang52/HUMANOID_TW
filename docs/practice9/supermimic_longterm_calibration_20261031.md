@@ -667,3 +667,19 @@ learning rate/clipping. Every batch verifies source model and full optimizer
 unchanged; endpoint common errors are fit probes outside training point counts.
 This is a frozen local diagnostic, not historical1000-update reconstruction or
 policy acceptance. Source and checkpoint hashes are included in final reports.
+
+### 2026-11-06 16:47 Asia/Shanghai — complete directions and common-bias probe
+
+Full-objective audits completed16 batches each, source weights and complete Adam
+unchanged. With-joint vs without-joint root common-bias increases (linear/angular):
+parent16/0, control2/0, candidate12/11. Candidate full-with-joint step increases
+linear common bias2/16 and angular15/16 versus its own pre-step values.
+`static_coupled_full_direction_v1/summary.json` and per-model audit.json retain
+all outcomes; neither uniform gradient conflict nor uniform Adam failure follows.
+Started `static_coupled_common_direction_v1` (tmux static_coupled_common): same
+three models and16 fit batches, plus one predefined shadow direction adding
+0.5MSE of four-endpoint mean normalized root-linear error and0.5MSE root-angular
+error, coefficient1. Response terms retained. This directly tests common-bias
+supervision on the same endpoints; no new training, coefficient search, validation
+selection, optimizer reset or acceptance. Optional probe adds auditor SHA256 and
+fit-input provenance; baseline directions remain unchanged. Final gates unchanged.

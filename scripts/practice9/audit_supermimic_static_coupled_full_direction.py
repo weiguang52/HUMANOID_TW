@@ -3,6 +3,7 @@ import argparse,ast,copy,datetime,hashlib,json,sys
 from pathlib import Path
 import torch
 p=argparse.ArgumentParser();p.add_argument('--checkpoint',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+p.add_argument('--root-common-probe',action='store_true')
 a=p.parse_args();assert not a.output.exists();a.output.mkdir(parents=True)
 source=Path('scripts/practice9/calibrate_supermimic_static_coupled_pair.py')
 sha=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()
@@ -30,11 +31,12 @@ def audit():
   return {name:.5*error[:,:,sl].mean(1).square().mean() for name,sl in [('linear',slice(7,10)),('angular',slice(10,13)),('joint',slice(43,73))]}
  values={'full_with_joint':E['loss'],'full_without_joint':E['loss']-additional.last_joint,'joint_response':additional.last_joint}
  values.update({'common_'+k:v for k,v in common().items()})
+ if a.root_common_probe:values['full_with_joint_and_root_common']=values['full_with_joint']+values['common_linear']+values['common_angular']
  grads={k:torch.autograd.grad(v,params,retain_graph=True) for k,v in values.items()}
  assert all(torch.isfinite(g).all() for gs in grads.values() for g in gs)
  row={'batch':E['update'],'indices':idx,'losses':{k:float(v) for k,v in values.items()},'probes':{}}
  weights=[v.detach().clone() for v in params]
- for name in ['full_without_joint','full_with_joint']:
+ for name in ['full_without_joint','full_with_joint']+(['full_with_joint_and_root_common'] if a.root_common_probe else []):
   shadow=[torch.nn.Parameter(v.clone()) for v in weights]
   opt=torch.optim.Adam(shadow,lr=artifact['optimizer']['param_groups'][0]['lr']);opt.load_state_dict(copy.deepcopy(artifact['optimizer']))
   for v,g in zip(shadow,grads[name]):v.grad=g.detach().clone()
@@ -67,5 +69,5 @@ sys.argv=[str(source),'--output',str(a.output/'setup'),'--enabled','1','--update
 W.update(__name__='__main__',__file__=str(source),_execute=execute)
 exec(compile(ast.fix_missing_locations(tree),str(source),'exec'),W)
 assert len(rows)==16 and hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()==sha
-out={'timestamp':datetime.datetime.now().astimezone().isoformat(),'checkpoint':str(a.checkpoint),'sha256':sha,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'rows':rows,'weights_unchanged':True,'source_optimizer_unchanged':True,'source_optimizer_updates':0,'policy_acceptance':False,'scope':'Frozen full actual objective, original fit samplers, saved Adam/lr/clipping. Paired omission of joint response on shadow copies only. New first16 fit draws at frozen weights, not historical1000-update reconstruction or closed-loop acceptance.'}
+out={'timestamp':datetime.datetime.now().astimezone().isoformat(),'checkpoint':str(a.checkpoint),'sha256':sha,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'auditor_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'root_common_probe':a.root_common_probe,'fit_input':W['additional'].meta,'rows':rows,'weights_unchanged':True,'source_optimizer_unchanged':True,'source_optimizer_updates':0,'policy_acceptance':False,'scope':'Frozen full actual objective, original fit samplers, saved Adam/lr/clipping. Paired omission of joint response on shadow copies only. New first16 fit draws at frozen weights, not historical1000-update reconstruction or closed-loop acceptance.'}
 (a.output/'audit.json').write_text(json.dumps(out,indent=2))
