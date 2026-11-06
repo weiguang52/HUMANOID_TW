@@ -701,3 +701,15 @@ candidate325464f59ebd391f625a98f0eaed04cdb56a0596921c4e346e275c6a875f44d2.
 Formal control must also match Jcandidate1000. Reviewer thresholds unchanged by
 exact reverse field-map source equivalence. Full model and supplementary audits
 queued after training; no PPO or policy promotion. Notion004 updated.
+
+### 2026-11-06 17:34 Asia/Shanghai — root-common control1000 exact reference
+
+Control1000 completed; candidate PID63400 automatically started. CPU recursive
+comparisons confirmed all world-model tensors and complete Adam bitexact against
+Jcandidate1000, eight Adam states at step3000. Evidence:
+`static_response_common_pair_v1/control_reference_integrity.json`.
+Current serialized SHA2561fce90c4e85942b65c32083c468934615a71cc40e2dbd227bee7549a5e3a5673;
+reference f3d6e74d1061af8731996c22490730bd8f37bc727110dc3d8367978ae9136387.
+Serialization hashes differ while tensor/optimizer states match exactly.
+Candidate1000, paired integrity, full model gates and supplemental diagnostics
+remain pending. No effect conclusion, PPO launch or policy promotion.
