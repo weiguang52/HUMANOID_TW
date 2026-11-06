@@ -637,3 +637,21 @@ remains better. Local position improvement is not stable-control acceptance.
 The supplementary queue started native response diagnostics (PID60804 at16:27).
 Complete coverage, exposure, feedback and endpoint decomposition before
 choosing another single-variable hypothesis. No PPO or policy promotion.
+
+### 2026-11-06 16:41 Asia/Shanghai — isolated coupled gradient diagnosis
+
+All supplementary J audits completed. At16x validation static endpoints, joint
+normalized MSE2.09700e-4 to2.44318e-5 and odd component1.69730e-4 to1.22795e-6
+improve, but root linear common MSE2.13303e-5 to5.98521e-5 and angular common
+2.00132e-5 to6.45821e-5 worsen. Fit shows the same tradeoff. See J endpoint
+_decomposition_summary.json and original static_endpoint_bias/audit.json.
+Frozen fit-only gradient audit `static_coupled_gradient_v1/results/audit.json`
+completed16 batches on parent/control/candidate with8 finite network gradients,
+source weights restored bitexact every batch, unchanged checkpoint hashes and
+zero source optimizer updates. Joint-response vs root-common gradient conflicts
+(linear/angular): parent16/1, control0/0, candidate12/12 of16. Isolated saved-Adam
+root-only/joint-only/combined-response probes all increase linear/angular common
+bias on16/16 batches for all three models. These probes omit the full objective
+and retain its historical moments; they do not establish historical causality or
+justify resetting Adam. Next inspect actual complete-objective directions before
+choosing a new training intervention. No acceptance or policy promotion.
