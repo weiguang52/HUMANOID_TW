@@ -518,3 +518,10 @@ Next read-only measurement launched under tmux additive_static_velocity (pane541
 2026-11-06 12:54:17 Asia/Shanghai | Static velocity coverage metadata fix; v2 measurement running
 
 Initial static_velocity_coverage audit stopped with KeyError sha256 before producing a final audit: static results store hashes in the independently fixed trace manifest, unlike dynamic inline row hashes. Preserve failed output/log. Updated coverage auditor to use the same manifest fallback as the original rollout-exposure auditor; inline hashes retain original priority and exact equality. Added exact consecutive state/next-state continuity check. Results manifest hash and all16 static file hashes verified before relaunch; AST parse and runner bash syntax passed. No metric/threshold/data/model/optimizer changes. Relaunched separate output static_velocity_coverage_v2 under tmux additive_static_velocity_v2 (pane54246); initial failure is not treated as a model result.
+
+---
+2026-11-06 12:57:15 Asia/Shanghai | Static velocity coverage verified; wider native collection proposed
+
+static_velocity_coverage_v2 completed3models x16traces, all weights unchanged, state continuity checked; exact ledger residual <2.9e-16m. Fit-only max across models of per-trace P95 medians on six velocity axes:0.06633864,0.01939638,0.01031283m/s;0.05803167,0.30401587,0.31820194rad/s. Existing native branch max0.01m/s and0.04rad/s undercovers these fit exposure statistics; overlapping H32 inputs are not independent native samples and do not prove causality.
+
+Saved wide_static_root_velocity_v1/proposal.json with evidence hash and no validation-based amplitude selection. Preserve old1/2 levels; add8/16, where16 is next power-of-two covering max fit/base ratio15.9101. Maxdelta0.08m/s and0.32rad/s. Preserve static fit warmups5/25/75/150 and validation15/35/125/175, asset/PD/mapping/physics. This is only planned, not collected or trained; require native smoke integrity, all original-level overlap regression, retained failures and full audit before any training. Static temporal split does not replace source-isolated fixed7 acceptance.
