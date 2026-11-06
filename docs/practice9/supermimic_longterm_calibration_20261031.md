@@ -603,3 +603,18 @@ Reviewer inverse trial-name/field mapping plus removal of added retained-root gu
 2026-11-06 15:04:42 Asia/Shanghai | Static coupled supplemental queue prepared
 
 Formal control58851 confirmed live;22GiB available. tmux static_coupled_supplementary (pane58911) waits primary session completion and reviewed_no_policy_promotion before all native narrow/wide responses,detailed action/center/all-state coverage,static exposure/feedback,static-wide native responses,and exact endpoint bias decomposition. Only after all commands succeed writes all_supplementary_status. All scripts syntax checked. Endpoint auditor gained optional explicit response-reference path, removed before original argument parser; inverse source mapping proves all original metric/identity/weight checks unchanged, recorded endpoint_auditor_compatibility.json. No training edits, thresholds or data changes.
+
+### 2026-11-06 15:44 Asia/Shanghai — static coupled control1000 integrity
+
+The control completed 1000 updates; candidate PID59361 started automatically.
+CPU recursive comparisons confirmed every world-model tensor and complete Adam
+state bitexact against static_wide_response_pair_v1/candidate at 1000 updates.
+All eight Adam states reached step3000. Evidence:
+`static_coupled_response_pair_v1/control_reference_integrity.json` under the
+remote longterm_diagnostics root. Current serialized SHA256:
+`5db4de92934324384086264a5efd1de05bc4a6a14906b9498b9b22e29e80dd4c`;
+historical reference SHA256:
+`d34266c3c43a1626a5e8a343ef4b1f230e3178e3167604a31cf6e38a79739483`.
+Different serialization hashes do not imply different tensor/optimizer contents.
+Candidate1000 and the complete paired and supplementary diagnostics remain
+pending. No policy acceptance or PPO launch; original final gates unchanged.
