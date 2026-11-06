@@ -655,3 +655,15 @@ bias on16/16 batches for all three models. These probes omit the full objective
 and retain its historical moments; they do not establish historical causality or
 justify resetting Adam. Next inspect actual complete-objective directions before
 choosing a new training intervention. No acceptance or policy promotion.
+
+### 2026-11-06 16:43 Asia/Shanghai — full-objective frozen direction audit
+
+Started `static_coupled_full_direction_v1` in tmux static_coupled_full. The
+wrapper executes the unchanged actual coupled trainer AST through all objectives
+and point-count checks, stopping before backward/real Adam/export. For each of
+parent/control/candidate,16 fixed new fit batches compare full_with_joint and
+full_without_joint using shadow copies of the saved Adam state and original
+learning rate/clipping. Every batch verifies source model and full optimizer
+unchanged; endpoint common errors are fit probes outside training point counts.
+This is a frozen local diagnostic, not historical1000-update reconstruction or
+policy acceptance. Source and checkpoint hashes are included in final reports.
