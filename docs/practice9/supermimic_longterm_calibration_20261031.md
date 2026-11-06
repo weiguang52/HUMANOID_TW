@@ -558,3 +558,8 @@ Reviewer source equivalence verified: inverse mapping only explicit trial flag a
 2026-11-06 13:56:25 Asia/Shanghai | Static-wide control1000 exact historical match; candidate running
 
 Control finished fixed1000, Adam3000. Independent CPU comparison of every model tensor and complete Adam state is bitexact to historical Wcontrol1000 (control_reference_integrity.json). Current raw6c89e408fd9105c956a330bb9955922ad6388bebbd17b3369b2fac6ffacb2d01; historical8574e57a49f3e88c25da24c124025add618922ebf44e9fe998212a37cd88466b (metadata hashes differ). This is actual1000 proof, not4-step extrapolation or candidate acceptance. Candidate started automatically, PID55694 confirmed live; no restart. Primary runner and gated supplemental queue remain active.
+
+---
+2026-11-06 14:35:10 Asia/Shanghai | Static-wide formal1000 pair integrity passed; offline audits active
+
+Both arms finished fixed1000. fit_integrity.json verifies sole static-wide coefficient variable, paired original and extra seed64 indices,2176points/update,22frozen tensors,8Adam3000 states, exact historical control1000 model+Adam. Raw candidate d34266c3c43a1626a5e8a343ef4b1f230e3178e3167604a31cf6e38a79739483; control6c89e408fd9105c956a330bb9955922ad6388bebbd17b3369b2fac6ffacb2d01. Declared control exported with unchanged stored weights; primary offline evaluation now running. This is experiment integrity only, not development-gate or policy acceptance. Supplemental queue remains gated on primary completion. No PPO or promotion; original fixed7/3seed/full-duration/video requirements remain.
