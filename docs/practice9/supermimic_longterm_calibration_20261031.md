@@ -758,3 +758,12 @@ New auditor `audit_supermimic_dense_static_full_direction.py` reuses the full co
 Initial diagnostic launch copied an unnecessary completed-run smoke precheck/status trap and stopped before model execution; removed it, restored the completed common-pair terminal status using existing integrity/review reports. Failed log and launch_correction.json retained; no training occurred in that launch.
 
 Next: fixed-budget coefficient0/1 matched dense-static H1 trial, retaining old branch, response, root-common and motion objectives, identical added32 forward points in both arms; verify smoke determinism, frozen tensors and samplers before full run. Keep all original H1/H8/H32, branch, coordinate gates. No PPO until development gates pass, then unchanged seven-motion/full-duration/three-seed policy acceptance.
+
+---
+### 2026-11-06 18:43 Asia/Shanghai — matched dense static H1 pair
+
+`dense_static_pair_v1` resumes common candidate e85f1a7263d5c3ab7d24180fb766950cc73a7a5cf4aa6c15ef4f0c84c10bf936 and full Adam3000. Both retain all original static branch/root/joint/common/motion/native objectives, add identical32 fit-only original-static H1 points (3305 population, seed65), and differ only in coefficient0/1 of .5 state + .5 existing equal-group velocity loss. Budget2208 predictions/update, fixed1000 per arm; no checkpoint selection.
+
+Three smoke runs complete: control, candidate and independent repeated control,4 updates each. Integrity passes22 frozen tensors,8 Adam states at3004, same old/new sampler indices, seed65 replay, exact2208-point budget, single plan-field difference, and control model/full Adam bitexact against repeat. Smoke raw hashes control0b0e89a2556d6760457d29dcd9d89d1083af89233ad9cb509c7cf189ef82ff98, candidate634991ed6270a60c86bad9dea3cd54b072727b6b6864f3fd315a74577a027eae. New continuation has no independent historical1000 control, and auditor explicitly records that limitation. Reviewer reverse-field mapping is byte-identical to previous gate implementation; no thresholds changed.
+
+Full paired run and original static/dynamic/expanded/coordinate/branch evaluations follow in tmux dense_static_pair. Supplementary diagnostics and original fixed7/3seed policy acceptance remain required. No policy trained or promoted by this experiment.
