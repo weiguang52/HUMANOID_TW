@@ -747,3 +747,14 @@ bitexact; retained root+joint+common total matches bitexact, weights unchanged,
 zero optimizer updates. This rules out this formula mismatch, not optimization
 or coverage failures. Next analyze short-horizon static error/fit coverage before
 another intervention. Current candidate remains rejected; final acceptance unmet.
+
+---
+### 2026-11-06 18:40 Asia/Shanghai — dense static H1 coverage and frozen full-objective probe
+
+Status: incomplete; no policy acceptance or promotion. The actual common-pair fit_input hashes verify 20 static branch files (1200 transitions) for H1, versus 8 original fit trajectories (3305 transitions, 3249 H8 windows). Static H1 retains 32 branch points plus 32 motion points; original static trajectories remain supervised through H8. This is a coverage distinction, not proof of the failure cause. Evidence: `longterm_diagnostics/static_h1_coverage_v1/audit.json`.
+
+New auditor `audit_supermimic_dense_static_full_direction.py` reuses the full common-pair training objective and saved Adam at the final candidate; it samples 32 additional original fit-only static transitions with seed65 and compares full objective versus adding .5 state loss + .5 existing velocity-group loss. Original losses/samplers are retained; shadow steps only. All 16 batches pass finite gradients and unchanged source model/full optimizer checks. Both directions lower sampled dense loss in 16/16; adding supervision improves it relative to the base direction in 14/16. Root-common linear/angular/joint reductions relative to before are base16/14/1 and added15/14/3. Thus dense fit supervision has a useful local signal but no demonstrated universal benefit or long-horizon improvement. Evidence: `dense_static_full_direction_v1/candidate/audit.json` and `summary.json`.
+
+Initial diagnostic launch copied an unnecessary completed-run smoke precheck/status trap and stopped before model execution; removed it, restored the completed common-pair terminal status using existing integrity/review reports. Failed log and launch_correction.json retained; no training occurred in that launch.
+
+Next: fixed-budget coefficient0/1 matched dense-static H1 trial, retaining old branch, response, root-common and motion objectives, identical added32 forward points in both arms; verify smoke determinism, frozen tensors and samplers before full run. Keep all original H1/H8/H32, branch, coordinate gates. No PPO until development gates pass, then unchanged seven-motion/full-duration/three-seed policy acceptance.
