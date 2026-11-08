@@ -1,0 +1,32 @@
+[
+  {
+    "model": "robust08_s1",
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issues_20261108/models/robust08/model_8995.pt",
+    "worst_command": "forward_08"
+  },
+  {
+    "model": "robust08_s2",
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8995.pt",
+    "worst_command": "forward_08"
+  },
+  {
+    "model": "remove_s1",
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8995.pt",
+    "worst_command": "forward_08"
+  },
+  {
+    "model": "remove_s2",
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8995.pt",
+    "worst_command": "forward_08"
+  },
+  {
+    "model": "strengthen_s1",
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8995.pt",
+    "worst_command": "forward_08"
+  },
+  {
+    "model": "strengthen_s2",
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8995.pt",
+    "worst_command": "forward_08"
+  }
+]

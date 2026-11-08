@@ -1,0 +1,147 @@
+ATTRIBUTION {"scores": {"clean": 0.0, "push": 0.03125, "material": 0.0026041666666666665, "delay": 0.0, "noise": 0.0, "combined": 0.11458333333333333}, "scores_by_eval_seed": {"clean": [0.0, 0.0, 0.0], "push": [0.0234375, 0.033854166666666664, 0.036458333333333336], "material": [0.0026041666666666665, 0.0026041666666666665, 0.0026041666666666665], "delay": [0.0, 0.0, 0.0], "noise": [0.0, 0.0, 0.0], "combined": [0.10416666666666667, 0.109375, 0.13020833333333334]}, "ranked_factors": ["push", "material", "delay", "noise"], "dominant_factor": null, "training_hypothesis_factor": "push", "selection_rule": "frozen_plan.md: 5pp excess and margin, >=half combined excess, same top factor in all evaluation seeds", "claim": "no single dominant factor; strongest isolated stressor is exploratory only"}
+START remove_smoke.log
+END remove_smoke.log 0
+START strengthen_smoke.log
+END strengthen_smoke.log 0
+START robust08_s2_train.log
+END robust08_s2_train.log 0
+START robust08_s2_clean_eval1.log
+END robust08_s2_clean_eval1.log 0
+START robust08_s2_clean_eval2.log
+END robust08_s2_clean_eval2.log 0
+START robust08_s2_clean_eval3.log
+END robust08_s2_clean_eval3.log 0
+START robust08_s2_push_eval1.log
+END robust08_s2_push_eval1.log 0
+START robust08_s2_push_eval2.log
+END robust08_s2_push_eval2.log 0
+START robust08_s2_push_eval3.log
+END robust08_s2_push_eval3.log 0
+START robust08_s2_material_eval1.log
+END robust08_s2_material_eval1.log 0
+START robust08_s2_material_eval2.log
+END robust08_s2_material_eval2.log 0
+START robust08_s2_material_eval3.log
+END robust08_s2_material_eval3.log 0
+START robust08_s2_delay_eval1.log
+END robust08_s2_delay_eval1.log 0
+START robust08_s2_delay_eval2.log
+END robust08_s2_delay_eval2.log 0
+START robust08_s2_delay_eval3.log
+END robust08_s2_delay_eval3.log 0
+START robust08_s2_noise_eval1.log
+END robust08_s2_noise_eval1.log 0
+START robust08_s2_noise_eval2.log
+END robust08_s2_noise_eval2.log 0
+START robust08_s2_noise_eval3.log
+END robust08_s2_noise_eval3.log 0
+START robust08_s2_combined_eval1.log
+END robust08_s2_combined_eval1.log 0
+START robust08_s2_combined_eval2.log
+END robust08_s2_combined_eval2.log 0
+START robust08_s2_combined_eval3.log
+END robust08_s2_combined_eval3.log 0
+START remove_s1_train.log
+END remove_s1_train.log 0
+START remove_s1_clean_eval1.log
+END remove_s1_clean_eval1.log 0
+START remove_s1_clean_eval2.log
+END remove_s1_clean_eval2.log 0
+START remove_s1_clean_eval3.log
+END remove_s1_clean_eval3.log 0
+START remove_s1_push_eval1.log
+END remove_s1_push_eval1.log 0
+START remove_s1_push_eval2.log
+END remove_s1_push_eval2.log 0
+START remove_s1_push_eval3.log
+END remove_s1_push_eval3.log 0
+START remove_s1_combined_eval1.log
+END remove_s1_combined_eval1.log 0
+START remove_s1_combined_eval2.log
+END remove_s1_combined_eval2.log 0
+START remove_s1_combined_eval3.log
+END remove_s1_combined_eval3.log 0
+START remove_s2_train.log
+END remove_s2_train.log 0
+START remove_s2_clean_eval1.log
+END remove_s2_clean_eval1.log 0
+START remove_s2_clean_eval2.log
+END remove_s2_clean_eval2.log 0
+START remove_s2_clean_eval3.log
+END remove_s2_clean_eval3.log 0
+START remove_s2_push_eval1.log
+END remove_s2_push_eval1.log 0
+START remove_s2_push_eval2.log
+END remove_s2_push_eval2.log 0
+START remove_s2_push_eval3.log
+END remove_s2_push_eval3.log 0
+START remove_s2_combined_eval1.log
+END remove_s2_combined_eval1.log 0
+START remove_s2_combined_eval2.log
+END remove_s2_combined_eval2.log 0
+START remove_s2_combined_eval3.log
+END remove_s2_combined_eval3.log 0
+START strengthen_s1_train.log
+END strengthen_s1_train.log 0
+START strengthen_s1_clean_eval1.log
+END strengthen_s1_clean_eval1.log 0
+START strengthen_s1_clean_eval2.log
+END strengthen_s1_clean_eval2.log 0
+START strengthen_s1_clean_eval3.log
+END strengthen_s1_clean_eval3.log 0
+START strengthen_s1_push_eval1.log
+END strengthen_s1_push_eval1.log 0
+START strengthen_s1_push_eval2.log
+END strengthen_s1_push_eval2.log 0
+START strengthen_s1_push_eval3.log
+END strengthen_s1_push_eval3.log 0
+START strengthen_s1_combined_eval1.log
+END strengthen_s1_combined_eval1.log 0
+START strengthen_s1_combined_eval2.log
+END strengthen_s1_combined_eval2.log 0
+START strengthen_s1_combined_eval3.log
+END strengthen_s1_combined_eval3.log 0
+START strengthen_s2_train.log
+END strengthen_s2_train.log 0
+START strengthen_s2_clean_eval1.log
+END strengthen_s2_clean_eval1.log 0
+START strengthen_s2_clean_eval2.log
+END strengthen_s2_clean_eval2.log 0
+START strengthen_s2_clean_eval3.log
+END strengthen_s2_clean_eval3.log 0
+START strengthen_s2_push_eval1.log
+END strengthen_s2_push_eval1.log 0
+START strengthen_s2_push_eval2.log
+END strengthen_s2_push_eval2.log 0
+START strengthen_s2_push_eval3.log
+END strengthen_s2_push_eval3.log 0
+START strengthen_s2_combined_eval1.log
+END strengthen_s2_combined_eval1.log 0
+START strengthen_s2_combined_eval2.log
+END strengthen_s2_combined_eval2.log 0
+START strengthen_s2_combined_eval3.log
+END strengthen_s2_combined_eval3.log 0
+START robust08_s1_worst_front.log
+END robust08_s1_worst_front.log 0
+START robust08_s1_worst_side.log
+END robust08_s1_worst_side.log 0
+START robust08_s2_worst_front.log
+END robust08_s2_worst_front.log 0
+START robust08_s2_worst_side.log
+END robust08_s2_worst_side.log 0
+START remove_s1_worst_front.log
+END remove_s1_worst_front.log 0
+START remove_s1_worst_side.log
+END remove_s1_worst_side.log 0
+START remove_s2_worst_front.log
+END remove_s2_worst_front.log 0
+START remove_s2_worst_side.log
+END remove_s2_worst_side.log 0
+START strengthen_s1_worst_front.log
+END strengthen_s1_worst_front.log 0
+START strengthen_s1_worst_side.log
+END strengthen_s1_worst_side.log 0
+START strengthen_s2_worst_front.log
+END strengthen_s2_worst_front.log 0
+START strengthen_s2_worst_side.log
+END strengthen_s2_worst_side.log 0

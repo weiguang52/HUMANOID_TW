@@ -1,0 +1,51 @@
+{
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8995.pt",
+  "deterministic_policy": true,
+  "runtime": {
+    "python": "/root/gpufree-data/conda_envs/env_isaaclab/bin/python",
+    "rsl_rl": "5.0.1",
+    "torch": "2.7.0+cu128",
+    "torch_path": "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/torch/__init__.py"
+  },
+  "physics_diagnostics": {
+    "default_base_mass_min": 0.07990783452987671,
+    "default_base_mass_max": 0.07990783452987671,
+    "actual_base_mass_min": 0.03228159621357918,
+    "actual_base_mass_max": 0.03228159621357918,
+    "base_mass_below_1mg": 0,
+    "nonpositive_body_mass_count": 0
+  },
+  "issue5_condition": "combined",
+  "paired_resets": true,
+  "pushes": true,
+  "observation_noise": true,
+  "results": [
+    {
+      "command": "forward_08",
+      "target": [
+        0.8,
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "num_envs": 1,
+      "seconds": 20.0,
+      "failed_trials": 1,
+      "fall_rate": 1.0,
+      "minimum_base_height": 0.09665907174348831,
+      "metrics": {
+        "xy_error": 0.14714987750479333,
+        "yaw_error": 0.7145642802878227,
+        "base_height": 0.25995488062844024,
+        "joint_acc_rms": 31.158642723037673,
+        "foot_contact_slide": 0.09031622898795207,
+        "left_contact_duty": 0.43543543543543545,
+        "right_contact_duty": 0.5595595595595596,
+        "left_joint_acc_rms": 35.53773890768324,
+        "right_joint_acc_rms": 35.74905437953002,
+        "left_foot_height": 0.029848848225304613,
+        "right_foot_height": 0.0281765392810867
+      }
+    }
+  ]
+}

@@ -34,6 +34,8 @@ parser.add_argument("--export_io_descriptors", action="store_true", default=Fals
 parser.add_argument(
     "--ray-proc-id", "-rid", type=int, default=None, help="Automatically configured by Ray integration, otherwise None."
 )
+parser.add_argument("--issue5_training_mode", default="legacy", choices=["legacy","remove","strengthen"])
+parser.add_argument("--issue5_factor", default="push", choices=["push","material","delay","noise"])
 parser.add_argument("--experiment_profile", default="default", choices=["default","control","entropy","yaw","range05","range08","robust05","robust08"])
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
@@ -128,6 +130,10 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
     from unitree_rl_lab.tasks.locomotion.robots.tw.experiments import configure_experiment
     configure_experiment(env_cfg, agent_cfg, args_cli.experiment_profile)
+    if args_cli.issue5_training_mode != "legacy":
+        assert args_cli.experiment_profile == "robust08"
+        from unitree_rl_lab.tasks.locomotion.robots.tw.experiments import configure_issue5_training
+        configure_issue5_training(env_cfg, args_cli.issue5_training_mode, args_cli.issue5_factor)
 
     # set the environment seed
     # note: certain randomizations occur in the environment initialization so we set the seed here

@@ -1,0 +1,52 @@
+{
+  "robust08_s2": {
+    "name": "robust08_s2",
+    "mode": "legacy",
+    "seed": 2,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "factor": "push"
+  },
+  "remove_s1": {
+    "name": "remove_s1",
+    "mode": "remove",
+    "seed": 1,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "factor": "push"
+  },
+  "remove_s2": {
+    "name": "remove_s2",
+    "mode": "remove",
+    "seed": 2,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "factor": "push"
+  },
+  "strengthen_s1": {
+    "name": "strengthen_s1",
+    "mode": "strengthen",
+    "seed": 1,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "factor": "push"
+  },
+  "strengthen_s2": {
+    "name": "strengthen_s2",
+    "mode": "strengthen",
+    "seed": 2,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "factor": "push"
+  }
+}

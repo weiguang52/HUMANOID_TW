@@ -1,0 +1,36 @@
+{
+  "parent": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7496.pt",
+  "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+  "factor": "push",
+  "dominant": false,
+  "iterations": 1500,
+  "num_envs": 4096,
+  "runs": [
+    {
+      "name": "robust08_s2",
+      "mode": "legacy",
+      "seed": 2
+    },
+    {
+      "name": "remove_s1",
+      "mode": "remove",
+      "seed": 1
+    },
+    {
+      "name": "remove_s2",
+      "mode": "remove",
+      "seed": 2
+    },
+    {
+      "name": "strengthen_s1",
+      "mode": "strengthen",
+      "seed": 1
+    },
+    {
+      "name": "strengthen_s2",
+      "mode": "strengthen",
+      "seed": 2
+    }
+  ],
+  "prior_frozen_spec_sha256": "57ffafe98f93eb95d0b8e136f89bf42f90e6459c1320454f684ae5e371836295"
+}

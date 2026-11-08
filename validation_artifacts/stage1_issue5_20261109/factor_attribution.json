@@ -1,0 +1,52 @@
+{
+  "scores": {
+    "clean": 0.0,
+    "push": 0.03125,
+    "material": 0.0026041666666666665,
+    "delay": 0.0,
+    "noise": 0.0,
+    "combined": 0.11458333333333333
+  },
+  "scores_by_eval_seed": {
+    "clean": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "push": [
+      0.0234375,
+      0.033854166666666664,
+      0.036458333333333336
+    ],
+    "material": [
+      0.0026041666666666665,
+      0.0026041666666666665,
+      0.0026041666666666665
+    ],
+    "delay": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "noise": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "combined": [
+      0.10416666666666667,
+      0.109375,
+      0.13020833333333334
+    ]
+  },
+  "ranked_factors": [
+    "push",
+    "material",
+    "delay",
+    "noise"
+  ],
+  "dominant_factor": null,
+  "training_hypothesis_factor": "push",
+  "selection_rule": "frozen_plan.md: 5pp excess and margin, >=half combined excess, same top factor in all evaluation seeds",
+  "claim": "no single dominant factor; strongest isolated stressor is exploratory only"
+}

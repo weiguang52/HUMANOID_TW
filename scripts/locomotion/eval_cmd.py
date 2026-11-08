@@ -38,6 +38,9 @@ parser.add_argument(
 parser.add_argument("--real-time", action="store_true", default=False, help="Run in real-time, if possible.")
 parser.add_argument("--output", required=True)
 parser.add_argument("--experiment_profile", default="default")
+parser.add_argument("--issue5_condition", default="legacy", choices=["legacy","clean","push","material","delay","noise","combined"])
+parser.add_argument("--command_filter", default="")
+parser.add_argument("--paired_resets", action="store_true")
 parser.add_argument("--extended_commands", action="store_true")
 parser.add_argument("--with_pushes", action="store_true")
 parser.add_argument("--camera_view", choices=["front","side"], default="front")
@@ -126,6 +129,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     configure_experiment(env_cfg, agent_cfg, args_cli.experiment_profile)
     if not args_cli.with_pushes:
         env_cfg.events.push_robot = None
+    from unitree_rl_lab.tasks.locomotion.robots.tw.experiments import configure_issue5_condition
+    configure_issue5_condition(env_cfg, args_cli.issue5_condition)
     env_cfg.episode_length_s = args_cli.seconds + 1.0
     env_cfg.commands.base_velocity.resampling_time_range = (1.e9, 1.e9)
     env_cfg.commands.base_velocity.heading_command = False
@@ -213,14 +218,34 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     feet = [robot.body_names.index(n) for n in ("left_foot", "right_foot")]
     sensor_feet = [base.scene["contact_forces"].body_names.index(n) for n in ("left_foot", "right_foot")]
     leg_joints = [[i for i,n in enumerate(robot.joint_names) if n.startswith(side) and any(k in n for k in ("hip", "knee", "ankle", "foot"))] for side in ("left_", "right_")]
+    physics_diagnostics = None
+    if args_cli.issue5_condition != "legacy":
+        masses = robot.root_physx_view.get_masses()
+        base_id = robot.body_names.index("base_link")
+        physics_diagnostics = {
+            "default_base_mass_min": robot.data.default_mass[:,base_id].min().item(),
+            "default_base_mass_max": robot.data.default_mass[:,base_id].max().item(),
+            "actual_base_mass_min": masses[:,base_id].min().item(),
+            "actual_base_mass_max": masses[:,base_id].max().item(),
+            "base_mass_below_1mg": int((masses[:,base_id] < 1.e-3).sum()),
+            "nonpositive_body_mass_count": int((masses <= 0).sum()),
+        }
+        assert physics_diagnostics["nonpositive_body_mass_count"] == 0
     results = []
     commands = [("stand", (0.,0.,0.)), ("forward_01",(.1,0.,0.)),
                            ("forward_02",(.2,0.,0.)), ("forward_03",(.3,0.,0.)),
                            ("yaw_positive",(0.,0.,.3)), ("yaw_negative",(0.,0.,-.3))]
     if args_cli.extended_commands:
         commands += [("forward_05",(.5,0.,0.)),("forward_08",(.8,0.,0.)),("yaw_plus08",(0.,0.,.8)),("yaw_minus08",(0.,0.,-.8))]
-    for label, command in commands:
-        env.reset()
+    if args_cli.command_filter:
+        selected=set(args_cli.command_filter.split(","))
+        assert selected <= {x[0] for x in commands}, selected
+        commands=[x for x in commands if x[0] in selected]
+    for command_index, (label, command) in enumerate(commands):
+        if args_cli.paired_resets:
+            base.reset(seed=env_cfg.seed * 1000 + command_index)
+        else:
+            env.reset()
         writer = None
         if args_cli.video:
             import imageio.v2 as imageio
@@ -289,7 +314,9 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     output=Path(args_cli.output); output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps({"checkpoint":resume_path,"deterministic_policy":True,
         "runtime":{"python":sys.executable,"rsl_rl":metadata.version("rsl-rl-lib"),"torch":torch.__version__,"torch_path":torch.__file__},
-        "pushes":args_cli.with_pushes,"observation_noise":env_cfg.observations.policy.enable_corruption,
+        "physics_diagnostics":physics_diagnostics,
+        "issue5_condition":args_cli.issue5_condition,"paired_resets":args_cli.paired_resets,
+        "pushes":base.cfg.events.push_robot is not None,"observation_noise":env_cfg.observations.policy.enable_corruption,
         "results":results},indent=2)+"\n")
     env.close()
 
