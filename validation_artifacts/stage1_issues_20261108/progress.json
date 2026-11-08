@@ -1,0 +1,30 @@
+{
+  "pid": 34711,
+  "args": [
+    "python",
+    "-u",
+    "scripts/locomotion/eval_cmd.py",
+    "--task",
+    "Unitree-TW-30dof-Velocity",
+    "--headless",
+    "--num_envs",
+    "1",
+    "--seed",
+    "1",
+    "--video",
+    "--camera_view",
+    "side",
+    "--checkpoint",
+    "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8995.pt",
+    "--output",
+    "/root/gpufree-data/tw_stage1/issue_runs_20261108/robust08_video_side.json",
+    "--experiment_profile",
+    "default",
+    "--extended_commands"
+  ],
+  "log": "/root/gpufree-data/tw_stage1/issue_runs_20261108/robust08_video_side.log",
+  "started_unix": 1794153796.6327727,
+  "state": "complete",
+  "returncode": 0,
+  "finished_unix": 1794154317.0050104
+}

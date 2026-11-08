@@ -9,6 +9,8 @@
 
 import argparse
 import sys
+import json
+from pathlib import Path
 
 from isaaclab.app import AppLauncher
 
@@ -34,6 +36,12 @@ parser.add_argument(
     help="Use the pre-trained checkpoint from Nucleus.",
 )
 parser.add_argument("--real-time", action="store_true", default=False, help="Run in real-time, if possible.")
+parser.add_argument("--output", required=True)
+parser.add_argument("--experiment_profile", default="default")
+parser.add_argument("--extended_commands", action="store_true")
+parser.add_argument("--with_pushes", action="store_true")
+parser.add_argument("--camera_view", choices=["front","side"], default="front")
+parser.add_argument("--seconds", type=float, default=20.0)
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
@@ -66,6 +74,7 @@ import time
 
 import gymnasium as gym
 import torch
+torch.set_num_threads(4)
 from rsl_rl.runners import DistillationRunner, OnPolicyRunner
 
 from isaaclab.envs import (
@@ -113,10 +122,45 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     # set the environment seed
     # note: certain randomizations occur in the environment initialization so we set the seed here
     env_cfg.seed = agent_cfg.seed
-    env_cfg.events.push_robot = None
+    from unitree_rl_lab.tasks.locomotion.robots.tw.experiments import configure_experiment
+    configure_experiment(env_cfg, agent_cfg, args_cli.experiment_profile)
+    if not args_cli.with_pushes:
+        env_cfg.events.push_robot = None
+    env_cfg.episode_length_s = args_cli.seconds + 1.0
+    env_cfg.commands.base_velocity.resampling_time_range = (1.e9, 1.e9)
+    env_cfg.commands.base_velocity.heading_command = False
+    env_cfg.commands.base_velocity.debug_vis = False
+    env_cfg.curriculum.lin_vel_cmd_levels = None
     env_cfg.commands.base_velocity.rel_standing_envs = 0.0
     env_cfg.sim.device = args_cli.device if args_cli.device is not None else env_cfg.sim.device
 
+    if args_cli.video:
+        if env_cfg.scene.num_envs != 1:
+            raise ValueError("Video evaluation requires --num_envs 1")
+        import isaaclab.sim as sim_utils
+        original_spawn = env_cfg.scene.robot.spawn
+        env_cfg.scene.robot.spawn = sim_utils.UsdFileCfg(
+            usd_path="/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3_colored.usd",
+            activate_contact_sensors=True,
+            rigid_props=original_spawn.rigid_props,
+            articulation_props=original_spawn.articulation_props,
+        )
+        env_cfg.viewer.resolution = (960, 720)
+        # Verify the precolored asset preserves the exact experiment physics.
+        from pxr import Usd
+        original=Usd.Stage.Open("/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd")
+        colored=Usd.Stage.Open(env_cfg.scene.robot.spawn.usd_path)
+        checked=0
+        for prim in original.Traverse():
+            other=colored.GetPrimAtPath(prim.GetPath())
+            assert other, str(prim.GetPath())
+            for attr in prim.GetAttributes():
+                assert str(attr.Get())==str(other.GetAttribute(attr.GetName()).Get()),str(attr.GetPath())
+                checked+=1
+            for rel in prim.GetRelationships():
+                if not rel.GetName().startswith("material:binding"):
+                    assert rel.GetTargets()==other.GetRelationship(rel.GetName()).GetTargets()
+        print(f"Colored USD integrity: {checked} original attributes unchanged",flush=True)
     # specify directory for logging experiments
     log_root_path = os.path.join("logs", "rsl_rl", agent_cfg.experiment_name)
     log_root_path = os.path.abspath(log_root_path)
@@ -143,18 +187,6 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     if isinstance(env.unwrapped, DirectMARLEnv):
         env = multi_agent_to_single_agent(env)
 
-    # wrap for video recording
-    if args_cli.video:
-        video_kwargs = {
-            "video_folder": os.path.join(log_dir, "videos", "play"),
-            "step_trigger": lambda step: step == 0,
-            "video_length": args_cli.video_length,
-            "disable_logger": True,
-        }
-        print("[INFO] Recording videos during training.")
-        print_dict(video_kwargs, nesting=4)
-        env = gym.wrappers.RecordVideo(env, **video_kwargs)
-
     # wrap around environment for rsl-rl
     env = RslRlVecEnvWrapper(env, clip_actions=agent_cfg.clip_actions)
 
@@ -173,29 +205,92 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     # obtain the trained policy for inference
     policy = runner.get_inference_policy(device=env.unwrapped.device)
 
-    # ---- fixed-command evaluation: no pushes, no standing envs, constant forward command ----
-    cmd_term = env.unwrapped.command_manager.get_term("base_velocity")
-    robot = env.unwrapped.scene["robot"]
-    obs = env.get_observations()
-    for vx in (0.0, 0.1, 0.2, 0.3):
-        for _ in range(50):  # let it settle into the new command
-            cmd_term.vel_command_b[:] = torch.tensor([vx, 0.0, 0.0], device=env.unwrapped.device)
-            with torch.inference_mode():
-                obs, _, dones, _ = env.step(policy(obs))
-        samples, feet_z, alive = [], [], []
-        for _ in range(150):
-            cmd_term.vel_command_b[:] = torch.tensor([vx, 0.0, 0.0], device=env.unwrapped.device)
-            with torch.inference_mode():
-                obs, _, dones, _ = env.step(policy(obs))
-            samples.append(robot.data.root_lin_vel_b[:, 0].clone())
-            fi = [robot.body_names.index(n) for n in ("left_foot", "right_foot")]
-            feet_z.append(robot.data.body_pos_w[:, fi, 2].clone())
-            alive.append(1.0 - dones.float().mean().item())
-        v = torch.stack(samples)           # [T, N]
-        fz = torch.stack(feet_z)           # [T, N, 2]
-        print(f"EVAL cmd_vx={vx:.1f} mean_actual_vx={v.mean().item():.3f} std_over_envs={v.mean(0).std().item():.3f} "
-              f"foot_z_max={fz.max().item():.3f} foot_z_range_mean={(fz.max(0).values - fz.min(0).values).mean().item():.3f} "
-              f"resets_per_step={1.0 - sum(alive)/len(alive):.4f}", flush=True)
+    # One independent, full-duration trial per environment and command.
+    # Track any true termination across the whole horizon, rather than resets/step.
+    base = env.unwrapped
+    cmd_term = base.command_manager.get_term("base_velocity")
+    robot = base.scene["robot"]
+    feet = [robot.body_names.index(n) for n in ("left_foot", "right_foot")]
+    sensor_feet = [base.scene["contact_forces"].body_names.index(n) for n in ("left_foot", "right_foot")]
+    leg_joints = [[i for i,n in enumerate(robot.joint_names) if n.startswith(side) and any(k in n for k in ("hip", "knee", "ankle", "foot"))] for side in ("left_", "right_")]
+    results = []
+    commands = [("stand", (0.,0.,0.)), ("forward_01",(.1,0.,0.)),
+                           ("forward_02",(.2,0.,0.)), ("forward_03",(.3,0.,0.)),
+                           ("yaw_positive",(0.,0.,.3)), ("yaw_negative",(0.,0.,-.3))]
+    if args_cli.extended_commands:
+        commands += [("forward_05",(.5,0.,0.)),("forward_08",(.8,0.,0.)),("yaw_plus08",(0.,0.,.8)),("yaw_minus08",(0.,0.,-.8))]
+    for label, command in commands:
+        env.reset()
+        writer = None
+        if args_cli.video:
+            import imageio.v2 as imageio
+            video_dir=Path(args_cli.output).parent / "videos"
+            video_dir.mkdir(parents=True,exist_ok=True)
+            writer=imageio.get_writer(str(video_dir / f"{Path(args_cli.output).stem}_{label}_{args_cli.camera_view}.mp4"), fps=round(1/base.step_dt))
+        failed = torch.zeros(base.num_envs, dtype=torch.bool, device=base.device)
+        totals = {k: torch.zeros((), device=base.device, dtype=torch.float64) for k in ["xy_error", "yaw_error", "base_height", "joint_acc_rms", "foot_contact_slide", "left_contact_duty", "right_contact_duty", "left_joint_acc_rms", "right_joint_acc_rms", "left_foot_height", "right_foot_height"]}
+        count = torch.zeros((),device=base.device,dtype=torch.long)
+        min_height = torch.full((),float("inf"),device=base.device)
+        target = torch.tensor(command, device=base.device)
+        for step in range(round(args_cli.seconds / base.step_dt)):
+            cmd_term.vel_command_b[:] = target
+            cmd_term.is_standing_env[:] = False
+            # Recompute observations after command changes, including after auto-reset.
+            obs = base.observation_manager.compute()
+            with torch.no_grad():
+                _, _, dones, _ = env.step(policy(obs))
+            if writer is not None:
+                import math
+                q=robot.data.root_quat_w[0].detach().cpu().tolist()
+                yaw=math.atan2(2*(q[0]*q[3]+q[1]*q[2]),1-2*(q[2]*q[2]+q[3]*q[3]))
+                angle=yaw if args_cli.camera_view=="front" else yaw+math.pi/2
+                pos=robot.data.root_pos_w[0].detach().cpu().tolist()
+                eye=(pos[0]+1.2*math.cos(angle),pos[1]+1.2*math.sin(angle),pos[2]+.35)
+                base.sim.set_camera_view(eye=eye,target=(pos[0],pos[1],pos[2]+.05))
+                if step == 0:
+                    for _ in range(12):
+                        base.sim.render()
+                frame = base.render()
+                if step == 0:
+                    for _ in range(60):
+                        if frame.max() > 0:
+                            break
+                        base.sim.render()
+                        frame = base.render()
+                    assert frame.max() > 0, "Camera annotator returned a black first frame"
+                writer.append_data(frame)
+            failed |= base.reset_terminated
+            valid = ~dones.bool()
+            v = robot.data.root_lin_vel_b
+            values = {
+                "xy_error": torch.linalg.vector_norm(v[:,:2]-target[:2],dim=-1),
+                "yaw_error": (robot.data.root_ang_vel_b[:,2]-target[2]).abs(),
+                "base_height": robot.data.root_pos_w[:,2]-base.scene.env_origins[:,2],
+                "joint_acc_rms": robot.data.joint_acc.square().mean(-1).sqrt(),
+            }
+            contact = base.scene["contact_forces"].data.net_forces_w[:,sensor_feet,:].norm(dim=-1)>1.
+            slide = robot.data.body_lin_vel_w[:,feet,:2].norm(dim=-1)
+            values["foot_contact_slide"]=(slide*contact).sum(-1)/contact.sum(-1).clamp_min(1)
+            for side_index,side in enumerate(("left", "right")):
+                values[side+"_contact_duty"]=contact[:,side_index].float()
+                values[side+"_joint_acc_rms"]=robot.data.joint_acc[:,leg_joints[side_index]].square().mean(-1).sqrt()
+                values[side+"_foot_height"]=robot.data.body_pos_w[:,feet[side_index],2]-base.scene.env_origins[:,2]
+            for k,v in values.items(): totals[k] += torch.where(valid,v,0.).sum(dtype=torch.float64)
+            count += valid.sum()
+            min_height=torch.minimum(min_height,torch.where(valid,values["base_height"],float("inf")).min())
+        if writer is not None:
+            writer.close()
+        results.append({"command":label,"target":command,"seed":env_cfg.seed,
+                        "num_envs":base.num_envs,"seconds":args_cli.seconds,
+                        "failed_trials":int(failed.sum()),"fall_rate":failed.float().mean().item(),
+                        "minimum_base_height":min_height.item(),
+                        "metrics":{k:(v/count.clamp_min(1)).item() for k,v in totals.items()}})
+        print("EVAL",json.dumps(results[-1]),flush=True)
+    output=Path(args_cli.output); output.parent.mkdir(parents=True,exist_ok=True)
+    output.write_text(json.dumps({"checkpoint":resume_path,"deterministic_policy":True,
+        "runtime":{"python":sys.executable,"rsl_rl":metadata.version("rsl-rl-lib"),"torch":torch.__version__,"torch_path":torch.__file__},
+        "pushes":args_cli.with_pushes,"observation_noise":env_cfg.observations.policy.enable_corruption,
+        "results":results},indent=2)+"\n")
     env.close()
 
 

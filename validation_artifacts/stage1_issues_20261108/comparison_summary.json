@@ -1,0 +1,82 @@
+{
+  "ft5_nominal": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.28791651533565404,
+    "old_range_xy_error": 0.029988331742149807
+  },
+  "ft5_challenge": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.30537872721388476,
+    "old_range_xy_error": 0.05967518109271413
+  },
+  "control_s1_nominal": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.2670269474754265,
+    "old_range_xy_error": 0.04430298388332375
+  },
+  "control_s2_nominal": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.2725827823173033,
+    "old_range_xy_error": 0.04821569504112007
+  },
+  "entropy_s1_nominal": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.22038718743368133,
+    "old_range_xy_error": 0.030456295462558666
+  },
+  "entropy_s2_nominal": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.20282302761642498,
+    "old_range_xy_error": 0.028786299613701414
+  },
+  "yaw_s1_nominal": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.15677366282532848,
+    "old_range_xy_error": 0.03166042269139331
+  },
+  "yaw_s2_nominal": {
+    "worst_fall_rate": 1.0,
+    "mean_yaw_error": 0.18602080934027132,
+    "old_range_xy_error": 0.02983682674424836
+  },
+  "range05_nominal": {
+    "worst_fall_rate": 0.875,
+    "mean_yaw_error": 0.10544917344558052,
+    "old_range_xy_error": 0.032227467578154465
+  },
+  "range05_challenge": {
+    "worst_fall_rate": 0.984375,
+    "mean_yaw_error": 0.1853790712008669,
+    "old_range_xy_error": 0.06958040073840925
+  },
+  "robust05_nominal": {
+    "worst_fall_rate": 0.9140625,
+    "mean_yaw_error": 0.15562978042136333,
+    "old_range_xy_error": 0.036178561179126434
+  },
+  "robust05_challenge": {
+    "worst_fall_rate": 0.9921875,
+    "mean_yaw_error": 0.1835699670778984,
+    "old_range_xy_error": 0.049827396013399375
+  },
+  "range08_nominal": {
+    "worst_fall_rate": 0.015625,
+    "mean_yaw_error": 0.08374362913781079,
+    "old_range_xy_error": 0.0464530370097977
+  },
+  "range08_challenge": {
+    "worst_fall_rate": 0.8984375,
+    "mean_yaw_error": 0.18318633618134186,
+    "old_range_xy_error": 0.0795125732698214
+  },
+  "robust08_nominal": {
+    "worst_fall_rate": 0.0078125,
+    "mean_yaw_error": 0.12865153826522874,
+    "old_range_xy_error": 0.03361254036491973
+  },
+  "robust08_challenge": {
+    "worst_fall_rate": 0.2109375,
+    "mean_yaw_error": 0.151344125056575,
+    "old_range_xy_error": 0.0432780234193182
+  }
+}

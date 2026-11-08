@@ -1,0 +1,222 @@
+{
+  "control_s1": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.00192136294208467,
+      "last": 0.09216894954442978,
+      "last100_mean": 0.10213714115321636
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.00317774573341012,
+      "last": 0.25208479166030884,
+      "last100_mean": 0.2671832396090031
+    },
+    "Loss/entropy": {
+      "first": -77.6920166015625,
+      "last": -83.36054229736328,
+      "last100_mean": -83.23046951293945
+    },
+    "Policy/mean_std": {
+      "first": 0.028959793969988823,
+      "last": 0.023636918514966965,
+      "last100_mean": 0.023768322840332985
+    }
+  },
+  "control_s2": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.0021591922268271446,
+      "last": 0.11486160010099411,
+      "last100_mean": 0.10307640001177788
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.00255565345287323,
+      "last": 0.27536362409591675,
+      "last100_mean": 0.26847334921360017
+    },
+    "Loss/entropy": {
+      "first": -77.6292495727539,
+      "last": -85.10401916503906,
+      "last100_mean": -85.09492813110352
+    },
+    "Policy/mean_std": {
+      "first": 0.02898307889699936,
+      "last": 0.023271163925528526,
+      "last100_mean": 0.023368858005851506
+    }
+  },
+  "entropy_s1": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.00192136294208467,
+      "last": 0.08158597350120544,
+      "last100_mean": 0.07914036132395268
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.00317774573341012,
+      "last": 0.3172588050365448,
+      "last100_mean": 0.3153815829753876
+    },
+    "Loss/entropy": {
+      "first": -76.12882232666016,
+      "last": -51.75232696533203,
+      "last100_mean": -52.120561866760255
+    },
+    "Policy/mean_std": {
+      "first": 0.029888387769460678,
+      "last": 0.05979568883776665,
+      "last100_mean": 0.05907130379229784
+    }
+  },
+  "entropy_s2": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.0021591922268271446,
+      "last": 0.07917159795761108,
+      "last100_mean": 0.07845701903104782
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.00255565345287323,
+      "last": 0.3258306384086609,
+      "last100_mean": 0.3055787172913551
+    },
+    "Loss/entropy": {
+      "first": -76.12873077392578,
+      "last": -52.35858917236328,
+      "last100_mean": -52.749524726867676
+    },
+    "Policy/mean_std": {
+      "first": 0.02988419309258461,
+      "last": 0.05956417694687843,
+      "last100_mean": 0.05876681543886662
+    }
+  },
+  "yaw_s1": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.00192136294208467,
+      "last": 0.08109407126903534,
+      "last100_mean": 0.0825641717761755
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.00317774573341012,
+      "last": 0.23325566947460175,
+      "last100_mean": 0.2466219547390938
+    },
+    "Loss/entropy": {
+      "first": -76.38491821289062,
+      "last": -53.65984344482422,
+      "last100_mean": -53.81667472839356
+    },
+    "Policy/mean_std": {
+      "first": 0.02973828837275505,
+      "last": 0.059695325791835785,
+      "last100_mean": 0.058942260555922985
+    }
+  },
+  "yaw_s2": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.0021591922268271446,
+      "last": 0.08063270151615143,
+      "last100_mean": 0.0809738776832819
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.00255565345287323,
+      "last": 0.24765118956565857,
+      "last100_mean": 0.25125440925359727
+    },
+    "Loss/entropy": {
+      "first": -76.32057189941406,
+      "last": -53.8497200012207,
+      "last100_mean": -53.98791675567627
+    },
+    "Policy/mean_std": {
+      "first": 0.029796527698636055,
+      "last": 0.059512872248888016,
+      "last100_mean": 0.05894886139780283
+    }
+  },
+  "range05": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.0028747892938554287,
+      "last": 0.10368439555168152,
+      "last100_mean": 0.09716775000095368
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.003950714133679867,
+      "last": 0.3376099467277527,
+      "last100_mean": 0.3278722855448723
+    },
+    "Loss/entropy": {
+      "first": -52.89858627319336,
+      "last": -46.21052551269531,
+      "last100_mean": -46.1231563949585
+    },
+    "Policy/mean_std": {
+      "first": 0.06056102737784386,
+      "last": 0.0770178958773613,
+      "last100_mean": 0.07682723268866538
+    }
+  },
+  "robust05": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.003692700294777751,
+      "last": 0.12884747982025146,
+      "last100_mean": 0.12726953566074373
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.004756554961204529,
+      "last": 0.6479218602180481,
+      "last100_mean": 0.6351493299007416
+    },
+    "Loss/entropy": {
+      "first": -52.95625305175781,
+      "last": -23.582962036132812,
+      "last100_mean": -23.663254432678222
+    },
+    "Policy/mean_std": {
+      "first": 0.06047726795077324,
+      "last": 0.14563772082328796,
+      "last100_mean": 0.14452831342816352
+    }
+  },
+  "range08": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.005215468816459179,
+      "last": 0.12999288737773895,
+      "last100_mean": 0.1321088369190693
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.0055977776646614075,
+      "last": 0.4091622233390808,
+      "last100_mean": 0.4245702397823334
+    },
+    "Loss/entropy": {
+      "first": -45.955501556396484,
+      "last": -41.0759391784668,
+      "last100_mean": -41.06475784301758
+    },
+    "Policy/mean_std": {
+      "first": 0.07731766998767853,
+      "last": 0.09306428581476212,
+      "last100_mean": 0.09307235807180404
+    }
+  },
+  "robust08": {
+    "Metrics/base_velocity/error_vel_xy": {
+      "first": 0.006077027879655361,
+      "last": 0.13819190859794617,
+      "last100_mean": 0.14318807885050774
+    },
+    "Metrics/base_velocity/error_vel_yaw": {
+      "first": 0.010560085996985435,
+      "last": 0.7446188926696777,
+      "last100_mean": 0.759407542347908
+    },
+    "Loss/entropy": {
+      "first": -23.624189376831055,
+      "last": -28.037317276000977,
+      "last100_mean": -27.726827011108398
+    },
+    "Policy/mean_std": {
+      "first": 0.1454923003911972,
+      "last": 0.14389871060848236,
+      "last100_mean": 0.1447533668577671
+    }
+  }
+}

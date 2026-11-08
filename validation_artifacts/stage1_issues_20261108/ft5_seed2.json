@@ -1,0 +1,140 @@
+{
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/tw_stage1_ft5_20261107/model_5997.pt",
+  "deterministic_policy": true,
+  "runtime": {
+    "python": "/root/gpufree-data/conda_envs/env_isaaclab/bin/python",
+    "rsl_rl": "5.0.1",
+    "torch": "2.7.0+cu128",
+    "torch_path": "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/torch/__init__.py"
+  },
+  "pushes": false,
+  "observation_noise": true,
+  "results": [
+    {
+      "command": "stand",
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed": 2,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.26004886627197266,
+      "metrics": {
+        "xy_error": 0.02034627156612251,
+        "yaw_error": 0.05015255378019184,
+        "base_height": 0.261442270354135,
+        "joint_acc_rms": 6.427440699336119,
+        "foot_contact_slide": 0.007171844306603816
+      }
+    },
+    {
+      "command": "forward_01",
+      "target": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "seed": 2,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2601725459098816,
+      "metrics": {
+        "xy_error": 0.027089752702756643,
+        "yaw_error": 0.06821489490492323,
+        "base_height": 0.26212020606780423,
+        "joint_acc_rms": 12.810471151337028,
+        "foot_contact_slide": 0.0176700001389961
+      }
+    },
+    {
+      "command": "forward_02",
+      "target": [
+        0.2,
+        0.0,
+        0.0
+      ],
+      "seed": 2,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.25969579815864563,
+      "metrics": {
+        "xy_error": 0.031552037988637156,
+        "yaw_error": 0.11490704242790506,
+        "base_height": 0.2626282824939117,
+        "joint_acc_rms": 18.50191636449285,
+        "foot_contact_slide": 0.03024528411315575
+      }
+    },
+    {
+      "command": "forward_03",
+      "target": [
+        0.3,
+        0.0,
+        0.0
+      ],
+      "seed": 2,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2593797445297241,
+      "metrics": {
+        "xy_error": 0.054225750436912225,
+        "yaw_error": 0.1841321582346661,
+        "base_height": 0.2627863921620883,
+        "joint_acc_rms": 20.762694081960245,
+        "foot_contact_slide": 0.03709357216865942
+      }
+    },
+    {
+      "command": "yaw_positive",
+      "target": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "seed": 2,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.26057058572769165,
+      "metrics": {
+        "xy_error": 0.02196876803043142,
+        "yaw_error": 0.27986197119602,
+        "base_height": 0.26204845613357614,
+        "joint_acc_rms": 8.116794155914336,
+        "foot_contact_slide": 0.009370602172621461
+      }
+    },
+    {
+      "command": "yaw_negative",
+      "target": [
+        0.0,
+        0.0,
+        -0.3
+      ],
+      "seed": 2,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2601017653942108,
+      "metrics": {
+        "xy_error": 0.024478896871529463,
+        "yaw_error": 0.2960715403977083,
+        "base_height": 0.26117126979120076,
+        "joint_acc_rms": 5.826553153357469,
+        "foot_contact_slide": 0.006612188844548811
+      }
+    }
+  ]
+}

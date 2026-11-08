@@ -1,5 +1,18 @@
 # Unitree RL Lab
 
+## TW research and training status
+
+This branch contains two separate research lines. Their results must not be combined into a policy acceptance claim.
+
+| Line | Current status | Evidence |
+| --- | --- | --- |
+| SuperMimic world-model / imitation | Stopped after failed acceptance; previous policy pilots passed 0/7 fixed independent motions. No accepted TW SuperMimic policy. | Historical handoff below and `docs/practice9/supermimic_dense_static_final_review.json` |
+| Isaac Lab stage1 velocity walking | FT5 baseline and 10 bounded training experiments completed with independent evaluation. Nominal command coverage improved to 0.8 m/s; perturbation acceptance remains unmet. | `validation_artifacts/tw_stage1_ft5_20261107/` |
+
+Stage1 FT5 final checkpoint is `model_5997.pt`. Its archived training metrics remain distinct from the new deterministic evaluation. The full [experiment results](validation_artifacts/stage1_issues_20261108/README.md) include 10 final checkpoints, matched multi-seed comparisons, 32 colored front/side videos and integrity evidence. FT5 passes the sampled original-range fall-rate gate but tracks yaw poorly. The final robust08 policy improves wider-range nominal tracking; material challenge failures remain, so experimental profiles are not promoted to defaults. Stage1 is a separate continuation of robot control work; it does not reopen or validate the stopped SuperMimic experiments. SuperMimic remains stopped, with its unmet acceptance preserved.
+
+This distinction implements GitHub issues #1–4, created together on 2026-11-08 at 06:54 UTC. Current-run results are tracked in [Notion](https://www.notion.so/403325d8231d8172995bf19510b8d760). Per the user decision on 2026-11-08, Notion replaces Linear for future task/result tracking; GitHub issue replies remain aligned.
+
 <!-- TW_SUPERMIMIC_HANDOFF_START -->
 ## TW SuperMimic adaptation handoff
 

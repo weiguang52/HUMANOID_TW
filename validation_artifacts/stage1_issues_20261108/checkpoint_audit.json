@@ -1,0 +1,72 @@
+{
+  "control_s1": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5997.pt",
+    "iteration": 5997,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "d865b1fa45c55ee2b8966648f435f3574a56b90b54dada0bf403327ff3df4156"
+  },
+  "control_s2": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5997.pt",
+    "iteration": 5997,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "f76edb7aac719205fad689eb2f8bbf4676ed504acd1361c655685e99e4fe2159"
+  },
+  "entropy_s1": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5997.pt",
+    "iteration": 5997,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "02a2368331e9288def687ab39255e92c06add38b377068b4c2e6d054457c13a7"
+  },
+  "entropy_s2": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5997.pt",
+    "iteration": 5997,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "89f18f1f9621c5d288048d3514dedc40407a56c2c53f01852d333a152642a2da"
+  },
+  "yaw_s1": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5997.pt",
+    "iteration": 5997,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "1dda3f083c0b2269b9a350de5062e06cf5a0f48238001939b970ad133543a745"
+  },
+  "yaw_s2": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5997.pt",
+    "iteration": 5997,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "1986c5c55e62a5dc4deb167f6b9448f9c0a7decb9ff248f25e6fc90435c0c0c9"
+  },
+  "range05": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_7496.pt",
+    "iteration": 7496,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "adda7339ede1ea9e007ffd3629e90884bfb166935fd1916aa474302966a7ec56"
+  },
+  "robust05": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7496.pt",
+    "iteration": 7496,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d"
+  },
+  "range08": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8995.pt",
+    "iteration": 8995,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "9e3c0416305be412ca8dcb248b3ee9f2fad81a6f38c829367e376a1bd720388c"
+  },
+  "robust08": {
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8995.pt",
+    "iteration": 8995,
+    "logged_iterations": 1500,
+    "finite_tensors": 68,
+    "sha256": "eb07634b2c0ae89bfc5f900d50d038dd341b2674596fffd4763ecf601f27823e"
+  }
+}

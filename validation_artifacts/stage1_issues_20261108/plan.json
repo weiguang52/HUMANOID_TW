@@ -1,0 +1,72 @@
+[
+  {
+    "name": "control_s1",
+    "profile": "control",
+    "seed": 1,
+    "parent": "ft4",
+    "iterations": 1500
+  },
+  {
+    "name": "control_s2",
+    "profile": "control",
+    "seed": 2,
+    "parent": "ft4",
+    "iterations": 1500
+  },
+  {
+    "name": "entropy_s1",
+    "profile": "entropy",
+    "seed": 1,
+    "parent": "ft4",
+    "iterations": 1500
+  },
+  {
+    "name": "entropy_s2",
+    "profile": "entropy",
+    "seed": 2,
+    "parent": "ft4",
+    "iterations": 1500
+  },
+  {
+    "name": "yaw_s1",
+    "profile": "yaw",
+    "seed": 1,
+    "parent": "ft4",
+    "iterations": 1500
+  },
+  {
+    "name": "yaw_s2",
+    "profile": "yaw",
+    "seed": 2,
+    "parent": "ft4",
+    "iterations": 1500
+  },
+  {
+    "name": "range05",
+    "profile": "range05",
+    "seed": 1,
+    "parent": "yaw_s1",
+    "iterations": 1500
+  },
+  {
+    "name": "robust05",
+    "profile": "robust05",
+    "seed": 1,
+    "parent": "yaw_s1",
+    "iterations": 1500
+  },
+  {
+    "name": "range08",
+    "profile": "range08",
+    "seed": 1,
+    "parent": "range05",
+    "iterations": 1500
+  },
+  {
+    "name": "robust08",
+    "profile": "robust08",
+    "seed": 1,
+    "parent": "robust05",
+    "iterations": 1500
+  }
+]

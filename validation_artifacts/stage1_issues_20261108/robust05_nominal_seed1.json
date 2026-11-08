@@ -1,0 +1,284 @@
+{
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7496.pt",
+  "deterministic_policy": true,
+  "runtime": {
+    "python": "/root/gpufree-data/conda_envs/env_isaaclab/bin/python",
+    "rsl_rl": "5.0.1",
+    "torch": "2.7.0+cu128",
+    "torch_path": "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/torch/__init__.py"
+  },
+  "pushes": false,
+  "observation_noise": true,
+  "results": [
+    {
+      "command": "stand",
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2612316608428955,
+      "metrics": {
+        "xy_error": 0.028327361509399508,
+        "yaw_error": 0.09103227051370744,
+        "base_height": 0.2632717143264599,
+        "joint_acc_rms": 13.763368532419205,
+        "foot_contact_slide": 0.017394751218867667,
+        "left_contact_duty": 0.50396875,
+        "right_contact_duty": 0.560734375,
+        "left_joint_acc_rms": 18.20890504641831,
+        "right_joint_acc_rms": 17.39342797070183,
+        "left_foot_height": 0.014284881841733295,
+        "right_foot_height": 0.01305750575005368
+      }
+    },
+    {
+      "command": "forward_01",
+      "target": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.26111719012260437,
+      "metrics": {
+        "xy_error": 0.033451015454818274,
+        "yaw_error": 0.11124716474313717,
+        "base_height": 0.2634590759286657,
+        "joint_acc_rms": 17.02751442343369,
+        "foot_contact_slide": 0.023086596580903573,
+        "left_contact_duty": 0.4990234375,
+        "right_contact_duty": 0.5449296875,
+        "left_joint_acc_rms": 22.15090108756628,
+        "right_joint_acc_rms": 22.148770879178308,
+        "left_foot_height": 0.014809907173192187,
+        "right_foot_height": 0.013813112008268945
+      }
+    },
+    {
+      "command": "forward_02",
+      "target": [
+        0.2,
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2598583698272705,
+      "metrics": {
+        "xy_error": 0.04463602363273463,
+        "yaw_error": 0.18427640077029867,
+        "base_height": 0.2633328007259406,
+        "joint_acc_rms": 19.094569957386703,
+        "foot_contact_slide": 0.029813267027585084,
+        "left_contact_duty": 0.502671875,
+        "right_contact_duty": 0.5160234375,
+        "left_joint_acc_rms": 23.254289768557996,
+        "right_joint_acc_rms": 24.92216935219802,
+        "left_foot_height": 0.014798211373956292,
+        "right_foot_height": 0.014531681020773249
+      }
+    },
+    {
+      "command": "forward_03",
+      "target": [
+        0.3,
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.25806719064712524,
+      "metrics": {
+        "xy_error": 0.04792517768593467,
+        "yaw_error": 0.2736985210161275,
+        "base_height": 0.26285848264582456,
+        "joint_acc_rms": 20.533992432158442,
+        "foot_contact_slide": 0.03263701727523073,
+        "left_contact_duty": 0.504234375,
+        "right_contact_duty": 0.5086015625,
+        "left_joint_acc_rms": 25.216492966348305,
+        "right_joint_acc_rms": 25.339691799428316,
+        "left_foot_height": 0.014838168586255052,
+        "right_foot_height": 0.01507851745980588
+      }
+    },
+    {
+      "command": "yaw_positive",
+      "target": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2610241770744324,
+      "metrics": {
+        "xy_error": 0.03510373886462025,
+        "yaw_error": 0.1434635356666986,
+        "base_height": 0.26328329590475186,
+        "joint_acc_rms": 13.958359455158934,
+        "foot_contact_slide": 0.01759738723452388,
+        "left_contact_duty": 0.5191875,
+        "right_contact_duty": 0.551546875,
+        "left_joint_acc_rms": 18.107803998695687,
+        "right_joint_acc_rms": 17.976617954177783,
+        "left_foot_height": 0.013975961478412501,
+        "right_foot_height": 0.013320775316817163
+      }
+    },
+    {
+      "command": "yaw_negative",
+      "target": [
+        0.0,
+        0.0,
+        -0.3
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.26130199432373047,
+      "metrics": {
+        "xy_error": 0.027111430857962433,
+        "yaw_error": 0.16697369315905963,
+        "base_height": 0.263207628008211,
+        "joint_acc_rms": 13.838143679058179,
+        "foot_contact_slide": 0.01746926652667723,
+        "left_contact_duty": 0.490390625,
+        "right_contact_duty": 0.570796875,
+        "left_joint_acc_rms": 18.738415263456293,
+        "right_joint_acc_rms": 17.153855780470185,
+        "left_foot_height": 0.014551936961317551,
+        "right_foot_height": 0.012984286453436652
+      }
+    },
+    {
+      "command": "forward_05",
+      "target": [
+        0.5,
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.25398051738739014,
+      "metrics": {
+        "xy_error": 0.09063370831417672,
+        "yaw_error": 0.39200609025436894,
+        "base_height": 0.2612924549004529,
+        "joint_acc_rms": 23.232972618732603,
+        "foot_contact_slide": 0.03386307010520352,
+        "left_contact_duty": 0.47009375,
+        "right_contact_duty": 0.5457734375,
+        "left_joint_acc_rms": 26.980771794898434,
+        "right_joint_acc_rms": 29.16877347258106,
+        "left_foot_height": 0.015288507956065588,
+        "right_foot_height": 0.015706903579790377
+      }
+    },
+    {
+      "command": "forward_08",
+      "target": [
+        0.8,
+        0.0,
+        0.0
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 117,
+      "fall_rate": 0.9140625,
+      "minimum_base_height": 0.08002622425556183,
+      "metrics": {
+        "xy_error": 0.4251368523675786,
+        "yaw_error": 0.5912223156045184,
+        "base_height": 0.25780870733589867,
+        "joint_acc_rms": 23.90425058764218,
+        "foot_contact_slide": 0.05739575952376898,
+        "left_contact_duty": 0.5006464352036859,
+        "right_contact_duty": 0.5580420457127634,
+        "left_joint_acc_rms": 28.3944042595196,
+        "right_joint_acc_rms": 28.308102065616822,
+        "left_foot_height": 0.017141051318802347,
+        "right_foot_height": 0.017727330964108758
+      }
+    },
+    {
+      "command": "yaw_plus08",
+      "target": [
+        0.0,
+        0.0,
+        0.8
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2612118422985077,
+      "metrics": {
+        "xy_error": 0.05785510453528821,
+        "yaw_error": 0.3982333990414627,
+        "base_height": 0.2631613317716401,
+        "joint_acc_rms": 13.988857749078424,
+        "foot_contact_slide": 0.017081746246494476,
+        "left_contact_duty": 0.549078125,
+        "right_contact_duty": 0.51784375,
+        "left_joint_acc_rms": 17.708295531398615,
+        "right_joint_acc_rms": 18.42424155606702,
+        "left_foot_height": 0.01346821007370454,
+        "right_foot_height": 0.01391937623751437
+      }
+    },
+    {
+      "command": "yaw_minus08",
+      "target": [
+        0.0,
+        0.0,
+        -0.8
+      ],
+      "seed": 1,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.26076021790504456,
+      "metrics": {
+        "xy_error": 0.040132523674202614,
+        "yaw_error": 0.449799783408409,
+        "base_height": 0.26310873002931473,
+        "joint_acc_rms": 13.991311160353943,
+        "foot_contact_slide": 0.017542170614474457,
+        "left_contact_duty": 0.50353125,
+        "right_contact_duty": 0.5475078125,
+        "left_joint_acc_rms": 19.493353852849452,
+        "right_joint_acc_rms": 17.047699363462627,
+        "left_foot_height": 0.014845750073582166,
+        "right_foot_height": 0.013317175968673836
+      }
+    }
+  ]
+}

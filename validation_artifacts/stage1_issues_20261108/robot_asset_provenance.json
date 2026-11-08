@@ -1,0 +1,31 @@
+{
+  "/root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf": {
+    "bytes": 41757,
+    "sha256": "1d613d3aef37d99e467ac7574d1455dacd3e9c5cc3276feff06afda6b25386f2"
+  },
+  "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd": {
+    "bytes": 1492,
+    "sha256": "24663fd164311931d0ea633bb1e4ceeb7a35bb7f3c02a52e10a94aafa6035816"
+  },
+  "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3_colored.usd": {
+    "bytes": 216655682,
+    "sha256": "5859f1603f2e79c208eff42aee288e59a345809902d8dce42d12f6dbd8e4121d"
+  },
+  "video_physics_checks": {
+    "robust08_video_side.log": [
+      "Colored USD integrity: 1876 original attributes unchanged"
+    ],
+    "ft5_video_side.log": [
+      "Colored USD integrity: 1876 original attributes unchanged"
+    ],
+    "video_smoke.log": [
+      "Colored USD integrity: 1876 original attributes unchanged"
+    ],
+    "ft5_video_front.log": [
+      "Colored USD integrity: 1876 original attributes unchanged"
+    ],
+    "robust08_video_front.log": [
+      "Colored USD integrity: 1876 original attributes unchanged"
+    ]
+  }
+}

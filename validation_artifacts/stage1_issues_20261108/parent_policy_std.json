@@ -1,0 +1,22 @@
+{
+  "ft4": {
+    "checkpoint": "logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_4498.pt",
+    "iteration": 4498,
+    "actor_state_dict/distribution.std_param": {
+      "mean": 0.028962522745132446,
+      "shape": [
+        30
+      ]
+    }
+  },
+  "ft5": {
+    "checkpoint": "validation_artifacts/tw_stage1_ft5_20261107/model_5997.pt",
+    "iteration": 5997,
+    "actor_state_dict/distribution.std_param": {
+      "mean": 0.03495943918824196,
+      "shape": [
+        30
+      ]
+    }
+  }
+}
