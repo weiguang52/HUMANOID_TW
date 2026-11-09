@@ -1,0 +1,27 @@
+{
+  "common_parent": {
+    "repository_path": "validation_artifacts/stage1_issue5_20261109/models/common_parent/model_7496.pt",
+    "sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "source_commit": "7e413284c5411a72e84aa1b5acf611faa769f043"
+  },
+  "old_robust08_s1": {
+    "repository_path": "validation_artifacts/stage1_issues_20261108/models/robust08/model_8995.pt",
+    "sha256": "eb07634b2c0ae89bfc5f900d50d038dd341b2674596fffd4763ecf601f27823e",
+    "source_commit": "7e413284c5411a72e84aa1b5acf611faa769f043"
+  },
+  "old_robust08_s2": {
+    "repository_path": "validation_artifacts/stage1_issue5_20261109/models/robust08_s2/model_8995.pt",
+    "sha256": "d4c6256ccd30c2f59699380bf115e75a6b93f10b80d2cbee9a1ea999c013e176",
+    "source_commit": "7e413284c5411a72e84aa1b5acf611faa769f043"
+  },
+  "old_strengthen_s1": {
+    "repository_path": "validation_artifacts/stage1_issue5_20261109/models/strengthen_s1/model_8995.pt",
+    "sha256": "a61c90f08798f160b424fec852a64dcc28a3c2f82c832e9cae5b235aaaa24cd3",
+    "source_commit": "7e413284c5411a72e84aa1b5acf611faa769f043"
+  },
+  "old_strengthen_s2": {
+    "repository_path": "validation_artifacts/stage1_issue5_20261109/models/strengthen_s2/model_8995.pt",
+    "sha256": "a1f350b0779a5705e682fa329fc2fa8ecffb1bb56741db391a9f4598bf3efa83",
+    "source_commit": "7e413284c5411a72e84aa1b5acf611faa769f043"
+  }
+}

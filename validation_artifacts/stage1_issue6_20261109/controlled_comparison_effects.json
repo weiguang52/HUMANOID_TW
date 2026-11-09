@@ -1,0 +1,66 @@
+{
+  "1": {
+    "forward_03": {
+      "denominator": 384,
+      "material_legacy": 0,
+      "material_bounded_same_policy": 0,
+      "combined_legacy": 5,
+      "combined_bounded_same_policy": 6,
+      "combined_bounded_retrained": 6,
+      "combined_eval_correction_delta": 1,
+      "combined_retraining_delta_under_bounded_eval": 0
+    },
+    "forward_05": {
+      "denominator": 384,
+      "material_legacy": 0,
+      "material_bounded_same_policy": 0,
+      "combined_legacy": 16,
+      "combined_bounded_same_policy": 13,
+      "combined_bounded_retrained": 18,
+      "combined_eval_correction_delta": -3,
+      "combined_retraining_delta_under_bounded_eval": 5
+    },
+    "forward_08": {
+      "denominator": 384,
+      "material_legacy": 3,
+      "material_bounded_same_policy": 4,
+      "combined_legacy": 53,
+      "combined_bounded_same_policy": 42,
+      "combined_bounded_retrained": 46,
+      "combined_eval_correction_delta": -11,
+      "combined_retraining_delta_under_bounded_eval": 4
+    }
+  },
+  "2": {
+    "forward_03": {
+      "denominator": 384,
+      "material_legacy": 0,
+      "material_bounded_same_policy": 0,
+      "combined_legacy": 4,
+      "combined_bounded_same_policy": 3,
+      "combined_bounded_retrained": 6,
+      "combined_eval_correction_delta": -1,
+      "combined_retraining_delta_under_bounded_eval": 3
+    },
+    "forward_05": {
+      "denominator": 384,
+      "material_legacy": 0,
+      "material_bounded_same_policy": 0,
+      "combined_legacy": 19,
+      "combined_bounded_same_policy": 19,
+      "combined_bounded_retrained": 20,
+      "combined_eval_correction_delta": 0,
+      "combined_retraining_delta_under_bounded_eval": 1
+    },
+    "forward_08": {
+      "denominator": 384,
+      "material_legacy": 18,
+      "material_bounded_same_policy": 15,
+      "combined_legacy": 65,
+      "combined_bounded_same_policy": 63,
+      "combined_bounded_retrained": 77,
+      "combined_eval_correction_delta": -2,
+      "combined_retraining_delta_under_bounded_eval": 14
+    }
+  }
+}

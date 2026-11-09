@@ -1,0 +1,106 @@
+{
+  "old_robust08_material": {
+    "forward_03": {
+      "training_seed_rates": [
+        0.0,
+        0.0
+      ],
+      "mean": 0.0,
+      "sample_sd": 0.0
+    },
+    "forward_05": {
+      "training_seed_rates": [
+        0.0,
+        0.0
+      ],
+      "mean": 0.0,
+      "sample_sd": 0.0
+    },
+    "forward_08": {
+      "training_seed_rates": [
+        0.010416666666666666,
+        0.0390625
+      ],
+      "mean": 0.024739583333333332,
+      "sample_sd": 0.020255663002739642
+    }
+  },
+  "old_strengthen_combined": {
+    "forward_03": {
+      "training_seed_rates": [
+        0.015625,
+        0.0078125
+      ],
+      "mean": 0.01171875,
+      "sample_sd": 0.005524271728019903
+    },
+    "forward_05": {
+      "training_seed_rates": [
+        0.033854166666666664,
+        0.049479166666666664
+      ],
+      "mean": 0.041666666666666664,
+      "sample_sd": 0.011048543456039806
+    },
+    "forward_08": {
+      "training_seed_rates": [
+        0.109375,
+        0.1640625
+      ],
+      "mean": 0.13671875,
+      "sample_sd": 0.03866990209613932
+    }
+  },
+  "bounded_strengthen_combined": {
+    "forward_03": {
+      "training_seed_rates": [
+        0.015625,
+        0.015625
+      ],
+      "mean": 0.015625,
+      "sample_sd": 0.0
+    },
+    "forward_05": {
+      "training_seed_rates": [
+        0.046875,
+        0.052083333333333336
+      ],
+      "mean": 0.04947916666666667,
+      "sample_sd": 0.0036828478186799367
+    },
+    "forward_08": {
+      "training_seed_rates": [
+        0.11979166666666667,
+        0.20052083333333334
+      ],
+      "mean": 0.16015625,
+      "sample_sd": 0.057084141189538994
+    }
+  },
+  "bounded_strengthen_material": {
+    "forward_03": {
+      "training_seed_rates": [
+        0.0,
+        0.0
+      ],
+      "mean": 0.0,
+      "sample_sd": 0.0
+    },
+    "forward_05": {
+      "training_seed_rates": [
+        0.010416666666666666,
+        0.0
+      ],
+      "mean": 0.005208333333333333,
+      "sample_sd": 0.00736569563735987
+    },
+    "forward_08": {
+      "training_seed_rates": [
+        0.0078125,
+        0.0
+      ],
+      "mean": 0.00390625,
+      "sample_sd": 0.005524271728019903
+    }
+  }
+}

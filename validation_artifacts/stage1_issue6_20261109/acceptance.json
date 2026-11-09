@@ -1,0 +1,22 @@
+{
+  "models": {
+    "bounded_strengthen_s1": {
+      "target_03_05_pass": false,
+      "falls_08": [
+        11,
+        14,
+        21
+      ]
+    },
+    "bounded_strengthen_s2": {
+      "target_03_05_pass": false,
+      "falls_08": [
+        25,
+        23,
+        29
+      ]
+    }
+  },
+  "both_training_seeds_pass": false,
+  "defaults_promoted": false
+}

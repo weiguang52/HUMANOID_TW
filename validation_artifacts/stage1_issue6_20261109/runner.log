@@ -1,0 +1,71 @@
+START mass_audit_legacy_seed1.log
+END mass_audit_legacy_seed1.log 0
+START mass_audit_legacy_seed2.log
+END mass_audit_legacy_seed2.log 0
+START mass_audit_bounded_seed1.log
+END mass_audit_bounded_seed1.log 0
+START mass_audit_bounded_seed2.log
+END mass_audit_bounded_seed2.log 0
+START smoke.log
+END smoke.log 0
+START bounded_strengthen_s1_train.log
+END bounded_strengthen_s1_train.log 0
+START bounded_strengthen_s1_combined_eval1.log
+END bounded_strengthen_s1_combined_eval1.log 0
+START bounded_strengthen_s1_combined_eval2.log
+END bounded_strengthen_s1_combined_eval2.log 0
+START bounded_strengthen_s1_combined_eval3.log
+END bounded_strengthen_s1_combined_eval3.log 0
+START bounded_strengthen_s1_material_eval1.log
+END bounded_strengthen_s1_material_eval1.log 0
+START bounded_strengthen_s1_material_eval2.log
+END bounded_strengthen_s1_material_eval2.log 0
+START bounded_strengthen_s1_material_eval3.log
+END bounded_strengthen_s1_material_eval3.log 0
+START bounded_strengthen_s2_train.log
+END bounded_strengthen_s2_train.log 0
+START bounded_strengthen_s2_combined_eval1.log
+END bounded_strengthen_s2_combined_eval1.log 0
+START bounded_strengthen_s2_combined_eval2.log
+END bounded_strengthen_s2_combined_eval2.log 0
+START bounded_strengthen_s2_combined_eval3.log
+END bounded_strengthen_s2_combined_eval3.log 0
+START bounded_strengthen_s2_material_eval1.log
+END bounded_strengthen_s2_material_eval1.log 0
+START bounded_strengthen_s2_material_eval2.log
+END bounded_strengthen_s2_material_eval2.log 0
+START bounded_strengthen_s2_material_eval3.log
+END bounded_strengthen_s2_material_eval3.log 0
+START old_robust08_s1_material_eval1.log
+END old_robust08_s1_material_eval1.log 0
+START old_robust08_s1_material_eval2.log
+END old_robust08_s1_material_eval2.log 0
+START old_robust08_s1_material_eval3.log
+END old_robust08_s1_material_eval3.log 0
+START old_strengthen_s1_combined_eval1.log
+END old_strengthen_s1_combined_eval1.log 0
+START old_strengthen_s1_combined_eval2.log
+END old_strengthen_s1_combined_eval2.log 0
+START old_strengthen_s1_combined_eval3.log
+END old_strengthen_s1_combined_eval3.log 0
+START old_robust08_s2_material_eval1.log
+END old_robust08_s2_material_eval1.log 0
+START old_robust08_s2_material_eval2.log
+END old_robust08_s2_material_eval2.log 0
+START old_robust08_s2_material_eval3.log
+END old_robust08_s2_material_eval3.log 0
+START old_strengthen_s2_combined_eval1.log
+END old_strengthen_s2_combined_eval1.log 0
+START old_strengthen_s2_combined_eval2.log
+END old_strengthen_s2_combined_eval2.log 0
+START old_strengthen_s2_combined_eval3.log
+END old_strengthen_s2_combined_eval3.log 0
+START bounded_strengthen_s1_worst_front.log
+END bounded_strengthen_s1_worst_front.log 0
+START bounded_strengthen_s1_worst_side.log
+END bounded_strengthen_s1_worst_side.log 0
+START bounded_strengthen_s2_worst_front.log
+END bounded_strengthen_s2_worst_front.log 0
+START bounded_strengthen_s2_worst_side.log
+END bounded_strengthen_s2_worst_side.log 0
+ISSUE6_ALL_JOBS_COMPLETE

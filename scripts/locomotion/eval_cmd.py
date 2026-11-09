@@ -38,6 +38,8 @@ parser.add_argument(
 parser.add_argument("--real-time", action="store_true", default=False, help="Run in real-time, if possible.")
 parser.add_argument("--output", required=True)
 parser.add_argument("--experiment_profile", default="default")
+parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
+parser.add_argument("--mass_audit_output", default="")
 parser.add_argument("--issue5_condition", default="legacy", choices=["legacy","clean","push","material","delay","noise","combined"])
 parser.add_argument("--command_filter", default="")
 parser.add_argument("--paired_resets", action="store_true")
@@ -131,6 +133,11 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         env_cfg.events.push_robot = None
     from unitree_rl_lab.tasks.locomotion.robots.tw.experiments import configure_issue5_condition
     configure_issue5_condition(env_cfg, args_cli.issue5_condition)
+    from unitree_rl_lab.tasks.locomotion.robots.tw.mass_randomization import configure_mass_randomization, mass_distribution_report, AuditedMassRandomization
+    configure_mass_randomization(env_cfg, args_cli.mass_randomization)
+    if args_cli.mass_audit_output:
+        assert env_cfg.events.add_base_mass is not None
+        env_cfg.events.add_base_mass.func = AuditedMassRandomization
     env_cfg.episode_length_s = args_cli.seconds + 1.0
     env_cfg.commands.base_velocity.resampling_time_range = (1.e9, 1.e9)
     env_cfg.commands.base_velocity.heading_command = False
@@ -187,6 +194,18 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
     # create isaac environment
     env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if args_cli.video else None)
+
+    if args_cli.mass_audit_output:
+        report = mass_distribution_report(env.unwrapped.scene["robot"], env.unwrapped._issue6_requested_masses)
+        report.update(seed=env_cfg.seed, mass_randomization=args_cli.mass_randomization,
+                      mass_parameters=env_cfg.events.add_base_mass.params["mass_distribution_params"],
+                      operation=env_cfg.events.add_base_mass.params["operation"],
+                      friction_static=env_cfg.events.physics_material.params["static_friction_range"],
+                      friction_dynamic=env_cfg.events.physics_material.params["dynamic_friction_range"])
+        Path(args_cli.mass_audit_output).parent.mkdir(parents=True,exist_ok=True)
+        Path(args_cli.mass_audit_output).write_text(json.dumps(report,indent=2)+"\n")
+        env.close()
+        return
 
     # convert to single-agent instance if required by the RL algorithm
     if isinstance(env.unwrapped, DirectMARLEnv):
@@ -315,6 +334,17 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     output.write_text(json.dumps({"checkpoint":resume_path,"deterministic_policy":True,
         "runtime":{"python":sys.executable,"rsl_rl":metadata.version("rsl-rl-lib"),"torch":torch.__version__,"torch_path":torch.__file__},
         "physics_diagnostics":physics_diagnostics,
+        "mass_randomization":args_cli.mass_randomization,
+        "perturbation_config":{
+            "mass_operation":None if base.cfg.events.add_base_mass is None else base.cfg.events.add_base_mass.params["operation"],
+            "mass_distribution_params":None if base.cfg.events.add_base_mass is None else base.cfg.events.add_base_mass.params["mass_distribution_params"],
+            "friction_static":None if base.cfg.events.physics_material is None else base.cfg.events.physics_material.params["static_friction_range"],
+            "friction_dynamic":None if base.cfg.events.physics_material is None else base.cfg.events.physics_material.params["dynamic_friction_range"],
+            "push_velocity_range":None if base.cfg.events.push_robot is None else base.cfg.events.push_robot.params["velocity_range"],
+            "action_class":base.cfg.actions.JointPositionAction.class_type.__name__,
+        },
+
+        "mass_distribution":mass_distribution_report(robot),
         "issue5_condition":args_cli.issue5_condition,"paired_resets":args_cli.paired_resets,
         "pushes":base.cfg.events.push_robot is not None,"observation_noise":env_cfg.observations.policy.enable_corruption,
         "results":results},indent=2)+"\n")

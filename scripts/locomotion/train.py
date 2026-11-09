@@ -34,6 +34,7 @@ parser.add_argument("--export_io_descriptors", action="store_true", default=Fals
 parser.add_argument(
     "--ray-proc-id", "-rid", type=int, default=None, help="Automatically configured by Ray integration, otherwise None."
 )
+parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--issue5_training_mode", default="legacy", choices=["legacy","remove","strengthen"])
 parser.add_argument("--issue5_factor", default="push", choices=["push","material","delay","noise"])
 parser.add_argument("--experiment_profile", default="default", choices=["default","control","entropy","yaw","range05","range08","robust05","robust08"])
@@ -134,6 +135,9 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         assert args_cli.experiment_profile == "robust08"
         from unitree_rl_lab.tasks.locomotion.robots.tw.experiments import configure_issue5_training
         configure_issue5_training(env_cfg, args_cli.issue5_training_mode, args_cli.issue5_factor)
+
+    from unitree_rl_lab.tasks.locomotion.robots.tw.mass_randomization import configure_mass_randomization
+    configure_mass_randomization(env_cfg, args_cli.mass_randomization)
 
     # set the environment seed
     # note: certain randomizations occur in the environment initialization so we set the seed here
