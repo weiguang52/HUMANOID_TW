@@ -38,6 +38,8 @@ parser.add_argument(
 parser.add_argument("--real-time", action="store_true", default=False, help="Run in real-time, if possible.")
 parser.add_argument("--output", required=True)
 parser.add_argument("--experiment_profile", default="default")
+parser.add_argument("--trajectory_replay", default="")
+parser.add_argument("--failure_traces", default="")
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--mass_audit_output", default="")
 parser.add_argument("--issue5_condition", default="legacy", choices=["legacy","clean","push","material","delay","noise","combined"])
@@ -135,6 +137,10 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     configure_issue5_condition(env_cfg, args_cli.issue5_condition)
     from unitree_rl_lab.tasks.locomotion.robots.tw.mass_randomization import configure_mass_randomization, mass_distribution_report, AuditedMassRandomization
     configure_mass_randomization(env_cfg, args_cli.mass_randomization)
+    if args_cli.failure_traces:
+        from failure_traces import recorded_push
+        assert env_cfg.events.push_robot is not None
+        env_cfg.events.push_robot.func = recorded_push
     if args_cli.mass_audit_output:
         assert env_cfg.events.add_base_mass is not None
         env_cfg.events.add_base_mass.func = AuditedMassRandomization
@@ -207,6 +213,13 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         env.close()
         return
 
+    if args_cli.trajectory_replay:
+        assert args_cli.video and env_cfg.scene.num_envs == 1
+        from replay_failure import replay
+        replay(env.unwrapped,args_cli)
+        env.close()
+        return
+
     # convert to single-agent instance if required by the RL algorithm
     if isinstance(env.unwrapped, DirectMARLEnv):
         env = multi_agent_to_single_agent(env)
@@ -250,6 +263,10 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             "nonpositive_body_mass_count": int((masses <= 0).sum()),
         }
         assert physics_diagnostics["nonpositive_body_mass_count"] == 0
+    recorder = None
+    if args_cli.failure_traces:
+        from failure_traces import FailureRecorder
+        recorder = FailureRecorder(base,args_cli.failure_traces)
     results = []
     commands = [("stand", (0.,0.,0.)), ("forward_01",(.1,0.,0.)),
                            ("forward_02",(.2,0.,0.)), ("forward_03",(.3,0.,0.)),
@@ -265,6 +282,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             base.reset(seed=env_cfg.seed * 1000 + command_index)
         else:
             env.reset()
+        if recorder is not None:
+            recorder.begin(label, command)
         writer = None
         if args_cli.video:
             import imageio.v2 as imageio
@@ -322,6 +341,9 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             for k,v in values.items(): totals[k] += torch.where(valid,v,0.).sum(dtype=torch.float64)
             count += valid.sum()
             min_height=torch.minimum(min_height,torch.where(valid,values["base_height"],float("inf")).min())
+        if recorder is not None:
+            recorded = recorder.finish()
+            assert recorded["failed_trials"] == int(failed.sum())
         if writer is not None:
             writer.close()
         results.append({"command":label,"target":command,"seed":env_cfg.seed,

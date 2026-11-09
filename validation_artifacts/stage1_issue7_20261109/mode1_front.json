@@ -1,0 +1,15 @@
+{
+  "source_selection": "/root/gpufree-data/tw_stage1/issue7_20261109/representative_mode1.json",
+  "source_npz_sha256": "38febed031d3df73b92082793089f478cceb49670167ab5ee5ab6ff31f38e36b",
+  "source_model": "new_bounded_s2",
+  "source_environment": 1003,
+  "source_command": "forward_08",
+  "view": "front",
+  "frames": 51,
+  "fps": 50,
+  "physics_integrated": false,
+  "root_and_joint_states": "exact recorded terminal pre-reset window",
+  "joint_velocity_for_display": "zero; no physics stepping",
+  "camera": "follows translation and heading",
+  "video": "/root/gpufree-data/tw_stage1/issue7_20261109/videos/mode1_front.mp4"
+}

@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "formal_trace_files": 36,
+  "first_failure_windows": 2825,
+  "full_1s_windows": 2758,
+  "minimum_available_frames": 39,
+  "checkpoint_hashes_unchanged": true,
+  "terminal_pre_reset_heights_validated": true,
+  "actual_push_bounds_and_delay_labels_validated": true,
+  "scipy_version": "1.15.3",
+  "files": {
+    "traces/new_bounded_s1_eval1/forward_03.json": {
+      "first_failures": 12,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval1/forward_05.json": {
+      "first_failures": 38,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval1/forward_08.json": {
+      "first_failures": 141,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval2/forward_03.json": {
+      "first_failures": 10,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval2/forward_05.json": {
+      "first_failures": 48,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval2/forward_08.json": {
+      "first_failures": 151,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval3/forward_03.json": {
+      "first_failures": 19,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval3/forward_05.json": {
+      "first_failures": 35,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s1_eval3/forward_08.json": {
+      "first_failures": 181,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval1/forward_03.json": {
+      "first_failures": 9,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval1/forward_05.json": {
+      "first_failures": 55,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval1/forward_08.json": {
+      "first_failures": 205,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval2/forward_03.json": {
+      "first_failures": 7,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval2/forward_05.json": {
+      "first_failures": 84,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval2/forward_08.json": {
+      "first_failures": 212,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval3/forward_03.json": {
+      "first_failures": 9,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval3/forward_05.json": {
+      "first_failures": 91,
+      "trial_environments": 1024
+    },
+    "traces/new_bounded_s2_eval3/forward_08.json": {
+      "first_failures": 233,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval1/forward_03.json": {
+      "first_failures": 8,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval1/forward_05.json": {
+      "first_failures": 30,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval1/forward_08.json": {
+      "first_failures": 140,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval2/forward_03.json": {
+      "first_failures": 7,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval2/forward_05.json": {
+      "first_failures": 38,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval2/forward_08.json": {
+      "first_failures": 166,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval3/forward_03.json": {
+      "first_failures": 11,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval3/forward_05.json": {
+      "first_failures": 36,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s1_eval3/forward_08.json": {
+      "first_failures": 164,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval1/forward_03.json": {
+      "first_failures": 11,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval1/forward_05.json": {
+      "first_failures": 45,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval1/forward_08.json": {
+      "first_failures": 159,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval2/forward_03.json": {
+      "first_failures": 4,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval2/forward_05.json": {
+      "first_failures": 51,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval2/forward_08.json": {
+      "first_failures": 175,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval3/forward_03.json": {
+      "first_failures": 6,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval3/forward_05.json": {
+      "first_failures": 48,
+      "trial_environments": 1024
+    },
+    "traces/old_strengthen_s2_eval3/forward_08.json": {
+      "first_failures": 186,
+      "trial_environments": 1024
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "total_first_failures": 2825,
+  "total_trials": 36864,
+  "groups": {
+    "mode": {
+      "recent_push__sagittal": {
+        "failures": 2348,
+        "fraction_of_failures": 0.8311504424778761
+      },
+      "not_recent_push__sagittal": {
+        "failures": 381,
+        "fraction_of_failures": 0.13486725663716814
+      },
+      "recent_push__lateral": {
+        "failures": 74,
+        "fraction_of_failures": 0.026194690265486726
+      },
+      "not_recent_push__lateral": {
+        "failures": 22,
+        "fraction_of_failures": 0.007787610619469027
+      }
+    },
+    "termination_terms": {
+      "base_height": {
+        "failures": 2825,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "push_direction_body": {
+      "forward": {
+        "failures": 1850,
+        "fraction_of_failures": 0.6548672566371682
+      },
+      "left": {
+        "failures": 386,
+        "fraction_of_failures": 0.1366371681415929
+      },
+      "right": {
+        "failures": 349,
+        "fraction_of_failures": 0.12353982300884955
+      },
+      "no_push": {
+        "failures": 196,
+        "fraction_of_failures": 0.06938053097345133
+      },
+      "backward": {
+        "failures": 44,
+        "fraction_of_failures": 0.015575221238938054
+      }
+    },
+    "push_magnitude_bin": {
+      "ge0.30": {
+        "failures": 1586,
+        "fraction_of_failures": 0.5614159292035398
+      },
+      "0.15to0.30": {
+        "failures": 1005,
+        "fraction_of_failures": 0.35575221238938054
+      },
+      "no_push": {
+        "failures": 196,
+        "fraction_of_failures": 0.06938053097345133
+      },
+      "lt0.15": {
+        "failures": 38,
+        "fraction_of_failures": 0.013451327433628318
+      }
+    },
+    "delay_ms": {
+      "20": {
+        "failures": 1877,
+        "fraction_of_failures": 0.664424778761062
+      },
+      "0": {
+        "failures": 948,
+        "fraction_of_failures": 0.33557522123893807
+      }
+    },
+    "contact_at_push": {
+      "left_only": {
+        "failures": 1500,
+        "fraction_of_failures": 0.5309734513274337
+      },
+      "right_only": {
+        "failures": 1100,
+        "fraction_of_failures": 0.3893805309734513
+      },
+      "no_push": {
+        "failures": 196,
+        "fraction_of_failures": 0.06938053097345133
+      },
+      "double": {
+        "failures": 22,
+        "fraction_of_failures": 0.007787610619469027
+      },
+      "flight": {
+        "failures": 7,
+        "fraction_of_failures": 0.00247787610619469
+      }
+    },
+    "contact_at_failure": {
+      "flight": {
+        "failures": 2071,
+        "fraction_of_failures": 0.7330973451327434
+      },
+      "left_only": {
+        "failures": 637,
+        "fraction_of_failures": 0.2254867256637168
+      },
+      "right_only": {
+        "failures": 104,
+        "fraction_of_failures": 0.036814159292035395
+      },
+      "double": {
+        "failures": 13,
+        "fraction_of_failures": 0.004601769911504424
+      }
+    },
+    "hard_limit_any_last1s": {
+      "True": {
+        "failures": 2825,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "soft_limit_any_last1s": {
+      "True": {
+        "failures": 2825,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "hard_limit_touch_proxy_last1s": {
+      "True": {
+        "failures": 2825,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "outside_hard_limits_last1s": {
+      "True": {
+        "failures": 2821,
+        "fraction_of_failures": 0.9985840707964602
+      },
+      "False": {
+        "failures": 4,
+        "fraction_of_failures": 0.001415929203539823
+      }
+    }
+  },
+  "dominant_mode": "recent_push__sagittal",
+  "top_two_modes": [
+    [
+      "recent_push__sagittal",
+      2348
+    ],
+    [
+      "not_recent_push__sagittal",
+      381
+    ]
+  ],
+  "rule": "at least50% overall and ranked first in all4 policies; mode is descriptive, not causal",
+  "at_risk_step_counts": {
+    "delay": {
+      "0": 18207211,
+      "1": 17394066,
+      "2": 0,
+      "3": 0
+    },
+    "contact_phase": {
+      "0": 125375,
+      "1": 16854455,
+      "2": 18344623,
+      "3": 276824
+    },
+    "near_limit": {
+      "0": 2064,
+      "1": 35599213,
+      "2": 0,
+      "3": 0
+    },
+    "recent_push": {
+      "0": 31178037,
+      "1": 4423240,
+      "2": 0,
+      "3": 0
+    }
+  },
+  "step_dt": 0.02
+}

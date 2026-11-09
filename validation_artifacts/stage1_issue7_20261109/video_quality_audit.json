@@ -1,0 +1,238 @@
+{
+  "mode1_front.mp4": {
+    "probe": {
+      "codec_name": "h264",
+      "width": 960,
+      "height": 720,
+      "r_frame_rate": "50/1",
+      "duration": "1.020000",
+      "nb_frames": "51"
+    },
+    "samples": [
+      {
+        "second": 0,
+        "colored_pixel_bbox": [
+          346,
+          154,
+          741,
+          565
+        ]
+      },
+      {
+        "second": 0.24,
+        "colored_pixel_bbox": [
+          344,
+          254,
+          595,
+          547
+        ]
+      },
+      {
+        "second": 0.5,
+        "colored_pixel_bbox": [
+          348,
+          254,
+          603,
+          547
+        ]
+      },
+      {
+        "second": 0.76,
+        "colored_pixel_bbox": [
+          334,
+          278,
+          601,
+          552
+        ]
+      },
+      {
+        "second": 1.0,
+        "colored_pixel_bbox": [
+          342,
+          342,
+          613,
+          407
+        ]
+      }
+    ],
+    "black_frame_check": "passed",
+    "colored_framing_check": "passed"
+  },
+  "mode1_side.mp4": {
+    "probe": {
+      "codec_name": "h264",
+      "width": 960,
+      "height": 720,
+      "r_frame_rate": "50/1",
+      "duration": "1.020000",
+      "nb_frames": "51"
+    },
+    "samples": [
+      {
+        "second": 0,
+        "colored_pixel_bbox": [
+          412,
+          260,
+          567,
+          571
+        ]
+      },
+      {
+        "second": 0.24,
+        "colored_pixel_bbox": [
+          444,
+          250,
+          515,
+          575
+        ]
+      },
+      {
+        "second": 0.5,
+        "colored_pixel_bbox": [
+          432,
+          248,
+          527,
+          570
+        ]
+      },
+      {
+        "second": 0.76,
+        "colored_pixel_bbox": [
+          392,
+          268,
+          597,
+          577
+        ]
+      },
+      {
+        "second": 1.0,
+        "colored_pixel_bbox": [
+          350,
+          304,
+          651,
+          469
+        ]
+      }
+    ],
+    "black_frame_check": "passed",
+    "colored_framing_check": "passed"
+  },
+  "mode2_front.mp4": {
+    "probe": {
+      "codec_name": "h264",
+      "width": 960,
+      "height": 720,
+      "r_frame_rate": "50/1",
+      "duration": "1.020000",
+      "nb_frames": "51"
+    },
+    "samples": [
+      {
+        "second": 0,
+        "colored_pixel_bbox": [
+          348,
+          260,
+          585,
+          555
+        ]
+      },
+      {
+        "second": 0.24,
+        "colored_pixel_bbox": [
+          336,
+          274,
+          581,
+          569
+        ]
+      },
+      {
+        "second": 0.5,
+        "colored_pixel_bbox": [
+          334,
+          272,
+          587,
+          557
+        ]
+      },
+      {
+        "second": 0.76,
+        "colored_pixel_bbox": [
+          342,
+          276,
+          577,
+          535
+        ]
+      },
+      {
+        "second": 1.0,
+        "colored_pixel_bbox": [
+          340,
+          344,
+          605,
+          423
+        ]
+      }
+    ],
+    "black_frame_check": "passed",
+    "colored_framing_check": "passed"
+  },
+  "mode2_side.mp4": {
+    "probe": {
+      "codec_name": "h264",
+      "width": 960,
+      "height": 720,
+      "r_frame_rate": "50/1",
+      "duration": "1.020000",
+      "nb_frames": "51"
+    },
+    "samples": [
+      {
+        "second": 0,
+        "colored_pixel_bbox": [
+          426,
+          252,
+          537,
+          575
+        ]
+      },
+      {
+        "second": 0.24,
+        "colored_pixel_bbox": [
+          398,
+          266,
+          583,
+          561
+        ]
+      },
+      {
+        "second": 0.5,
+        "colored_pixel_bbox": [
+          404,
+          262,
+          555,
+          575
+        ]
+      },
+      {
+        "second": 0.76,
+        "colored_pixel_bbox": [
+          404,
+          264,
+          543,
+          583
+        ]
+      },
+      {
+        "second": 1.0,
+        "colored_pixel_bbox": [
+          344,
+          334,
+          637,
+          477
+        ]
+      }
+    ],
+    "black_frame_check": "passed",
+    "colored_framing_check": "passed"
+  }
+}
