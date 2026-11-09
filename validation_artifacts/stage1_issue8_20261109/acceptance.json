@@ -1,0 +1,33 @@
+{
+  "per_model": {
+    "applied_s1": {
+      "pooled_low_mid_upper95": {
+        "forward_03": 0.02724075918552977,
+        "forward_05": 0.0980827145578795
+      },
+      "ci_upper_below1pct": false,
+      "signed_delay_gap": 0.1319003109249021,
+      "absolute_delay_gap": 0.1319003109249021,
+      "baseline_absolute_delay_gap": 0.06097005837701581,
+      "delay_gap_shrunk": false,
+      "low_mid_not_worse_than_issue6": false,
+      "all_criteria_pass": false
+    },
+    "applied_s2": {
+      "pooled_low_mid_upper95": {
+        "forward_03": 0.01880023245184355,
+        "forward_05": 0.02651459374726225
+      },
+      "ci_upper_below1pct": false,
+      "signed_delay_gap": 0.06287710212245162,
+      "absolute_delay_gap": 0.06287710212245162,
+      "baseline_absolute_delay_gap": 0.03156635454858664,
+      "delay_gap_shrunk": false,
+      "low_mid_not_worse_than_issue6": false,
+      "all_criteria_pass": false
+    }
+  },
+  "both_training_seeds_pass": false,
+  "defaults_promoted": false,
+  "frozen_recommendation": "stop treating this variant as a demonstrated fix; change the hypothesis rather than extending this budget ad hoc"
+}

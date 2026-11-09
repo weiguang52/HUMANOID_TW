@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "formal_trace_files": 18,
+  "first_failure_windows": 1442,
+  "full_1s_windows": 1430,
+  "minimum_available_frames": 41,
+  "checkpoint_hashes_unchanged": true,
+  "terminal_pre_reset_heights_validated": true,
+  "actual_push_bounds_and_delay_labels_validated": true,
+  "scipy_version": "1.15.3",
+  "files": {
+    "traces/applied_s1_eval1/forward_03.json": {
+      "first_failures": 21,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval1/forward_05.json": {
+      "first_failures": 82,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval1/forward_08.json": {
+      "first_failures": 187,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval2/forward_03.json": {
+      "first_failures": 21,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval2/forward_05.json": {
+      "first_failures": 92,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval2/forward_08.json": {
+      "first_failures": 184,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval3/forward_03.json": {
+      "first_failures": 24,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval3/forward_05.json": {
+      "first_failures": 95,
+      "trial_environments": 1024
+    },
+    "traces/applied_s1_eval3/forward_08.json": {
+      "first_failures": 231,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval1/forward_03.json": {
+      "first_failures": 9,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval1/forward_05.json": {
+      "first_failures": 18,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval1/forward_08.json": {
+      "first_failures": 121,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval2/forward_03.json": {
+      "first_failures": 17,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval2/forward_05.json": {
+      "first_failures": 25,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval2/forward_08.json": {
+      "first_failures": 119,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval3/forward_03.json": {
+      "first_failures": 17,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval3/forward_05.json": {
+      "first_failures": 21,
+      "trial_environments": 1024
+    },
+    "traces/applied_s2_eval3/forward_08.json": {
+      "first_failures": 158,
+      "trial_environments": 1024
+    }
+  }
+}

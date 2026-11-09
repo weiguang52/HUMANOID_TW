@@ -1,0 +1,140 @@
+{
+  "applied_s1": {
+    "iteration": 8995,
+    "logged_iterations": 1500,
+    "finite_tensor_count": 68,
+    "sha256": "73297947ee9f09b4b7c1a92fa5b475244f6455d5c4667bc90a405c54aa2e184b",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_tensor_shapes_equal_issue6": true,
+    "tensor_shapes": {
+      "actor_state_dict/distribution.std_param": [
+        30
+      ],
+      "actor_state_dict/mlp.0.weight": [
+        512,
+        101
+      ],
+      "actor_state_dict/mlp.0.bias": [
+        512
+      ],
+      "actor_state_dict/mlp.2.weight": [
+        256,
+        512
+      ],
+      "actor_state_dict/mlp.2.bias": [
+        256
+      ],
+      "actor_state_dict/mlp.4.weight": [
+        128,
+        256
+      ],
+      "actor_state_dict/mlp.4.bias": [
+        128
+      ],
+      "actor_state_dict/mlp.6.weight": [
+        30,
+        128
+      ],
+      "actor_state_dict/mlp.6.bias": [
+        30
+      ],
+      "critic_state_dict/mlp.0.weight": [
+        512,
+        134
+      ],
+      "critic_state_dict/mlp.0.bias": [
+        512
+      ],
+      "critic_state_dict/mlp.2.weight": [
+        256,
+        512
+      ],
+      "critic_state_dict/mlp.2.bias": [
+        256
+      ],
+      "critic_state_dict/mlp.4.weight": [
+        128,
+        256
+      ],
+      "critic_state_dict/mlp.4.bias": [
+        128
+      ],
+      "critic_state_dict/mlp.6.weight": [
+        1,
+        128
+      ],
+      "critic_state_dict/mlp.6.bias": [
+        1
+      ]
+    }
+  },
+  "applied_s2": {
+    "iteration": 8995,
+    "logged_iterations": 1500,
+    "finite_tensor_count": 68,
+    "sha256": "2e7b6a2b190fec09061cb4ea63501d8dd408b99d9138779aa209c1cd18fe74e4",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_tensor_shapes_equal_issue6": true,
+    "tensor_shapes": {
+      "actor_state_dict/distribution.std_param": [
+        30
+      ],
+      "actor_state_dict/mlp.0.weight": [
+        512,
+        101
+      ],
+      "actor_state_dict/mlp.0.bias": [
+        512
+      ],
+      "actor_state_dict/mlp.2.weight": [
+        256,
+        512
+      ],
+      "actor_state_dict/mlp.2.bias": [
+        256
+      ],
+      "actor_state_dict/mlp.4.weight": [
+        128,
+        256
+      ],
+      "actor_state_dict/mlp.4.bias": [
+        128
+      ],
+      "actor_state_dict/mlp.6.weight": [
+        30,
+        128
+      ],
+      "actor_state_dict/mlp.6.bias": [
+        30
+      ],
+      "critic_state_dict/mlp.0.weight": [
+        512,
+        134
+      ],
+      "critic_state_dict/mlp.0.bias": [
+        512
+      ],
+      "critic_state_dict/mlp.2.weight": [
+        256,
+        512
+      ],
+      "critic_state_dict/mlp.2.bias": [
+        256
+      ],
+      "critic_state_dict/mlp.4.weight": [
+        128,
+        256
+      ],
+      "critic_state_dict/mlp.4.bias": [
+        128
+      ],
+      "critic_state_dict/mlp.6.weight": [
+        1,
+        128
+      ],
+      "critic_state_dict/mlp.6.bias": [
+        1
+      ]
+    }
+  }
+}

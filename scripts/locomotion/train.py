@@ -34,6 +34,7 @@ parser.add_argument("--export_io_descriptors", action="store_true", default=Fals
 parser.add_argument(
     "--ray-proc-id", "-rid", type=int, default=None, help="Automatically configured by Ray integration, otherwise None."
 )
+parser.add_argument("--last_action_observation", default="requested", choices=["requested","applied"])
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--issue5_training_mode", default="legacy", choices=["legacy","remove","strengthen"])
 parser.add_argument("--issue5_factor", default="push", choices=["push","material","delay","noise"])
@@ -138,6 +139,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
     from unitree_rl_lab.tasks.locomotion.robots.tw.mass_randomization import configure_mass_randomization
     configure_mass_randomization(env_cfg, args_cli.mass_randomization)
+    from unitree_rl_lab.tasks.locomotion.robots.tw.action_observation import configure_action_observation
+    configure_action_observation(env_cfg, args_cli.last_action_observation)
 
     # set the environment seed
     # note: certain randomizations occur in the environment initialization so we set the seed here

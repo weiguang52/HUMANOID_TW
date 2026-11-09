@@ -1,0 +1,20 @@
+{
+  "applied_s1": {
+    "seed": 1,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096,
+    "observation": "applied"
+  },
+  "applied_s2": {
+    "seed": 2,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096,
+    "observation": "applied"
+  }
+}

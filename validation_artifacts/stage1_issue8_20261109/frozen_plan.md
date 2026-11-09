@@ -1,0 +1,29 @@
+# Issue #8 frozen single-observation experiment
+
+Base9b6149dbfa57507ffa6ddfc1645697609c3c9472; issue https://github.com/weiguang52/HUMANOID_TW/issues/8 .
+Only opt-in policy last_action.params.action_name="JointPositionAction" changes. Critic observations, input dimensions/architecture, rewards, all distributions and production defaults remain unchanged.
+
+## Tests and training
+Real64-env ActionManager tests:0ms new/old values equal;20ms named raw action equals delay-selected target actually applied; full/partial reset clears history; policy-only parameter/dimension invariant.
+Same robust05 parent as issue6:
+logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7496.pt
+SHA256 c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d.
+Two seeds1/2,4096env,1500updates each, full optimizer resume, no std reset/checkpoint selection. Robust08 plus training pushes+/-0.45m/s, bounded nominal*U(0.5,1.5), unchanged friction/noise/random0/20ms delay.64-env2-update smoke first. Compare saved env/agent configurations to matching issue6 baseline: only policy last_action parameter plus run/log names may differ.
+Input architecture/tensor shapes must match the common parent/baselines. Both training seeds are conditional on one shared seed1 parent, not full-pipeline independent replications.
+
+## Evaluation and references
+Identical issue7 protocol:1024env, eval seeds1/2/3, commands0.3/0.5/0.8m/s,20s each, deterministic policy and paired reset seed=eval_seed*1000+command_index. Bounded combined evaluation uses+/-0.3m/s pushes, original friction/noise/random0/20ms delay.
+Use applied policy observation for new models, requested policy observation for all archived issue7 references. Reuse issue7 first-failure hooks unchanged. New6jobs/18command estimates/18432trials. Baseline issue6 new models and issue5 strengthened models use their issue7 results, same denominator3072per pooled speed. Do not compare unmatched128-env counts as acceptance.
+Report Wilson95% per-seed and pooled intervals; delay0/20 trial splits/denominators; recent-push sagittal first-failure share with exactly issue7 mode definitions.
+Worst speed per new model selected by summed combined failures over3eval seeds, tie0.3/0.5/0.8. Produce colored front/side20s one-env seed1 videos; exact physics USD, heading/translation-following cameras and joint legend. Velocity commands have no HumanML3D sourceNPY. Videos are diagnostic, not acceptance.
+
+## Frozen acceptance and recommendation
+Per training seed: pooled Wilson95% upper bounds at both0.3and0.5m/s must be strictly<0.01.
+Delay gap: absolute pooled20ms-minus0ms trial fall-rate difference across the same balanced3speeds and3eval seeds; strictly smaller than matching issue6 baseline gap from issue7. Also report signed gap and each stratum's rate to expose artificial shrinking by worsening0ms.
+Both training seeds must satisfy both criteria to be promotion-eligible. No automatic default promotion in this opt-in research change.
+Recommendation rule:
+- both meet all criteria: continue independent full-pipeline seed/generalization validation;
+- otherwise, if both shrink the gap and neither low/mid-speed pooled rate worsens vs matched issue6 baseline: continue testing this observation hypothesis in a separately authorized study, retaining unmet gates;
+- otherwise stop this variant as a demonstrated fix and recommend changing the hypothesis rather than extending training ad hoc.
+All failures and shared-parent limitations retained. No extra training beyond1500updates per seed.
+All artifacts remain remote; Notion replaces Linear; final report and issue reply include commit, validation and recommendation.

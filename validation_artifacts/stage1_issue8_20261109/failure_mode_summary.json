@@ -1,0 +1,183 @@
+{
+  "total_first_failures": 1442,
+  "total_trials": 18432,
+  "groups": {
+    "mode": {
+      "recent_push__sagittal": {
+        "failures": 1213,
+        "fraction_of_failures": 0.8411927877947295
+      },
+      "not_recent_push__sagittal": {
+        "failures": 191,
+        "fraction_of_failures": 0.13245492371705964
+      },
+      "recent_push__lateral": {
+        "failures": 30,
+        "fraction_of_failures": 0.020804438280166437
+      },
+      "not_recent_push__lateral": {
+        "failures": 8,
+        "fraction_of_failures": 0.005547850208044383
+      }
+    },
+    "termination_terms": {
+      "base_height": {
+        "failures": 1442,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "push_direction_body": {
+      "forward": {
+        "failures": 819,
+        "fraction_of_failures": 0.5679611650485437
+      },
+      "left": {
+        "failures": 269,
+        "fraction_of_failures": 0.18654646324549237
+      },
+      "right": {
+        "failures": 263,
+        "fraction_of_failures": 0.1823855755894591
+      },
+      "no_push": {
+        "failures": 64,
+        "fraction_of_failures": 0.044382801664355064
+      },
+      "backward": {
+        "failures": 27,
+        "fraction_of_failures": 0.01872399445214979
+      }
+    },
+    "push_magnitude_bin": {
+      "ge0.30": {
+        "failures": 910,
+        "fraction_of_failures": 0.6310679611650486
+      },
+      "0.15to0.30": {
+        "failures": 454,
+        "fraction_of_failures": 0.31484049930651875
+      },
+      "no_push": {
+        "failures": 64,
+        "fraction_of_failures": 0.044382801664355064
+      },
+      "lt0.15": {
+        "failures": 14,
+        "fraction_of_failures": 0.009708737864077669
+      }
+    },
+    "delay_ms": {
+      "20": {
+        "failures": 1163,
+        "fraction_of_failures": 0.8065187239944521
+      },
+      "0": {
+        "failures": 279,
+        "fraction_of_failures": 0.19348127600554785
+      }
+    },
+    "contact_at_push": {
+      "left_only": {
+        "failures": 676,
+        "fraction_of_failures": 0.46879334257975036
+      },
+      "right_only": {
+        "failures": 654,
+        "fraction_of_failures": 0.4535367545076283
+      },
+      "no_push": {
+        "failures": 64,
+        "fraction_of_failures": 0.044382801664355064
+      },
+      "flight": {
+        "failures": 29,
+        "fraction_of_failures": 0.02011095700416089
+      },
+      "double": {
+        "failures": 19,
+        "fraction_of_failures": 0.013176144244105409
+      }
+    },
+    "contact_at_failure": {
+      "flight": {
+        "failures": 1219,
+        "fraction_of_failures": 0.8453536754507628
+      },
+      "left_only": {
+        "failures": 169,
+        "fraction_of_failures": 0.11719833564493759
+      },
+      "right_only": {
+        "failures": 50,
+        "fraction_of_failures": 0.03467406380027739
+      },
+      "double": {
+        "failures": 4,
+        "fraction_of_failures": 0.0027739251040221915
+      }
+    },
+    "hard_limit_any_last1s": {
+      "True": {
+        "failures": 1442,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "soft_limit_any_last1s": {
+      "True": {
+        "failures": 1442,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "hard_limit_touch_proxy_last1s": {
+      "True": {
+        "failures": 1442,
+        "fraction_of_failures": 1.0
+      }
+    },
+    "outside_hard_limits_last1s": {
+      "True": {
+        "failures": 1442,
+        "fraction_of_failures": 1.0
+      }
+    }
+  },
+  "dominant_mode": "recent_push__sagittal",
+  "top_two_modes": [
+    [
+      "recent_push__sagittal",
+      1213
+    ],
+    [
+      "not_recent_push__sagittal",
+      191
+    ]
+  ],
+  "rule": "at least50% overall and ranked first in all2 policies; mode is descriptive, not causal",
+  "at_risk_step_counts": {
+    "delay": {
+      "0": 9187055,
+      "1": 8628707,
+      "2": 0,
+      "3": 0
+    },
+    "contact_phase": {
+      "0": 295146,
+      "1": 8251799,
+      "2": 9124694,
+      "3": 144123
+    },
+    "near_limit": {
+      "0": 17,
+      "1": 17815745,
+      "2": 0,
+      "3": 0
+    },
+    "recent_push": {
+      "0": 15603712,
+      "1": 2212050,
+      "2": 0,
+      "3": 0
+    }
+  },
+  "step_dt": 0.02
+}

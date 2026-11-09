@@ -1,0 +1,60 @@
+{
+  "1": {
+    "env": {
+      "old": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/env.yaml",
+      "new": "logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/params/env.yaml",
+      "differences": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1"
+        ],
+        [
+          "/observations/policy/last_action/params/action_name",
+          null,
+          "JointPositionAction"
+        ]
+      ]
+    },
+    "agent": {
+      "old": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/agent.yaml",
+      "new": "logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/params/agent.yaml",
+      "differences": [
+        [
+          "/run_name",
+          "issue6_20261109_bounded_strengthen_s1",
+          "issue8_20261109_applied_s1"
+        ]
+      ]
+    }
+  },
+  "2": {
+    "env": {
+      "old": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s2/params/env.yaml",
+      "new": "logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/params/env.yaml",
+      "differences": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2"
+        ],
+        [
+          "/observations/policy/last_action/params/action_name",
+          null,
+          "JointPositionAction"
+        ]
+      ]
+    },
+    "agent": {
+      "old": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s2/params/agent.yaml",
+      "new": "logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/params/agent.yaml",
+      "differences": [
+        [
+          "/run_name",
+          "issue6_20261109_bounded_strengthen_s2",
+          "issue8_20261109_applied_s2"
+        ]
+      ]
+    }
+  }
+}

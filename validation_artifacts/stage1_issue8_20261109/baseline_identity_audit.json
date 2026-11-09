@@ -1,0 +1,26 @@
+{
+  "source_commit": "9b6149dbfa57507ffa6ddfc1645697609c3c9472",
+  "baseline_data_and_checkpoint_hashes_verified": true,
+  "models": {
+    "new_bounded_s1": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/model_8995.pt",
+      "sha256": "f10dc401d14adc48de22db5539fbad5fd8f7e320e5c44e75a1ac3c8b5a1dc260",
+      "repository_path": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/model_8995.pt"
+    },
+    "new_bounded_s2": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s2/model_8995.pt",
+      "sha256": "499412a7142ea50379c1f1bff5378ea9912f35936a52b121c6285b9d130f2a02",
+      "repository_path": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s2/model_8995.pt"
+    },
+    "old_strengthen_s1": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue5_20261109/models/strengthen_s1/model_8995.pt",
+      "sha256": "a61c90f08798f160b424fec852a64dcc28a3c2f82c832e9cae5b235aaaa24cd3",
+      "repository_path": "validation_artifacts/stage1_issue5_20261109/models/strengthen_s1/model_8995.pt"
+    },
+    "old_strengthen_s2": {
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue5_20261109/models/strengthen_s2/model_8995.pt",
+      "sha256": "a1f350b0779a5705e682fa329fc2fa8ecffb1bb56741db391a9f4598bf3efa83",
+      "repository_path": "validation_artifacts/stage1_issue5_20261109/models/strengthen_s2/model_8995.pt"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "tests": 4,
+  "policy_params": {
+    "action_name": "JointPositionAction"
+  },
+  "critic_params": {},
+  "observation_dims": {
+    "policy": [
+      101
+    ],
+    "critic": [
+      134
+    ]
+  },
+  "action_shape": [
+    64,
+    30
+  ]
+}

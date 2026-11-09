@@ -40,6 +40,7 @@ parser.add_argument("--output", required=True)
 parser.add_argument("--experiment_profile", default="default")
 parser.add_argument("--trajectory_replay", default="")
 parser.add_argument("--failure_traces", default="")
+parser.add_argument("--last_action_observation", default="requested", choices=["requested","applied"])
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--mass_audit_output", default="")
 parser.add_argument("--issue5_condition", default="legacy", choices=["legacy","clean","push","material","delay","noise","combined"])
@@ -137,6 +138,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     configure_issue5_condition(env_cfg, args_cli.issue5_condition)
     from unitree_rl_lab.tasks.locomotion.robots.tw.mass_randomization import configure_mass_randomization, mass_distribution_report, AuditedMassRandomization
     configure_mass_randomization(env_cfg, args_cli.mass_randomization)
+    from unitree_rl_lab.tasks.locomotion.robots.tw.action_observation import configure_action_observation
+    configure_action_observation(env_cfg, args_cli.last_action_observation)
     if args_cli.failure_traces:
         from failure_traces import recorded_push
         assert env_cfg.events.push_robot is not None
@@ -356,6 +359,10 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     output.write_text(json.dumps({"checkpoint":resume_path,"deterministic_policy":True,
         "runtime":{"python":sys.executable,"rsl_rl":metadata.version("rsl-rl-lib"),"torch":torch.__version__,"torch_path":torch.__file__},
         "physics_diagnostics":physics_diagnostics,
+        "last_action_observation":args_cli.last_action_observation,
+        "policy_last_action_params":base.cfg.observations.policy.last_action.params,
+        "critic_last_action_params":base.cfg.observations.critic.last_action.params,
+        "observation_dims":base.observation_manager.group_obs_dim,
         "mass_randomization":args_cli.mass_randomization,
         "perturbation_config":{
             "mass_operation":None if base.cfg.events.add_base_mass is None else base.cfg.events.add_base_mass.params["operation"],
