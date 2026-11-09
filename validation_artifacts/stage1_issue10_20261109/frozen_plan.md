@@ -1,0 +1,38 @@
+# Issue10 frozen plan
+
+Base2e1a2ae; https://github.com/weiguang52/HUMANOID_TW/issues/10 .
+Requested training seeds1/2/3/4/5 fixed, all retained. StepA: saved checkpoints
+nearest500/1000/1500 updates. RSL parent iteration7496, first logged update7496;
+model8000/8500 represent505/1005 logged updates; model8995 is1500. Disclose5-update
+offsets. No performance-based selection. Reuse hash-validated final1500 results
+from issue7 seeds1/2 and issue9 seeds3/4/5; run all intermediate evaluations.
+Protocol unchanged: bounded combined,1024env,eval seeds1/2/3,forward0.3/0.5/0.8m/s,
+20s,deterministic,paired reset,requested last_action,eval pushes+/-0.3m/s.
+
+Gate frozen BEFORE reading intermediate outcomes: primary0.5m/s;
+D=mean1000-mean1500; threshold=0.5*sampleSD1500(ddof1 over5training seeds).
+EnterB iff D>0 and D>threshold, numerical equality tolerance1e-12 rate units.
+SD timepoint1500 is a prospective interpretation of the issue's unspecified SD.
+Also report SD1000 and paired-differenceSD, without changing the gate.
+If false stop training, report converged UNDER THIS RULE, not asymptotic proof.
+
+Only if gate passes resume all5 own1500 checkpoints including optimizers,
+4096env,same recipe,no std reset,no checkpoint selection,3000more updates.
+Evaluate nearest saved cumulative3000 and final4500 logged-update checkpoints.
+RSL resumes from saved iteration label (repeating that label once); explicitly
+map iteration labels to logged update counts and preserve full logs/configs.
+No other configuration or default changes.
+
+Perseed/speed rate pools3eval streams(3072trials). Report individual curves,
+group means/sampleSD. Jointly resample5seed indices across checkpoints,
+enumerate5^5=3125vectors for percentile95% mean/paired-change intervals.
+StatisticalN=5, not trial count or resample count. IfB, report4500 low/mid mean
+intervals,0.3 upper<1%,0.5 decline1500-minus4500 and CIexcludes0.
+SmallN/shared-parent/finite-eval-error/multiple-secondary-comparison limits.
+No defaults promoted. No extra training based on intermediate performance.
+
+All generation/archives stay remote. Input hashes, checkpoints, outputs,methods,
+colored worst-command front/side videos and jointlegend. Exact precoloredUSD,
+physics preserved,no dynamic binding. Cameras follow translation and heading;
+encoding/frame/color/fullbody/attachment QA. Stage1 velocity commands have no
+HumanML3D sourceNPY(N/A). Notion replaces Linear.

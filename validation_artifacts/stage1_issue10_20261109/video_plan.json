@@ -1,0 +1,412 @@
+[
+  {
+    "model": "requested_s1_u500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u500_worst_front_forward_08_front.mp4",
+        "sha256": "0600b58bd7072e15544b8a6d34b1a63fad90b351965d540c4387c1afc373a049",
+        "checkpoint_sha256": "76f2a1a0594824ff79de30350b7b6af16ec54942b8a235ac222a7f597b72e641"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u500_worst_side_forward_08_side.mp4",
+        "sha256": "3d606a26a3d8efaa0f6f1008a21bf199d11e530e65990f4182592b3f8de965dd",
+        "checkpoint_sha256": "76f2a1a0594824ff79de30350b7b6af16ec54942b8a235ac222a7f597b72e641"
+      }
+    }
+  },
+  {
+    "model": "requested_s1_u1000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u1000_worst_front_forward_08_front.mp4",
+        "sha256": "65848cc799bd54fc1a7b83df486f81d717ac0b77b4272d5324464955077c7940",
+        "checkpoint_sha256": "8088ff44fae706d42c11bb6407d5005e97d0a3ba1edc43ae002ab5a4bf2479c9"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u1000_worst_side_forward_08_side.mp4",
+        "sha256": "e33a505cb8eb97c6d2b575e60da4896c0a31c513d317f6ae64470b67d314b39b",
+        "checkpoint_sha256": "8088ff44fae706d42c11bb6407d5005e97d0a3ba1edc43ae002ab5a4bf2479c9"
+      }
+    }
+  },
+  {
+    "model": "requested_s1_u1500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue6_20261109/videos/bounded_strengthen_s1_worst_front_forward_08_front.mp4",
+        "sha256": "545ff01737f057ebb415c7fbf85de50c3d6c175970ea3e0f1e99395b85fdaad0",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u1500_worst_front_forward_08_front.mp4",
+        "checkpoint_sha256": "f10dc401d14adc48de22db5539fbad5fd8f7e320e5c44e75a1ac3c8b5a1dc260"
+      },
+      "side": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue6_20261109/videos/bounded_strengthen_s1_worst_side_forward_08_side.mp4",
+        "sha256": "473b59c876e6599171e4823fa48daf65410af70fab8513533ec505e717e9b078",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u1500_worst_side_forward_08_side.mp4",
+        "checkpoint_sha256": "f10dc401d14adc48de22db5539fbad5fd8f7e320e5c44e75a1ac3c8b5a1dc260"
+      }
+    }
+  },
+  {
+    "model": "requested_s2_u500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u500_worst_front_forward_08_front.mp4",
+        "sha256": "b25fa098c31f58774f5d201886ebad1a1c9c0bb3acb073e401bf8fccc03aaa07",
+        "checkpoint_sha256": "5a4a1932d6f82f904906bdbffcc26d200ca96b2f3c3df75baf4923b5cecf3a14"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u500_worst_side_forward_08_side.mp4",
+        "sha256": "34a71ee4658d9fbc7bff429c105da48ccd03132853e1a24e86921cc9a6f870f3",
+        "checkpoint_sha256": "5a4a1932d6f82f904906bdbffcc26d200ca96b2f3c3df75baf4923b5cecf3a14"
+      }
+    }
+  },
+  {
+    "model": "requested_s2_u1000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u1000_worst_front_forward_08_front.mp4",
+        "sha256": "88fabb0554f2f2bdee1d39995a40bb5a2aa939c0ecc932e905f3902dd1bca27c",
+        "checkpoint_sha256": "496e4b6e20586b7f92cca78fe77297450f9ff4da20438b65c87e84a4b749da42"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u1000_worst_side_forward_08_side.mp4",
+        "sha256": "5532c26f4a163bdc0775a7bef778969a3a449a2b3c7a66d0585c57201f2a21f0",
+        "checkpoint_sha256": "496e4b6e20586b7f92cca78fe77297450f9ff4da20438b65c87e84a4b749da42"
+      }
+    }
+  },
+  {
+    "model": "requested_s2_u1500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue6_20261109/videos/bounded_strengthen_s2_worst_front_forward_08_front.mp4",
+        "sha256": "d476a9f9cac759cd21cd0ef1abac4e863a421c842ea914e475ec608b0fe389f4",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u1500_worst_front_forward_08_front.mp4",
+        "checkpoint_sha256": "499412a7142ea50379c1f1bff5378ea9912f35936a52b121c6285b9d130f2a02"
+      },
+      "side": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue6_20261109/videos/bounded_strengthen_s2_worst_side_forward_08_side.mp4",
+        "sha256": "6ab37c80102a08aebe97a77b61d3688f04969a48b212a0faa77415b633189385",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u1500_worst_side_forward_08_side.mp4",
+        "checkpoint_sha256": "499412a7142ea50379c1f1bff5378ea9912f35936a52b121c6285b9d130f2a02"
+      }
+    }
+  },
+  {
+    "model": "requested_s3_u500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u500_worst_front_forward_08_front.mp4",
+        "sha256": "0f2a6ba833e211ff0ebd0d816b5d805a70307f63989baf34d153adab5a144b58",
+        "checkpoint_sha256": "51f2c345ca041bd99db39add15d1829328e57dbe7150d89c8964d2490131b284"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u500_worst_side_forward_08_side.mp4",
+        "sha256": "522b97d013d5f7fe4f3866760377a9b9498e604d34e68fcb1748bfee96524eb5",
+        "checkpoint_sha256": "51f2c345ca041bd99db39add15d1829328e57dbe7150d89c8964d2490131b284"
+      }
+    }
+  },
+  {
+    "model": "requested_s3_u1000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u1000_worst_front_forward_08_front.mp4",
+        "sha256": "f5094ac60a22b2570ae3d7af7529d59bfe3fd20707c1df387b7fa678e8192d27",
+        "checkpoint_sha256": "78f928b47c43a049279fd58123fe993091f6b216e02dfc993d434c40709366e5"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u1000_worst_side_forward_08_side.mp4",
+        "sha256": "a448063154c2eeaa7bd22f8b76a0e7ccadd4c6cc02a34aeb01f67ec8ec5bc54d",
+        "checkpoint_sha256": "78f928b47c43a049279fd58123fe993091f6b216e02dfc993d434c40709366e5"
+      }
+    }
+  },
+  {
+    "model": "requested_s3_u1500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue9_20261109/videos/requested_s3_worst_front_forward_08_front.mp4",
+        "sha256": "56c41ea08895856804470d67fb4844d56d9f685ff77b18d79321fac1c55f5793",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u1500_worst_front_forward_08_front.mp4",
+        "checkpoint_sha256": "ede1aa4e21580d2c512fb01357bc5cfdbd5b157ecb634b464d926d7b2987efab"
+      },
+      "side": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue9_20261109/videos/requested_s3_worst_side_forward_08_side.mp4",
+        "sha256": "b19e96cda715a246316cb98e12fea4dd97080b71e9cd1367156acf86340c33dd",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u1500_worst_side_forward_08_side.mp4",
+        "checkpoint_sha256": "ede1aa4e21580d2c512fb01357bc5cfdbd5b157ecb634b464d926d7b2987efab"
+      }
+    }
+  },
+  {
+    "model": "requested_s4_u500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u500_worst_front_forward_08_front.mp4",
+        "sha256": "34245b591a5d81c8e6acb37bf316073afcff99995627dd1a424034073aabe8a2",
+        "checkpoint_sha256": "6095352381b8284e4c953eefc555508b0b9fd079a928534b2573d0cd966783c2"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u500_worst_side_forward_08_side.mp4",
+        "sha256": "96c9104757a9773067cf05ac349f5ec08ac2de182f915e374027a9e9670774a7",
+        "checkpoint_sha256": "6095352381b8284e4c953eefc555508b0b9fd079a928534b2573d0cd966783c2"
+      }
+    }
+  },
+  {
+    "model": "requested_s4_u1000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u1000_worst_front_forward_08_front.mp4",
+        "sha256": "85881f7bd1ee0ccdeebfba2b192c1c250cc9f0b2fdc926f1a321cd44d35ef258",
+        "checkpoint_sha256": "c63a0a3eefda335ef6223b40a8513eba1d5def2047f5ed0f7dba82a63358543d"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u1000_worst_side_forward_08_side.mp4",
+        "sha256": "189f3b26bc541b05b0463863bbeb1719ee24426390e39add7060eee86c702683",
+        "checkpoint_sha256": "c63a0a3eefda335ef6223b40a8513eba1d5def2047f5ed0f7dba82a63358543d"
+      }
+    }
+  },
+  {
+    "model": "requested_s4_u1500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue9_20261109/videos/requested_s4_worst_front_forward_08_front.mp4",
+        "sha256": "7cc3639c08c92db61bfae443d42ba2a929f9991f6ed6150f4be09ab2339bdb31",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u1500_worst_front_forward_08_front.mp4",
+        "checkpoint_sha256": "6f6e66d7570575abc006be132886f71c927c44ef41d51709cbfdd283853a4dba"
+      },
+      "side": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue9_20261109/videos/requested_s4_worst_side_forward_08_side.mp4",
+        "sha256": "de5bf9de97876934678db1fcd0c03c734fcc511ed783e199a4c499b5e415d456",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u1500_worst_side_forward_08_side.mp4",
+        "checkpoint_sha256": "6f6e66d7570575abc006be132886f71c927c44ef41d51709cbfdd283853a4dba"
+      }
+    }
+  },
+  {
+    "model": "requested_s5_u500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u500_worst_front_forward_08_front.mp4",
+        "sha256": "5ba0541cd453dbdbdd723105b65372844400a7a230944a8d7610d00ee8208e6b",
+        "checkpoint_sha256": "c6bb359e23a9b7177cb970759a1017530eca7923ba49de7861a9823a73a5f15a"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u500_worst_side_forward_08_side.mp4",
+        "sha256": "6be47574448d532bccc6855a6a0f50cebaba8803640d4b466c2c98094ad9d3f3",
+        "checkpoint_sha256": "c6bb359e23a9b7177cb970759a1017530eca7923ba49de7861a9823a73a5f15a"
+      }
+    }
+  },
+  {
+    "model": "requested_s5_u1000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u1000_worst_front_forward_08_front.mp4",
+        "sha256": "71f8040ebb23e78a55a11534d783c7efac8d8cf9e849ec0669d83d760a9e2f0b",
+        "checkpoint_sha256": "6fa8f083d0a25a582068fac1754a833e1dca2bc9d2c7b9d8d7fbb2f8bb1f93f4"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u1000_worst_side_forward_08_side.mp4",
+        "sha256": "db83bd3f9b4174fa63a0bfe0f78dbf21d665c0cec59dfd481b0957716e2d6347",
+        "checkpoint_sha256": "6fa8f083d0a25a582068fac1754a833e1dca2bc9d2c7b9d8d7fbb2f8bb1f93f4"
+      }
+    }
+  },
+  {
+    "model": "requested_s5_u1500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue9_20261109/videos/requested_s5_worst_front_forward_08_front.mp4",
+        "sha256": "1137c3cfde35d9248ba41ce159097500bc47d22b8eb8bca3cd47660923346ead",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u1500_worst_front_forward_08_front.mp4",
+        "checkpoint_sha256": "42b7e370657b8fdc955051ab1de3a77c8874dc1c3dc0828309f7241602317b2d"
+      },
+      "side": {
+        "reused_source": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue9_20261109/videos/requested_s5_worst_side_forward_08_side.mp4",
+        "sha256": "5ad89923750825c5cafdbac786ec7064135c841ab560e729c72afcc6824aa278",
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u1500_worst_side_forward_08_side.mp4",
+        "checkpoint_sha256": "42b7e370657b8fdc955051ab1de3a77c8874dc1c3dc0828309f7241602317b2d"
+      }
+    }
+  },
+  {
+    "model": "requested_s1_u3000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u3000_worst_front_forward_08_front.mp4",
+        "sha256": "2999df3a593bf713755420fac9c5c724063387d746b557ae6d7455006ddb783e",
+        "checkpoint_sha256": "cb390a68e9e31db3b904c53eb95f098ec6a88a9b0da4bae89a0c8f5bb686f18f"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u3000_worst_side_forward_08_side.mp4",
+        "sha256": "d6a5e2ba250a6187fbf3b3e7a9c1ad03f8f3f3709debb99726c2172fbf6bb444",
+        "checkpoint_sha256": "cb390a68e9e31db3b904c53eb95f098ec6a88a9b0da4bae89a0c8f5bb686f18f"
+      }
+    }
+  },
+  {
+    "model": "requested_s1_u4500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u4500_worst_front_forward_08_front.mp4",
+        "sha256": "828c267f29ab48dbb17d0bc684abc657adb2a635ff1ed90cd0934f12fc0f586e",
+        "checkpoint_sha256": "61475101e20212564282eb2a6428d3caa40db17181decc34c3c592842e422f4f"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s1_u4500_worst_side_forward_08_side.mp4",
+        "sha256": "72eaf83f81783eaed0d3e6d7e30eace9b18a1f0a1dbd92638841ceee3f800021",
+        "checkpoint_sha256": "61475101e20212564282eb2a6428d3caa40db17181decc34c3c592842e422f4f"
+      }
+    }
+  },
+  {
+    "model": "requested_s2_u3000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u3000_worst_front_forward_08_front.mp4",
+        "sha256": "311fc7d6da8db555a67de274efff1c4f147c742f8eafc82dbfe9b4dc680a2641",
+        "checkpoint_sha256": "ad4cf658b8870ce552957b8401760388a357bc959372633ccfd6723edd73774c"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u3000_worst_side_forward_08_side.mp4",
+        "sha256": "b2315daec0251ff2ad748aab8ff2139c3868adb642b481116be0aef10f44b331",
+        "checkpoint_sha256": "ad4cf658b8870ce552957b8401760388a357bc959372633ccfd6723edd73774c"
+      }
+    }
+  },
+  {
+    "model": "requested_s2_u4500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u4500_worst_front_forward_08_front.mp4",
+        "sha256": "4c39f76a4810307045758b9280b6d0194b2630d3d92aa785c2e2a1fd89be3414",
+        "checkpoint_sha256": "c30b3a8a7e47033b4251b64699d25102fabebc27519d9e24bb4f4ff2aae1bf58"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s2_u4500_worst_side_forward_08_side.mp4",
+        "sha256": "d39cfb934f24af6cf5ca7bcb4e0dd4a700636044a4fe421a35238802e18e3d8a",
+        "checkpoint_sha256": "c30b3a8a7e47033b4251b64699d25102fabebc27519d9e24bb4f4ff2aae1bf58"
+      }
+    }
+  },
+  {
+    "model": "requested_s3_u3000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u3000_worst_front_forward_08_front.mp4",
+        "sha256": "36ae8f5874584dd6f7b9a3292749b11ca7e6eaef2941712cfa212e9e9eebd37e",
+        "checkpoint_sha256": "f1b3b2af5663b52ffb12569fdae42135189bbc99d1e15e4f690299992f3ec98b"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u3000_worst_side_forward_08_side.mp4",
+        "sha256": "06f3572f1b9205cfbd6ccab479d2d2fd6fd71b9d0c6a9ba9bbafcbcc85b782c9",
+        "checkpoint_sha256": "f1b3b2af5663b52ffb12569fdae42135189bbc99d1e15e4f690299992f3ec98b"
+      }
+    }
+  },
+  {
+    "model": "requested_s3_u4500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u4500_worst_front_forward_08_front.mp4",
+        "sha256": "ebbf822b2aeda32b7da2609df855191f7168a20d2aa3642f8bc55e28e94d0126",
+        "checkpoint_sha256": "8e7aaa0a822140985540a30880d30f5cbe843a46ef96d5e47ceefb4cb5ce87b7"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s3_u4500_worst_side_forward_08_side.mp4",
+        "sha256": "cc378af7d8070bbecfca4429ec50f8ab1de9a9855100af3947c17710384b06dd",
+        "checkpoint_sha256": "8e7aaa0a822140985540a30880d30f5cbe843a46ef96d5e47ceefb4cb5ce87b7"
+      }
+    }
+  },
+  {
+    "model": "requested_s4_u3000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u3000_worst_front_forward_08_front.mp4",
+        "sha256": "6be2348e87025e8b94d1f680e85f5385ced84759943721dcbd833a5a78ca903c",
+        "checkpoint_sha256": "6d416ffba60cf29c2bb2bea73d7bb232158ec565cb0c986643ff2aa0fc9098ab"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u3000_worst_side_forward_08_side.mp4",
+        "sha256": "77f0e4f8de1e8fa44972dfb9bebf3d4a1f256f7ced6cd5f0cb0f3ff4bfcb52db",
+        "checkpoint_sha256": "6d416ffba60cf29c2bb2bea73d7bb232158ec565cb0c986643ff2aa0fc9098ab"
+      }
+    }
+  },
+  {
+    "model": "requested_s4_u4500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u4500_worst_front_forward_08_front.mp4",
+        "sha256": "071e2ada47295d87f3c1e999445320307891ad4d68a6b9a859546b918fe499a3",
+        "checkpoint_sha256": "97d89093878e7e2bd85b4a003e0f253acbe90658142dfe48949534cbdc2d1f12"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s4_u4500_worst_side_forward_08_side.mp4",
+        "sha256": "8e5f8d1cb24c3061064e460cbbc1ea398db7522d9e92a5427b4ff261f20bd215",
+        "checkpoint_sha256": "97d89093878e7e2bd85b4a003e0f253acbe90658142dfe48949534cbdc2d1f12"
+      }
+    }
+  },
+  {
+    "model": "requested_s5_u3000",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u3000_worst_front_forward_08_front.mp4",
+        "sha256": "6baa3223cc9c4449500804dacdf4092533f0bea8fb6e063b6a9a77c07ebc6fbb",
+        "checkpoint_sha256": "f3ea3ead738fd2fbcdbe8d712a845871d6ededab991009c2860a4d18be7f5b5e"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u3000_worst_side_forward_08_side.mp4",
+        "sha256": "8e4e739835bb93f6f94969034edd0849bb2569825f82c863c9e2f26c0b93322a",
+        "checkpoint_sha256": "f3ea3ead738fd2fbcdbe8d712a845871d6ededab991009c2860a4d18be7f5b5e"
+      }
+    }
+  },
+  {
+    "model": "requested_s5_u4500",
+    "worst_command": "forward_08",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u4500_worst_front_forward_08_front.mp4",
+        "sha256": "167f505c964bec75117020d70f1d729911d6cdde6a0af645ce4ebde6c6741660",
+        "checkpoint_sha256": "e4315ae0c827c89e4f903192ad5e823a79458fe21db8a490d4867aaf62501299"
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue10_20261109/videos/requested_s5_u4500_worst_side_forward_08_side.mp4",
+        "sha256": "7ad970487f31b1a9491f6310856059b49a2c01d923c9fc51a353aaaf3fc510c8",
+        "checkpoint_sha256": "e4315ae0c827c89e4f903192ad5e823a79458fe21db8a490d4867aaf62501299"
+      }
+    }
+  }
+]

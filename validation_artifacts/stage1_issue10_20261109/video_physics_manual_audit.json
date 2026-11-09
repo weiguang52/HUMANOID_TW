@@ -1,0 +1,169 @@
+{
+  "passed": true,
+  "all_50_physics_log_checks": {
+    "requested_s1_u1000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s1_u1000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s1_u1500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s1_u1500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s1_u3000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s1_u3000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s1_u4500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s1_u4500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s1_u500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s1_u500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s2_u1000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s2_u1000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s2_u1500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s2_u1500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s2_u3000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s2_u3000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s2_u4500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s2_u4500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s2_u500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s2_u500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s3_u1000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s3_u1000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s3_u1500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s3_u1500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s3_u3000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s3_u3000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s3_u4500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s3_u4500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s3_u500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s3_u500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s4_u1000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s4_u1000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s4_u1500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s4_u1500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s4_u3000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s4_u3000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s4_u4500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s4_u4500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s4_u500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s4_u500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s5_u1000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s5_u1000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s5_u1500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s5_u1500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s5_u3000_worst_front.log": [
+      "1876"
+    ],
+    "requested_s5_u3000_worst_side.log": [
+      "1876"
+    ],
+    "requested_s5_u4500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s5_u4500_worst_side.log": [
+      "1876"
+    ],
+    "requested_s5_u500_worst_front.log": [
+      "1876"
+    ],
+    "requested_s5_u500_worst_side.log": [
+      "1876"
+    ]
+  },
+  "original_attributes_unchanged": 1876,
+  "manual_review": {
+    "all_50_views": "Inspected five readable per-seed contact sheets at10s; full colored body and limb/head attachments visible, no detached small parts or material loss observed",
+    "full_resolution_late_frames": [
+      "requested_s2_u500_worst_front_forward_08_front_19.9.png",
+      "requested_s5_u4500_worst_side_forward_08_side_19.9.png"
+    ],
+    "late_frame_findings": "colored full body remains framed with margins and intact attachments",
+    "automated_frames": 250,
+    "camera_behavior": "translation and heading follow, labeled front/side; consistent with inspected views",
+    "source_motion_npy": "N/A: Stage1 velocity commands have no HumanML3D source motion"
+  },
+  "physics": "exact precolored USD; original physics and non-material relationships preserved; no runtime material binding",
+  "plot_review": "full and late-budget curves inspected; all seeds visible and mean+/-SD clearly labeled"
+}

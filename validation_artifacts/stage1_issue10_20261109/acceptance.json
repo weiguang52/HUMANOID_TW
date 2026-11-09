@@ -1,0 +1,75 @@
+{
+  "gate": {
+    "primary_speed": "forward_05",
+    "mean1000": 0.10032552083333332,
+    "mean1500": 0.045638020833333334,
+    "decline": 0.0546875,
+    "sd1500": 0.01803837798629686,
+    "half_sd1500": 0.00901918899314843,
+    "sd1000_context": 0.05168579977842941,
+    "paired_difference_sd_context": 0.038149180708665346,
+    "gate_passed": true,
+    "decision": "still_improving_enter_B",
+    "numerical_tolerance": 1e-12,
+    "sd_timepoint_interpretation": "prospectively frozen endpoint1500 sampleSD(ddof1)",
+    "not_asymptotic_convergence_proof": true
+  },
+  "stepB_executed": true,
+  "defaults_promoted": false,
+  "training_seeds": 5,
+  "bootstrap_resamples": 3125,
+  "limits": "conditional shared parent, five seeds; percentile intervals not simultaneous; finite eval error included in seed SD; gate is operational rule, not proof of convergence",
+  "final4500": {
+    "forward_03": {
+      "rates": [
+        0.009765625,
+        0.009114583333333334,
+        0.010416666666666666,
+        0.005208333333333333,
+        0.016927083333333332
+      ],
+      "mean": 0.010286458333333335,
+      "sample_sd": 0.004229266085654092,
+      "bootstrap95": [
+        0.007161458333333333,
+        0.014062499999999997
+      ],
+      "training_seeds": 5,
+      "exact_resamples": 3125
+    },
+    "forward_05": {
+      "rates": [
+        0.032877604166666664,
+        0.029622395833333332,
+        0.024088541666666668,
+        0.0283203125,
+        0.030924479166666668
+      ],
+      "mean": 0.029166666666666667,
+      "sample_sd": 0.003300466629072024,
+      "bootstrap95": [
+        0.026302083333333337,
+        0.03157552083333333
+      ],
+      "training_seeds": 5,
+      "exact_resamples": 3125
+    }
+  },
+  "low_speed_mean95_upper_below1pct": false,
+  "mid_speed_decline1500_minus4500": {
+    "rates": [
+      0.006510416666666671,
+      0.04524739583333334,
+      0.025065104166666668,
+      0.0087890625,
+      -0.0032552083333333356
+    ],
+    "mean": 0.016471354166666667,
+    "sample_sd": 0.019034759403925267,
+    "bootstrap95": [
+      0.003059895833333334,
+      0.03313802083333334
+    ],
+    "excludes_zero": true
+  }
+}
