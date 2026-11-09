@@ -1,0 +1,15 @@
+{
+  "source_selection": "/root/gpufree-data/tw_stage1/issue11_20261110/representative_mode2.json",
+  "source_npz_sha256": "d75b33147dbedb810c9df70c6c781474232aba9f0dfbfd647502366886a065d8",
+  "source_model": "requested_s5_u4500",
+  "source_environment": 1015,
+  "source_command": "forward_03",
+  "view": "front",
+  "frames": 51,
+  "fps": 50,
+  "physics_integrated": false,
+  "root_and_joint_states": "exact recorded terminal pre-reset window",
+  "joint_velocity_for_display": "zero; no physics stepping",
+  "camera": "follows translation and heading",
+  "video": "/root/gpufree-data/tw_stage1/issue11_20261110/videos/mode2_front.mp4"
+}

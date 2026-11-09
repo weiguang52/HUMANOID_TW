@@ -1,0 +1,16 @@
+{
+  "source_selection": "/root/gpufree-data/tw_stage1/issue11_20261110/representative_mode3.json",
+  "source_npz_sha256": "bcd81f52059d12fa4074812a0439d6803c705c4cc1d16622b1724fc5e67ebb09",
+  "source_model": "requested_s2_u4500",
+  "source_environment": 408,
+  "source_command": "forward_03",
+  "view": "front",
+  "frames": 51,
+  "fps": 50,
+  "physics_integrated": false,
+  "first_frame_warmup_renders": 60,
+  "root_and_joint_states": "exact recorded terminal pre-reset window",
+  "joint_velocity_for_display": "zero; no physics stepping",
+  "camera": "follows translation and heading",
+  "video": "/root/gpufree-data/tw_stage1/issue11_20261110/videos/mode3_front.mp4"
+}

@@ -1,0 +1,342 @@
+{
+  "passed": true,
+  "videos": {
+    "mode1_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            348,
+            248,
+            603,
+            547
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            344,
+            252,
+            603,
+            538
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            350,
+            292,
+            637,
+            469
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "38ad2c87fd3e9007a3c1045780c4da84906a954f137458e023ee311134aaff0e"
+    },
+    "mode1_side.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            464,
+            248,
+            527,
+            561
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            446,
+            248,
+            549,
+            567
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            372,
+            280,
+            659,
+            487
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "38ad2c87fd3e9007a3c1045780c4da84906a954f137458e023ee311134aaff0e"
+    },
+    "mode2_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            346,
+            250,
+            599,
+            551
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            338,
+            252,
+            595,
+            535
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            330,
+            364,
+            633,
+            443
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "d75b33147dbedb810c9df70c6c781474232aba9f0dfbfd647502366886a065d8"
+    },
+    "mode2_side.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            460,
+            248,
+            555,
+            559
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            442,
+            248,
+            545,
+            575
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            346,
+            346,
+            623,
+            483
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "d75b33147dbedb810c9df70c6c781474232aba9f0dfbfd647502366886a065d8"
+    },
+    "mode3_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            348,
+            250,
+            601,
+            542
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            336,
+            270,
+            597,
+            557
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            322,
+            358,
+            599,
+            429
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "bcd81f52059d12fa4074812a0439d6803c705c4cc1d16622b1724fc5e67ebb09"
+    },
+    "mode3_side.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            468,
+            248,
+            537,
+            573
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            404,
+            262,
+            577,
+            577
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            328,
+            336,
+            631,
+            479
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "bcd81f52059d12fa4074812a0439d6803c705c4cc1d16622b1724fc5e67ebb09"
+    },
+    "mode4_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            348,
+            248,
+            607,
+            550
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            350,
+            248,
+            605,
+            544
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            344,
+            336,
+            609,
+            433
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "bf90027dd328d63233d1d12dcab9b30d3ce120dd46fad16ff9909d44f2cd590c"
+    },
+    "mode4_side.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "1.020000",
+        "nb_frames": "51"
+      },
+      "samples": [
+        {
+          "frame": 0,
+          "bbox": [
+            456,
+            250,
+            567,
+            565
+          ]
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            464,
+            248,
+            525,
+            561
+          ]
+        },
+        {
+          "frame": 50,
+          "bbox": [
+            346,
+            346,
+            655,
+            427
+          ]
+        }
+      ],
+      "exact_recorded_states": true,
+      "physics_integrated": false,
+      "source_npz_sha256": "bf90027dd328d63233d1d12dcab9b30d3ce120dd46fad16ff9909d44f2cd590c"
+    }
+  },
+  "frames_sampled": 24
+}

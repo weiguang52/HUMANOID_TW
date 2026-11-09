@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "format": "gzip with mtime=0; exact lossless full CSV, all 160847 push rows retained",
+  "raw_csv_sha256": "05521dfb331dc10792570e0243bf57919563916db1a96b7723df930e32c2f97e",
+  "raw_bytes": 82286840,
+  "gzip_sha256": "578a88ddfdc236bf449a2dc7c07a2c4d1e83a6923a1506291aacd2da938c8f23",
+  "gzip_bytes": 22083507,
+  "reason": "Official GitHub blob API rejected the 82MB raw CSV; lossless compression avoids transport payload limit. Original raw CSV remains on remote data disk."
+}

@@ -10,6 +10,9 @@ from isaaclab.utils.math import quat_apply_inverse
 def recorded_push(env, env_ids, velocity_range, asset_cfg=SceneEntityCfg("robot")):
     robot=env.scene[asset_cfg.name]
     before=robot.data.root_vel_w[env_ids].clone()
+    observer=getattr(env,"_issue7_recorder",None)
+    if observer is not None and hasattr(observer,"before_push"):
+        observer.before_push(env_ids)
     push_by_setting_velocity(env,env_ids,velocity_range,asset_cfg)
     recorder=getattr(env,"_issue7_recorder",None)
     if recorder is not None:

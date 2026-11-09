@@ -32,7 +32,7 @@ def replay(base,args):
             angle=yaw if args.camera_view=='front' else yaw+math.pi/2
             eye=(pos[0]+1.2*math.cos(angle),pos[1]+1.2*math.sin(angle),pos[2]+.35)
             base.sim.set_camera_view(eye=eye,target=(pos[0],pos[1],pos[2]+.05))
-            for _ in range(12 if i==0 else 2):base.sim.render()
+            for _ in range(60 if i==0 else 2):base.sim.render()
             frame=base.render()
             if i==0:
                 for _ in range(60):
@@ -46,4 +46,4 @@ def replay(base,args):
             draw.text((10,22),f"{selection['mode']} | {args.camera_view} | t={relative:+.2f}s",fill='white')
             writer.append_data(np.asarray(image))
     assert base.common_step_counter==initial_counter
-    output.write_text(json.dumps({'source_selection':str(args.trajectory_replay),'source_npz_sha256':hashlib.sha256(Path(selection['source_npz']).read_bytes()).hexdigest(),'source_model':selection['model'],'source_environment':selection['env_id'],'source_command':selection['command'],'view':args.camera_view,'frames':len(values),'fps':50,'physics_integrated':False,'root_and_joint_states':'exact recorded terminal pre-reset window','joint_velocity_for_display':'zero; no physics stepping','camera':'follows translation and heading','video':str(path)},indent=2))
+    output.write_text(json.dumps({'source_selection':str(args.trajectory_replay),'source_npz_sha256':hashlib.sha256(Path(selection['source_npz']).read_bytes()).hexdigest(),'source_model':selection['model'],'source_environment':selection['env_id'],'source_command':selection['command'],'view':args.camera_view,'frames':len(values),'fps':50,'physics_integrated':False,'first_frame_warmup_renders':60,'root_and_joint_states':'exact recorded terminal pre-reset window','joint_velocity_for_display':'zero; no physics stepping','camera':'follows translation and heading','video':str(path)},indent=2))

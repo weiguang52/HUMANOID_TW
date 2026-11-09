@@ -1,0 +1,19 @@
+{
+  "1500": {
+    "initial_draw_groups": 3072,
+    "failed_trials": 113,
+    "failures_whose_identical_initial_mass_friction_delay_has_another_seed_success": 113,
+    "fraction": 1.0,
+    "all5_training_seeds_fail_same_initial_draw_groups": 0,
+    "scope": "initial physical draw only; actual push streams/COM/phase trajectories may differ, so not proof about an exact failed state"
+  },
+  "4500": {
+    "initial_draw_groups": 3072,
+    "failed_trials": 158,
+    "failures_whose_identical_initial_mass_friction_delay_has_another_seed_success": 158,
+    "fraction": 1.0,
+    "all5_training_seeds_fail_same_initial_draw_groups": 0,
+    "scope": "initial physical draw only; actual push streams/COM/phase trajectories may differ, so not proof about an exact failed state"
+  },
+  "limits": "Capture-point proxy uses COM prevelocity+root delta and instantaneous foot centers, not finite support polygons or future foot placement. Stopping distance assumes horizontal constant mu*g and conservative supporting-foot dynamic mu. These are stress descriptors, not actuator-aware feasibility bounds. Observational policy failure cannot establish physical unrecoverability. Matched initial-draw successes refute only baseline randomization alone being universally impossible."
+}

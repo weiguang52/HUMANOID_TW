@@ -1,0 +1,25 @@
+{
+  "static": [
+    0.5441721677780151,
+    0.7077827453613281,
+    0.9069987833499908
+  ],
+  "dynamic": [
+    0.41255611181259155,
+    0.5449075698852539,
+    0.7553287744522095
+  ],
+  "mass": [
+    0.75,
+    1.0,
+    1.25
+  ],
+  "push_amplitude": [
+    0.16925687506432688,
+    0.2393653682408596,
+    0.29316150714175193
+  ],
+  "friction_unique_initial_rows": 3072,
+  "friction_quantiles_ignore_outcomes": true,
+  "friction_dedup_key": "eval_seed,env_id,actual_static_min,actual_dynamic_min"
+}

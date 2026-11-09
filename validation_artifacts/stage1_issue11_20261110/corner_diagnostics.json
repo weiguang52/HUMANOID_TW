@@ -1,0 +1,886 @@
+{
+  "1500:forward_03": {
+    "all_trials": 15360,
+    "all_failures": 113,
+    "original": {
+      "falls": 113,
+      "n": 15360,
+      "rate": 0.007356770833333333,
+      "wilson95_low": 0.006123086675067801,
+      "wilson95_high": 0.008836808572272013
+    },
+    "strict": {
+      "exposed_trials": 30,
+      "trial_coverage": 0.001953125,
+      "cooccurring_failed_trials": 1,
+      "cooccurring_failure_fraction": 0.008849557522123894,
+      "proximal_failures": 1,
+      "proximal_failure_fraction": 0.008849557522123894,
+      "proximal_failure_fraction_seed_boot95": [
+        0.0,
+        0.037037037037037035
+      ],
+      "corner_push_risk": {
+        "falls": 1,
+        "n": 31,
+        "rate": 0.03225806451612903,
+        "wilson95_low": 0.005717221525416816,
+        "wilson95_high": 0.16194105164724906
+      },
+      "other_push_risk": {
+        "falls": 85,
+        "n": 36269,
+        "rate": 0.002343599216962144,
+        "wilson95_low": 0.0018959095920031742,
+        "wilson95_high": 0.0028966969926794827
+      },
+      "remaining_trial_risk": {
+        "falls": 112,
+        "n": 15330,
+        "rate": 0.0073059360730593605,
+        "wilson95_low": 0.006075794269477466,
+        "wilson95_high": 0.008782938907891454
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.013372472276581865,
+          0.008153946510110893,
+          0.004564721225953701,
+          0.004241435562805873,
+          0.006196999347684279
+        ],
+        "reference_seed_rates": [
+          0.013346354166666666,
+          0.008138020833333334,
+          0.004557291666666667,
+          0.004557291666666667,
+          0.006184895833333333
+        ],
+        "target_mean": 0.0073059149846273225,
+        "reference_mean": 0.007356770833333334,
+        "target_sample_sd": 0.003730185856093365,
+        "reference_sample_sd": 0.003658309660699557,
+        "risk_difference": -5.085584870601154e-05,
+        "difference_bootstrap95": [
+          -0.00018467225657609835,
+          2.0002650032614408e-05
+        ],
+        "relative_risk": 0.9930872049900501,
+        "relative_risk_bootstrap95": [
+          0.9649483633581402,
+          1.0019569471624266
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 41,
+          "exposed_trials": 6,
+          "proximal_failures": 0
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 25,
+          "exposed_trials": 6,
+          "proximal_failures": 0
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 14,
+          "exposed_trials": 5,
+          "proximal_failures": 0
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 14,
+          "exposed_trials": 7,
+          "proximal_failures": 1
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 19,
+          "exposed_trials": 6,
+          "proximal_failures": 0
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    },
+    "envelope": {
+      "exposed_trials": 750,
+      "trial_coverage": 0.048828125,
+      "cooccurring_failed_trials": 16,
+      "cooccurring_failure_fraction": 0.1415929203539823,
+      "proximal_failures": 14,
+      "proximal_failure_fraction": 0.12389380530973451,
+      "proximal_failure_fraction_seed_boot95": [
+        0.07947019867549669,
+        0.2345679012345679
+      ],
+      "corner_push_risk": {
+        "falls": 14,
+        "n": 880,
+        "rate": 0.015909090909090907,
+        "wilson95_low": 0.00950000701661245,
+        "wilson95_high": 0.02652620390947382
+      },
+      "other_push_risk": {
+        "falls": 72,
+        "n": 35420,
+        "rate": 0.0020327498588368154,
+        "wilson95_low": 0.0016146226420990766,
+        "wilson95_high": 0.002558878952654728
+      },
+      "remaining_trial_risk": {
+        "falls": 97,
+        "n": 14610,
+        "rate": 0.006639288158795346,
+        "wilson95_low": 0.005445924045109193,
+        "wilson95_high": 0.008092026217877957
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.012973711164219871,
+          0.0078794107571086,
+          0.003765833618623759,
+          0.0030885380919698007,
+          0.005466347796378545
+        ],
+        "reference_seed_rates": [
+          0.013346354166666666,
+          0.008138020833333334,
+          0.004557291666666667,
+          0.004557291666666667,
+          0.006184895833333333
+        ],
+        "target_mean": 0.0066347682856601154,
+        "reference_mean": 0.007356770833333334,
+        "target_sample_sd": 0.003996969878843024,
+        "reference_sample_sd": 0.003658309660699557,
+        "risk_difference": -0.0007220025476732186,
+        "difference_bootstrap95": [
+          -0.0011140723549160599,
+          -0.00038798625583278193
+        ],
+        "relative_risk": 0.9018587687410563,
+        "relative_risk_bootstrap95": [
+          0.7854117362714895,
+          0.9596966987756095
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 41,
+          "exposed_trials": 143,
+          "proximal_failures": 3
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 25,
+          "exposed_trials": 153,
+          "proximal_failures": 2
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 14,
+          "exposed_trials": 151,
+          "proximal_failures": 2
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 14,
+          "exposed_trials": 158,
+          "proximal_failures": 5
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 19,
+          "exposed_trials": 145,
+          "proximal_failures": 2
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    }
+  },
+  "1500:forward_05": {
+    "all_trials": 15360,
+    "all_failures": 701,
+    "original": {
+      "falls": 701,
+      "n": 15360,
+      "rate": 0.045638020833333334,
+      "wilson95_low": 0.042449639212444365,
+      "wilson95_high": 0.04905361292594397
+    },
+    "strict": {
+      "exposed_trials": 39,
+      "trial_coverage": 0.0025390625,
+      "cooccurring_failed_trials": 16,
+      "cooccurring_failure_fraction": 0.02282453637660485,
+      "proximal_failures": 15,
+      "proximal_failure_fraction": 0.021398002853067047,
+      "proximal_failure_fraction_seed_boot95": [
+        0.010550996483001172,
+        0.039647577092511016
+      ],
+      "corner_push_risk": {
+        "falls": 15,
+        "n": 40,
+        "rate": 0.375,
+        "wilson95_low": 0.24222979167233266,
+        "wilson95_high": 0.5296756086269889
+      },
+      "other_push_risk": {
+        "falls": 628,
+        "n": 36066,
+        "rate": 0.01741252148838241,
+        "wilson95_low": 0.016113067773719666,
+        "wilson95_high": 0.018814766890011755
+      },
+      "remaining_trial_risk": {
+        "falls": 685,
+        "n": 15321,
+        "rate": 0.04470987533450819,
+        "wilson95_low": 0.04154996608540485,
+        "wilson95_high": 0.04809803859460026
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.039100684261974585,
+          0.07408616187989556,
+          0.048302872062663184,
+          0.03529411764705882,
+          0.026762402088772844
+        ],
+        "reference_seed_rates": [
+          0.039388020833333336,
+          0.07486979166666667,
+          0.049153645833333336,
+          0.037109375,
+          0.027669270833333332
+        ],
+        "target_mean": 0.044709247588073,
+        "reference_mean": 0.045638020833333334,
+        "target_sample_sd": 0.01815287269234714,
+        "reference_sample_sd": 0.01803837798629686,
+        "risk_difference": -0.0009287732452603337,
+        "difference_bootstrap95": [
+          -0.0014272541180310183,
+          -0.0005239304458613814
+        ],
+        "relative_risk": 0.9796491340268206,
+        "relative_risk_bootstrap95": [
+          0.9631716437854746,
+          0.9892220465089699
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 121,
+          "exposed_trials": 3,
+          "proximal_failures": 1
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 230,
+          "exposed_trials": 8,
+          "proximal_failures": 2
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 151,
+          "exposed_trials": 8,
+          "proximal_failures": 3
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 114,
+          "exposed_trials": 12,
+          "proximal_failures": 6
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 85,
+          "exposed_trials": 8,
+          "proximal_failures": 3
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    },
+    "envelope": {
+      "exposed_trials": 765,
+      "trial_coverage": 0.0498046875,
+      "cooccurring_failed_trials": 84,
+      "cooccurring_failure_fraction": 0.11982881597717546,
+      "proximal_failures": 76,
+      "proximal_failure_fraction": 0.10841654778887304,
+      "proximal_failure_fraction_seed_boot95": [
+        0.0913978494623656,
+        0.1276595744680851
+      ],
+      "corner_push_risk": {
+        "falls": 76,
+        "n": 907,
+        "rate": 0.08379272326350606,
+        "wilson95_low": 0.06746869586458255,
+        "wilson95_high": 0.10362744530412184
+      },
+      "other_push_risk": {
+        "falls": 567,
+        "n": 35199,
+        "rate": 0.016108412170800307,
+        "wilson95_low": 0.014845055125980078,
+        "wilson95_high": 0.01747737714562247
+      },
+      "remaining_trial_risk": {
+        "falls": 617,
+        "n": 14595,
+        "rate": 0.04227475162726961,
+        "wilson95_low": 0.03912897538712184,
+        "wilson95_high": 0.04566141447445065
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.03488372093023256,
+          0.07040328092959672,
+          0.045298558682223745,
+          0.033962264150943396,
+          0.026748971193415638
+        ],
+        "reference_seed_rates": [
+          0.039388020833333336,
+          0.07486979166666667,
+          0.049153645833333336,
+          0.037109375,
+          0.027669270833333332
+        ],
+        "target_mean": 0.04225935917728241,
+        "reference_mean": 0.045638020833333334,
+        "target_sample_sd": 0.017067007837262727,
+        "reference_sample_sd": 0.01803837798629686,
+        "risk_difference": -0.003378661656050927,
+        "difference_bootstrap95": [
+          -0.004359341686290208,
+          -0.0020824619343821
+        ],
+        "relative_risk": 0.9259682695621366,
+        "relative_risk_bootstrap95": [
+          0.9039026460336195,
+          0.945453684864134
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 121,
+          "exposed_trials": 148,
+          "proximal_failures": 16
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 230,
+          "exposed_trials": 146,
+          "proximal_failures": 20
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 151,
+          "exposed_trials": 158,
+          "proximal_failures": 19
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 114,
+          "exposed_trials": 157,
+          "proximal_failures": 14
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 85,
+          "exposed_trials": 156,
+          "proximal_failures": 7
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    }
+  },
+  "4500:forward_03": {
+    "all_trials": 15360,
+    "all_failures": 158,
+    "original": {
+      "falls": 158,
+      "n": 15360,
+      "rate": 0.010286458333333333,
+      "wilson95_low": 0.008808751153770937,
+      "wilson95_high": 0.01200905405972055
+    },
+    "strict": {
+      "exposed_trials": 21,
+      "trial_coverage": 0.0013671875,
+      "cooccurring_failed_trials": 3,
+      "cooccurring_failure_fraction": 0.0189873417721519,
+      "proximal_failures": 3,
+      "proximal_failure_fraction": 0.0189873417721519,
+      "proximal_failure_fraction_seed_boot95": [
+        0.0,
+        0.03260869565217391
+      ],
+      "corner_push_risk": {
+        "falls": 3,
+        "n": 22,
+        "rate": 0.13636363636363635,
+        "wilson95_low": 0.04749003714055253,
+        "wilson95_high": 0.33334987166571717
+      },
+      "other_push_risk": {
+        "falls": 149,
+        "n": 36382,
+        "rate": 0.004095431806937497,
+        "wilson95_low": 0.0034894953812855405,
+        "wilson95_high": 0.004806079125691306
+      },
+      "remaining_trial_risk": {
+        "falls": 155,
+        "n": 15339,
+        "rate": 0.010104961209987613,
+        "wilson95_low": 0.008640323555568354,
+        "wilson95_high": 0.011814913478785851
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.0097815454841865,
+          0.009117551286225985,
+          0.010110893672537508,
+          0.005215123859191656,
+          0.016302575806977502
+        ],
+        "reference_seed_rates": [
+          0.009765625,
+          0.009114583333333334,
+          0.010416666666666666,
+          0.005208333333333333,
+          0.016927083333333332
+        ],
+        "target_mean": 0.010105538021823832,
+        "reference_mean": 0.010286458333333335,
+        "target_sample_sd": 0.003981222978867555,
+        "reference_sample_sd": 0.004229266085654092,
+        "risk_difference": -0.0001809203115095033,
+        "difference_bootstrap95": [
+          -0.00043326680701982756,
+          9.677994596458614e-06
+        ],
+        "relative_risk": 0.9824117975646458,
+        "relative_risk_bootstrap95": [
+          0.9690477849556766,
+          1.0012387833083467
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 30,
+          "exposed_trials": 5,
+          "proximal_failures": 0
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 28,
+          "exposed_trials": 1,
+          "proximal_failures": 0
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 32,
+          "exposed_trials": 6,
+          "proximal_failures": 1
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 16,
+          "exposed_trials": 4,
+          "proximal_failures": 0
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 52,
+          "exposed_trials": 5,
+          "proximal_failures": 2
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    },
+    "envelope": {
+      "exposed_trials": 749,
+      "trial_coverage": 0.04876302083333333,
+      "cooccurring_failed_trials": 20,
+      "cooccurring_failure_fraction": 0.12658227848101267,
+      "proximal_failures": 20,
+      "proximal_failure_fraction": 0.12658227848101267,
+      "proximal_failure_fraction_seed_boot95": [
+        0.10396039603960396,
+        0.16129032258064516
+      ],
+      "corner_push_risk": {
+        "falls": 20,
+        "n": 882,
+        "rate": 0.022675736961451247,
+        "wilson95_low": 0.014726261021974768,
+        "wilson95_high": 0.03476505413848242
+      },
+      "other_push_risk": {
+        "falls": 132,
+        "n": 35522,
+        "rate": 0.0037160069815888744,
+        "wilson95_low": 0.0031346876511209225,
+        "wilson95_high": 0.004404654073723484
+      },
+      "remaining_trial_risk": {
+        "falls": 138,
+        "n": 14611,
+        "rate": 0.009444938744781329,
+        "wilson95_low": 0.008000428925083132,
+        "wilson95_high": 0.011147329852128754
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.009221311475409836,
+          0.008213552361396304,
+          0.009249743062692703,
+          0.004453579993148339,
+          0.016079370509750255
+        ],
+        "reference_seed_rates": [
+          0.009765625,
+          0.009114583333333334,
+          0.010416666666666666,
+          0.005208333333333333,
+          0.016927083333333332
+        ],
+        "target_mean": 0.009443511480479488,
+        "reference_mean": 0.010286458333333335,
+        "target_sample_sd": 0.0041992189684872845,
+        "reference_sample_sd": 0.004229266085654092,
+        "risk_difference": -0.0008429468528538472,
+        "difference_bootstrap95": [
+          -0.0010313110248087818,
+          -0.0006688355404669243
+        ],
+        "relative_risk": 0.9180527616466133,
+        "relative_risk_bootstrap95": [
+          0.8824616912040064,
+          0.941568045590441
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 30,
+          "exposed_trials": 144,
+          "proximal_failures": 3
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 28,
+          "exposed_trials": 150,
+          "proximal_failures": 4
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 32,
+          "exposed_trials": 153,
+          "proximal_failures": 5
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 16,
+          "exposed_trials": 153,
+          "proximal_failures": 3
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 52,
+          "exposed_trials": 149,
+          "proximal_failures": 5
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    }
+  },
+  "4500:forward_05": {
+    "all_trials": 15360,
+    "all_failures": 448,
+    "original": {
+      "falls": 448,
+      "n": 15360,
+      "rate": 0.029166666666666667,
+      "wilson95_low": 0.02662097694452402,
+      "wilson95_high": 0.03194780360638936
+    },
+    "strict": {
+      "exposed_trials": 28,
+      "trial_coverage": 0.0018229166666666667,
+      "cooccurring_failed_trials": 7,
+      "cooccurring_failure_fraction": 0.015625,
+      "proximal_failures": 7,
+      "proximal_failure_fraction": 0.015625,
+      "proximal_failure_fraction_seed_boot95": [
+        0.006507592190889371,
+        0.023980815347721823
+      ],
+      "corner_push_risk": {
+        "falls": 7,
+        "n": 28,
+        "rate": 0.25,
+        "wilson95_low": 0.12676494919293316,
+        "wilson95_high": 0.4335567031899896
+      },
+      "other_push_risk": {
+        "falls": 384,
+        "n": 36206,
+        "rate": 0.010605976909904436,
+        "wilson95_low": 0.009601516735069315,
+        "wilson95_high": 0.011714275539206832
+      },
+      "remaining_trial_risk": {
+        "falls": 441,
+        "n": 15332,
+        "rate": 0.02876337072788938,
+        "wilson95_low": 0.026233467232766306,
+        "wilson95_high": 0.03152935335972135
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.032605151613955004,
+          0.029661016949152543,
+          0.023483365949119372,
+          0.027723418134377037,
+          0.03034257748776509
+        ],
+        "reference_seed_rates": [
+          0.032877604166666664,
+          0.029622395833333332,
+          0.024088541666666668,
+          0.0283203125,
+          0.030924479166666668
+        ],
+        "target_mean": 0.02876310602687381,
+        "reference_mean": 0.029166666666666667,
+        "target_sample_sd": 0.0034285162467085663,
+        "reference_sample_sd": 0.003300466629072024,
+        "risk_difference": -0.0004035606397928583,
+        "difference_bootstrap95": [
+          -0.0005972083690484187,
+          -0.00015069671417539468
+        ],
+        "relative_risk": 0.986163635207102,
+        "relative_risk_bootstrap95": [
+          0.9780021089962021,
+          0.9949789554669544
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 101,
+          "exposed_trials": 5,
+          "proximal_failures": 1
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 91,
+          "exposed_trials": 4,
+          "proximal_failures": 0
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 74,
+          "exposed_trials": 6,
+          "proximal_failures": 2
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 87,
+          "exposed_trials": 6,
+          "proximal_failures": 2
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 95,
+          "exposed_trials": 7,
+          "proximal_failures": 2
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    },
+    "envelope": {
+      "exposed_trials": 749,
+      "trial_coverage": 0.04876302083333333,
+      "cooccurring_failed_trials": 61,
+      "cooccurring_failure_fraction": 0.13616071428571427,
+      "proximal_failures": 56,
+      "proximal_failure_fraction": 0.125,
+      "proximal_failure_fraction_seed_boot95": [
+        0.1014799154334038,
+        0.15130023640661938
+      ],
+      "corner_push_risk": {
+        "falls": 56,
+        "n": 888,
+        "rate": 0.06306306306306306,
+        "wilson95_low": 0.048881296646874545,
+        "wilson95_high": 0.08100889591478813
+      },
+      "other_push_risk": {
+        "falls": 335,
+        "n": 35346,
+        "rate": 0.009477734397102925,
+        "wilson95_low": 0.008519593329895572,
+        "wilson95_high": 0.010542485338990604
+      },
+      "remaining_trial_risk": {
+        "falls": 387,
+        "n": 14611,
+        "rate": 0.026486893436451987,
+        "wilson95_low": 0.024005001949493204,
+        "wilson95_high": 0.02921770737734885
+      },
+      "remaining_seed_comparison_to_original": {
+        "estimable": true,
+        "target_seed_rates": [
+          0.029743589743589743,
+          0.027416038382453736,
+          0.021247429746401644,
+          0.024640657084188913,
+          0.029371584699453553
+        ],
+        "reference_seed_rates": [
+          0.032877604166666664,
+          0.029622395833333332,
+          0.024088541666666668,
+          0.0283203125,
+          0.030924479166666668
+        ],
+        "target_mean": 0.026483859931217518,
+        "reference_mean": 0.029166666666666667,
+        "target_sample_sd": 0.0035584879958855575,
+        "reference_sample_sd": 0.003300466629072024,
+        "risk_difference": -0.002682806735449149,
+        "difference_bootstrap95": [
+          -0.00329369031960821,
+          -0.0019998110551191738
+        ],
+        "relative_risk": 0.9080180547846006,
+        "relative_risk_bootstrap95": [
+          0.8825265086984777,
+          0.9337393304044614
+        ],
+        "zero_reference_bootstrap_replicates": 0,
+        "training_seeds": 5,
+        "exact_resamples": 3125
+      },
+      "per_seed": [
+        {
+          "training_seed": 1,
+          "trials": 3072,
+          "failures": 101,
+          "exposed_trials": 147,
+          "proximal_failures": 12
+        },
+        {
+          "training_seed": 2,
+          "trials": 3072,
+          "failures": 91,
+          "exposed_trials": 154,
+          "proximal_failures": 10
+        },
+        {
+          "training_seed": 3,
+          "trials": 3072,
+          "failures": 74,
+          "exposed_trials": 154,
+          "proximal_failures": 12
+        },
+        {
+          "training_seed": 4,
+          "trials": 3072,
+          "failures": 87,
+          "exposed_trials": 150,
+          "proximal_failures": 14
+        },
+        {
+          "training_seed": 5,
+          "trials": 3072,
+          "failures": 95,
+          "exposed_trials": 144,
+          "proximal_failures": 8
+        }
+      ],
+      "selection_caveat": "corner exposure is observed before first failure and depends on survival; whole-trial exclusion is descriptive, not counterfactual or new acceptance"
+    }
+  }
+}

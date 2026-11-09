@@ -1,0 +1,17 @@
+{
+  "chosen_before_stratified_outcome_analysis": true,
+  "created_utc": "2026-11-09T17:14:28.202381+00:00",
+  "baseline_reference": {
+    "static_q": 2,
+    "dynamic_q": 2,
+    "mass_q": 2,
+    "delay_ms": 0
+  },
+  "push_additional_reference": {
+    "amplitude_q": 1,
+    "direction": "forward",
+    "support_code": 3,
+    "phase_bin": 1
+  },
+  "effect_definition": "equal-weight means of five seed-specific risks; same bootstrap seed indices in target/reference; unadjusted descriptive association, joint strata expose confounding"
+}

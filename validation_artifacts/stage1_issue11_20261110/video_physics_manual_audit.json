@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "reviewed_contact_sheet_frames": 24,
+  "videos": 8,
+  "full_resolution_frames_reviewed": [
+    "mode3_front_frame0",
+    "mode3_front_frame50",
+    "mode1_side_frame50"
+  ],
+  "colored_full_body_in_frame": true,
+  "limbs_and_small_parts_attached_in_sampled_motion_and_terminal_views": true,
+  "camera_follows_translation_and_heading": true,
+  "exact_recorded_pre_reset_states": true,
+  "physics_integrated": false,
+  "original_usd_attributes_preserved_per_each_replay_log": 1876,
+  "mode3_front_startup_render_grain_corrected_by_static_render_warmup": 60,
+  "other_seven_clips_earlier_warmup": 12,
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "six_figures_visually_reviewed": true,
+  "limits": "Sampled-frame visual attachment review; no claim of counterfactual physical recoverability."
+}

@@ -1,0 +1,15 @@
+{
+  "primary_corner": "ENVELOPE",
+  "rare_coverage_threshold": 0.2,
+  "dominant_proximal_failure_threshold": 0.8,
+  "trial_coverage": 0.04876302083333333,
+  "proximal_failure_fraction": 0.12658227848101267,
+  "concentrated_in_few_predefined_corners": false,
+  "classification": "broader_failures_relative_to_predefined_corners",
+  "not_exhaustive_over_all_possible_corners": true,
+  "acceptance_unchanged": true,
+  "defaults_promoted": false,
+  "next_single_recommendation": "test a low-speed post-push recovery reward targeting pitch/COM recovery under unchanged evaluation; not implemented",
+  "secondary_held_out_subset_concentration": false,
+  "overall_measured_subset_assessment": "broader_failures_across_measured_subsets"
+}

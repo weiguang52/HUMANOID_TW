@@ -1,0 +1,114 @@
+{
+  "passed": true,
+  "checks": {
+    "forward_03": {
+      "root_state": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "joint_pos": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "joint_vel": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "torch_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "cuda_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "numpy_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "numpy_rng_aux": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "numpy_rng_algorithm": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng_version": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng_gauss_present": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng_gauss_value": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "all_trials": 64,
+      "all_pushes": 173,
+      "failure_trace_equal": true
+    },
+    "forward_05": {
+      "root_state": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "joint_pos": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "joint_vel": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "torch_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "cuda_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "numpy_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "numpy_rng_aux": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "numpy_rng_algorithm": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng_version": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng_gauss_present": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "python_rng_gauss_value": {
+        "bitwise_equal": true,
+        "max_abs_error": 0.0
+      },
+      "all_trials": 64,
+      "all_pushes": 159,
+      "failure_trace_equal": true
+    }
+  },
+  "tolerance": 1e-06,
+  "rng_complete_fields": true,
+  "source_directory": "/root/gpufree-data/tw_stage1/issue11_20261110/smoke_complete_rng"
+}

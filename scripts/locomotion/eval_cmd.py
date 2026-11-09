@@ -40,6 +40,8 @@ parser.add_argument("--output", required=True)
 parser.add_argument("--experiment_profile", default="default")
 parser.add_argument("--trajectory_replay", default="")
 parser.add_argument("--failure_traces", default="")
+parser.add_argument("--trial_risk_records", action="store_true", help="Issue11 observational all-trial records; requires failure_traces.")
+parser.add_argument("--observation_audit", default="", help="Opt-in final-state/RNG smoke audit output directory.")
 parser.add_argument("--last_action_observation", default="requested", choices=["requested","applied"])
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--mass_audit_output", default="")
@@ -269,7 +271,13 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     recorder = None
     if args_cli.failure_traces:
         from failure_traces import FailureRecorder
-        recorder = FailureRecorder(base,args_cli.failure_traces)
+        if args_cli.trial_risk_records:
+            from trial_risk_records import TrialRiskRecorder
+            recorder = TrialRiskRecorder(base,args_cli.failure_traces)
+        else:
+            recorder = FailureRecorder(base,args_cli.failure_traces)
+    elif args_cli.trial_risk_records:
+        raise ValueError("trial_risk_records requires failure_traces")
     results = []
     commands = [("stand", (0.,0.,0.)), ("forward_01",(.1,0.,0.)),
                            ("forward_02",(.2,0.,0.)), ("forward_03",(.3,0.,0.)),
@@ -347,6 +355,9 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         if recorder is not None:
             recorded = recorder.finish()
             assert recorded["failed_trials"] == int(failed.sum())
+        if args_cli.observation_audit:
+            from trial_risk_records import state_audit
+            state_audit(base,args_cli.observation_audit,label)
         if writer is not None:
             writer.close()
         results.append({"command":label,"target":command,"seed":env_cfg.seed,
