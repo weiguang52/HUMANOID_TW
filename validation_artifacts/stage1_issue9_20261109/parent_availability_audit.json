@@ -1,0 +1,49 @@
+{
+  "searched_roots": [
+    "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1",
+    "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts",
+    "/root/gpufree-data/twrl_runs",
+    "/root/gpufree-data/logs"
+  ],
+  "candidates": [
+    {
+      "config": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/params/agent.yaml",
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7496.pt",
+      "sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+      "seed_lines": [
+        "seed: 1"
+      ],
+      "run_name_lines": [
+        "run_name: issues20261108_robust05"
+      ]
+    },
+    {
+      "config": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue5_20261109/models/common_parent/params/agent.yaml",
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue5_20261109/models/common_parent/model_7496.pt",
+      "sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+      "seed_lines": [
+        "seed: 1"
+      ],
+      "run_name_lines": [
+        "run_name: issues20261108_robust05"
+      ]
+    },
+    {
+      "config": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issues_20261108/models/robust05/params/agent.yaml",
+      "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issues_20261108/models/robust05/model_7496.pt",
+      "sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+      "seed_lines": [
+        "seed: 1"
+      ],
+      "run_name_lines": [
+        "run_name: issues20261108_robust05"
+      ]
+    }
+  ],
+  "unique_final_robust05_sha256": [
+    "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d"
+  ],
+  "independent_other_training_seed_available": false,
+  "finding": "Only the shared seed1 robust05 checkpoint and byte-identical archive copies were found in accessible training/archive roots; no independent robust05 source is available for the optional parent comparison.",
+  "selection": "explicit robust05 run_name; highest numeric checkpoint in each run/archive"
+}

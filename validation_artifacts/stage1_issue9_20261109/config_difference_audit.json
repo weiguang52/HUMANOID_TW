@@ -1,0 +1,273 @@
+{
+  "runs": {
+    "requested_s3": {
+      "env": {
+        "baseline": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/env.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/params/env.yaml",
+        "differences": [
+          [
+            "/log_dir",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3"
+          ],
+          [
+            "/seed",
+            "1",
+            "3"
+          ]
+        ]
+      },
+      "agent": {
+        "baseline": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/agent.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/params/agent.yaml",
+        "differences": [
+          [
+            "/run_name",
+            "issue6_20261109_bounded_strengthen_s1",
+            "issue9_20261109_requested_s3"
+          ],
+          [
+            "/seed",
+            "1",
+            "3"
+          ]
+        ]
+      }
+    },
+    "applied_s3": {
+      "env": {
+        "baseline": "validation_artifacts/stage1_issue8_20261109/models/applied_s1/params/env.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/params/env.yaml",
+        "differences": [
+          [
+            "/log_dir",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3"
+          ],
+          [
+            "/seed",
+            "1",
+            "3"
+          ]
+        ]
+      },
+      "agent": {
+        "baseline": "validation_artifacts/stage1_issue8_20261109/models/applied_s1/params/agent.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/params/agent.yaml",
+        "differences": [
+          [
+            "/run_name",
+            "issue8_20261109_applied_s1",
+            "issue9_20261109_applied_s3"
+          ],
+          [
+            "/seed",
+            "1",
+            "3"
+          ]
+        ]
+      }
+    },
+    "requested_s4": {
+      "env": {
+        "baseline": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/env.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/params/env.yaml",
+        "differences": [
+          [
+            "/log_dir",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4"
+          ],
+          [
+            "/seed",
+            "1",
+            "4"
+          ]
+        ]
+      },
+      "agent": {
+        "baseline": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/agent.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/params/agent.yaml",
+        "differences": [
+          [
+            "/run_name",
+            "issue6_20261109_bounded_strengthen_s1",
+            "issue9_20261109_requested_s4"
+          ],
+          [
+            "/seed",
+            "1",
+            "4"
+          ]
+        ]
+      }
+    },
+    "applied_s4": {
+      "env": {
+        "baseline": "validation_artifacts/stage1_issue8_20261109/models/applied_s1/params/env.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/params/env.yaml",
+        "differences": [
+          [
+            "/log_dir",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4"
+          ],
+          [
+            "/seed",
+            "1",
+            "4"
+          ]
+        ]
+      },
+      "agent": {
+        "baseline": "validation_artifacts/stage1_issue8_20261109/models/applied_s1/params/agent.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/params/agent.yaml",
+        "differences": [
+          [
+            "/run_name",
+            "issue8_20261109_applied_s1",
+            "issue9_20261109_applied_s4"
+          ],
+          [
+            "/seed",
+            "1",
+            "4"
+          ]
+        ]
+      }
+    },
+    "requested_s5": {
+      "env": {
+        "baseline": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/env.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/params/env.yaml",
+        "differences": [
+          [
+            "/log_dir",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5"
+          ],
+          [
+            "/seed",
+            "1",
+            "5"
+          ]
+        ]
+      },
+      "agent": {
+        "baseline": "validation_artifacts/stage1_issue6_20261109/models/bounded_strengthen_s1/params/agent.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/params/agent.yaml",
+        "differences": [
+          [
+            "/run_name",
+            "issue6_20261109_bounded_strengthen_s1",
+            "issue9_20261109_requested_s5"
+          ],
+          [
+            "/seed",
+            "1",
+            "5"
+          ]
+        ]
+      }
+    },
+    "applied_s5": {
+      "env": {
+        "baseline": "validation_artifacts/stage1_issue8_20261109/models/applied_s1/params/env.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/params/env.yaml",
+        "differences": [
+          [
+            "/log_dir",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1",
+            "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5"
+          ],
+          [
+            "/seed",
+            "1",
+            "5"
+          ]
+        ]
+      },
+      "agent": {
+        "baseline": "validation_artifacts/stage1_issue8_20261109/models/applied_s1/params/agent.yaml",
+        "current": "logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/params/agent.yaml",
+        "differences": [
+          [
+            "/run_name",
+            "issue8_20261109_applied_s1",
+            "issue9_20261109_applied_s5"
+          ],
+          [
+            "/seed",
+            "1",
+            "5"
+          ]
+        ]
+      }
+    }
+  },
+  "matched_pairs": {
+    "3": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3"
+        ],
+        [
+          "/observations/policy/last_action/params/action_name",
+          null,
+          "JointPositionAction"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue9_20261109_requested_s3",
+          "issue9_20261109_applied_s3"
+        ]
+      ]
+    },
+    "4": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4"
+        ],
+        [
+          "/observations/policy/last_action/params/action_name",
+          null,
+          "JointPositionAction"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue9_20261109_requested_s4",
+          "issue9_20261109_applied_s4"
+        ]
+      ]
+    },
+    "5": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5"
+        ],
+        [
+          "/observations/policy/last_action/params/action_name",
+          null,
+          "JointPositionAction"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue9_20261109_requested_s5",
+          "issue9_20261109_applied_s5"
+        ]
+      ]
+    }
+  }
+}

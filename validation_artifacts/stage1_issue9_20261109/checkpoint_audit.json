@@ -1,0 +1,62 @@
+{
+  "requested_s3": {
+    "variant": "requested",
+    "training_seed": 3,
+    "logged_iterations": 1500,
+    "iteration": 8995,
+    "finite_tensor_count": 68,
+    "sha256": "ede1aa4e21580d2c512fb01357bc5cfdbd5b157ecb634b464d926d7b2987efab",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_shapes_equal_baseline": true
+  },
+  "applied_s3": {
+    "variant": "applied",
+    "training_seed": 3,
+    "logged_iterations": 1500,
+    "iteration": 8995,
+    "finite_tensor_count": 68,
+    "sha256": "320e006987a474b89a9cf30ad60e84c7cadfdea201b7f2a080a5afab7c7afd4a",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_shapes_equal_baseline": true
+  },
+  "requested_s4": {
+    "variant": "requested",
+    "training_seed": 4,
+    "logged_iterations": 1500,
+    "iteration": 8995,
+    "finite_tensor_count": 68,
+    "sha256": "6f6e66d7570575abc006be132886f71c927c44ef41d51709cbfdd283853a4dba",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_shapes_equal_baseline": true
+  },
+  "applied_s4": {
+    "variant": "applied",
+    "training_seed": 4,
+    "logged_iterations": 1500,
+    "iteration": 8995,
+    "finite_tensor_count": 68,
+    "sha256": "65d8fc6e079f071e519893403f120119e722e01aaf6906ff20adff81764c65b0",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_shapes_equal_baseline": true
+  },
+  "requested_s5": {
+    "variant": "requested",
+    "training_seed": 5,
+    "logged_iterations": 1500,
+    "iteration": 8995,
+    "finite_tensor_count": 68,
+    "sha256": "42b7e370657b8fdc955051ab1de3a77c8874dc1c3dc0828309f7241602317b2d",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_shapes_equal_baseline": true
+  },
+  "applied_s5": {
+    "variant": "applied",
+    "training_seed": 5,
+    "logged_iterations": 1500,
+    "iteration": 8995,
+    "finite_tensor_count": 68,
+    "sha256": "bbcc68c19942951ce18829060018cf07bcbb30ecb2177e4240af1839bb5644db",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "architecture_shapes_equal_baseline": true
+  }
+}

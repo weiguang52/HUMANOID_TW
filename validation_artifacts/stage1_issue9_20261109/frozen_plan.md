@@ -1,0 +1,29 @@
+# Issue #9 frozen training-seed variance calibration
+
+Base6d691ae773aee0d707db94f2cf48c0470b62eaf7; issue https://github.com/weiguang52/HUMANOID_TW/issues/9 .
+No training/evaluation configuration or production-default changes. Expand existing requested/applied seeds1/2 to seeds1..5.
+
+## New runs fixed before results
+New matched training seeds:3,4,5, no post-hoc selection. Interleaved order:requested3,applied3,requested4,applied4,requested5,applied5.
+Same robust05 parent SHA256 c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d;4096env;1500updates each; full optimizer resume, no std reset or checkpoint selection. Robust08, bounded mass nominal*U(0.5,1.5), training pushes+/-0.45m/s, original friction/noise/random0/20ms delay. Requested profile matches issue6, applied profile matches issue8. The only paired semantic difference remains policy.last_action action_name; critic/architecture/rewards unchanged.
+Saved configuration audits permit only seed/run/log names relative to the matching existing variant; requested/applied within the same new seed may differ only in policy.last_action plus names.
+
+## Evaluation
+Identical issue7 protocol:bounded combined,1024env, eval seeds1/2/3,0.3/0.5/0.8m/s,20s, deterministic policy and paired reset seed=eval_seed*1000+command_index. Evaluation pushes+/-0.3m/s.
+New18jobs/54command-level estimates/55296trials. Reuse requested seeds1/2 from issue7 new_bounded results and applied seeds1/2 from issue8, all3072trials per pooled seed/speed. Five training-seed observations per variant and speed; never merge all trials into a configuration-level binomial significance claim.
+Reuse the unchanged issue7 first-failure recorder. New six models get worst-command colored20s front/side diagnostics (highest3eval-seed fall sum, tie0.3/0.5/0.8), exact colored physics asset and joint legend; cameras follow translation+heading. Prior seeds1/2 videos remain linked. No sourceHumanML3D NPY exists for velocity commands.
+
+## Frozen statistical analysis
+Training seed is the sampling unit. For each speed, report five individual requested/applied rates, arithmetic group means, sampleSD(ddof1).
+Exact empirical percentile bootstrap of group means:enumerate all5^5=3125with-replacement seed-index vectors; use linear2.5/97.5percentiles. For applied-minus-requested differences, resample matched seed pairs jointly, never resample binary trials or groups independently.
+Per-speed effect labels:CI wholly<0 supports lower applied rate; wholly>0 supports higher applied rate; containing0 cannot distinguish. The prespecified primary speed is0.5m/s (the issue's main variance example); primary overall label follows that interval, with0.3/0.8as secondary speed-specific results. Three separate intervals are not a simultaneous95%family guarantee. With only5seeds, percentile-bootstrap tail/coverage uncertainty is substantial; no universal causal claim.
+For each group, determine whether training-seed mean CI upper bounds at BOTH0.3/0.5m/s are strictly<0.01. No default promotion regardless of outcome.
+
+## Planning a3percentage-point effect
+Effect size is absolute0.03, not3%relative. Report prospective two-sided alpha0.05,80%power using noncentral-t paired-test planning from observed sampleSD of paired seed differences; find minimum integer number of matched training pairs. Also report unpaired per-arm planning using pooled groupSD as sensitivity.
+Because sampleSD from5pairs is uncertain, show planning bounds from its normal-theory95%chi-square SD interval and label all planning assumptions. Zero observed variance is not adequate to identify a reliable future sample size. Planning is illustrative and conditional on this shared parent, not a guarantee.
+
+## Independent-parent availability
+Audit accessible run/archive metadata for explicit robust05 run names and highest numeric checkpoint. Only three byte-identical copies of the seed1 parent were found; no distinct robust05 training-seed parent is available. Record the missing optional parent comparison explicitly, without relabeling a robust08 child or another curriculum stage as an independent robust05 source. Do not invent or train another parent in this issue.
+
+All artifacts remain remote. Notion replaces Linear. Commit/push results and update issue with seed-level conclusions, uncertainty, planning estimate and no default promotion.

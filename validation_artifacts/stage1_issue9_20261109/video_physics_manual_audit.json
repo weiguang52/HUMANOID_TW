@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "colored_usd_original_attributes_unchanged": 1876,
+  "all_12_log_checks": {
+    "applied_s3_worst_front.log": true,
+    "applied_s3_worst_side.log": true,
+    "applied_s4_worst_front.log": true,
+    "applied_s4_worst_side.log": true,
+    "applied_s5_worst_front.log": true,
+    "applied_s5_worst_side.log": true,
+    "requested_s3_worst_front.log": true,
+    "requested_s3_worst_side.log": true,
+    "requested_s4_worst_front.log": true,
+    "requested_s4_worst_side.log": true,
+    "requested_s5_worst_front.log": true,
+    "requested_s5_worst_side.log": true
+  },
+  "manual_review": {
+    "contact_sheet": "all12 views inspected: complete colored body, attached limbs/head, no visible material loss",
+    "full_resolution_late_frames": [
+      "applied_s4_worst_front_forward_08_front_19.9.png",
+      "requested_s5_worst_side_forward_08_side_19.9.png"
+    ],
+    "late_frame_findings": "full body remains centered with margins; colored joints and attachments visible",
+    "automated_sampled_frames": 60,
+    "source_motion_npy": "N/A: Stage1 velocity command protocol, no HumanML3D source motion",
+    "camera_behavior": "configured translation and heading follow, front and side; sampled views consistent"
+  },
+  "physics": "exact precolored USD validation; original physics/non-material relationships preserved; no runtime material binding"
+}

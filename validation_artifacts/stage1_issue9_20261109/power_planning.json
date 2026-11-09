@@ -1,0 +1,68 @@
+{
+  "primary_speed": "forward_05",
+  "per_speed": {
+    "forward_03": {
+      "effect_absolute": 0.03,
+      "two_sided_alpha": 0.05,
+      "target_power": 0.8,
+      "pilot_pairs": 5,
+      "paired_difference_sample_sd": 0.008371013647896684,
+      "normal_theory_sd95": [
+        0.005015351684599077,
+        0.02405457343085918
+      ],
+      "paired_training_pairs_needed": 3,
+      "additional_pairs_beyond_pilot": 0,
+      "paired_n_using_sd95_bounds": [
+        3,
+        8
+      ],
+      "unpaired_pooled_sd": 0.005560120720227449,
+      "unpaired_training_seeds_per_arm": 3,
+      "assumptions": "noncentral-t planning, normal independent training-pair differences, fixed pilot variance; SD bounds use normal-theory chi-square; conditional on one shared parent; near-boundary rates and n=5 make planning uncertain",
+      "degenerate_variance_note": null
+    },
+    "forward_05": {
+      "effect_absolute": 0.03,
+      "two_sided_alpha": 0.05,
+      "target_power": 0.8,
+      "pilot_pairs": 5,
+      "paired_difference_sample_sd": 0.04171965726261974,
+      "normal_theory_sd95": [
+        0.024995629219353825,
+        0.11988375617881324
+      ],
+      "paired_training_pairs_needed": 18,
+      "additional_pairs_beyond_pilot": 13,
+      "paired_n_using_sd95_bounds": [
+        8,
+        128
+      ],
+      "unpaired_pooled_sd": 0.023100743674545572,
+      "unpaired_training_seeds_per_arm": 11,
+      "assumptions": "noncentral-t planning, normal independent training-pair differences, fixed pilot variance; SD bounds use normal-theory chi-square; conditional on one shared parent; near-boundary rates and n=5 make planning uncertain",
+      "degenerate_variance_note": null
+    },
+    "forward_08": {
+      "effect_absolute": 0.03,
+      "two_sided_alpha": 0.05,
+      "target_power": 0.8,
+      "pilot_pairs": 5,
+      "paired_difference_sample_sd": 0.06424753814875708,
+      "normal_theory_sd95": [
+        0.038492829212705304,
+        0.1846188752230162
+      ],
+      "paired_training_pairs_needed": 38,
+      "additional_pairs_beyond_pilot": 33,
+      "paired_n_using_sd95_bounds": [
+        15,
+        300
+      ],
+      "unpaired_pooled_sd": 0.0411178686986041,
+      "unpaired_training_seeds_per_arm": 31,
+      "assumptions": "noncentral-t planning, normal independent training-pair differences, fixed pilot variance; SD bounds use normal-theory chi-square; conditional on one shared parent; near-boundary rates and n=5 make planning uncertain",
+      "degenerate_variance_note": null
+    }
+  }
+}

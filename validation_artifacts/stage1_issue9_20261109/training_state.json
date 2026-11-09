@@ -1,0 +1,56 @@
+{
+  "requested_s3": {
+    "variant": "requested",
+    "seed": 3,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096
+  },
+  "applied_s3": {
+    "variant": "applied",
+    "seed": 3,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096
+  },
+  "requested_s4": {
+    "variant": "requested",
+    "seed": 4,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096
+  },
+  "applied_s4": {
+    "variant": "applied",
+    "seed": 4,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096
+  },
+  "requested_s5": {
+    "variant": "requested",
+    "seed": 5,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096
+  },
+  "applied_s5": {
+    "variant": "applied",
+    "seed": 5,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8995.pt",
+    "run_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5",
+    "parent_sha256": "c200e355d29fda60225761550ea80642bb222778ce50c00ae3deb3d95fa7a38d",
+    "iterations": 1500,
+    "num_envs": 4096
+  }
+}

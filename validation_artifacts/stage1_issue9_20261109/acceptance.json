@@ -1,0 +1,53 @@
+{
+  "primary_speed": "forward_05",
+  "primary_effect_label": "cannot_distinguish_at_current_seed_count",
+  "per_speed_effects": {
+    "forward_03": {
+      "difference95": [
+        0.007682291666666667,
+        0.020638020833333333
+      ],
+      "excludes_zero": true,
+      "effect_label": "supports_higher_applied_rate"
+    },
+    "forward_05": {
+      "difference95": [
+        -0.022330729166666674,
+        0.0419921875
+      ],
+      "excludes_zero": false,
+      "effect_label": "cannot_distinguish_at_current_seed_count"
+    },
+    "forward_08": {
+      "difference95": [
+        -0.04277343749999999,
+        0.05807291666666666
+      ],
+      "excludes_zero": false,
+      "effect_label": "cannot_distinguish_at_current_seed_count"
+    }
+  },
+  "group_mean_thresholds": {
+    "requested": {
+      "low_mid_mean_ci_upper": {
+        "forward_03": 0.010546874999999999,
+        "forward_05": 0.06067708333333334
+      },
+      "both_upper_below1pct": false
+    },
+    "applied": {
+      "low_mid_mean_ci_upper": {
+        "forward_03": 0.02630208333333333,
+        "forward_05": 0.07903645833333334
+      },
+      "both_upper_below1pct": false
+    }
+  },
+  "any_group_both_low_mid_upper_below1pct": false,
+  "defaults_promoted": false,
+  "training_pairs": 5,
+  "bootstrap_resamples": 3125,
+  "numeric_boundary_tolerance": 1e-12,
+  "independent_parent_available": false,
+  "limits": "five pairs; empirical percentile intervals conditional on one shared parent; secondary intervals are not simultaneous familywise95% coverage"
+}
