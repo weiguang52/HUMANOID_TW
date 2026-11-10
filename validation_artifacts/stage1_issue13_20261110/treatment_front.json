@@ -1,0 +1,24 @@
+{
+  "source_selection": "/root/gpufree-data/tw_stage1/issue13_20261110/replay_selection_treatment.json",
+  "source_trajectory_sha256": "940f94041d60613297248bfe44539d3f641d1d3e77b2520337e84959c4155083",
+  "source_model": "treatment_s3",
+  "source_env_id": 833,
+  "group": "treatment",
+  "command": "forward_08",
+  "view": "front",
+  "frames": 1000,
+  "fps": 50,
+  "seconds": 20,
+  "push_seconds": [
+    6.82,
+    12.9,
+    19.62
+  ],
+  "reset_frame_indices": [],
+  "physics_integrated": false,
+  "camera": "follows translation and heading",
+  "source_samples": "exact same post-step states and times for paired front/side views; C/T examples are not synchronized",
+  "display_mass_material": "nominal authored asset; source randomization is documented but not re-integrated",
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "video": "/root/gpufree-data/tw_stage1/issue13_20261110/videos/treatment_front.mp4"
+}

@@ -1,0 +1,6 @@
+{
+  "failure": "First sensor read was black before RGB annotator initialization; failed before any frame written.",
+  "fix": "Match existing replay_failure.py first-frame sensor warmup; up to60 additional render-only reads; no physics stepping, no trajectory or evaluation changes.",
+  "failed_pid": 90334,
+  "unix": 1794336309.172966
+}

@@ -1,0 +1,15 @@
+test_all13_required (test_issue13_tracking.InferenceTests.test_all13_required) ... ok
+test_any_confirmed_large_degradation_B (test_issue13_tracking.InferenceTests.test_any_confirmed_large_degradation_B) ... ok
+test_constant_small_degradation_A (test_issue13_tracking.InferenceTests.test_constant_small_degradation_A) ... ok
+test_uncertain_large_point_is_not_B (test_issue13_tracking.InferenceTests.test_uncertain_large_point_is_not_B) ... ok
+test_zero_baseline_no_infinity (test_issue13_tracking.InferenceTests.test_zero_baseline_no_infinity) ... ok
+test_exact_postevent_and_reward_boundaries (test_issue13_tracking.RecorderTests.test_exact_postevent_and_reward_boundaries) ... ok
+test_invalid_nan_and_initial_scope_excluded (test_issue13_tracking.RecorderTests.test_invalid_nan_and_initial_scope_excluded) ... ok
+test_moments_reconstruct_known_temporal_variance (test_issue13_tracking.RecorderTests.test_moments_reconstruct_known_temporal_variance) ... ok
+test_no_push_zero (test_issue13_tracking.RecorderTests.test_no_push_zero) ... ok
+test_reset_and_new_episode_push (test_issue13_tracking.RecorderTests.test_reset_and_new_episode_push) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.010s
+
+OK

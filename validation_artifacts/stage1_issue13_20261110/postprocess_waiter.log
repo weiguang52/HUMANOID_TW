@@ -1,0 +1,19 @@
+START analysis 88800
+END analysis 0
+START plots 88815
+END plots 0
+START reconstruction 88828
+END reconstruction 0
+START video_driver 90321
+END video_driver 1
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/pipeline_issue13.py", line 22, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/pipeline_issue13.py", line 18, in main
+    status.write_text(json.dumps({"pid":os.getpid(),"state":phase},indent=2));run(["python","-u","scripts/locomotion/"+script],ROOT/(phase+".log"),phase)
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue13_common.py", line 39, in run
+    if p.returncode:raise RuntimeError(str(log))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: /root/gpufree-data/tw_stage1/issue13_20261110/video_driver.log

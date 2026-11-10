@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "source": "/root/gpufree-data/tw_stage1/issue13_20261110/combined/control_s1_eval1.json",
+  "commands": [
+    {
+      "command": "forward_03",
+      "passed": true,
+      "all1024trial_masks_reset_counts_and_reference_moments_reconstructed": true,
+      "all_scope_partition_variance_identities_passed": true
+    },
+    {
+      "command": "forward_05",
+      "passed": true,
+      "all1024trial_masks_reset_counts_and_reference_moments_reconstructed": true,
+      "all_scope_partition_variance_identities_passed": true
+    },
+    {
+      "command": "forward_08",
+      "passed": true,
+      "all1024trial_masks_reset_counts_and_reference_moments_reconstructed": true,
+      "all_scope_partition_variance_identities_passed": true
+    }
+  ]
+}

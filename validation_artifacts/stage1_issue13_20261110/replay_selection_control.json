@@ -1,0 +1,30 @@
+{
+  "model": "control_s3",
+  "group": "control",
+  "training_seed": 3,
+  "eval_seed": 3,
+  "env_id": 977,
+  "xy_error": 0.10326924158423208,
+  "source_output": "/root/gpufree-data/tw_stage1/issue13_20261110/combined/control_s3_eval3.json",
+  "source_moments": "/root/gpufree-data/tw_stage1/issue13_20261110/combined/moments/control_s3_eval3/forward_08.npz",
+  "first_failure_step": -1,
+  "command": "forward_08",
+  "condition": "combined",
+  "group_median_xy": 0.1032718125655083,
+  "distance_from_group_median": 2.570981276220352e-06,
+  "candidate_trials": 15360,
+  "survival_filter_used": false,
+  "selection": "Nearest full-horizon nonterminal trial-mean xy error to group median; ties training seed,eval seed,env id. Illustrative median, not an acceptance sample.",
+  "checkpoint_sha256": "3a8e1c160d1b0cefa23b300415bea0a762fd52a48141f88dac4558a5d9757e96",
+  "trajectory": "/root/gpufree-data/tw_stage1/issue13_20261110/reconstruction/control/moments/source/forward_08_trajectory.npz",
+  "trajectory_meta": "/root/gpufree-data/tw_stage1/issue13_20261110/reconstruction/control/moments/source/forward_08_trajectory.json",
+  "trajectory_sha256": "a275ff39373998ad1519abb47340d2798367ad83affdaaea428590c1e10c2e0e",
+  "push_seconds": [
+    5.34,
+    11.76,
+    18.400000000000002
+  ],
+  "reset_frames": [],
+  "all_original_metrics_raw_records_and_moments_exactly_reproduced": true,
+  "formal_denominators_unchanged": true
+}

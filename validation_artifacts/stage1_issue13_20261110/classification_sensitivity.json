@@ -1,0 +1,45 @@
+{
+  "reward_aligned_boundary": {
+    "decision": "B_global_side_effect",
+    "all13_point_bounds_pass": false,
+    "B_supporting_comparisons": [
+      "clean:forward_03:full_horizon_nonterminal:all:yaw_error",
+      "clean:yaw_positive:full_horizon_nonterminal:all:yaw_error",
+      "clean:yaw_negative:full_horizon_nonterminal:all:yaw_error",
+      "clean:forward_05:full_horizon_nonterminal:all:xy_error",
+      "clean:forward_05:full_horizon_nonterminal:all:yaw_error",
+      "clean:forward_08:full_horizon_nonterminal:all:xy_error",
+      "combined:forward_03:full_horizon_nonterminal:reward_aligned_outside:xy_error",
+      "combined:forward_05:full_horizon_nonterminal:reward_aligned_outside:xy_error",
+      "combined:forward_08:full_horizon_nonterminal:reward_aligned_outside:xy_error"
+    ],
+    "multiple_comparisons_corrected": false,
+    "training_seeds": 5,
+    "resamples": 3125,
+    "issue12_rejection_unchanged": true,
+    "default_promoted": false,
+    "training_updates": 0
+  },
+  "initial_episode_only": {
+    "decision": "B_global_side_effect",
+    "all13_point_bounds_pass": false,
+    "B_supporting_comparisons": [
+      "clean:forward_03:initial_episode_nonterminal:all:yaw_error",
+      "clean:yaw_positive:initial_episode_nonterminal:all:yaw_error",
+      "clean:yaw_negative:initial_episode_nonterminal:all:yaw_error",
+      "clean:forward_05:initial_episode_nonterminal:all:xy_error",
+      "clean:forward_05:initial_episode_nonterminal:all:yaw_error",
+      "clean:forward_08:initial_episode_nonterminal:all:xy_error",
+      "combined:forward_03:initial_episode_nonterminal:outside:xy_error",
+      "combined:forward_05:initial_episode_nonterminal:outside:xy_error",
+      "combined:forward_08:initial_episode_nonterminal:outside:xy_error"
+    ],
+    "multiple_comparisons_corrected": false,
+    "training_seeds": 5,
+    "resamples": 3125,
+    "issue12_rejection_unchanged": true,
+    "default_promoted": false,
+    "training_updates": 0
+  },
+  "primary_not_reselected": true
+}

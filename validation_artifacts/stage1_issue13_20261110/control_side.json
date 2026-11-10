@@ -1,0 +1,24 @@
+{
+  "source_selection": "/root/gpufree-data/tw_stage1/issue13_20261110/replay_selection_control.json",
+  "source_trajectory_sha256": "a275ff39373998ad1519abb47340d2798367ad83affdaaea428590c1e10c2e0e",
+  "source_model": "control_s3",
+  "source_env_id": 977,
+  "group": "control",
+  "command": "forward_08",
+  "view": "side",
+  "frames": 1000,
+  "fps": 50,
+  "seconds": 20,
+  "push_seconds": [
+    5.34,
+    11.76,
+    18.400000000000002
+  ],
+  "reset_frame_indices": [],
+  "physics_integrated": false,
+  "camera": "follows translation and heading",
+  "source_samples": "exact same post-step states and times for paired front/side views; C/T examples are not synchronized",
+  "display_mass_material": "nominal authored asset; source randomization is documented but not re-integrated",
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "video": "/root/gpufree-data/tw_stage1/issue13_20261110/videos/control_side.mp4"
+}

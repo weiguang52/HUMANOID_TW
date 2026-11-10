@@ -1,0 +1,55 @@
+"""Exact-state20s replay with push-time annotations; never integrate new dynamics."""
+import json,math,hashlib
+from pathlib import Path
+import numpy as np
+import torch
+import imageio.v2 as imageio
+from PIL import Image,ImageDraw
+def replay(base,args):
+ selection=json.loads(Path(args.trajectory_replay).read_text())
+ meta=json.loads(Path(selection["trajectory_meta"]).read_text());z=np.load(selection["trajectory"])
+ assert hashlib.sha256(Path(selection["trajectory"]).read_bytes()).hexdigest()==selection["trajectory_sha256"]
+ values=z["values"];flags=z["flags"];pushes=z["push_steps"]*.02;robot=base.scene["robot"]
+ assert list(robot.joint_names)==meta["joint_names"] and values.shape==(1000,43)
+ output=Path(args.output);path=output.parent/"videos"/(output.stem+".mp4");path.parent.mkdir(parents=True,exist_ok=True)
+ initial_counter=base.common_step_counter
+ with imageio.get_writer(str(path),fps=50) as writer:
+  for i,row in enumerate(values):
+   pose=torch.as_tensor(row[:7],device=base.device).unsqueeze(0).clone();pose[:,:3]+=base.scene.env_origins[:1]
+   velocity=torch.as_tensor(row[7:13],device=base.device).unsqueeze(0)
+   joints=torch.as_tensor(row[13:],device=base.device).unsqueeze(0)
+   robot.write_root_pose_to_sim(pose);robot.write_root_velocity_to_sim(velocity)
+   robot.write_joint_state_to_sim(joints,torch.zeros_like(joints));base.sim.forward()
+   q=pose[0,3:].cpu().tolist();pos=pose[0,:3].cpu().tolist()
+   yaw=math.atan2(2*(q[0]*q[3]+q[1]*q[2]),1-2*(q[2]**2+q[3]**2))
+   angle=yaw if args.camera_view=="front" else yaw+math.pi/2
+   base.sim.set_camera_view(eye=(pos[0]+1.2*math.cos(angle),pos[1]+1.2*math.sin(angle),pos[2]+.35),target=(pos[0],pos[1],pos[2]+.05))
+   for _ in range(60 if i==0 else 2):base.sim.render()
+   frame=base.render()
+   if i==0:
+    for _ in range(60):
+     if frame.max()>0:break
+     base.sim.render();frame=base.render()
+   assert frame.max()>0
+   im=Image.fromarray(frame[:,:,:3]);draw=ImageDraw.Draw(im);draw.rectangle((0,0,im.width,64),fill=(20,20,20))
+   time=(i+1)*.02;inside=bool(flags[i,2]);valid=bool(flags[i,0])
+   status="RESET (excluded metric frame)" if not valid else ("RECOVERY WINDOW" if inside else "OUTSIDE WINDOW")
+   draw.text((10,4),"EXACT RECORDED1024-ENV TRIAL | NO PHYSICS RE-SIMULATION | MEDIAN ILLUSTRATION",fill="white")
+   draw.text((10,23),f"{selection['group']} | train seed{selection['training_seed']} eval seed{selection['eval_seed']} env{selection['env_id']} | {args.camera_view} | t={time:.2f}s",fill="white")
+   draw.text((10,43),status+(" | AFTER FIRST RESET" if not flags[i,1] else "")+" | push times: "+", ".join(f"{p:.2f}s" for p in pushes),fill=(255,120,80) if inside or not valid else "white")
+   draw.rectangle((0,680,im.width,im.height),fill=(20,20,20));left,right=30,930
+   draw.line((left,704,right,704),fill=(180,180,180),width=2)
+   for p in pushes:
+    x=left+(right-left)*p/20;end=left+(right-left)*min(p+1,20)/20
+    draw.rectangle((x,697,end,701),fill=(110,50,50));draw.line((x,692,x,711),fill=(255,85,85),width=2)
+   x=left+(right-left)*time/20;draw.line((x,690,x,714),fill="white",width=2)
+   draw.text((30,682),"0s   red ticks: actual push times; shaded: following1s",fill="white");draw.text((900,682),"20s",fill="white")
+   writer.append_data(np.asarray(im))
+ assert base.common_step_counter==initial_counter
+ output.write_text(json.dumps({"source_selection":str(args.trajectory_replay),"source_trajectory_sha256":selection["trajectory_sha256"],
+  "source_model":selection["model"],"source_env_id":selection["env_id"],"group":selection["group"],"command":"forward_08",
+  "view":args.camera_view,"frames":1000,"fps":50,"seconds":20,"push_seconds":pushes.tolist(),
+  "reset_frame_indices":selection["reset_frames"],"physics_integrated":False,"camera":"follows translation and heading",
+  "source_samples":"exact same post-step states and times for paired front/side views; C/T examples are not synchronized",
+  "display_mass_material":"nominal authored asset; source randomization is documented but not re-integrated",
+  "humanml_source_npy":"N/A: Stage1 velocity commands","video":str(path)},indent=2))

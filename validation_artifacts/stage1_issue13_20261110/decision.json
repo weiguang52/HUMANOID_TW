@@ -1,0 +1,28 @@
+{
+  "decision": "B_global_side_effect",
+  "all13_point_bounds_pass": false,
+  "B_supporting_comparisons": [
+    "clean:forward_03:full_horizon_nonterminal:all:yaw_error",
+    "clean:yaw_positive:full_horizon_nonterminal:all:yaw_error",
+    "clean:yaw_negative:full_horizon_nonterminal:all:yaw_error",
+    "clean:forward_05:full_horizon_nonterminal:all:xy_error",
+    "clean:forward_05:full_horizon_nonterminal:all:yaw_error",
+    "clean:forward_08:full_horizon_nonterminal:all:xy_error",
+    "combined:forward_03:full_horizon_nonterminal:outside:xy_error",
+    "combined:forward_05:full_horizon_nonterminal:outside:xy_error",
+    "combined:forward_08:full_horizon_nonterminal:outside:xy_error"
+  ],
+  "multiple_comparisons_corrected": false,
+  "training_seeds": 5,
+  "resamples": 3125,
+  "issue12_rejection_unchanged": true,
+  "default_promoted": false,
+  "training_updates": 0,
+  "primary_scope": "full_horizon_nonterminal",
+  "primary_window": "post-step [push,push+1s), ages0..49",
+  "only_next_step_recommendation": {
+    "one_recommendation": "In a future user-authorized matched study, add the push-recovery clock to the critic only to test phase-aware value/credit assignment; do not implement it in this issue.",
+    "implemented": false,
+    "basis": "At least one frozen clean/outside tracking contrast worsens >5% with positive paired95% absolute difference. Reward timing is privileged but currently absent from critic observations; this is a structural hypothesis, not a proven remedy."
+  }
+}

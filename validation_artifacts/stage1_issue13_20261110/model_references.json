@@ -1,0 +1,62 @@
+{
+  "control_s1": {
+    "sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+    "checkpoint": "../stage1_issue12_20261110/models/control_s1/model_13493.pt",
+    "group": "control",
+    "training_seed": 1
+  },
+  "treatment_s1": {
+    "sha256": "40e796e5f787d2d35aa8cbb5ac53c611a879316211850d482d8a04bb2c9c90cd",
+    "checkpoint": "../stage1_issue12_20261110/models/treatment_s1/model_13493.pt",
+    "group": "treatment",
+    "training_seed": 1
+  },
+  "control_s2": {
+    "sha256": "bdf2c1889f40eefa818aa0bf8bf079ccb766d3b1a47180cad4477d91c0d122c7",
+    "checkpoint": "../stage1_issue12_20261110/models/control_s2/model_13493.pt",
+    "group": "control",
+    "training_seed": 2
+  },
+  "treatment_s2": {
+    "sha256": "264bbbfbdf3ecc63df601f5f1c33bd87f87861f4cbe12986a76b257ea87ca1d6",
+    "checkpoint": "../stage1_issue12_20261110/models/treatment_s2/model_13493.pt",
+    "group": "treatment",
+    "training_seed": 2
+  },
+  "control_s3": {
+    "sha256": "3a8e1c160d1b0cefa23b300415bea0a762fd52a48141f88dac4558a5d9757e96",
+    "checkpoint": "../stage1_issue12_20261110/models/control_s3/model_13493.pt",
+    "group": "control",
+    "training_seed": 3
+  },
+  "treatment_s3": {
+    "sha256": "8bfd008824e6080bfc3fa607631b192015a5888c1be45934ad4506cd6981eb90",
+    "checkpoint": "../stage1_issue12_20261110/models/treatment_s3/model_13493.pt",
+    "group": "treatment",
+    "training_seed": 3
+  },
+  "control_s4": {
+    "sha256": "ff26d6474131eed034f5f923c525c8147d5a241078e2d5e90205f3bf1f88575e",
+    "checkpoint": "../stage1_issue12_20261110/models/control_s4/model_13493.pt",
+    "group": "control",
+    "training_seed": 4
+  },
+  "treatment_s4": {
+    "sha256": "063fe975ddc90f0cfbc8edd29ba443c9f48523a0ce84725feaefc180ed347057",
+    "checkpoint": "../stage1_issue12_20261110/models/treatment_s4/model_13493.pt",
+    "group": "treatment",
+    "training_seed": 4
+  },
+  "control_s5": {
+    "sha256": "09a25318b57f8ed26e63201cf734674b46cc64b6e7efeb15ee15a4b17107899f",
+    "checkpoint": "../stage1_issue12_20261110/models/control_s5/model_13493.pt",
+    "group": "control",
+    "training_seed": 5
+  },
+  "treatment_s5": {
+    "sha256": "0811c563f7b15234a391e1c7c2fb952aba0a1c43d9efc5071ac9eaef2894ab4a",
+    "checkpoint": "../stage1_issue12_20261110/models/treatment_s5/model_13493.pt",
+    "group": "treatment",
+    "training_seed": 5
+  }
+}

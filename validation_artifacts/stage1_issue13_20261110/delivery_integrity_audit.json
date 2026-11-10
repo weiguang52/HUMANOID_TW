@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "decision": "B_global_side_effect",
+  "requirements": {
+    "analysis_only_existing10models_unchanged_no_training_or_config_promotion": true,
+    "clean1024x3seedsx5commands_and_combined1024x3seedsx3speeds_all10models": true,
+    "nominal_clean_physics_zero_delay_no_noise_no_push_verified": true,
+    "all240commands245760trials_full_moments_windows_counts_and_original_reproduction_audited": true,
+    "per_trial_bias_temporal_fluctuation_and_all_seed_paired95_intervals_no_multiple_correction": true,
+    "frozen13comparison_A_B_rule_prespecified_boundary_and_initial_episode_sensitivities": true,
+    "exactly_one_future_recommendation_no_implementation_or_issue12_acceptance_change": true,
+    "two_true_median_representatives_four_colored_exact_state_front_side_videos_actual_push_times": true,
+    "actual_manual_plot_and_motion_attachment_review_and_encoding24sample_audit": true
+  },
+  "raw_moment_commands_bound_by_sha256": 240,
+  "primary_per_trial_csv_rows": 430080,
+  "training_updates": 0,
+  "default_promoted": false
+}

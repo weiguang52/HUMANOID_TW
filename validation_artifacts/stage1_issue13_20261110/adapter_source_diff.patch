@@ -1,0 +1,55 @@
+--- original_eval_cmd.py
++++ read_only_issue13_adapter.py
+@@ -57,6 +57,9 @@
+ # append AppLauncher cli args
+ AppLauncher.add_app_launcher_args(parser)
+ # parse the arguments
++parser.add_argument("--issue13_records",default="")
++parser.add_argument("--issue13_capture_env",type=int,default=-1)
++parser.add_argument("--issue13_capture_command",default="forward_08")
+ args_cli, hydra_args = parser.parse_known_args()
+ # always enable cameras to record video
+ if args_cli.video:
+@@ -278,6 +281,10 @@
+             recorder = FailureRecorder(base,args_cli.failure_traces)
+     elif args_cli.trial_risk_records:
+         raise ValueError("trial_risk_records requires failure_traces")
++    tracking = None
++    if args_cli.issue13_records:
++        from issue13_tracking import TrackingRecorder
++        tracking = TrackingRecorder(base,runner,args_cli.issue13_records,resume_path,args_cli.issue5_condition,args_cli.issue13_capture_env,args_cli.issue13_capture_command)
+     results = []
+     commands = [("stand", (0.,0.,0.)), ("forward_01",(.1,0.,0.)),
+                            ("forward_02",(.2,0.,0.)), ("forward_03",(.3,0.,0.)),
+@@ -295,6 +302,8 @@
+             env.reset()
+         if recorder is not None:
+             recorder.begin(label, command)
++        if tracking is not None:
++            tracking.begin(label,command)
+         writer = None
+         if args_cli.video:
+             import imageio.v2 as imageio
+@@ -350,6 +359,8 @@
+                 values[side+"_joint_acc_rms"]=robot.data.joint_acc[:,leg_joints[side_index]].square().mean(-1).sqrt()
+                 values[side+"_foot_height"]=robot.data.body_pos_w[:,feet[side_index],2]-base.scene.env_origins[:,2]
+             for k,v in values.items(): totals[k] += torch.where(valid,v,0.).sum(dtype=torch.float64)
++            if tracking is not None:
++                tracking.sample(values,valid,robot.data.root_lin_vel_b,robot.data.root_ang_vel_b[:,2])
+             count += valid.sum()
+             min_height=torch.minimum(min_height,torch.where(valid,values["base_height"],float("inf")).min())
+         if recorder is not None:
+@@ -365,9 +376,13 @@
+                         "failed_trials":int(failed.sum()),"fall_rate":failed.float().mean().item(),
+                         "minimum_base_height":min_height.item(),
+                         "metrics":{k:(v/count.clamp_min(1)).item() for k,v in totals.items()}})
++        if tracking is not None:
++            tracking.finish(results[-1])
+         print("EVAL",json.dumps(results[-1]),flush=True)
+     output=Path(args_cli.output); output.parent.mkdir(parents=True,exist_ok=True)
+     output.write_text(json.dumps({"checkpoint":resume_path,"deterministic_policy":True,
++        "issue13_tracking":None if tracking is None else tracking.job_metadata(),
++        "issue13_source":{"original_sha256":_ISSUE13_ORIGINAL_SHA,"instrumented_sha256":_ISSUE13_PATCHED_SHA},
+         "runtime":{"python":sys.executable,"rsl_rl":metadata.version("rsl-rl-lib"),"torch":torch.__version__,"torch_path":torch.__file__},
+         "physics_diagnostics":physics_diagnostics,
+         "last_action_observation":args_cli.last_action_observation,

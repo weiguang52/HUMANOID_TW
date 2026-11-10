@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "reviewed_contact_sheets": 2,
+  "reviewed_plot_count": 6,
+  "front_and_side_colors_fullbody_and_attachment_samples_pass": true,
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "full_resolution_motion_frames_reviewed": [
+    "video_review_frames/control_front_frame276.png",
+    "video_review_frames/control_side_frame276.png",
+    "video_review_frames/treatment_front_frame350.png",
+    "video_review_frames/treatment_side_frame350.png"
+  ],
+  "reviewed_frame_and_sheet_sha256": {
+    "video_review_frames/control_front_frame276.png": "3e539a9f1a87b936ffdb666426402c4b310b91e6622c6afa50e2e1f5cfc9d08a",
+    "video_review_frames/control_side_frame276.png": "239608ba1706137b831be7fc9394a186367125d74903c9b28a5f162adf5b9e12",
+    "video_review_frames/treatment_front_frame350.png": "8d1dbd90fab95fdcf04f150c0a8b32ca3ef60ffd9b5b5dc8f783ca52d48e8a07",
+    "video_review_frames/treatment_side_frame350.png": "620861908c085c29ea8ec6a783fe94132e58d98c571445e37ed23c06c8f2940c",
+    "video_contact_sheets/control.png": "70ce0599c92b2215eec759bad9152dd2ea7d5e1780dc1ae009a07c6e9373882d",
+    "video_contact_sheets/treatment.png": "5c12401446d4c67101ad8b326874b2ac55f30f83419cc006e173bb365a632a51"
+  },
+  "reviewed_plot_sha256": {
+    "figures/clean_tracking.png": "db4e8483d4eb78d77d7bcf1d2b0fd099a9a7faa8ae8117556b1e70c7a80eb60e",
+    "figures/window_tracking.png": "5b66642b86936e47e4a51e2b5b3b835fe3b2ee09f52349d34dc66275141fdff3",
+    "figures/frozen_gate_contrasts.png": "da6c6861a3ade53d56ec9cf54a52e926ba7cfba29ffdc9b4ab031b11479e0ca7",
+    "figures/bias_and_variability.png": "c4b06348c37a1d107fd47589a7ae72ce05b0f1a13df65b434e1ecefcc653d032",
+    "figures/weighted_error_contributions.png": "0d08e22d186838e6c78a91f602ff1e0681e40e1b8105add993a430385b102514",
+    "figures/window_scope_sensitivity.png": "08eec70738b9521f0039cc68b791f23abb074439d477929c0e954c2d4bea5d4a"
+  },
+  "reviewed_unix": 1794336804.6956246,
+  "review_method": "Actual visual inspection of6 statistical PNGs,2 contact sheets showing24 sampled frames,and4 full-resolution near-push response PNGs via in-memory SSH image chunks; no local copies.",
+  "scope": "Sampled attachment/color/framing and plot review, not exhaustive per-pixel or every-video-frame verification.",
+  "visual_findings": [
+    "All sampled robot bodies including hands and feet remain within frame; no visible detached parts or gross pose discontinuities in the reviewed sample sequences.",
+    "Joint colors are visible in both front and side views; camera follows translation and heading; arms/legs remain attached in the four full-resolution push-response views.",
+    "Header labels show exact recorded-state replay and correct group/seed/env/view; near-push labels show recovery and actual push times; red timeline ticks and shading are visible.",
+    "One initial control-front frame has noisy ground rendering while the robot is visible; later sampled ground images settle. This cosmetic initial-floor grain does not alter the recorded trajectory or statistics.",
+    "All6 plots are legible with intact labels/units and no material clipping; frozen contrast threshold and unadjusted confidence intervals are explicit."
+  ],
+  "physics_evidence": "No re-integration is inferred from images alone: exact source-state trajectory hashes, common-step-counter invariance,1876-attribute asset integrity and formal reconstruction audits provide the separate programmatic evidence."
+}

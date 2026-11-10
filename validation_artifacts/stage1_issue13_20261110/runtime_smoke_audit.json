@@ -1,0 +1,46 @@
+{
+  "combined": {
+    "passed": true,
+    "every_original_output_field_bitwise_equal": true,
+    "all_final_root_joint_complete_cpu_cuda_numpy_python_rng_arrays_bitwise_equal": true,
+    "original_full_trial_and_failure_arrays_bitwise_equal": true,
+    "readonly_reference_moment_reconstruction_passed": true,
+    "physics_audit": {
+      "mass_equal_nominal": false,
+      "materials_equal_across_environments": false,
+      "material_static_min": 0.4298921525478363,
+      "material_static_max": 1.399052619934082,
+      "material_dynamic_min": 0.3101021349430084,
+      "material_dynamic_max": 1.1915481090545654,
+      "terrain_static": 1.0,
+      "terrain_dynamic": 1.0,
+      "action_class": "RandomOneStepDelayAction",
+      "pushes": true,
+      "observation_noise": true,
+      "mass_event": true,
+      "material_event": true
+    }
+  },
+  "clean": {
+    "passed": true,
+    "every_original_output_field_bitwise_equal": true,
+    "all_final_root_joint_complete_cpu_cuda_numpy_python_rng_arrays_bitwise_equal": true,
+    "original_full_trial_and_failure_arrays_bitwise_equal": false,
+    "readonly_reference_moment_reconstruction_passed": true,
+    "physics_audit": {
+      "mass_equal_nominal": true,
+      "materials_equal_across_environments": true,
+      "material_static_min": 1.0,
+      "material_static_max": 1.0,
+      "material_dynamic_min": 1.0,
+      "material_dynamic_max": 1.0,
+      "terrain_static": 1.0,
+      "terrain_dynamic": 1.0,
+      "action_class": "JointPositionAction",
+      "pushes": false,
+      "observation_noise": false,
+      "mass_event": false,
+      "material_event": false
+    }
+  }
+}
