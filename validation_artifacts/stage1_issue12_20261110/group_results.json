@@ -1,0 +1,188 @@
+{
+  "control:forward_03": {
+    "seed_summary": {
+      "per_seed": [
+        0.0107421875,
+        0.009765625,
+        0.007161458333333333,
+        0.005859375,
+        0.012044270833333334
+      ],
+      "mean": 0.009114583333333334,
+      "sample_sd": 0.002552797386288757,
+      "bootstrap95": [
+        0.007096354166666667,
+        0.011067708333333334
+      ],
+      "bootstrap95_integer_numerators": [
+        1090,
+        1700
+      ],
+      "bootstrap95_integer_denominator": 153600,
+      "training_seed_sample_size": 5,
+      "exact_resamples": 3125
+    },
+    "pooled_descriptive": {
+      "falls": 140,
+      "n": 15360,
+      "rate": 0.009114583333333334,
+      "wilson95_low": 0.007729595711819531,
+      "wilson95_high": 0.010745045515211287
+    }
+  },
+  "treatment:forward_03": {
+    "seed_summary": {
+      "per_seed": [
+        0.006184895833333333,
+        0.007161458333333333,
+        0.007161458333333333,
+        0.0029296875,
+        0.007486979166666667
+      ],
+      "mean": 0.006184895833333333,
+      "sample_sd": 0.0018840880375635132,
+      "bootstrap95": [
+        0.0044921875,
+        0.007291666666666667
+      ],
+      "bootstrap95_integer_numerators": [
+        690,
+        1120
+      ],
+      "bootstrap95_integer_denominator": 153600,
+      "training_seed_sample_size": 5,
+      "exact_resamples": 3125
+    },
+    "pooled_descriptive": {
+      "falls": 95,
+      "n": 15360,
+      "rate": 0.006184895833333333,
+      "wilson95_low": 0.005062530595893788,
+      "wilson95_high": 0.0075542006649853555
+    }
+  },
+  "control:forward_05": {
+    "seed_summary": {
+      "per_seed": [
+        0.027994791666666668,
+        0.0185546875,
+        0.017578125,
+        0.025065104166666668,
+        0.032877604166666664
+      ],
+      "mean": 0.0244140625,
+      "sample_sd": 0.006440872049937948,
+      "bootstrap95": [
+        0.019466145833333334,
+        0.029361979166666666
+      ],
+      "bootstrap95_integer_numerators": [
+        2990,
+        4510
+      ],
+      "bootstrap95_integer_denominator": 153600,
+      "training_seed_sample_size": 5,
+      "exact_resamples": 3125
+    },
+    "pooled_descriptive": {
+      "falls": 375,
+      "n": 15360,
+      "rate": 0.0244140625,
+      "wilson95_low": 0.022089735417338146,
+      "wilson95_high": 0.026976213410706957
+    }
+  },
+  "treatment:forward_05": {
+    "seed_summary": {
+      "per_seed": [
+        0.0224609375,
+        0.010091145833333334,
+        0.016927083333333332,
+        0.013671875,
+        0.021809895833333332
+      ],
+      "mean": 0.0169921875,
+      "sample_sd": 0.0052860814854392025,
+      "bootstrap95": [
+        0.012890625,
+        0.02109375
+      ],
+      "bootstrap95_integer_numerators": [
+        1980,
+        3240
+      ],
+      "bootstrap95_integer_denominator": 153600,
+      "training_seed_sample_size": 5,
+      "exact_resamples": 3125
+    },
+    "pooled_descriptive": {
+      "falls": 261,
+      "n": 15360,
+      "rate": 0.0169921875,
+      "wilson95_low": 0.015065764364865243,
+      "wilson95_high": 0.01916014588226229
+    }
+  },
+  "control:forward_08": {
+    "seed_summary": {
+      "per_seed": [
+        0.12141927083333333,
+        0.10807291666666667,
+        0.10123697916666667,
+        0.10546875,
+        0.099609375
+      ],
+      "mean": 0.10716145833333333,
+      "sample_sd": 0.008647465685826302,
+      "bootstrap95": [
+        0.10143229166666666,
+        0.11471354166666667
+      ],
+      "bootstrap95_integer_numerators": [
+        15580,
+        17620
+      ],
+      "bootstrap95_integer_denominator": 153600,
+      "training_seed_sample_size": 5,
+      "exact_resamples": 3125
+    },
+    "pooled_descriptive": {
+      "falls": 1646,
+      "n": 15360,
+      "rate": 0.10716145833333333,
+      "wilson95_low": 0.10236762370250421,
+      "wilson95_high": 0.11215173772506926
+    }
+  },
+  "treatment:forward_08": {
+    "seed_summary": {
+      "per_seed": [
+        0.08626302083333333,
+        0.06705729166666667,
+        0.072265625,
+        0.083984375,
+        0.08365885416666667
+      ],
+      "mean": 0.07864583333333333,
+      "sample_sd": 0.008465419463162056,
+      "bootstrap95": [
+        0.071484375,
+        0.08483072916666666
+      ],
+      "bootstrap95_integer_numerators": [
+        10980,
+        13030
+      ],
+      "bootstrap95_integer_denominator": 153600,
+      "training_seed_sample_size": 5,
+      "exact_resamples": 3125
+    },
+    "pooled_descriptive": {
+      "falls": 1208,
+      "n": 15360,
+      "rate": 0.07864583333333333,
+      "wilson95_low": 0.07449341423608766,
+      "wilson95_high": 0.0830089568542762
+    }
+  }
+}

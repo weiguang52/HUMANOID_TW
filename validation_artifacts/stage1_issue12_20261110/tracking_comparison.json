@@ -1,0 +1,373 @@
+{
+  "xy": {
+    "forward_03": {
+      "control": {
+        "per_seed": [
+          0.04708827140392089,
+          0.048632378710521985,
+          0.04494938519339959,
+          0.041434677516593806,
+          0.0473497363291162
+        ],
+        "mean": 0.0458908898307105,
+        "sample_sd": 0.002820548536476,
+        "bootstrap95": [
+          0.043543502122677276,
+          0.047810500296639455
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "treatment": {
+        "per_seed": [
+          0.048111842564008994,
+          0.05478890550190882,
+          0.05113311459390818,
+          0.042265797991853295,
+          0.05234951729506144
+        ],
+        "mean": 0.04972983558934814,
+        "sample_sd": 0.004815492479251925,
+        "bootstrap95": [
+          0.045773424735146714,
+          0.053081992037569734
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "paired_difference": {
+        "per_seed_differences": [
+          0.0010235711600881034,
+          0.0061565267913868335,
+          0.0061837294005085905,
+          0.0008311204752594892,
+          0.004999780965945236
+        ],
+        "mean_difference": 0.0038389457586376504,
+        "bootstrap95": [
+          0.0017418328473280842,
+          0.005936058669947217
+        ],
+        "sample_sd_of_differences": 0.0027013921232651554,
+        "effective_strictly_negative95": false,
+        "pairing": "same five training seed indices jointly resampled",
+        "exact_resamples": 3125
+      },
+      "ratio_of_seed_means": 1.083653765982733,
+      "ratio_bootstrap95": [
+        1.0388116474228584,
+        1.126561256391887
+      ],
+      "zero_control_bootstrap_replicates": 0,
+      "not_worse_than_10percent": true
+    },
+    "forward_05": {
+      "control": {
+        "per_seed": [
+          0.05152795564150873,
+          0.058650373123695955,
+          0.054249081396254395,
+          0.05337550338623775,
+          0.057811743274970656
+        ],
+        "mean": 0.0551229313645335,
+        "sample_sd": 0.0030171809528731232,
+        "bootstrap95": [
+          0.05281119989034947,
+          0.05743466283871752
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "treatment": {
+        "per_seed": [
+          0.054554291227456,
+          0.060748463205134835,
+          0.06014652434681795,
+          0.054823412732854536,
+          0.05745898670801348
+        ],
+        "mean": 0.057546335644055355,
+        "sample_sd": 0.002889155197253705,
+        "bootstrap95": [
+          0.055242878925726914,
+          0.059849792362383816
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "paired_difference": {
+        "per_seed_differences": [
+          0.003026335585947275,
+          0.0020980900814388803,
+          0.005897442950563554,
+          0.001447909346616788,
+          -0.00035275656695717833
+        ],
+        "mean_difference": 0.0024234042795218637,
+        "bootstrap95": [
+          0.0007276429811872015,
+          0.004377701802913685
+        ],
+        "sample_sd_of_differences": 0.002302007796754936,
+        "effective_strictly_negative95": false,
+        "pairing": "same five training seed indices jointly resampled",
+        "exact_resamples": 3125
+      },
+      "ratio_of_seed_means": 1.0439636321859525,
+      "ratio_bootstrap95": [
+        1.013193889208927,
+        1.079343665857453
+      ],
+      "zero_control_bootstrap_replicates": 0,
+      "not_worse_than_10percent": true
+    },
+    "forward_08": {
+      "control": {
+        "per_seed": [
+          0.10851065452877891,
+          0.10028668396861902,
+          0.10109528021026014,
+          0.09950679750053593,
+          0.11403864767147197
+        ],
+        "mean": 0.10468761277593319,
+        "sample_sd": 0.006347664460429877,
+        "bootstrap95": [
+          0.100136448629714,
+          0.11018265630236276
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "treatment": {
+        "per_seed": [
+          0.12904323600102185,
+          0.12564678954695177,
+          0.1246306640614363,
+          0.14544423940972415,
+          0.11785349678246725
+        ],
+        "mean": 0.12852368516032026,
+        "sample_sd": 0.01029393208216056,
+        "bootstrap95": [
+          0.12165010317907507,
+          0.1375252594646152
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "paired_difference": {
+        "per_seed_differences": [
+          0.020532581472242947,
+          0.02536010557833275,
+          0.023535383851176164,
+          0.04593744190918822,
+          0.0038148491109952776
+        ],
+        "mean_difference": 0.02383607238438707,
+        "bootstrap95": [
+          0.012068007352498949,
+          0.036741002555628066
+        ],
+        "sample_sd_of_differences": 0.015022034309737194,
+        "effective_strictly_negative95": false,
+        "pairing": "same five training seed indices jointly resampled",
+        "exact_resamples": 3125
+      },
+      "ratio_of_seed_means": 1.2276876103326981,
+      "ratio_bootstrap95": [
+        1.1101333287758295,
+        1.362110372953829
+      ],
+      "zero_control_bootstrap_replicates": 0,
+      "not_worse_than_10percent": false
+    }
+  },
+  "yaw": {
+    "forward_03": {
+      "control": {
+        "per_seed": [
+          0.3491224104224117,
+          0.3947968021467377,
+          0.3217171314425193,
+          0.3414712230315799,
+          0.3419506185270913
+        ],
+        "mean": 0.349811637114068,
+        "sample_sd": 0.02713300331547293,
+        "bootstrap95": [
+          0.3312448846554122,
+          0.3736583286988791
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "treatment": {
+        "per_seed": [
+          0.412192113581277,
+          0.5444587556657221,
+          0.46030757914168663,
+          0.31424568332915537,
+          0.5580473071182729
+        ],
+        "mean": 0.45785028776722275,
+        "sample_sd": 0.10031632340410394,
+        "bootstrap95": [
+          0.379877583846893,
+          0.5330639409419353
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "paired_difference": {
+        "per_seed_differences": [
+          0.06306970315886529,
+          0.14966195351898443,
+          0.13859044769916734,
+          -0.027225539702424528,
+          0.21609668859118158
+        ],
+        "mean_difference": 0.10803865065315481,
+        "bootstrap95": [
+          0.02695160601434936,
+          0.17402154638389988
+        ],
+        "sample_sd_of_differences": 0.09308740333486579,
+        "effective_strictly_negative95": false,
+        "pairing": "same five training seed indices jointly resampled",
+        "exact_resamples": 3125
+      },
+      "ratio_of_seed_means": 1.3088480747652345,
+      "ratio_bootstrap95": [
+        1.0778808740639179,
+        1.500945674570455
+      ],
+      "zero_control_bootstrap_replicates": 0,
+      "not_worse_than_10percent": false
+    },
+    "forward_05": {
+      "control": {
+        "per_seed": [
+          0.4701941885582142,
+          0.6502500909846217,
+          0.4595072348643871,
+          0.4705701903741601,
+          0.5610351556142628
+        ],
+        "mean": 0.5223113720791293,
+        "sample_sd": 0.08247053649656043,
+        "bootstrap95": [
+          0.4659946074438725,
+          0.5963959234252684
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "treatment": {
+        "per_seed": [
+          0.5530832718207565,
+          0.7598222658399161,
+          0.6222477148734633,
+          0.45378996116877507,
+          0.7422056844681006
+        ],
+        "mean": 0.6262297796342023,
+        "sample_sd": 0.12884013574010622,
+        "bootstrap95": [
+          0.5271988361705053,
+          0.7252607230978994
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "paired_difference": {
+        "per_seed_differences": [
+          0.08288908326254224,
+          0.10957217485529436,
+          0.1627404800090762,
+          -0.016780229205385022,
+          0.1811705288538379
+        ],
+        "mean_difference": 0.10391840755507313,
+        "bootstrap95": [
+          0.039057775131092674,
+          0.15947883851622452
+        ],
+        "sample_sd_of_differences": 0.07821490416420254,
+        "effective_strictly_negative95": false,
+        "pairing": "same five training seed indices jointly resampled",
+        "exact_resamples": 3125
+      },
+      "ratio_of_seed_means": 1.198958730577533,
+      "ratio_bootstrap95": [
+        1.0834064556389218,
+        1.3068998348427452
+      ],
+      "zero_control_bootstrap_replicates": 0,
+      "not_worse_than_10percent": false
+    },
+    "forward_08": {
+      "control": {
+        "per_seed": [
+          0.5239470676656818,
+          0.8640944591430014,
+          0.5894952515521795,
+          0.8149268766779211,
+          0.8136255788088889
+        ],
+        "mean": 0.7212178467695345,
+        "sample_sd": 0.1532978310099185,
+        "bootstrap95": [
+          0.5952526662454292,
+          0.8343336500901468
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "treatment": {
+        "per_seed": [
+          0.741244919700273,
+          0.972516043170342,
+          0.809375468125905,
+          0.6474249558946447,
+          0.8270731304686526
+        ],
+        "mean": 0.7995269034719634,
+        "sample_sd": 0.11970048390697734,
+        "bootstrap95": [
+          0.7122051607871488,
+          0.8971732359359903
+        ],
+        "training_seed_sample_size": 5,
+        "exact_resamples": 3125
+      },
+      "paired_difference": {
+        "per_seed_differences": [
+          0.21729785203459118,
+          0.10842158402734059,
+          0.21988021657372547,
+          -0.16750192078327641,
+          0.013447551659763746
+        ],
+        "mean_difference": 0.07830905670242891,
+        "bootstrap95": [
+          -0.05435207173109487,
+          0.1965555442487948
+        ],
+        "sample_sd_of_differences": 0.16193910454701874,
+        "effective_strictly_negative95": false,
+        "pairing": "same five training seed indices jointly resampled",
+        "exact_resamples": 3125
+      },
+      "ratio_of_seed_means": 1.1085789225172247,
+      "ratio_bootstrap95": [
+        0.9281504558700692,
+        1.3179502967243677
+      ],
+      "zero_control_bootstrap_replicates": 0,
+      "not_worse_than_10percent": false
+    }
+  },
+  "definition": "Each training seed: mean of three #7 non-terminal-frame eval summaries, including later auto-reset episodes. Group means equally weight five training seeds. Only xy has the frozen10% gate."
+}

@@ -1,0 +1,74 @@
+{
+  "records/trials_control_forward_03.csv.gz": {
+    "rows": 15360,
+    "gzip_sha256": "64d44a7e3d637e19ed1e7109891280bc59c1bb5568682227592667895e7625ec",
+    "decompressed_csv_sha256": "550770ebab535bfbb0e2c80ac9900385795891edf3357f038237ddb873ae38b9",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/trials_control_forward_05.csv.gz": {
+    "rows": 15360,
+    "gzip_sha256": "b8c8ad648432c6b922741e33e1c98cb23368583f65e7a09cad07b0a37517783d",
+    "decompressed_csv_sha256": "43e14b25800b8c3fd4d99ff52c2477754889958be79438b54e57a3a7015b4d7d",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/trials_control_forward_08.csv.gz": {
+    "rows": 15360,
+    "gzip_sha256": "1e377a194a1175878d568045f3f7f7e72da8580620b85a60463149d33dff796d",
+    "decompressed_csv_sha256": "416df4e39819938a1fc2b5df8c582d0725534db502dbfe3cdde1a9f463fca8ae",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/trials_treatment_forward_03.csv.gz": {
+    "rows": 15360,
+    "gzip_sha256": "d838a2ebbb4b0e2cb2d0a34a1951dea36d0f033bea687ff3d92c07eb94df18e0",
+    "decompressed_csv_sha256": "567f589270348e31cec24320c729b38d21aac321018a19c297f03080587d1764",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/trials_treatment_forward_05.csv.gz": {
+    "rows": 15360,
+    "gzip_sha256": "454eb6e36548fee358d0304fb236df570ce4022343bf8dea35908d9d39058170",
+    "decompressed_csv_sha256": "2af7b047086e88787f621f140f59e005b3b54f3acfe92ef0b4b2730144aab9e6",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/trials_treatment_forward_08.csv.gz": {
+    "rows": 15360,
+    "gzip_sha256": "f81a030753ee3e48ec8c91d962341c9f2343635ba4e8cae96d28f255733546c6",
+    "decompressed_csv_sha256": "54dfdcf533dc1078b65164700bfac7608bec6596ee49baa1f7d87e429828ae88",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/pushes_control_forward_03.csv.gz": {
+    "rows": 40218,
+    "gzip_sha256": "785703cbd8c92c0c46b2316d27540bf24bda730856f6720069125e744659278d",
+    "decompressed_csv_sha256": "930006071e5ecf734c8c6e25caa5b8c7532df431c7f517731804ac075e421492",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/pushes_control_forward_05.csv.gz": {
+    "rows": 40216,
+    "gzip_sha256": "43ae7f4e0dc90da5829338eee5987367bce7442eadcef3f1976e0c9759c29e07",
+    "decompressed_csv_sha256": "b94aa82bb620a6e0832e0906aa1e9eeee1b8f729261a88414bea3bd5e972cb1d",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/pushes_control_forward_08.csv.gz": {
+    "rows": 39955,
+    "gzip_sha256": "0bf9bd6c017ae07e12099d371b3fbe80e7e853c2e76534b1b7490e728765dbf4",
+    "decompressed_csv_sha256": "272964f2a76620687aa0412f7815e2921f324fc286c44265fc47cccb4ee12582",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/pushes_treatment_forward_03.csv.gz": {
+    "rows": 40093,
+    "gzip_sha256": "89fa1683ceebcd67e701fe34dee0927e3c9511e3df71603fd125d016b8d4a260",
+    "decompressed_csv_sha256": "76a642a39f8384685e7ec632bf736c92a9591da2ed435d3662af67b275079e4d",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/pushes_treatment_forward_05.csv.gz": {
+    "rows": 40247,
+    "gzip_sha256": "29dbe50e3dd28a1ff9907e215021d99f1056e60bc6dd45fdb415291b242ca068",
+    "decompressed_csv_sha256": "1d5488bc22dd37759ee0b4884aedee9dc26f30a82ef7e7f2ae4f46751e1c6dd7",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  },
+  "records/pushes_treatment_forward_08.csv.gz": {
+    "rows": 39975,
+    "gzip_sha256": "f6364d6b19789bad04489a1cbebc2a8e45e8f9db121e0a3d9fe09ccd90987681",
+    "decompressed_csv_sha256": "ddc6d41007649817e4a962c6a525f7a418ce997d17646ad616c950024ed0c106",
+    "format": "lossless gzip, partitioned only to keep transport files small"
+  }
+}

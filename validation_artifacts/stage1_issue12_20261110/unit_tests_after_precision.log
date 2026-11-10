@@ -1,0 +1,44 @@
+test_matched_arms_differ_only_in_one_reward_weight (__main__.ConfigTests.test_matched_arms_differ_only_in_one_reward_weight) ... ok
+test_policy_critic_and_action_configs_unchanged (__main__.ConfigTests.test_policy_critic_and_action_configs_unchanged) ... ok
+test_large_correct_penalties_do_not_fail_due_to_float32_roundtrip (__main__.CudaPrecisionTests.test_large_correct_penalties_do_not_fail_due_to_float32_roundtrip) ... ok
+test_monitor_flush_outside_inference_mode_and_accumulator_reset (__main__.MonitorTests.test_monitor_flush_outside_inference_mode_and_accumulator_reset) ... ok
+test_default_off_does_not_mutate_any_config (__main__.TimerTests.test_default_off_does_not_mutate_any_config) ... ok
+test_exact_pitch_and_euler_pitch_rate (__main__.TimerTests.test_exact_pitch_and_euler_pitch_rate) ... ok
+test_invalid_weight_or_nonintegral_window_rejected (__main__.TimerTests.test_invalid_weight_or_nonintegral_window_rejected) ... ok
+test_no_push_is_always_zero (__main__.TimerTests.test_no_push_is_always_zero) ... ok
+test_repeated_push_only_restarts_selected_windows (__main__.TimerTests.test_repeated_push_only_restarts_selected_windows) ... ok
+test_reset_has_no_previous_episode_window (__main__.TimerTests.test_reset_has_no_previous_episode_window) ... ok
+test_window_selected_ids_and_exact_endpoint (__main__.TimerTests.test_window_selected_ids_and_exact_endpoint) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.478s
+
+OK
+Loading user config located at: '/root/gpufree-data/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /root/gpufree-data/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20261110_170216.log
+2026-11-10T09:02:16Z [317ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-11-10T09:02:16Z [840ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-11-10T09:02:17Z [1,082ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-11-10T09:02:18Z [2,846ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | cf40d7a0.. |
+|     |                                  |        |     |            | 11        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 34807
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+2026-11-10T09:02:19Z [3,089ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it

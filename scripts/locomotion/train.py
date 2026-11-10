@@ -36,6 +36,10 @@ parser.add_argument(
 )
 parser.add_argument("--last_action_observation", default="requested", choices=["requested","applied"])
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
+parser.add_argument("--post_push_pitch_weight", type=float, default=None)
+parser.add_argument("--issue12_audit_dir", default="")
+parser.add_argument("--issue12_calibration_steps", type=int, default=0)
+parser.add_argument("--issue12_smoke_steps", type=int, default=0)
 parser.add_argument("--issue5_training_mode", default="legacy", choices=["legacy","remove","strengthen"])
 parser.add_argument("--issue5_factor", default="push", choices=["push","material","delay","noise"])
 parser.add_argument("--experiment_profile", default="default", choices=["default","control","entropy","yaw","range05","range08","robust05","robust08"])
@@ -141,6 +145,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     configure_mass_randomization(env_cfg, args_cli.mass_randomization)
     from unitree_rl_lab.tasks.locomotion.robots.tw.action_observation import configure_action_observation
     configure_action_observation(env_cfg, args_cli.last_action_observation)
+    from unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery import configure_post_push_pitch_reward
+    configure_post_push_pitch_reward(env_cfg, args_cli.post_push_pitch_weight)
 
     # set the environment seed
     # note: certain randomizations occur in the environment initialization so we set the seed here
@@ -244,12 +250,47 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
                         print(f"[TW] {_mn}.{_pn}: std {_p.data.mean().item():.4f} -> {float(_ft_std)}", flush=True)
                         _p.data.fill_(float(_ft_std))
 
+    monitor = None
+    if args_cli.issue12_audit_dir:
+        assert agent_cfg.resume and (args_cli.post_push_pitch_weight is not None or args_cli.issue12_smoke_steps)
+        assert not os.environ.get("TW_RESET_STD"), "Issue12 forbids std reset"
+        from pathlib import Path
+        from issue12_monitor import RewardMonitor, audit_loaded
+        from trial_risk_records import state_audit
+        audit_dir = Path(args_cli.issue12_audit_dir)
+        audit_dir.mkdir(parents=True, exist_ok=True)
+        audit_loaded(runner, env.unwrapped, resume_path, audit_dir / "loaded_state_audit.json")
+        state_audit(env.unwrapped, audit_dir / "initial_state", "initial")
+        if args_cli.post_push_pitch_weight is not None:
+            monitor = RewardMonitor(env.unwrapped, args_cli.post_push_pitch_weight, audit_dir)
+        if monitor is not None and not (args_cli.issue12_calibration_steps or args_cli.issue12_smoke_steps):
+            monitor.attach(runner)
+
     # dump the configuration into log-directory
     dump_yaml(os.path.join(log_dir, "params", "env.yaml"), env_cfg)
     dump_yaml(os.path.join(log_dir, "params", "agent.yaml"), agent_cfg)
 
     # run training
-    runner.learn(num_learning_iterations=agent_cfg.max_iterations, init_at_random_ep_len=True)
+    if args_cli.issue12_smoke_steps:
+        from issue12_monitor import smoke
+        smoke(runner, env, env.unwrapped, monitor, args_cli.issue12_smoke_steps, args_cli.issue12_audit_dir)
+    elif args_cli.issue12_calibration_steps:
+        assert monitor is not None
+        from issue12_monitor import calibration
+        calibration(runner, env, env.unwrapped, monitor, args_cli.issue12_calibration_steps,
+                    Path(args_cli.issue12_audit_dir) / "calibration.json")
+    else:
+        runner.learn(num_learning_iterations=agent_cfg.max_iterations, init_at_random_ep_len=True)
+    if monitor is not None:
+        expected = args_cli.issue12_calibration_steps or args_cli.issue12_smoke_steps or agent_cfg.max_iterations * agent_cfg.num_steps_per_env
+        assert monitor.total_steps == expected, (monitor.total_steps, expected)
+        monitor.close()
+        Path(args_cli.issue12_audit_dir, "run_summary.json").write_text(__import__("json").dumps({
+            "log_dir": log_dir, "parent_checkpoint": resume_path,
+            "additional_updates": 0 if (args_cli.issue12_calibration_steps or args_cli.issue12_smoke_steps) else agent_cfg.max_iterations,
+            "environment_steps": monitor.total_steps, "num_envs": env.unwrapped.num_envs,
+            "final_iteration": runner.current_learning_iteration, "std_reset": False,
+            "post_push_pitch_weight": args_cli.post_push_pitch_weight}, indent=2))
 
     print(f"Training time: {round(time.time() - start_time, 2)} seconds")
 

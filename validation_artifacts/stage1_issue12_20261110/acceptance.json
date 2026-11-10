@@ -1,0 +1,60 @@
+{
+  "frozen_gates": {
+    "low_speed_effect_strictly_negative95": true,
+    "treatment_low_speed_mean_ci_upper_below_1percent": true,
+    "mid_speed_treatment_mean_not_above_control": true,
+    "xy_tracking_at_every_command_not_worse_than_10percent": false
+  },
+  "all_primary_tracking_gates_passed": false,
+  "low_speed_paired_effect": {
+    "per_seed_differences": [
+      -0.004557291666666667,
+      -0.0026041666666666665,
+      0.0,
+      -0.0029296875,
+      -0.004557291666666667
+    ],
+    "mean_difference": -0.0029296875,
+    "bootstrap95": [
+      -0.004231770833333333,
+      -0.0014322916666666666
+    ],
+    "sample_sd_of_differences": 0.0018699748198365979,
+    "bootstrap95_integer_numerators": [
+      -650,
+      -220
+    ],
+    "bootstrap95_integer_denominator": 153600,
+    "effective_strictly_negative95": true,
+    "pairing": "same five training seed indices jointly resampled; exact count lattice",
+    "exact_resamples": 3125
+  },
+  "treatment_low_speed": {
+    "per_seed": [
+      0.006184895833333333,
+      0.007161458333333333,
+      0.007161458333333333,
+      0.0029296875,
+      0.007486979166666667
+    ],
+    "mean": 0.006184895833333333,
+    "sample_sd": 0.0018840880375635132,
+    "bootstrap95": [
+      0.0044921875,
+      0.007291666666666667
+    ],
+    "bootstrap95_integer_numerators": [
+      690,
+      1120
+    ],
+    "bootstrap95_integer_denominator": 153600,
+    "training_seed_sample_size": 5,
+    "exact_resamples": 3125
+  },
+  "decision": "stop_this_scheme_no_extra_budget_or_weight_scan",
+  "default_promoted": false,
+  "budget_beyond_frozen_1500_per_run_authorized_or_used": false,
+  "weight_scan": false,
+  "secondary_results_are_descriptive_not_added_posthoc_gates": true,
+  "strict_fall_gates_use_exact_integer_percentile_numerators": true
+}

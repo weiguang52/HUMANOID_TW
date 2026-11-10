@@ -1,0 +1,12 @@
+{
+  "before_formal_evaluation": true,
+  "same_five_seed3125_resamples_and_linear_percentile95_rule": true,
+  "reason": "Subtracting float rates for counts [7,8,9,10,16] vs [10,11,12,13,14] at n3072 produced a spurious upper -2.60e-19 instead of exact0. Primary fall gates now operate on integer bootstrap sums and exact percentile numerators.",
+  "strict_zero_and1percent_inequalities_unchanged": true,
+  "no_outcome_based_threshold_change": true,
+  "formal_eval_outputs_at_correction": 0,
+  "recorded_unix": 1794304569.9169753,
+  "statistics_module_sha256": "90c0e7225de3d6117997e64c77a958b44d370219c7e1b82b931c939728db045c",
+  "test_source_sha256": "d5cad25686060623a1254833739e9cba31feb62292eaa6487af092b0cfb3e0c6",
+  "regression_tests_passed": 8
+}

@@ -1,0 +1,206 @@
+{
+  "control:forward_03": {
+    "estimable": true,
+    "target_seed_rates": [
+      0.01200800533689126,
+      0.014009339559706471,
+      0.009339559706470981,
+      0.009339559706470981,
+      0.01067378252168112
+    ],
+    "reference_seed_rates": [
+      0.009535918626827717,
+      0.00572155117609663,
+      0.0050858232676414495,
+      0.0025429116338207248,
+      0.013350286077558804
+    ],
+    "target_mean": 0.011074049366244164,
+    "reference_mean": 0.007247298156389065,
+    "target_sample_sd": 0.0019789722447219912,
+    "reference_sample_sd": 0.0042312933991846755,
+    "risk_difference": 0.003826751209855099,
+    "difference_bootstrap95": [
+      0.00024784482301615056,
+      0.006884521870269947
+    ],
+    "relative_risk": 1.5280245309738658,
+    "relative_risk_bootstrap95": [
+      1.0237719455246588,
+      2.5925518973433275
+    ],
+    "zero_reference_bootstrap_replicates": 0,
+    "training_seeds": 5,
+    "exact_resamples": 3125
+  },
+  "control:forward_05": {
+    "estimable": true,
+    "target_seed_rates": [
+      0.03684210526315789,
+      0.019078947368421053,
+      0.020394736842105264,
+      0.035526315789473684,
+      0.039473684210526314
+    ],
+    "reference_seed_rates": [
+      0.019329896907216496,
+      0.01804123711340206,
+      0.014819587628865979,
+      0.014819587628865979,
+      0.026417525773195876
+    ],
+    "target_mean": 0.030263157894736836,
+    "reference_mean": 0.018685567010309278,
+    "target_sample_sd": 0.009724832565193737,
+    "reference_sample_sd": 0.00475670846012674,
+    "risk_difference": 0.011577590884427558,
+    "difference_bootstrap95": [
+      0.005240097666847531,
+      0.017898806294085724
+    ],
+    "relative_risk": 1.6196007259528127,
+    "relative_risk_bootstrap95": [
+      1.285241074714759,
+      2.0275187969924815
+    ],
+    "zero_reference_bootstrap_replicates": 0,
+    "training_seeds": 5,
+    "exact_resamples": 3125
+  },
+  "control:forward_08": {
+    "estimable": true,
+    "target_seed_rates": [
+      0.1571798188874515,
+      0.14359637774902975,
+      0.12289780077619664,
+      0.15329883570504527,
+      0.1351875808538163
+    ],
+    "reference_seed_rates": [
+      0.08519003931847968,
+      0.07208387942332896,
+      0.07929226736566186,
+      0.05701179554390563,
+      0.063564875491481
+    ],
+    "target_mean": 0.14243208279430788,
+    "reference_mean": 0.07142857142857142,
+    "target_sample_sd": 0.013883520840969266,
+    "reference_sample_sd": 0.01141628531466864,
+    "risk_difference": 0.07100351136573646,
+    "difference_bootstrap95": [
+      0.05486377562525539,
+      0.08639926483429103
+    ],
+    "relative_risk": 1.9940491591203104,
+    "relative_risk_bootstrap95": [
+      1.723471452230829,
+      2.352366233325557
+    ],
+    "zero_reference_bootstrap_replicates": 0,
+    "training_seeds": 5,
+    "exact_resamples": 3125
+  },
+  "treatment:forward_03": {
+    "estimable": true,
+    "target_seed_rates": [
+      0.01000667111407605,
+      0.01000667111407605,
+      0.01067378252168112,
+      0.00533689126084056,
+      0.008005336891260841
+    ],
+    "reference_seed_rates": [
+      0.0025429116338207248,
+      0.004450095359186269,
+      0.003814367450731087,
+      0.0006357279084551812,
+      0.006993006993006993
+    ],
+    "target_mean": 0.008805870580386923,
+    "reference_mean": 0.0036872218690400514,
+    "target_sample_sd": 0.002182178416784006,
+    "reference_sample_sd": 0.002353052196226541,
+    "risk_difference": 0.005118648711346872,
+    "difference_bootstrap95": [
+      0.0029195136236193926,
+      0.006840584971460098
+    ],
+    "relative_risk": 2.388212831542867,
+    "relative_risk_bootstrap95": [
+      1.5590584198989805,
+      4.0662941961307535
+    ],
+    "zero_reference_bootstrap_replicates": 0,
+    "training_seeds": 5,
+    "exact_resamples": 3125
+  },
+  "treatment:forward_05": {
+    "estimable": true,
+    "target_seed_rates": [
+      0.028289473684210528,
+      0.015131578947368421,
+      0.019078947368421053,
+      0.01644736842105263,
+      0.023026315789473683
+    ],
+    "reference_seed_rates": [
+      0.01675257731958763,
+      0.005154639175257732,
+      0.014819587628865979,
+      0.01095360824742268,
+      0.020618556701030927
+    ],
+    "target_mean": 0.020394736842105264,
+    "reference_mean": 0.013659793814432988,
+    "target_sample_sd": 0.005344762108313132,
+    "reference_sample_sd": 0.0058948262945787006,
+    "risk_difference": 0.006734943027672276,
+    "difference_bootstrap95": [
+      0.003765599565925124,
+      0.009769397721106894
+    ],
+    "relative_risk": 1.4930486593843102,
+    "relative_risk_bootstrap95": [
+      1.2300870285951098,
+      1.9721701514059118
+    ],
+    "zero_reference_bootstrap_replicates": 0,
+    "training_seeds": 5,
+    "exact_resamples": 3125
+  },
+  "treatment:forward_08": {
+    "estimable": true,
+    "target_seed_rates": [
+      0.11836998706338939,
+      0.09314359637774904,
+      0.08796895213454076,
+      0.11642949547218628,
+      0.11448900388098318
+    ],
+    "reference_seed_rates": [
+      0.053735255570117955,
+      0.04062909567496723,
+      0.0563564875491481,
+      0.05111402359108781,
+      0.05242463958060288
+    ],
+    "target_mean": 0.10608020698576973,
+    "reference_mean": 0.0508519003931848,
+    "target_sample_sd": 0.01435468371356542,
+    "reference_sample_sd": 0.006034529191728095,
+    "risk_difference": 0.05522830659258492,
+    "difference_bootstrap95": [
+      0.04253347326801166,
+      0.06439295420982404
+    ],
+    "relative_risk": 2.086061802323255,
+    "relative_risk_bootstrap95": [
+      1.8047054507539924,
+      2.265883084488218
+    ],
+    "zero_reference_bootstrap_replicates": 0,
+    "training_seeds": 5,
+    "exact_resamples": 3125
+  }
+}

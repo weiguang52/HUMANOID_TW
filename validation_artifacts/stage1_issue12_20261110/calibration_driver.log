@@ -1,0 +1,12 @@
+START calibration calibration_s1_attempt1.log
+END calibration calibration_s1_attempt1.log 1
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/calibrate_issue12.py", line 59, in <module>
+    main()
+    ~~~~^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/calibrate_issue12.py", line 28, in main
+    run(args,ROOT/f"calibration_s{seed}_attempt{attempt}.log","calibration")
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue12_common.py", line 43, in run
+    raise RuntimeError(str(log))
+RuntimeError: /root/gpufree-data/tw_stage1/issue12_20261110/calibration_s1_attempt1.log

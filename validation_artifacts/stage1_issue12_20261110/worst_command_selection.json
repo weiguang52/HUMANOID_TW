@@ -1,0 +1,82 @@
+{
+  "control_s1": {
+    "command": "forward_08",
+    "falls": 373,
+    "n": 3072,
+    "pooled_fall_rate": 0.12141927083333333,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "treatment_s1": {
+    "command": "forward_08",
+    "falls": 265,
+    "n": 3072,
+    "pooled_fall_rate": 0.08626302083333333,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "control_s2": {
+    "command": "forward_08",
+    "falls": 332,
+    "n": 3072,
+    "pooled_fall_rate": 0.10807291666666667,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "treatment_s2": {
+    "command": "forward_08",
+    "falls": 206,
+    "n": 3072,
+    "pooled_fall_rate": 0.06705729166666667,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "control_s3": {
+    "command": "forward_08",
+    "falls": 311,
+    "n": 3072,
+    "pooled_fall_rate": 0.10123697916666667,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "treatment_s3": {
+    "command": "forward_08",
+    "falls": 222,
+    "n": 3072,
+    "pooled_fall_rate": 0.072265625,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "control_s4": {
+    "command": "forward_08",
+    "falls": 324,
+    "n": 3072,
+    "pooled_fall_rate": 0.10546875,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "treatment_s4": {
+    "command": "forward_08",
+    "falls": 258,
+    "n": 3072,
+    "pooled_fall_rate": 0.083984375,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "control_s5": {
+    "command": "forward_08",
+    "falls": 306,
+    "n": 3072,
+    "pooled_fall_rate": 0.099609375,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  },
+  "treatment_s5": {
+    "command": "forward_08",
+    "falls": 257,
+    "n": 3072,
+    "pooled_fall_rate": 0.08365885416666667,
+    "illustrative_video_seed": 1,
+    "tie_rule": "prefer forward_08,forward_05,forward_03"
+  }
+}

@@ -1,0 +1,9 @@
+START analysis analysis.log
+END analysis analysis.log 0
+START plots plots.log
+END plots plots.log 0
+START video_driver video_driver.log
+END video_driver video_driver.log 0
+START video_audit video_audit.log
+END video_audit video_audit.log 0
+ISSUE12_POSTPROCESS_COMPLETE_MANUAL_QA_PENDING

@@ -1,0 +1,9 @@
+{
+  "original_eval_sha256": "0275fca8bbf6a1f971c5568c6c4cf7b27e6d0aa9e4bf3e37b60c15b0e6cfd69c",
+  "in_memory_render_eval_sha256": "eadb186f2bc6556aa13ec741222387cab285eb873bb24c0c4ee1555824fc228b",
+  "static_first_frame_warmup_renders": 60,
+  "physics_step_calls_or_configuration_changes": false,
+  "other_changes": "Only two text substitutions: static render warmup12->60 and video labels.",
+  "video_scope": "Independent illustrative one-env single-command seed1; paired reset index0. Not an exact1024-env failure or acceptance sample.",
+  "camera": "follows translation and heading"
+}

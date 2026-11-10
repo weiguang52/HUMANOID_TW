@@ -1,0 +1,81 @@
+{
+  "base": "67d9879bf23ec5a79d23cb1e6c54d612a2c62172",
+  "frozen_before_formal_training": true,
+  "frozen_unix": 1794300556.4851387,
+  "sha256": {
+    "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/algorithms/ppo.py": "a2d35e7ad7b884c80b7434e7d2ce785a6da1e18d93c96f1179fbd3a208669f8c",
+    "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/runners/on_policy_runner.py": "39358a0a60219fdb360df7acddf80f6a382837aa58e2ec0ccf875df4afee4825",
+    "/root/gpufree-data/datasets/practice9/custom_robot/urdf/urdf0711_training_30dof.urdf": "1d613d3aef37d99e467ac7574d1455dacd3e9c5cc3276feff06afda6b25386f2",
+    "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd": "24663fd164311931d0ea633bb1e4ceeb7a35bb7f3c02a52e10a94aafa6035816",
+    "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/envs/manager_based_rl_env.py": "974977825dbbd916460b4f9bb12176ab2cde41026fadc05e1de02d8fbbc94725",
+    "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/managers/event_manager.py": "963654b80cebe0c951e94ac0a3f1d0044dfccb43ee10dac75748e86e394afbf8",
+    "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/managers/reward_manager.py": "6be44a98df5aed8a0ebac2913ebea33010633e007e816697a6d99f7ccfd731db",
+    "scripts/locomotion/calibrate_issue12.py": "83ee1995020b12eb2eb6d99472a825a0fb1cc8484498a077f7f99f8d4fc73d0a",
+    "scripts/locomotion/cli_args.py": "610ecd0a51bac90c206e57578c7789c8cf5dfd5ebd0096c3ca398f9bd2f2b42d",
+    "scripts/locomotion/eval_cmd.py": "0275fca8bbf6a1f971c5568c6c4cf7b27e6d0aa9e4bf3e37b60c15b0e6cfd69c",
+    "scripts/locomotion/failure_traces.py": "81c95c04d26dc281d308e52857304727b39f3c7fa5ff49cf1c4e278a865d937c",
+    "scripts/locomotion/freeze_issue12.py": "bb07d1b954b26e416ae14131916d2a3468563b1b4d589e23da5bedab185ffc2a",
+    "scripts/locomotion/issue12_common.py": "fa9c2d7f4123dc7c8580678d78d318f34ac5d381d8e23d46ec3b160a0b7f1dfe",
+    "scripts/locomotion/issue12_monitor.py": "5c7bcbd1c8ed1d8cb67017f1d0fba2a494543be5984496f3070847ad0a4547a2",
+    "scripts/locomotion/remote_env.sh": "1975329bd70a7b3136b0429115f835dba6e4b1bd24ea51fabea674841896ad7f",
+    "scripts/locomotion/run_issue12.py": "8febe958eaffcab445465398f66a4c86297aee09352077db3cb1672776632079",
+    "scripts/locomotion/smoke_issue12.py": "d66588e22ceceff09089889db442734df82c340a21180ac15a5b538b2b572924",
+    "scripts/locomotion/train.py": "a434b92381862737b9434c6b8100107ebd454d32a4235a8ddd0aeca6209b3c9b",
+    "scripts/locomotion/trial_risk_records.py": "22efe44586316a6297e6c2cb1310d297cc4bb6705e237c94273f1e0dbe1bf2a7",
+    "source/unitree_rl_lab/unitree_rl_lab/assets/robots/custom_humanoid.py": "5fe27371c5b0db9a6821bdbc74d6d96fc241af3a8baa1d9f62e41803324c56ff",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/__init__.py": "cc0ffafcdcf0b9126e23ad1d1c798a3a63bc7d223b4f02bfd3f5e36e1aaedaf8",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/action_observation.py": "15599f73e6ced93028e518bb0d2f2de836ded04204cf84807998f7e3ed74b315",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/experiments.py": "08315e83c800e2f7a1064598aaa316a0c4ff617a4016eacd6aae41e9548f9309",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/mass_randomization.py": "cc6ee3a60188a0e392fb0054783b8123fe9a0233ebd04d11137bb0a2fe9ab253",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/post_push_recovery.py": "e1d3b73251e1cf7e694021942610ee60456cd4098f34da8a5ce3d2bd317e63af",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/rewards.py": "8619363f541cb6d811a200325de3b9f91c24f4b87e2c35ba653aa8ad312235f3",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/rsl_rl_cfg.py": "db3c6867c2329327f4376d1cee4d1a3c60c905fc5fbe3a85f844118bf43ca689",
+    "source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/tw/velocity_env_cfg.py": "37457aed5382e4e21beb652cdb8fe98438c84ec1f4c2d0f5fbb0789d52d93e2e",
+    "tests/locomotion/test_issue12_recovery.py": "3b4f41bfa46832e447f4718d738b9dc562cbf928f26917bf0d15a9a8ce2f93bc"
+  },
+  "actual_parent_observation_dimensions_match_all_five": {
+    "1": {
+      "policy": [
+        101
+      ],
+      "critic": [
+        134
+      ]
+    },
+    "2": {
+      "policy": [
+        101
+      ],
+      "critic": [
+        134
+      ]
+    },
+    "3": {
+      "policy": [
+        101
+      ],
+      "critic": [
+        134
+      ]
+    },
+    "4": {
+      "policy": [
+        101
+      ],
+      "critic": [
+        134
+      ]
+    },
+    "5": {
+      "policy": [
+        101
+      ],
+      "critic": [
+        134
+      ]
+    }
+  },
+  "training_distribution": "same robust08 strengthened-push bounded requested recipe",
+  "only_control_treatment_reward_weight_differs": true,
+  "calibration_has_no_saved_models_or_optimizer_updates": true
+}

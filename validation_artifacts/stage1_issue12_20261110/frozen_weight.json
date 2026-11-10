@@ -1,0 +1,131 @@
+{
+  "weight": 34.67877532210905,
+  "window_s": 1.0,
+  "pitch_rate_squared_coefficient": 0.1,
+  "target_fraction_of_old_signed_positive_mean": 0.05,
+  "old_mean_reward_per_control_step": 0.0878918749265722,
+  "raw_gated_cost_mean": 0.006336143225229307,
+  "step_dt": 0.02,
+  "expected_new_mean_reward_per_step": -0.0043945937463286105,
+  "formula": "w=.05*mean(old_reward_per_step)/(step_dt*mean(gated pitch^2+.1*pitch_dot^2))",
+  "calibration_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "steps_per_seed": 1024,
+  "environments": 4096,
+  "total_transitions": 20971520,
+  "optimizer_updates": 0,
+  "source_state": {
+    "1": {
+      "audit_dir": "/root/gpufree-data/tw_stage1/issue12_20261110/calibration/seed1_attempt2",
+      "row": {
+        "environment_steps": 1024.0,
+        "transitions": 4194304.0,
+        "raw_cost_mean": 0.005644693208381568,
+        "active_fraction": 0.09877300262451172,
+        "new_reward_per_step": 0.0,
+        "old_reward_per_step": 0.08882246803841554,
+        "total_reward_per_step": 0.08882246803841554,
+        "xy_tracking_reward_per_step": 0.05000636620206933,
+        "yaw_tracking_reward_per_step": 0.009609127452677058,
+        "iteration": -1,
+        "abs_new_over_abs_old": 0.0,
+        "abs_new_over_tracking": 0.0,
+        "max_term_identity_error": 0.0,
+        "step_dt": 0.02,
+        "no_optimizer_or_parameter_or_normalizer_updates": true,
+        "sampling": "stochastic frozen loaded actor; original training distribution; random initial episode lengths"
+      }
+    },
+    "2": {
+      "audit_dir": "/root/gpufree-data/tw_stage1/issue12_20261110/calibration/seed2_attempt1",
+      "row": {
+        "environment_steps": 1024.0,
+        "transitions": 4194304.0,
+        "raw_cost_mean": 0.006519282909778212,
+        "active_fraction": 0.09917449951171875,
+        "new_reward_per_step": 0.0,
+        "old_reward_per_step": 0.08609604000957916,
+        "total_reward_per_step": 0.08609604000957916,
+        "xy_tracking_reward_per_step": 0.04949430011038203,
+        "yaw_tracking_reward_per_step": 0.008997014641863643,
+        "iteration": -1,
+        "abs_new_over_abs_old": 0.0,
+        "abs_new_over_tracking": 0.0,
+        "max_term_identity_error": 0.0,
+        "step_dt": 0.02,
+        "no_optimizer_or_parameter_or_normalizer_updates": true,
+        "sampling": "stochastic frozen loaded actor; original training distribution; random initial episode lengths"
+      }
+    },
+    "3": {
+      "audit_dir": "/root/gpufree-data/tw_stage1/issue12_20261110/calibration/seed3_attempt1",
+      "row": {
+        "environment_steps": 1024.0,
+        "transitions": 4194304.0,
+        "raw_cost_mean": 0.006352900572380804,
+        "active_fraction": 0.09920096397399902,
+        "new_reward_per_step": 0.0,
+        "old_reward_per_step": 0.08842659991569235,
+        "total_reward_per_step": 0.08842659991569235,
+        "xy_tracking_reward_per_step": 0.049496145080411225,
+        "yaw_tracking_reward_per_step": 0.009611722309273318,
+        "iteration": -1,
+        "abs_new_over_abs_old": 0.0,
+        "abs_new_over_tracking": 0.0,
+        "max_term_identity_error": 0.0,
+        "step_dt": 0.02,
+        "no_optimizer_or_parameter_or_normalizer_updates": true,
+        "sampling": "stochastic frozen loaded actor; original training distribution; random initial episode lengths"
+      }
+    },
+    "4": {
+      "audit_dir": "/root/gpufree-data/tw_stage1/issue12_20261110/calibration/seed4_attempt1",
+      "row": {
+        "environment_steps": 1024.0,
+        "transitions": 4194304.0,
+        "raw_cost_mean": 0.006918547321561164,
+        "active_fraction": 0.09911894798278809,
+        "new_reward_per_step": 0.0,
+        "old_reward_per_step": 0.08768611813138705,
+        "total_reward_per_step": 0.08768611813138705,
+        "xy_tracking_reward_per_step": 0.049037489317925065,
+        "yaw_tracking_reward_per_step": 0.009203408052599116,
+        "iteration": -1,
+        "abs_new_over_abs_old": 0.0,
+        "abs_new_over_tracking": 0.0,
+        "max_term_identity_error": 0.0,
+        "step_dt": 0.02,
+        "no_optimizer_or_parameter_or_normalizer_updates": true,
+        "sampling": "stochastic frozen loaded actor; original training distribution; random initial episode lengths"
+      }
+    },
+    "5": {
+      "audit_dir": "/root/gpufree-data/tw_stage1/issue12_20261110/calibration/seed5_attempt1",
+      "row": {
+        "environment_steps": 1024.0,
+        "transitions": 4194304.0,
+        "raw_cost_mean": 0.006245292114044787,
+        "active_fraction": 0.09937810897827148,
+        "new_reward_per_step": 0.0,
+        "old_reward_per_step": 0.08842814853778691,
+        "total_reward_per_step": 0.08842814853778691,
+        "xy_tracking_reward_per_step": 0.04923786482322612,
+        "yaw_tracking_reward_per_step": 0.009618467560358113,
+        "iteration": -1,
+        "abs_new_over_abs_old": 0.0,
+        "abs_new_over_tracking": 0.0,
+        "max_term_identity_error": 0.0,
+        "step_dt": 0.02,
+        "no_optimizer_or_parameter_or_normalizer_updates": true,
+        "sampling": "stochastic frozen loaded actor; original training distribution; random initial episode lengths"
+      }
+    }
+  },
+  "no_weight_scan": true,
+  "frozen_before_formal_training": true
+}

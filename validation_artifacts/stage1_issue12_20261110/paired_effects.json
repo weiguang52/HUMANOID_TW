@@ -1,0 +1,71 @@
+{
+  "forward_03": {
+    "per_seed_differences": [
+      -0.004557291666666667,
+      -0.0026041666666666665,
+      0.0,
+      -0.0029296875,
+      -0.004557291666666667
+    ],
+    "mean_difference": -0.0029296875,
+    "bootstrap95": [
+      -0.004231770833333333,
+      -0.0014322916666666666
+    ],
+    "sample_sd_of_differences": 0.0018699748198365979,
+    "bootstrap95_integer_numerators": [
+      -650,
+      -220
+    ],
+    "bootstrap95_integer_denominator": 153600,
+    "effective_strictly_negative95": true,
+    "pairing": "same five training seed indices jointly resampled; exact count lattice",
+    "exact_resamples": 3125
+  },
+  "forward_05": {
+    "per_seed_differences": [
+      -0.005533854166666667,
+      -0.008463541666666666,
+      -0.0006510416666666666,
+      -0.011393229166666666,
+      -0.011067708333333334
+    ],
+    "mean_difference": -0.007421875,
+    "bootstrap95": [
+      -0.010677083333333334,
+      -0.0037109375
+    ],
+    "sample_sd_of_differences": 0.004459754218308114,
+    "bootstrap95_integer_numerators": [
+      -1640,
+      -570
+    ],
+    "bootstrap95_integer_denominator": 153600,
+    "effective_strictly_negative95": true,
+    "pairing": "same five training seed indices jointly resampled; exact count lattice",
+    "exact_resamples": 3125
+  },
+  "forward_08": {
+    "per_seed_differences": [
+      -0.03515625,
+      -0.041015625,
+      -0.028971354166666668,
+      -0.021484375,
+      -0.015950520833333332
+    ],
+    "mean_difference": -0.028515625,
+    "bootstrap95": [
+      -0.03626302083333333,
+      -0.020768229166666666
+    ],
+    "sample_sd_of_differences": 0.01009796896343096,
+    "bootstrap95_integer_numerators": [
+      -5570,
+      -3190
+    ],
+    "bootstrap95_integer_denominator": 153600,
+    "effective_strictly_negative95": true,
+    "pairing": "same five training seed indices jointly resampled; exact count lattice",
+    "exact_resamples": 3125
+  }
+}

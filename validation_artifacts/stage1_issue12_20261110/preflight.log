@@ -1,0 +1,18 @@
+START calibration calibration_s1_attempt2.log
+END calibration calibration_s1_attempt2.log 0
+START calibration calibration_s2_attempt1.log
+END calibration calibration_s2_attempt1.log 0
+START calibration calibration_s3_attempt1.log
+END calibration calibration_s3_attempt1.log 0
+START calibration calibration_s4_attempt1.log
+END calibration calibration_s4_attempt1.log 0
+START calibration calibration_s5_attempt1.log
+END calibration calibration_s5_attempt1.log 0
+CALIBRATION_COMPLETE_WEIGHT 34.67877532210905 OLD_MEAN 0.0878918749265722 RAW_MEAN 0.006336143225229307
+START smoke smoke_original_attempt1.log
+END smoke smoke_original_attempt1.log 0
+START smoke smoke_control_attempt1.log
+END smoke smoke_control_attempt1.log 0
+START smoke smoke_treatment_attempt1.log
+END smoke smoke_treatment_attempt1.log 0
+RUNTIME_SMOKE_PASS 2.384185791015625e-07

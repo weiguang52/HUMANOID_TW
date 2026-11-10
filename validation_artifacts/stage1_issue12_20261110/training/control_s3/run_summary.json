@@ -1,0 +1,10 @@
+{
+  "log_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_18-48-34_issue12_20261110_control_s3",
+  "parent_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_19-47-12_issue10_20261109_requested_s3/model_11994.pt",
+  "additional_updates": 1500,
+  "environment_steps": 36000,
+  "num_envs": 4096,
+  "final_iteration": 13493,
+  "std_reset": false,
+  "post_push_pitch_weight": 0.0
+}

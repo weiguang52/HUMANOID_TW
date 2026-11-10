@@ -1,0 +1,26 @@
+{
+  "reason": "A CUDA float32 divide/multiply roundtrip produced 7.63e-6 absolute error at term magnitude64, despite correct reward; absolute-only monitoring could falsely terminate a valid run.",
+  "probe": "monitor_cuda_precision_probe.json",
+  "original_monitor_sha256": "5c7bcbd1c8ed1d8cb67017f1d0fba2a494543be5984496f3070847ad0a4547a2",
+  "new_monitor_sha256": "df4ef043a523f1c4b1e9f0473af4a595da3871407786a81e10e0f5b02d59477e",
+  "only_changed_expression": "diagnostic error normalization by 1+abs(expected); no reward/result/policy/RNG/timing/weight change",
+  "error_metric_definition": "max(abs(reported_term-expected_term)/(1+abs(expected_term))) <=1e-6",
+  "first_control_run_already_running": true,
+  "control_weight0_old_and_new_error_are_identically0": true,
+  "applied_unix": 1794301334.6876876,
+  "reward_and_calibration_weight_unchanged": true,
+  "initial_manifest_sha256": "f87a2ba22acf34c495028987c801199b45c54a2737ccdbe6830b898389bb985b",
+  "regression_tests_passed": 11,
+  "changed_hashes": {
+    "scripts/locomotion/issue12_monitor.py": {
+      "before": "5c7bcbd1c8ed1d8cb67017f1d0fba2a494543be5984496f3070847ad0a4547a2",
+      "after": "df4ef043a523f1c4b1e9f0473af4a595da3871407786a81e10e0f5b02d59477e"
+    },
+    "tests/locomotion/test_issue12_recovery.py": {
+      "before": "3b4f41bfa46832e447f4718d738b9dc562cbf928f26917bf0d15a9a8ce2f93bc",
+      "after": "ce5cac534165ebfc8180b8fb21d8d00a03b25e14dd902dfaf14af592e207c139"
+    }
+  },
+  "all_other_27_frozen_sources_dependencies_unchanged": true,
+  "first_control_error_metric_0_is_identical_under_both_definitions": true
+}

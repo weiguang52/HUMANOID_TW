@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "reviewed_plot_count": 6,
+  "reviewed_via": "Remote SSH chunks decoded and visually inspected in memory; no local files copied.",
+  "figures": {
+    "fall_rates": {
+      "sha256": "e0bb1f3ba347498a566b39d9191915d8737ab2d3107c2d0324b122754c11e07d",
+      "legible_labels_axes_intervals_legend_and_no_clipping": true
+    },
+    "paired_effects": {
+      "sha256": "0e86110705c318cce47c0e4473b587a5a288f3404fc8a4b81f0f2ee93ae4d6d4",
+      "legible_labels_axes_intervals_legend_and_no_clipping": true
+    },
+    "tracking_errors": {
+      "sha256": "2d80635c30f21e64c72c82fe6b0361d524841d01ff2203354e8fe01766db73a4",
+      "legible_labels_axes_intervals_legend_and_no_clipping": true
+    },
+    "reward_contributions": {
+      "sha256": "2b46a5ce7b5a1c73aa8ab463739f1bd818f0b1555f9f53a19b232fbfbdfb78e3",
+      "legible_labels_axes_intervals_legend_and_no_clipping": true
+    },
+    "q4_forward_risk": {
+      "sha256": "885748a4405ee59a53b2a2b48bd230be5495e512175d1afa77ad7ba41472f847",
+      "legible_labels_axes_intervals_legend_and_no_clipping": true
+    },
+    "delay_relative_risk": {
+      "sha256": "8887521734bdd472de82be4ad5c513705070f2efbcad1a20f8c156d732255406",
+      "legible_labels_axes_intervals_legend_and_no_clipping": true
+    }
+  },
+  "checks": [
+    "Fall-rate and paired-effect percentages agree with JSON; five seed points shown.",
+    "Tracking degradation at0.8m/s is visible against1.10 boundary.",
+    "Reward smoothing and original-net denominator are explicitly labeled; actual-total ratios also reported in tables/CSVs.",
+    "Q4 window denominators are explicit and distinct from full initial trials.",
+    "Delay RR intervals/ratio baseline are explicit; conditional five-seed uncertainty disclosed."
+  ]
+}

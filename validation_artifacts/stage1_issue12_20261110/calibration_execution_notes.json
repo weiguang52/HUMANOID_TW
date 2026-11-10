@@ -1,0 +1,8 @@
+{
+  "failed_seed1_attempt1": "Monitor scalar became an inference tensor, then could not be cleared outside inference_mode. No optimizer updates occurred; calibration not finalized and no weight frozen.",
+  "fix": "Preserve the original scalar accumulator with copy_, rather than replacing it with an inference tensor.",
+  "reward_formula_window_and_calibration_rule_unchanged": true,
+  "before_monitor_sha256": "eb96fa1c74efe2a5f9332f963985a2f840fc5386f8d5674de86c578387eb7a18",
+  "after_monitor_sha256": "5c7bcbd1c8ed1d8cb67017f1d0fba2a494543be5984496f3070847ad0a4547a2",
+  "identical_seed1_retry_all_saved_monitor_fields_equal": true
+}

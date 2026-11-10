@@ -1,0 +1,11 @@
+{
+  "source": "/root/gpufree-data/tw_stage1/issue12_20261110/training/treatment_s1/reward_contributions.csv",
+  "source_sha256": "43a8ce42604c53385bc2a9ed5cb6c2d98ebd0e85d13bf70fc63926f88e131542",
+  "rows_checked": 1500,
+  "old_plus_new_equal_total_within_float32_roundoff": true,
+  "max_absolute_roundoff": 2.852175384759903e-09,
+  "ratio_of_means_abs_new_over_abs_total": 0.04865933015271002,
+  "max_per_update_actual_total_ratio": 0.1831718548873079,
+  "behavior_or_weight_changes": false,
+  "derivation": "Analysis only from existing frozen-monitor contributions; actual net total includes new term."
+}

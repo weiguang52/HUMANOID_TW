@@ -1,0 +1,278 @@
+{
+  "forward_03": {
+    "control": {
+      "pooled_window_risk": {
+        "falls": 97,
+        "n": 2226,
+        "rate": 0.043575920934411504,
+        "wilson95_low": 0.03585238289080442,
+        "wilson95_high": 0.0528720679162621
+      },
+      "exposed_initial_trials": 2118,
+      "all_initial_trials": 15360,
+      "all_first_failures": 140,
+      "per_seed_events": [
+        23,
+        18,
+        17,
+        11,
+        28
+      ]
+    },
+    "treatment": {
+      "pooled_window_risk": {
+        "falls": 60,
+        "n": 2215,
+        "rate": 0.02708803611738149,
+        "wilson95_low": 0.02110257583360941,
+        "wilson95_high": 0.034710992246426105
+      },
+      "exposed_initial_trials": 2126,
+      "all_initial_trials": 15360,
+      "all_first_failures": 95,
+      "per_seed_events": [
+        14,
+        14,
+        14,
+        7,
+        11
+      ]
+    },
+    "paired_event_count_change": {
+      "per_seed_differences": [
+        -9.0,
+        -4.0,
+        -3.0,
+        -4.0,
+        -17.0
+      ],
+      "mean_difference": -7.4,
+      "bootstrap95": [
+        -12.6,
+        -3.6
+      ],
+      "sample_sd_of_differences": 5.856620185738529,
+      "effective_strictly_negative95": true,
+      "pairing": "same five training seed indices jointly resampled",
+      "exact_resamples": 3125
+    },
+    "window_risk_effect": {
+      "estimable": true,
+      "target_seed_rates": [
+        0.034653465346534656,
+        0.030837004405286344,
+        0.029661016949152543,
+        0.015021459227467811,
+        0.026252983293556086
+      ],
+      "reference_seed_rates": [
+        0.049783549783549784,
+        0.03734439834024896,
+        0.038636363636363635,
+        0.02534562211981567,
+        0.06862745098039216
+      ],
+      "target_mean": 0.02728518584439949,
+      "reference_mean": 0.043947476972074045,
+      "target_sample_sd": 0.0074835814285368054,
+      "reference_sample_sd": 0.016286485495184484,
+      "risk_difference": -0.016662291127674554,
+      "difference_bootstrap95": [
+        -0.029752176286497203,
+        -0.008257928827339056
+      ],
+      "relative_risk": 0.6208589826837516,
+      "relative_risk_bootstrap95": [
+        0.45745011651375944,
+        0.7789941466625274
+      ],
+      "zero_reference_bootstrap_replicates": 0,
+      "training_seeds": 5,
+      "exact_resamples": 3125
+    }
+  },
+  "forward_05": {
+    "control": {
+      "pooled_window_risk": {
+        "falls": 248,
+        "n": 2309,
+        "rate": 0.10740580337808575,
+        "wilson95_low": 0.09542229475784204,
+        "wilson95_high": 0.12069345192008231
+      },
+      "exposed_initial_trials": 2207,
+      "all_initial_trials": 15360,
+      "all_first_failures": 375,
+      "per_seed_events": [
+        56,
+        36,
+        36,
+        52,
+        68
+      ]
+    },
+    "treatment": {
+      "pooled_window_risk": {
+        "falls": 152,
+        "n": 2297,
+        "rate": 0.06617326948193296,
+        "wilson95_low": 0.056714467986739944,
+        "wilson95_high": 0.07708069536122909
+      },
+      "exposed_initial_trials": 2186,
+      "all_initial_trials": 15360,
+      "all_first_failures": 261,
+      "per_seed_events": [
+        36,
+        19,
+        32,
+        32,
+        33
+      ]
+    },
+    "paired_event_count_change": {
+      "per_seed_differences": [
+        -20.0,
+        -17.0,
+        -4.0,
+        -20.0,
+        -35.0
+      ],
+      "mean_difference": -19.2,
+      "bootstrap95": [
+        -28.4,
+        -10.4
+      ],
+      "sample_sd_of_differences": 11.031772296417289,
+      "effective_strictly_negative95": true,
+      "pairing": "same five training seed indices jointly resampled",
+      "exact_resamples": 3125
+    },
+    "window_risk_effect": {
+      "estimable": true,
+      "target_seed_rates": [
+        0.07422680412371134,
+        0.042505592841163314,
+        0.07494145199063232,
+        0.06751054852320675,
+        0.07112068965517242
+      ],
+      "reference_seed_rates": [
+        0.11336032388663968,
+        0.08,
+        0.0801781737193764,
+        0.11087420042643924,
+        0.15212527964205816
+      ],
+      "target_mean": 0.06606101742677724,
+      "reference_mean": 0.1073075955349027,
+      "target_sample_sd": 0.013491679299568238,
+      "reference_sample_sd": 0.029747652435207474,
+      "risk_difference": -0.04124657810812546,
+      "difference_bootstrap95": [
+        -0.06425616189730277,
+        -0.019641467370478616
+      ],
+      "relative_risk": 0.6156229398066266,
+      "relative_risk_bootstrap95": [
+        0.5107607480850175,
+        0.7784095753590091
+      ],
+      "zero_reference_bootstrap_replicates": 0,
+      "training_seeds": 5,
+      "exact_resamples": 3125
+    }
+  },
+  "forward_08": {
+    "control": {
+      "pooled_window_risk": {
+        "falls": 660,
+        "n": 2222,
+        "rate": 0.297029702970297,
+        "wilson95_low": 0.2783935674549075,
+        "wilson95_high": 0.31636642929800507
+      },
+      "exposed_initial_trials": 2129,
+      "all_initial_trials": 15360,
+      "all_first_failures": 1646,
+      "per_seed_events": [
+        147,
+        120,
+        132,
+        137,
+        124
+      ]
+    },
+    "treatment": {
+      "pooled_window_risk": {
+        "falls": 446,
+        "n": 2215,
+        "rate": 0.20135440180586908,
+        "wilson95_low": 0.1851778065933043,
+        "wilson95_high": 0.21856508150688042
+      },
+      "exposed_initial_trials": 2141,
+      "all_initial_trials": 15360,
+      "all_first_failures": 1208,
+      "per_seed_events": [
+        79,
+        69,
+        99,
+        109,
+        90
+      ]
+    },
+    "paired_event_count_change": {
+      "per_seed_differences": [
+        -68.0,
+        -51.0,
+        -33.0,
+        -28.0,
+        -34.0
+      ],
+      "mean_difference": -42.8,
+      "bootstrap95": [
+        -57.6,
+        -31.2
+      ],
+      "sample_sd_of_differences": 16.543881044059766,
+      "effective_strictly_negative95": true,
+      "pairing": "same five training seed indices jointly resampled",
+      "exact_resamples": 3125
+    },
+    "window_risk_effect": {
+      "estimable": true,
+      "target_seed_rates": [
+        0.19506172839506172,
+        0.1623529411764706,
+        0.22048997772828507,
+        0.23903508771929824,
+        0.1875
+      ],
+      "reference_seed_rates": [
+        0.3174946004319654,
+        0.2857142857142857,
+        0.315035799522673,
+        0.29718004338394793,
+        0.2701525054466231
+      ],
+      "target_mean": 0.20088794700382312,
+      "reference_mean": 0.29711544689989905,
+      "target_sample_sd": 0.02973874819010275,
+      "reference_sample_sd": 0.01995895662169599,
+      "risk_difference": -0.09622749989607593,
+      "difference_bootstrap95": [
+        -0.11722685098876512,
+        -0.07522814880338674
+      ],
+      "relative_risk": 0.6761275763340037,
+      "relative_risk_bootstrap95": [
+        0.6059117496755094,
+        0.7434265012345821
+      ],
+      "zero_reference_bootstrap_replicates": 0,
+      "training_seeds": 5,
+      "exact_resamples": 3125
+    }
+  }
+}

@@ -1,0 +1,692 @@
+{
+  "control_s1": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_16-49-57_issue12_20261110_control_s1"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-0.0"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1",
+          "2026-11-09_17-33-48_issue10_20261109_requested_s1"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s1",
+          "issue12_20261110_control_s1"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "treatment_s1": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_17-19-23_issue12_20261110_treatment_s1"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-34.67877532210905"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1",
+          "2026-11-09_17-33-48_issue10_20261109_requested_s1"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s1",
+          "issue12_20261110_treatment_s1"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "control_s2": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_18-39-42_issue10_20261109_requested_s2",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_17-49-43_issue12_20261110_control_s2"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-0.0"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2",
+          "2026-11-09_18-39-42_issue10_20261109_requested_s2"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s2",
+          "issue12_20261110_control_s2"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "treatment_s2": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_18-39-42_issue10_20261109_requested_s2",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_18-19-15_issue12_20261110_treatment_s2"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-34.67877532210905"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2",
+          "2026-11-09_18-39-42_issue10_20261109_requested_s2"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s2",
+          "issue12_20261110_treatment_s2"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "control_s3": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_19-47-12_issue10_20261109_requested_s3",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_18-48-34_issue12_20261110_control_s3"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-0.0"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_12-37-35_issue9_20261109_requested_s3",
+          "2026-11-09_19-47-12_issue10_20261109_requested_s3"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s3",
+          "issue12_20261110_control_s3"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "treatment_s3": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_19-47-12_issue10_20261109_requested_s3",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_19-17-14_issue12_20261110_treatment_s3"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-34.67877532210905"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_12-37-35_issue9_20261109_requested_s3",
+          "2026-11-09_19-47-12_issue10_20261109_requested_s3"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s3",
+          "issue12_20261110_treatment_s3"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "control_s4": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_20-53-09_issue10_20261109_requested_s4",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_19-46-01_issue12_20261110_control_s4"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-0.0"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_13-46-57_issue9_20261109_requested_s4",
+          "2026-11-09_20-53-09_issue10_20261109_requested_s4"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s4",
+          "issue12_20261110_control_s4"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "treatment_s4": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_20-53-09_issue10_20261109_requested_s4",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_20-14-33_issue12_20261110_treatment_s4"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-34.67877532210905"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_13-46-57_issue9_20261109_requested_s4",
+          "2026-11-09_20-53-09_issue10_20261109_requested_s4"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s4",
+          "issue12_20261110_treatment_s4"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "control_s5": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_21-59-16_issue10_20261109_requested_s5",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_20-43-29_issue12_20261110_control_s5"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-0.0"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_14-57-48_issue9_20261109_requested_s5",
+          "2026-11-09_21-59-16_issue10_20261109_requested_s5"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s5",
+          "issue12_20261110_control_s5"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  },
+  "treatment_s5": {
+    "passed": true,
+    "config_changes_vs_own_parent": {
+      "env": [
+        [
+          "/events/push_robot/func",
+          "isaaclab.envs.mdp.events:push_by_setting_velocity",
+          "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:timed_push"
+        ],
+        [
+          "/events/reset_post_push_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:reset_push_clock",
+            "params": {},
+            "mode": "reset",
+            "interval_range_s": "null",
+            "is_global_time": "false",
+            "min_step_count_between_reset": "0"
+          }
+        ],
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_21-59-16_issue10_20261109_requested_s5",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_21-12-08_issue12_20261110_treatment_s5"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery:pitch_cost",
+            "params": {
+              "window_s": "1.0"
+            },
+            "weight": "-34.67877532210905"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/load_checkpoint",
+          "model_8995.pt",
+          "model_11994.pt"
+        ],
+        [
+          "/load_run",
+          "2026-11-09_14-57-48_issue9_20261109_requested_s5",
+          "2026-11-09_21-59-16_issue10_20261109_requested_s5"
+        ],
+        [
+          "/max_iterations",
+          "3000",
+          "1500"
+        ],
+        [
+          "/run_name",
+          "issue10_20261109_requested_s5",
+          "issue12_20261110_treatment_s5"
+        ]
+      ]
+    },
+    "logged_updates": 1500,
+    "optimizer_step_increase_min": 30000.0,
+    "optimizer_step_increase_max": 30000.0,
+    "expected_optimizer_increase": 30000,
+    "monitor_rows": 1500,
+    "exact_actor_critic_optimizer_load": true,
+    "std_reset": false
+  }
+}

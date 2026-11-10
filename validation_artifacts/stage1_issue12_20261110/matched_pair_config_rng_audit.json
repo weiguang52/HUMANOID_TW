@@ -1,0 +1,192 @@
+{
+  "1": {
+    "passed": true,
+    "only_one_reward_weight_plus_run_metadata_differs": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_16-49-57_issue12_20261110_control_s1",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_17-19-23_issue12_20261110_treatment_s1"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery/weight",
+          "-0.0",
+          "-34.67877532210905"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_control_s1",
+          "issue12_20261110_treatment_s1"
+        ]
+      ]
+    },
+    "all_initial_root_joint_complete_rng_arrays_bitwise_equal": [
+      "root_state",
+      "joint_pos",
+      "joint_vel",
+      "torch_rng",
+      "cuda_rng",
+      "numpy_rng",
+      "numpy_rng_aux",
+      "numpy_rng_algorithm",
+      "python_rng",
+      "python_rng_version",
+      "python_rng_gauss_present",
+      "python_rng_gauss_value"
+    ]
+  },
+  "2": {
+    "passed": true,
+    "only_one_reward_weight_plus_run_metadata_differs": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_17-49-43_issue12_20261110_control_s2",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_18-19-15_issue12_20261110_treatment_s2"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery/weight",
+          "-0.0",
+          "-34.67877532210905"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_control_s2",
+          "issue12_20261110_treatment_s2"
+        ]
+      ]
+    },
+    "all_initial_root_joint_complete_rng_arrays_bitwise_equal": [
+      "root_state",
+      "joint_pos",
+      "joint_vel",
+      "torch_rng",
+      "cuda_rng",
+      "numpy_rng",
+      "numpy_rng_aux",
+      "numpy_rng_algorithm",
+      "python_rng",
+      "python_rng_version",
+      "python_rng_gauss_present",
+      "python_rng_gauss_value"
+    ]
+  },
+  "3": {
+    "passed": true,
+    "only_one_reward_weight_plus_run_metadata_differs": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_18-48-34_issue12_20261110_control_s3",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_19-17-14_issue12_20261110_treatment_s3"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery/weight",
+          "-0.0",
+          "-34.67877532210905"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_control_s3",
+          "issue12_20261110_treatment_s3"
+        ]
+      ]
+    },
+    "all_initial_root_joint_complete_rng_arrays_bitwise_equal": [
+      "root_state",
+      "joint_pos",
+      "joint_vel",
+      "torch_rng",
+      "cuda_rng",
+      "numpy_rng",
+      "numpy_rng_aux",
+      "numpy_rng_algorithm",
+      "python_rng",
+      "python_rng_version",
+      "python_rng_gauss_present",
+      "python_rng_gauss_value"
+    ]
+  },
+  "4": {
+    "passed": true,
+    "only_one_reward_weight_plus_run_metadata_differs": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_19-46-01_issue12_20261110_control_s4",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_20-14-33_issue12_20261110_treatment_s4"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery/weight",
+          "-0.0",
+          "-34.67877532210905"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_control_s4",
+          "issue12_20261110_treatment_s4"
+        ]
+      ]
+    },
+    "all_initial_root_joint_complete_rng_arrays_bitwise_equal": [
+      "root_state",
+      "joint_pos",
+      "joint_vel",
+      "torch_rng",
+      "cuda_rng",
+      "numpy_rng",
+      "numpy_rng_aux",
+      "numpy_rng_algorithm",
+      "python_rng",
+      "python_rng_version",
+      "python_rng_gauss_present",
+      "python_rng_gauss_value"
+    ]
+  },
+  "5": {
+    "passed": true,
+    "only_one_reward_weight_plus_run_metadata_differs": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_20-43-29_issue12_20261110_control_s5",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_21-12-08_issue12_20261110_treatment_s5"
+        ],
+        [
+          "/rewards/post_push_pitch_recovery/weight",
+          "-0.0",
+          "-34.67877532210905"
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_control_s5",
+          "issue12_20261110_treatment_s5"
+        ]
+      ]
+    },
+    "all_initial_root_joint_complete_rng_arrays_bitwise_equal": [
+      "root_state",
+      "joint_pos",
+      "joint_vel",
+      "torch_rng",
+      "cuda_rng",
+      "numpy_rng",
+      "numpy_rng_aux",
+      "numpy_rng_algorithm",
+      "python_rng",
+      "python_rng_version",
+      "python_rng_gauss_present",
+      "python_rng_gauss_value"
+    ]
+  }
+}

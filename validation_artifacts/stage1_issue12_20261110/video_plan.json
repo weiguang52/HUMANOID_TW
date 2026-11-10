@@ -1,0 +1,212 @@
+[
+  {
+    "model": "control_s1",
+    "command": "forward_08",
+    "checkpoint_sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s1_worst_front_forward_08_front.mp4",
+        "sha256": "a7ba07eda7b5ce337bc01dc1b9c538db8239a4250eb76f94f4197e004b047ff7",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s1_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s1_worst_side_forward_08_side.mp4",
+        "sha256": "0efa15cc7a81e16083b372ccf97fc0e43b856059d201b5226c593f95d365280d",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s1_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "treatment_s1",
+    "command": "forward_08",
+    "checkpoint_sha256": "40e796e5f787d2d35aa8cbb5ac53c611a879316211850d482d8a04bb2c9c90cd",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s1_worst_front_forward_08_front.mp4",
+        "sha256": "fd7f99907be40646b9d38d361043d8264509184c92f116eb66d13b9ee526fbe9",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s1_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s1_worst_side_forward_08_side.mp4",
+        "sha256": "fede113bfadf03c34c41752d4d2fba3aa0d9fa171d520fa9b5f0db517be4df12",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s1_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "control_s2",
+    "command": "forward_08",
+    "checkpoint_sha256": "bdf2c1889f40eefa818aa0bf8bf079ccb766d3b1a47180cad4477d91c0d122c7",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s2_worst_front_forward_08_front.mp4",
+        "sha256": "332c5b66931baf4b5ce793425ee40287c6257c4e80c0c3f30cf9b46a771a075a",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s2_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s2_worst_side_forward_08_side.mp4",
+        "sha256": "b027e41cd2c5d03a6b2b0da4af14ee623df904d0577c5ffee1f0b2174164b366",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s2_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "treatment_s2",
+    "command": "forward_08",
+    "checkpoint_sha256": "264bbbfbdf3ecc63df601f5f1c33bd87f87861f4cbe12986a76b257ea87ca1d6",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s2_worst_front_forward_08_front.mp4",
+        "sha256": "1a32f66716e59cb43ee6295830234d51c7bbf8ac86da57ab6a4a9d50c70e04d3",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s2_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s2_worst_side_forward_08_side.mp4",
+        "sha256": "8f3df3412995f70abc4e5d7ad574e05707013144f16d63c628831ca50de9aa5d",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s2_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "control_s3",
+    "command": "forward_08",
+    "checkpoint_sha256": "3a8e1c160d1b0cefa23b300415bea0a762fd52a48141f88dac4558a5d9757e96",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s3_worst_front_forward_08_front.mp4",
+        "sha256": "f877ba5115df095789cd4ddc88b67000156c8dd46d2ac42dd6c9521440ec6915",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s3_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s3_worst_side_forward_08_side.mp4",
+        "sha256": "7beed5d48a7b864f6355702b1db216ac9b1744641cce7f464133eaf63e9fffa8",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s3_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "treatment_s3",
+    "command": "forward_08",
+    "checkpoint_sha256": "8bfd008824e6080bfc3fa607631b192015a5888c1be45934ad4506cd6981eb90",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s3_worst_front_forward_08_front.mp4",
+        "sha256": "ca99a66ee1ff5719f2f6d08aee1cd8cf0039ffa55a7d86b68fc50cebe3099690",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s3_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s3_worst_side_forward_08_side.mp4",
+        "sha256": "bbbc6a758b3ff9d1d70bf14ea0d37581b34d4438f63983f20e95bf0c2a512cdb",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s3_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "control_s4",
+    "command": "forward_08",
+    "checkpoint_sha256": "ff26d6474131eed034f5f923c525c8147d5a241078e2d5e90205f3bf1f88575e",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s4_worst_front_forward_08_front.mp4",
+        "sha256": "5199f78b14a85242825a53e8d203e5e81c2c8b9d8bf1af72537fddf9e391e1f1",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s4_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s4_worst_side_forward_08_side.mp4",
+        "sha256": "ac1500af42d8fb8c00bf3bc38ed94d45d969434e66df5131f97fdfc091408685",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s4_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "treatment_s4",
+    "command": "forward_08",
+    "checkpoint_sha256": "063fe975ddc90f0cfbc8edd29ba443c9f48523a0ce84725feaefc180ed347057",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s4_worst_front_forward_08_front.mp4",
+        "sha256": "4ef1f0b11a978252efdd21f018099f9b1ea495a85488dda99e194ce2f0bae67b",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s4_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s4_worst_side_forward_08_side.mp4",
+        "sha256": "8fd38f19dfd169acef96b8774d0d580c44c2c28a29c2e985262db4db518c5afa",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s4_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "control_s5",
+    "command": "forward_08",
+    "checkpoint_sha256": "09a25318b57f8ed26e63201cf734674b46cc64b6e7efeb15ee15a4b17107899f",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s5_worst_front_forward_08_front.mp4",
+        "sha256": "e85578bf394495f80f15c5f61cd659a3126ce4fcbc68c5ebcff88889f3787108",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s5_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/control_s5_worst_side_forward_08_side.mp4",
+        "sha256": "0f532e21773e1eda4681d7d3ad82d251394599b858455fb6209d032b3f281b9d",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/control_s5_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  },
+  {
+    "model": "treatment_s5",
+    "command": "forward_08",
+    "checkpoint_sha256": "0811c563f7b15234a391e1c7c2fb952aba0a1c43d9efc5071ac9eaef2894ab4a",
+    "views": {
+      "front": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s5_worst_front_forward_08_front.mp4",
+        "sha256": "1ec81c19cff8e83e13825e81ec8274f1b08199c7fe0a039341f472783566457c",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s5_worst_front.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      },
+      "side": {
+        "output": "/root/gpufree-data/tw_stage1/issue12_20261110/videos/treatment_s5_worst_side_forward_08_side.mp4",
+        "sha256": "41396473008165e9f73f3b1319bfb12433109150ba790fba77e5b7963de6dd8f",
+        "eval_metadata": "/root/gpufree-data/tw_stage1/issue12_20261110/treatment_s5_worst_side.json",
+        "scope": "illustrative independent one-env seed1, single command/reset index0; no formal risk estimate",
+        "camera_follows_translation_and_heading": true
+      }
+    }
+  }
+]

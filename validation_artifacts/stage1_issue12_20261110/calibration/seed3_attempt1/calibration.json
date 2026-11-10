@@ -1,0 +1,18 @@
+{
+  "environment_steps": 1024.0,
+  "transitions": 4194304.0,
+  "raw_cost_mean": 0.006352900572380804,
+  "active_fraction": 0.09920096397399902,
+  "new_reward_per_step": 0.0,
+  "old_reward_per_step": 0.08842659991569235,
+  "total_reward_per_step": 0.08842659991569235,
+  "xy_tracking_reward_per_step": 0.049496145080411225,
+  "yaw_tracking_reward_per_step": 0.009611722309273318,
+  "iteration": -1,
+  "abs_new_over_abs_old": 0.0,
+  "abs_new_over_tracking": 0.0,
+  "max_term_identity_error": 0.0,
+  "step_dt": 0.02,
+  "no_optimizer_or_parameter_or_normalizer_updates": true,
+  "sampling": "stochastic frozen loaded actor; original training distribution; random initial episode lengths"
+}

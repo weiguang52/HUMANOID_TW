@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "steps": 1000,
+  "num_envs": 64,
+  "weight": 34.67877532210905,
+  "original_vs_zero_all_step_rewards_bitwise_equal": true,
+  "control_vs_treatment_unweighted_cost_bitwise_equal": true,
+  "reward_difference_matches_only_new_term_max_abs_error": 2.384185791015625e-07,
+  "policy_critic_observation_dims_unchanged": {
+    "policy": [
+      101
+    ],
+    "critic": [
+      134
+    ]
+  },
+  "actor_critic_network_shapes_and_loaded_state_unchanged": true,
+  "state_rng_checks": {
+    "initial:control": {
+      "root_joints_complete_rng_bitwise_equal": true,
+      "arrays": [
+        "root_state",
+        "joint_pos",
+        "joint_vel",
+        "torch_rng",
+        "cuda_rng",
+        "numpy_rng",
+        "numpy_rng_aux",
+        "numpy_rng_algorithm",
+        "python_rng",
+        "python_rng_version",
+        "python_rng_gauss_present",
+        "python_rng_gauss_value"
+      ]
+    },
+    "initial:treatment": {
+      "root_joints_complete_rng_bitwise_equal": true,
+      "arrays": [
+        "root_state",
+        "joint_pos",
+        "joint_vel",
+        "torch_rng",
+        "cuda_rng",
+        "numpy_rng",
+        "numpy_rng_aux",
+        "numpy_rng_algorithm",
+        "python_rng",
+        "python_rng_version",
+        "python_rng_gauss_present",
+        "python_rng_gauss_value"
+      ]
+    },
+    "final:control": {
+      "root_joints_complete_rng_bitwise_equal": true,
+      "arrays": [
+        "root_state",
+        "joint_pos",
+        "joint_vel",
+        "torch_rng",
+        "cuda_rng",
+        "numpy_rng",
+        "numpy_rng_aux",
+        "numpy_rng_algorithm",
+        "python_rng",
+        "python_rng_version",
+        "python_rng_gauss_present",
+        "python_rng_gauss_value"
+      ]
+    },
+    "final:treatment": {
+      "root_joints_complete_rng_bitwise_equal": true,
+      "arrays": [
+        "root_state",
+        "joint_pos",
+        "joint_vel",
+        "torch_rng",
+        "cuda_rng",
+        "numpy_rng",
+        "numpy_rng_aux",
+        "numpy_rng_algorithm",
+        "python_rng",
+        "python_rng_version",
+        "python_rng_gauss_present",
+        "python_rng_gauss_value"
+      ]
+    }
+  },
+  "all_parents": {
+    "original": "/root/gpufree-data/tw_stage1/issue12_20261110/smoke/original_attempt1",
+    "control": "/root/gpufree-data/tw_stage1/issue12_20261110/smoke/control_attempt1",
+    "treatment": "/root/gpufree-data/tw_stage1/issue12_20261110/smoke/treatment_attempt1"
+  },
+  "limit": "64-env deterministic no-update smoke; formal runs retain 4096 envs and stochastic PPO."
+}
