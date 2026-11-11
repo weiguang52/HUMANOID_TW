@@ -1,0 +1,136 @@
+{
+  "comparison_completed": true,
+  "node": "control6000",
+  "training_seed": 1,
+  "eval_seed": 1,
+  "same_checkpoint_sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+  "original_job": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue13_20261110/clean/control_s1_eval1.json",
+  "new_job": "/root/gpufree-data/tw_stage1/issue15_20261111/clean/control6000_s1_eval1.json",
+  "all_five_result_rows_exact": true,
+  "all_five_moment_arrays_bitwise_equal": true,
+  "commands": [
+    {
+      "command": "forward_03",
+      "original_row_exactly_reproduced": true,
+      "metric_differences": {
+        "xy_error": 0.0,
+        "yaw_error": 0.0,
+        "base_height": 0.0,
+        "joint_acc_rms": 0.0,
+        "foot_contact_slide": 0.0,
+        "left_contact_duty": 0.0,
+        "right_contact_duty": 0.0,
+        "left_joint_acc_rms": 0.0,
+        "right_joint_acc_rms": 0.0,
+        "left_foot_height": 0.0,
+        "right_foot_height": 0.0
+      },
+      "original_minimum_height": 0.258239209651947,
+      "new_minimum_height": 0.258239209651947,
+      "original_falls": 0,
+      "new_falls": 0,
+      "original_moment_arrays_bitwise_equal": true,
+      "changed_arrays": {}
+    },
+    {
+      "command": "yaw_positive",
+      "original_row_exactly_reproduced": true,
+      "metric_differences": {
+        "xy_error": 0.0,
+        "yaw_error": 0.0,
+        "base_height": 0.0,
+        "joint_acc_rms": 0.0,
+        "foot_contact_slide": 0.0,
+        "left_contact_duty": 0.0,
+        "right_contact_duty": 0.0,
+        "left_joint_acc_rms": 0.0,
+        "right_joint_acc_rms": 0.0,
+        "left_foot_height": 0.0,
+        "right_foot_height": 0.0
+      },
+      "original_minimum_height": 0.25671669840812683,
+      "new_minimum_height": 0.25671669840812683,
+      "original_falls": 0,
+      "new_falls": 0,
+      "original_moment_arrays_bitwise_equal": true,
+      "changed_arrays": {}
+    },
+    {
+      "command": "yaw_negative",
+      "original_row_exactly_reproduced": true,
+      "metric_differences": {
+        "xy_error": 0.0,
+        "yaw_error": 0.0,
+        "base_height": 0.0,
+        "joint_acc_rms": 0.0,
+        "foot_contact_slide": 0.0,
+        "left_contact_duty": 0.0,
+        "right_contact_duty": 0.0,
+        "left_joint_acc_rms": 0.0,
+        "right_joint_acc_rms": 0.0,
+        "left_foot_height": 0.0,
+        "right_foot_height": 0.0
+      },
+      "original_minimum_height": 0.2569487392902374,
+      "new_minimum_height": 0.2569487392902374,
+      "original_falls": 0,
+      "new_falls": 0,
+      "original_moment_arrays_bitwise_equal": true,
+      "changed_arrays": {}
+    },
+    {
+      "command": "forward_05",
+      "original_row_exactly_reproduced": true,
+      "metric_differences": {
+        "xy_error": 0.0,
+        "yaw_error": 0.0,
+        "base_height": 0.0,
+        "joint_acc_rms": 0.0,
+        "foot_contact_slide": 0.0,
+        "left_contact_duty": 0.0,
+        "right_contact_duty": 0.0,
+        "left_joint_acc_rms": 0.0,
+        "right_joint_acc_rms": 0.0,
+        "left_foot_height": 0.0,
+        "right_foot_height": 0.0
+      },
+      "original_minimum_height": 0.25864896178245544,
+      "new_minimum_height": 0.25864896178245544,
+      "original_falls": 0,
+      "new_falls": 0,
+      "original_moment_arrays_bitwise_equal": true,
+      "changed_arrays": {}
+    },
+    {
+      "command": "forward_08",
+      "original_row_exactly_reproduced": true,
+      "metric_differences": {
+        "xy_error": 0.0,
+        "yaw_error": 0.0,
+        "base_height": 0.0,
+        "joint_acc_rms": 0.0,
+        "foot_contact_slide": 0.0,
+        "left_contact_duty": 0.0,
+        "right_contact_duty": 0.0,
+        "left_joint_acc_rms": 0.0,
+        "right_joint_acc_rms": 0.0,
+        "left_foot_height": 0.0,
+        "right_foot_height": 0.0
+      },
+      "original_minimum_height": 0.2573798894882202,
+      "new_minimum_height": 0.2573798894882202,
+      "original_falls": 0,
+      "new_falls": 0,
+      "original_moment_arrays_bitwise_equal": true,
+      "changed_arrays": {}
+    }
+  ],
+  "committed_old_input_sha256": {
+    "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue13_20261110/clean/control_s1_eval1.json": "94a97699ad6655ca29f02db4f79e6385f6d17ca455cde5e27f1e86d46e0a4ad1",
+    "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue13_20261110/clean/moments/control_s1_eval1/forward_03.npz": "29f326080aee9abe036e91e93a9cb57faeec68713b3eaf9cfbb2af7c612a9292",
+    "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue13_20261110/clean/moments/control_s1_eval1/yaw_positive.npz": "533d24918c72f292d49feb2ad23c43d6c9febf45711935df2e9db8a73651f0b6",
+    "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue13_20261110/clean/moments/control_s1_eval1/yaw_negative.npz": "a5f3c008d87e8715de41eb0fee49cdf999e94a141700e1bc7d8ad3000b5cbd4e",
+    "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue13_20261110/clean/moments/control_s1_eval1/forward_05.npz": "e56477f39e01d097e7142be1ab4e2b91bce735b58719c2aedac455125fed7e76",
+    "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue13_20261110/clean/moments/control_s1_eval1/forward_08.npz": "fab9f90b2d96d3b6cab72414ce6a4700ef502916e2ac9f2e44c25d7185f3df10"
+  }
+}

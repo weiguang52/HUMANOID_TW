@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue15_videos.py", line 63, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue15_videos.py", line 50, in main
+    assert bbox[0]>10 and bbox[1]>70 and bbox[2]<950 and bbox[3]<670,(p,frame,bbox)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (PosixPath('/root/gpufree-data/tw_stage1/issue15_20261111/videos/ft5_side.mp4'), 0, [18, 154, 959, 559])

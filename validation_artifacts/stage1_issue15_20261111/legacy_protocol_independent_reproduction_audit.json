@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "scope": "Independent direct JSON comparison of every original field for all3FT5 legacy-protocol reruns, not a new policy test.",
+  "rows": [
+    {
+      "eval_seed": 1,
+      "all_original_result_fields_exact": true,
+      "original_forward03_yaw": 0.18381447022981248,
+      "rerun_forward03_yaw": 0.18381447022981248,
+      "clean_forward03_yaw": 0.16335976963379045
+    },
+    {
+      "eval_seed": 2,
+      "all_original_result_fields_exact": true,
+      "original_forward03_yaw": 0.1841321582346661,
+      "rerun_forward03_yaw": 0.1841321582346661,
+      "clean_forward03_yaw": 0.16340328760672695
+    },
+    {
+      "eval_seed": 3,
+      "all_original_result_fields_exact": true,
+      "original_forward03_yaw": 0.18513893643283347,
+      "rerun_forward03_yaw": 0.18513893643283347,
+      "clean_forward03_yaw": 0.16334594810649106
+    }
+  ],
+  "clean_forward03_eval_seed_mean_one_training_seed": 0.16336966844900283
+}

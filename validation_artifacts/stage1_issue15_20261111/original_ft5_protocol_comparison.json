@@ -1,0 +1,338 @@
+[
+  {
+    "eval_seed": 1,
+    "original_formula_unchanged": true,
+    "max_absolute_original_metric_difference": 0.0,
+    "exact_original_metrics_reproduced": true,
+    "exact_original_result_fields_reproduced": true,
+    "rows": [
+      {
+        "command": "stand",
+        "original_yaw": 0.05009908390985666,
+        "rerun_yaw": 0.05009908390985666,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.26010626554489136,
+        "rerun_minimum_height": 0.26010626554489136,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_01",
+        "original_yaw": 0.06810900863132059,
+        "rerun_yaw": 0.06810900863132059,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.26033928990364075,
+        "rerun_minimum_height": 0.26033928990364075,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_02",
+        "original_yaw": 0.11461424473727948,
+        "rerun_yaw": 0.11461424473727948,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.25990960001945496,
+        "rerun_minimum_height": 0.25990960001945496,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_03",
+        "original_yaw": 0.18381447022981248,
+        "rerun_yaw": 0.18381447022981248,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 1,
+        "rerun_falls": 1,
+        "original_minimum_height": 0.08292113989591599,
+        "rerun_minimum_height": 0.08292113989591599,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "yaw_positive",
+        "original_yaw": 0.27987700504262464,
+        "rerun_yaw": 0.27987700504262464,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2605772614479065,
+        "rerun_minimum_height": 0.2605772614479065,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "yaw_negative",
+        "original_yaw": 0.2958282186575234,
+        "rerun_yaw": 0.2958282186575234,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2601471245288849,
+        "rerun_minimum_height": 0.2601471245288849,
+        "all_original_result_fields_exact": true
+      }
+    ],
+    "original_checkpoint_sha256": "58eccca805e50c28c501104be241b48bb77822fe40bf4e3efdda30174827577a"
+  },
+  {
+    "eval_seed": 2,
+    "original_formula_unchanged": true,
+    "max_absolute_original_metric_difference": 0.0,
+    "exact_original_metrics_reproduced": true,
+    "exact_original_result_fields_reproduced": true,
+    "rows": [
+      {
+        "command": "stand",
+        "original_yaw": 0.05015255378019184,
+        "rerun_yaw": 0.05015255378019184,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.26004886627197266,
+        "rerun_minimum_height": 0.26004886627197266,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_01",
+        "original_yaw": 0.06821489490492323,
+        "rerun_yaw": 0.06821489490492323,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2601725459098816,
+        "rerun_minimum_height": 0.2601725459098816,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_02",
+        "original_yaw": 0.11490704242790506,
+        "rerun_yaw": 0.11490704242790506,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.25969579815864563,
+        "rerun_minimum_height": 0.25969579815864563,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_03",
+        "original_yaw": 0.1841321582346661,
+        "rerun_yaw": 0.1841321582346661,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2593797445297241,
+        "rerun_minimum_height": 0.2593797445297241,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "yaw_positive",
+        "original_yaw": 0.27986197119602,
+        "rerun_yaw": 0.27986197119602,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.26057058572769165,
+        "rerun_minimum_height": 0.26057058572769165,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "yaw_negative",
+        "original_yaw": 0.2960715403977083,
+        "rerun_yaw": 0.2960715403977083,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2601017653942108,
+        "rerun_minimum_height": 0.2601017653942108,
+        "all_original_result_fields_exact": true
+      }
+    ],
+    "original_checkpoint_sha256": "58eccca805e50c28c501104be241b48bb77822fe40bf4e3efdda30174827577a"
+  },
+  {
+    "eval_seed": 3,
+    "original_formula_unchanged": true,
+    "max_absolute_original_metric_difference": 0.0,
+    "exact_original_metrics_reproduced": true,
+    "exact_original_result_fields_reproduced": true,
+    "rows": [
+      {
+        "command": "stand",
+        "original_yaw": 0.05016820789064227,
+        "rerun_yaw": 0.05016820789064227,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2601211965084076,
+        "rerun_minimum_height": 0.2601211965084076,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_01",
+        "original_yaw": 0.0686545932595082,
+        "rerun_yaw": 0.0686545932595082,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.26036620140075684,
+        "rerun_minimum_height": 0.26036620140075684,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_02",
+        "original_yaw": 0.11623538432830002,
+        "rerun_yaw": 0.11623538432830002,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2596665024757385,
+        "rerun_minimum_height": 0.2596665024757385,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "forward_03",
+        "original_yaw": 0.18513893643283347,
+        "rerun_yaw": 0.18513893643283347,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.25862088799476624,
+        "rerun_minimum_height": 0.25862088799476624,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "yaw_positive",
+        "original_yaw": 0.279684448183747,
+        "rerun_yaw": 0.279684448183747,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.260525643825531,
+        "rerun_minimum_height": 0.260525643825531,
+        "all_original_result_fields_exact": true
+      },
+      {
+        "command": "yaw_negative",
+        "original_yaw": 0.296175908536301,
+        "rerun_yaw": 0.296175908536301,
+        "all_original_metric_differences": {
+          "xy_error": 0.0,
+          "yaw_error": 0.0,
+          "base_height": 0.0,
+          "joint_acc_rms": 0.0,
+          "foot_contact_slide": 0.0
+        },
+        "original_falls": 0,
+        "rerun_falls": 0,
+        "original_minimum_height": 0.2601642608642578,
+        "rerun_minimum_height": 0.2601642608642578,
+        "all_original_result_fields_exact": true
+      }
+    ],
+    "original_checkpoint_sha256": "58eccca805e50c28c501104be241b48bb77822fe40bf4e3efdda30174827577a"
+  }
+]

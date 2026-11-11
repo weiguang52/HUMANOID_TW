@@ -1,0 +1,927 @@
+{
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/tw_stage1_ft5_20261107/model_5997.pt",
+  "deterministic_policy": true,
+  "runtime": {
+    "python": "/root/gpufree-data/conda_envs/env_isaaclab/bin/python",
+    "rsl_rl": "5.0.1",
+    "torch": "2.7.0+cu128",
+    "torch_path": "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/torch/__init__.py"
+  },
+  "physics_diagnostics": null,
+  "last_action_observation": "requested",
+  "policy_last_action_params": {},
+  "critic_last_action_params": {},
+  "observation_dims": {
+    "policy": [
+      101
+    ],
+    "critic": [
+      134
+    ]
+  },
+  "mass_randomization": "legacy",
+  "perturbation_config": {
+    "mass_operation": "add",
+    "mass_distribution_params": [
+      -0.05,
+      0.1
+    ],
+    "friction_static": [
+      0.5,
+      1.2
+    ],
+    "friction_dynamic": [
+      0.4,
+      1.0
+    ],
+    "push_velocity_range": null,
+    "action_class": "JointPositionAction"
+  },
+  "mass_distribution": {
+    "num_envs": 128,
+    "bodies": [
+      {
+        "body": "base_link",
+        "nominal_min_kg": 0.07990783452987671,
+        "nominal_max_kg": 0.07990783452987671,
+        "applied_min_kg": 0.032876789569854736,
+        "applied_max_kg": 0.17929264903068542,
+        "applied_mean_kg": 0.10546068847179413,
+        "applied_quantiles_kg": [
+          0.032876789569854736,
+          0.034723781049251556,
+          0.03730464354157448,
+          0.10539604723453522,
+          0.1726103276014328,
+          0.17910434305667877,
+          0.17929264903068542
+        ],
+        "minimum_nominal_ratio": 0.4114338755607605,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_hip_linkage",
+        "nominal_min_kg": 0.004141506738960743,
+        "nominal_max_kg": 0.004141506738960743,
+        "applied_min_kg": 0.004141506738960743,
+        "applied_max_kg": 0.004141506738960743,
+        "applied_mean_kg": 0.004141506273299456,
+        "applied_quantiles_kg": [
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_hip_linkage",
+        "nominal_min_kg": 0.004141506738960743,
+        "nominal_max_kg": 0.004141506738960743,
+        "applied_min_kg": 0.004141506738960743,
+        "applied_max_kg": 0.004141506738960743,
+        "applied_mean_kg": 0.004141506273299456,
+        "applied_quantiles_kg": [
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "waist",
+        "nominal_min_kg": 0.019742896780371666,
+        "nominal_max_kg": 0.019742896780371666,
+        "applied_min_kg": 0.019742896780371666,
+        "applied_max_kg": 0.019742896780371666,
+        "applied_mean_kg": 0.019742896780371666,
+        "applied_quantiles_kg": [
+          0.019742896780371666,
+          0.019742896780371666,
+          0.019742896780371666,
+          0.019742896780371666,
+          0.019742896780371666,
+          0.019742896780371666,
+          0.019742896780371666
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_thigh",
+        "nominal_min_kg": 0.04239087551832199,
+        "nominal_max_kg": 0.04239087551832199,
+        "applied_min_kg": 0.04239087551832199,
+        "applied_max_kg": 0.04239087551832199,
+        "applied_mean_kg": 0.04239087924361229,
+        "applied_quantiles_kg": [
+          0.04239087551832199,
+          0.04239087551832199,
+          0.04239087551832199,
+          0.04239087551832199,
+          0.04239087551832199,
+          0.04239087551832199,
+          0.04239087551832199
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_thigh",
+        "nominal_min_kg": 0.04231465980410576,
+        "nominal_max_kg": 0.04231465980410576,
+        "applied_min_kg": 0.04231465980410576,
+        "applied_max_kg": 0.04231465980410576,
+        "applied_mean_kg": 0.04231465235352516,
+        "applied_quantiles_kg": [
+          0.04231465980410576,
+          0.04231465980410576,
+          0.04231465980410576,
+          0.04231465980410576,
+          0.04231465980410576,
+          0.04231465980410576,
+          0.04231465980410576
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "gearbox",
+        "nominal_min_kg": 0.00086215726332739,
+        "nominal_max_kg": 0.00086215726332739,
+        "applied_min_kg": 0.00086215726332739,
+        "applied_max_kg": 0.00086215726332739,
+        "applied_mean_kg": 0.000862157205119729,
+        "applied_quantiles_kg": [
+          0.00086215726332739,
+          0.00086215726332739,
+          0.00086215726332739,
+          0.00086215726332739,
+          0.00086215726332739,
+          0.00086215726332739,
+          0.00086215726332739
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_knee_linkage",
+        "nominal_min_kg": 0.010938732884824276,
+        "nominal_max_kg": 0.010938732884824276,
+        "applied_min_kg": 0.010938732884824276,
+        "applied_max_kg": 0.010938732884824276,
+        "applied_mean_kg": 0.010938732884824276,
+        "applied_quantiles_kg": [
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_knee_linkage",
+        "nominal_min_kg": 0.010938732884824276,
+        "nominal_max_kg": 0.010938732884824276,
+        "applied_min_kg": 0.010938732884824276,
+        "applied_max_kg": 0.010938732884824276,
+        "applied_mean_kg": 0.010938732884824276,
+        "applied_quantiles_kg": [
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276,
+          0.010938732884824276
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "chest",
+        "nominal_min_kg": 0.12830553948879242,
+        "nominal_max_kg": 0.12830553948879242,
+        "applied_min_kg": 0.12830553948879242,
+        "applied_max_kg": 0.12830553948879242,
+        "applied_mean_kg": 0.12830553948879242,
+        "applied_quantiles_kg": [
+          0.12830553948879242,
+          0.12830553948879242,
+          0.12830553948879242,
+          0.12830553948879242,
+          0.12830553948879242,
+          0.12830553948879242,
+          0.12830553948879242
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_mid_leg",
+        "nominal_min_kg": 0.0351288840174675,
+        "nominal_max_kg": 0.0351288840174675,
+        "applied_min_kg": 0.0351288840174675,
+        "applied_max_kg": 0.0351288840174675,
+        "applied_mean_kg": 0.0351288877427578,
+        "applied_quantiles_kg": [
+          0.0351288840174675,
+          0.0351288840174675,
+          0.0351288840174675,
+          0.0351288840174675,
+          0.0351288840174675,
+          0.0351288840174675,
+          0.0351288840174675
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_mid_leg",
+        "nominal_min_kg": 0.03510553762316704,
+        "nominal_max_kg": 0.03510553762316704,
+        "applied_min_kg": 0.03510553762316704,
+        "applied_max_kg": 0.03510553762316704,
+        "applied_mean_kg": 0.03510553389787674,
+        "applied_quantiles_kg": [
+          0.03510553762316704,
+          0.03510553762316704,
+          0.03510553762316704,
+          0.03510553762316704,
+          0.03510553762316704,
+          0.03510553762316704,
+          0.03510553762316704
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_shoulder_linkage",
+        "nominal_min_kg": 0.004141506738960743,
+        "nominal_max_kg": 0.004141506738960743,
+        "applied_min_kg": 0.004141506738960743,
+        "applied_max_kg": 0.004141506738960743,
+        "applied_mean_kg": 0.004141506273299456,
+        "applied_quantiles_kg": [
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "neck",
+        "nominal_min_kg": 0.0174129419028759,
+        "nominal_max_kg": 0.0174129419028759,
+        "applied_min_kg": 0.0174129419028759,
+        "applied_max_kg": 0.0174129419028759,
+        "applied_mean_kg": 0.01741294376552105,
+        "applied_quantiles_kg": [
+          0.0174129419028759,
+          0.0174129419028759,
+          0.0174129419028759,
+          0.0174129419028759,
+          0.0174129419028759,
+          0.0174129419028759,
+          0.0174129419028759
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_shoulder_linkage",
+        "nominal_min_kg": 0.004141506738960743,
+        "nominal_max_kg": 0.004141506738960743,
+        "applied_min_kg": 0.004141506738960743,
+        "applied_max_kg": 0.004141506738960743,
+        "applied_mean_kg": 0.004141506273299456,
+        "applied_quantiles_kg": [
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743,
+          0.004141506738960743
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_calf",
+        "nominal_min_kg": 0.029065843671560287,
+        "nominal_max_kg": 0.029065843671560287,
+        "applied_min_kg": 0.029065843671560287,
+        "applied_max_kg": 0.029065843671560287,
+        "applied_mean_kg": 0.029065845534205437,
+        "applied_quantiles_kg": [
+          0.029065843671560287,
+          0.029065843671560287,
+          0.029065843671560287,
+          0.029065843671560287,
+          0.029065843671560287,
+          0.029065843671560287,
+          0.029065843671560287
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_calf",
+        "nominal_min_kg": 0.0290690790861845,
+        "nominal_max_kg": 0.0290690790861845,
+        "applied_min_kg": 0.0290690790861845,
+        "applied_max_kg": 0.0290690790861845,
+        "applied_mean_kg": 0.029069073498249054,
+        "applied_quantiles_kg": [
+          0.0290690790861845,
+          0.0290690790861845,
+          0.0290690790861845,
+          0.0290690790861845,
+          0.0290690790861845,
+          0.0290690790861845,
+          0.0290690790861845
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_upper_arm",
+        "nominal_min_kg": 0.03456928953528404,
+        "nominal_max_kg": 0.03456928953528404,
+        "applied_min_kg": 0.03456928953528404,
+        "applied_max_kg": 0.03456928953528404,
+        "applied_mean_kg": 0.03456928953528404,
+        "applied_quantiles_kg": [
+          0.03456928953528404,
+          0.03456928953528404,
+          0.03456928953528404,
+          0.03456928953528404,
+          0.03456928953528404,
+          0.03456928953528404,
+          0.03456928953528404
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "neck_linkage",
+        "nominal_min_kg": 0.003944259602576494,
+        "nominal_max_kg": 0.003944259602576494,
+        "applied_min_kg": 0.003944259602576494,
+        "applied_max_kg": 0.003944259602576494,
+        "applied_mean_kg": 0.003944259602576494,
+        "applied_quantiles_kg": [
+          0.003944259602576494,
+          0.003944259602576494,
+          0.003944259602576494,
+          0.003944259602576494,
+          0.003944259602576494,
+          0.003944259602576494,
+          0.003944259602576494
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_upper_arm",
+        "nominal_min_kg": 0.03455116227269173,
+        "nominal_max_kg": 0.03455116227269173,
+        "applied_min_kg": 0.03455116227269173,
+        "applied_max_kg": 0.03455116227269173,
+        "applied_mean_kg": 0.034551165997982025,
+        "applied_quantiles_kg": [
+          0.03455116227269173,
+          0.03455116227269173,
+          0.03455116227269173,
+          0.03455116227269173,
+          0.03455116227269173,
+          0.03455116227269173,
+          0.03455116227269173
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_ankle",
+        "nominal_min_kg": 0.006317314226180315,
+        "nominal_max_kg": 0.006317314226180315,
+        "applied_min_kg": 0.006317314226180315,
+        "applied_max_kg": 0.006317314226180315,
+        "applied_mean_kg": 0.006317315623164177,
+        "applied_quantiles_kg": [
+          0.006317314226180315,
+          0.006317314226180315,
+          0.006317314226180315,
+          0.006317314226180315,
+          0.006317314226180315,
+          0.006317314226180315,
+          0.006317314226180315
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_ankle",
+        "nominal_min_kg": 0.006301050540059805,
+        "nominal_max_kg": 0.006301050540059805,
+        "applied_min_kg": 0.006301050540059805,
+        "applied_max_kg": 0.006301050540059805,
+        "applied_mean_kg": 0.006301051005721092,
+        "applied_quantiles_kg": [
+          0.006301050540059805,
+          0.006301050540059805,
+          0.006301050540059805,
+          0.006301050540059805,
+          0.006301050540059805,
+          0.006301050540059805,
+          0.006301050540059805
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_elbow_linkage",
+        "nominal_min_kg": 0.0031351889483630657,
+        "nominal_max_kg": 0.0031351889483630657,
+        "applied_min_kg": 0.0031351889483630657,
+        "applied_max_kg": 0.0031351889483630657,
+        "applied_mean_kg": 0.0031351891811937094,
+        "applied_quantiles_kg": [
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "head",
+        "nominal_min_kg": 0.1150117814540863,
+        "nominal_max_kg": 0.1150117814540863,
+        "applied_min_kg": 0.1150117814540863,
+        "applied_max_kg": 0.1150117814540863,
+        "applied_mean_kg": 0.1150118038058281,
+        "applied_quantiles_kg": [
+          0.1150117814540863,
+          0.1150117814540863,
+          0.1150117814540863,
+          0.1150117814540863,
+          0.1150117814540863,
+          0.1150117814540863,
+          0.1150117814540863
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_elbow_linkage",
+        "nominal_min_kg": 0.0031351889483630657,
+        "nominal_max_kg": 0.0031351889483630657,
+        "applied_min_kg": 0.0031351889483630657,
+        "applied_max_kg": 0.0031351889483630657,
+        "applied_mean_kg": 0.0031351891811937094,
+        "applied_quantiles_kg": [
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657,
+          0.0031351889483630657
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_foot",
+        "nominal_min_kg": 0.02622980810701847,
+        "nominal_max_kg": 0.02622980810701847,
+        "applied_min_kg": 0.02622980810701847,
+        "applied_max_kg": 0.02622980810701847,
+        "applied_mean_kg": 0.02622980624437332,
+        "applied_quantiles_kg": [
+          0.02622980810701847,
+          0.02622980810701847,
+          0.02622980810701847,
+          0.02622980810701847,
+          0.02622980810701847,
+          0.02622980810701847,
+          0.02622980810701847
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_foot",
+        "nominal_min_kg": 0.02629007399082184,
+        "nominal_max_kg": 0.02629007399082184,
+        "applied_min_kg": 0.02629007399082184,
+        "applied_max_kg": 0.02629007399082184,
+        "applied_mean_kg": 0.02629007026553154,
+        "applied_quantiles_kg": [
+          0.02629007399082184,
+          0.02629007399082184,
+          0.02629007399082184,
+          0.02629007399082184,
+          0.02629007399082184,
+          0.02629007399082184,
+          0.02629007399082184
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_force_arm",
+        "nominal_min_kg": 0.015736782923340797,
+        "nominal_max_kg": 0.015736782923340797,
+        "applied_min_kg": 0.015736782923340797,
+        "applied_max_kg": 0.015736782923340797,
+        "applied_mean_kg": 0.015736784785985947,
+        "applied_quantiles_kg": [
+          0.015736782923340797,
+          0.015736782923340797,
+          0.015736782923340797,
+          0.015736782923340797,
+          0.015736782923340797,
+          0.015736782923340797,
+          0.015736782923340797
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_force_arm",
+        "nominal_min_kg": 0.01573658362030983,
+        "nominal_max_kg": 0.01573658362030983,
+        "applied_min_kg": 0.01573658362030983,
+        "applied_max_kg": 0.01573658362030983,
+        "applied_mean_kg": 0.01573658175766468,
+        "applied_quantiles_kg": [
+          0.01573658362030983,
+          0.01573658362030983,
+          0.01573658362030983,
+          0.01573658362030983,
+          0.01573658362030983,
+          0.01573658362030983,
+          0.01573658362030983
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "left_wrist",
+        "nominal_min_kg": 0.026017289608716965,
+        "nominal_max_kg": 0.026017289608716965,
+        "applied_min_kg": 0.026017289608716965,
+        "applied_max_kg": 0.026017289608716965,
+        "applied_mean_kg": 0.026017285883426666,
+        "applied_quantiles_kg": [
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      },
+      {
+        "body": "right_wrist",
+        "nominal_min_kg": 0.026017289608716965,
+        "nominal_max_kg": 0.026017289608716965,
+        "applied_min_kg": 0.026017289608716965,
+        "applied_max_kg": 0.026017289608716965,
+        "applied_mean_kg": 0.026017285883426666,
+        "applied_quantiles_kg": [
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965,
+          0.026017289608716965
+        ],
+        "minimum_nominal_ratio": 1.0,
+        "below_1pct_nominal_count": 0,
+        "below_1pct_nominal_fraction": 0.0,
+        "at_safety_clamp_count": 0,
+        "requested_at_or_below_clamp_count": null,
+        "requested_min_kg": null
+      }
+    ],
+    "clamp_kg": 1e-06
+  },
+  "issue5_condition": "legacy",
+  "paired_resets": false,
+  "pushes": false,
+  "observation_noise": true,
+  "results": [
+    {
+      "command": "stand",
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "seed": 3,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2601211965084076,
+      "metrics": {
+        "xy_error": 0.020402792478403597,
+        "yaw_error": 0.05016820789064227,
+        "base_height": 0.26144269613013604,
+        "joint_acc_rms": 6.450073550475762,
+        "foot_contact_slide": 0.007278635265110211,
+        "left_contact_duty": 0.696390625,
+        "right_contact_duty": 0.487140625,
+        "left_joint_acc_rms": 8.127766971318051,
+        "right_joint_acc_rms": 8.58521485054912,
+        "left_foot_height": 0.011544212276268808,
+        "right_foot_height": 0.012451916227488254
+      }
+    },
+    {
+      "command": "forward_01",
+      "target": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "seed": 3,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.26036620140075684,
+      "metrics": {
+        "xy_error": 0.026954106981844462,
+        "yaw_error": 0.0686545932595082,
+        "base_height": 0.2621145315656904,
+        "joint_acc_rms": 12.954397099539637,
+        "foot_contact_slide": 0.017978959086495536,
+        "left_contact_duty": 0.5356796875,
+        "right_contact_duty": 0.543625,
+        "left_joint_acc_rms": 15.453986784705892,
+        "right_joint_acc_rms": 18.091661209519952,
+        "left_foot_height": 0.012801771217709756,
+        "right_foot_height": 0.013179714211219107
+      }
+    },
+    {
+      "command": "forward_02",
+      "target": [
+        0.2,
+        0.0,
+        0.0
+      ],
+      "seed": 3,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2596665024757385,
+      "metrics": {
+        "xy_error": 0.03183627349317561,
+        "yaw_error": 0.11623538432830002,
+        "base_height": 0.26261987042217516,
+        "joint_acc_rms": 18.511138854589312,
+        "foot_contact_slide": 0.030756077134253643,
+        "left_contact_duty": 0.492703125,
+        "right_contact_duty": 0.5493046875,
+        "left_joint_acc_rms": 19.45762885393761,
+        "right_joint_acc_rms": 27.434805206798018,
+        "left_foot_height": 0.013521937064491795,
+        "right_foot_height": 0.013886765348164772
+      }
+    },
+    {
+      "command": "forward_03",
+      "target": [
+        0.3,
+        0.0,
+        0.0
+      ],
+      "seed": 3,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.25862088799476624,
+      "metrics": {
+        "xy_error": 0.05442380332935818,
+        "yaw_error": 0.18513893643283347,
+        "base_height": 0.2627893154688645,
+        "joint_acc_rms": 20.883892974227667,
+        "foot_contact_slide": 0.037703855949411946,
+        "left_contact_duty": 0.4918828125,
+        "right_contact_duty": 0.522796875,
+        "left_joint_acc_rms": 21.397093276869505,
+        "right_joint_acc_rms": 31.058900931349026,
+        "left_foot_height": 0.013741374375837041,
+        "right_foot_height": 0.014242765100054384
+      }
+    },
+    {
+      "command": "yaw_positive",
+      "target": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "seed": 3,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.260525643825531,
+      "metrics": {
+        "xy_error": 0.021913608237814786,
+        "yaw_error": 0.279684448183747,
+        "base_height": 0.26205078259995207,
+        "joint_acc_rms": 8.148403585622088,
+        "foot_contact_slide": 0.009479878107581356,
+        "left_contact_duty": 0.6635703125,
+        "right_contact_duty": 0.4732890625,
+        "left_joint_acc_rms": 9.930723558996805,
+        "right_joint_acc_rms": 11.372994486396667,
+        "left_foot_height": 0.011969440557295456,
+        "right_foot_height": 0.012638293103329487
+      }
+    },
+    {
+      "command": "yaw_negative",
+      "target": [
+        0.0,
+        0.0,
+        -0.3
+      ],
+      "seed": 3,
+      "num_envs": 128,
+      "seconds": 20.0,
+      "failed_trials": 0,
+      "fall_rate": 0.0,
+      "minimum_base_height": 0.2601642608642578,
+      "metrics": {
+        "xy_error": 0.024465697071557314,
+        "yaw_error": 0.296175908536301,
+        "base_height": 0.26117122175730767,
+        "joint_acc_rms": 5.870644265075215,
+        "foot_contact_slide": 0.006711947379435344,
+        "left_contact_duty": 0.7236171875,
+        "right_contact_duty": 0.49921875,
+        "left_joint_acc_rms": 7.694589010246098,
+        "right_joint_acc_rms": 7.39081145469239,
+        "left_foot_height": 0.011361250113652204,
+        "right_foot_height": 0.012417516846071522
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "command": "forward_03",
+  "target": [
+    0.3,
+    0.0,
+    0.0
+  ],
+  "env_id": 116,
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_16-49-57_issue12_20261110_control_s1/model_13493.pt",
+  "frames": 1000,
+  "dt": 0.02,
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_pitch_joint",
+    "right_knee_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "neck",
+    "right_shoulder_pitch_joint",
+    "left_ankle_yaw_joint",
+    "right_ankle_yaw_joint",
+    "left_shoulder_roll_joint",
+    "neck_linkage_roll",
+    "right_shoulder_roll_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_yaw_joint",
+    "head_pitch",
+    "right_shoulder_yaw_joint",
+    "left_foot_roll",
+    "right_foot_roll",
+    "left_elbow_pitch_joint",
+    "right_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_wrist_pitch"
+  ],
+  "fields": {
+    "root_pose_local": [
+      0,
+      7
+    ],
+    "root_velocity_world": [
+      7,
+      13
+    ],
+    "joint_pos": [
+      13,
+      43
+    ]
+  },
+  "source_sample": "exact post-step states, including any reset frames; no re-simulation in display",
+  "first_failure_step": -1,
+  "flags": [
+    "valid_nonterminal",
+    "initial_episode",
+    "window_inside",
+    "reward_window_inside"
+  ]
+}

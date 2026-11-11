@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "checks": {
+    "plain": {
+      "passed": true,
+      "checkpoint_sha256": "58eccca805e50c28c501104be241b48bb77822fe40bf4e3efdda30174827577a",
+      "commands": 1,
+      "formal_trials": 0,
+      "training_updates": 0
+    },
+    "observed": {
+      "passed": true,
+      "checkpoint_sha256": "58eccca805e50c28c501104be241b48bb77822fe40bf4e3efdda30174827577a",
+      "commands": 1,
+      "formal_trials": 0,
+      "training_updates": 0
+    },
+    "clock": {
+      "passed": true,
+      "checkpoint_sha256": "ef3eb4c67f6084aaf73b0d79a89a0be98424cd40835bc34dcfa0feec4cd7a761",
+      "commands": 2,
+      "formal_trials": 0,
+      "training_updates": 0
+    }
+  },
+  "original_metrics_exact": true,
+  "final_root_joint_state_and_all_rng_bitwise_identical": true,
+  "compared_state_fields": [
+    "root_state",
+    "joint_pos",
+    "joint_vel",
+    "torch_rng",
+    "cuda_rng",
+    "numpy_rng",
+    "numpy_rng_aux",
+    "numpy_rng_algorithm",
+    "python_rng",
+    "python_rng_version",
+    "python_rng_gauss_present",
+    "python_rng_gauss_value"
+  ],
+  "formal_updates": 0,
+  "formal_trials": 0
+}

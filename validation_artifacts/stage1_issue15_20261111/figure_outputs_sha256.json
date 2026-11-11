@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/plot_issue15.py": "0bd81c3dc82b9da3b7627ba5fcec83645e9044a4fb350dcec97890d687062705",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue15_common.py": "e23d0c607ca9e73ba2058986e51bc7fb393dc95d7839e784e549399bb028167d"
+  },
+  "inputs": {
+    "node_statistics.json": "207257f35e21bc416533bfcec962e9cc53ebf10274fce81a0b231be3636d7a8f",
+    "cohort.json": "658a36390e22325c3b61a27b5901c0fb06978b446c4e4240694c443948a27652",
+    "lineage_comparisons.json": "180320f2a02a1c170ab405ffeaea3748874d82a29c98df31fb8bdb8c6967118e",
+    "original_ft5_protocol_comparison.json": "8b3c140f7aefc3a4e7a0cf0a72d5784953ca38b3566bc0bb1100ac57464434fe"
+  },
+  "outputs": {
+    "figures/lineage_yaw_xy_falls.png": "4912306aa0357b33c06b3a5d891e7ee98d8e54f33dc1a34536e821cc7a2517ca",
+    "figures/lineage_yaw_xy_falls.svg": "9ade2c4cbf253efa4da5906b6188bc33d8bab500493aefca1f0d01124c561875",
+    "figures/yaw_decomposition_heading.png": "b0c72682349efec8c4627436bd04580742595e5860001f1ca8896e4e4e6c3cbe",
+    "figures/yaw_decomposition_heading.svg": "464b04da34caad5ee810b530840ec3abedfa17619c65443663ac3e67c8df4099",
+    "figures/lineage20percent_comparisons.png": "1e2d5cd57f412ba04a862970a571babf56ed9df3390f2ffb04940ebe9f156289",
+    "figures/lineage20percent_comparisons.svg": "610aa7e43236af21b6c886d7c6896f6c0c521310fc5e116242ec05389f7412de",
+    "figures/yaw_peak_and_step_frequency.png": "5880a79f72ac937c9b1ee2d8d53d37a0008709b42a658129fcd13349c88a2ec3",
+    "figures/yaw_peak_and_step_frequency.svg": "a8a7039f48f9886e09edd22525f1ebae2e52ae53b2e27279ebdfc7bb28138d59",
+    "figures/original_ft5_protocol_comparison.png": "6893d131e24ca20b9312e68a0d0e5c6637dfd36bdaad40a6d19736ce05508818",
+    "figures/original_ft5_protocol_comparison.svg": "8126319fc28671866f74727e2217a5a18b794fa78b0e58a23800e80bc90b0d5a"
+  }
+}

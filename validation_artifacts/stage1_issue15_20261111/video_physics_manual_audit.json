@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "reviewed_plot_count": 6,
+  "reviewed_contact_sheets": 2,
+  "front_and_side_colors_fullbody_and_attachment_samples_pass": true,
+  "world_XY_heading_inset_readable": true,
+  "full_resolution_motion_frames_reviewed": [
+    "video_review_frames/ft5_front_frame474.png",
+    "video_review_frames/ft5_front_frame839.png",
+    "video_review_frames/ft5_side_frame474.png",
+    "video_review_frames/ft5_side_frame839.png",
+    "video_review_frames/control6000_front_frame113.png",
+    "video_review_frames/control6000_front_frame211.png",
+    "video_review_frames/control6000_side_frame113.png",
+    "video_review_frames/control6000_side_frame211.png"
+  ],
+  "reviewed_frame_and_sheet_sha256": {
+    "video_review_frames/ft5_front_frame474.png": "f2e53d4549b860049623c0c9a7e321474a1840bcfa8e5df706aeeaea6ada7892",
+    "video_review_frames/ft5_front_frame839.png": "5e59a43e31d85719f5ba235879cb488a4af12837f024d71d64f7c98b45d1dd7d",
+    "video_review_frames/ft5_side_frame474.png": "a6bf2204b08a964269330d19376c6cb1f311d60291e5cc37a9d2e617d4981696",
+    "video_review_frames/ft5_side_frame839.png": "1da6d37628098169a61426f2012b833fd8afcf8462317e347ec2eea6260ab51d",
+    "video_review_frames/control6000_front_frame113.png": "8c4d12592f5bc4442a223d22ca7e87c9c36c2f73125e3adbf907c2ecf261f0fe",
+    "video_review_frames/control6000_front_frame211.png": "99f161288e889f9e86500b55bf635834e2bf3117458fff73872ed8d70c210d66",
+    "video_review_frames/control6000_side_frame113.png": "c96ec141177196925c3a358e2a2d65199c2b813a72e231d7a7b776f34d78f825",
+    "video_review_frames/control6000_side_frame211.png": "b86f6dffa0bba0c9419c50f2c91cc88c92ff2e3b57d45db412f01ad9c9393abf",
+    "video_contact_sheets/ft5.png": "4206a28720085117b2fd101d498471f937b1728b36799b18aa5ca5ed0d82437c",
+    "video_contact_sheets/control6000.png": "7865518d6b1e835d21fbab2b01beb57d597671c0c72bcd84c0fd2d2916beec24"
+  },
+  "reviewed_plot_sha256": {
+    "figures/lineage_yaw_xy_falls.png": "4912306aa0357b33c06b3a5d891e7ee98d8e54f33dc1a34536e821cc7a2517ca",
+    "figures/yaw_decomposition_heading.png": "b0c72682349efec8c4627436bd04580742595e5860001f1ca8896e4e4e6c3cbe",
+    "figures/lineage20percent_comparisons.png": "1e2d5cd57f412ba04a862970a571babf56ed9df3390f2ffb04940ebe9f156289",
+    "figures/yaw_peak_and_step_frequency.png": "5880a79f72ac937c9b1ee2d8d53d37a0008709b42a658129fcd13349c88a2ec3",
+    "figures/original_ft5_protocol_comparison.png": "6893d131e24ca20b9312e68a0d0e5c6637dfd36bdaad40a6d19736ce05508818",
+    "figures/representative_world_heading.png": "46dc488ad920bd61106f43a97e05b1816a33b1534785710da1bd2f74f6945da8"
+  },
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "review_scope": "Actual six plots, two seven-column contact sheets and eight full-resolution maximum arm-motion/heading-response frames viewed in this chat. Colors, complete body, limb attachment, composition and world XY heading inset pass for inspected samples; no claim to inspect all 4000 frames.",
+  "observations": "FT5/control front show colored extended arms with small joint motions, side views show continuous leg attachment and gait. Camera follows heading; inset and numeric drift visibly disclose curving. Initial frame transient rendering grain is visible, without body clipping. FT5/control trajectories both curve despite different body-z yaw MAE.",
+  "reviewed_unix": 1794396289.4805214
+}

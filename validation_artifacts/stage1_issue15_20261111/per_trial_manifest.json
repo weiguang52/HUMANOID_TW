@@ -1,0 +1,60 @@
+{
+  "files": {
+    "per_trial/forward_03.csv.gz": {
+      "rows": 107520,
+      "sha256": "dc4a33664ac31e7d4bdaee8840918535cfe7d9582baaf636240a5a8007238bcb"
+    },
+    "per_trial/yaw_positive.csv.gz": {
+      "rows": 107520,
+      "sha256": "616d4057c023bc500e926469f2f265b5ed852effb3d61796113f93e67825ba70"
+    },
+    "per_trial/yaw_negative.csv.gz": {
+      "rows": 107520,
+      "sha256": "558b1781017834618f44b06d149ca2d39c2feb0e95812d2a659066381a1ae7fd"
+    },
+    "per_trial/forward_05.csv.gz": {
+      "rows": 107520,
+      "sha256": "61346dbb4d565c3605a341c5d9782d383a613dbb99e29dea0a6b8d0a12774d1c"
+    },
+    "per_trial/forward_08.csv.gz": {
+      "rows": 107520,
+      "sha256": "506a1232cbaf56266d4fef5bbbb5721aba7eaeabdbcaf2d461886e7973195ef1"
+    },
+    "per_trial/stand.csv.gz": {
+      "rows": 107520,
+      "sha256": "044cb5aa046c6c0ba8e4a4b009058354868a61b02b50db606dd3f5b64e59ab9a"
+    }
+  },
+  "total_rows": 645120,
+  "schema": [
+    "model",
+    "node",
+    "training_seed",
+    "eval_seed",
+    "command",
+    "env_id",
+    "samples",
+    "first_failure_step",
+    "yaw_mae",
+    "xy_mae",
+    "yaw_mean",
+    "yaw_sd",
+    "heading_all_segments_degrees",
+    "initial_prefix_heading_degrees",
+    "initial_prefix_seconds",
+    "full20s_survivor_heading_degrees",
+    "yaw_peak_hz",
+    "frequency_resolution_hz",
+    "left_stride_hz",
+    "right_stride_hz",
+    "step_hz",
+    "peak_over_stride",
+    "peak_over_step",
+    "spectrum_supported",
+    "fullband_yaw_peak_hz",
+    "fullband_peak_over_stride",
+    "fullband_peak_over_step",
+    "fullband_spectrum_supported"
+  ],
+  "scope": "Six per-command CSV gzip files, all35 unique policies x3eval seeds x1024trials. No alias double-counting."
+}

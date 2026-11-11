@@ -1,0 +1,22 @@
+{
+  "replay_source_sha256": "f1bd51952e85346a9b044fa507d2a0d96d3c3bc9a10005dc89d63fcf9ec504b3",
+  "render_adapter_sha256": "91319742cea92e6438c75f5cac3126d3b27e8640a058fedc8efd82a432e11680",
+  "source_selection": "/root/gpufree-data/tw_stage1/issue15_20261111/replay_selection_ft5.json",
+  "source_trajectory_sha256": "9d01a0b2ccfc5bb42974f1a8e70be63912713076595fa908f6908315e8b121d2",
+  "source_model": "ft5_s1",
+  "source_env_id": 671,
+  "group": "ft5",
+  "command": "forward_03",
+  "view": "side",
+  "frames": 1000,
+  "fps": 50,
+  "seconds": 20,
+  "push_seconds": [],
+  "reset_frame_indices": [],
+  "physics_integrated": false,
+  "camera": "follows translation and heading",
+  "source_samples": "exact same post-step states and times for paired front/side views; FT5/control examples are not synchronized",
+  "display_mass_material": "nominal authored asset; source randomization is documented but not re-integrated",
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "video": "/root/gpufree-data/tw_stage1/issue15_20261111/videos/ft5_side.mp4"
+}

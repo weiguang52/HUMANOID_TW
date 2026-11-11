@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "reason": "Original automatic bbox included isolated horizon color speckles. Remove connected color components under50 pixels, preserving all larger body-color components and the original full-body bounds; rerun all28 video samples successfully. Saturation-only trial failed and was discarded; videos and scientific data unchanged.",
+  "audit_source_sha256": "6f066a8ea11948db31e63eedb87bc4d7064465fbd148d60c732bebd54c6bee98",
+  "successful_log": "video_audit_refined.log",
+  "video_quality_audit_sha256": "1c70c878a4a36c3c30052f7f1d47acb79f86b0ac8b28e647716494ed21628433",
+  "formal_jobs_restarted": 0
+}

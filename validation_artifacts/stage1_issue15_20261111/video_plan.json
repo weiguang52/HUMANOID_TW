@@ -1,0 +1,42 @@
+[
+  {
+    "group": "ft5",
+    "model": "ft5_s1",
+    "env_id": 671,
+    "push_seconds": [],
+    "views": {
+      "front": {
+        "path": "/root/gpufree-data/tw_stage1/issue15_20261111/videos/ft5_front.mp4",
+        "sha256": "b4373cb670e8b6df0fd3442f5bedc0c3f5f251832dee1c0aec60476874888f8f",
+        "metadata": "/root/gpufree-data/tw_stage1/issue15_20261111/ft5_front.json",
+        "source_trajectory_sha256": "9d01a0b2ccfc5bb42974f1a8e70be63912713076595fa908f6908315e8b121d2"
+      },
+      "side": {
+        "path": "/root/gpufree-data/tw_stage1/issue15_20261111/videos/ft5_side.mp4",
+        "sha256": "5b7496cfa5a1ecc878fca906fe54841e91481eb24d5d162fc5c9a428f3005614",
+        "metadata": "/root/gpufree-data/tw_stage1/issue15_20261111/ft5_side.json",
+        "source_trajectory_sha256": "9d01a0b2ccfc5bb42974f1a8e70be63912713076595fa908f6908315e8b121d2"
+      }
+    }
+  },
+  {
+    "group": "control6000",
+    "model": "control6000_s1",
+    "env_id": 116,
+    "push_seconds": [],
+    "views": {
+      "front": {
+        "path": "/root/gpufree-data/tw_stage1/issue15_20261111/videos/control6000_front.mp4",
+        "sha256": "712a9292a4e3fc1f8b8b5f4432d5060e54cf27897e1af7b34b40a96237423860",
+        "metadata": "/root/gpufree-data/tw_stage1/issue15_20261111/control6000_front.json",
+        "source_trajectory_sha256": "a682723f4c2ff636c958d1553ba799809a7c4f59008ca595e7255d240edbd7fe"
+      },
+      "side": {
+        "path": "/root/gpufree-data/tw_stage1/issue15_20261111/videos/control6000_side.mp4",
+        "sha256": "435d1f5e51b514cd3dd6db2800d27e6d89b95ba6bda14e9cca7ec46be59936ea",
+        "metadata": "/root/gpufree-data/tw_stage1/issue15_20261111/control6000_side.json",
+        "source_trajectory_sha256": "a682723f4c2ff636c958d1553ba799809a7c4f59008ca595e7255d240edbd7fe"
+      }
+    }
+  }
+]

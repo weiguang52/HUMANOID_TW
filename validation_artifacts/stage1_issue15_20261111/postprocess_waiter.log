@@ -1,0 +1,25 @@
+START analysis 67013
+END analysis 0
+START conclusions 67039
+END conclusions 0
+START plots 67051
+END plots 0
+START reconstruction 67063
+END reconstruction 0
+START trajectory_plot 67751
+END trajectory_plot 0
+START video_driver 67763
+END video_driver 0
+START video_audit 72021
+END video_audit 1
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/pipeline_issue15.py", line 24, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/pipeline_issue15.py", line 21, in main
+    state(phase);run(["python","-u","scripts/locomotion/"+script],ROOT/(phase+".log"),phase)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue15_common.py", line 21, in run
+    if p.returncode:raise RuntimeError(str(log))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: /root/gpufree-data/tw_stage1/issue15_20261111/video_audit.log

@@ -1,0 +1,32 @@
+{
+  "sources": {
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/analyze_issue15.py": "70ced270fe3ae9d89698d1c93084f18af372c839d16ac3b14ba9a77ba5b3c47d",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue15_analysis_data.py": "99cf1df511e0dac569389820e5de24571d33b66519d8b5da53bd3c0f10ced0b7",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue15_math.py": "c1038cfdb20eaac92864ac82b7f9461e7c32b0e0b1f9af56b44626a6c6202a6f",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue13_analysis_data.py": "14d1790bc0925422ffd973322fc65b4f5dbaafb9e115d0f91f2d32f7a51915eb",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue15_historical_consistency.py": "f5587ad0759793947ce279dcf12eaef0dd7bd23e9225d3776e3cff1c7375aed6"
+  },
+  "outputs": {
+    "job_statistics.json": "9d83450af521aaecd9584ec96028c7ff5286c7d893c62689004f548193862937",
+    "seed_statistics.json": "7730cfc91d1d4b6c8ca32ac4a894a729fb9c4c3aa7a6668bcb6c9b010a199ca2",
+    "node_statistics.json": "207257f35e21bc416533bfcec962e9cc53ebf10274fce81a0b231be3636d7a8f",
+    "lineage_comparisons.json": "180320f2a02a1c170ab405ffeaea3748874d82a29c98df31fb8bdb8c6967118e",
+    "yaw_dominance.json": "ac1243a9295cc8f5fed5803c8f8163c69301ec6a488437176b3cd09ac87aff23",
+    "spectra.json": "efd9da1ec84eeb2b3d2d99733e2fb63d002582c3cb3254034514041999184c4d",
+    "representative_selection.json": "391286d8f2249b8ccd862c8567db56c150e8457d26639eaa270bc5df519ddd3c",
+    "original_ft5_protocol_comparison.json": "8b3c140f7aefc3a4e7a0cf0a72d5784953ca38b3566bc0bb1100ac57464434fe",
+    "lineage_metrics.csv": "76c9804bd2d110d51dffc9a7fd021cc03e8c667cad9864a314a2399485631532",
+    "per_trial_manifest.json": "4f6a11c7aedc599de44418aead72cb274a4bc9d79a19134a5d7ad0c53cbc7b68",
+    "historical_clean_reproduction.json": "f384431a8ef7a1ba22e67526575456bc5b4571b38f0a9e7a6f7075d88d0962df",
+    "analysis_integrity_audit.json": "292dfa8a46d7a870ce3337e09b029fcc1f9bc5f870321843b1320e367540ced1"
+  },
+  "per_trial": {
+    "/root/gpufree-data/tw_stage1/issue15_20261111/per_trial/forward_03.csv.gz": "dc4a33664ac31e7d4bdaee8840918535cfe7d9582baaf636240a5a8007238bcb",
+    "/root/gpufree-data/tw_stage1/issue15_20261111/per_trial/yaw_positive.csv.gz": "616d4057c023bc500e926469f2f265b5ed852effb3d61796113f93e67825ba70",
+    "/root/gpufree-data/tw_stage1/issue15_20261111/per_trial/yaw_negative.csv.gz": "558b1781017834618f44b06d149ca2d39c2feb0e95812d2a659066381a1ae7fd",
+    "/root/gpufree-data/tw_stage1/issue15_20261111/per_trial/forward_05.csv.gz": "61346dbb4d565c3605a341c5d9782d383a613dbb99e29dea0a6b8d0a12774d1c",
+    "/root/gpufree-data/tw_stage1/issue15_20261111/per_trial/forward_08.csv.gz": "506a1232cbaf56266d4fef5bbbb5721aba7eaeabdbcaf2d461886e7973195ef1",
+    "/root/gpufree-data/tw_stage1/issue15_20261111/per_trial/stand.csv.gz": "044cb5aa046c6c0ba8e4a4b009058354868a61b02b50db606dd3f5b64e59ab9a"
+  },
+  "derived_after_evaluation_freeze": true
+}

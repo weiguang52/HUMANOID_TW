@@ -1,0 +1,2879 @@
+{
+  "training_updates": 0,
+  "all_requested_evaluations_completed": true,
+  "yaw_formula": "Exposure-weighted mean valid post-step abs(body-z angular velocity-commanded yaw rate), rad/s; exactly original evaluator.",
+  "brief_findings": [
+    "Five multiseed-positive-interval yaw contrasts and two single-seed descriptive >20% contrasts meet their prospectively fixed definitions. The three robust08->strengthen contrasts use two later seeds against one fixed robust08 policy (conditional inference); the two control->treatment contrasts use five matched pairs.",
+    "At clean0.3m/s FT5 yaw MAE=0.163370rad/s and control=0.334970rad/s (2.050x). The original approximately0.184rad/s FT5 protocol is reproduced with the same policy; its protocol/sampling difference does not remove the observed unified-protocol lineage difference.",
+    "All33node/speed mean within-trial MSE shares exceed0.5 (range81.16..100.00%). All24multiseed intervals lie above0.5; the nine single-seed cells remain descriptive. Time-varying error dominates this energy decomposition, not a proof that every trajectory is periodic or straight.",
+    "Low-speed body-yaw peaks are2.5Hz, matching the configured0.4s gait-phase input (2.5Hz). Later-node force-threshold contact events are approximately4.95..4.98/s, giving roughly one yaw oscillation per full gait/stride cycle, or half the two-foot event cadence. FT5 has approximately7.50events/s under this contact-crossing proxy; it is not an independent anatomical step measurement. Frequency coincidence does not establish causation.",
+    "Curving coexists with the dominant oscillatory energy: mean absolute20s heading drift at0.3m/s is FT592.94deg, control107.11deg, treatment238.55deg and clock167.05deg. All these low-speed trials survive, so these particular endpoints are not survivor-selected.",
+    "Body-z rate error and world heading cannot substitute for each other. FT5->robust05 raises0.3m/s body-yaw MAE by63.32% while mean absolute20s quaternion-heading drift changes92.94->2.40deg. That comparison has one training seed per node and multiple recipe/ancestry differences, so it has no unique configuration attribution.",
+    "For failing out-of-range FT5 conditions, high-frequency residual peaks and full-horizon variability include failure/transient behavior; they are not evidence of a stable healthy gait. The raw support and censored heading endpoints remain explicit."
+  ],
+  "supporting_numeric_facts": {
+    "FT5_clean03_yaw": 0.1633696684490028,
+    "control_clean03_yaw": 0.33497025521118096,
+    "control_over_FT5_clean03_yaw_ratio": 2.0503821694156446,
+    "mean_abs20s_heading03_degrees": {
+      "ft5": 92.94448352198208,
+      "robust05": 2.4036730414872207,
+      "control6000": 107.1073677503739,
+      "treatment": 238.54694747306021,
+      "clock": 167.0481234732091
+    },
+    "all33_node_speed_point_within_energy_fractions_above_half": true,
+    "all24_multiseed_within_energy_lower95_above_half": true,
+    "node_speed_within_energy_mean_range": [
+      0.8115848373829614,
+      0.9999867469377959
+    ],
+    "low_speed_peak_step_and_ratio": {
+      "ft5": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 7.501511928595261,
+        "fullband_peak_over_step_mean": 0.3336595638048472
+      },
+      "robust05": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.958083083083085,
+        "fullband_peak_over_step_mean": 0.5042301136363637
+      },
+      "robust08": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.954954954954956,
+        "fullband_peak_over_step_mean": 0.5045454545454546
+      },
+      "strengthen": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.954954954954956,
+        "fullband_peak_over_step_mean": 0.5045454545454546
+      },
+      "bounded": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.97997997997998,
+        "fullband_peak_over_step_mean": 0.5020227272727273
+      },
+      "requested1500": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.964964964964966,
+        "fullband_peak_over_step_mean": 0.5035363636363638
+      },
+      "requested3000": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.954954954954956,
+        "fullband_peak_over_step_mean": 0.5045454545454546
+      },
+      "requested4500": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.954954954954956,
+        "fullband_peak_over_step_mean": 0.5045454545454546
+      },
+      "control6000": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.954954954954956,
+        "fullband_peak_over_step_mean": 0.5045454545454546
+      },
+      "treatment": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.954954954954956,
+        "fullband_peak_over_step_mean": 0.5045454545454546
+      },
+      "clock": {
+        "fullband_yaw_peak_hz_mean": 2.5,
+        "footstrike_step_hz_mean": 4.954954954954956,
+        "fullband_peak_over_step_mean": 0.5045454545454546
+      }
+    },
+    "configured_gait_phase_period_seconds": 0.4,
+    "configured_gait_phase_frequency_Hz": 2.5,
+    "FT5_clean05_08_fall_rates": [
+      0.8951822916666666,
+      1.0
+    ]
+  },
+  "interpretation_basis_sha256": {
+    "node_statistics.json": "207257f35e21bc416533bfcec962e9cc53ebf10274fce81a0b231be3636d7a8f",
+    "lineage_comparisons.json": "180320f2a02a1c170ab405ffeaea3748874d82a29c98df31fb8bdb8c6967118e",
+    "yaw_dominance.json": "ac1243a9295cc8f5fed5803c8f8163c69301ec6a488437176b3cd09ac87aff23",
+    "original_ft5_protocol_comparison.json": "8b3c140f7aefc3a4e7a0cf0a72d5784953ca38b3566bc0bb1100ac57464434fe"
+  },
+  "gait_phase_source_sha256": "37457aed5382e4e21beb652cdb8fe98438c84ec1f4c2d0f5fbb0789d52d93e2e",
+  "qualifying_jumps": [
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.1633696684490028,
+      "current_all_node_mean": 0.26680869505321053,
+      "relative_increase": 0.6331593103312019,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.10343902660420773,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.3321482369386153,
+      "current_all_node_mean": 0.4774071936491362,
+      "relative_increase": 0.43733171083297484,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.14525895671052091,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.1586433230204465,
+      "current_all_node_mean": 0.6049452820445448,
+      "relative_increase": 2.81324136765956,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.4463019590240983,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.43679690178406444,
+          0.45580701626413217
+        ],
+        "sd": 0.014532087416203715
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.21744564590755547,
+      "current_all_node_mean": 0.8082095145755155,
+      "relative_increase": 2.7168346655196607,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.5907638686679602,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.5127536049692603,
+          0.66877413236666
+        ],
+        "sd": 0.11926829505621925
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.34807898761021133,
+      "current_all_node_mean": 0.7508057067172924,
+      "relative_increase": 1.1569980764195562,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.402726719107081,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.28610893715798075,
+          0.5193445010561814
+        ],
+        "sd": 0.17829453929328215
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.33497025521118096,
+      "current_all_node_mean": 0.46594756220995687,
+      "relative_increase": 0.391011753912901,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.13097730699877597,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.04270220831260838,
+          0.20275494185115206
+        ],
+        "sd": 0.10280450458487397
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.4679908746462866,
+      "current_all_node_mean": 0.5922208816513795,
+      "relative_increase": 0.2654539089015091,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.12423000700509293,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.052130283282157464,
+          0.17490312127130198
+        ],
+        "sd": 0.08008983072793478
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    }
+  ],
+  "multiseed_positive_interval_jumps": [
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.1586433230204465,
+      "current_all_node_mean": 0.6049452820445448,
+      "relative_increase": 2.81324136765956,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.4463019590240983,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.43679690178406444,
+          0.45580701626413217
+        ],
+        "sd": 0.014532087416203715
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.21744564590755547,
+      "current_all_node_mean": 0.8082095145755155,
+      "relative_increase": 2.7168346655196607,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.5907638686679602,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.5127536049692603,
+          0.66877413236666
+        ],
+        "sd": 0.11926829505621925
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.34807898761021133,
+      "current_all_node_mean": 0.7508057067172924,
+      "relative_increase": 1.1569980764195562,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.402726719107081,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.28610893715798075,
+          0.5193445010561814
+        ],
+        "sd": 0.17829453929328215
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.33497025521118096,
+      "current_all_node_mean": 0.46594756220995687,
+      "relative_increase": 0.391011753912901,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.13097730699877597,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.04270220831260838,
+          0.20275494185115206
+        ],
+        "sd": 0.10280450458487397
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.4679908746462866,
+      "current_all_node_mean": 0.5922208816513795,
+      "relative_increase": 0.2654539089015091,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.12423000700509293,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.052130283282157464,
+          0.17490312127130198
+        ],
+        "sd": 0.08008983072793478
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    }
+  ],
+  "single_seed_descriptive20percent_jumps": [
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.1633696684490028,
+      "current_all_node_mean": 0.26680869505321053,
+      "relative_increase": 0.6331593103312019,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.10343902660420773,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.3321482369386153,
+      "current_all_node_mean": 0.4774071936491362,
+      "relative_increase": 0.43733171083297484,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.14525895671052091,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    }
+  ],
+  "all_fixed_comparisons_with_configuration_context": [
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.1633696684490028,
+      "current_all_node_mean": 0.26680869505321053,
+      "relative_increase": 0.6331593103312019,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.10343902660420773,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.3321482369386153,
+      "current_all_node_mean": 0.4774071936491362,
+      "relative_increase": 0.43733171083297484,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.14525895671052091,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.6804358783384427,
+      "current_all_node_mean": 0.5860965404077055,
+      "relative_increase": -0.1386454490922855,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.09433933793073712,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "robust05",
+      "current": "robust08",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.26680869505321053,
+      "current_all_node_mean": 0.1586433230204465,
+      "relative_increase": -0.40540422421837585,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.10816537203276402,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Only the saved logical command-range bundle expands forward/yaw0.5 to0.8, with1500 further updates. Forward and angular ranges change together and their effects cannot be separated. One training seed: a descriptive association, not an isolated causal test."
+    },
+    {
+      "previous": "robust05",
+      "current": "robust08",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.4774071936491362,
+      "current_all_node_mean": 0.21744564590755547,
+      "relative_increase": -0.5445279233321227,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.25996154774158076,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Only the saved logical command-range bundle expands forward/yaw0.5 to0.8, with1500 further updates. Forward and angular ranges change together and their effects cannot be separated. One training seed: a descriptive association, not an isolated causal test."
+    },
+    {
+      "previous": "robust05",
+      "current": "robust08",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.5860965404077055,
+      "current_all_node_mean": 0.34807898761021133,
+      "relative_increase": -0.4061063944037656,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.2380175527974942,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Only the saved logical command-range bundle expands forward/yaw0.5 to0.8, with1500 further updates. Forward and angular ranges change together and their effects cannot be separated. One training seed: a descriptive association, not an isolated causal test."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.1586433230204465,
+      "current_all_node_mean": 0.6049452820445448,
+      "relative_increase": 2.81324136765956,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.4463019590240983,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.43679690178406444,
+          0.45580701626413217
+        ],
+        "sd": 0.014532087416203715
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.21744564590755547,
+      "current_all_node_mean": 0.8082095145755155,
+      "relative_increase": 2.7168346655196607,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.5907638686679602,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.5127536049692603,
+          0.66877413236666
+        ],
+        "sd": 0.11926829505621925
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.34807898761021133,
+      "current_all_node_mean": 0.7508057067172924,
+      "relative_increase": 1.1569980764195562,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.402726719107081,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.28610893715798075,
+          0.5193445010561814
+        ],
+        "sd": 0.17829453929328215
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "strengthen",
+      "current": "bounded",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.6049452820445448,
+      "current_all_node_mean": 0.4371420569551554,
+      "relative_increase": -0.2773857902028126,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.16780322508938939,
+        "training_seeds": 2,
+        "bootstrap95": [
+          -0.18195581230230307,
+          -0.1536506378764757
+        ],
+        "sd": 0.02163760084234657
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved logical recipe difference is base-mass randomization: nominal+U(-0.08,0.15) becomes nominal*U(0.5,1.5), uniform. Both restart from robust05; sample size is two training seeds."
+    },
+    {
+      "previous": "strengthen",
+      "current": "bounded",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.8082095145755155,
+      "current_all_node_mean": 0.665838313315431,
+      "relative_increase": -0.1761563043895371,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.14237120126008457,
+        "training_seeds": 2,
+        "bootstrap95": [
+          -0.1674506605067047,
+          -0.11729174201346444
+        ],
+        "sd": 0.03834347178762543
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved logical recipe difference is base-mass randomization: nominal+U(-0.08,0.15) becomes nominal*U(0.5,1.5), uniform. Both restart from robust05; sample size is two training seeds."
+    },
+    {
+      "previous": "strengthen",
+      "current": "bounded",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.7508057067172924,
+      "current_all_node_mean": 0.7093667274663631,
+      "relative_increase": -0.055192680183679954,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.04143897925092932,
+        "training_seeds": 2,
+        "bootstrap95": [
+          -0.10014375387502067,
+          0.017265795373162012
+        ],
+        "sd": 0.08975252805345502
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved logical recipe difference is base-mass randomization: nominal+U(-0.08,0.15) becomes nominal*U(0.5,1.5), uniform. Both restart from robust05; sample size is two training seeds."
+    },
+    {
+      "previous": "bounded",
+      "current": "requested1500",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.4371420569551554,
+      "current_all_node_mean": 0.4919919787674618,
+      "relative_increase": 0.12547390702774042,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.0,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "sd": 0.0
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": true,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": true,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Exact same checkpoint bytes for seeds1/2. Five-seed node adds seeds3/4/5; any full-node mean shift is cohort composition, not a training/configuration effect."
+    },
+    {
+      "previous": "bounded",
+      "current": "requested1500",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.665838313315431,
+      "current_all_node_mean": 0.7636418441112109,
+      "relative_increase": 0.1468878087065666,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.0,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "sd": 0.0
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": true,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": true,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Exact same checkpoint bytes for seeds1/2. Five-seed node adds seeds3/4/5; any full-node mean shift is cohort composition, not a training/configuration effect."
+    },
+    {
+      "previous": "bounded",
+      "current": "requested1500",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.7093667274663631,
+      "current_all_node_mean": 0.7871756084085972,
+      "relative_increase": 0.1096878073491594,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.0,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "sd": 0.0
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": true,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": true,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Exact same checkpoint bytes for seeds1/2. Five-seed node adds seeds3/4/5; any full-node mean shift is cohort composition, not a training/configuration effect."
+    },
+    {
+      "previous": "requested1500",
+      "current": "requested3000",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.4919919787674618,
+      "current_all_node_mean": 0.5889823697498228,
+      "relative_increase": 0.19713815502712317,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.09699039098236086,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.007165841636550807,
+          0.17988324334761474
+        ],
+        "sd": 0.12412654447725284
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same recipe, continued training budget;3000 target actually3006logged total. The continuation reconstructs simulator state and resumes the saved iteration label, not an uninterrupted byte-identical run."
+    },
+    {
+      "previous": "requested1500",
+      "current": "requested3000",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.7636418441112109,
+      "current_all_node_mean": 0.7845041121528735,
+      "relative_increase": 0.027319440654727023,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.0208622680416626,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.07800138940677295,
+          0.09951690467242394
+        ],
+        "sd": 0.11328482315296556
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same recipe, continued training budget;3000 target actually3006logged total. The continuation reconstructs simulator state and resumes the saved iteration label, not an uninterrupted byte-identical run."
+    },
+    {
+      "previous": "requested1500",
+      "current": "requested3000",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.7871756084085972,
+      "current_all_node_mean": 0.9238568809646116,
+      "relative_increase": 0.17363504546633202,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.1366812725560145,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.04724646359517952,
+          0.22056315734648185
+        ],
+        "sd": 0.11218733670309622
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same recipe, continued training budget;3000 target actually3006logged total. The continuation reconstructs simulator state and resumes the saved iteration label, not an uninterrupted byte-identical run."
+    },
+    {
+      "previous": "requested3000",
+      "current": "requested4500",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.5889823697498228,
+      "current_all_node_mean": 0.4146117448836555,
+      "relative_increase": -0.29605406515008803,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.17437062486616722,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.2138447497931292,
+          -0.13222007868092497
+        ],
+        "sd": 0.05234026447796717
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same continuation run/recipe, additional training to4500logged total. No new configuration intervention at3000."
+    },
+    {
+      "previous": "requested3000",
+      "current": "requested4500",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.7845041121528735,
+      "current_all_node_mean": 0.6118900234053288,
+      "relative_increase": -0.2200295525205711,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.17261408874754477,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.2254462357581831,
+          -0.10330276497713335
+        ],
+        "sd": 0.07777749916157813
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same continuation run/recipe, additional training to4500logged total. No new configuration intervention at3000."
+    },
+    {
+      "previous": "requested3000",
+      "current": "requested4500",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.9238568809646116,
+      "current_all_node_mean": 0.8553266990358399,
+      "relative_increase": -0.0741783530986081,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.06853018192877176,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.1231393830170217,
+          -0.008899309544884049
+        ],
+        "sd": 0.07412931326646839
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same continuation run/recipe, additional training to4500logged total. No new configuration intervention at3000."
+    },
+    {
+      "previous": "requested4500",
+      "current": "control6000",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.4146117448836555,
+      "current_all_node_mean": 0.33497025521118096,
+      "relative_increase": -0.19208691180425386,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.0796414896724745,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.11037966161873398,
+          -0.050939014267711046
+        ],
+        "sd": 0.03841165921184738
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Additional1500updates. Saved timed-push/reset-clock/zero-weight pitch term instrumentation is present; prior issue12 audit establishes original dynamics/RNG equivalence at weight0. No nonzero recovery reward in control."
+    },
+    {
+      "previous": "requested4500",
+      "current": "control6000",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.6118900234053288,
+      "current_all_node_mean": 0.4679908746462866,
+      "relative_increase": -0.23517158844690045,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.14389914875904217,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.18917930786154052,
+          -0.09861898965654378
+        ],
+        "sd": 0.05754711802351546
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Additional1500updates. Saved timed-push/reset-clock/zero-weight pitch term instrumentation is present; prior issue12 audit establishes original dynamics/RNG equivalence at weight0. No nonzero recovery reward in control."
+    },
+    {
+      "previous": "requested4500",
+      "current": "control6000",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.8553266990358399,
+      "current_all_node_mean": 0.6951651703350652,
+      "relative_increase": -0.18725187566495405,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.16016152870077469,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.2528930554151951,
+          -0.0674300019863543
+        ],
+        "sd": 0.12127276461621109
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Additional1500updates. Saved timed-push/reset-clock/zero-weight pitch term instrumentation is present; prior issue12 audit establishes original dynamics/RNG equivalence at weight0. No nonzero recovery reward in control."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.33497025521118096,
+      "current_all_node_mean": 0.46594756220995687,
+      "relative_increase": 0.391011753912901,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.13097730699877597,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.04270220831260838,
+          0.20275494185115206
+        ],
+        "sd": 0.10280450458487397
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.4679908746462866,
+      "current_all_node_mean": 0.5922208816513795,
+      "relative_increase": 0.2654539089015091,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.12423000700509293,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.052130283282157464,
+          0.17490312127130198
+        ],
+        "sd": 0.08008983072793478
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.6951651703350652,
+      "current_all_node_mean": 0.7562302524870346,
+      "relative_increase": 0.08784255132134478,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.06106508215196935,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.09775382026272317,
+          0.2170065752166086
+        ],
+        "sd": 0.20428790114572004
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "treatment",
+      "current": "clock",
+      "command": "forward_03",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.46594756220995687,
+      "current_all_node_mean": 0.4196535147096885,
+      "relative_increase": -0.09935462969416331,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.046294047500268484,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.13309659234113141,
+          0.04624755453203201
+        ],
+        "sd": 0.115552189909864
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget, sibling retraining. Sole saved intervention is two extra critic clock inputs134->136; actor101, hidden layers, original rewards/distributions remain identical."
+    },
+    {
+      "previous": "treatment",
+      "current": "clock",
+      "command": "forward_05",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.5922208816513795,
+      "current_all_node_mean": 0.5634320469207208,
+      "relative_increase": -0.048611650859696875,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.028788834730658762,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.10775687513187489,
+          0.050419607292480295
+        ],
+        "sd": 0.1023657253020729
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget, sibling retraining. Sole saved intervention is two extra critic clock inputs134->136; actor101, hidden layers, original rewards/distributions remain identical."
+    },
+    {
+      "previous": "treatment",
+      "current": "clock",
+      "command": "forward_08",
+      "prospectively_frozen_straight_comparison": true,
+      "previous_all_node_mean": 0.7562302524870346,
+      "current_all_node_mean": 0.7707801815660436,
+      "relative_increase": 0.01924007804654493,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.014549929079009028,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.0780901367573501,
+          0.11415814131885486
+        ],
+        "sd": 0.12246757882345662
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget, sibling retraining. Sole saved intervention is two extra critic clock inputs134->136; actor101, hidden layers, original rewards/distributions remain identical."
+    }
+  ],
+  "supplementary_control_command_comparisons": [
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.28169145860584105,
+      "current_all_node_mean": 0.12095098775379787,
+      "relative_increase": -0.5706260021073644,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.16074047085204318,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.28775071450773976,
+      "current_all_node_mean": 0.14387205720278629,
+      "relative_increase": -0.5000114684374954,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.14387865730495347,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "ft5",
+      "current": "robust05",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.030008006232166196,
+      "current_all_node_mean": 0.06133743728678232,
+      "relative_increase": 1.0440357420691773,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.03132943105461612,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Multiple training differences and unshown sibling ancestry: FT5 and yaw_s1 share FT4, robust05 follows yaw_s1. No sole configuration cause can be identified from this contrast."
+    },
+    {
+      "previous": "robust05",
+      "current": "robust08",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.12095098775379787,
+      "current_all_node_mean": 0.06382772398186597,
+      "relative_increase": -0.47228439248639564,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.0571232637719319,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Only the saved logical command-range bundle expands forward/yaw0.5 to0.8, with1500 further updates. Forward and angular ranges change together and their effects cannot be separated. One training seed: a descriptive association, not an isolated causal test."
+    },
+    {
+      "previous": "robust05",
+      "current": "robust08",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.14387205720278629,
+      "current_all_node_mean": 0.09602871720470042,
+      "relative_increase": -0.3325408764444866,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.04784333999808586,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Only the saved logical command-range bundle expands forward/yaw0.5 to0.8, with1500 further updates. Forward and angular ranges change together and their effects cannot be separated. One training seed: a descriptive association, not an isolated causal test."
+    },
+    {
+      "previous": "robust05",
+      "current": "robust08",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.06133743728678232,
+      "current_all_node_mean": 0.058507917509552164,
+      "relative_increase": -0.04613038793911095,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.002829519777230158,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": true,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Only the saved logical command-range bundle expands forward/yaw0.5 to0.8, with1500 further updates. Forward and angular ranges change together and their effects cannot be separated. One training seed: a descriptive association, not an isolated causal test."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.06382772398186597,
+      "current_all_node_mean": 0.20430798917096882,
+      "relative_increase": 2.2009286314049765,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.14048026518910287,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.12591413237698032,
+          0.1550463980012254
+        ],
+        "sd": 0.02226986224241239
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.09602871720470042,
+      "current_all_node_mean": 0.214996163797948,
+      "relative_increase": 1.23887364172167,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.11896744659324758,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.018905442716432172,
+          0.21902945047006298
+        ],
+        "sd": 0.15298274914683413
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "robust08",
+      "current": "strengthen",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.058507917509552164,
+      "current_all_node_mean": 0.18524937449265116,
+      "relative_increase": 2.16622745053961,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.12674145698309902,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.096323171070637,
+          0.15715974289556103
+        ],
+        "sd": 0.04650589457464459
+      },
+      "comparison_method": "later training seeds versus FIXED single-seed baseline; conditional only",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved seed1 recipe difference is training push +/-0.3 to+/-0.45m/s; both restart from robust05. The current two-seed comparison is conditional on fixed robust08 seed1, not a two-population causal interval."
+    },
+    {
+      "previous": "strengthen",
+      "current": "bounded",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.20430798917096882,
+      "current_all_node_mean": 0.23553334923349514,
+      "relative_increase": 0.15283474811352749,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.03122536006252631,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.01680681789913336,
+          0.04564390222591926
+        ],
+        "sd": 0.022044213921209317
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved logical recipe difference is base-mass randomization: nominal+U(-0.08,0.15) becomes nominal*U(0.5,1.5), uniform. Both restart from robust05; sample size is two training seeds."
+    },
+    {
+      "previous": "strengthen",
+      "current": "bounded",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.214996163797948,
+      "current_all_node_mean": 0.19171230058746003,
+      "relative_increase": -0.10829897054521398,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.023283863210487955,
+        "training_seeds": 2,
+        "bootstrap95": [
+          -0.10690273462618313,
+          0.060335008205207215
+        ],
+        "sd": 0.1278431805690898
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved logical recipe difference is base-mass randomization: nominal+U(-0.08,0.15) becomes nominal*U(0.5,1.5), uniform. Both restart from robust05; sample size is two training seeds."
+    },
+    {
+      "previous": "strengthen",
+      "current": "bounded",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.18524937449265116,
+      "current_all_node_mean": 0.19658407667691144,
+      "relative_increase": 0.06118618330184922,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.011334702184260262,
+        "training_seeds": 2,
+        "bootstrap95": [
+          -0.012066804312028216,
+          0.03473620868054873
+        ],
+        "sd": 0.03577808418055487
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Saved logical recipe difference is base-mass randomization: nominal+U(-0.08,0.15) becomes nominal*U(0.5,1.5), uniform. Both restart from robust05; sample size is two training seeds."
+    },
+    {
+      "previous": "bounded",
+      "current": "requested1500",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.23553334923349514,
+      "current_all_node_mean": 0.2444102760367241,
+      "relative_increase": 0.03768861960362502,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.0,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "sd": 0.0
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": true,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": true,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Exact same checkpoint bytes for seeds1/2. Five-seed node adds seeds3/4/5; any full-node mean shift is cohort composition, not a training/configuration effect."
+    },
+    {
+      "previous": "bounded",
+      "current": "requested1500",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.19171230058746003,
+      "current_all_node_mean": 0.23419067287337386,
+      "relative_increase": 0.2215735357394817,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.0,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "sd": 0.0
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": true,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": true,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Exact same checkpoint bytes for seeds1/2. Five-seed node adds seeds3/4/5; any full-node mean shift is cohort composition, not a training/configuration effect."
+    },
+    {
+      "previous": "bounded",
+      "current": "requested1500",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.19658407667691144,
+      "current_all_node_mean": 0.2119574474638973,
+      "relative_increase": 0.0782025230469312,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.0,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.0,
+          0.0
+        ],
+        "sd": 0.0
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2"
+      ],
+      "paired_subset_differs_from_full_node_composition": true,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": true,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Exact same checkpoint bytes for seeds1/2. Five-seed node adds seeds3/4/5; any full-node mean shift is cohort composition, not a training/configuration effect."
+    },
+    {
+      "previous": "requested1500",
+      "current": "requested3000",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.2444102760367241,
+      "current_all_node_mean": 0.26822451171782447,
+      "relative_increase": 0.09743549275940477,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.023814235681100377,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.006700199577352056,
+          0.05002064317008188
+        ],
+        "sd": 0.03578264714183526
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same recipe, continued training budget;3000 target actually3006logged total. The continuation reconstructs simulator state and resumes the saved iteration label, not an uninterrupted byte-identical run."
+    },
+    {
+      "previous": "requested1500",
+      "current": "requested3000",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.23419067287337386,
+      "current_all_node_mean": 0.27074044354231447,
+      "relative_increase": 0.15606843014069538,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.036549770668940613,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.014039005649290637,
+          0.09356644202917037
+        ],
+        "sd": 0.0679108383808792
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same recipe, continued training budget;3000 target actually3006logged total. The continuation reconstructs simulator state and resumes the saved iteration label, not an uninterrupted byte-identical run."
+    },
+    {
+      "previous": "requested1500",
+      "current": "requested3000",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.2119574474638973,
+      "current_all_node_mean": 0.24533497300094095,
+      "relative_increase": 0.15747276605002924,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.03337752553704367,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.0046223855281083805,
+          0.06213266554597896
+        ],
+        "sd": 0.0373211595990976
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same recipe, continued training budget;3000 target actually3006logged total. The continuation reconstructs simulator state and resumes the saved iteration label, not an uninterrupted byte-identical run."
+    },
+    {
+      "previous": "requested3000",
+      "current": "requested4500",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.26822451171782447,
+      "current_all_node_mean": 0.17925353936626148,
+      "relative_increase": -0.33170336216386354,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.088970972351563,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.11706268121179016,
+          -0.06367682269305126
+        ],
+        "sd": 0.03392969526757017
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same continuation run/recipe, additional training to4500logged total. No new configuration intervention at3000."
+    },
+    {
+      "previous": "requested3000",
+      "current": "requested4500",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.27074044354231447,
+      "current_all_node_mean": 0.1814663424702623,
+      "relative_increase": -0.3297405437621638,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.08927410107205214,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.11944122848589225,
+          -0.051436156803461676
+        ],
+        "sd": 0.04512630068191496
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same continuation run/recipe, additional training to4500logged total. No new configuration intervention at3000."
+    },
+    {
+      "previous": "requested3000",
+      "current": "requested4500",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.24533497300094095,
+      "current_all_node_mean": 0.15870875054429565,
+      "relative_increase": -0.35309365557234706,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.08662622245664531,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.11885778710634443,
+          -0.05439465780694619
+        ],
+        "sd": 0.04084757333709298
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same continuation run/recipe, additional training to4500logged total. No new configuration intervention at3000."
+    },
+    {
+      "previous": "requested4500",
+      "current": "control6000",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.17925353936626148,
+      "current_all_node_mean": 0.1178591154138354,
+      "relative_increase": -0.3425004837811395,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.06139442395242609,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.07210661679518428,
+          -0.05081592485425838
+        ],
+        "sd": 0.014022350009742049
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Additional1500updates. Saved timed-push/reset-clock/zero-weight pitch term instrumentation is present; prior issue12 audit establishes original dynamics/RNG equivalence at weight0. No nonzero recovery reward in control."
+    },
+    {
+      "previous": "requested4500",
+      "current": "control6000",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.1814663424702623,
+      "current_all_node_mean": 0.135959008258099,
+      "relative_increase": -0.25077561818176164,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.045507334212163304,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.06793731720508656,
+          -0.015595242219546357
+        ],
+        "sd": 0.03456682984581506
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Additional1500updates. Saved timed-push/reset-clock/zero-weight pitch term instrumentation is present; prior issue12 audit establishes original dynamics/RNG equivalence at weight0. No nonzero recovery reward in control."
+    },
+    {
+      "previous": "requested4500",
+      "current": "control6000",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.15870875054429565,
+      "current_all_node_mean": 0.09986707502651966,
+      "relative_increase": -0.37075255974215016,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.05884167551777599,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.08019513461510622,
+          -0.039632220109818185
+        ],
+        "sd": 0.026498570965362463
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Additional1500updates. Saved timed-push/reset-clock/zero-weight pitch term instrumentation is present; prior issue12 audit establishes original dynamics/RNG equivalence at weight0. No nonzero recovery reward in control."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.1178591154138354,
+      "current_all_node_mean": 0.19417974380997668,
+      "relative_increase": 0.6475581301298488,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.0763206283961413,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.037064785021502754,
+          0.11566550696793905
+        ],
+        "sd": 0.05157904891556077
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.135959008258099,
+      "current_all_node_mean": 0.2040176413974201,
+      "relative_increase": 0.500582006380345,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.06805863313932108,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.01684217598791001,
+          0.11930832182628996
+        ],
+        "sd": 0.06794221929553414
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "control6000",
+      "current": "treatment",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.09986707502651966,
+      "current_all_node_mean": 0.17320392816436928,
+      "relative_increase": 0.7343446588214888,
+      "increase_strictly_above20percent": true,
+      "difference": {
+        "mean": 0.07333685313784961,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.01685743755121382,
+          0.1298162687244854
+        ],
+        "sd": 0.07275040974196202
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": true,
+      "meets_issue15_descriptive_or_multiseed_criterion": true,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget. Sole saved behavioral recipe difference is post-push pitch recovery weight0 ->34.67877532210905."
+    },
+    {
+      "previous": "treatment",
+      "current": "clock",
+      "command": "yaw_positive",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.19417974380997668,
+      "current_all_node_mean": 0.19473069834486803,
+      "relative_increase": 0.0028373429899593017,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": 0.0005509545348913348,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.03953949861941414,
+          0.044763456731192294
+        ],
+        "sd": 0.05344346121110001
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget, sibling retraining. Sole saved intervention is two extra critic clock inputs134->136; actor101, hidden layers, original rewards/distributions remain identical."
+    },
+    {
+      "previous": "treatment",
+      "current": "clock",
+      "command": "yaw_negative",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.2040176413974201,
+      "current_all_node_mean": 0.1758193274342038,
+      "relative_increase": -0.13821507674567635,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.028198313963216304,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.08467715779913511,
+          0.021068109127447436
+        ],
+        "sd": 0.06715655022454597
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget, sibling retraining. Sole saved intervention is two extra critic clock inputs134->136; actor101, hidden layers, original rewards/distributions remain identical."
+    },
+    {
+      "previous": "treatment",
+      "current": "clock",
+      "command": "stand",
+      "prospectively_frozen_straight_comparison": false,
+      "previous_all_node_mean": 0.17320392816436928,
+      "current_all_node_mean": 0.16386657603990734,
+      "relative_increase": -0.05390958636689147,
+      "increase_strictly_above20percent": false,
+      "difference": {
+        "mean": -0.009337352124461915,
+        "training_seeds": 5,
+        "bootstrap95": [
+          -0.06744589598298163,
+          0.03278880814378463
+        ],
+        "sd": 0.06681460902023473
+      },
+      "comparison_method": "paired shared training seeds",
+      "paired_or_resampled_seed_ids": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "paired_subset_differs_from_full_node_composition": false,
+      "interval_excludes_zero_above": false,
+      "meets_issue15_descriptive_or_multiseed_criterion": false,
+      "single_seed_descriptive_only": false,
+      "alias_cohort_expansion_not_configuration_effect": false,
+      "causal_attribution": "Requires actual config/parent audit; diagnostic edge alone cannot identify unique cause.",
+      "configuration_interpretation": "Same five matched requested4500 parents/budget, sibling retraining. Sole saved intervention is two extra critic clock inputs134->136; actor101, hidden layers, original rewards/distributions remain identical."
+    }
+  ],
+  "dominance_by_node_and_speed": {
+    "ft5": {
+      "forward_03": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.8115848373829614,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.9905179122883102,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.9939532389913966,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "robust05": {
+      "forward_03": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.9755768008609084,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.9999867469377959,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.9961767563558895,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "robust08": {
+      "forward_03": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.9987286169206239,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.9881981698949138,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "single_seed_descriptive_oscillation",
+        "within_energy_fraction": {
+          "mean": 0.961065978376891,
+          "training_seeds": 1,
+          "bootstrap95": null,
+          "sd": null
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "strengthen": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.98908588577946,
+          "training_seeds": 2,
+          "bootstrap95": [
+            0.9790030524186712,
+            0.9991687191402487
+          ],
+          "sd": 0.015415437498351793
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9851824214972409,
+          "training_seeds": 2,
+          "bootstrap95": [
+            0.9717108008359467,
+            0.998654042158535
+          ],
+          "sd": 0.020596485023078634
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9894241154420647,
+          "training_seeds": 2,
+          "bootstrap95": [
+            0.9801516809377124,
+            0.9986965499464169
+          ],
+          "sd": 0.014176435278130983
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "bounded": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9789914423284349,
+          "training_seeds": 2,
+          "bootstrap95": [
+            0.9676008929735176,
+            0.9903819916833524
+          ],
+          "sd": 0.017414777708761427
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9244812881115654,
+          "training_seeds": 2,
+          "bootstrap95": [
+            0.9092926111856738,
+            0.9396699650374568
+          ],
+          "sd": 0.02322165719253945
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9348134737998632,
+          "training_seeds": 2,
+          "bootstrap95": [
+            0.9034422304735414,
+            0.9661847171261849
+          ],
+          "sd": 0.047962851654692606
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "requested1500": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9834201337915651,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.9703844809707587,
+            0.9964557866123718
+          ],
+          "sd": 0.016952470830115966
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9494131204232754,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.9245127790219978,
+            0.9789334412559823
+          ],
+          "sd": 0.03470646318099047
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9522022691911822,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.9199572563316485,
+            0.9792892149163178
+          ],
+          "sd": 0.03744829726725023
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "requested3000": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9617757093967574,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.9413423400461479,
+            0.9774816885010275
+          ],
+          "sd": 0.023086452454116203
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8955272702537165,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8586679329024773,
+            0.9331209263401947
+          ],
+          "sd": 0.05019868705488202
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8867936856128736,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8305230163467279,
+            0.9414112976313362
+          ],
+          "sd": 0.07151050548673916
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "requested4500": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8598877599871921,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8137074629648856,
+            0.9049704138632502
+          ],
+          "sd": 0.055101982035234
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8519414271799729,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8134100694865627,
+            0.8868549363807245
+          ],
+          "sd": 0.0469931962899906
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8705041435373226,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.801787443923426,
+            0.9411437415325926
+          ],
+          "sd": 0.0917756008427324
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "control6000": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9273316419819686,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8698668259039188,
+            0.9719092959775268
+          ],
+          "sd": 0.0627930863383677
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8869067580208089,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8367406923395493,
+            0.9176232250626437
+          ],
+          "sd": 0.05507876106853324
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9251356636952892,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8982703910724579,
+            0.9519507922589729
+          ],
+          "sd": 0.036250339041278785
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "treatment": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8946560989035964,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8771826076754772,
+            0.9111667626528244
+          ],
+          "sd": 0.021960948250225307
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8569574217393521,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.7573961153631041,
+            0.9389289834351169
+          ],
+          "sd": 0.11398569307042396
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9064012711549054,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.852951277234191,
+            0.9520111221014286
+          ],
+          "sd": 0.06400613249905764
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    },
+    "clock": {
+      "forward_03": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.9055231311098222,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8702464164326436,
+            0.9400296837860713
+          ],
+          "sd": 0.0459163732543655
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_05": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8971937723761891,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8377122008538784,
+            0.9494206359173047
+          ],
+          "sd": 0.07095002275799674
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      },
+      "forward_08": {
+        "classification": "oscillation_dominant",
+        "within_energy_fraction": {
+          "mean": 0.8974304726840284,
+          "training_seeds": 5,
+          "bootstrap95": [
+            0.8395535778454098,
+            0.9516480097415453
+          ],
+          "sd": 0.07146199632418254
+        },
+        "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+      }
+    }
+  },
+  "original_FT5_protocol_all_three_eval_seeds_exact": true,
+  "causal_limit": "Only saved-recipe candidate differences are named; sibling ancestry, a fixed one-policy baseline, continued training and shared ancestors prevent a forced unique causal claim. Actual saved parent graph takes precedence over display arrows.",
+  "heading_limit": "Full20s heading results are survivor-conditional with explicit counts/falls; initial-prefix/all-segment drift also retained. Body-z yaw rate is not Euler heading derivative under tilt.",
+  "next_recommendations": [
+    "Add one independent straight-heading acceptance gate based on reset-aware quaternion20s heading drift alongside existing xy/fall gates; retain body-z yaw MAE/SD and gait spectra as diagnostic companion evidence. Freeze numerical bounds and failure/censoring handling before any separately authorized future training; implement no reward/configuration change in this issue."
+  ],
+  "recommendation_implemented": false,
+  "default_promoted": false,
+  "source_sha256": "2f76bf0d25e13446feb891fdb8224f792cd93c115df85ba70664f075f51dd46d"
+}

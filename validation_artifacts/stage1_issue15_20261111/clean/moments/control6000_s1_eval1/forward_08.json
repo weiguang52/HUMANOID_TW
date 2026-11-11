@@ -1,0 +1,51 @@
+{
+  "command": "forward_08",
+  "target": [
+    0.8,
+    0.0,
+    0.0
+  ],
+  "num_envs": 1024,
+  "steps": 1000,
+  "dt": 0.02,
+  "fields": [
+    "xy_error",
+    "yaw_error",
+    "vx",
+    "vy",
+    "wz"
+  ],
+  "scopes": [
+    "full_horizon_nonterminal",
+    "initial_episode_nonterminal"
+  ],
+  "partitions": [
+    "all",
+    "inside",
+    "outside",
+    "reward_aligned_inside",
+    "reward_aligned_outside"
+  ],
+  "packed_mask_bitorder": "little",
+  "observer_no_sampling_or_physics_writes": true,
+  "reference_moment_reconstruction_passed": true,
+  "original_metric_max_absolute_difference": {
+    "xy_error": 1.3877787807814457e-17,
+    "yaw_error": 3.3306690738754696e-16
+  },
+  "first_failures": 0,
+  "primary_window": "post-step [push,push+1s), ages0..49",
+  "reward_boundary_sensitivity": "ages1..50",
+  "per_env_counts": [
+    1024,
+    0,
+    1024,
+    0,
+    1024,
+    1024,
+    0,
+    1024,
+    0,
+    1024
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "command": "forward_03",
+      "passed": true,
+      "yaw_metric_absolute_difference": 0.0
+    },
+    {
+      "command": "yaw_positive",
+      "passed": true,
+      "yaw_metric_absolute_difference": 0.0
+    },
+    {
+      "command": "yaw_negative",
+      "passed": true,
+      "yaw_metric_absolute_difference": 0.0
+    },
+    {
+      "command": "forward_05",
+      "passed": true,
+      "yaw_metric_absolute_difference": 0.0
+    },
+    {
+      "command": "forward_08",
+      "passed": true,
+      "yaw_metric_absolute_difference": 1.1102230246251565e-16
+    },
+    {
+      "command": "stand",
+      "passed": true,
+      "yaw_metric_absolute_difference": 0.0
+    }
+  ],
+  "scope": "All six commands of first completed formal clean job; full105-job audit remains required."
+}

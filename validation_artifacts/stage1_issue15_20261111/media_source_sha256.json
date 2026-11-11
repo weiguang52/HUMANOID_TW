@@ -1,0 +1,21 @@
+{
+  "sources": {
+    "scripts/locomotion/eval_cmd.py": "0275fca8bbf6a1f971c5568c6c4cf7b27e6d0aa9e4bf3e37b60c15b0e6cfd69c",
+    "scripts/locomotion/replay_issue13.py": "fe21ad0e31030bc7fa7b0851145a94ce75d28f8e8c2180f0e11a59c79c113023",
+    "scripts/locomotion/render_eval_issue13.py": "d105998cfd3809bd2cfcf694d697e7866628da0fcca32a2e9655c91db91852ce",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/render_issue15.py": "604c11aef35899dba1e6725f140ddaafe0f22170ad28f649dedf8c065d1754c5",
+    "scripts/locomotion/replay_issue15.py": "f1bd51952e85346a9b044fa507d2a0d96d3c3bc9a10005dc89d63fcf9ec504b3",
+    "scripts/locomotion/render_eval_issue15.py": "91319742cea92e6438c75f5cac3126d3b27e8640a058fedc8efd82a432e11680",
+    "scripts/locomotion/reconstruct_issue15.py": "9a686f1bfd6115bcb2770766d8e249d1ac9d67c56edd1c7dc3407f530cd498b2"
+  },
+  "assets": {
+    "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd": "24663fd164311931d0ea633bb1e4ceeb7a35bb7f3c02a52e10a94aafa6035816",
+    "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3_colored.usd": "5859f1603f2e79c208eff42aee288e59a345809902d8dce42d12f6dbd8e4121d"
+  },
+  "video_plan_sha256": "d56b51a76740f369e697fe85c403aea4d2f7d9f0636bf3bc88e3bd8866d79567",
+  "pose_replay_no_physics_integration": true,
+  "display_joint_velocity_zero": true,
+  "camera_follows_translation_and_heading": true,
+  "world_XY_trail_and_heading_inset": true,
+  "humanml_source_npy": "N/A: Stage1 velocity commands"
+}

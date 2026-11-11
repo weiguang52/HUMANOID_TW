@@ -1,0 +1,426 @@
+{
+  "ft5": {
+    "forward_03": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.8115848373829614,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.9905179122883102,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.9939532389913966,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "robust05": {
+    "forward_03": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.9755768008609084,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.9999867469377959,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.9961767563558895,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "robust08": {
+    "forward_03": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.9987286169206239,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.9881981698949138,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "single_seed_descriptive_oscillation",
+      "within_energy_fraction": {
+        "mean": 0.961065978376891,
+        "training_seeds": 1,
+        "bootstrap95": null,
+        "sd": null
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "strengthen": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.98908588577946,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.9790030524186712,
+          0.9991687191402487
+        ],
+        "sd": 0.015415437498351793
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9851824214972409,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.9717108008359467,
+          0.998654042158535
+        ],
+        "sd": 0.020596485023078634
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9894241154420647,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.9801516809377124,
+          0.9986965499464169
+        ],
+        "sd": 0.014176435278130983
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "bounded": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9789914423284349,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.9676008929735176,
+          0.9903819916833524
+        ],
+        "sd": 0.017414777708761427
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9244812881115654,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.9092926111856738,
+          0.9396699650374568
+        ],
+        "sd": 0.02322165719253945
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9348134737998632,
+        "training_seeds": 2,
+        "bootstrap95": [
+          0.9034422304735414,
+          0.9661847171261849
+        ],
+        "sd": 0.047962851654692606
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "requested1500": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9834201337915651,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.9703844809707587,
+          0.9964557866123718
+        ],
+        "sd": 0.016952470830115966
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9494131204232754,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.9245127790219978,
+          0.9789334412559823
+        ],
+        "sd": 0.03470646318099047
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9522022691911822,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.9199572563316485,
+          0.9792892149163178
+        ],
+        "sd": 0.03744829726725023
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "requested3000": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9617757093967574,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.9413423400461479,
+          0.9774816885010275
+        ],
+        "sd": 0.023086452454116203
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8955272702537165,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8586679329024773,
+          0.9331209263401947
+        ],
+        "sd": 0.05019868705488202
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8867936856128736,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8305230163467279,
+          0.9414112976313362
+        ],
+        "sd": 0.07151050548673916
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "requested4500": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8598877599871921,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8137074629648856,
+          0.9049704138632502
+        ],
+        "sd": 0.055101982035234
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8519414271799729,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8134100694865627,
+          0.8868549363807245
+        ],
+        "sd": 0.0469931962899906
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8705041435373226,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.801787443923426,
+          0.9411437415325926
+        ],
+        "sd": 0.0917756008427324
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "control6000": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9273316419819686,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8698668259039188,
+          0.9719092959775268
+        ],
+        "sd": 0.0627930863383677
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8869067580208089,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8367406923395493,
+          0.9176232250626437
+        ],
+        "sd": 0.05507876106853324
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9251356636952892,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8982703910724579,
+          0.9519507922589729
+        ],
+        "sd": 0.036250339041278785
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "treatment": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8946560989035964,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8771826076754772,
+          0.9111667626528244
+        ],
+        "sd": 0.021960948250225307
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8569574217393521,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.7573961153631041,
+          0.9389289834351169
+        ],
+        "sd": 0.11398569307042396
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9064012711549054,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.852951277234191,
+          0.9520111221014286
+        ],
+        "sd": 0.06400613249905764
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  },
+  "clock": {
+    "forward_03": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.9055231311098222,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8702464164326436,
+          0.9400296837860713
+        ],
+        "sd": 0.0459163732543655
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_05": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8971937723761891,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8377122008538784,
+          0.9494206359173047
+        ],
+        "sd": 0.07095002275799674
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    },
+    "forward_08": {
+      "classification": "oscillation_dominant",
+      "within_energy_fraction": {
+        "mean": 0.8974304726840284,
+        "training_seeds": 5,
+        "bootstrap95": [
+          0.8395535778454098,
+          0.9516480097415453
+        ],
+        "sd": 0.07146199632418254
+      },
+      "caveat": "Body-z rate decomposition, not a causal gait diagnosis; full20s includes ordinary post-failure episodes."
+    }
+  }
+}

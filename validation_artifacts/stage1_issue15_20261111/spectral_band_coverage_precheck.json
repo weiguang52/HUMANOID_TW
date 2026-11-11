@@ -1,0 +1,53 @@
+{
+  "scope": "Completed-job no-reset20s survivors only, used to check planned spectral band coverage; not final group inference or selection.",
+  "checks": [
+    {
+      "job": "ft5_s1_eval1",
+      "command": "forward_03",
+      "survivor_count": 1024,
+      "fraction_fullband_peak_above10Hz": 0.0,
+      "fraction_fullband_peak_below0p2Hz": 0.0,
+      "no_20s_survivors": false
+    },
+    {
+      "job": "ft5_s1_eval1",
+      "command": "forward_05",
+      "survivor_count": 102,
+      "fraction_fullband_peak_above10Hz": 0.00980392156862745,
+      "fraction_fullband_peak_below0p2Hz": 0.0,
+      "no_20s_survivors": false
+    },
+    {
+      "job": "ft5_s1_eval1",
+      "command": "forward_08",
+      "survivor_count": 0,
+      "fraction_fullband_peak_above10Hz": null,
+      "fraction_fullband_peak_below0p2Hz": null,
+      "no_20s_survivors": true
+    },
+    {
+      "job": "robust05_s1_eval1",
+      "command": "forward_03",
+      "survivor_count": 1024,
+      "fraction_fullband_peak_above10Hz": 0.0,
+      "fraction_fullband_peak_below0p2Hz": 0.0,
+      "no_20s_survivors": false
+    },
+    {
+      "job": "robust05_s1_eval1",
+      "command": "forward_05",
+      "survivor_count": 1024,
+      "fraction_fullband_peak_above10Hz": 0.0,
+      "fraction_fullband_peak_below0p2Hz": 0.0,
+      "no_20s_survivors": false
+    },
+    {
+      "job": "robust05_s1_eval1",
+      "command": "forward_08",
+      "survivor_count": 0,
+      "fraction_fullband_peak_above10Hz": null,
+      "fraction_fullband_peak_below0p2Hz": null,
+      "no_20s_survivors": true
+    }
+  ]
+}
