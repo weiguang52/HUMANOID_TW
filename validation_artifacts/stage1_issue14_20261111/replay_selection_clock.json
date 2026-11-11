@@ -1,0 +1,28 @@
+{
+  "model": "clock_s3",
+  "group": "clock",
+  "training_seed": 3,
+  "eval_seed": 3,
+  "env_id": 475,
+  "xy_error": 0.1176129705500789,
+  "source_output": "/root/gpufree-data/tw_stage1/issue14_20261111/combined/clock_s3_eval3.json",
+  "source_moments": "/root/gpufree-data/tw_stage1/issue14_20261111/combined/moments/clock_s3_eval3/forward_08.npz",
+  "first_failure_step": -1,
+  "command": "forward_08",
+  "condition": "combined",
+  "group_median_xy": 0.11761115196486935,
+  "distance_from_group_median": 1.8185852095481403e-06,
+  "candidate_trials": 15360,
+  "survival_filter_used": false,
+  "checkpoint_sha256": "bcef096b80452c64398a411f4362f3b01658b1958db4c779787b0537510e8c8d",
+  "trajectory": "/root/gpufree-data/tw_stage1/issue14_20261111/reconstruction/clock/moments/source/forward_08_trajectory.npz",
+  "trajectory_meta": "/root/gpufree-data/tw_stage1/issue14_20261111/reconstruction/clock/moments/source/forward_08_trajectory.json",
+  "trajectory_sha256": "4622666339950b31edd3bf285e12c125dcbb84771e556aff1cd5988ec248efea",
+  "push_seconds": [
+    7.12,
+    14.8
+  ],
+  "reset_frames": [],
+  "all_original_metrics_raw_records_and_moments_exactly_reproduced": true,
+  "formal_denominators_unchanged": true
+}

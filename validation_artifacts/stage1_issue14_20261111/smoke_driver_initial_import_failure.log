@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/smoke_issue14.py", line 6, in <module>
+    from issue12_monitor import digest
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue12_monitor.py", line 8, in <module>
+    from unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery import TERM, pitch_cost, push_window
+  File "/root/gpufree-data/projects/HUMANOID_TW/source/unitree_rl_lab/unitree_rl_lab/tasks/__init__.py", line 5, in <module>
+    from isaaclab_tasks.utils import import_packages
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab_tasks/isaaclab_tasks/__init__.py", line 33, in <module>
+    from .utils import import_packages
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab_tasks/isaaclab_tasks/utils/__init__.py", line 9, in <module>
+    from .parse_cfg import get_checkpoint_path, load_cfg_from_registry, parse_env_cfg
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab_tasks/isaaclab_tasks/utils/parse_cfg.py", line 17, in <module>
+    from isaaclab.envs import DirectRLEnvCfg, ManagerBasedRLEnvCfg
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/envs/__init__.py", line 45, in <module>
+    from . import mdp, ui
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/envs/mdp/__init__.py", line 18, in <module>
+    from .actions import *  # noqa: F401, F403
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/envs/mdp/actions/__init__.py", line 8, in <module>
+    from .actions_cfg import *
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/envs/mdp/actions/actions_cfg.py", line 8, in <module>
+    from isaaclab.controllers import DifferentialIKControllerCfg, OperationalSpaceControllerCfg
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/controllers/__init__.py", line 14, in <module>
+    from .differential_ik import DifferentialIKController
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/controllers/differential_ik.py", line 12, in <module>
+    from isaaclab.utils.math import apply_delta_pose, compute_pose_error
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/utils/__init__.py", line 14, in <module>
+    from .mesh import *
+  File "/root/gpufree-data/projects/IsaacLab/source/isaaclab/isaaclab/utils/mesh.py", line 14, in <module>
+    from pxr import Usd, UsdGeom
+ModuleNotFoundError: No module named 'pxr'

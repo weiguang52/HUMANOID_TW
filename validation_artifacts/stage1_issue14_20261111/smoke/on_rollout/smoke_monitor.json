@@ -1,0 +1,15 @@
+{
+  "environment_steps": 1000.0,
+  "transitions": 64000.0,
+  "raw_cost_mean": 0.0050855822357771105,
+  "active_fraction": 0.10103125,
+  "new_reward_per_step": -0.0035272351854266615,
+  "old_reward_per_step": 0.1010702025257051,
+  "total_reward_per_step": 0.0975429675579071,
+  "xy_tracking_reward_per_step": 0.05295402711257338,
+  "yaw_tracking_reward_per_step": 0.013209331227466464,
+  "iteration": -2,
+  "abs_new_over_abs_old": 0.03489886333738752,
+  "abs_new_over_tracking": 0.05331100587879465,
+  "max_term_identity_error": 6.883725944817343e-08
+}

@@ -1,0 +1,144 @@
+{
+  "gates": {
+    "primary_clean08_xy_vs_treatment_upper95_below_zero": false,
+    "clean05_xy_vs_control_mean_degradation_at_most5percent": false,
+    "clean08_xy_vs_control_mean_degradation_at_most5percent": false,
+    "clean08_mean_vx_vs_control95_interval_not_entirely_negative": false,
+    "combined03_clock_seed_level_fall95_upper_below1percent": true,
+    "combined05_clock_mean_falls_not_above_control": true
+  },
+  "primary_mitigation_supported": false,
+  "all_gates_pass": false,
+  "primary": {
+    "control": {
+      "per_seed": [
+        0.12161979608387385,
+        0.0990304186418598,
+        0.11421933856182538,
+        0.15692761817683276,
+        0.09924054470737513
+      ],
+      "mean": 0.11820754323435338,
+      "sample_sd": 0.023739748262822165,
+      "bootstrap95": [
+        0.10215225305205906,
+        0.13832863906434945
+      ],
+      "resamples": 3125
+    },
+    "treatment": {
+      "per_seed": [
+        0.09189988947683876,
+        0.09344259317505188,
+        0.13253280886142452,
+        0.12118780506183581,
+        0.10095601819235143
+      ],
+      "mean": 0.10800382295350049,
+      "sample_sd": 0.018003653600983615,
+      "bootstrap95": [
+        0.09432819669922654,
+        0.12244576496423225
+      ],
+      "resamples": 3125
+    },
+    "paired_difference": {
+      "per_seed": [
+        -0.029719906607035093,
+        -0.005587825466807916,
+        0.018313470299599136,
+        -0.03573981311499695,
+        0.0017154734849763043
+      ],
+      "mean": -0.010203720280852905,
+      "sample_sd": 0.02241415506725502,
+      "bootstrap95": [
+        -0.0273014529821744,
+        0.006894012420468593
+      ],
+      "resamples": 3125
+    },
+    "ratio_of_group_means": 0.9136796180542943,
+    "relative_change": -0.08632038194570568,
+    "relative_change_bootstrap95": [
+      -0.2080506206719751,
+      0.06553864429295508
+    ],
+    "zero_control_bootstrap_replicates": 0,
+    "point_not_worse_than5percent": true,
+    "point_worse_than5percent_and_positive95": false,
+    "multiple_comparisons_corrected": false,
+    "reference_group": "treatment",
+    "candidate_group": "clock"
+  },
+  "clean08_vx": {
+    "control": {
+      "per_seed": [
+        0.7058801289714896,
+        0.730051366180897,
+        0.7281227299967892,
+        0.7473937577580388,
+        0.7332119555298607
+      ],
+      "mean": 0.7289319876874151,
+      "sample_sd": 0.014936960662677056,
+      "bootstrap95": [
+        0.7157950144882237,
+        0.7400710738903605
+      ],
+      "resamples": 3125
+    },
+    "treatment": {
+      "per_seed": [
+        0.7152966078618785,
+        0.7258601736510633,
+        0.6762213786820466,
+        0.6909669430325763,
+        0.7167289660582701
+      ],
+      "mean": 0.705014813857167,
+      "sample_sd": 0.0206389816764973,
+      "bootstrap95": [
+        0.6872720090273973,
+        0.7200949774561091
+      ],
+      "resamples": 3125
+    },
+    "paired_difference": {
+      "per_seed": [
+        0.00941647889038899,
+        -0.004191192529833798,
+        -0.051901351314742605,
+        -0.056426814725462515,
+        -0.01648298947159066
+      ],
+      "mean": -0.023917173830248117,
+      "sample_sd": 0.02913548000146181,
+      "bootstrap95": [
+        -0.04662786431040018,
+        -0.0012064833500960547
+      ],
+      "resamples": 3125
+    },
+    "ratio_of_group_means": null,
+    "relative_change": null,
+    "relative_change_bootstrap95": null,
+    "zero_control_bootstrap_replicates": 0,
+    "point_not_worse_than5percent": null,
+    "point_worse_than5percent_and_positive95": null,
+    "multiple_comparisons_corrected": false,
+    "relative_change_not_interpreted_for_signed_metric": true,
+    "reference_group": "control",
+    "candidate_group": "clock"
+  },
+  "scope": "full_horizon_nonterminal",
+  "formal_updates_per_seed": 1500,
+  "formal_seeds": 5,
+  "total_formal_updates": 7500,
+  "multiple_comparisons_corrected": false,
+  "paired_resamples": 3125,
+  "default_promoted": false,
+  "no_extra_budget_or_encoding_search": true,
+  "stop_clock_hypothesis": true,
+  "original_issue12_rejection_unchanged": true
+}

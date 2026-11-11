@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "role": "Read-only implementation monitoring; never used for checkpoint selection, acceptance or budget changes.",
+  "checkpoint": "logs/rsl_rl/tw_stage1/2026-11-11_08-53-09_issue14_20261111_clock_s1/model_12800.pt",
+  "checkpoint_sha256": "dc262bb11148d2f7c3805a48f84bb36c74ae1e20ceb4e2d3b61b4cd8a7ca0c65",
+  "iteration": 12800,
+  "critic_first_weight_shape": [
+    512,
+    136
+  ],
+  "new_clock_weight_l2": 1.046121597290039,
+  "new_clock_nonzero_elements": 1024,
+  "new_columns_are_learning": true,
+  "unix": 1794359402.2863312
+}

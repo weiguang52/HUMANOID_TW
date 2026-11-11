@@ -1,0 +1,44 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /root/gpufree-data/projects/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/root/gpufree-data/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /root/gpufree-data/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20261111_085043.log
+2026-11-11T00:50:43Z [301ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-11-11T00:50:43Z [828ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-11-11T00:50:44Z [1,062ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-11-11T00:50:46Z [2,861ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | cf40d7a0.. |
+|     |                                  |        |     |            | 11        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 43341
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+test_default_off_is_exact_noop (__main__.ClockTests.test_default_off_is_exact_noop) ... ok
+test_evaluation_push_delegates_once_no_rng (__main__.ClockTests.test_evaluation_push_delegates_once_no_rng) ... ok
+test_every_boundary_matches_reward_clock (__main__.ClockTests.test_every_boundary_matches_reward_clock) ... ok
+test_never_pushed_zero (__main__.ClockTests.test_never_pushed_zero) ... ok
+test_no_rng_or_clock_mutation (__main__.ClockTests.test_no_rng_or_clock_mutation) ... ok
+test_only_critic_term_changes (__main__.ClockTests.test_only_critic_term_changes) ... ok
+test_repeated_push_selected (__main__.ClockTests.test_repeated_push_selected) ... ok
+test_reset_partial_and_all (__main__.ClockTests.test_reset_partial_and_all) ... ok
+test_train_requires_original_reward_clock (__main__.ClockTests.test_train_requires_original_reward_clock) ... ok
+test_full_state_preserved_and_new_columns_learn (__main__.MigrationTests.test_full_state_preserved_and_new_columns_learn) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.396s
+
+OK

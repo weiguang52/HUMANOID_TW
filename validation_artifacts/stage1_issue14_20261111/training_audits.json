@@ -1,0 +1,472 @@
+{
+  "clock_s1": {
+    "passed": true,
+    "config_changes_vs_original_treatment": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_17-19-23_issue12_20261110_treatment_s1",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-11_08-53-09_issue14_20261111_clock_s1"
+        ],
+        [
+          "/observations/critic/recovery_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock:recovery_clock",
+            "params": {
+              "window_s": "1.0"
+            },
+            "modifiers": "null",
+            "noise": "null",
+            "clip": "null",
+            "scale": "null",
+            "history_length": "0",
+            "flatten_history_dim": "true"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_treatment_s1",
+          "issue14_20261111_clock_s1"
+        ]
+      ]
+    },
+    "parent_load_exact": true,
+    "migration": {
+      "passed": true,
+      "critic_before": 134,
+      "critic_after": 136,
+      "policy": 101,
+      "zero_new_weight_columns": true,
+      "only_two_Adam_moment_columns_padded": [
+        [
+          9,
+          "exp_avg"
+        ],
+        [
+          9,
+          "exp_avg_sq"
+        ]
+      ],
+      "all_old_actor_critic_optimizer_state_exact": true,
+      "all_optimizer_steps_and_parameter_groups_preserved": true,
+      "actor_output_same_observation_bitwise_equal": true,
+      "zero_random_numbers_consumed": true,
+      "std_reset": false,
+      "expanded_critic_shapes": {
+        "mlp.0.weight": [
+          512,
+          136
+        ],
+        "mlp.0.bias": [
+          512
+        ],
+        "mlp.2.weight": [
+          256,
+          512
+        ],
+        "mlp.2.bias": [
+          256
+        ],
+        "mlp.4.weight": [
+          128,
+          256
+        ],
+        "mlp.4.bias": [
+          128
+        ],
+        "mlp.6.weight": [
+          1,
+          128
+        ],
+        "mlp.6.bias": [
+          1
+        ]
+      }
+    },
+    "updates": 1500,
+    "optimizer_step_increase": 30000,
+    "initial_physics_and_complete_RNG_match_original_treatment": true,
+    "policy": 101,
+    "critic": 136,
+    "std_reset": false
+  },
+  "clock_s2": {
+    "passed": true,
+    "config_changes_vs_original_treatment": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_18-19-15_issue12_20261110_treatment_s2",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-11_09-22-44_issue14_20261111_clock_s2"
+        ],
+        [
+          "/observations/critic/recovery_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock:recovery_clock",
+            "params": {
+              "window_s": "1.0"
+            },
+            "modifiers": "null",
+            "noise": "null",
+            "clip": "null",
+            "scale": "null",
+            "history_length": "0",
+            "flatten_history_dim": "true"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_treatment_s2",
+          "issue14_20261111_clock_s2"
+        ]
+      ]
+    },
+    "parent_load_exact": true,
+    "migration": {
+      "passed": true,
+      "critic_before": 134,
+      "critic_after": 136,
+      "policy": 101,
+      "zero_new_weight_columns": true,
+      "only_two_Adam_moment_columns_padded": [
+        [
+          9,
+          "exp_avg"
+        ],
+        [
+          9,
+          "exp_avg_sq"
+        ]
+      ],
+      "all_old_actor_critic_optimizer_state_exact": true,
+      "all_optimizer_steps_and_parameter_groups_preserved": true,
+      "actor_output_same_observation_bitwise_equal": true,
+      "zero_random_numbers_consumed": true,
+      "std_reset": false,
+      "expanded_critic_shapes": {
+        "mlp.0.weight": [
+          512,
+          136
+        ],
+        "mlp.0.bias": [
+          512
+        ],
+        "mlp.2.weight": [
+          256,
+          512
+        ],
+        "mlp.2.bias": [
+          256
+        ],
+        "mlp.4.weight": [
+          128,
+          256
+        ],
+        "mlp.4.bias": [
+          128
+        ],
+        "mlp.6.weight": [
+          1,
+          128
+        ],
+        "mlp.6.bias": [
+          1
+        ]
+      }
+    },
+    "updates": 1500,
+    "optimizer_step_increase": 30000,
+    "initial_physics_and_complete_RNG_match_original_treatment": true,
+    "policy": 101,
+    "critic": 136,
+    "std_reset": false
+  },
+  "clock_s3": {
+    "passed": true,
+    "config_changes_vs_original_treatment": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_19-17-14_issue12_20261110_treatment_s3",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-11_09-52-00_issue14_20261111_clock_s3"
+        ],
+        [
+          "/observations/critic/recovery_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock:recovery_clock",
+            "params": {
+              "window_s": "1.0"
+            },
+            "modifiers": "null",
+            "noise": "null",
+            "clip": "null",
+            "scale": "null",
+            "history_length": "0",
+            "flatten_history_dim": "true"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_treatment_s3",
+          "issue14_20261111_clock_s3"
+        ]
+      ]
+    },
+    "parent_load_exact": true,
+    "migration": {
+      "passed": true,
+      "critic_before": 134,
+      "critic_after": 136,
+      "policy": 101,
+      "zero_new_weight_columns": true,
+      "only_two_Adam_moment_columns_padded": [
+        [
+          9,
+          "exp_avg"
+        ],
+        [
+          9,
+          "exp_avg_sq"
+        ]
+      ],
+      "all_old_actor_critic_optimizer_state_exact": true,
+      "all_optimizer_steps_and_parameter_groups_preserved": true,
+      "actor_output_same_observation_bitwise_equal": true,
+      "zero_random_numbers_consumed": true,
+      "std_reset": false,
+      "expanded_critic_shapes": {
+        "mlp.0.weight": [
+          512,
+          136
+        ],
+        "mlp.0.bias": [
+          512
+        ],
+        "mlp.2.weight": [
+          256,
+          512
+        ],
+        "mlp.2.bias": [
+          256
+        ],
+        "mlp.4.weight": [
+          128,
+          256
+        ],
+        "mlp.4.bias": [
+          128
+        ],
+        "mlp.6.weight": [
+          1,
+          128
+        ],
+        "mlp.6.bias": [
+          1
+        ]
+      }
+    },
+    "updates": 1500,
+    "optimizer_step_increase": 30000,
+    "initial_physics_and_complete_RNG_match_original_treatment": true,
+    "policy": 101,
+    "critic": 136,
+    "std_reset": false
+  },
+  "clock_s4": {
+    "passed": true,
+    "config_changes_vs_original_treatment": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_20-14-33_issue12_20261110_treatment_s4",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-11_10-21-01_issue14_20261111_clock_s4"
+        ],
+        [
+          "/observations/critic/recovery_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock:recovery_clock",
+            "params": {
+              "window_s": "1.0"
+            },
+            "modifiers": "null",
+            "noise": "null",
+            "clip": "null",
+            "scale": "null",
+            "history_length": "0",
+            "flatten_history_dim": "true"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_treatment_s4",
+          "issue14_20261111_clock_s4"
+        ]
+      ]
+    },
+    "parent_load_exact": true,
+    "migration": {
+      "passed": true,
+      "critic_before": 134,
+      "critic_after": 136,
+      "policy": 101,
+      "zero_new_weight_columns": true,
+      "only_two_Adam_moment_columns_padded": [
+        [
+          9,
+          "exp_avg"
+        ],
+        [
+          9,
+          "exp_avg_sq"
+        ]
+      ],
+      "all_old_actor_critic_optimizer_state_exact": true,
+      "all_optimizer_steps_and_parameter_groups_preserved": true,
+      "actor_output_same_observation_bitwise_equal": true,
+      "zero_random_numbers_consumed": true,
+      "std_reset": false,
+      "expanded_critic_shapes": {
+        "mlp.0.weight": [
+          512,
+          136
+        ],
+        "mlp.0.bias": [
+          512
+        ],
+        "mlp.2.weight": [
+          256,
+          512
+        ],
+        "mlp.2.bias": [
+          256
+        ],
+        "mlp.4.weight": [
+          128,
+          256
+        ],
+        "mlp.4.bias": [
+          128
+        ],
+        "mlp.6.weight": [
+          1,
+          128
+        ],
+        "mlp.6.bias": [
+          1
+        ]
+      }
+    },
+    "updates": 1500,
+    "optimizer_step_increase": 30000,
+    "initial_physics_and_complete_RNG_match_original_treatment": true,
+    "policy": 101,
+    "critic": 136,
+    "std_reset": false
+  },
+  "clock_s5": {
+    "passed": true,
+    "config_changes_vs_original_treatment": {
+      "env": [
+        [
+          "/log_dir",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_21-12-08_issue12_20261110_treatment_s5",
+          "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-11_10-49-53_issue14_20261111_clock_s5"
+        ],
+        [
+          "/observations/critic/recovery_clock",
+          null,
+          {
+            "func": "unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock:recovery_clock",
+            "params": {
+              "window_s": "1.0"
+            },
+            "modifiers": "null",
+            "noise": "null",
+            "clip": "null",
+            "scale": "null",
+            "history_length": "0",
+            "flatten_history_dim": "true"
+          }
+        ]
+      ],
+      "agent": [
+        [
+          "/run_name",
+          "issue12_20261110_treatment_s5",
+          "issue14_20261111_clock_s5"
+        ]
+      ]
+    },
+    "parent_load_exact": true,
+    "migration": {
+      "passed": true,
+      "critic_before": 134,
+      "critic_after": 136,
+      "policy": 101,
+      "zero_new_weight_columns": true,
+      "only_two_Adam_moment_columns_padded": [
+        [
+          9,
+          "exp_avg"
+        ],
+        [
+          9,
+          "exp_avg_sq"
+        ]
+      ],
+      "all_old_actor_critic_optimizer_state_exact": true,
+      "all_optimizer_steps_and_parameter_groups_preserved": true,
+      "actor_output_same_observation_bitwise_equal": true,
+      "zero_random_numbers_consumed": true,
+      "std_reset": false,
+      "expanded_critic_shapes": {
+        "mlp.0.weight": [
+          512,
+          136
+        ],
+        "mlp.0.bias": [
+          512
+        ],
+        "mlp.2.weight": [
+          256,
+          512
+        ],
+        "mlp.2.bias": [
+          256
+        ],
+        "mlp.4.weight": [
+          128,
+          256
+        ],
+        "mlp.4.bias": [
+          128
+        ],
+        "mlp.6.weight": [
+          1,
+          128
+        ],
+        "mlp.6.bias": [
+          1
+        ]
+      }
+    },
+    "updates": 1500,
+    "optimizer_step_increase": 30000,
+    "initial_physics_and_complete_RNG_match_original_treatment": true,
+    "policy": 101,
+    "critic": 136,
+    "std_reset": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "changes": {
+    "env": [
+      [
+        "/log_dir",
+        "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_17-19-23_issue12_20261110_treatment_s1",
+        "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-11_08-47-10_issue14_smoke_on_ppo"
+      ],
+      [
+        "/observations/critic/recovery_clock",
+        null,
+        {
+          "func": "unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock:recovery_clock",
+          "params": {
+            "window_s": "1.0"
+          },
+          "modifiers": "null",
+          "noise": "null",
+          "clip": "null",
+          "scale": "null",
+          "history_length": "0",
+          "flatten_history_dim": "true"
+        }
+      ],
+      [
+        "/scene/num_envs",
+        "4096",
+        "64"
+      ],
+      [
+        "/scene/terrain/num_envs",
+        "4096",
+        "64"
+      ]
+    ],
+    "agent": [
+      [
+        "/max_iterations",
+        "1500",
+        "2"
+      ],
+      [
+        "/run_name",
+        "issue12_20261110_treatment_s1",
+        "issue14_smoke_on_ppo"
+      ]
+    ]
+  },
+  "operational_smoke_envs_and_updates_are_expected_differences": true
+}

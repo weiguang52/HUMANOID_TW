@@ -1,0 +1,371 @@
+[
+  {
+    "command": "forward_03",
+    "comparisons": {
+      "treatment_vs_control": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            0.0013982928739504352,
+            -0.0045326629253898965,
+            -0.007273404001859274,
+            0.003202486892248002,
+            0.012883438619671728
+          ],
+          "mean": 0.001135630291724199,
+          "sample_sd": 0.007829324589248877,
+          "bootstrap95": [
+            -0.0046300776077439435,
+            0.007464027965174658
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            -0.004557291666666667,
+            -0.002604166666666667,
+            0.0,
+            -0.0029296875,
+            -0.004557291666666667
+          ],
+          "mean": -0.0029296875,
+          "sample_sd": 0.0018699748198365979,
+          "bootstrap95": [
+            -0.004231770833333334,
+            -0.0014322916666666668
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "direction_unresolved_not_equivalence",
+        "fall_direction": "fewer_falls",
+        "interpretation": "The achieved-speed direction is unresolved; inclusion of zero is not evidence of speed equivalence, so a slowing contribution cannot be excluded."
+      },
+      "clock_vs_control": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            0.008188361546836442,
+            0.010420608284212318,
+            -0.005836869681523249,
+            0.005492626703556103,
+            -0.00488757572631171
+          ],
+          "mean": 0.0026754302253539806,
+          "sample_sd": 0.00754942215744275,
+          "bootstrap95": [
+            -0.003191252822422763,
+            0.008542113273130725
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            -0.0003255208333333339,
+            -0.004231770833333333,
+            -0.0006510416666666661,
+            -0.0022786458333333335,
+            -0.005859375000000001
+          ],
+          "mean": -0.0026692708333333334,
+          "sample_sd": 0.0023631108610522836,
+          "bootstrap95": [
+            -0.0044921875,
+            -0.0008463541666666668
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "direction_unresolved_not_equivalence",
+        "fall_direction": "fewer_falls",
+        "interpretation": "The achieved-speed direction is unresolved; inclusion of zero is not evidence of speed equivalence, so a slowing contribution cannot be excluded."
+      },
+      "clock_vs_treatment": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            0.006790068672886007,
+            0.014953271209602215,
+            0.0014365343203360248,
+            0.0022901398113081006,
+            -0.017771014345983438
+          ],
+          "mean": 0.0015397999336297819,
+          "sample_sd": 0.012051636355350108,
+          "bootstrap95": [
+            -0.009017288008945657,
+            0.00988801865028457
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            0.004231770833333333,
+            -0.001627604166666666,
+            -0.0006510416666666661,
+            0.0006510416666666665,
+            -0.001302083333333334
+          ],
+          "mean": 0.0002604166666666667,
+          "sample_sd": 0.002385425906323081,
+          "bootstrap95": [
+            -0.0013020833333333333,
+            0.00234375
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "direction_unresolved_not_equivalence",
+        "fall_direction": "fall_difference_unresolved",
+        "interpretation": "This contrast does not establish a fall-rate reduction, so it cannot demonstrate improved recovery. The achieved-speed direction is unresolved; inclusion of zero is not evidence of speed equivalence, so a slowing contribution cannot be excluded."
+      }
+    },
+    "common_three_group_bins": 2,
+    "fraction_trials_in_common_bins": {
+      "control": 1.0,
+      "treatment": 0.9994140625,
+      "clock": 1.0
+    },
+    "post_treatment_speed_bins_identify_causal_recovery": false
+  },
+  {
+    "command": "forward_05",
+    "comparisons": {
+      "treatment_vs_control": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            0.0018108017783223795,
+            0.009948809044014018,
+            -0.0018635610056892404,
+            -0.004802584952840416,
+            0.01620313620881203
+          ],
+          "mean": 0.004259320214523754,
+          "sample_sd": 0.00866931464819837,
+          "bootstrap95": [
+            -0.0023042980277473866,
+            0.011338931332952173
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            -0.005533854166666668,
+            -0.008463541666666666,
+            -0.0006510416666666678,
+            -0.011393229166666668,
+            -0.011067708333333332
+          ],
+          "mean": -0.007421875,
+          "sample_sd": 0.004459754218308113,
+          "bootstrap95": [
+            -0.010677083333333334,
+            -0.0037109375000000007
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "direction_unresolved_not_equivalence",
+        "fall_direction": "fewer_falls",
+        "interpretation": "The achieved-speed direction is unresolved; inclusion of zero is not evidence of speed equivalence, so a slowing contribution cannot be excluded."
+      },
+      "clock_vs_control": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            0.019547624328401014,
+            0.005794670595203388,
+            0.0001456705227161348,
+            3.990920292612499e-05,
+            -0.0027191582627796307
+          ],
+          "mean": 0.004561743277293406,
+          "sample_sd": 0.00893108265910776,
+          "bootstrap95": [
+            -0.0010425655193981754,
+            0.01234367706352536
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            -0.00390625,
+            -0.0029296875,
+            0.008138020833333332,
+            -0.013020833333333334,
+            -0.011718749999999997
+          ],
+          "mean": -0.0046875,
+          "sample_sd": 0.008471675778747497,
+          "bootstrap95": [
+            -0.0107421875,
+            0.001953125
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "direction_unresolved_not_equivalence",
+        "fall_direction": "fall_difference_unresolved",
+        "interpretation": "This contrast does not establish a fall-rate reduction, so it cannot demonstrate improved recovery. The achieved-speed direction is unresolved; inclusion of zero is not evidence of speed equivalence, so a slowing contribution cannot be excluded."
+      },
+      "clock_vs_treatment": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            0.017736822550078635,
+            -0.004154138448810629,
+            0.0020092315284053752,
+            0.004842494155766541,
+            -0.01892229447159166
+          ],
+          "mean": 0.00030242306276965223,
+          "sample_sd": 0.013387815644583226,
+          "bootstrap95": [
+            -0.010549684071592846,
+            0.010404999145744576
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            0.0016276041666666678,
+            0.005533854166666666,
+            0.0087890625,
+            -0.001627604166666666,
+            -0.0006510416666666644
+          ],
+          "mean": 0.002734375000000001,
+          "sample_sd": 0.004364893305172326,
+          "bootstrap95": [
+            -0.0005859374999999986,
+            0.00625
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "direction_unresolved_not_equivalence",
+        "fall_direction": "fall_difference_unresolved",
+        "interpretation": "This contrast does not establish a fall-rate reduction, so it cannot demonstrate improved recovery. The achieved-speed direction is unresolved; inclusion of zero is not evidence of speed equivalence, so a slowing contribution cannot be excluded."
+      }
+    },
+    "common_three_group_bins": 3,
+    "fraction_trials_in_common_bins": {
+      "control": 1.0,
+      "treatment": 1.0,
+      "clock": 1.0
+    },
+    "post_treatment_speed_bins_identify_causal_recovery": false
+  },
+  {
+    "command": "forward_08",
+    "comparisons": {
+      "treatment_vs_control": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            -0.023717490847228517,
+            -0.03749183379894738,
+            -0.030178856375789764,
+            -0.05285454570132908,
+            -0.010632681791215126
+          ],
+          "mean": -0.030975081702901974,
+          "sample_sd": 0.01571861028134061,
+          "bootstrap95": [
+            -0.04378426997111336,
+            -0.018621474003964255
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            -0.03515625,
+            -0.041015625,
+            -0.02897135416666667,
+            -0.021484375,
+            -0.01595052083333333
+          ],
+          "mean": -0.028515625,
+          "sample_sd": 0.01009796896343096,
+          "bootstrap95": [
+            -0.03626302083333334,
+            -0.020768229166666666
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "slower",
+        "fall_direction": "fewer_falls",
+        "interpretation": "Lower achieved speed remains a plausible contributor to any observed lower fall rate."
+      },
+      "clock_vs_control": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            -0.0006990312571077961,
+            -0.022895865844619223,
+            -0.026010206082169862,
+            -0.02695028050250825,
+            0.004255313325295718
+          ],
+          "mean": -0.014460014072221883,
+          "sample_sd": 0.015001711683389683,
+          "bootstrap95": [
+            -0.02576336780279509,
+            -0.0027886594726781013
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            -0.024088541666666657,
+            0.015625,
+            0.009440104166666657,
+            -0.005859375,
+            0.0400390625
+          ],
+          "mean": 0.00703125,
+          "sample_sd": 0.023998856481930987,
+          "bootstrap95": [
+            -0.011263020833333326,
+            0.0259765625
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "slower",
+        "fall_direction": "fall_difference_unresolved",
+        "interpretation": "This contrast does not establish a fall-rate reduction, so it cannot demonstrate improved recovery. Lower achieved speed remains a plausible contributor to any observed lower fall rate."
+      },
+      "clock_vs_treatment": {
+        "actual_mean_vx_difference": {
+          "per_seed": [
+            0.02301845959012072,
+            0.01459596795432816,
+            0.004168650293619902,
+            0.02590426519882083,
+            0.014887995116510844
+          ],
+          "mean": 0.016515067630680093,
+          "sample_sd": 0.00850316805000784,
+          "bootstrap95": [
+            0.010024075685061718,
+            0.023065444628182274
+          ],
+          "resamples": 3125
+        },
+        "fall_rate_difference": {
+          "per_seed": [
+            0.011067708333333343,
+            0.056640625,
+            0.03841145833333333,
+            0.015625,
+            0.05598958333333333
+          ],
+          "mean": 0.035546875,
+          "sample_sd": 0.021605364813790558,
+          "bootstrap95": [
+            0.018359375000000004,
+            0.052734374999999986
+          ],
+          "resamples": 3125
+        },
+        "speed_direction": "faster",
+        "fall_direction": "more_falls",
+        "interpretation": "This contrast does not establish a fall-rate reduction, so it cannot demonstrate improved recovery. This candidate is faster on the marginal mean; a lower marginal mean speed does not explain any observed fall reduction in these summaries. This is not proof of a recovery mechanism."
+      }
+    },
+    "common_three_group_bins": 2,
+    "fraction_trials_in_common_bins": {
+      "control": 0.9680989583333334,
+      "treatment": 0.9763020833333333,
+      "clock": 0.9994791666666667
+    },
+    "post_treatment_speed_bins_identify_causal_recovery": false
+  }
+]

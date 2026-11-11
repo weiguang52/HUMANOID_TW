@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "scope": "First of30new formal evaluation jobs only; full360record analysis remains pending.",
+  "commands": [
+    {
+      "command": "forward_03",
+      "raw_sha256": "df12c3e65fa38b5dd177725b5efe38e03ebff511cbcf778d92fc7f7f0ccd59cb",
+      "independent_masks_reset_counts_moments_and_original_metrics_passed": true
+    },
+    {
+      "command": "yaw_positive",
+      "raw_sha256": "3cd9123aea7bca253666bde2be1865e4f329f4a4ca3de4d091943792bc414045",
+      "independent_masks_reset_counts_moments_and_original_metrics_passed": true
+    },
+    {
+      "command": "yaw_negative",
+      "raw_sha256": "558e937deddec2aa3a4abd679bf2084d374d1cdfdbd9e0fe117e506fff8b1c87",
+      "independent_masks_reset_counts_moments_and_original_metrics_passed": true
+    },
+    {
+      "command": "forward_05",
+      "raw_sha256": "3be70672da28b2a099c215c25ff6c76e178739e50d03a3e6c5704ac7a180cd42",
+      "independent_masks_reset_counts_moments_and_original_metrics_passed": true
+    },
+    {
+      "command": "forward_08",
+      "raw_sha256": "84a1fd3bb49252a71f5f2af5ca00ffc4747f874d09dae8e0b8a4d1a245082746",
+      "independent_masks_reset_counts_moments_and_original_metrics_passed": true
+    }
+  ],
+  "initial_trials": 5120,
+  "policy": 101,
+  "critic": 136,
+  "model_optimizer_state_unchanged": true,
+  "nominal_clean_physics_verified": true
+}

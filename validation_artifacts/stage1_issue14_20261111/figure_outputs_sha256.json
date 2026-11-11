@@ -1,0 +1,29 @@
+{
+  "source_sha256": {
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/plot_issue14.py": "1f133c6612e3519003bfe432c3707d42ec354a64c4389521fe8ea956f7412226"
+  },
+  "input_sha256": {
+    "paired_comparisons.json": "3664c087cc5dfb113f92ec4e53f91434be34ceed087d71f45bfb4c573b464d00",
+    "fall_results.json": "a62b98d4ff98f72da0df6f64fa8d6296f56967b6d4bd118fa8aa8ada1f5fb171",
+    "decision.json": "670d8b46c06b7b806634e29bdeed73aa8019db31dc5f9d44d616bd9fae7b430d",
+    "actual_speed_fall_table.csv": "5985ebd008af4c42d555524631a7947d76bb3daa5bdd3354977ec9d820cc5ed8",
+    "actual_speed_bins_forward_03.json": "c2884d4dbea76835f2955e0caba7f352abf2dd96905f49828e1bf8752f37b2a6",
+    "actual_speed_bins_forward_05.json": "3a63b68d639a65ae4a8b11cae813991c72c2ae682541f983aee54555106195b5",
+    "actual_speed_bins_forward_08.json": "d5ffd2faac296b8efaa56b1f0a02c8c4984ffc04980c667b39c0c65c79a9efba"
+  },
+  "figures_sha256": {
+    "figures/primary_and_acceptance.svg": "e71fd258e522e2444888eef50762b9a6a3c318f10c51dca28f194d2c3b081e5f",
+    "figures/primary_and_acceptance.png": "084632b8f7526dc979fc5c737011ad02f2c7c8cffebe98eb9b431d472082f54f",
+    "figures/window_tracking.svg": "96f7e3169caf0d3d19cd702d491af409889863378b51640daabd415468da195a",
+    "figures/bias_and_variability.svg": "cc37d0e355ac517dcf8b2c81c1b3a7746a7e7f8f77d4906d2283ec8ab1ab31cb",
+    "figures/clean_tracking.png": "1f3167ca7f41679e76ed42c6b2c526cc81a9be26ec6ca324bc0a61b753e35955",
+    "figures/actual_speed_vs_falls.png": "1b5750505bfdf208fac3ef9787b3789c450a10017ff0870e9c36c42aa98547b1",
+    "figures/bias_and_variability.png": "137d93a6b8c9512c9b26102744eaaa91f7a6fbdafc0243989abcaf8f92a8cfe4",
+    "figures/actual_speed_common_bins.svg": "dc686ff0fb4cc1b44ddfad4241c1b6afe97710dde7e9de676ea4863f3eababff",
+    "figures/window_tracking.png": "52b72e9d2b09c87c52ce9375e86a8d2ea360cd24ba6edea5248a9703ecac12da",
+    "figures/actual_speed_common_bins.png": "50b04ea583e9729f4d1b2f55de4ed004556d09385e46f58bdada864b6fcb87d0",
+    "figures/actual_speed_vs_falls.svg": "ea3d3cb416a33b8da31f11a37ad9b20404e7687a2d4ac51314b643f561b2175e",
+    "figures/clean_tracking.svg": "0be21ddd542ffd933a489fdb524030d728c9616d00b2a9c42ea9831b16d05852"
+  },
+  "derived_code_not_claimed_prospectively_frozen": true
+}

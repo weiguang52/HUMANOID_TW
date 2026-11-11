@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "critic_before": 134,
+  "critic_after": 136,
+  "policy": 101,
+  "zero_new_weight_columns": true,
+  "only_two_Adam_moment_columns_padded": [
+    [
+      9,
+      "exp_avg"
+    ],
+    [
+      9,
+      "exp_avg_sq"
+    ]
+  ],
+  "all_old_actor_critic_optimizer_state_exact": true,
+  "all_optimizer_steps_and_parameter_groups_preserved": true,
+  "actor_output_same_observation_bitwise_equal": true,
+  "zero_random_numbers_consumed": true,
+  "std_reset": false,
+  "expanded_critic_shapes": {
+    "mlp.0.weight": [
+      512,
+      136
+    ],
+    "mlp.0.bias": [
+      512
+    ],
+    "mlp.2.weight": [
+      256,
+      512
+    ],
+    "mlp.2.bias": [
+      256
+    ],
+    "mlp.4.weight": [
+      128,
+      256
+    ],
+    "mlp.4.bias": [
+      128
+    ],
+    "mlp.6.weight": [
+      1,
+      128
+    ],
+    "mlp.6.bias": [
+      1
+    ]
+  }
+}

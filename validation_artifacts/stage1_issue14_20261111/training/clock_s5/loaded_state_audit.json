@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_21-59-16_issue10_20261109_requested_s5/model_11994.pt",
+  "checkpoint_sha256": "e4315ae0c827c89e4f903192ad5e823a79458fe21db8a490d4867aaf62501299",
+  "iteration": 11994,
+  "exact_state": {
+    "actor_state_dict": {
+      "checkpoint_sha256": "719226eb0574ba98e917d307e99cdc3c6375b0749978c8f3728c1962d418cc1b",
+      "loaded_sha256": "719226eb0574ba98e917d307e99cdc3c6375b0749978c8f3728c1962d418cc1b"
+    },
+    "critic_state_dict": {
+      "checkpoint_sha256": "b7350a15c2c8cb5fdb8dd8216311452cf1113b0871cf9eeda8b15ae048683af0",
+      "loaded_sha256": "b7350a15c2c8cb5fdb8dd8216311452cf1113b0871cf9eeda8b15ae048683af0"
+    },
+    "optimizer_state_dict": {
+      "checkpoint_sha256": "57660f7d279a6e2d30a202bfe0dbb45d82df2e7c41b6577325eab7640b9e36af",
+      "loaded_sha256": "57660f7d279a6e2d30a202bfe0dbb45d82df2e7c41b6577325eab7640b9e36af"
+    }
+  },
+  "observation_dims": {
+    "policy": [
+      101
+    ],
+    "critic": [
+      136
+    ]
+  },
+  "actor_parameter_shapes": {
+    "distribution.std_param": [
+      30
+    ],
+    "mlp.0.weight": [
+      512,
+      101
+    ],
+    "mlp.0.bias": [
+      512
+    ],
+    "mlp.2.weight": [
+      256,
+      512
+    ],
+    "mlp.2.bias": [
+      256
+    ],
+    "mlp.4.weight": [
+      128,
+      256
+    ],
+    "mlp.4.bias": [
+      128
+    ],
+    "mlp.6.weight": [
+      30,
+      128
+    ],
+    "mlp.6.bias": [
+      30
+    ]
+  },
+  "critic_parameter_shapes": {
+    "mlp.0.weight": [
+      512,
+      134
+    ],
+    "mlp.0.bias": [
+      512
+    ],
+    "mlp.2.weight": [
+      256,
+      512
+    ],
+    "mlp.2.bias": [
+      256
+    ],
+    "mlp.4.weight": [
+      128,
+      256
+    ],
+    "mlp.4.bias": [
+      128
+    ],
+    "mlp.6.weight": [
+      1,
+      128
+    ],
+    "mlp.6.bias": [
+      1
+    ]
+  },
+  "optimizer_groups": [
+    {
+      "lr": 3.3750000000000014e-05,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "decoupled_weight_decay": false,
+      "params": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  ],
+  "std_reset": false
+}

@@ -1,0 +1,23 @@
+{
+  "source_selection": "/root/gpufree-data/tw_stage1/issue14_20261111/replay_selection_clock.json",
+  "source_trajectory_sha256": "4622666339950b31edd3bf285e12c125dcbb84771e556aff1cd5988ec248efea",
+  "source_model": "clock_s3",
+  "source_env_id": 475,
+  "group": "clock",
+  "command": "forward_08",
+  "view": "side",
+  "frames": 1000,
+  "fps": 50,
+  "seconds": 20,
+  "push_seconds": [
+    7.12,
+    14.8
+  ],
+  "reset_frame_indices": [],
+  "physics_integrated": false,
+  "camera": "follows translation and heading",
+  "source_samples": "exact same post-step states and times for paired front/side views; C/T examples are not synchronized",
+  "display_mass_material": "nominal authored asset; source randomization is documented but not re-integrated",
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "video": "/root/gpufree-data/tw_stage1/issue14_20261111/videos/clock_side.mp4"
+}

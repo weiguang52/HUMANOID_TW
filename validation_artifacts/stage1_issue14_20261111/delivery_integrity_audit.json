@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "primary_mitigation_supported": false,
+  "all_gates_pass": false,
+  "formal_training_updates": 7500,
+  "smoke_updates": 6,
+  "requirements": {
+    "only_critic_two_clock_inputs_reward_boundary_reset_policy101_hidden_layers_and_distributions_unchanged": true,
+    "strict_original_five_parent_actor_critic_Adam_std_load_and_zero_new_columns_no_extra_rng": true,
+    "ten_unit_tests_off_switch_bitwise_PPO_and_on1000step_dynamics_rng_regression": true,
+    "five_4096env_1500update_runs_no_extra_budget_or_smoke_model_selection": true,
+    "historical_control_treatment_code_config_models_and_evaluation_reused_exactly": true,
+    "thirty_new_evaluation_jobs_both_original_protocols_1024x3x20s": true,
+    "three_group_full_trial_falls_tracking_speed_sd_and_paired_seed95_unadjusted": true,
+    "inside_outside_moments_raw_masks_counts_and_variance_identities_independently_audited": true,
+    "achieved_speed_fall_table_fixed_common_bins_support_and_post_treatment_caveat": true,
+    "frozen_primary_and_all_acceptance_gates_recomputed_no_relaxation_or_promotion": true,
+    "all_three_true_unfiltered_median_trials_and_exact_state_source_reconstruction": true,
+    "six_precolored_front_side20s_clips_actual_pushes_no_physics_reintegration": true,
+    "six_plot_three_sheet_six_full_resolution_frame_actual_manual_review_and36sample_video_QA": true
+  }
+}

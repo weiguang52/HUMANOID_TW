@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "reviewed_contact_sheets": 3,
+  "reviewed_plot_count": 6,
+  "front_and_side_colors_fullbody_and_attachment_samples_pass": true,
+  "humanml_source_npy": "N/A: Stage1 velocity commands",
+  "full_resolution_motion_frames_reviewed": [
+    "video_review_frames/control_front_frame276.png",
+    "video_review_frames/control_side_frame276.png",
+    "video_review_frames/treatment_front_frame350.png",
+    "video_review_frames/treatment_side_frame350.png",
+    "video_review_frames/clock_front_frame365.png",
+    "video_review_frames/clock_side_frame365.png"
+  ],
+  "reviewed_frame_and_sheet_sha256": {
+    "video_review_frames/control_front_frame276.png": "3e539a9f1a87b936ffdb666426402c4b310b91e6622c6afa50e2e1f5cfc9d08a",
+    "video_review_frames/control_side_frame276.png": "239608ba1706137b831be7fc9394a186367125d74903c9b28a5f162adf5b9e12",
+    "video_review_frames/treatment_front_frame350.png": "8d1dbd90fab95fdcf04f150c0a8b32ca3ef60ffd9b5b5dc8f783ca52d48e8a07",
+    "video_review_frames/treatment_side_frame350.png": "620861908c085c29ea8ec6a783fe94132e58d98c571445e37ed23c06c8f2940c",
+    "video_review_frames/clock_front_frame365.png": "4a5adfd6f8de494d10812f204e5b97fe6d9a2fa328368c2ad1b01f0f609cf782",
+    "video_review_frames/clock_side_frame365.png": "53b21c05e9af0c3a17771da75ce8efe1575cab615d1bbd7de76b682fefe2b1a1",
+    "video_contact_sheets/control.png": "70ce0599c92b2215eec759bad9152dd2ea7d5e1780dc1ae009a07c6e9373882d",
+    "video_contact_sheets/treatment.png": "5c12401446d4c67101ad8b326874b2ac55f30f83419cc006e173bb365a632a51",
+    "video_contact_sheets/clock.png": "ba196aab4ac826462f42c3ca31e82cfc46244ed48529ae2c871e1d183239e139"
+  },
+  "reviewed_plot_sha256": {
+    "figures/clean_tracking.png": "1f3167ca7f41679e76ed42c6b2c526cc81a9be26ec6ca324bc0a61b753e35955",
+    "figures/window_tracking.png": "52b72e9d2b09c87c52ce9375e86a8d2ea360cd24ba6edea5248a9703ecac12da",
+    "figures/bias_and_variability.png": "137d93a6b8c9512c9b26102744eaaa91f7a6fbdafc0243989abcaf8f92a8cfe4",
+    "figures/primary_and_acceptance.png": "084632b8f7526dc979fc5c737011ad02f2c7c8cffebe98eb9b431d472082f54f",
+    "figures/actual_speed_vs_falls.png": "1b5750505bfdf208fac3ef9787b3789c450a10017ff0870e9c36c42aa98547b1",
+    "figures/actual_speed_common_bins.png": "50b04ea583e9729f4d1b2f55de4ed004556d09385e46f58bdada864b6fcb87d0"
+  },
+  "scope": "Manual visual review of six plots, three 12-frame contact sheets (36 total samples) and six full-resolution frames 0.2s after first actual push; sampled review, not every video frame. Full encoding/probe checks are separate.",
+  "findings": [
+    "All sampled views retain the full body with consistent segment colors and connected joints.",
+    "All six motion frames show visible attached feet and plausible recorded poses; push times and analysis-window timeline agree with selected trial metadata.",
+    "Control front frame 0 has visible ground grain; later contact samples and full-resolution push frames are clear. This inherited byte-identical clip does not obscure the robot.",
+    "Six plots are legible and distinguish descriptive post-treatment speed bins from causal evidence. Primary CI crosses zero and the acceptance plot reports failure."
+  ],
+  "limitations": "Videos replay recorded root pose/world velocity/joint position without new physical rollout; display joint velocities are zero. Recovery labels use analysis ages 0..49, not the critic feature inclusive age 50."
+}

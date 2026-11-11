@@ -37,6 +37,7 @@ parser.add_argument(
 parser.add_argument("--last_action_observation", default="requested", choices=["requested","applied"])
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--post_push_pitch_weight", type=float, default=None)
+parser.add_argument("--critic_recovery_clock", action="store_true", default=False)
 parser.add_argument("--issue12_audit_dir", default="")
 parser.add_argument("--issue12_calibration_steps", type=int, default=0)
 parser.add_argument("--issue12_smoke_steps", type=int, default=0)
@@ -147,6 +148,9 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     configure_action_observation(env_cfg, args_cli.last_action_observation)
     from unitree_rl_lab.tasks.locomotion.robots.tw.post_push_recovery import configure_post_push_pitch_reward
     configure_post_push_pitch_reward(env_cfg, args_cli.post_push_pitch_weight)
+    if args_cli.critic_recovery_clock:
+        from unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock import configure_critic_recovery_clock
+        configure_critic_recovery_clock(env_cfg, True)
 
     # set the environment seed
     # note: certain randomizations occur in the environment initialization so we set the seed here
@@ -223,7 +227,11 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
 
     # create runner from rsl-rl
     if agent_cfg.class_name == "OnPolicyRunner":
-        runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
+        if args_cli.critic_recovery_clock:
+            from issue14_resume import construct_parent_width_runner
+            runner = construct_parent_width_runner(env, agent_cfg.to_dict(), log_dir, agent_cfg.device)
+        else:
+            runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
     elif agent_cfg.class_name == "DistillationRunner":
         runner = DistillationRunner(env, agent_cfg.to_dict(), log_dir=log_dir, device=agent_cfg.device)
     else:
@@ -265,6 +273,11 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
             monitor = RewardMonitor(env.unwrapped, args_cli.post_push_pitch_weight, audit_dir)
         if monitor is not None and not (args_cli.issue12_calibration_steps or args_cli.issue12_smoke_steps):
             monitor.attach(runner)
+
+    if args_cli.critic_recovery_clock:
+        assert agent_cfg.resume and args_cli.issue12_audit_dir and not os.environ.get("TW_RESET_STD")
+        from issue14_resume import expand_loaded_critic
+        expand_loaded_critic(runner, env.unwrapped, Path(args_cli.issue12_audit_dir) / "critic_clock_migration.json")
 
     # dump the configuration into log-directory
     dump_yaml(os.path.join(log_dir, "params", "env.yaml"), env_cfg)

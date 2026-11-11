@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "config_changes": {
+    "env": [
+      [
+        "/log_dir",
+        "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_17-19-23_issue12_20261110_treatment_s1",
+        "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-11_08-53-09_issue14_20261111_clock_s1"
+      ],
+      [
+        "/observations/critic/recovery_clock",
+        null,
+        {
+          "func": "unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock:recovery_clock",
+          "params": {
+            "window_s": "1.0"
+          },
+          "modifiers": "null",
+          "noise": "null",
+          "clip": "null",
+          "scale": "null",
+          "history_length": "0",
+          "flatten_history_dim": "true"
+        }
+      ]
+    ],
+    "agent": [
+      [
+        "/run_name",
+        "issue12_20261110_treatment_s1",
+        "issue14_20261111_clock_s1"
+      ]
+    ]
+  },
+  "4096_env_initial_physics_and_complete_RNG_bitwise_equal_to_original_treatment": true
+}

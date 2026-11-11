@@ -1,0 +1,31 @@
+{
+  "outputs": {
+    "evaluation_metric_rows.csv": "a3f57fa450b71d6fe27455004a27ed3e5267185b9e14195bdd29057a1d0a1f5a",
+    "evaluation_fall_rows.csv": "0d43f97b43c781b36aa5834eb70c404a1c2185f16d3e37b2fb385345a5e42faf",
+    "policy_metric_rows.csv": "18df0c16a5190811f19d6ddb47aede5cf0bc137474802f60b3e5e5ca4bccff67",
+    "paired_comparisons.json": "3664c087cc5dfb113f92ec4e53f91434be34ceed087d71f45bfb4c573b464d00",
+    "paired_metric_comparisons.csv": "050747e6fdc1fbc17684bfa84bd797b1201568e21bc0565b0205511cdeda9aa2",
+    "fall_results.json": "a62b98d4ff98f72da0df6f64fa8d6296f56967b6d4bd118fa8aa8ada1f5fb171",
+    "decision.json": "670d8b46c06b7b806634e29bdeed73aa8019db31dc5f9d44d616bd9fae7b430d",
+    "classification_sensitivity.json": "7c11766a82001537ae5e5c5d2580fefcd9a1096eafdf7ad4504d54afee6110c6",
+    "representative_selection.json": "411705422c73164c08ff9c05f89464e9f66a606d70b864d386c7dea3cb0ae715",
+    "per_trial_csv_manifest.json": "a0fd1b3e04241297132204913f438ca707516c0484faff2963e86af699199680",
+    "analysis_integrity_audit.json": "9bfabef40b186c1f7db3b277afa23179c413337153b7aefb4dbbf484969ca79c",
+    "actual_speed_trial_rows.csv": "bac0503ce6d986a4ecdf34e46959c5843b6adcbddf56919ba0aa90824c5e580a",
+    "actual_speed_fall_bins.csv": "d5798f8ed94813b3e5eeea9981e59fda636a488f4baf376ee5b519e9cae0c551",
+    "actual_speed_bin_paired_comparisons.json": "442d9eb9fd0650cdb6ca1541d839167099fedc87076b5add5e2680c8d3a5f759",
+    "actual_speed_fall_table.csv": "5985ebd008af4c42d555524631a7947d76bb3daa5bdd3354977ec9d820cc5ed8",
+    "actual_speed_fall_interpretation.json": "bf31a468a517059c68a8bc738cfdc741987525bdd638da82e0bfd7998d887d64",
+    "actual_speed_bins_forward_03.json": "c2884d4dbea76835f2955e0caba7f352abf2dd96905f49828e1bf8752f37b2a6",
+    "actual_speed_bins_forward_05.json": "3a63b68d639a65ae4a8b11cae813991c72c2ae682541f983aee54555106195b5",
+    "actual_speed_bins_forward_08.json": "d5ffd2faac296b8efaa56b1f0a02c8c4984ffc04980c667b39c0c65c79a9efba"
+  },
+  "source_sha256": {
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/analyze_issue14.py": "db81ea6bff9254ac7617067364d85c331135c816366e7150407e3715c2d0b0c6",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue14_analysis_data.py": "12d78b8ecc0f7de7f06e1dd9cbb70c6fdeb4decb98a0affc730dd550d6935369",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue13_analysis_data.py": "14d1790bc0925422ffd973322fc65b4f5dbaafb9e115d0f91f2d32f7a51915eb",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue13_statistics.py": "216d0f8fb0e9ef4646c299cda5dab9788fb92a761afe350a1e92eefca80354fb"
+  },
+  "reader_only_changes_output_root": true,
+  "derived_code_not_claimed_prospectively_frozen": true
+}

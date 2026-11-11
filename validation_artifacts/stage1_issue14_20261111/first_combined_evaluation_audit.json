@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "scope": "First combined job only; all360command audits still scheduled.",
+  "commands": [
+    {
+      "command": "forward_03",
+      "raw_sha256": "09a15d9371572ab20285df64d5830710c05bba3891cb5b60f239e3c459e6398f",
+      "push_rows": 2642,
+      "inside_samples": 126556,
+      "outside_samples": 897434,
+      "independent_raw_window_reset_counts_and_moment_audit_passed": true
+    },
+    {
+      "command": "forward_05",
+      "raw_sha256": "32f9e8d2827e9f8715036cf2ba8a342b887650d7535b0a59fa012fd073105447",
+      "push_rows": 2692,
+      "inside_samples": 127822,
+      "outside_samples": 896155,
+      "independent_raw_window_reset_counts_and_moment_audit_passed": true
+    },
+    {
+      "command": "forward_08",
+      "raw_sha256": "6917b3a78114fba99d61a781326ddd4454e98d9342dba35084b9e17bb64042d6",
+      "push_rows": 2631,
+      "inside_samples": 124392,
+      "outside_samples": 899510,
+      "independent_raw_window_reset_counts_and_moment_audit_passed": true
+    }
+  ],
+  "initial_trials": 3072,
+  "startup_mass_and_material_arrays_byte_equal_to_original_control_same_eval_seed": true,
+  "same_startup_draws_not_claimed_for_all_post_failure_resets": true,
+  "model_optimizer_unchanged": true
+}
