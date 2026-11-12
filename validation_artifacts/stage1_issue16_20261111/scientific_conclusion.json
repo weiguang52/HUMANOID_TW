@@ -1,0 +1,24 @@
+{
+  "overall_classification": "policy_bias",
+  "summary": "A policy-dependent directional bias is demonstrated: all five control6000 seeds reverse direction in every zero-yaw command after policy reflection, and all requested4500 seeds reverse at stand/0.5/0.8 m/s. This supports a learned policy component, not a robot-only explanation. The experiment does not establish that policy bias is the sole cause or quantify the contribution of measured robot asymmetry.",
+  "evidence": [
+    "control6000 signed heading at0.5 m/s changes from -254.596 to +274.302 degrees; all five training seeds reverse, mean-absolute ratio1.0774. At0.3 m/s ratio0.8848 and stand0.9472 also satisfy the frozen descriptive magnitude band.",
+    "requested4500 at0.5 m/s changes from -415.314 to +456.151 degrees, ratio1.0983; at0.8 m/s from -527.204 to +582.524 degrees, ratio1.1049. All five seeds reverse in both commands.",
+    "The fixed-default-PD no-policy test has1024/1024 full20s survivors and mean absolute drift0.000638819 degrees. This does not reproduce the hundreds of degrees seen with walking policies.",
+    "The exact USD has measurable mass/COM/inertia/source-collision differences, while reflected limits/defaults and configured/effective PD parameters match. Actual runtime masses/COM/inertias match the authored source within documented tolerances. Structural differences are measured, but their causal heading contribution is not identified."
+  ],
+  "limitations": [
+    "The four-way label identifies the demonstrated policy component; it does not mean exclusive policy causation. A causal claim that both sources materially contribute remains unproven without a controlled physical-model intervention.",
+    "requested4500 forward0.3 is mixed: four of five seeds reverse and one remains negative with reduced magnitude; group absolute ratio0.5849 fails the0.8..1.2 band. control6000 forward0.8 reverses all five seeds but ratio1.202746 exceeds1.2; the frozen cutoff is not rounded into a pass.",
+    "The robust05 parent is not a simple preserved large-negative-bias baseline: original forward0.3 signed drift -0.732deg becomes -317.297deg under reflection; forward0.5 +19.709 becomes -260.425deg. This large non-conjugate response is consistent with sensitivity to physical asymmetry or nonlinear policy-environment interaction, and prevents a claim that all later drift is merely inherited unchanged.",
+    "robust05 has only one training seed, hence no training-seed CI; its original forward0.8 has no full20s endpoint and reflected forward0.8 is overwhelmingly censored. Tiny survivor subsets cannot establish normal walking behavior.",
+    "The no-policy result concerns standing at default targets, not a moving gait. Source vertex-cloud differences depend on tessellation and are not exact extracted PhysX-cooked hull differences. Shared ancestry, seed-level rather than trajectory-level pairing and unadjusted bootstrap intervals limit causal interpretation."
+  ],
+  "next_recommendations": [
+    "Run one no-training2x2 diagnostic using the same frozen original/reflected policies on the original USD and a separately constructed strictly reflection-symmetric USD, preserving the present commands, denominator rules and heading gate. This isolates the physical-model contribution before choosing a training or model correction."
+  ],
+  "recommendation_implemented": false,
+  "production_default_promoted": false,
+  "training_updates": 0,
+  "all_four_heading_gate_nodes_passed": 0
+}

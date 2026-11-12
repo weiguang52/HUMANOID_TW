@@ -1,0 +1,541 @@
+[
+  {
+    "name": "mirror_robust05_s1_eval1",
+    "model": "robust05_s1",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/robust05_s1_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_robust05_s1_eval2",
+    "model": "robust05_s1",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/robust05_s1_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_robust05_s1_eval3",
+    "model": "robust05_s1",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/robust05_s1_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s1_eval1",
+    "model": "requested4500_s1",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s1_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s1_eval2",
+    "model": "requested4500_s1",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s1_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s1_eval3",
+    "model": "requested4500_s1",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s1_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s2_eval1",
+    "model": "requested4500_s2",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s2_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s2_eval2",
+    "model": "requested4500_s2",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s2_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s2_eval3",
+    "model": "requested4500_s2",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s2_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s3_eval1",
+    "model": "requested4500_s3",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s3_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s3_eval2",
+    "model": "requested4500_s3",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s3_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s3_eval3",
+    "model": "requested4500_s3",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s3_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s4_eval1",
+    "model": "requested4500_s4",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s4_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s4_eval2",
+    "model": "requested4500_s4",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s4_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s4_eval3",
+    "model": "requested4500_s4",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s4_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s5_eval1",
+    "model": "requested4500_s5",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s5_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s5_eval2",
+    "model": "requested4500_s5",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s5_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_requested4500_s5_eval3",
+    "model": "requested4500_s5",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/requested4500_s5_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s1_eval1",
+    "model": "control6000_s1",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s1_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s1_eval2",
+    "model": "control6000_s1",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s1_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s1_eval3",
+    "model": "control6000_s1",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s1_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s2_eval1",
+    "model": "control6000_s2",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s2_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s2_eval2",
+    "model": "control6000_s2",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s2_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s2_eval3",
+    "model": "control6000_s2",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s2_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s3_eval1",
+    "model": "control6000_s3",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s3_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s3_eval2",
+    "model": "control6000_s3",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s3_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s3_eval3",
+    "model": "control6000_s3",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s3_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s4_eval1",
+    "model": "control6000_s4",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s4_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s4_eval2",
+    "model": "control6000_s4",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s4_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s4_eval3",
+    "model": "control6000_s4",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s4_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s5_eval1",
+    "model": "control6000_s5",
+    "seed": 1,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s5_eval1.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s5_eval2",
+    "model": "control6000_s5",
+    "seed": 2,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s5_eval2.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control6000_s5_eval3",
+    "model": "control6000_s5",
+    "seed": 3,
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/mirror/control6000_s5_eval3.json",
+    "initial_trials": 6144
+  },
+  {
+    "name": "default_PD_stand_eval1",
+    "model": "control6000_s1",
+    "seed": 1,
+    "mode": "default",
+    "commands": [
+      "stand"
+    ],
+    "output": "/root/gpufree-data/tw_stage1/issue16_20261111/no_policy/default_eval1.json",
+    "initial_trials": 1024
+  }
+]

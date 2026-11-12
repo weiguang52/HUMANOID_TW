@@ -1,0 +1,3372 @@
+{
+  "audit_completed": true,
+  "scope": "Exact authored experiment USD, source configuration and resolved mesh geometry. Runtime detailed PhysX readback remains a separate required validation.",
+  "body_count": 31,
+  "joint_count": 30,
+  "paired_or_central_body_comparisons": 19,
+  "collision_nodes": 33,
+  "authored_descendant_meshes": 31,
+  "raw_authored_mesh_points": 8692878,
+  "analytic_primitive_count": 2,
+  "body_comparisons": [
+    {
+      "body": "base_link",
+      "partner": "base_link",
+      "central_self": true,
+      "mass_kg": 0.07990783452987671,
+      "partner_mass_kg": 0.07990783452987671,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        -6.255825610423926e-06,
+        -2.799393769237213e-06,
+        -0.0013914030278101563
+      ],
+      "reflected_partner_COM_world_m": [
+        -6.255825610423926e-06,
+        2.799393769237213e-06,
+        -0.0013914030278101563
+      ],
+      "COM_reflection_distance_m": 5.598787538474426e-06,
+      "inertia_world_kg_m2": [
+        [
+          4.481324075168759e-06,
+          -4.5142159825422134e-11,
+          -4.316868786661328e-08
+        ],
+        [
+          -4.5142159825422095e-11,
+          5.149986852281326e-06,
+          -1.5878956402545351e-09
+        ],
+        [
+          -4.3168687866613335e-08,
+          -1.5878956402545345e-09,
+          4.885881157445129e-06
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          4.481324075168759e-06,
+          4.5142159825422134e-11,
+          -4.316868786661328e-08
+        ],
+        [
+          4.5142159825422095e-11,
+          5.149986852281326e-06,
+          1.5878956402545351e-09
+        ],
+        [
+          -4.3168687866613335e-08,
+          1.5878956402545345e-09,
+          4.885881157445129e-06
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.0005351910275657702,
+      "inertia_frobenius_absolute_difference_kg_m2": 4.493061654536304e-09,
+      "authored_body_origin_reflection_distance_m": 0.0,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/base_link/collisions/base_link/node_STL_BINARY_/mesh",
+          "points": 693678,
+          "faces": 231226,
+          "indices": 693678,
+          "face_indices_sha256": "3ee2158e8d6e86c1fe1510c498e3d701c105ca98e820f2b01f3f8080890f8ca2"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/base_link/collisions/base_link/node_STL_BINARY_/mesh",
+          "points": 693678,
+          "faces": 231226,
+          "indices": 693678,
+          "face_indices_sha256": "3ee2158e8d6e86c1fe1510c498e3d701c105ca98e820f2b01f3f8080890f8ca2"
+        }
+      ],
+      "collision_unique_vertices": 115498,
+      "partner_collision_unique_vertices": 115498,
+      "collision_vertex_cloud_hausdorff_m": 0.003049999475479126,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0002423829852199228,
+      "collision_bbox_min_m": [
+        -0.01600000075995922,
+        -0.01820000261068344,
+        -0.03269999846816063
+      ],
+      "collision_bbox_max_m": [
+        0.01600000075995922,
+        0.01820000261068344,
+        0.03200000151991844
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.01600000075995922,
+        -0.01820000261068344,
+        -0.03269999846816063
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.01600000075995922,
+        0.01820000261068344,
+        0.03200000151991844
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 4.862171649917774e-05,
+        "vertices": 292,
+        "facets": 580
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 4.862171649917774e-05,
+        "vertices": 292,
+        "facets": 580
+      }
+    },
+    {
+      "body": "left_hip_linkage",
+      "partner": "right_hip_linkage",
+      "central_self": false,
+      "mass_kg": 0.004141506738960743,
+      "partner_mass_kg": 0.004141506738960743,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        0.0008199493167921901,
+        0.02133906167000532,
+        -0.025046125054359433
+      ],
+      "reflected_partner_COM_world_m": [
+        0.0016206578584387898,
+        0.02133906167000532,
+        -0.025013482198119167
+      ],
+      "COM_reflection_distance_m": 0.0008013736486367313,
+      "inertia_world_kg_m2": [
+        [
+          1.1453704166655179e-07,
+          -3.6666891100170204e-08,
+          0.0
+        ],
+        [
+          -3.6666891100170204e-08,
+          9.385979234508537e-08,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.562817857347909e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.1453704166655179e-07,
+          -3.6666891100170204e-08,
+          0.0
+        ],
+        [
+          -3.6666891100170204e-08,
+          9.385979234508537e-08,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.562817857347909e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.0,
+      "inertia_frobenius_absolute_difference_kg_m2": 0.0,
+      "authored_body_origin_reflection_distance_m": 0.0008013736486367315,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_hip_linkage/collisions/left_hip_linkage/node_STL_BINARY_/mesh",
+          "points": 42258,
+          "faces": 14086,
+          "indices": 42258,
+          "face_indices_sha256": "276e263d4dce9c501ee3a9f2929f153777b7ae24ed0d4fac73940d76c19fbb21"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_hip_linkage/collisions/right_hip_linkage/node_STL_BINARY_/mesh",
+          "points": 42258,
+          "faces": 14086,
+          "indices": 42258,
+          "face_indices_sha256": "276e263d4dce9c501ee3a9f2929f153777b7ae24ed0d4fac73940d76c19fbb21"
+        }
+      ],
+      "collision_unique_vertices": 7062,
+      "partner_collision_unique_vertices": 7052,
+      "collision_vertex_cloud_hausdorff_m": 0.0008236459664787187,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0003341030696268684,
+      "collision_bbox_min_m": [
+        -0.011500708060339093,
+        0.01290034878365695,
+        -0.02954612486064434
+      ],
+      "collision_bbox_max_m": [
+        0.00999929173849523,
+        0.03300034813582897,
+        -0.02054612524807453
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.010699999518692493,
+        0.01290034878365695,
+        -0.029513482004404068
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.01080000028014183,
+        0.03300034813582897,
+        -0.02051348239183426
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 3.4845479682263676e-06,
+        "vertices": 138,
+        "facets": 272
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 3.484547968226367e-06,
+        "vertices": 138,
+        "facets": 272
+      }
+    },
+    {
+      "body": "left_thigh",
+      "partner": "right_thigh",
+      "central_self": false,
+      "mass_kg": 0.04239087551832199,
+      "partner_mass_kg": 0.04231465980410576,
+      "mass_absolute_difference_kg": 7.62157142162323e-05,
+      "mass_relative_difference": 0.001797927343663631,
+      "COM_world_m": [
+        -0.0006442941376008093,
+        0.02302299765869975,
+        -0.06495241448283195
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.00037924357457086444,
+        0.022932439111173153,
+        -0.0649669710546732
+      ],
+      "COM_reflection_distance_m": 0.0002804720044432012,
+      "inertia_world_kg_m2": [
+        [
+          4.632130803352749e-06,
+          -1.7387623359142203e-08,
+          -7.815351844951607e-08
+        ],
+        [
+          -1.7387623359142207e-08,
+          4.180608641276876e-06,
+          -6.607949702400984e-07
+        ],
+        [
+          -7.815351844951606e-08,
+          -6.607949702400983e-07,
+          1.4278650797400766e-06
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          4.5899579626990214e-06,
+          -1.4711507770464315e-08,
+          -7.474594503517867e-08
+        ],
+        [
+          -1.4711507770464323e-08,
+          4.141023905187311e-06,
+          -6.677051706939649e-07
+        ],
+        [
+          -7.474594503517867e-08,
+          -6.677051706939648e-07,
+          1.4244041397956233e-06
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.009131682134542017,
+      "inertia_frobenius_absolute_difference_kg_m2": 5.9080673391945044e-08,
+      "authored_body_origin_reflection_distance_m": 0.0004020359430576666,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_thigh/collisions/left_thigh/node_STL_BINARY_/mesh",
+          "points": 412584,
+          "faces": 137528,
+          "indices": 412584,
+          "face_indices_sha256": "fd5f05d0aa5c1276bbbdbeb0f7ff811364afef873617edc52a40fde1d7d21908"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_thigh/collisions/right_thigh/node_STL_BINARY_/mesh",
+          "points": 412320,
+          "faces": 137440,
+          "indices": 412320,
+          "face_indices_sha256": "3a563aeced9a2f8326cc38931e8618bfb04acb965543c0f985cfd5e13b5d4c11"
+        }
+      ],
+      "collision_unique_vertices": 68676,
+      "partner_collision_unique_vertices": 68631,
+      "collision_vertex_cloud_hausdorff_m": 0.004220957130308783,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0003572590886571494,
+      "collision_bbox_min_m": [
+        -0.00900105808977969,
+        0.009999940171837807,
+        -0.1081596091389656
+      ],
+      "collision_bbox_max_m": [
+        0.010398946207715198,
+        0.037499940022826195,
+        -0.01883689220994711
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.008709896355867386,
+        0.0099082812666893,
+        -0.10812666080892086
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.010690003633499146,
+        0.03740828204900026,
+        -0.018803956918418407
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 2.8679804375764395e-05,
+        "vertices": 351,
+        "facets": 698
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 2.8677769759576687e-05,
+        "vertices": 361,
+        "facets": 718
+      }
+    },
+    {
+      "body": "left_knee_linkage",
+      "partner": "right_knee_linkage",
+      "central_self": false,
+      "mass_kg": 0.010938732884824276,
+      "partner_mass_kg": 0.010938732884824276,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        -0.0005010574569700721,
+        0.019302163476822898,
+        -0.11151857150252908
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.00020979434692143528,
+        0.01921050457167439,
+        -0.11148562503512949
+      ],
+      "COM_reflection_distance_m": 0.000307117280338212,
+      "inertia_world_kg_m2": [
+        [
+          3.644860555595931e-07,
+          4.377114513577891e-14,
+          -1.4724838948034219e-15
+        ],
+        [
+          4.377114513577892e-14,
+          3.2329384896282607e-07,
+          5.4931928729079654e-08
+        ],
+        [
+          -1.4724838948034205e-15,
+          5.4931928729079654e-08,
+          3.992866460311533e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          3.644860555595931e-07,
+          -4.379298353651984e-14,
+          1.4711445659418789e-15
+        ],
+        [
+          -4.37929835365198e-14,
+          3.232938489628262e-07,
+          5.4931928729079654e-08
+        ],
+        [
+          1.4711445659418763e-15,
+          5.493192872907967e-08,
+          3.992866460311533e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 1.952196383057492e-07,
+      "inertia_frobenius_absolute_difference_kg_m2": 1.2390433066405546e-13,
+      "authored_body_origin_reflection_distance_m": 0.0003071174388387708,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_knee_linkage/collisions/left_knee_linkage/node_STL_BINARY_/mesh",
+          "points": 56412,
+          "faces": 18804,
+          "indices": 56412,
+          "face_indices_sha256": "04e27075981af1fcc26dc31738fd1d1fb4d419d94adfb612a604e363452839c6"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_knee_linkage/collisions/right_knee_linkage/node_STL_BINARY_/mesh",
+          "points": 56412,
+          "faces": 18804,
+          "indices": 56412,
+          "face_indices_sha256": "04e27075981af1fcc26dc31738fd1d1fb4d419d94adfb612a604e363452839c6"
+        }
+      ],
+      "collision_unique_vertices": 9429,
+      "partner_collision_unique_vertices": 9440,
+      "collision_vertex_cloud_hausdorff_m": 0.00039692529409773213,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.000208297627740183,
+      "collision_bbox_min_m": [
+        -0.008994164352770895,
+        0.008299940265715122,
+        -0.13075960613787174
+      ],
+      "collision_bbox_max_m": [
+        0.007992049271706492,
+        0.028999939560890198,
+        -0.10495960572734475
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.008702901075594127,
+        0.008208281360566616,
+        -0.13072665967047215
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.00828331254888326,
+        0.02890828065574169,
+        -0.10492665925994515
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 5.9461397122941396e-06,
+        "vertices": 414,
+        "facets": 824
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 5.946139712294146e-06,
+        "vertices": 414,
+        "facets": 824
+      }
+    },
+    {
+      "body": "left_mid_leg",
+      "partner": "right_mid_leg",
+      "central_self": false,
+      "mass_kg": 0.0351288840174675,
+      "partner_mass_kg": 0.03510553762316704,
+      "mass_absolute_difference_kg": 2.3346394300460815e-05,
+      "mass_relative_difference": 0.0006645925412504435,
+      "COM_world_m": [
+        -0.0006616766768274829,
+        0.019554794067516923,
+        -0.1528558973222971
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.0003147650477330899,
+        0.01946613728068769,
+        -0.15282518044114113
+      ],
+      "COM_reflection_distance_m": 0.00035937616927080685,
+      "inertia_world_kg_m2": [
+        [
+          1.5806705412520102e-06,
+          -6.787443701652944e-09,
+          4.1694673623048315e-08
+        ],
+        [
+          -6.787443701652938e-09,
+          1.7183253712140932e-06,
+          -2.353589985554418e-08
+        ],
+        [
+          4.1694673623048315e-08,
+          -2.3535899855544177e-08,
+          9.018007260765669e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.5792544707285759e-06,
+          -5.198434167428785e-09,
+          4.511062015905882e-08
+        ],
+        [
+          -5.198434167428786e-09,
+          1.7171958506349554e-06,
+          -2.3041968312069654e-08
+        ],
+        [
+          4.511062015905882e-08,
+          -2.3041968312069664e-08,
+          9.002427339281577e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.002348731105342482,
+      "inertia_frobenius_absolute_difference_kg_m2": 5.880785050764329e-09,
+      "authored_body_origin_reflection_distance_m": 0.00022132312444139195,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_mid_leg/collisions/left_mid_leg/node_STL_BINARY_/mesh",
+          "points": 410430,
+          "faces": 136810,
+          "indices": 410430,
+          "face_indices_sha256": "ae4c1eb0a96ae5250a4a0bab8530364566f6d402e88ea222e571923d461679b6"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_mid_leg/collisions/right_mid_leg/node_STL_BINARY_/mesh",
+          "points": 410436,
+          "faces": 136812,
+          "indices": 410436,
+          "face_indices_sha256": "1c2fd51934a01d98dda18e801e1d75aeba8ee5073dac155e388ff6438c74b6c6"
+        }
+      ],
+      "collision_unique_vertices": 68314,
+      "partner_collision_unique_vertices": 68316,
+      "collision_vertex_cloud_hausdorff_m": 0.0028817943833412203,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0003562391477082422,
+      "collision_bbox_min_m": [
+        -0.008593125676270574,
+        0.011109653860330582,
+        -0.1831727884709835
+      ],
+      "collision_bbox_max_m": [
+        0.008106875757221133,
+        0.030199657194316387,
+        -0.12015008646994829
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.00821020407602191,
+        0.01101798377931118,
+        -0.18314014002680779
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.008489797357469797,
+        0.03010798804461956,
+        -0.12011743802577257
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 1.4623026648366755e-05,
+        "vertices": 436,
+        "facets": 868
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 1.461664747896156e-05,
+        "vertices": 422,
+        "facets": 840
+      }
+    },
+    {
+      "body": "left_calf",
+      "partner": "right_calf",
+      "central_self": false,
+      "mass_kg": 0.029065843671560287,
+      "partner_mass_kg": 0.0290690790861845,
+      "mass_absolute_difference_kg": 3.2354146242141724e-06,
+      "mass_relative_difference": 0.00011130089861538991,
+      "COM_world_m": [
+        -0.000683708829456009,
+        0.019727419297851156,
+        -0.2069704420864582
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.00029278416332090273,
+        0.01963586197962286,
+        -0.20693770609796047
+      ],
+      "COM_reflection_distance_m": 0.0004028355521263307,
+      "inertia_world_kg_m2": [
+        [
+          1.931776030618786e-06,
+          -4.741126920053826e-09,
+          -1.1682746676022434e-08
+        ],
+        [
+          -4.741126920053827e-09,
+          2.09303582703886e-06,
+          4.742832865410479e-08
+        ],
+        [
+          -1.1682746676022438e-08,
+          4.742832865410481e-08,
+          8.157837786663505e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.9317760228285125e-06,
+          -5.893477103322551e-09,
+          -9.426450738865648e-09
+        ],
+        [
+          -5.893477103322552e-09,
+          2.0931880563589256e-06,
+          4.7427147928187375e-08
+        ],
+        [
+          -9.426450738865646e-09,
+          4.7427147928187375e-08,
+          8.15929644025065e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.0012110819549610765,
+      "inertia_frobenius_absolute_difference_kg_m2": 3.589152805171166e-09,
+      "authored_body_origin_reflection_distance_m": 0.0003950921569895938,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_calf/collisions/left_calf/node_STL_BINARY_/mesh",
+          "points": 313290,
+          "faces": 104430,
+          "indices": 313290,
+          "face_indices_sha256": "688ba6e41536898dfee32df7466f31aa63019bf210c373b0d327b7b688b0261c"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_calf/collisions/right_calf/node_STL_BINARY_/mesh",
+          "points": 313290,
+          "faces": 104430,
+          "indices": 313290,
+          "face_indices_sha256": "688ba6e41536898dfee32df7466f31aa63019bf210c373b0d327b7b688b0261c"
+        }
+      ],
+      "collision_unique_vertices": 52145,
+      "partner_collision_unique_vertices": 52166,
+      "collision_vertex_cloud_hausdorff_m": 0.0024534182930053385,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0002809794660988124,
+      "collision_bbox_min_m": [
+        -0.00936808850383386,
+        0.01129983551800251,
+        -0.237698495388031
+      ],
+      "collision_bbox_max_m": [
+        0.008181839773897082,
+        0.030699782073497772,
+        -0.1798727815039456
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.008985167063656263,
+        0.011208109557628632,
+        -0.23766584694385529
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.008564761214074679,
+        0.03060811385512352,
+        -0.17984013305976987
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 1.4685643146916203e-05,
+        "vertices": 667,
+        "facets": 1330
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 1.4686002269842198e-05,
+        "vertices": 665,
+        "facets": 1326
+      }
+    },
+    {
+      "body": "left_ankle",
+      "partner": "right_ankle",
+      "central_self": false,
+      "mass_kg": 0.006317314226180315,
+      "partner_mass_kg": 0.006301050540059805,
+      "mass_absolute_difference_kg": 1.62636861205101e-05,
+      "mass_relative_difference": 0.002574462111305129,
+      "COM_world_m": [
+        -0.0036464008735492826,
+        0.02003976740525104,
+        -0.24169463105499744
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.0030800996464677155,
+        0.01994001801358536,
+        -0.24166187085211277
+      ],
+      "COM_reflection_distance_m": 0.0005759516054537979,
+      "inertia_world_kg_m2": [
+        [
+          3.046472265091091e-07,
+          -2.527333096908715e-08,
+          -6.052094339461699e-08
+        ],
+        [
+          -2.527333096908717e-08,
+          2.868220366135121e-07,
+          -7.234022295820962e-08
+        ],
+        [
+          -6.052094339461699e-08,
+          -7.234022295820963e-08,
+          2.0539438216890218e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          3.0256390792946044e-07,
+          -2.5102211918060293e-08,
+          -6.005543623285865e-08
+        ],
+        [
+          -2.5102211918060266e-08,
+          2.848411396629912e-07,
+          -7.170844759036807e-08
+        ],
+        [
+          -6.005543623285866e-08,
+          -7.170844759036811e-08,
+          2.0495971110247853e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.006420841198590625,
+      "inertia_frobenius_absolute_difference_kg_m2": 3.121433243599175e-09,
+      "authored_body_origin_reflection_distance_m": 0.000640649021117443,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_ankle/collisions/left_ankle/node_STL_BINARY_/mesh",
+          "points": 42534,
+          "faces": 14178,
+          "indices": 42534,
+          "face_indices_sha256": "e317215fc7c932773821f21be65d91f7dc03aa330abf660f057daa6b81bc822a"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_ankle/collisions/right_ankle/node_STL_BINARY_/mesh",
+          "points": 42762,
+          "faces": 14254,
+          "indices": 42762,
+          "face_indices_sha256": "58005aa555b48f951694d1a22989e528798717a3c5d7c5ad3b19b546a9019df8"
+        }
+      ],
+      "collision_unique_vertices": 7081,
+      "partner_collision_unique_vertices": 7142,
+      "collision_vertex_cloud_hausdorff_m": 0.000640574408976726,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.00030412808470653305,
+      "collision_bbox_min_m": [
+        -0.010185190825723112,
+        0.00890013761818409,
+        -0.2569889575242996
+      ],
+      "collision_bbox_max_m": [
+        0.004314809222705662,
+        0.029500137083232403,
+        -0.2269889577291906
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.009618135693017393,
+        0.008808470331132412,
+        -0.2569563090801239
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.0048818643554113805,
+        0.029408469796180725,
+        -0.22695630928501487
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 5.884457259122444e-06,
+        "vertices": 166,
+        "facets": 328
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 5.884447367862513e-06,
+        "vertices": 163,
+        "facets": 322
+      }
+    },
+    {
+      "body": "left_foot",
+      "partner": "right_foot",
+      "central_self": false,
+      "mass_kg": 0.02622980810701847,
+      "partner_mass_kg": 0.02629007212817669,
+      "mass_absolute_difference_kg": 6.0264021158218384e-05,
+      "mass_relative_difference": 0.0022922729486782095,
+      "COM_world_m": [
+        0.010968328919261694,
+        0.01940053779981099,
+        -0.2528388928039931
+      ],
+      "reflected_partner_COM_world_m": [
+        0.011486264411360025,
+        0.01936031690274831,
+        -0.25282263854751363
+      ],
+      "COM_reflection_distance_m": 0.0005197490696378081,
+      "inertia_world_kg_m2": [
+        [
+          8.456331162306188e-07,
+          1.001875055215105e-08,
+          -1.6880060292405272e-07
+        ],
+        [
+          1.0018750552151048e-08,
+          2.313960976303796e-06,
+          -7.025678281854989e-10
+        ],
+        [
+          -1.6880060292405272e-07,
+          -7.025678281855015e-10,
+          2.130933177073577e-06
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          8.474210180042409e-07,
+          7.964375633513118e-09,
+          -1.6820384368727478e-07
+        ],
+        [
+          7.96437563351312e-09,
+          2.3158777264160105e-06,
+          -8.96137408921917e-10
+        ],
+        [
+          -1.6820384368727478e-07,
+          -8.961374089219179e-10,
+          2.131501729200602e-06
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.0012407332601224322,
+      "inertia_frobenius_absolute_difference_kg_m2": 4.052390580525259e-09,
+      "authored_body_origin_reflection_distance_m": 0.0005753428460248575,
+      "collision_meshes": [
+        {
+          "type": "Cube",
+          "path": "/urdf0711_training_30dof/left_foot/collisions/mesh_0/box",
+          "points": 8,
+          "faces": 6,
+          "indices": 24,
+          "vertex_definition": "Schema size-based eight corners transformed by the complete authored Xform. Authored extent attribute retained separately; not used as a substitute for Cube size.",
+          "size": 1.0,
+          "authored_extent": [
+            [
+              -0.02449999935925007,
+              -0.011425000615417957,
+              -0.010471437126398087
+            ],
+            [
+              0.02449999935925007,
+              0.011425000615417957,
+              0.010471437126398087
+            ]
+          ],
+          "world_vertices": [
+            [
+              -0.009985190350562334,
+              0.008450136054307222,
+              -0.2626889478415251
+            ],
+            [
+              -0.009985190350562334,
+              0.008450136054307222,
+              -0.2417460735887289
+            ],
+            [
+              -0.009985190350562334,
+              0.03130013728514314,
+              -0.2626889478415251
+            ],
+            [
+              -0.009985190350562334,
+              0.03130013728514314,
+              -0.2417460735887289
+            ],
+            [
+              0.0390148083679378,
+              0.008450136054307222,
+              -0.2626889478415251
+            ],
+            [
+              0.0390148083679378,
+              0.008450136054307222,
+              -0.2417460735887289
+            ],
+            [
+              0.0390148083679378,
+              0.03130013728514314,
+              -0.2626889478415251
+            ],
+            [
+              0.0390148083679378,
+              0.03130013728514314,
+              -0.2417460735887289
+            ]
+          ]
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Cube",
+          "path": "/urdf0711_training_30dof/right_foot/collisions/mesh_0/box",
+          "points": 8,
+          "faces": 6,
+          "indices": 24,
+          "vertex_definition": "Schema size-based eight corners transformed by the complete authored Xform. Authored extent attribute retained separately; not used as a substitute for Cube size.",
+          "size": 1.0,
+          "authored_extent": [
+            [
+              -0.024500001221895218,
+              -0.011425000615417957,
+              -0.010471437126398087
+            ],
+            [
+              0.024500001221895218,
+              0.011425000615417957,
+              0.010471437126398087
+            ]
+          ],
+          "world_vertices": [
+            [
+              -0.00964956684038043,
+              -0.031208470929414034,
+              -0.26265631429851055
+            ],
+            [
+              -0.00964956684038043,
+              -0.031208470929414034,
+              -0.24171344004571438
+            ],
+            [
+              -0.00964956684038043,
+              -0.00835846969857812,
+              -0.26265631429851055
+            ],
+            [
+              -0.00964956684038043,
+              -0.00835846969857812,
+              -0.24171344004571438
+            ],
+            [
+              0.039350435603410006,
+              -0.031208470929414034,
+              -0.26265631429851055
+            ],
+            [
+              0.039350435603410006,
+              -0.031208470929414034,
+              -0.24171344004571438
+            ],
+            [
+              0.039350435603410006,
+              -0.00835846969857812,
+              -0.26265631429851055
+            ],
+            [
+              0.039350435603410006,
+              -0.00835846969857812,
+              -0.24171344004571438
+            ]
+          ]
+        }
+      ],
+      "collision_unique_vertices": 8,
+      "partner_collision_unique_vertices": 8,
+      "collision_vertex_cloud_hausdorff_m": 0.00034944714921293684,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.00034944536023232985,
+      "collision_bbox_min_m": [
+        -0.009985190350562334,
+        0.008450136054307222,
+        -0.2626889478415251
+      ],
+      "collision_bbox_max_m": [
+        0.0390148083679378,
+        0.03130013728514314,
+        -0.2417460735887289
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.00964956684038043,
+        0.00835846969857812,
+        -0.26265631429851055
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.039350435603410006,
+        0.031208470929414034,
+        -0.24171344004571438
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 2.3448689806973115e-05,
+        "vertices": 8,
+        "facets": 12
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 2.3448691589691053e-05,
+        "vertices": 8,
+        "facets": 12
+      }
+    },
+    {
+      "body": "waist",
+      "partner": "waist",
+      "central_self": true,
+      "mass_kg": 0.019742896780371666,
+      "partner_mass_kg": 0.019742896780371666,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        0.0007800610619597137,
+        -1.5087678328917775e-10,
+        0.026917673414573073
+      ],
+      "reflected_partner_COM_world_m": [
+        0.0007800610619597137,
+        1.5087678328917775e-10,
+        0.026917673414573073
+      ],
+      "COM_reflection_distance_m": 3.017535665783555e-10,
+      "inertia_world_kg_m2": [
+        [
+          1.852764833518435e-06,
+          2.7825433886034197e-13,
+          -7.300401210933327e-09
+        ],
+        [
+          2.782543388603418e-13,
+          1.8115805460202675e-06,
+          7.999383437407418e-15
+        ],
+        [
+          -7.300401210933316e-09,
+          7.999383437407429e-15,
+          2.1065311757501482e-06
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.852764833518435e-06,
+          -2.7825433886034197e-13,
+          -7.300401210933327e-09
+        ],
+        [
+          -2.782543388603418e-13,
+          1.8115805460202675e-06,
+          -7.999383437407418e-15
+        ],
+        [
+          -7.300401210933316e-09,
+          -7.999383437407429e-15,
+          2.1065311757501482e-06
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 2.3576926508354782e-07,
+      "inertia_frobenius_absolute_difference_kg_m2": 7.87347279057899e-13,
+      "authored_body_origin_reflection_distance_m": 0.0,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/waist/collisions/waist/node_STL_BINARY_/mesh",
+          "points": 52782,
+          "faces": 17594,
+          "indices": 52782,
+          "face_indices_sha256": "2f7743c883a2a6f4317b9cbe3c430c0798ecc4a7bc309d96c90db5b751d40fee"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/waist/collisions/waist/node_STL_BINARY_/mesh",
+          "points": 52782,
+          "faces": 17594,
+          "indices": 52782,
+          "face_indices_sha256": "2f7743c883a2a6f4317b9cbe3c430c0798ecc4a7bc309d96c90db5b751d40fee"
+        }
+      ],
+      "collision_unique_vertices": 8813,
+      "partner_collision_unique_vertices": 8813,
+      "collision_vertex_cloud_hausdorff_m": 0.0004601809571111121,
+      "collision_vertex_cloud_mean_bidirectional_m": 2.6705264888344223e-05,
+      "collision_bbox_min_m": [
+        -0.01549999974668026,
+        -0.015484392642974854,
+        0.0005499999970197678
+      ],
+      "collision_bbox_max_m": [
+        0.01549999974668026,
+        0.015484392642974854,
+        0.04969818890094757
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.01549999974668026,
+        -0.015484392642974854,
+        0.0005499999970197678
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.01549999974668026,
+        0.015484392642974854,
+        0.04969818890094757
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 2.988720940846104e-05,
+        "vertices": 303,
+        "facets": 602
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 2.988720940846104e-05,
+        "vertices": 303,
+        "facets": 602
+      }
+    },
+    {
+      "body": "gearbox",
+      "partner": "gearbox",
+      "central_self": true,
+      "mass_kg": 0.00086215726332739,
+      "partner_mass_kg": 0.00086215726332739,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        -0.00214840605622157,
+        -1.178109074023747e-10,
+        0.042449999600648894
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.00214840605622157,
+        1.178109074023747e-10,
+        0.042449999600648894
+      ],
+      "COM_reflection_distance_m": 2.356218148047494e-10,
+      "inertia_world_kg_m2": [
+        [
+          5.41926281627531e-09,
+          -5.918279808485904e-16,
+          0.0
+        ],
+        [
+          -5.918279808485905e-16,
+          1.218898582067137e-08,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.5262690666872913e-08
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          5.41926281627531e-09,
+          5.918279808485904e-16,
+          0.0
+        ],
+        [
+          5.918279808485905e-16,
+          1.218898582067137e-08,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.5262690666872913e-08
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 8.258058595427259e-08,
+      "inertia_frobenius_absolute_difference_kg_m2": 1.6739423142159219e-15,
+      "authored_body_origin_reflection_distance_m": 0.0,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/gearbox/collisions/gearbox/node_STL_BINARY_/mesh",
+          "points": 2316,
+          "faces": 772,
+          "indices": 2316,
+          "face_indices_sha256": "c00861a55aad4cb4b47738f1eae6e4ffc19e05f6c86a5cbcc1197fb0d470f802"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/gearbox/collisions/gearbox/node_STL_BINARY_/mesh",
+          "points": 2316,
+          "faces": 772,
+          "indices": 2316,
+          "face_indices_sha256": "c00861a55aad4cb4b47738f1eae6e4ffc19e05f6c86a5cbcc1197fb0d470f802"
+        }
+      ],
+      "collision_unique_vertices": 388,
+      "partner_collision_unique_vertices": 388,
+      "collision_vertex_cloud_hausdorff_m": 1.8169650247169612e-09,
+      "collision_vertex_cloud_mean_bidirectional_m": 9.118113819658621e-10,
+      "collision_bbox_min_m": [
+        -0.011099989938051525,
+        -0.006149999918312219,
+        0.039949999656528234
+      ],
+      "collision_bbox_max_m": [
+        0.005400010680281655,
+        0.006149999918455069,
+        0.044949999544769526
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.011099989938051525,
+        -0.006149999918455069,
+        0.039949999656528234
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.005400010680281655,
+        0.006149999918312219,
+        0.044949999544769526
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 5.186196403076804e-07,
+        "vertices": 154,
+        "facets": 304
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 5.186196403076804e-07,
+        "vertices": 154,
+        "facets": 304
+      }
+    },
+    {
+      "body": "chest",
+      "partner": "chest",
+      "central_self": true,
+      "mass_kg": 0.12830553948879242,
+      "partner_mass_kg": 0.12830553948879242,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        -0.00022974488539374686,
+        5.11066526921961e-05,
+        0.07407159730792046
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.00022974488539374686,
+        -5.11066526921961e-05,
+        0.07407159730792046
+      ],
+      "COM_reflection_distance_m": 0.0001022133053843922,
+      "inertia_world_kg_m2": [
+        [
+          1.6663605476143716e-05,
+          -1.238195271676126e-09,
+          4.83279660177464e-07
+        ],
+        [
+          -1.2381952716761251e-09,
+          1.3284960374287806e-05,
+          -6.651758803196983e-09
+        ],
+        [
+          4.83279660177464e-07,
+          -6.65175880319698e-09,
+          1.1440983700809154e-05
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.6663605476143716e-05,
+          1.238195271676126e-09,
+          4.83279660177464e-07
+        ],
+        [
+          1.2381952716761251e-09,
+          1.3284960374287806e-05,
+          6.651758803196983e-09
+        ],
+        [
+          4.83279660177464e-07,
+          6.65175880319698e-09,
+          1.1440983700809154e-05
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.0007908679190777752,
+      "inertia_frobenius_absolute_difference_kg_m2": 1.9137193672366836e-08,
+      "authored_body_origin_reflection_distance_m": 0.0,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/chest/collisions/chest/node_STL_BINARY_/mesh",
+          "points": 1302318,
+          "faces": 434106,
+          "indices": 1302318,
+          "face_indices_sha256": "30886659f38ef892ec9a98f1fc0df8b9397e35151c8f3a458932f8b038e437de"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/chest/collisions/chest/node_STL_BINARY_/mesh",
+          "points": 1302318,
+          "faces": 434106,
+          "indices": 1302318,
+          "face_indices_sha256": "30886659f38ef892ec9a98f1fc0df8b9397e35151c8f3a458932f8b038e437de"
+        }
+      ],
+      "collision_unique_vertices": 216819,
+      "partner_collision_unique_vertices": 216819,
+      "collision_vertex_cloud_hausdorff_m": 0.004387483238955153,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.00017542627028306658,
+      "collision_bbox_min_m": [
+        -0.012801216990963085,
+        -0.030400003902482146,
+        0.03508900525048375
+      ],
+      "collision_bbox_max_m": [
+        0.015198785655859599,
+        0.030400004147194497,
+        0.10995348170399666
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.012801216990963085,
+        -0.030400004147194497,
+        0.03508900525048375
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.015198785655859599,
+        0.030400003902482146,
+        0.10995348170399666
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 9.209140839182243e-05,
+        "vertices": 343,
+        "facets": 682
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 9.209140839182243e-05,
+        "vertices": 343,
+        "facets": 682
+      }
+    },
+    {
+      "body": "left_shoulder_linkage",
+      "partner": "right_shoulder_linkage",
+      "central_self": false,
+      "mass_kg": 0.004141506738960743,
+      "partner_mass_kg": 0.004141506738960743,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        -0.001021466508973392,
+        0.033539061434566975,
+        0.09871695935726167
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.0010206450824625768,
+        0.033539061434566975,
+        0.09871695935726164
+      ],
+      "COM_reflection_distance_m": 8.214265108151889e-07,
+      "inertia_world_kg_m2": [
+        [
+          1.1453704166655176e-07,
+          3.666689110017021e-08,
+          0.0
+        ],
+        [
+          3.6666891100170224e-08,
+          9.38597923450854e-08,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.562817857347909e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.1453704166655178e-07,
+          3.6666891100170204e-08,
+          0.0
+        ],
+        [
+          3.6666891100170204e-08,
+          9.385979234508535e-08,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.562817857347909e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 2.639104523654915e-16,
+      "inertia_frobenius_absolute_difference_kg_m2": 5.844369090664742e-23,
+      "authored_body_origin_reflection_distance_m": 8.21426510810852e-07,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_shoulder_linkage/collisions/left_shoulder_linkage/node_STL_BINARY_/mesh",
+          "points": 42258,
+          "faces": 14086,
+          "indices": 42258,
+          "face_indices_sha256": "276e263d4dce9c501ee3a9f2929f153777b7ae24ed0d4fac73940d76c19fbb21"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_shoulder_linkage/collisions/right_shoulder_linkage/node_STL_BINARY_/mesh",
+          "points": 42258,
+          "faces": 14086,
+          "indices": 42258,
+          "face_indices_sha256": "276e263d4dce9c501ee3a9f2929f153777b7ae24ed0d4fac73940d76c19fbb21"
+        }
+      ],
+      "collision_unique_vertices": 7041,
+      "partner_collision_unique_vertices": 7039,
+      "collision_vertex_cloud_hausdorff_m": 0.0002319460773468439,
+      "collision_vertex_cloud_mean_bidirectional_m": 1.5324631794111786e-05,
+      "collision_bbox_min_m": [
+        -0.010200808930676436,
+        0.025100348548218604,
+        0.09421695955097675
+      ],
+      "collision_bbox_max_m": [
+        0.01129919086815789,
+        0.045200347900390625,
+        0.10321695916354656
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.010199987504165618,
+        0.025100348548218604,
+        0.09421695955097675
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.01130001229466871,
+        0.045200347900390625,
+        0.10321695916354656
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 3.484547968226368e-06,
+        "vertices": 138,
+        "facets": 272
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 3.484547968226366e-06,
+        "vertices": 138,
+        "facets": 272
+      }
+    },
+    {
+      "body": "left_upper_arm",
+      "partner": "right_upper_arm",
+      "central_self": false,
+      "mass_kg": 0.03456928953528404,
+      "partner_mass_kg": 0.03455116227269173,
+      "mass_absolute_difference_kg": 1.8127262592315674e-05,
+      "mass_relative_difference": 0.0005243747510001214,
+      "COM_world_m": [
+        7.171756059485613e-05,
+        0.04059771812054521,
+        0.07192240469510046
+      ],
+      "reflected_partner_COM_world_m": [
+        7.544831200074521e-05,
+        0.04074404557879184,
+        0.07172566093355921
+      ],
+      "COM_reflection_distance_m": 0.00024522184088773656,
+      "inertia_world_kg_m2": [
+        [
+          1.4596054803417608e-06,
+          4.692450443377617e-09,
+          1.3125781450669904e-08
+        ],
+        [
+          4.692450443377611e-09,
+          1.333308479482737e-06,
+          5.191927220332833e-10
+        ],
+        [
+          1.3125781450669906e-08,
+          5.191927220332834e-10,
+          8.74497573745478e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.4533099566299187e-06,
+          3.588983173640673e-09,
+          1.1613944863199254e-08
+        ],
+        [
+          3.5889831736406725e-09,
+          1.3268196344916137e-06,
+          4.098440421497899e-09
+        ],
+        [
+          1.161394486319925e-08,
+          4.098440421497899e-09,
+          8.739156672506758e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.0049542895575479,
+      "inertia_frobenius_absolute_difference_kg_m2": 1.0710086425763353e-08,
+      "authored_body_origin_reflection_distance_m": 0.00018495506119724103,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_upper_arm/collisions/left_upper_arm/node_STL_BINARY_/mesh",
+          "points": 410880,
+          "faces": 136960,
+          "indices": 410880,
+          "face_indices_sha256": "8e459609bd6dfad551db3a4079c8d827631599b0019083d260d5fc32d686b6e0"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_upper_arm/collisions/right_upper_arm/node_STL_BINARY_/mesh",
+          "points": 410886,
+          "faces": 136962,
+          "indices": 410886,
+          "face_indices_sha256": "07de95c581ea01456705ee54d6c2798a074a5460537c3ad3b88ce185e7d64fa7"
+        }
+      ],
+      "collision_unique_vertices": 68391,
+      "partner_collision_unique_vertices": 68393,
+      "collision_vertex_cloud_hausdorff_m": 0.0027577198732547793,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0003337804366027482,
+      "collision_bbox_min_m": [
+        -0.010600518187584292,
+        0.03260858987901106,
+        0.04199625919872336
+      ],
+      "collision_bbox_max_m": [
+        0.008489486264303495,
+        0.049482710744145994,
+        0.10501896141344261
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.010599691289553459,
+        0.03279272387896697,
+        0.04181130597968269
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.008490313162444184,
+        0.04966684414814242,
+        0.10483400786048225
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 1.4250124262775617e-05,
+        "vertices": 508,
+        "facets": 1012
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 1.4249663378969766e-05,
+        "vertices": 497,
+        "facets": 990
+      }
+    },
+    {
+      "body": "left_elbow_linkage",
+      "partner": "right_elbow_linkage",
+      "central_self": false,
+      "mass_kg": 0.0031351889483630657,
+      "partner_mass_kg": 0.0031351889483630657,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        -0.00020062025035891455,
+        0.03496520843979345,
+        0.03647124507223157
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.00019980229805063683,
+        0.035149342088665825,
+        0.03628629185949353
+      ],
+      "COM_reflection_distance_m": 0.0002609857478774569,
+      "inertia_world_kg_m2": [
+        [
+          1.174883124121214e-07,
+          2.1166891235930747e-14,
+          -4.4008107261711426e-15
+        ],
+        [
+          2.1166891235930757e-14,
+          9.526938956007011e-08,
+          -3.0496395094440005e-08
+        ],
+        [
+          -4.4008107261711915e-15,
+          -3.0496395094440005e-08,
+          5.82946377120831e-08
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.174883124121214e-07,
+          -2.1166891235930747e-14,
+          4.4008107261711426e-15
+        ],
+        [
+          -2.1166891235930757e-14,
+          9.526938956007011e-08,
+          -3.0496395094440005e-08
+        ],
+        [
+          4.4008107261711915e-15,
+          -3.0496395094440005e-08,
+          5.82946377120831e-08
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 3.6453911174042116e-07,
+      "inertia_frobenius_absolute_difference_kg_m2": 6.11492874621646e-14,
+      "authored_body_origin_reflection_distance_m": 0.00026098577625188204,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_elbow_linkage/collisions/left_elbow_linkage/node_STL_BINARY_/mesh",
+          "points": 40086,
+          "faces": 13362,
+          "indices": 40086,
+          "face_indices_sha256": "1c6c39de68d4e2f3b67a5cad3e8c671f90f5e4d3cced2abfd5521f713a800c60"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_elbow_linkage/collisions/right_elbow_linkage/node_STL_BINARY_/mesh",
+          "points": 40086,
+          "faces": 13362,
+          "indices": 40086,
+          "face_indices_sha256": "1c6c39de68d4e2f3b67a5cad3e8c671f90f5e4d3cced2abfd5521f713a800c60"
+        }
+      ],
+      "collision_unique_vertices": 6713,
+      "partner_collision_unique_vertices": 6713,
+      "collision_vertex_cloud_hausdorff_m": 0.0004375108522801389,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0002002604167423441,
+      "collision_bbox_min_m": [
+        -0.004700624558608865,
+        0.02980858689381792,
+        0.023396266853662653
+      ],
+      "collision_bbox_max_m": [
+        0.0042993769422929404,
+        0.045108588237838455,
+        0.04539626537148168
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.004699799490702492,
+        0.029992720542690296,
+        0.023211313640924616
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.004300202010199314,
+        0.04529272188671083,
+        0.04521131215874364
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 1.865518474010049e-06,
+        "vertices": 167,
+        "facets": 330
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 1.865518474010049e-06,
+        "vertices": 167,
+        "facets": 330
+      }
+    },
+    {
+      "body": "left_force_arm",
+      "partner": "right_force_arm",
+      "central_self": false,
+      "mass_kg": 0.015736782923340797,
+      "partner_mass_kg": 0.01573658362030983,
+      "mass_absolute_difference_kg": 1.993030309677124e-07,
+      "mass_relative_difference": 1.2664788727059717e-05,
+      "COM_world_m": [
+        -6.788606984040475e-05,
+        0.040103739529548876,
+        0.017411533071201614
+      ],
+      "reflected_partner_COM_world_m": [
+        -5.880178578543415e-05,
+        0.040287945815257534,
+        0.01722555304216898
+      ],
+      "COM_reflection_distance_m": 0.00026192184160613605,
+      "inertia_world_kg_m2": [
+        [
+          8.739094626794657e-07,
+          -1.007671522937896e-08,
+          -1.3837202731505248e-08
+        ],
+        [
+          -1.0076715229378966e-08,
+          1.009670302177573e-06,
+          1.4816427248114648e-08
+        ],
+        [
+          -1.3837202731505247e-08,
+          1.4816427248114647e-08,
+          2.9363302741885677e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          8.735298048843518e-07,
+          -9.21566692107823e-09,
+          -1.4596148576864963e-08
+        ],
+        [
+          -9.21566692107825e-09,
+          1.0090861879445065e-06,
+          1.4748678835173183e-08
+        ],
+        [
+          -1.4596148576864963e-08,
+          1.4748678835173181e-08,
+          2.9342218703969814e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.001302628906459469,
+      "inertia_frobenius_absolute_difference_kg_m2": 1.7815074543459153e-09,
+      "authored_body_origin_reflection_distance_m": 0.001956993428324884,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_force_arm/collisions/left_force_arm/node_STL_BINARY_/mesh",
+          "points": 287742,
+          "faces": 95914,
+          "indices": 287742,
+          "face_indices_sha256": "9e55e6b28615b342b61d76dab6c6220bd279439ee8c59b9fcd9f7de160c9904c"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_force_arm/collisions/right_force_arm/node_STL_BINARY_/mesh",
+          "points": 287742,
+          "faces": 95914,
+          "indices": 287742,
+          "face_indices_sha256": "9e55e6b28615b342b61d76dab6c6220bd279439ee8c59b9fcd9f7de160c9904c"
+        }
+      ],
+      "collision_unique_vertices": 47910,
+      "partner_collision_unique_vertices": 47906,
+      "collision_vertex_cloud_hausdorff_m": 0.0027716662799398316,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0002590563071134907,
+      "collision_bbox_min_m": [
+        -0.00820062335080001,
+        0.02930893499129094,
+        0.0003962648092961027
+      ],
+      "collision_bbox_max_m": [
+        0.007499377409532638,
+        0.04739895070179222,
+        0.03361898170106962
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.00819979948915975,
+        0.029493067552044006,
+        0.00021131118939185511
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.007500202850339569,
+        0.0475830828746194,
+        0.03343402736451693
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 7.69768873419885e-06,
+        "vertices": 173,
+        "facets": 342
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 7.691539602043791e-06,
+        "vertices": 171,
+        "facets": 338
+      }
+    },
+    {
+      "body": "left_wrist",
+      "partner": "right_wrist",
+      "central_self": false,
+      "mass_kg": 0.026017291471362114,
+      "partner_mass_kg": 0.026017291471362114,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        -0.0007955320213347622,
+        0.039672934001085,
+        -0.019598240037562494
+      ],
+      "reflected_partner_COM_world_m": [
+        -0.0007947122731638171,
+        0.039929064306581045,
+        -0.01978319697205253
+      ],
+      "COM_reflection_distance_m": 0.0003159311206521341,
+      "inertia_world_kg_m2": [
+        [
+          4.253872425785724e-06,
+          2.932955748315373e-10,
+          -1.589353154581096e-07
+        ],
+        [
+          2.932955748315556e-10,
+          4.274554890894856e-06,
+          1.1214463619677104e-10
+        ],
+        [
+          -1.589353154581096e-07,
+          1.1214463619677059e-10,
+          6.785474499040269e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          4.253872419245087e-06,
+          -2.933300552933434e-10,
+          -1.5893538795354177e-07
+        ],
+        [
+          -2.9333005529334114e-10,
+          4.274554890932161e-06,
+          -1.1297247972305918e-10
+        ],
+        [
+          -1.5893538795354177e-07,
+          -1.1297247972305863e-10,
+          6.785474564073617e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.00014632642700067728,
+      "inertia_frobenius_absolute_difference_kg_m2": 8.886026683480191e-10,
+      "authored_body_origin_reflection_distance_m": 0.0002609883948284081,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_wrist/collisions/left_wrist/node_STL_BINARY_/mesh",
+          "points": 153078,
+          "faces": 51026,
+          "indices": 153078,
+          "face_indices_sha256": "41ed1a2e2ed1c8b0ce236a2c65bc05d4e12201d7ae3985611864507c8d232bc3"
+        },
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/left_wrist/collisions/left_hand/node_STL_BINARY_/mesh",
+          "points": 124872,
+          "faces": 41624,
+          "indices": 124872,
+          "face_indices_sha256": "bfd548e2e8421e1fab21573ca3be04c0eefaa9bbd8dd1a8dd9599c947215bdc1"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_wrist/collisions/right_wrist/node_STL_BINARY_/mesh",
+          "points": 153078,
+          "faces": 51026,
+          "indices": 153078,
+          "face_indices_sha256": "41ed1a2e2ed1c8b0ce236a2c65bc05d4e12201d7ae3985611864507c8d232bc3"
+        },
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/right_wrist/collisions/right_hand/node_STL_BINARY_/mesh",
+          "points": 124872,
+          "faces": 41624,
+          "indices": 124872,
+          "face_indices_sha256": "bfd548e2e8421e1fab21573ca3be04c0eefaa9bbd8dd1a8dd9599c947215bdc1"
+        }
+      ],
+      "collision_unique_vertices": 46211,
+      "partner_collision_unique_vertices": 46213,
+      "collision_vertex_cloud_hausdorff_m": 0.002043619372145412,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.00023881401123488602,
+      "collision_bbox_min_m": [
+        -0.009900616877431469,
+        0.03170893051276135,
+        -0.051003728617594585
+      ],
+      "collision_bbox_max_m": [
+        0.007799382863718219,
+        0.04770720257751217,
+        0.0037962714152689155
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.009899798141063173,
+        0.03189479579031797,
+        -0.05118868510605121
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.007800202723770513,
+        0.04789306919503733,
+        0.0036113141718941448
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 9.700293242563788e-06,
+        "vertices": 527,
+        "facets": 1050
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 9.700293242563782e-06,
+        "vertices": 527,
+        "facets": 1050
+      }
+    },
+    {
+      "body": "neck",
+      "partner": "neck",
+      "central_self": true,
+      "mass_kg": 0.0174129419028759,
+      "partner_mass_kg": 0.0174129419028759,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        0.0004338649450801313,
+        8.089847329251033e-06,
+        0.10845628846436739
+      ],
+      "reflected_partner_COM_world_m": [
+        0.0004338649450801313,
+        -8.089847329251033e-06,
+        0.10845628846436739
+      ],
+      "COM_reflection_distance_m": 1.6179694658502065e-05,
+      "inertia_world_kg_m2": [
+        [
+          1.304580301841516e-06,
+          1.8599223998816945e-10,
+          -1.667455012022061e-08
+        ],
+        [
+          1.8599223998816963e-10,
+          1.1314181704847063e-06,
+          1.0505344202907655e-09
+        ],
+        [
+          -1.667455012022061e-08,
+          1.0505344202907655e-09,
+          3.7704644290237974e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          1.304580301841516e-06,
+          -1.8599223998816945e-10,
+          -1.667455012022061e-08
+        ],
+        [
+          -1.8599223998816963e-10,
+          1.1314181704847063e-06,
+          -1.0505344202907655e-09
+        ],
+        [
+          -1.667455012022061e-08,
+          -1.0505344202907655e-09,
+          3.7704644290237974e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.001707060828827656,
+      "inertia_frobenius_absolute_difference_kg_m2": 3.0175694610748853e-09,
+      "authored_body_origin_reflection_distance_m": 3.4961966655089327e-10,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/neck/collisions/neck/node_STL_BINARY_/mesh",
+          "points": 288576,
+          "faces": 96192,
+          "indices": 288576,
+          "face_indices_sha256": "19f382d1730309dd82972c8cade14183fd2437f4392cc99376b30ce4004fbaa4"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/neck/collisions/neck/node_STL_BINARY_/mesh",
+          "points": 288576,
+          "faces": 96192,
+          "indices": 288576,
+          "face_indices_sha256": "19f382d1730309dd82972c8cade14183fd2437f4392cc99376b30ce4004fbaa4"
+        }
+      ],
+      "collision_unique_vertices": 48079,
+      "partner_collision_unique_vertices": 48079,
+      "collision_vertex_cloud_hausdorff_m": 0.0029287681192623036,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.00017894083578281784,
+      "collision_bbox_min_m": [
+        -0.006991227390244603,
+        -0.011749999422858814,
+        0.08755348157137632
+      ],
+      "collision_bbox_max_m": [
+        0.011098788818344474,
+        0.011749999772478481,
+        0.12546619772911072
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.006991227390244603,
+        -0.011749999772478481,
+        0.08755348157137632
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.011098788818344474,
+        0.011749999422858814,
+        0.12546619772911072
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 9.619308704328353e-06,
+        "vertices": 272,
+        "facets": 540
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 9.619308704328353e-06,
+        "vertices": 272,
+        "facets": 540
+      }
+    },
+    {
+      "body": "neck_linkage",
+      "partner": "neck_linkage",
+      "central_self": true,
+      "mass_kg": 0.003944259602576494,
+      "partner_mass_kg": 0.003944259602576494,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        0.004109553177841008,
+        -0.0021676590653458843,
+        0.12894390616565943
+      ],
+      "reflected_partner_COM_world_m": [
+        0.004109553177841008,
+        0.0021676590653458843,
+        0.12894390616565943
+      ],
+      "COM_reflection_distance_m": 0.0043353181306917685,
+      "inertia_world_kg_m2": [
+        [
+          2.4639790731077947e-07,
+          -3.2163194763489026e-08,
+          7.821325110138538e-08
+        ],
+        [
+          -3.216319476348904e-08,
+          2.4212646922700654e-07,
+          5.77565817356157e-08
+        ],
+        [
+          7.821325110138535e-08,
+          5.775658173561569e-08,
+          1.7402487092766334e-07
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          2.4639790731077947e-07,
+          3.2163194763489026e-08,
+          7.821325110138538e-08
+        ],
+        [
+          3.216319476348904e-08,
+          2.4212646922700654e-07,
+          -5.77565817356157e-08
+        ],
+        [
+          7.821325110138535e-08,
+          -5.775658173561569e-08,
+          1.7402487092766334e-07
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.45270426500131705,
+      "inertia_frobenius_absolute_difference_kg_m2": 1.8698222014249344e-07,
+      "authored_body_origin_reflection_distance_m": 1.9583206167794742e-09,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/neck_linkage/collisions/neck_linkage/node_STL_BINARY_/mesh",
+          "points": 7200,
+          "faces": 2400,
+          "indices": 7200,
+          "face_indices_sha256": "edbead552e6db46b8de436955777320d0d3069fa0b914f0ede15203b24811c2c"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/neck_linkage/collisions/neck_linkage/node_STL_BINARY_/mesh",
+          "points": 7200,
+          "faces": 2400,
+          "indices": 7200,
+          "face_indices_sha256": "edbead552e6db46b8de436955777320d0d3069fa0b914f0ede15203b24811c2c"
+        }
+      ],
+      "collision_unique_vertices": 1198,
+      "partner_collision_unique_vertices": 1198,
+      "collision_vertex_cloud_hausdorff_m": 0.013324782170571378,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.00391038983280908,
+      "collision_bbox_min_m": [
+        -0.004370865412056448,
+        -0.009407896500671866,
+        0.1147534791380167
+      ],
+      "collision_bbox_max_m": [
+        0.011299134232103825,
+        0.007600041154181004,
+        0.14441075921058655
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.004370865412056448,
+        -0.007600041154181004,
+        0.1147534791380167
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.011299134232103825,
+        0.009407896500671866,
+        0.14441075921058655
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 3.6192971946336556e-06,
+        "vertices": 153,
+        "facets": 302
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 3.6192971946336556e-06,
+        "vertices": 153,
+        "facets": 302
+      }
+    },
+    {
+      "body": "head",
+      "partner": "head",
+      "central_self": true,
+      "mass_kg": 0.1150117814540863,
+      "partner_mass_kg": 0.1150117814540863,
+      "mass_absolute_difference_kg": 0.0,
+      "mass_relative_difference": 0.0,
+      "COM_world_m": [
+        0.0029975082725286475,
+        -0.0007384116761386386,
+        0.17367371544241905
+      ],
+      "reflected_partner_COM_world_m": [
+        0.0029975082725286475,
+        0.0007384116761386386,
+        0.17367371544241905
+      ],
+      "COM_reflection_distance_m": 0.0014768233522772772,
+      "inertia_world_kg_m2": [
+        [
+          3.6249164840965684e-05,
+          1.3383855480996336e-08,
+          1.7274335150287363e-06
+        ],
+        [
+          1.3383855480996322e-08,
+          2.8137209810260205e-05,
+          2.787765194739045e-07
+        ],
+        [
+          1.7274335150287348e-06,
+          2.787765194739045e-07,
+          3.626398611289483e-05
+        ]
+      ],
+      "reflected_partner_inertia_world_kg_m2": [
+        [
+          3.6249164840965684e-05,
+          -1.3383855480996336e-08,
+          1.7274335150287363e-06
+        ],
+        [
+          -1.3383855480996322e-08,
+          2.8137209810260205e-05,
+          -2.787765194739045e-07
+        ],
+        [
+          1.7274335150287348e-06,
+          -2.787765194739045e-07,
+          3.626398611289483e-05
+        ]
+      ],
+      "inertia_frobenius_relative_difference": 0.013484972749524185,
+      "inertia_frobenius_absolute_difference_kg_m2": 7.894072479906449e-07,
+      "authored_body_origin_reflection_distance_m": 0.01019984856247902,
+      "collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/head/collisions/head/node_STL_BINARY_/mesh",
+          "points": 1673184,
+          "faces": 557728,
+          "indices": 1673184,
+          "face_indices_sha256": "90f7628738ffc6491febd62c5b072afa347293988a62b86bc2b40e4bdbd2a428"
+        }
+      ],
+      "partner_collision_meshes": [
+        {
+          "type": "Mesh",
+          "path": "/urdf0711_training_30dof/head/collisions/head/node_STL_BINARY_/mesh",
+          "points": 1673184,
+          "faces": 557728,
+          "indices": 1673184,
+          "face_indices_sha256": "90f7628738ffc6491febd62c5b072afa347293988a62b86bc2b40e4bdbd2a428"
+        }
+      ],
+      "collision_unique_vertices": 277477,
+      "partner_collision_unique_vertices": 277477,
+      "collision_vertex_cloud_hausdorff_m": 0.008176686621207468,
+      "collision_vertex_cloud_mean_bidirectional_m": 0.0003603317839513765,
+      "collision_bbox_min_m": [
+        -0.03967526601627469,
+        -0.042653413489460945,
+        0.13058476150035858
+      ],
+      "collision_bbox_max_m": [
+        0.039363141637295485,
+        0.04285432957112789,
+        0.21555176377296448
+      ],
+      "reflected_partner_collision_bbox_min_m": [
+        -0.03967526601627469,
+        -0.04285432957112789,
+        0.13058476150035858
+      ],
+      "reflected_partner_collision_bbox_max_m": [
+        0.039363141637295485,
+        0.042653413489460945,
+        0.21555176377296448
+      ],
+      "authored_convex_hull": {
+        "volume_m3": 0.00031710277942986417,
+        "vertices": 3015,
+        "facets": 6026
+      },
+      "partner_authored_convex_hull": {
+        "volume_m3": 0.00031710277942986417,
+        "vertices": 3015,
+        "facets": 6026
+      }
+    }
+  ],
+  "joint_comparisons": [
+    {
+      "joint": "left_hip_pitch_joint",
+      "partner": "right_hip_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.0008013736486367315,
+      "lower_limit_degrees": -89.9543685913086,
+      "upper_limit_degrees": 89.9543685913086,
+      "reflected_partner_lower_limit_degrees": -89.9543685913086,
+      "reflected_partner_upper_limit_degrees": 89.9543685913086,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_hip_roll_joint",
+      "partner": "right_hip_roll_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.0004020359430576666,
+      "lower_limit_degrees": -45.26366424560547,
+      "upper_limit_degrees": 45.26366424560547,
+      "reflected_partner_lower_limit_degrees": -45.26366424560547,
+      "reflected_partner_upper_limit_degrees": 45.26366424560547,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_hip_yaw_joint",
+      "partner": "right_hip_yaw_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00030711737451215694,
+      "lower_limit_degrees": -60.160560607910156,
+      "upper_limit_degrees": 60.160560607910156,
+      "reflected_partner_lower_limit_degrees": -60.160560607910156,
+      "reflected_partner_upper_limit_degrees": 60.160560607910156,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_knee_pitch_joint",
+      "partner": "right_knee_pitch_joint",
+      "sign": 1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00022132146957550344,
+      "lower_limit_degrees": -90.0,
+      "upper_limit_degrees": 90.0,
+      "reflected_partner_lower_limit_degrees": -90.0,
+      "reflected_partner_upper_limit_degrees": 90.0,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_ankle_yaw_joint",
+      "partner": "right_ankle_yaw_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00039509244765208103,
+      "lower_limit_degrees": -49.84732437133789,
+      "upper_limit_degrees": 49.84732437133789,
+      "reflected_partner_lower_limit_degrees": -49.84732437133789,
+      "reflected_partner_upper_limit_degrees": 49.84732437133789,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_ankle_pitch_joint",
+      "partner": "right_ankle_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.0006406494328740589,
+      "lower_limit_degrees": -45.26366424560547,
+      "upper_limit_degrees": 45.26366424560547,
+      "reflected_partner_lower_limit_degrees": -45.26366424560547,
+      "reflected_partner_upper_limit_degrees": 45.26366424560547,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.375,
+      "PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_foot_roll",
+      "partner": "right_foot_roll",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.000575343663052503,
+      "lower_limit_degrees": -20.05352210998535,
+      "upper_limit_degrees": 20.05352210998535,
+      "reflected_partner_lower_limit_degrees": -20.05352210998535,
+      "reflected_partner_upper_limit_degrees": 20.05352210998535,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.375,
+      "PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_hip_pitch_joint",
+      "partner": "left_hip_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.0008013736486367315,
+      "lower_limit_degrees": -89.9543685913086,
+      "upper_limit_degrees": 89.9543685913086,
+      "reflected_partner_lower_limit_degrees": -89.9543685913086,
+      "reflected_partner_upper_limit_degrees": 89.9543685913086,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_hip_roll_joint",
+      "partner": "left_hip_roll_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.0004020359430576666,
+      "lower_limit_degrees": -45.26366424560547,
+      "upper_limit_degrees": 45.26366424560547,
+      "reflected_partner_lower_limit_degrees": -45.26366424560547,
+      "reflected_partner_upper_limit_degrees": 45.26366424560547,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_hip_yaw_joint",
+      "partner": "left_hip_yaw_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00030711737451215694,
+      "lower_limit_degrees": -60.160560607910156,
+      "upper_limit_degrees": 60.160560607910156,
+      "reflected_partner_lower_limit_degrees": -60.160560607910156,
+      "reflected_partner_upper_limit_degrees": 60.160560607910156,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_knee_pitch_joint",
+      "partner": "left_knee_pitch_joint",
+      "sign": 1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00022132146957550344,
+      "lower_limit_degrees": -90.0,
+      "upper_limit_degrees": 90.0,
+      "reflected_partner_lower_limit_degrees": -90.0,
+      "reflected_partner_upper_limit_degrees": 90.0,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_ankle_yaw_joint",
+      "partner": "left_ankle_yaw_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00039509244765208103,
+      "lower_limit_degrees": -49.84732437133789,
+      "upper_limit_degrees": 49.84732437133789,
+      "reflected_partner_lower_limit_degrees": -49.84732437133789,
+      "reflected_partner_upper_limit_degrees": 49.84732437133789,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 20.0,
+        "damping": 1.0,
+        "armature": 0.001,
+        "effort_limit_sim": 40.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_ankle_pitch_joint",
+      "partner": "left_ankle_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.0006406494328740589,
+      "lower_limit_degrees": -45.26366424560547,
+      "upper_limit_degrees": 45.26366424560547,
+      "reflected_partner_lower_limit_degrees": -45.26366424560547,
+      "reflected_partner_upper_limit_degrees": 45.26366424560547,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.375,
+      "PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_foot_roll",
+      "partner": "left_foot_roll",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.000575343663052503,
+      "lower_limit_degrees": -20.05352210998535,
+      "upper_limit_degrees": 20.05352210998535,
+      "reflected_partner_lower_limit_degrees": -20.05352210998535,
+      "reflected_partner_upper_limit_degrees": 20.05352210998535,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.375,
+      "PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 15.0,
+        "velocity_limit_sim": 3.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "waist_yaw",
+      "partner": "waist_yaw",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.0,
+      "lower_limit_degrees": -89.9543685913086,
+      "upper_limit_degrees": 89.9543685913086,
+      "reflected_partner_lower_limit_degrees": -89.9543685913086,
+      "reflected_partner_upper_limit_degrees": 89.9543685913086,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 20.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 20.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "waist_roll_joint",
+      "partner": "waist_roll_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 9.993164321055812e-06,
+      "pivot_reflection_distance_m": 0.0,
+      "lower_limit_degrees": -29.79380226135254,
+      "upper_limit_degrees": 29.79380226135254,
+      "reflected_partner_lower_limit_degrees": -29.79380226135254,
+      "reflected_partner_upper_limit_degrees": 29.79380226135254,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 20.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 20.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "waist_pitch_joint",
+      "partner": "waist_pitch_joint",
+      "sign": 1,
+      "axis_mismatch_degrees": 9.993164321055812e-06,
+      "pivot_reflection_distance_m": 0.0,
+      "lower_limit_degrees": -45.26366424560547,
+      "upper_limit_degrees": 45.26366424560547,
+      "reflected_partner_lower_limit_degrees": -45.26366424560547,
+      "reflected_partner_upper_limit_degrees": 45.26366424560547,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.5,
+      "PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 20.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 10.0,
+        "damping": 0.5,
+        "armature": 0.001,
+        "effort_limit_sim": 20.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_shoulder_pitch_joint",
+      "partner": "right_shoulder_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 2.000455603180256e-05,
+      "pivot_reflection_distance_m": 8.213914493912541e-07,
+      "lower_limit_degrees": -90.0,
+      "upper_limit_degrees": 90.0,
+      "reflected_partner_lower_limit_degrees": -90.0,
+      "reflected_partner_upper_limit_degrees": 90.0,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_shoulder_roll_joint",
+      "partner": "right_shoulder_roll_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00018495249025602181,
+      "lower_limit_degrees": -179.95437622070312,
+      "upper_limit_degrees": -0.04562615975737572,
+      "reflected_partner_lower_limit_degrees": -179.95437622070312,
+      "reflected_partner_upper_limit_degrees": -0.04562615975737572,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": -1.5707963267948966,
+      "partner_default_radians": 1.5707963267948966,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_shoulder_yaw_joint",
+      "partner": "right_shoulder_yaw_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00026098587006062157,
+      "lower_limit_degrees": -60.160560607910156,
+      "upper_limit_degrees": 60.160560607910156,
+      "reflected_partner_lower_limit_degrees": -60.160560607910156,
+      "reflected_partner_upper_limit_degrees": 60.160560607910156,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_elbow_pitch_joint",
+      "partner": "right_elbow_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 1.5007971104097566e-05,
+      "pivot_reflection_distance_m": 0.001956993535963794,
+      "lower_limit_degrees": -150.11492919921875,
+      "upper_limit_degrees": 0.0,
+      "reflected_partner_lower_limit_degrees": -150.11492919921875,
+      "reflected_partner_upper_limit_degrees": -0.0,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "left_wrist_pitch",
+      "partner": "right_wrist_pitch",
+      "sign": -1,
+      "axis_mismatch_degrees": 9.234973977599937e-06,
+      "pivot_reflection_distance_m": 0.00026098492931087144,
+      "lower_limit_degrees": -69.90084838867188,
+      "upper_limit_degrees": 69.90084838867188,
+      "reflected_partner_lower_limit_degrees": -69.90084838867188,
+      "reflected_partner_upper_limit_degrees": 69.90084838867188,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "partner": "left_shoulder_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 2.000455603180256e-05,
+      "pivot_reflection_distance_m": 8.213914493912541e-07,
+      "lower_limit_degrees": -90.0,
+      "upper_limit_degrees": 90.0,
+      "reflected_partner_lower_limit_degrees": -90.0,
+      "reflected_partner_upper_limit_degrees": 90.0,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_shoulder_roll_joint",
+      "partner": "left_shoulder_roll_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00018495249025602181,
+      "lower_limit_degrees": 0.04562615975737572,
+      "upper_limit_degrees": 179.95437622070312,
+      "reflected_partner_lower_limit_degrees": 0.04562615975737572,
+      "reflected_partner_upper_limit_degrees": 179.95437622070312,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 1.5707963267948966,
+      "partner_default_radians": -1.5707963267948966,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_shoulder_yaw_joint",
+      "partner": "left_shoulder_yaw_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.00026098587006062157,
+      "lower_limit_degrees": -60.160560607910156,
+      "upper_limit_degrees": 60.160560607910156,
+      "reflected_partner_lower_limit_degrees": -60.160560607910156,
+      "reflected_partner_upper_limit_degrees": 60.160560607910156,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_elbow_pitch_joint",
+      "partner": "left_elbow_pitch_joint",
+      "sign": -1,
+      "axis_mismatch_degrees": 1.5007971104097566e-05,
+      "pivot_reflection_distance_m": 0.001956993535963794,
+      "lower_limit_degrees": 0.0,
+      "upper_limit_degrees": 150.11492919921875,
+      "reflected_partner_lower_limit_degrees": -0.0,
+      "reflected_partner_upper_limit_degrees": 150.11492919921875,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "right_wrist_pitch",
+      "partner": "left_wrist_pitch",
+      "sign": -1,
+      "axis_mismatch_degrees": 9.234973977599937e-06,
+      "pivot_reflection_distance_m": 0.00026098492931087144,
+      "lower_limit_degrees": -69.90084838867188,
+      "upper_limit_degrees": 69.90084838867188,
+      "reflected_partner_lower_limit_degrees": -69.90084838867188,
+      "reflected_partner_upper_limit_degrees": 69.90084838867188,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.4,
+      "PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 5.0,
+        "damping": 0.25,
+        "armature": 0.0005,
+        "effort_limit_sim": 8.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "neck",
+      "partner": "neck",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 3.496196774118787e-10,
+      "lower_limit_degrees": -60.160560607910156,
+      "upper_limit_degrees": 60.160560607910156,
+      "reflected_partner_lower_limit_degrees": -60.160560607910156,
+      "reflected_partner_upper_limit_degrees": 60.160560607910156,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.25,
+      "PD": {
+        "stiffness": 3.0,
+        "damping": 0.15,
+        "armature": 0.0002,
+        "effort_limit_sim": 3.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 3.0,
+        "damping": 0.15,
+        "armature": 0.0002,
+        "effort_limit_sim": 3.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "neck_linkage_roll",
+      "partner": "neck_linkage_roll",
+      "sign": -1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 3.496196688044143e-10,
+      "lower_limit_degrees": -29.79380226135254,
+      "upper_limit_degrees": 29.79380226135254,
+      "reflected_partner_lower_limit_degrees": -29.79380226135254,
+      "reflected_partner_upper_limit_degrees": 29.79380226135254,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.25,
+      "PD": {
+        "stiffness": 3.0,
+        "damping": 0.15,
+        "armature": 0.0002,
+        "effort_limit_sim": 3.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 3.0,
+        "damping": 0.15,
+        "armature": 0.0002,
+        "effort_limit_sim": 3.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    },
+    {
+      "joint": "head_pitch",
+      "partner": "head_pitch",
+      "sign": 1,
+      "axis_mismatch_degrees": 0.0,
+      "pivot_reflection_distance_m": 0.010199846604158406,
+      "lower_limit_degrees": -45.26366424560547,
+      "upper_limit_degrees": 45.26366424560547,
+      "reflected_partner_lower_limit_degrees": -45.26366424560547,
+      "reflected_partner_upper_limit_degrees": 45.26366424560547,
+      "limit_max_difference_degrees": 0.0,
+      "default_radians": 0.0,
+      "partner_default_radians": 0.0,
+      "default_reflection_absolute_difference_radians": 0.0,
+      "action_scale": 0.25,
+      "PD": {
+        "stiffness": 3.0,
+        "damping": 0.15,
+        "armature": 0.0002,
+        "effort_limit_sim": 3.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "partner_PD": {
+        "stiffness": 3.0,
+        "damping": 0.15,
+        "armature": 0.0002,
+        "effort_limit_sim": 3.0,
+        "velocity_limit_sim": 2.0,
+        "friction": null,
+        "dynamic_friction": null,
+        "viscous_friction": null
+      },
+      "PD_config_equal": true
+    }
+  ],
+  "collision_nodes_without_mesh": [
+    "/urdf0711_training_30dof/left_foot/collisions/mesh_0/box",
+    "/urdf0711_training_30dof/right_foot/collisions/mesh_0/box"
+  ],
+  "collision_interpretation": "Vertex-cloud Hausdorff and authored convex-hull volume are reproducible source-geometry diagnostics, sensitive to tessellation and not a claim to extract exact PhysX-cooked hulls. All authored mesh points, topology, transforms and collision/cooking attributes are preserved. No causal contribution to heading is inferred from a small structural difference alone.",
+  "source_sha256": "20211040fd6cfdbdf857f6858c353afecb8ab90d15d1d63a0dcd9a883ffc33dd",
+  "inputs": {
+    "/root/gpufree-data/tw_stage1/issue16_20261111/usd_inspection.json": "87864fc6b101c559e2ade288016a37f78dc5f27716608b90551dcd2ad72e8ae1",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/usd_collision_geometry.npz": "cdde18ab31027e227a4c82585be422f9692c25254a5994e50b7c0829640cfaad"
+  },
+  "usd_sha256": "24663fd164311931d0ea633bb1e4ceeb7a35bb7f3c02a52e10a94aafa6035816",
+  "model_or_configuration_modified": false
+}

@@ -1,0 +1,14 @@
+--- original_eval_cmd.py
++++ zero_step_readback.py
+@@ -242,7 +242,10 @@
+         raise ValueError(f"Unsupported runner class: {agent_cfg.class_name}")
+     # convert pre-5.0 published checkpoints to the layout expected by rsl-rl >= 5.0 (no-op otherwise)
+     resume_path = handle_deprecated_rsl_rl_checkpoint(resume_path, installed_version)
+-    runner.load(resume_path)
++    from issue16_runtime_readback import collect
++    collect(env.unwrapped,_ORIGINAL_SHA,_PATCHED_SHA)
++    env.close()
++    return
+ 
+     # obtain the trained policy for inference
+     policy = runner.get_inference_policy(device=env.unwrapped.device)

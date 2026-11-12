@@ -1,0 +1,24 @@
+{
+  "actual_review_completed": true,
+  "figures_reviewed": 7,
+  "contact_sheets_reviewed": 1,
+  "full_resolution_frames_reviewed": 6,
+  "reviewed_unix": 1794503781.0177538,
+  "reviewed_files_sha256": {
+    "figures/lineage_heading_gate.png": "d9aafc050438750c181ce7d01084efcdd2117b0e346c2c75a1e0569a8637fb8d",
+    "figures/mirror_absolute_heading.png": "4929274d2cda2cf2f1264f804078282cedcbc47fc2c20c8a4e6de085146282f5",
+    "figures/mirror_signed_heading.png": "4d2ee765c57682c829886789ae7906601f7ec302eb145723a08546adb5b0d854",
+    "figures/no_policy_heading_and_exposure.png": "f6e11d4a85f0cb2851d5698b02d5b2832963c5bc0cbd2404b1db6324fde2b79b",
+    "figures/paired_heading_sum_and_ratio.png": "ff520b35d19f15e9db8bef2a2c3f645fe7081a7d560a60bd08b5672173991861",
+    "figures/representative_world_heading.png": "96abcbf6658946f4cbe9faad498e25ee0a4d06a8eeca8397018af23f2f2298de",
+    "figures/usd_reflection_differences.png": "45dbce08626336a4eeceeddde15c03664024f8b3822d6e0b0a0347bf7be25b45",
+    "video_contact_sheets/control6000.png": "9c4df6f7871d5112b1f6429d6379595d1a6ff56cc87a7e981da37f8970894300",
+    "video_review_frames/control6000_front_frame31.png": "3ecae753c3a2fa056bb59d900e17911f99b62e24108d2996a33cf043fda43bb9",
+    "video_review_frames/control6000_front_frame791.png": "fe03878c0a3c98c11f77444c57ee56fd8cccc8189cd18f7645e7e122d3d2511d",
+    "video_review_frames/control6000_side_frame31.png": "b91f2f8b6dd3f76413196a33c7664b82b8358cb42cc93d6f6a2a420f312f0210",
+    "video_review_frames/control6000_side_frame791.png": "66582d22fea73c21ac4e1e333b402bdad5bd5e8793b3e4352d18b6a0a8042c4d",
+    "video_review_frames/control6000_overhead_frame31.png": "76d7b923d4a3e4e887663bba4a7a31245ce5bc414212bd55acb8fa12861d71a1",
+    "video_review_frames/control6000_overhead_frame791.png": "ee967cf516f16726bbf687efb697391abd14dfdb1c1cb7141464fffb7fb41dc6"
+  },
+  "observations": "All seven plots legible with missing endpoints and uncertainty explicit. Three-view21sample contact sheet aligned. Six actual full-resolution critical frames show complete colored robot, clear source/heading overlay and world-XY trail, no clipping or initial rendering grain. Front/side follow heading, overhead exposes rotation in fixed world frame. Static rendered pose playback is explicitly labelled, not a dynamics re-simulation."
+}

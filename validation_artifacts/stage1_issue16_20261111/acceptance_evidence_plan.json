@@ -1,0 +1,133 @@
+{
+  "scope": {
+    "issue": 16,
+    "title": "直行航向漂移来源判别",
+    "source": "issue_source.json",
+    "mode": "evaluation_only",
+    "training_updates_required": 0,
+    "production_changes_required": 0,
+    "default_promotion_required": false,
+    "all_statuses": "pending final observed evidence review"
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "requirement": "Before formal work freeze30deg mean-absolute reset-aware20s heading gate for all4zero-yawcommands, report seed95upper and original15 censoring",
+      "evidence": [
+        "protocol_plan.md",
+        "frozen_evaluation_sources.json",
+        "operator_definition_amendment.json",
+        "lineage_heading_gate.json",
+        "lineage_heading_gate.md"
+      ],
+      "review": "44original cells/11nodes; no baseline rerun; per-seed endpoints/failures/prefix exposure;95upper separate from primary mean"
+    },
+    {
+      "id": "R2",
+      "requirement": "Mirror all5existingtrainingseeds each of control6000/requested4500 under clean protocol; correct physical mapping",
+      "evidence": [
+        "formal_jobs.json",
+        "formal_job_audits.json",
+        "mirror_comparisons.json",
+        "seed_statistics.json",
+        "analysis_integrity_audit.json",
+        "mirror_unit_tests.log",
+        "smoke_audit.json"
+      ],
+      "review": "30actualjointsigns; axial/polar vectors; raw actor pre-normalization;101actor134critic; involution/global episode clock unchanged; signed/absolute paired95;actual weights/optimizer/RNG/source unchanged; same-commandturncontrols no zero-bias reversal inference"
+    },
+    {
+      "id": "R3",
+      "requirement": "Exact experimentUSD allLRmass/inertia/COM/limits/default/PD/collision; one no-policy default-PD stand20s",
+      "evidence": [
+        "usd_inspection.json",
+        "usd_collision_geometry.npz",
+        "usd_symmetry_audit.json",
+        "runtime_readback/metadata.json",
+        "runtime_readback/physics.npz",
+        "runtime_readback/installed_sdk_getter_evidence.json",
+        "runtime_symmetry_audit.json",
+        "runtime_joint_parameters.csv",
+        "no_policy/default_eval1.json",
+        "no_policy_statistics.json"
+      ],
+      "review": "31bodies30joints33colliders including31meshes and2analyticCube soles; SDK frame conventions; configured vs effective PD distinguished; no actor calls in zeroaction branch; processed targets verified every step; all1024trials+censoring; source clouds not claimed exact cookedhulls"
+    },
+    {
+      "id": "R4",
+      "requirement": "Same mirror experiment on common robust05 parent",
+      "evidence": [
+        "cohort.json",
+        "formal_job_audits.json",
+        "mirror_comparisons.json"
+      ],
+      "review": "One existing training seed x3eval seeds; no inventedtrainingCI; sharedancestry limitation"
+    },
+    {
+      "id": "R5",
+      "requirement": "Original control6000 forward0.5 median-heading trial colored overhead/following video with worldXY trail retainedremote",
+      "evidence": [
+        "representative_selection.json",
+        "reconstruction_state.json",
+        "video_plan.json",
+        "media_source_sha256.json",
+        "video_quality_audit.json",
+        "manual_review.json"
+      ],
+      "review": "All15360originaltrials,no survivalfilter; original heading metric not yawMAE; exactpriorrecordedarrays/metrics reconstruction;20s1000frames50fps front/side/overhead; coloredUSD1876originalattrs unchanged; aligned3views/worldtrajectory/heading; actualmanual7plots+1sheet+6fullrescriticalframes"
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "C1",
+      "requirement": "Full original lineage gate pass/fail table from existing15data",
+      "evidence": [
+        "lineage_heading_gate.json",
+        "results.md"
+      ]
+    },
+    {
+      "id": "C2",
+      "requirement": "Explicit4-way classification with evidence and limitations",
+      "evidence": [
+        "scientific_conclusion.json",
+        "results.md"
+      ],
+      "allowed": [
+        "policy_bias",
+        "robot_sim_asymmetry",
+        "both",
+        "unable_to_distinguish"
+      ]
+    },
+    {
+      "id": "C3",
+      "requirement": "Exactly ONE next proposal, not implemented; no default promotion",
+      "evidence": [
+        "scientific_conclusion.json",
+        "results.md",
+        "frozen_evaluation_sources.json"
+      ]
+    },
+    {
+      "id": "DELIVERY",
+      "requirement": "Remote lossless archive, selective commit+push, actual remote branch/tree validation, issue reply readback and Notion Done/update receipt",
+      "evidence": [
+        "results.md",
+        "source_files_manifest.json",
+        "lossless_chunk_manifest.json",
+        "sha256.json"
+      ],
+      "review": "Actual archive manifests and remote Git blobs/tree/parent match; preserveunrelateduntrackedfiles; no mounteddata copied locally; postpublication receipts kept outside self-referential commit"
+    }
+  ],
+  "budget": {
+    "formal_jobs": 34,
+    "formal_commands": 199,
+    "formal_initial_trials": 203776,
+    "full_heading_command_arrays": 133,
+    "training_updates": 0,
+    "baseline_reruns": 0,
+    "notes": "64envpreflights+64envzero-step parameterreadback+oneoriginalstate reconstruction are separate validation, not new formaldenominator."
+  }
+}

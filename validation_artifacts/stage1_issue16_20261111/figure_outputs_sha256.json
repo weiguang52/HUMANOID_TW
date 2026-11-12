@@ -1,0 +1,33 @@
+{
+  "source_sha256": "7fd8a2ef6199d589297ac48c1a64f414c3714595865c474631b3ab08f3f7cfbb",
+  "sources": {
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/plot_issue16.py": "7fd8a2ef6199d589297ac48c1a64f414c3714595865c474631b3ab08f3f7cfbb"
+  },
+  "inputs": {
+    "/root/gpufree-data/tw_stage1/issue16_20261111/lineage_heading_gate.json": "f74aaae568140ed9de391ae84a50adf9027c710904242643d4136eaa497ddd59",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/mirror_comparisons.json": "9213f0cb99bc6a898d30a41e70545ffb281f5169bbc13be3fd4801dbc619b237",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/usd_symmetry_audit.json": "f5b5456d792f76220dcd00db11b76b6a94e1d575cea0b2203aa23c71ec549783",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/no_policy_statistics.json": "af541672bb7c1a6cb945a3a26c78baea048cf667e84fea1b61774d536683c8d8",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/no_policy/default_eval1.json": "9536d9d50be2c21e294e5066c0a5b2881d045d5e465c7161bebe73592dddc7cf",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/reconstruction_state.json": "0bef0b905b82b9480c1c0df476b59dd51e05431737629325dfe5364e58f465cc",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/no_policy/moments/default_eval1/stand_yaw.npz": "1e535ef31fc69d68ebe6e0038b19671110645e82fc1a4adfba19f620c9576db3",
+    "/root/gpufree-data/tw_stage1/issue16_20261111/reconstruction/moments/source/forward_05_trajectory.npz": "3cef5d46eeac1a79dc0ce458ba3efaf5655f7c5d113ca5d5f6233523b5cea487"
+  },
+  "outputs": {
+    "figures/lineage_heading_gate.png": "d9aafc050438750c181ce7d01084efcdd2117b0e346c2c75a1e0569a8637fb8d",
+    "figures/lineage_heading_gate.svg": "d925bea6b3b702341f3e3c8b79932910519140b5171e3d7b3611ca59bf133402",
+    "figures/mirror_signed_heading.png": "4d2ee765c57682c829886789ae7906601f7ec302eb145723a08546adb5b0d854",
+    "figures/mirror_signed_heading.svg": "fd7554c604c32114eaee74c2184893e6c6cadea4580c07d09199f7302a6fa94a",
+    "figures/mirror_absolute_heading.png": "4929274d2cda2cf2f1264f804078282cedcbc47fc2c20c8a4e6de085146282f5",
+    "figures/mirror_absolute_heading.svg": "1c874aee41d73ff1fb7d15c6c779804329d3f0885d2c56d654a1362d0a71e90d",
+    "figures/paired_heading_sum_and_ratio.png": "ff520b35d19f15e9db8bef2a2c3f645fe7081a7d560a60bd08b5672173991861",
+    "figures/paired_heading_sum_and_ratio.svg": "e700c87eb3567040fa6839b24dcd0bb381a51f533609829d992ff471c3493afc",
+    "figures/usd_reflection_differences.png": "45dbce08626336a4eeceeddde15c03664024f8b3822d6e0b0a0347bf7be25b45",
+    "figures/usd_reflection_differences.svg": "7ce73c1898687335a9e82468a3da4ed12dce191eb71a77b668b83960d4f1042e",
+    "figures/no_policy_heading_and_exposure.png": "f6e11d4a85f0cb2851d5698b02d5b2832963c5bc0cbd2404b1db6324fde2b79b",
+    "figures/no_policy_heading_and_exposure.svg": "e753c1193ff370ac139269b6ec66c798d8e780cdae6f9f51a762ac35cb4a3763",
+    "figures/representative_world_heading.png": "96abcbf6658946f4cbe9faad498e25ee0a4d06a8eeca8397018af23f2f2298de",
+    "figures/representative_world_heading.svg": "4871b4ad1462b955ad06670951bbe8f39704c371d3b33ac5f2029a2a98f7fb8c"
+  },
+  "plot_count": 7
+}

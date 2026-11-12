@@ -1,0 +1,5 @@
+# Issue16 analysis scope clarifications
+
+The frozen primary direction/magnitude interpretation applies only to stand and forward0.3/0.5/0.8 with zero yaw target. The two commanded turning conditions are retained in their original reset ordinals as supplementary raw tracking controls. Their same-command heading direction is not used as evidence of non-reversal: spatial reflection also reverses a nonzero yaw command. No supplementary turn is treated as a30degree heading-hold gate or used for the primary causal classification. The formal budget and all frozen primary criteria are unchanged.
+
+The phase pair is a limb-independent scalar clock computed from each environment's episode_length_buf. Calling it global gait phase does not mean a wall clock shared across resets. Pure spatial reflection leaves its current value unchanged. Divergent failures may reset the two trajectories at different times; paired START conditions do not imply identical later reset/RNG histories. Full20s endpoint comparisons preserve missingness rather than dropping a censored seed.

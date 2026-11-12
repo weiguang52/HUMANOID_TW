@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checks": {
+    "plain": {
+      "passed": true,
+      "commands": 1,
+      "checkpoint_sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+      "formal_trials": 0,
+      "training_updates": 0
+    },
+    "identity": {
+      "passed": true,
+      "commands": 1,
+      "checkpoint_sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+      "formal_trials": 0,
+      "training_updates": 0
+    },
+    "mirror": {
+      "passed": true,
+      "commands": 2,
+      "checkpoint_sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+      "formal_trials": 0,
+      "training_updates": 0
+    },
+    "default": {
+      "passed": true,
+      "commands": 1,
+      "checkpoint_sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+      "formal_trials": 0,
+      "training_updates": 0
+    }
+  },
+  "original_metrics_exact": true,
+  "final_root_joint_state_and_all_rng_bitwise_identical": true,
+  "compared_state_fields": [
+    "root_state",
+    "joint_pos",
+    "joint_vel",
+    "torch_rng",
+    "cuda_rng",
+    "numpy_rng",
+    "numpy_rng_aux",
+    "numpy_rng_algorithm",
+    "python_rng",
+    "python_rng_version",
+    "python_rng_gauss_present",
+    "python_rng_gauss_value"
+  ],
+  "formal_trials": 0,
+  "training_updates": 0
+}

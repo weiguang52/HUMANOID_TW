@@ -1,0 +1,30 @@
+[
+  {
+    "group": "control6000",
+    "model": "control6000_s4",
+    "env_id": 856,
+    "push_seconds": [],
+    "selection_metric": "absolute reset-aware quaternion20s heading drift; not body-z yaw MAE",
+    "source_policy_mode": "original",
+    "views": {
+      "front": {
+        "path": "/root/gpufree-data/tw_stage1/issue16_20261111/videos/control6000_front.mp4",
+        "sha256": "58098e74b80391807a8a443f16735fb8f91f5b1f821ba004579a299e65427459",
+        "metadata": "/root/gpufree-data/tw_stage1/issue16_20261111/control6000_front.json",
+        "source_trajectory_sha256": "3cef5d46eeac1a79dc0ce458ba3efaf5655f7c5d113ca5d5f6233523b5cea487"
+      },
+      "side": {
+        "path": "/root/gpufree-data/tw_stage1/issue16_20261111/videos/control6000_side.mp4",
+        "sha256": "98be21d54162e91c2ea73926f85c3f63a028b56485913e6129804427aaf2ea44",
+        "metadata": "/root/gpufree-data/tw_stage1/issue16_20261111/control6000_side.json",
+        "source_trajectory_sha256": "3cef5d46eeac1a79dc0ce458ba3efaf5655f7c5d113ca5d5f6233523b5cea487"
+      },
+      "overhead": {
+        "path": "/root/gpufree-data/tw_stage1/issue16_20261111/videos/control6000_overhead.mp4",
+        "sha256": "32aad0dfd98be98e33ee2253357ea656b724e3ffbb6708b4710d184138895b7e",
+        "metadata": "/root/gpufree-data/tw_stage1/issue16_20261111/control6000_overhead.json",
+        "source_trajectory_sha256": "3cef5d46eeac1a79dc0ce458ba3efaf5655f7c5d113ca5d5f6233523b5cea487"
+      }
+    }
+  }
+]

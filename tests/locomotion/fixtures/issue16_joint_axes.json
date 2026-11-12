@@ -1,0 +1,488 @@
+{
+  "usd": "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd",
+  "usd_sha256": "24663fd164311931d0ea633bb1e4ceeb7a35bb7f3c02a52e10a94aafa6035816",
+  "inspection_source_sha256": "5c8dcafdcb288f515ea6db8e4209d93fcf29a0122fbe89a6ceaf322eb950b5e0",
+  "inspection_output_sha256": "87864fc6b101c559e2ade288016a37f78dc5f27716608b90551dcd2ad72e8ae1",
+  "joints": [
+    {
+      "joint": "left_hip_pitch_joint",
+      "partner": "right_hip_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "joint": "left_hip_roll_joint",
+      "partner": "right_hip_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    {
+      "joint": "left_hip_yaw_joint",
+      "partner": "right_hip_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "joint": "left_knee_pitch_joint",
+      "partner": "right_knee_pitch_joint",
+      "sign": 1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    {
+      "joint": "left_ankle_yaw_joint",
+      "partner": "right_ankle_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "joint": "left_ankle_pitch_joint",
+      "partner": "right_ankle_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375,
+      "axis_world_at_authored_pose": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "joint": "left_foot_roll",
+      "partner": "right_foot_roll",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375,
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    {
+      "joint": "right_hip_pitch_joint",
+      "partner": "left_hip_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    {
+      "joint": "right_hip_roll_joint",
+      "partner": "left_hip_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    {
+      "joint": "right_hip_yaw_joint",
+      "partner": "left_hip_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "joint": "right_knee_pitch_joint",
+      "partner": "left_knee_pitch_joint",
+      "sign": 1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    {
+      "joint": "right_ankle_yaw_joint",
+      "partner": "left_ankle_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "joint": "right_ankle_pitch_joint",
+      "partner": "left_ankle_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375,
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    {
+      "joint": "right_foot_roll",
+      "partner": "left_foot_roll",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375,
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    {
+      "joint": "waist_yaw",
+      "partner": "waist_yaw",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "joint": "waist_roll_joint",
+      "partner": "waist_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.9999999999999848,
+      "axis_mismatch_degrees": 9.993164321055812e-06,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        -0.9999999999999962,
+        -8.742277645101104e-08,
+        0.0
+      ]
+    },
+    {
+      "joint": "waist_pitch_joint",
+      "partner": "waist_pitch_joint",
+      "sign": 1,
+      "axis_alignment_cos_abs": 0.9999999999999848,
+      "axis_mismatch_degrees": 9.993164321055812e-06,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5,
+      "axis_world_at_authored_pose": [
+        8.742277645101104e-08,
+        -0.9999999999999962,
+        0.0
+      ]
+    },
+    {
+      "joint": "left_shoulder_pitch_joint",
+      "partner": "right_shoulder_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.999999999999939,
+      "axis_mismatch_degrees": 2.000455603180256e-05,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        -1.748455529020214e-07,
+        0.9999999999999848,
+        0.0
+      ]
+    },
+    {
+      "joint": "left_shoulder_roll_joint",
+      "partner": "right_shoulder_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": -1.5707963267948966,
+      "partner_default": 1.5707963267948966,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        -1.0,
+        -1.5833375420592126e-16,
+        -8.65956056235493e-17
+      ]
+    },
+    {
+      "joint": "left_shoulder_yaw_joint",
+      "partner": "right_shoulder_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        2.9923536724140484e-15,
+        -3.4228534451230523e-08,
+        -0.9999999999999994
+      ]
+    },
+    {
+      "joint": "left_elbow_pitch_joint",
+      "partner": "right_elbow_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.9999999999999657,
+      "axis_mismatch_degrees": 1.5007971104097566e-05,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        -8.742278123764105e-08,
+        0.9999999999999957,
+        -3.422853594740775e-08
+      ]
+    },
+    {
+      "joint": "left_wrist_pitch",
+      "partner": "right_wrist_pitch",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.999999999999987,
+      "axis_mismatch_degrees": 9.234973977599937e-06,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        -5.507885115792622e-09,
+        -1.271592101903749e-07,
+        0.9999999999999919
+      ]
+    },
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "partner": "left_shoulder_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.999999999999939,
+      "axis_mismatch_degrees": 2.000455603180256e-05,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        1.7484555302448608e-07,
+        -0.9999999999999848,
+        -5.353101175164063e-24
+      ]
+    },
+    {
+      "joint": "right_shoulder_roll_joint",
+      "partner": "left_shoulder_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 1.5707963267948966,
+      "partner_default": -1.5707963267948966,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        -1.0,
+        -1.5833375420592126e-16,
+        8.65956056235493e-17
+      ]
+    },
+    {
+      "joint": "right_shoulder_yaw_joint",
+      "partner": "left_shoulder_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        -2.9923536510016427e-15,
+        3.4228534328765845e-08,
+        -0.9999999999999994
+      ]
+    },
+    {
+      "joint": "right_elbow_pitch_joint",
+      "partner": "left_elbow_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.9999999999999657,
+      "axis_mismatch_degrees": 1.5007971104097566e-05,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        1.7484556247528218e-07,
+        -0.9999999999999841,
+        -3.4228534451230523e-08
+      ]
+    },
+    {
+      "joint": "right_wrist_pitch",
+      "partner": "left_wrist_pitch",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.999999999999987,
+      "axis_mismatch_degrees": 9.234973977599937e-06,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4,
+      "axis_world_at_authored_pose": [
+        2.9923536724140484e-15,
+        -3.4228534451230523e-08,
+        0.9999999999999994
+      ]
+    },
+    {
+      "joint": "neck",
+      "partner": "neck",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.25,
+      "axis_world_at_authored_pose": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "joint": "neck_linkage_roll",
+      "partner": "neck_linkage_roll",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.25,
+      "axis_world_at_authored_pose": [
+        -1.0,
+        -1.2246467991473527e-16,
+        0.0
+      ]
+    },
+    {
+      "joint": "head_pitch",
+      "partner": "head_pitch",
+      "sign": 1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.25,
+      "axis_world_at_authored_pose": [
+        2.449293598294706e-16,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    }
+  ]
+}

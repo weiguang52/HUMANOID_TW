@@ -1,0 +1,60 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /root/gpufree-data/projects/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/root/gpufree-data/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /root/gpufree-data/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20261111_204856.log
+2026-11-11T12:48:56Z [293ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-11-11T12:48:57Z [899ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-11-11T12:48:57Z [1,142ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-11-11T12:49:01Z [4,470ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | cf40d7a0.. |
+|     |                                  |        |     |            | 11        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 36222
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+ISSUE16_USD_INSPECTION 31 30 33
+MAP left_hip_pitch_joint right_hip_pitch_joint -1 0.0 0.0
+MAP left_hip_roll_joint right_hip_roll_joint -1 0.0 0.0
+MAP left_hip_yaw_joint right_hip_yaw_joint -1 0.0 0.0
+MAP left_knee_pitch_joint right_knee_pitch_joint 1 0.0 0.0
+MAP left_ankle_yaw_joint right_ankle_yaw_joint -1 0.0 0.0
+MAP left_ankle_pitch_joint right_ankle_pitch_joint -1 0.0 0.0
+MAP left_foot_roll right_foot_roll -1 0.0 0.0
+MAP right_hip_pitch_joint left_hip_pitch_joint -1 0.0 0.0
+MAP right_hip_roll_joint left_hip_roll_joint -1 0.0 0.0
+MAP right_hip_yaw_joint left_hip_yaw_joint -1 0.0 0.0
+MAP right_knee_pitch_joint left_knee_pitch_joint 1 0.0 0.0
+MAP right_ankle_yaw_joint left_ankle_yaw_joint -1 0.0 0.0
+MAP right_ankle_pitch_joint left_ankle_pitch_joint -1 0.0 0.0
+MAP right_foot_roll left_foot_roll -1 0.0 0.0
+MAP waist_yaw waist_yaw -1 0.0 0.0
+MAP waist_roll_joint waist_roll_joint -1 9.993164321055812e-06 0.0
+MAP waist_pitch_joint waist_pitch_joint 1 9.993164321055812e-06 0.0
+MAP left_shoulder_pitch_joint right_shoulder_pitch_joint -1 2.000455603180256e-05 0.0
+MAP left_shoulder_roll_joint right_shoulder_roll_joint -1 0.0 0.0
+MAP left_shoulder_yaw_joint right_shoulder_yaw_joint -1 0.0 0.0
+MAP left_elbow_pitch_joint right_elbow_pitch_joint -1 1.5007971104097566e-05 0.0
+MAP left_wrist_pitch right_wrist_pitch -1 9.234973977599937e-06 0.0
+MAP right_shoulder_pitch_joint left_shoulder_pitch_joint -1 2.000455603180256e-05 0.0
+MAP right_shoulder_roll_joint left_shoulder_roll_joint -1 0.0 0.0
+MAP right_shoulder_yaw_joint left_shoulder_yaw_joint -1 0.0 0.0
+MAP right_elbow_pitch_joint left_elbow_pitch_joint -1 1.5007971104097566e-05 0.0
+MAP right_wrist_pitch left_wrist_pitch -1 9.234973977599937e-06 0.0
+MAP neck neck -1 0.0 0.0
+MAP neck_linkage_roll neck_linkage_roll -1 0.0 0.0
+MAP head_pitch head_pitch 1 0.0 0.0

@@ -1,0 +1,17 @@
+START smoke_plain 88401
+END smoke_plain 0
+START smoke_identity 88726
+END smoke_identity 0
+START smoke_mirror 89049
+END smoke_mirror -9
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/smoke_issue16.py", line 31, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/smoke_issue16.py", line 15, in main
+    if not output.exists():run(args,output.with_suffix('.log'),'smoke_'+mode)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue16_common.py", line 21, in run
+    if p.returncode:raise RuntimeError(str(log))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: /root/gpufree-data/tw_stage1/issue16_20261111/smoke/mirror.log

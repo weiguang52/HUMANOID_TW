@@ -1,0 +1,14 @@
+{
+  "phase": "video_automatic_QA",
+  "pid": 105340,
+  "args": [
+    "python",
+    "-u",
+    "scripts/locomotion/audit_issue16_videos.py"
+  ],
+  "state": "complete",
+  "started_unix": 1794409298.5090454,
+  "log": "/root/gpufree-data/tw_stage1/issue16_20261111/video_automatic_QA.log",
+  "returncode": 0,
+  "finished_unix": 1794409318.5111783
+}

@@ -1,0 +1,64 @@
+{
+  "usd_collision_geometry.npz": {
+    "original_bytes": 88992246,
+    "original_sha256": "cdde18ab31027e227a4c82585be422f9692c25254a5994e50b7c0829640cfaad",
+    "parts": [
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0000.part",
+        "bytes": 8388608,
+        "sha256": "2827555916a74d3d302ba28aa92790b19a6a3b919e5498a7b9a2a11002da9d17"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0001.part",
+        "bytes": 8388608,
+        "sha256": "90e5c4587683704be84940a8b4129313f313541b26a3cb24c3ff43571387fd5f"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0002.part",
+        "bytes": 8388608,
+        "sha256": "a835ddf8980c59efed5baf6732156a8880db1edb5d6e1f4d896681e5d783fd4c"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0003.part",
+        "bytes": 8388608,
+        "sha256": "97dc3cc50ab459c45602f511593f0bf3d298a7d964b90f1ad682863867a51080"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0004.part",
+        "bytes": 8388608,
+        "sha256": "642d4d4cb0bdbe807bd53a46d373e775560c2f79bf4c74ed0daf19c24263718b"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0005.part",
+        "bytes": 8388608,
+        "sha256": "77775bcf2ae43a1b2b9401adec1764e12a0b6a2234c08efaaf71285970b2e48c"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0006.part",
+        "bytes": 8388608,
+        "sha256": "cf1e05fa2b4f32c6740db9dcf0b966b38e23de6b854a2d1974571d3c3478c38c"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0007.part",
+        "bytes": 8388608,
+        "sha256": "0f655d2450752694fccca248a6409bc086d3d2a691573b8677f0f2e4ae2d29d5"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0008.part",
+        "bytes": 8388608,
+        "sha256": "fe3c756114a121f0ac9e35e074a77e96ab9b42b1cd822ad96c47c31654a56114"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0009.part",
+        "bytes": 8388608,
+        "sha256": "440dcd906011032419277c3444254299584fe9a956c53a7bf441aa4ee0bc3b5f"
+      },
+      {
+        "path": "lossless_chunks/usd_collision_geometry.npz/0010.part",
+        "bytes": 5106166,
+        "sha256": "d587ef52e9d4e21a38ef345735612a2cdf6ba11a51dfa4215b6b465a68dc1d70"
+      }
+    ],
+    "reconstruction": "Concatenate listed part paths in the listed order as raw bytes. No compression or text conversion."
+  }
+}

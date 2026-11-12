@@ -1,0 +1,348 @@
+{
+  "passed": true,
+  "videos": {
+    "control6000_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            352,
+            248,
+            609,
+            561
+          ],
+          "sha256": "df32de724253586cd202f9d4af18516ff2afa596f5fd4962deed3fbeb2a064d0",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 31,
+          "bbox": [
+            348,
+            250,
+            603,
+            553
+          ],
+          "sha256": "3ecae753c3a2fa056bb59d900e17911f99b62e24108d2996a33cf043fda43bb9",
+          "push_response_sample": false,
+          "arm_motion_review_sample": true,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            348,
+            248,
+            599,
+            557
+          ],
+          "sha256": "cb48c3e3fbe4763fd18f2f0388f4ef319219fcba27f016f894b9556dc24e241a",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            344,
+            248,
+            603,
+            563
+          ],
+          "sha256": "2cec9cf5ac82c8d8629771bbede7aeccba0382f67c016c1f9176480b37314143",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            348,
+            248,
+            601,
+            557
+          ],
+          "sha256": "695e3e1855e56dcbcd48cfda945aed91709361c22f286edd9fdaa2d450d209c4",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 791,
+          "bbox": [
+            348,
+            250,
+            599,
+            554
+          ],
+          "sha256": "fe03878c0a3c98c11f77444c57ee56fd8cccc8189cd18f7645e7e122d3d2511d",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": true
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            344,
+            250,
+            599,
+            559
+          ],
+          "sha256": "893bd99a5f3821222d51883447ca035bf8a8d89f6757f6d752f2f84c8ca185fb",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        }
+      ],
+      "push_response_frame": null,
+      "motion_review_frame": 31,
+      "heading_review_frame": 791,
+      "manual_review_frames": [
+        31,
+        791
+      ],
+      "arm_motion_present": true,
+      "max_arm_joint_delta_norm_rad": 0.06593355536460876,
+      "heading_turn_delta_rad": 0.03870058059692383
+    },
+    "control6000_side.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            456,
+            248,
+            509,
+            559
+          ],
+          "sha256": "7f6fc4e659eb08e32ed6c54270d8a71df24a3baf43b735860f846d24f8d2d0a9",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 31,
+          "bbox": [
+            454,
+            248,
+            553,
+            563
+          ],
+          "sha256": "b91f2f8b6dd3f76413196a33c7664b82b8358cb42cc93d6f6a2a420f312f0210",
+          "push_response_sample": false,
+          "arm_motion_review_sample": true,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            460,
+            248,
+            543,
+            563
+          ],
+          "sha256": "494ba29d3eb754c243f3d3ccfa47a7c6a66923a28c45c5da3fe4c708782bdb76",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            446,
+            248,
+            551,
+            569
+          ],
+          "sha256": "4d203151a8cd2476dad79d9e86884574dc7bd345a36f5d0b0bd50a3426822321",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            460,
+            248,
+            543,
+            565
+          ],
+          "sha256": "135aa15eac7908b6809230f2ab2925b700fbdc01859e886962814d78b45fcac2",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 791,
+          "bbox": [
+            460,
+            248,
+            551,
+            561
+          ],
+          "sha256": "66582d22fea73c21ac4e1e333b402bdad5bd5e8793b3e4352d18b6a0a8042c4d",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": true
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            450,
+            248,
+            545,
+            573
+          ],
+          "sha256": "8120e8d170c8b501b4346ef5cef921f38a232be33ce0a0fe92a2eff723370ccb",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        }
+      ],
+      "push_response_frame": null,
+      "motion_review_frame": 31,
+      "heading_review_frame": 791,
+      "manual_review_frames": [
+        31,
+        791
+      ],
+      "arm_motion_present": true,
+      "max_arm_joint_delta_norm_rad": 0.06593355536460876,
+      "heading_turn_delta_rad": 0.03870058059692383
+    },
+    "control6000_overhead.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            406,
+            284,
+            553,
+            431
+          ],
+          "sha256": "3d2573c9903aa3c2a8f46b7d21653aa77bc801f3a5f7bbdfffec492269c7eae3",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 31,
+          "bbox": [
+            402,
+            290,
+            561,
+            427
+          ],
+          "sha256": "76d7b923d4a3e4e887663bba4a7a31245ce5bc414212bd55acb8fa12861d71a1",
+          "push_response_sample": false,
+          "arm_motion_review_sample": true,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            390,
+            314,
+            577,
+            413
+          ],
+          "sha256": "0b04ed69d11561230b5a410c8ede25b1a62976d7e4c08b33eda29503ec52faf5",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            434,
+            260,
+            501,
+            463
+          ],
+          "sha256": "f7ac1092977cf130254f82c9b444f906fa162be8a7f4240ae945fd1c169aff3d",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            374,
+            320,
+            571,
+            401
+          ],
+          "sha256": "416f38fff44257f3457ba4eefd3d5cc4a395d1beb8a602909bfa97ce58db8b1b",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 791,
+          "bbox": [
+            374,
+            322,
+            573,
+            394
+          ],
+          "sha256": "ee967cf516f16726bbf687efb697391abd14dfdb1c1cb7141464fffb7fb41dc6",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": true
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            406,
+            282,
+            551,
+            423
+          ],
+          "sha256": "fabd74e54c74415fcbfe3e05881d91cfaa78fbff8bd0a65ec3a5632e641fddac",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        }
+      ],
+      "push_response_frame": null,
+      "motion_review_frame": 31,
+      "heading_review_frame": 791,
+      "manual_review_frames": [
+        31,
+        791
+      ],
+      "arm_motion_present": true,
+      "max_arm_joint_delta_norm_rad": 0.06593355536460876,
+      "heading_turn_delta_rad": 0.03870058059692383
+    }
+  },
+  "encoding_frames": 3000,
+  "sampled_frames": 21,
+  "contact_sheets": 1,
+  "manual_attachment_plot_review_required": true
+}
