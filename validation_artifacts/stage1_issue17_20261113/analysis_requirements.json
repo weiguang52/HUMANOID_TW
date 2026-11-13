@@ -1,0 +1,12 @@
+{
+  "formal_jobs":90,"formal_command_records":450,"formal_initial_trials":460800,"full_all_trial_heading_arrays":330,
+  "sample_unit":"Five matched training seeds; average three evaluation seeds within each; no seed dropped for missing endpoint",
+  "primary":"sym_int minus control_int clean forward_05 mean absolute reset-aware20s survivor heading; paired bootstrap95 upper strictly below0",
+  "mean_heading_gate":"sym_int stand/forward03/05/08 eachmeanabs<=30deg;95upper reported separately;missing endpoint cannotpass",
+  "pure_spatial_symmetry_gate":"For eachzero-yaw command: paired difference in abs(O_seed+M_seed), sym_int-control_int, bootstrap95upper<0. Training-transform fixed-state E mean decreases; reportpairedCI too.",
+  "tracking_gate":"Cleanforward05/08 xygroupmeanrelative<=5%; yawpositive/negative yawtrackinggroupmeanrelative<=10%; allpairedseedintervals reported separately",
+  "fall_gate":"Boundedcombinedforward03 sym_int training-seed bootstrap95upper<0.01;forward05meanfallrate no higherthancontrol_int;reportpairedintervals and originaltrial denominators",
+  "secondary_only":"control_int minus archivedcontrol6000 on samecleanmetrics; descriptivenotacceptance; oldphysicalclock and sourceexact provenance explicit",
+  "denominator_rules":"All1024initialtrials; prefix exposure/failures separate. No-reset20s endpoint conditional onsurvival; any seedmissing endpoint=>incomplete,no hidden dropping. Driftabsoluteafterreset-excludedquaternionyawaccumulation.",
+  "outputs_required":["alljobstatistics","per_training_seedmetrics","pairedbootstrapcomparisons","alltrialheadingCSV","fullrawheadingreconstructionaudit","allgateflagsandprimarydecision","fixed_state102400Estatisticsand15modeloutputs","mediannewgroupforward05selectionandcoloredworldXYfrontoverheadvideo","source/model/config/hashprovenance"]
+}

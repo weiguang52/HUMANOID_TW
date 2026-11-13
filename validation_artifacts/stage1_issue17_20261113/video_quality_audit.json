@@ -1,0 +1,235 @@
+{
+  "passed": true,
+  "videos": {
+    "sym_int_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            352,
+            248,
+            611,
+            561
+          ],
+          "sha256": "83dfbd2bda2185876944c4b66f09d0e5774caa39b9e22a33e0c475ebabd010ee",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            350,
+            250,
+            597,
+            549
+          ],
+          "sha256": "50c646bb322ec5da04748f541f19bb39564b63c66cfc4791f3043e1a6289f015",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 450,
+          "bbox": [
+            350,
+            250,
+            597,
+            549
+          ],
+          "sha256": "75652dd30a00dd090a701e3ff5f27fdf190b2c405b2bcee083afd299707ccb4e",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": true
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            352,
+            248,
+            607,
+            558
+          ],
+          "sha256": "dd784554d3c5c13478eccd433509b9cfa827406210d5d48e861ed950026c4759",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 651,
+          "bbox": [
+            348,
+            252,
+            591,
+            547
+          ],
+          "sha256": "d7230cbd0db748d3a5e059ee3591a1687098da822020c50526af07f6656e4211",
+          "push_response_sample": false,
+          "arm_motion_review_sample": true,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            350,
+            250,
+            595,
+            549
+          ],
+          "sha256": "267ded938735184aff70d42af7a5cb15374c0699f5458a6e92bc4262e7220071",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            352,
+            250,
+            603,
+            561
+          ],
+          "sha256": "b38ad5a7f89dd1270a20cd12574929a24a9fc11b263827bd3e2afb77c7f7d50c",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        }
+      ],
+      "push_response_frame": null,
+      "motion_review_frame": 651,
+      "heading_review_frame": 450,
+      "manual_review_frames": [
+        651,
+        450
+      ],
+      "arm_motion_present": true,
+      "max_arm_joint_delta_norm_rad": 0.07594610005617142,
+      "heading_turn_delta_rad": 0.07237744331359863
+    },
+    "sym_int_overhead.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            438,
+            264,
+            527,
+            449
+          ],
+          "sha256": "59989f1c2466b6826159298c4848c370536b3f2e94a3cc1513be94d2018aa2ce",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            404,
+            302,
+            567,
+            431
+          ],
+          "sha256": "853c9d5b7d997975c67e5623649539fe97d54ad205ddfdcad8ec7e6efbe05a6b",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 450,
+          "bbox": [
+            388,
+            318,
+            573,
+            415
+          ],
+          "sha256": "6787e909d5d847ddb9d81c94e20fa5d1015d5e33906ab46d458f7bb1f784f846",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": true
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            384,
+            317,
+            571,
+            446
+          ],
+          "sha256": "3fd7c277eab77ef6df19aea72c05331d2eb026844e199845f52bec862fc20f8d",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 651,
+          "bbox": [
+            422,
+            260,
+            499,
+            465
+          ],
+          "sha256": "1da0294ef7e8097084d29aa18ca7acc492705e6f4c9cc07f0f96044a7eddd527",
+          "push_response_sample": false,
+          "arm_motion_review_sample": true,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            432,
+            262,
+            509,
+            455
+          ],
+          "sha256": "5fb0834232964b30b40ff79f6b5e4541b8d6f8b398a91d63418bf713d7eadf41",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            378,
+            318,
+            579,
+            401
+          ],
+          "sha256": "033fb1ffa7d90857cb52b8334309a9ce1911a029137cc9975c96f47518345a71",
+          "push_response_sample": false,
+          "arm_motion_review_sample": false,
+          "heading_turn_review_sample": false
+        }
+      ],
+      "push_response_frame": null,
+      "motion_review_frame": 651,
+      "heading_review_frame": 450,
+      "manual_review_frames": [
+        651,
+        450
+      ],
+      "arm_motion_present": true,
+      "max_arm_joint_delta_norm_rad": 0.07594610005617142,
+      "heading_turn_delta_rad": 0.07237744331359863
+    }
+  },
+  "encoding_frames": 2000,
+  "sampled_frames": 14,
+  "contact_sheets": 1,
+  "manual_attachment_plot_review_required": true
+}

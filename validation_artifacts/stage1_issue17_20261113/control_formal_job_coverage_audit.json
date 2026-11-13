@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "scope": "completed control_int formal job coverage and JSON output integrity, not full raw-array or scientific acceptance audit",
+  "jobs": 45,
+  "unique_training_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "eval_seeds": [
+    1,
+    2,
+    3
+  ],
+  "protocol_counts": {
+    "clean": 15,
+    "mirror": 15,
+    "combined": 15
+  },
+  "command_records": 225,
+  "initial_trials": 230400,
+  "output_sha256_verified": 45,
+  "observed_unix": 1794533259.500078
+}

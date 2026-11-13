@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "job": "clean_control_int_s1_eval1",
+  "output_sha256": "8db406953d1de6abc5c04561d5a2b8fbad38cdec854cc47cd6d9cc8c984c32a4",
+  "checks": [
+    {
+      "command": "forward_03",
+      "initial_trials": 1024,
+      "independent_heading_error_radians": 9.60590774701231e-07
+    },
+    {
+      "command": "yaw_positive",
+      "initial_trials": 1024,
+      "independent_heading_error_radians": null
+    },
+    {
+      "command": "yaw_negative",
+      "initial_trials": 1024,
+      "independent_heading_error_radians": null
+    },
+    {
+      "command": "forward_05",
+      "initial_trials": 1024,
+      "independent_heading_error_radians": 7.60784381270696e-07
+    },
+    {
+      "command": "forward_08",
+      "initial_trials": 1024,
+      "independent_heading_error_radians": 7.433802906575693e-07
+    },
+    {
+      "command": "stand",
+      "initial_trials": 1024,
+      "independent_heading_error_radians": 1.4239528593820716e-06
+    }
+  ],
+  "deterministic": true,
+  "integer_clock": true,
+  "model_optimizer_unchanged": true
+}

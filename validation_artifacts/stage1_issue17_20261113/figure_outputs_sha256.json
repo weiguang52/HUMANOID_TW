@@ -1,0 +1,24 @@
+{
+  "source_sha256": "f10690fd84fe785d08b90688be83002f7c514aa099c383a56f7d3540ea8e1ba6",
+  "inputs": {
+    "group_statistics.json": "5f8628d6a9d50114d1e1b137afc0ea62eec95220b1258c975d1898c2fe5b7a73",
+    "seed_statistics.json": "d8cd796e677ed2c99c9242e3bd3f3d98a9ee161ddedac46c2f45aaee77023cc5",
+    "paired_comparisons.json": "42d6bcca69d8c28881c3ddb9e09d687dc87a61202c9e9a728eaa2ff459505b06",
+    "old_clock_stance_distribution.json": "8770e28d44e5a5197ade7d0b8b6e39e82839dfc9fc95eca4f1d7c38c02541614"
+  },
+  "outputs": {
+    "figures/heading_acceptance.png": "d72fd9ff820366e9df40f1ea4b0dae4c4985c88509aa6ca7cfc83aad6ecd5c2c",
+    "figures/heading_acceptance.svg": "b72b8f09a20b0112f1f5e75930e53bf5ac13f2ebb205741b42733c8cd75338eb",
+    "figures/original_mirrored_heading.png": "a972763e4bfca7819bb017e69557d8f2bb973d1fdc0f0dcb4f792205e4f64d7b",
+    "figures/original_mirrored_heading.svg": "64375ab32203a8be7163c2877bd412184a530765dd1fa844733a8b955bbebd85",
+    "figures/paired_primary_and_symmetry.png": "f5a022a17259ec9b5af44361d2b7fe37bbbb9fd0f7c8a157cf39778fb2862dcc",
+    "figures/paired_primary_and_symmetry.svg": "aa939bf6f48fc56003a17c540c5fd7bb128c5428842abcfb3328c6c67d66e8d6",
+    "figures/tracking_and_fall_guards.png": "a74adad02a045ee6deee45f23a5d398112830f1c068cdff256a188a56c352838",
+    "figures/tracking_and_fall_guards.svg": "7c50bf7053ec8f22aeec886dad30c0964624c72f8d184764e9d921455b64e4e1",
+    "figures/fixed_state_action_equivariance.png": "b015d0d43ece853405f5241535bc802a3c029af26520bf73a89a1282da03252c",
+    "figures/fixed_state_action_equivariance.svg": "9f2103704cbdf0f65034336d7e8fa500f723fda7cd7d2597fa2e9d5f8cb14702",
+    "figures/integer_clock_diagnosis.png": "23d31379ade24b528a7d962db9cf42c49bf964298cde9c619805085eb90ec3da",
+    "figures/integer_clock_diagnosis.svg": "f1d8deb5cee993a3242b55aed1f6f3bf4ffcb3da2cc4ac80778e97cd96e90dee"
+  },
+  "figure_count": 6
+}

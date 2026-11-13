@@ -1,0 +1,37 @@
+{
+  "env_differences": {
+    "/log_dir": [
+      "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_01-50-52_issue17_disabled_reproduction",
+      "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_01-51-37_issue17_disabled_reproduction"
+    ]
+  },
+  "agent_differences": {
+    "/algorithm/symmetry_cfg/data_augmentation_func": [
+      null,
+      "issue17_symmetry:data_augmentation_func"
+    ],
+    "/algorithm/symmetry_cfg/use_mirror_loss": [
+      null,
+      "false"
+    ],
+    "/algorithm/symmetry_cfg/mirror_loss_coeff": [
+      null,
+      "0.0"
+    ],
+    "/algorithm/symmetry_cfg/use_data_augmentation": [
+      null,
+      "true"
+    ],
+    "/algorithm/symmetry_cfg": [
+      "null",
+      null
+    ]
+  },
+  "passed": true,
+  "actual4096env_two_update_preflights": true,
+  "all18_active_reward_weights_preserved": true,
+  "both_loaded_actor_critic_optimizer_exact": true,
+  "augmentation_minibatch": 49152,
+  "original_minibatch": 24576,
+  "formal_training_updates": 0
+}

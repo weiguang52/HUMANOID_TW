@@ -1,0 +1,56 @@
+{
+  "feet_gait": {
+    "equal": false,
+    "mismatch_count": 196,
+    "max_abs_error": 1.0,
+    "mismatch_step_examples": [
+      10,
+      11,
+      21,
+      31,
+      40,
+      50,
+      51,
+      61,
+      100,
+      101,
+      110,
+      111,
+      210,
+      211,
+      220,
+      221,
+      260,
+      261,
+      270,
+      271
+    ]
+  },
+  "feet_swing_height": {
+    "equal": false,
+    "mismatch_count": 162,
+    "max_abs_error": 1.0,
+    "mismatch_step_examples": [
+      11,
+      21,
+      31,
+      40,
+      50,
+      51,
+      61,
+      100,
+      101,
+      110,
+      111,
+      210,
+      211,
+      220,
+      221,
+      260,
+      261,
+      270,
+      271,
+      401
+    ]
+  }
+}

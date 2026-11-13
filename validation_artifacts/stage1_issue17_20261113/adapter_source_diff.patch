@@ -1,0 +1,120 @@
+--- original_eval_cmd.py
++++ read_only_issue16_adapter.py
+@@ -57,6 +57,13 @@
+ # append AppLauncher cli args
+ AppLauncher.add_app_launcher_args(parser)
+ # parse the arguments
++parser.add_argument("--issue16_mode",default="mirror",choices=["original","identity","mirror","default"])
++parser.add_argument("--critic_recovery_clock",action="store_true",default=False)
++parser.add_argument("--issue16_records",default="")
++parser.add_argument("--issue16_capture_env",type=int,default=-1)
++parser.add_argument("--issue16_capture_command",default="forward_03")
++parser.add_argument("--issue17_legacy_clock",action="store_true",default=False)
++parser.add_argument("--issue17_state_output",default="")
+ args_cli, hydra_args = parser.parse_known_args()
+ # always enable cameras to record video
+ if args_cli.video:
+@@ -157,6 +164,9 @@
+     env_cfg.commands.base_velocity.rel_standing_envs = 0.0
+     env_cfg.sim.device = args_cli.device if args_cli.device is not None else env_cfg.sim.device
+ 
++    if args_cli.critic_recovery_clock:
++        from unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock import configure_critic_recovery_clock
++        configure_critic_recovery_clock(env_cfg,True,evaluation=True)
+     if args_cli.video:
+         if env_cfg.scene.num_envs != 1:
+             raise ValueError("Video evaluation requires --num_envs 1")
+@@ -204,6 +214,8 @@
+     env_cfg.log_dir = log_dir
+ 
+     # create isaac environment
++    if not args_cli.issue17_legacy_clock:
++        env_cfg.issue17_integer_clock=True
+     env = gym.make(args_cli.task, cfg=env_cfg, render_mode="rgb_array" if args_cli.video else None)
+ 
+     if args_cli.mass_audit_output:
+@@ -252,6 +264,8 @@
+     base = env.unwrapped
+     cmd_term = base.command_manager.get_term("base_velocity")
+     robot = base.scene["robot"]
++    from issue16_mirror import install_policy
++    policy, mirror_metadata = install_policy(policy,base,args_cli.issue16_mode,args_cli.issue16_records)
+     feet = [robot.body_names.index(n) for n in ("left_foot", "right_foot")]
+     sensor_feet = [base.scene["contact_forces"].body_names.index(n) for n in ("left_foot", "right_foot")]
+     leg_joints = [[i for i,n in enumerate(robot.joint_names) if n.startswith(side) and any(k in n for k in ("hip", "knee", "ankle", "foot"))] for side in ("left_", "right_")]
+@@ -278,6 +292,11 @@
+             recorder = FailureRecorder(base,args_cli.failure_traces)
+     elif args_cli.trial_risk_records:
+         raise ValueError("trial_risk_records requires failure_traces")
++    tracking = None
++    if args_cli.issue16_records:
++        from issue16_tracking import YawRecorder
++        tracking = YawRecorder(base,runner,args_cli.issue16_records,resume_path,args_cli.issue5_condition,args_cli.issue16_capture_env,args_cli.issue16_capture_command,mode=args_cli.issue16_mode)
++    captured_states = []
+     results = []
+     commands = [("stand", (0.,0.,0.)), ("forward_01",(.1,0.,0.)),
+                            ("forward_02",(.2,0.,0.)), ("forward_03",(.3,0.,0.)),
+@@ -288,13 +307,20 @@
+         selected=set(args_cli.command_filter.split(","))
+         assert selected <= {x[0] for x in commands}, selected
+         commands=[x for x in commands if x[0] in selected]
+-    for command_index, (label, command) in enumerate(commands):
++    order = ["forward_03","yaw_positive","yaw_negative","forward_05","forward_08","stand"]
++    if args_cli.issue5_condition == "combined":
++        order=["forward_03","forward_05","forward_08"]
++    commands.sort(key=lambda x:order.index(x[0]))
++    for label, command in commands:
++        command_index = order.index(label)
+         if args_cli.paired_resets:
+             base.reset(seed=env_cfg.seed * 1000 + command_index)
+         else:
+             env.reset()
+         if recorder is not None:
+             recorder.begin(label, command)
++        if tracking is not None:
++            tracking.begin(label,command)
+         writer = None
+         if args_cli.video:
+             import imageio.v2 as imageio
+@@ -312,7 +338,15 @@
+             # Recompute observations after command changes, including after auto-reset.
+             obs = base.observation_manager.compute()
+             with torch.no_grad():
+-                _, _, dones, _ = env.step(policy(obs))
++                post_step_observations, _, dones, _ = env.step(policy(obs))
++                if args_cli.issue17_state_output and label == "forward_05" and step in range(0,1000,50):
++                    captured_states.append(post_step_observations["policy"].detach().cpu().numpy().copy())
++                    if step == 950:
++                        import numpy as np
++                        assert len(captured_states)==20 and base.num_envs==1024 and args_cli.issue17_legacy_clock
++                        state_path=Path(args_cli.issue17_state_output)
++                        state_path.parent.mkdir(parents=True,exist_ok=True)
++                        np.savez_compressed(state_path,actor=np.stack(captured_states),post_step_indices=np.arange(0,1000,50),env_ids=np.arange(1024))
+             if writer is not None:
+                 import math
+                 q=robot.data.root_quat_w[0].detach().cpu().tolist()
+@@ -350,6 +384,8 @@
+                 values[side+"_joint_acc_rms"]=robot.data.joint_acc[:,leg_joints[side_index]].square().mean(-1).sqrt()
+                 values[side+"_foot_height"]=robot.data.body_pos_w[:,feet[side_index],2]-base.scene.env_origins[:,2]
+             for k,v in values.items(): totals[k] += torch.where(valid,v,0.).sum(dtype=torch.float64)
++            if tracking is not None:
++                tracking.sample(values,valid,robot.data.root_lin_vel_b,robot.data.root_ang_vel_b[:,2])
+             count += valid.sum()
+             min_height=torch.minimum(min_height,torch.where(valid,values["base_height"],float("inf")).min())
+         if recorder is not None:
+@@ -365,9 +401,14 @@
+                         "failed_trials":int(failed.sum()),"fall_rate":failed.float().mean().item(),
+                         "minimum_base_height":min_height.item(),
+                         "metrics":{k:(v/count.clamp_min(1)).item() for k,v in totals.items()}})
++        if tracking is not None:
++            tracking.finish(results[-1])
+         print("EVAL",json.dumps(results[-1]),flush=True)
+     output=Path(args_cli.output); output.parent.mkdir(parents=True,exist_ok=True)
+-    output.write_text(json.dumps({"checkpoint":resume_path,"deterministic_policy":True,
++    output.write_text(json.dumps({"checkpoint":resume_path,"deterministic_policy":True,"issue17_clock":{"integer_enabled":bool(getattr(base.cfg,"issue17_integer_clock",False)),"period_steps":20 if getattr(base.cfg,"issue17_integer_clock",False) else None},
++        "issue16_intervention":dict(mirror_metadata,calls=policy.calls),
++        "issue16_tracking":None if tracking is None else tracking.job_metadata(),
++        "issue16_source":{"original_sha256":_ORIGINAL_SHA,"instrumented_sha256":_PATCHED_SHA},
+         "runtime":{"python":sys.executable,"rsl_rl":metadata.version("rsl-rl-lib"),"torch":torch.__version__,"torch_path":torch.__file__},
+         "physics_diagnostics":physics_diagnostics,
+         "last_action_observation":args_cli.last_action_observation,

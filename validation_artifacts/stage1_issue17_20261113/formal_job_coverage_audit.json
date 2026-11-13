@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "scope": "all90 frozen job templates and JSON output integrity; full raw audit is separate",
+  "jobs": 90,
+  "command_records": 450,
+  "initial_trials": 460800,
+  "groups": {
+    "control_int": 45,
+    "sym_int": 45
+  },
+  "all_output_sha256_verified": true,
+  "evaluation_complete_flag": true,
+  "observed_unix": 1794540888.9287398
+}

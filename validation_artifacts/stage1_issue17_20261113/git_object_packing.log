@@ -1,0 +1,16 @@
+error: unknown switch `q'
+usage: git verify-pack [-v | --verbose] [-s | --stat-only] <pack>...
+
+    -v, --verbose         verbose
+    -s, --stat-only       show statistics only
+    --object-format <hash>
+                          specify the hash algorithm to use
+
+Traceback (most recent call last):
+  File "/root/gpufree-data/tw_stage1/issue17_20261113/pack_loose_git_objects.py", line 16, in <module>
+    subprocess.run(['git','verify-pack','-q',str(objects/'pack'/('pack-'+result+'.idx'))],check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'verify-pack', '-q', '/root/gpufree-data/projects/HUMANOID_TW/.git/objects/pack/pack-36cc41f2e3d8b563127dd26dd0bacc67333efff8.idx']' returned non-zero exit status 129.

@@ -1,0 +1,14 @@
+{
+  "summary": "Do not promote sym_int. At forward0.5, mean absolute20s heading changes from356.0875deg to277.2313deg, but the five-training-seed paired difference is -78.8562deg (bootstrap95 [-195.7950,35.0149]); the required upper bound below zero is not met. All four zero-yaw heading gates fail. The forward0.5 absolute(O+M) residual worsens by42.7261deg (95 [20.9359,70.2696]); none of the four mirror residual gates passes. Fixed-state action E decreases on every matched seed, with paired mean -0.0358693 (95 [-0.0594042,-0.0190393]), but this local empirical improvement does not establish improved closed-loop heading. Clean forward0.5 XY tracking error worsens21.5044% and positive/negative turn yaw errors worsen135.6550%/143.1051%, violating frozen guards. Combined forward0.3 fall mean is0.8203%, but training-seed95 upper1.2956% exceeds1%; forward0.5 fall mean2.0898% is below control2.5521% and passes its mean guard. Training and evaluation execute successfully; scientific acceptance fails.",
+  "limitations": [
+    "Only five matched training seeds are the statistical sample units; confidence intervals are unadjusted bootstrap95, and the large initial-trial count does not create additional independent training seeds.",
+    "Full20s heading is reset-aware and conditional on survival. All initial-trial prefixes, exposure and failures are retained separately; no censored seed is silently dropped. All15360 clean sym_int forward0.5 trials survive, so its representative selection uses genuine full20s endpoints.",
+    "Fixed-state E uses one prespecified102400-state empirical set from old-control rollouts and deterministic CPU inference; it is not evidence of global dynamical symmetry or successful fresh rollouts.",
+    "The integer clock is shared by both new groups. The primary contrast isolates augmentation under that clock; old control6000 is secondary descriptive evidence and does not replace the matched control.",
+    "No body/asymmetric USD causal claim is proved by this experiment. The floating-clock numerical diagnosis and learned-policy rollout failures are distinct observations."
+  ],
+  "next_recommendation": "Stop this symmetry-augmentation hypothesis at the authorized ten runs/15000updates. Do not promote the treatment, add training, scan checkpoints or retune phase. Only recommend a future original/reflected-policy x original/strictly-symmetric-USD2x2 diagnostic, with a separate authorization and frozen protocol; that diagnostic is not executed here.",
+  "promote": false,
+  "acceptance_sha256": "c1ce8faeb78a45d88ac947f5d81bf5d4b71ca77ec931888b0f4480de7d85e2da",
+  "paired_statistics_sha256": "42d6bcca69d8c28881c3ddb9e09d687dc87a61202c9e9a728eaa2ff459505b06"
+}

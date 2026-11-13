@@ -1,0 +1,7 @@
+{
+  "action": "pip cache purge",
+  "target": "/root/gpufree-data/cache/pip",
+  "scope": "Regenerable pip download cache only; no installed environments, models, datasets or experiment records removed",
+  "free_bytes_after": 3698622464,
+  "checked_unix": 1794507028.6354494
+}

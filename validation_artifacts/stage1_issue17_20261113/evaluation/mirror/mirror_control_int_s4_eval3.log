@@ -1,0 +1,236 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /root/gpufree-data/projects/IsaacLab/apps/isaaclab.python.headless.kit
+Loading user config located at: '/root/gpufree-data/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /root/gpufree-data/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20261113_085507.log
+2026-11-13T00:55:07Z [294ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-11-13T00:55:07Z [905ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-11-13T00:55:08Z [1,151ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-11-13T00:55:11Z [4,210ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 3bc3780f.. |
+|     |                                  |        |     |            | 38        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 36432
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+[INFO]: Parsing configuration from: unitree_rl_lab.tasks.locomotion.robots.tw.velocity_env_cfg:RobotEnvCfg
+[INFO]: Parsing configuration from: unitree_rl_lab.tasks.locomotion.robots.tw.rsl_rl_cfg:TWPPORunnerCfg
+[WARNING]: The `policy` configuration is deprecated for rsl-rl >= 4.0.0. Please use, e.g., `actor` and `critic` model configurations instead.
+[WARNING]: The `empirical_normalization` parameter is deprecated. Please set `actor_obs_normalization` and `critic_obs_normalization` as part of the `policy` configuration instead.
+[WARNING]: The `policy` configuration is used to infer the `actor` model configuration.
+[WARNING]: The `policy` configuration is used to infer the `critic` model configuration.
+[WARNING]: The `distribution_cfg` configuration is now used to specify the output distribution for stochastic policies. Consider updating the configuration to use `distribution_cfg` instead of `stochastic`, `init_noise_std`, `noise_std_type`, and `state_dependent_std` parameters.
+[INFO] Loading experiment from directory: /root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-11-13_08-55-14.log[0m
+[36m======================================================================================[0m
+
+[33m08:55:14 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 3
+	Physics step-size     : 0.005
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+2026-11-13T00:55:14Z [7,240ms] [Warning] [carb.graphics-vulkan.plugin] Could not initialize nvperf_grfx_host library. PerfSDK disabled
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24810   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 3bc3780f.. |
+|     |                                  |        |     |            | 38        |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 5.15.0-176-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: Intel(R) Xeon(R) Gold 6430
+| Bare Metal Cores: 64 | Bare Metal Logical Cores: 128
+| Core Usage Quota: 14
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 51200 | Free Memory: 36246
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+2026-11-13T00:55:15Z [8,437ms] [Warning] [omni.graph.visualization.nodes._impl.extension] No Viewport Window to add omni.graph.visualization.nodes-2.1.3 scene to
+[INFO]: Time taken for scene creation : 5.131967 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1024
+	Environment spacing   : 1.5
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 3.081127 seconds
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 1 active terms.
++-------------------------------------+
+| Active Event Terms in Mode: 'reset' |
++---------+---------------------------+
+|  Index  | Name                      |
++---------+---------------------------+
+|    0    | reset_base                |
+|    1    | reset_robot_joints        |
++---------+---------------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++-----------------------------------------+
+|     Active Action Terms (shape: 30)     |
++-------+---------------------+-----------+
+| Index | Name                | Dimension |
++-------+---------------------+-----------+
+|   0   | JointPositionAction |        30 |
++-------+---------------------+-----------+
+
+[INFO] Observation Manager: <ObservationManager> contains 2 groups.
++---------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (101,)) |
++-----------+---------------------------------+-----------+
+|   Index   | Name                            |   Shape   |
++-----------+---------------------------------+-----------+
+|     0     | base_ang_vel                    |    (3,)   |
+|     1     | projected_gravity               |    (3,)   |
+|     2     | velocity_commands               |    (3,)   |
+|     3     | joint_pos_rel                   |   (30,)   |
+|     4     | joint_vel_rel                   |   (30,)   |
+|     5     | last_action                     |   (30,)   |
+|     6     | gait_phase                      |    (2,)   |
++-----------+---------------------------------+-----------+
++---------------------------------------------------------+
+| Active Observation Terms in Group: 'critic' (shape: (134,)) |
++-----------+---------------------------------+-----------+
+|   Index   | Name                            |   Shape   |
++-----------+---------------------------------+-----------+
+|     0     | base_lin_vel                    |    (3,)   |
+|     1     | base_ang_vel                    |    (3,)   |
+|     2     | projected_gravity               |    (3,)   |
+|     3     | velocity_commands               |    (3,)   |
+|     4     | joint_pos_rel                   |   (30,)   |
+|     5     | joint_vel_rel                   |   (30,)   |
+|     6     | joint_effort                    |   (30,)   |
+|     7     | last_action                     |   (30,)   |
+|     8     | gait_phase                      |    (2,)   |
++-----------+---------------------------------+-----------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 3 active terms.
++---------------------------------+
+|     Active Termination Terms    |
++-------+--------------+----------+
+| Index | Name         | Time Out |
++-------+--------------+----------+
+|   0   | time_out     |   True   |
+|   1   | base_height  |  False   |
+|   2   | base_contact |  False   |
++-------+--------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 18 active terms.
++------------------------------------------+
+|           Active Reward Terms            |
++-------+-----------------------+----------+
+| Index | Name                  |   Weight |
++-------+-----------------------+----------+
+|   0   | track_lin_vel_xy      |      3.0 |
+|   1   | track_ang_vel_z       |      1.0 |
+|   2   | alive                 |      0.5 |
+|   3   | base_linear_velocity  |     -2.0 |
+|   4   | base_angular_velocity |     -0.5 |
+|   5   | flat_orientation_l2   |     -2.0 |
+|   6   | base_height           |    -10.0 |
+|   7   | joint_acc             | -2.5e-07 |
+|   8   | action_rate           |    -0.05 |
+|   9   | dof_pos_limits        |     -5.0 |
+|   10  | joint_deviation_arms  |     -0.5 |
+|   11  | joint_deviation_waist |     -1.0 |
+|   12  | joint_deviation_neck  |     -0.5 |
+|   13  | joint_deviation_hips  |     -0.5 |
+|   14  | gait                  |      0.5 |
+|   15  | swing_height          |      3.0 |
+|   16  | feet_slide            |     -0.2 |
+|   17  | undesired_contacts    |     -1.0 |
++-------+-----------------------+----------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.
++----------------------+
+| Active Curriculum Terms |
++-----------+----------+
+|   Index   | Name     |
++-----------+----------+
++-----------+----------+
+
+[INFO]: Completed setting up the environment...
+[INFO]: Loading model checkpoint from: /root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_05-05-00_issue17_20261113_control_int_s4/model_13493.pt
+/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/utils/utils.py:220: UserWarning: The observation configuration dictionary 'obs_groups' is empty and thus likely not configured. Consider configuring the 'obs_groups' dictionary explicitly
+  warnings.warn(
+/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/utils/utils.py:251: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'actor' key. As an observation group with the name 'policy' was found, this is assumed to be the appropriate observation. Consider adding the 'actor' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/utils/utils.py:243: UserWarning: The observation configuration dictionary 'obs_groups' does not contain the 'critic' key. As an observation group with the name 'critic' was found, this is assumed to be the appropriate observation. Consider adding the 'critic' key to the 'obs_groups' dictionary for clarity. This behavior will be removed in a future version.
+  warnings.warn(
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 actor :  ['policy']
+	 critic :  ['critic']
+--------------------------------------------------------------------------------
+Actor Model: MLPModel(
+  (obs_normalizer): Identity()
+  (distribution): GaussianDistribution()
+  (mlp): MLP(
+    (0): Linear(in_features=101, out_features=512, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): ELU(alpha=1.0)
+    (6): Linear(in_features=128, out_features=30, bias=True)
+  )
+)
+Critic Model: MLPModel(
+  (obs_normalizer): Identity()
+  (mlp): MLP(
+    (0): Linear(in_features=134, out_features=512, bias=True)
+    (1): ELU(alpha=1.0)
+    (2): Linear(in_features=512, out_features=256, bias=True)
+    (3): ELU(alpha=1.0)
+    (4): Linear(in_features=256, out_features=128, bias=True)
+    (5): ELU(alpha=1.0)
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
+EVAL {"command": "forward_03", "target": [0.3, 0.0, 0.0], "seed": 3, "num_envs": 1024, "seconds": 20.0, "failed_trials": 0, "fall_rate": 0.0, "minimum_base_height": 0.25672435760498047, "metrics": {"xy_error": 0.034850552284692235, "yaw_error": 0.3147938549809991, "base_height": 0.26066677472923766, "joint_acc_rms": 24.173562029355207, "foot_contact_slide": 0.029080395511707536, "left_contact_duty": 0.550998046875, "right_contact_duty": 0.4510869140625, "left_joint_acc_rms": 33.27396083417582, "right_joint_acc_rms": 25.864183986060322, "left_foot_height": 0.0291900614783799, "right_foot_height": 0.027154195128737228}}
+EVAL {"command": "yaw_positive", "target": [0.0, 0.0, 0.3], "seed": 3, "num_envs": 1024, "seconds": 20.0, "failed_trials": 0, "fall_rate": 0.0, "minimum_base_height": 0.25407686829566956, "metrics": {"xy_error": 0.03768551597090357, "yaw_error": 0.11468045502578025, "base_height": 0.2572257784187386, "joint_acc_rms": 20.64989983142633, "foot_contact_slide": 0.019994985358720043, "left_contact_duty": 0.5144873046875, "right_contact_duty": 0.4973720703125, "left_joint_acc_rms": 28.23837215186283, "right_joint_acc_rms": 25.593593910651748, "left_foot_height": 0.021183711166493594, "right_foot_height": 0.021774065784730737}}
+EVAL {"command": "yaw_negative", "target": [0.0, 0.0, -0.3], "seed": 3, "num_envs": 1024, "seconds": 20.0, "failed_trials": 0, "fall_rate": 0.0, "minimum_base_height": 0.25426676869392395, "metrics": {"xy_error": 0.03284910448829163, "yaw_error": 0.12406068877488724, "base_height": 0.25725927071573096, "joint_acc_rms": 16.96995148378052, "foot_contact_slide": 0.016289133405657706, "left_contact_duty": 0.5011201171875, "right_contact_duty": 0.4990400390625, "left_joint_acc_rms": 23.227186224180738, "right_joint_acc_rms": 20.549285031781068, "left_foot_height": 0.022132377096244455, "right_foot_height": 0.02104961686655406}}
+EVAL {"command": "forward_05", "target": [0.5, 0.0, 0.0], "seed": 3, "num_envs": 1024, "seconds": 20.0, "failed_trials": 0, "fall_rate": 0.0, "minimum_base_height": 0.25523385405540466, "metrics": {"xy_error": 0.04240234006817923, "yaw_error": 0.47392451833512905, "base_height": 0.26257641641568624, "joint_acc_rms": 22.835356789014302, "foot_contact_slide": 0.05473364320331803, "left_contact_duty": 0.5175869140625, "right_contact_duty": 0.4953662109375, "left_joint_acc_rms": 22.984795610384783, "right_joint_acc_rms": 30.29297146772826, "left_foot_height": 0.03222058914151421, "right_foot_height": 0.030483282699752635}}
+EVAL {"command": "forward_08", "target": [0.8, 0.0, 0.0], "seed": 3, "num_envs": 1024, "seconds": 20.0, "failed_trials": 0, "fall_rate": 0.0, "minimum_base_height": 0.2531755268573761, "metrics": {"xy_error": 0.08892901636812883, "yaw_error": 0.7429573169066668, "base_height": 0.2630824006369803, "joint_acc_rms": 32.432089266983795, "foot_contact_slide": 0.09498424211633409, "left_contact_duty": 0.481126953125, "right_contact_duty": 0.5215302734375, "left_joint_acc_rms": 33.30836258408445, "right_joint_acc_rms": 40.24384108545352, "left_foot_height": 0.03475414985635143, "right_foot_height": 0.029665885301413255}}
+EVAL {"command": "stand", "target": [0.0, 0.0, 0.0], "seed": 3, "num_envs": 1024, "seconds": 20.0, "failed_trials": 0, "fall_rate": 0.0, "minimum_base_height": 0.25407660007476807, "metrics": {"xy_error": 0.03058166651740115, "yaw_error": 0.08656729369829512, "base_height": 0.25730276551045245, "joint_acc_rms": 18.330051891867072, "foot_contact_slide": 0.018821562773075968, "left_contact_duty": 0.51335546875, "right_contact_duty": 0.4989638671875, "left_joint_acc_rms": 24.73412052141875, "right_joint_acc_rms": 22.82284758593119, "left_foot_height": 0.02137663700698795, "right_foot_height": 0.0216524407017896}}

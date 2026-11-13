@@ -1,0 +1,1802 @@
+[
+  {
+    "name": "clean_control_int_s1_eval1",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s1_eval1",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s1_eval1",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s1_eval2",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s1_eval2",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s1_eval2",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s1_eval3",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s1_eval3",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s1_eval3",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s2_eval1",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s2_eval1",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s2_eval1",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s2_eval2",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s2_eval2",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s2_eval2",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s2_eval3",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s2_eval3",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s2_eval3",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s3_eval1",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s3_eval1",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s3_eval1",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s3_eval2",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s3_eval2",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s3_eval2",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s3_eval3",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s3_eval3",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s3_eval3",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s4_eval1",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s4_eval1",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s4_eval1",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s4_eval2",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s4_eval2",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s4_eval2",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s4_eval3",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s4_eval3",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s4_eval3",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s5_eval1",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s5_eval1",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s5_eval1",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s5_eval2",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s5_eval2",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s5_eval2",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_control_int_s5_eval3",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_control_int_s5_eval3",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_control_int_s5_eval3",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s1_eval1",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s1_eval1",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s1_eval1",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s1_eval2",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s1_eval2",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s1_eval2",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s1_eval3",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s1_eval3",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s1_eval3",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s2_eval1",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s2_eval1",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s2_eval1",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s2_eval2",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s2_eval2",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s2_eval2",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s2_eval3",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s2_eval3",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s2_eval3",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s3_eval1",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s3_eval1",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s3_eval1",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s3_eval2",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s3_eval2",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s3_eval2",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s3_eval3",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s3_eval3",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s3_eval3",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s4_eval1",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s4_eval1",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s4_eval1",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s4_eval2",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s4_eval2",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s4_eval2",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s4_eval3",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s4_eval3",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s4_eval3",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s5_eval1",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s5_eval1",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s5_eval1",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s5_eval2",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s5_eval2",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s5_eval2",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_int_s5_eval3",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "mirror_sym_int_s5_eval3",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "mirror",
+    "mode": "mirror",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_int_s5_eval3",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "mode": "original",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "clock": "integer",
+    "initial_trials": 3072
+  }
+]

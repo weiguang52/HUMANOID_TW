@@ -1,6 +1,7 @@
 """TW-specific reward terms (kept out of the shared locomotion mdp on purpose)."""
 
 from __future__ import annotations
+from unitree_rl_lab.tasks.locomotion.mdp.integer_gait_clock import integer_clock_enabled, integer_gait_phase, integer_leg_stance
 
 from typing import TYPE_CHECKING
 
@@ -37,7 +38,7 @@ def feet_swing_height(
     global_phase = ((env.episode_length_buf * env.step_dt) % period / period).unsqueeze(1)
     offsets = torch.tensor(offset, device=env.device, dtype=global_phase.dtype).unsqueeze(0)
     leg_phase = (global_phase + offsets) % 1.0
-    is_swing = leg_phase >= threshold
+    is_swing = ~integer_leg_stance(env, period, offset, threshold) if integer_clock_enabled(env) else leg_phase >= threshold
 
     reward = torch.sum(height * is_swing, dim=1)
     if command_name is not None:

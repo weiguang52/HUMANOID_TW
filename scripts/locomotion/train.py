@@ -38,6 +38,7 @@ parser.add_argument("--last_action_observation", default="requested", choices=["
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--post_push_pitch_weight", type=float, default=None)
 parser.add_argument("--critic_recovery_clock", action="store_true", default=False)
+parser.add_argument("--issue17_mode", choices=["legacy","control_int","sym_int"], default="legacy")
 parser.add_argument("--issue12_audit_dir", default="")
 parser.add_argument("--issue12_calibration_steps", type=int, default=0)
 parser.add_argument("--issue12_smoke_steps", type=int, default=0)
@@ -151,6 +152,12 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
     if args_cli.critic_recovery_clock:
         from unitree_rl_lab.tasks.locomotion.robots.tw.critic_recovery_clock import configure_critic_recovery_clock
         configure_critic_recovery_clock(env_cfg, True)
+
+    if args_cli.issue17_mode != "legacy":
+        assert args_cli.task == "Unitree-TW-30dof-Velocity" and args_cli.experiment_profile == "robust08"
+        assert not args_cli.critic_recovery_clock and not os.environ.get("TW_RESET_STD")
+        from issue17_config import configure_issue17
+        configure_issue17(env_cfg, agent_cfg, args_cli.issue17_mode)
 
     # set the environment seed
     # note: certain randomizations occur in the environment initialization so we set the seed here
@@ -294,6 +301,11 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
                     Path(args_cli.issue12_audit_dir) / "calibration.json")
     else:
         runner.learn(num_learning_iterations=agent_cfg.max_iterations, init_at_random_ep_len=True)
+    if args_cli.issue17_mode != "legacy":
+        from pathlib import Path
+        import json
+        audit = getattr(env.unwrapped, '_issue17_augmentation_audit', None)
+        Path(args_cli.issue12_audit_dir, 'augmentation_runtime_audit.json').write_text(json.dumps(dict(mode=args_cli.issue17_mode, integer_clock=True, audit=audit, updates=agent_cfg.max_iterations), indent=2))
     if monitor is not None:
         expected = args_cli.issue12_calibration_steps or args_cli.issue12_smoke_steps or agent_cfg.max_iterations * agent_cfg.num_steps_per_env
         assert monitor.total_steps == expected, (monitor.total_steps, expected)

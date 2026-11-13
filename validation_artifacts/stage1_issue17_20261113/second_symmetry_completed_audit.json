@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "record": {
+    "group": "sym_int",
+    "training_seed": 2,
+    "parent": "requested4500_s2",
+    "num_envs": 4096,
+    "updates": 1500,
+    "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_03-37-09_issue17_20261113_sym_int_s2/model_13493.pt",
+    "sha256": "9ba68fc3cca5abd8afae0bef09270492c419cb812418dd1de14b85771cafc71c",
+    "wall_seconds": 1810.0663769245148,
+    "summary": {
+      "log_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_03-37-09_issue17_20261113_sym_int_s2",
+      "parent_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_18-39-42_issue10_20261109_requested_s2/model_11994.pt",
+      "additional_updates": 1500,
+      "environment_steps": 36000,
+      "num_envs": 4096,
+      "final_iteration": 13493,
+      "std_reset": false,
+      "post_push_pitch_weight": 0.0
+    }
+  },
+  "augmentation": {
+    "mode": "sym_int",
+    "integer_clock": true,
+    "audit": {
+      "training_batch_calls": 30000,
+      "original_batch_sizes": [
+        24576
+      ],
+      "augmented_batch_sizes": [
+        49152
+      ]
+    },
+    "updates": 1500
+  }
+}

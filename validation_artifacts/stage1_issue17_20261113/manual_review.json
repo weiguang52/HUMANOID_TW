@@ -1,0 +1,22 @@
+{
+  "actual_review_completed": true,
+  "figures_reviewed": 6,
+  "contact_sheets_reviewed": 1,
+  "full_resolution_frames_reviewed": 4,
+  "reviewed_files_sha256": {
+    "figures/heading_acceptance.png": "d72fd9ff820366e9df40f1ea4b0dae4c4985c88509aa6ca7cfc83aad6ecd5c2c",
+    "figures/original_mirrored_heading.png": "a972763e4bfca7819bb017e69557d8f2bb973d1fdc0f0dcb4f792205e4f64d7b",
+    "figures/paired_primary_and_symmetry.png": "f5a022a17259ec9b5af44361d2b7fe37bbbb9fd0f7c8a157cf39778fb2862dcc",
+    "figures/tracking_and_fall_guards.png": "a74adad02a045ee6deee45f23a5d398112830f1c068cdff256a188a56c352838",
+    "figures/fixed_state_action_equivariance.png": "b015d0d43ece853405f5241535bc802a3c029af26520bf73a89a1282da03252c",
+    "figures/integer_clock_diagnosis.png": "23d31379ade24b528a7d962db9cf42c49bf964298cde9c619805085eb90ec3da",
+    "video_contact_sheets/sym_int.png": "d69c8e7fcccc48e5dfbfb8ea8b90d405c23be379a4032f53cbb92f67035e7aed",
+    "video_review_frames/sym_int_front_frame651.png": "d7230cbd0db748d3a5e059ee3591a1687098da822020c50526af07f6656e4211",
+    "video_review_frames/sym_int_front_frame450.png": "75652dd30a00dd090a701e3ff5f27fdf190b2c405b2bcee083afd299707ccb4e",
+    "video_review_frames/sym_int_overhead_frame651.png": "1da0294ef7e8097084d29aa18ca7acc492705e6f4c9cc07f0f96044a7eddd527",
+    "video_review_frames/sym_int_overhead_frame450.png": "6787e909d5d847ddb9d81c94e20fa5d1015d5e33906ab46d458f7bb1f784f846"
+  },
+  "figure_review_notes": "All six actual PNGs visually inspected: labels and confidence intervals legible, no clipping, frozen thresholds present and primary/nonpromotion outcome correctly displayed. Integer-clock figure is a CPU numerical diagnostic, not measured training failure frequency.",
+  "video_review_notes": "Actual contact sheet and four full-resolution critical frames visually inspected. Full robot in bounds, left/right colors visible, leg/arm poses consistent with saved motion; front follows heading while overhead preserves world orientation. WorldXY trail and heading labels readable, clean/no pushes and exact-state replay explicitly disclosed. The representative visibly turns, consistent with failed heading acceptance.",
+  "reviewed_unix": 1794541502.1348472
+}

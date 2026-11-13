@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "num_envs": 4096,
+  "updates_per_run": 2,
+  "original_and_disabled_model_optimizer_std_normalizers_equal": true,
+  "all_saved_CPU_CUDA_Python_NumPy_RNG_root_joint_states_equal": true,
+  "inputs": {
+    "/root/gpufree-data/tw_stage1/issue17_20261113/preflight/original/final.pt": "5da55ed0bc5890f7365a86e5d92df0c9a35f470e3ea8083a526ff327c93b5c79",
+    "/root/gpufree-data/tw_stage1/issue17_20261113/preflight/disabled/final.pt": "5da55ed0bc5890f7365a86e5d92df0c9a35f470e3ea8083a526ff327c93b5c79",
+    "/root/gpufree-data/tw_stage1/issue17_20261113/preflight/original/runtime.pt": "404117802b5fd38ae2ee78fe35eba48a19883a6f1780be803a06056c17cf1190",
+    "/root/gpufree-data/tw_stage1/issue17_20261113/preflight/disabled/runtime.pt": "404117802b5fd38ae2ee78fe35eba48a19883a6f1780be803a06056c17cf1190"
+  }
+}

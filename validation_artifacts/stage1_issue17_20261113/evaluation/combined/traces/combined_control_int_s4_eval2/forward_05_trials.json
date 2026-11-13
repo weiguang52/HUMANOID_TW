@@ -1,0 +1,271 @@
+{
+  "num_envs": 1024,
+  "command": "forward_05",
+  "step_dt": 0.02,
+  "horizon_seconds": 20,
+  "body_names": [
+    "base_link",
+    "left_hip_linkage",
+    "right_hip_linkage",
+    "waist",
+    "left_thigh",
+    "right_thigh",
+    "gearbox",
+    "left_knee_linkage",
+    "right_knee_linkage",
+    "chest",
+    "left_mid_leg",
+    "right_mid_leg",
+    "left_shoulder_linkage",
+    "neck",
+    "right_shoulder_linkage",
+    "left_calf",
+    "right_calf",
+    "left_upper_arm",
+    "neck_linkage",
+    "right_upper_arm",
+    "left_ankle",
+    "right_ankle",
+    "left_elbow_linkage",
+    "head",
+    "right_elbow_linkage",
+    "left_foot",
+    "right_foot",
+    "left_force_arm",
+    "right_force_arm",
+    "left_wrist",
+    "right_wrist"
+  ],
+  "shape_counts_per_body": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2
+  ],
+  "body_shape_indices": {
+    "base_link": [
+      0
+    ],
+    "left_hip_linkage": [
+      1
+    ],
+    "right_hip_linkage": [
+      2
+    ],
+    "waist": [
+      3
+    ],
+    "left_thigh": [
+      4
+    ],
+    "right_thigh": [
+      5
+    ],
+    "gearbox": [
+      6
+    ],
+    "left_knee_linkage": [
+      7
+    ],
+    "right_knee_linkage": [
+      8
+    ],
+    "chest": [
+      9
+    ],
+    "left_mid_leg": [
+      10
+    ],
+    "right_mid_leg": [
+      11
+    ],
+    "left_shoulder_linkage": [
+      12
+    ],
+    "neck": [
+      13
+    ],
+    "right_shoulder_linkage": [
+      14
+    ],
+    "left_calf": [
+      15
+    ],
+    "right_calf": [
+      16
+    ],
+    "left_upper_arm": [
+      17
+    ],
+    "neck_linkage": [
+      18
+    ],
+    "right_upper_arm": [
+      19
+    ],
+    "left_ankle": [
+      20
+    ],
+    "right_ankle": [
+      21
+    ],
+    "left_elbow_linkage": [
+      22
+    ],
+    "head": [
+      23
+    ],
+    "right_elbow_linkage": [
+      24
+    ],
+    "left_foot": [
+      25
+    ],
+    "right_foot": [
+      26
+    ],
+    "left_force_arm": [
+      27
+    ],
+    "right_force_arm": [
+      28
+    ],
+    "left_wrist": [
+      29,
+      30
+    ],
+    "right_wrist": [
+      31,
+      32
+    ]
+  },
+  "push_fields": {
+    "env_id": [
+      0,
+      1
+    ],
+    "push_step": [
+      1,
+      2
+    ],
+    "first_trial_at_risk": [
+      2,
+      3
+    ],
+    "delta_world": [
+      3,
+      6
+    ],
+    "delta_body": [
+      6,
+      9
+    ],
+    "root_quaternion": [
+      9,
+      13
+    ],
+    "root_position_local": [
+      13,
+      16
+    ],
+    "root_velocity_before": [
+      16,
+      19
+    ],
+    "root_velocity_after": [
+      19,
+      22
+    ],
+    "root_angular_velocity": [
+      22,
+      25
+    ],
+    "whole_body_com_local": [
+      25,
+      28
+    ],
+    "whole_body_com_velocity_before": [
+      28,
+      31
+    ],
+    "whole_body_com_velocity_readback": [
+      31,
+      34
+    ],
+    "foot_positions_local": [
+      34,
+      40
+    ],
+    "support_code": [
+      40,
+      41
+    ],
+    "contact": [
+      41,
+      43
+    ],
+    "contact_force_norm": [
+      43,
+      45
+    ],
+    "cycle_phase": [
+      45,
+      47
+    ],
+    "delay20ms": [
+      47,
+      48
+    ],
+    "near_soft_limit_count": [
+      48,
+      49
+    ]
+  },
+  "all_push_rows": 2705,
+  "all_trials": 1024,
+  "failed_trials": 14,
+  "torch_rng_invariance_checks": 569,
+  "material_columns": [
+    "static_friction",
+    "dynamic_friction",
+    "restitution"
+  ],
+  "material_definition": "actual per-shape assigned PhysX coefficients; foot minima are analysis summaries, not inferred contact forces",
+  "terrain_material": {
+    "static_friction": 1.0,
+    "dynamic_friction": 1.0,
+    "friction_combine_mode": "multiply"
+  },
+  "mass_definition": "actual PhysX link mass / nominal link mass; foot masses may be fixed",
+  "post_failure_definition": "all pushes retained; first_trial_at_risk=false after first failure, excluded from risk denominators",
+  "com_definition": "mass-weighted link COM getters read at push; velocity is immediate readback, not a counterfactual stable post-impulse state",
+  "phase_definition": "same as FailureRecorder, contact onset inferred, not prescribed gait phase",
+  "observer_no_sampling_or_physics_writes": true
+}

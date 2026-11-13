@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue17_videos.py", line 64, in <module>
+    if __name__=="__main__":main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue17_videos.py", line 33, in main
+    p=Path(example["views"][view]["path"]);assert sha(p)==example["views"][view]["sha256"]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'side'

@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "differences": {
+    "env": {
+      "/log_dir": [
+        "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_02-10-44_issue17_20261113_control_int_s1",
+        "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_02-38-54_issue17_20261113_sym_int_s1"
+      ]
+    },
+    "agent": {
+      "/algorithm/symmetry_cfg/use_mirror_loss": [
+        null,
+        "false"
+      ],
+      "/algorithm/symmetry_cfg/data_augmentation_func": [
+        null,
+        "issue17_symmetry:data_augmentation_func"
+      ],
+      "/run_name": [
+        "issue17_20261113_control_int_s1",
+        "issue17_20261113_sym_int_s1"
+      ],
+      "/algorithm/symmetry_cfg/use_data_augmentation": [
+        null,
+        "true"
+      ],
+      "/algorithm/symmetry_cfg": [
+        "null",
+        null
+      ],
+      "/algorithm/symmetry_cfg/mirror_loss_coeff": [
+        null,
+        "0.0"
+      ]
+    }
+  },
+  "sym_parent_exact": true
+}

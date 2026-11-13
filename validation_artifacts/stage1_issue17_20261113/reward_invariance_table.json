@@ -1,0 +1,474 @@
+{
+  "scope": "Reward functional invariance under spatial reflection plus halfcycle, not a claim of exact physical dynamics conjugacy. Archived control configuration; new runtime active set/weights must match.",
+  "source_env_yaml": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-10_16-49-57_issue12_20261110_control_s1/params/env.yaml",
+  "source_env_yaml_sha256": "116ff707f4276e9a3bbfd2aaa2796824a4062cf7ccdc6334e2c631b6adc6a0a5",
+  "rows": [
+    {
+      "term": "track_lin_vel_xy",
+      "weight": 3.0,
+      "function": "isaaclab_tasks.manager_based.locomotion.velocity.mdp.rewards:track_lin_vel_xy_yaw_frame_exp",
+      "parameters": {
+        "command_name": "base_velocity",
+        "std": "0.2"
+      },
+      "algebraic_invariant": true,
+      "reason": "Yaw-frame planar target/velocity error reflects lateral sign; squared Euclidean norm and exponential unchanged."
+    },
+    {
+      "term": "track_ang_vel_z",
+      "weight": 1.0,
+      "function": "isaaclab.envs.mdp.rewards:track_ang_vel_z_exp",
+      "parameters": {
+        "command_name": "base_velocity",
+        "std": "0.5"
+      },
+      "algebraic_invariant": true,
+      "reason": "Target and axial yaw rate both negate; squared error unchanged."
+    },
+    {
+      "term": "alive",
+      "weight": 0.5,
+      "function": "isaaclab.envs.mdp.rewards:is_alive",
+      "parameters": {},
+      "algebraic_invariant": true,
+      "reason": "Alive indicator unchanged under a reflected corresponding termination state."
+    },
+    {
+      "term": "base_linear_velocity",
+      "weight": -2.0,
+      "function": "isaaclab.envs.mdp.rewards:lin_vel_z_l2",
+      "parameters": {},
+      "algebraic_invariant": true,
+      "reason": "Vertical linear velocity unchanged and squared."
+    },
+    {
+      "term": "base_angular_velocity",
+      "weight": -0.5,
+      "function": "isaaclab.envs.mdp.rewards:ang_vel_xy_l2",
+      "parameters": {},
+      "algebraic_invariant": true,
+      "reason": "Axial roll negates, pitch unchanged; squared planar norm unchanged."
+    },
+    {
+      "term": "flat_orientation_l2",
+      "weight": -2.0,
+      "function": "isaaclab.envs.mdp.rewards:flat_orientation_l2",
+      "parameters": {},
+      "algebraic_invariant": true,
+      "reason": "Gravity lateral component negates; squared planar norm unchanged."
+    },
+    {
+      "term": "base_height",
+      "weight": -10.0,
+      "function": "isaaclab.envs.mdp.rewards:base_height_l2",
+      "parameters": {
+        "target_height": "0.264"
+      },
+      "algebraic_invariant": true,
+      "reason": "World vertical height and scalar target unchanged."
+    },
+    {
+      "term": "joint_acc",
+      "weight": -2.5e-07,
+      "function": "isaaclab.envs.mdp.rewards:joint_acc_l2",
+      "parameters": {},
+      "algebraic_invariant": true,
+      "reason": "Signed joint permutation preserves summed squares of accelerations."
+    },
+    {
+      "term": "action_rate",
+      "weight": -0.05,
+      "function": "isaaclab.envs.mdp.rewards:action_rate_l2",
+      "parameters": {},
+      "algebraic_invariant": true,
+      "reason": "Same signed permutation at both consecutive actions preserves summed squared difference; actual reflected action scales equal."
+    },
+    {
+      "term": "dof_pos_limits",
+      "weight": -5.0,
+      "function": "isaaclab.envs.mdp.rewards:joint_pos_limits",
+      "parameters": {},
+      "algebraic_invariant": true,
+      "reason": "Reflected hard/soft limits swap/sign consistently; summed bound violation invariant; source limit symmetry verified in issue16 and must be asserted in runtime preflight."
+    },
+    {
+      "term": "joint_deviation_arms",
+      "weight": -0.5,
+      "function": "isaaclab.envs.mdp.rewards:joint_deviation_l1",
+      "parameters": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "left_shoulder_pitch_joint",
+            "left_shoulder_roll_joint",
+            "left_shoulder_yaw_joint",
+            "left_elbow_pitch_joint",
+            "left_wrist_pitch",
+            "right_shoulder_pitch_joint",
+            "right_shoulder_roll_joint",
+            "right_shoulder_yaw_joint",
+            "right_elbow_pitch_joint",
+            "right_wrist_pitch"
+          ],
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": "null",
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        }
+      },
+      "algebraic_invariant": true,
+      "reason": "Arm selection closed under LR swap; defaults reflect; summed absolute deviations invariant."
+    },
+    {
+      "term": "joint_deviation_waist",
+      "weight": -1.0,
+      "function": "isaaclab.envs.mdp.rewards:joint_deviation_l1",
+      "parameters": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "waist_yaw",
+            "waist_roll_joint",
+            "waist_pitch_joint"
+          ],
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": "null",
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        }
+      },
+      "algebraic_invariant": true,
+      "reason": "Central joint signs with symmetric defaults preserve summed absolute deviations."
+    },
+    {
+      "term": "joint_deviation_neck",
+      "weight": -0.5,
+      "function": "isaaclab.envs.mdp.rewards:joint_deviation_l1",
+      "parameters": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            "neck",
+            "neck_linkage_roll",
+            "head_pitch"
+          ],
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": "null",
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        }
+      },
+      "algebraic_invariant": true,
+      "reason": "Central joint signs with symmetric defaults preserve summed absolute deviations."
+    },
+    {
+      "term": "joint_deviation_hips",
+      "weight": -0.5,
+      "function": "isaaclab.envs.mdp.rewards:joint_deviation_l1",
+      "parameters": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": [
+            ".*_hip_roll_joint",
+            ".*_hip_yaw_joint",
+            ".*_ankle_yaw_joint"
+          ],
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": "null",
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        }
+      },
+      "algebraic_invariant": true,
+      "reason": "Selected hip/ankle yaw/roll set closed under LR swap; absolute deviation sum invariant."
+    },
+    {
+      "term": "gait",
+      "weight": 0.5,
+      "function": "unitree_rl_lab.tasks.locomotion.mdp.rewards:feet_gait",
+      "parameters": {
+        "period": "0.4",
+        "offset": [
+          "0.0",
+          "0.5"
+        ],
+        "threshold": "0.55",
+        "command_name": "base_velocity",
+        "sensor_cfg": {
+          "name": "contact_forces",
+          "joint_names": "null",
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": [
+            "left_foot",
+            "right_foot"
+          ],
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        }
+      },
+      "algebraic_invariant": true,
+      "reason": "Integer20-step phases swap exactly under+10steps; contacts swap,command norm unchanged. Strict actual-function4000state test passes."
+    },
+    {
+      "term": "swing_height",
+      "weight": 3.0,
+      "function": "unitree_rl_lab.tasks.locomotion.robots.tw.rewards:feet_swing_height",
+      "parameters": {
+        "period": "0.4",
+        "offset": [
+          "0.0",
+          "0.5"
+        ],
+        "threshold": "0.55",
+        "target_height": "0.03",
+        "rest_height": "0.011",
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": "null",
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": [
+            "left_foot",
+            "right_foot"
+          ],
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        },
+        "command_name": "base_velocity"
+      },
+      "algebraic_invariant": true,
+      "reason": "Integer swing masks swap exactly under+10steps; world vertical foot heights swap,command norm unchanged. Strict actual-function4000state test passes."
+    },
+    {
+      "term": "feet_slide",
+      "weight": -0.2,
+      "function": "isaaclab_tasks.manager_based.locomotion.velocity.mdp.rewards:feet_slide",
+      "parameters": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": "null",
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": [
+            "left_foot",
+            "right_foot"
+          ],
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        },
+        "sensor_cfg": {
+          "name": "contact_forces",
+          "joint_names": "null",
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": [
+            "left_foot",
+            "right_foot"
+          ],
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        }
+      },
+      "algebraic_invariant": true,
+      "reason": "Contact masks and feet permute; horizontal speed norms unchanged under reflection; sum unchanged."
+    },
+    {
+      "term": "undesired_contacts",
+      "weight": -1.0,
+      "function": "isaaclab.envs.mdp.rewards:undesired_contacts",
+      "parameters": {
+        "threshold": "1",
+        "sensor_cfg": {
+          "name": "contact_forces",
+          "joint_names": "null",
+          "joint_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "fixed_tendon_names": "null",
+          "fixed_tendon_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "body_names": [
+            "(?!left_foot$|right_foot$).*"
+          ],
+          "body_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "object_collection_names": "null",
+          "object_collection_ids": [
+            "null",
+            "null",
+            "null"
+          ],
+          "preserve_order": "false"
+        }
+      },
+      "algebraic_invariant": true,
+      "reason": "Non-foot body selection closed under LR swap; force norms and threshold indicator unchanged."
+    }
+  ],
+  "disabled_post_push_recovery": "Not active in control6000 and must remain inactive in both new groups."
+}

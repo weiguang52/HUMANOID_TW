@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unitree_rl_lab.tasks.locomotion.mdp.integer_gait_clock import integer_clock_enabled, integer_gait_phase, integer_leg_stance
 
 import torch
 from typing import TYPE_CHECKING
@@ -11,7 +12,7 @@ def gait_phase(env: ManagerBasedRLEnv, period: float) -> torch.Tensor:
     if not hasattr(env, "episode_length_buf"):
         env.episode_length_buf = torch.zeros(env.num_envs, device=env.device, dtype=torch.long)
 
-    global_phase = (env.episode_length_buf * env.step_dt) % period / period
+    global_phase = integer_gait_phase(env, period) if integer_clock_enabled(env) else (env.episode_length_buf * env.step_dt) % period / period
 
     phase = torch.zeros(env.num_envs, 2, device=env.device)
     phase[:, 0] = torch.sin(global_phase * torch.pi * 2.0)

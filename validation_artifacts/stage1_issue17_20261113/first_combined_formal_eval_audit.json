@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "job": "combined_control_int_s1_eval1",
+  "output_sha256": "ddf4987f19ed930c39eb50398b2514d58f02778a1eb02018f5e424e8674b0abc",
+  "checks": [
+    {
+      "command": "forward_03",
+      "initial_trials": 1024,
+      "failed_trials": 7,
+      "independent_heading_error_radians": 1.1918018572032452e-06
+    },
+    {
+      "command": "forward_05",
+      "initial_trials": 1024,
+      "failed_trials": 24,
+      "independent_heading_error_radians": 1.1841081928309904e-06
+    },
+    {
+      "command": "forward_08",
+      "initial_trials": 1024,
+      "failed_trials": 62,
+      "independent_heading_error_radians": 7.649839304235684e-07
+    }
+  ],
+  "deterministic": true,
+  "integer_clock": true,
+  "model_optimizer_unchanged": true
+}

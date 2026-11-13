@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/media_pipeline_issue17.py", line 24, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/media_pipeline_issue17.py", line 21, in main
+    state(name,child_pid=child.pid,log=str(ROOT/(name+'.log')));assert child.wait()==0,name
+                                                                       ^^^^^^^^^^^^^^^
+AssertionError: audit_issue17_videos.py

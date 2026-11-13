@@ -1,4 +1,5 @@
 from __future__ import annotations
+from unitree_rl_lab.tasks.locomotion.mdp.integer_gait_clock import integer_clock_enabled, integer_gait_phase, integer_leg_stance
 
 import torch
 from typing import TYPE_CHECKING
@@ -191,7 +192,7 @@ def feet_gait(
 
     reward = torch.zeros(env.num_envs, dtype=torch.float, device=env.device)
     for i in range(len(sensor_cfg.body_ids)):
-        is_stance = leg_phase[:, i] < threshold
+        is_stance = integer_leg_stance(env, period, offset, threshold)[:, i] if integer_clock_enabled(env) else leg_phase[:, i] < threshold
         reward += ~(is_stance ^ is_contact[:, i])
 
     if command_name is not None:

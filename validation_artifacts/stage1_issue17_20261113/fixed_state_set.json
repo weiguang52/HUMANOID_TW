@@ -1,0 +1,128 @@
+{
+  "count": 102400,
+  "files": [
+    {
+      "training_seed": 1,
+      "path": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s1_eval1_states.npz",
+      "sha256": "5c4e6549f43a613adac03c4ef965672d932cea4f40704d334bc54773e088a6ca",
+      "count": 20480,
+      "source_job_sha256": "f1361a7bc47cb0589629c30e853b0ac8d0a66c44c98a802a26d26b1083a29b23",
+      "original_source_arrays_exact": 126,
+      "original_source_bindings": {
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/control6000_s1_eval1.json": "37853b433157b715cd494bb73813c4298482c92e400f71bf080822df1717cc7a",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/yaw_negative_yaw.npz": "7526f3ff64cce93d27662301ff53dc4adc45ab16c4800afbec2308419ac2816d",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/startup_physics.npz": "a22815195d38fb95c8b8e7e5b708b472d1f455b6391f43953bdb138a2484959d",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/stand.npz": "97c4b7e22fd650d39267e251994e0082fbdf4623a4879626cfd1af786f6ce974",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/yaw_positive_yaw.npz": "754d50bee0f30608213c7c8f63e83ffc7db81d1b71b45afd47dd2fb98f40412f",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/yaw_positive.npz": "533d24918c72f292d49feb2ad23c43d6c9febf45711935df2e9db8a73651f0b6",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/forward_03_yaw.npz": "e0b0fa070b18b68b8d0b60b57445fb841fe726b48bf805d6873b4e26d7508443",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/yaw_negative.npz": "a5f3c008d87e8715de41eb0fee49cdf999e94a141700e1bc7d8ad3000b5cbd4e",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/forward_05_yaw.npz": "11e3f1a0ac2bfc4a5a8b6dad4bd0bc905c8189ff610f6cdface7388b4f991ba8",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/forward_05.npz": "e56477f39e01d097e7142be1ab4e2b91bce735b58719c2aedac455125fed7e76",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/forward_03.npz": "29f326080aee9abe036e91e93a9cb57faeec68713b3eaf9cfbb2af7c612a9292",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/stand_yaw.npz": "16201df4d08fb00f5370b02e1c4630a330784d9d6a9e9e954926370f982fc076",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/forward_08.npz": "fab9f90b2d96d3b6cab72414ce6a4700ef502916e2ac9f2e44c25d7185f3df10",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s1_eval1/forward_08_yaw.npz": "b92eca3f3fbf882feee59a36b70b3060147ca59fe481a40a0d91ef90245b7371"
+      }
+    },
+    {
+      "training_seed": 2,
+      "path": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s2_eval1_states.npz",
+      "sha256": "af607f8f193a9d1aa4b4ac38a04e57e2909404c891e2298b3966d4223fb3fd15",
+      "count": 20480,
+      "source_job_sha256": "f0aaa5b42b2ae5216c9286ee4444aa851120b35a2457d09d0a0a17fa882dabbc",
+      "original_source_arrays_exact": 126,
+      "original_source_bindings": {
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/control6000_s2_eval1.json": "6ca7edc1f47a0b9aa14047563d2d227018af87a3f9f2fc29f54d3959678ec8fd",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/yaw_negative_yaw.npz": "9daec731a41e1a7005806124b77c5e8035d46c45477edfdb63ef687b8323c44b",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/startup_physics.npz": "a22815195d38fb95c8b8e7e5b708b472d1f455b6391f43953bdb138a2484959d",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/stand.npz": "e47b31097024babb93adcd77724d39379ecf7fba1495f273640473e8549fcae9",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/yaw_positive_yaw.npz": "ca9aa242948d637dec452a89c218c8e99c3a73b8691cdb38cc0d5e2095e4be95",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/yaw_positive.npz": "2c484a62bc73f6901b0f907c5e935a1cb5597a897f9d795b3e26a08f942cb87c",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/forward_03_yaw.npz": "68045253d7c40fd1e083ea330d3f7dcaac6a93556e01c495eaa8cccd907398a4",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/yaw_negative.npz": "7460641c7d7472e2a57e49fbbf86fd6d5c0a0d11d6748cdc6dffbeefac5259be",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/forward_05_yaw.npz": "d29b7b250bae033da9d3909f5f9eeb045e68979f930a493c6e4a3ac992c689ac",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/forward_05.npz": "a9e2ada22a9b7587e7de92a66405c9c63623184d7762aea449a13d907ebff7ae",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/forward_03.npz": "4c10c10ac87ce27051f27f488385f2bc285e4828bafae57bea0105e8b64a9766",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/stand_yaw.npz": "d1d3b6757bdad89a7e291c72766b4e787717d6b84ce7db38c19db51cabe81de9",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/forward_08.npz": "3a73fbffa08ec1efd491c46dd13dd07aba8b8f3c0a323e1ccb57c492dd59ad48",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s2_eval1/forward_08_yaw.npz": "bc5c88fdf0b845b320381b16888afbb0445b5740b928059dc9519a6b491de15a"
+      }
+    },
+    {
+      "training_seed": 3,
+      "path": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s3_eval1_states.npz",
+      "sha256": "bd2856c1927396c5a1a63c63649fba490bc5392c0e4c8921af8d2bdf71c16bd7",
+      "count": 20480,
+      "source_job_sha256": "2688690434606e2b48ec2c5619b258522ad8b4270c9120857b2babdd11799346",
+      "original_source_arrays_exact": 126,
+      "original_source_bindings": {
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/control6000_s3_eval1.json": "29d31c6d6bba03b313cb542b7b51c1085838c1a110e5cd8a94ee3eb85536448a",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/yaw_negative_yaw.npz": "4245ffe9f7a960c6c4184205967bc6eb01dfe04aeaceeb883c4487535803b9f9",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/startup_physics.npz": "a22815195d38fb95c8b8e7e5b708b472d1f455b6391f43953bdb138a2484959d",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/stand.npz": "b19db9c467cfc281c705ba192cf5e8e9d76a48e750d99f41da46a74161089a31",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/yaw_positive_yaw.npz": "b3ab22e3b063e067657b59b98e44e3172adcba163e82bc5fa94c7d2844897123",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/yaw_positive.npz": "4d1a33fe419107bcf8da1052903a540788354e1aaabcf0692a40ff34ea64d6b6",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/forward_03_yaw.npz": "78bb3aa293dd6bf0c2c66069e89dadb7e39f3810ed3c48e490fa88ec5da697e1",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/yaw_negative.npz": "d8a70ec37c34b774e90fe3f63f384cdb0f9b6e7aeaa9f6bd77cb1cd2bfdb7a7b",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/forward_05_yaw.npz": "f54df7a39361cde1b63f2e74e1341765e1487d486dbc26006bd2ce145853b917",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/forward_05.npz": "aea00cdd34a09c64bb277110d2c9b52c365a876c9d4a7533ee66ac9ae8d0780d",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/forward_03.npz": "5c3d9d857e4e41829444cb6ea954ef8befa47d9520193533b137c06e6425c4b1",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/stand_yaw.npz": "c21df8398491b408860b9cc05493130bd5693d4c683e86a5c8ee1d4f6c3ae63c",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/forward_08.npz": "4b8ecb9eac02c7fee9799ca2d01b5c2a0db1c7b42243e3be11452862e57d1d00",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s3_eval1/forward_08_yaw.npz": "2bb2cfe144d207a4d8021847b38919f480feae1ff66c66d862d3baafa0f9df76"
+      }
+    },
+    {
+      "training_seed": 4,
+      "path": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s4_eval1_states.npz",
+      "sha256": "c798cfec4edd11d4d2f561133b66f5be25821d6bc473b0712db4d0adf2ed6d2f",
+      "count": 20480,
+      "source_job_sha256": "99b0afbb6541e44eca97f1d3fe4b326901ae27b80434b8e7dc4dc5fd57f70f33",
+      "original_source_arrays_exact": 126,
+      "original_source_bindings": {
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/control6000_s4_eval1.json": "e7d91d12c308d2502b9146e4af5653556322975d722cd2549beaebf89dfc6f10",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/yaw_negative_yaw.npz": "ca5c0c05cdd446ad5c9273dcb04073ab8cbf468cc90da2d36237a0d47286daf7",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/startup_physics.npz": "a22815195d38fb95c8b8e7e5b708b472d1f455b6391f43953bdb138a2484959d",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/stand.npz": "84e21219f629d3dc76dd6cae718d49d79a4e328ec729af4c3249d90ae6060cb3",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/yaw_positive_yaw.npz": "a4b8a2f781a580d95cc4bef9db69a5b9eff35877e159f330600e6d5c8d27b817",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/yaw_positive.npz": "2237b1634a9de38a15fb128eaee3dace2d9a99d38513e56b6658c78e849617c3",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/forward_03_yaw.npz": "33a90b96199621cddfef78c8980df45a77e3490125222a5c9edfc0958c6ea070",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/yaw_negative.npz": "3d6452cc74d7c7b5f04c873ce34f11d22c21d522b7587ebdb2329005d1cbd14e",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/forward_05_yaw.npz": "8c6d231a3820acd0eb6d0eb097edcd7095f6dff1014c353a0299caac8f4b0053",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/forward_05.npz": "b38e5ad19372c3a668400b9c9c0c32366f2e3eee0ca4882c54cbb289ac6700b4",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/forward_03.npz": "5006aa3e178a7c14dac8e6dc83543dc04af5a1ea10dd224ad34b36beb591d519",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/stand_yaw.npz": "2a869ac265eccc9fc00f54c1d0a71115808c460895d481b9b6063e8d2a22bc5f",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/forward_08.npz": "4db9e90d21833824dede793ac3e5be5743a7f9a38a2186e7f1a4339bb0fbbc54",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s4_eval1/forward_08_yaw.npz": "cbd354e5132e325b1b71e55a7ad96cd4a55ddfda79712b53f8d0dc1e55693424"
+      }
+    },
+    {
+      "training_seed": 5,
+      "path": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s5_eval1_states.npz",
+      "sha256": "b5902db41fcd26d2906cdce1888a1bbd3cd2c0f5cfcb58392521ba3c2e6ac5bd",
+      "count": 20480,
+      "source_job_sha256": "2e8edca9112ed374b5709eab7d52cb96d4e4d4c7e932ccad0ef14868a3e73edc",
+      "original_source_arrays_exact": 126,
+      "original_source_bindings": {
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/control6000_s5_eval1.json": "236a57f48acb47df15379a98265791562472a779acc9408dc0264394d81b98f2",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/yaw_negative_yaw.npz": "e36bd0c2ada9d21981d37ee416385be0ca6c60fc90644befacab860f516d0c4c",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/startup_physics.npz": "a22815195d38fb95c8b8e7e5b708b472d1f455b6391f43953bdb138a2484959d",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/stand.npz": "0919adf075ad58214a7f44a4338426d017c0f1df93280390c32f9a4f7f6d0e13",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/yaw_positive_yaw.npz": "247d9f0666875f769e13acda9485d51ea62fe06a4144f078659541df8029f851",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/yaw_positive.npz": "062606aaa5f265cb43c87bbfaeeb4d607fa3be567432848acd1ad64332a0378b",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/forward_03_yaw.npz": "f16739b9a0e9cf1d22c2289f7449dc2b735a70471342954e44105b22e97f5c74",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/yaw_negative.npz": "84cf7b1dcc05719d212116f77292dc45e96fff976e8949f9ae333dbda6bf6fdf",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/forward_05_yaw.npz": "fe525217643d257283b6da36179c6c566afeb27a50642a2fba479b2ee6c38630",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/forward_05.npz": "a08a1089c967176312e9803a58e586c5c3b95cc887219c97ced5c7b5495b9c57",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/forward_03.npz": "0a19c266c6fdb8097b638ca9cda3ac82ea10dac6f71621f54ea5b23949302228",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/stand_yaw.npz": "fe0fd6480828093a782bfa0f467b8518560b671884f3c40d40eee516f0e93476",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/forward_08.npz": "d14402516e70c132efa61bb79ea9b5cd73bbb0f15e1b74b537f51002bdd2b3a1",
+        "/root/gpufree-data/projects/HUMANOID_TW/validation_artifacts/stage1_issue15_20261111/clean/moments/control6000_s5_eval1/forward_08_yaw.npz": "b0c0387e5d70e0d7d1a24579f3da46a474c70f25ef1384f110563884d67b1ea7"
+      }
+    }
+  ],
+  "frozen_before_new_model_comparison": true,
+  "selection": "All1024env at20prespecifiedpoststepindices0,50..950 peroldcontrolseed; no survival/error filtering",
+  "source_sha256": "f0c3b89bc2ec5198e38de1f436806f6544be3a7b40890039c780dbb5f5d2bff0"
+}

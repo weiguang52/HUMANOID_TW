@@ -1,0 +1,25 @@
+{
+  "primary_pass": false,
+  "all_gates_pass": false,
+  "gates": {
+    "primary": false,
+    "heading_stand": false,
+    "mirror_stand": false,
+    "heading_forward_03": false,
+    "mirror_forward_03": false,
+    "heading_forward_05": false,
+    "mirror_forward_05": false,
+    "heading_forward_08": false,
+    "mirror_forward_08": false,
+    "tracking_forward_05": false,
+    "tracking_forward_08": true,
+    "tracking_yaw_positive": false,
+    "tracking_yaw_negative": false,
+    "combined_f03": false,
+    "combined_f05": true,
+    "action_E": true
+  },
+  "training_seed_units": 5,
+  "intervals": "paired unadjusted bootstrap95; no censored seed dropped",
+  "next_action_if_primary_fail": "Stop hypothesis, no added budget/weight scan/phase change; future symmetric USD2x2 diagnostic only"
+}

@@ -1,0 +1,8 @@
+{
+  "reason": "QA retained a side-view loop from earlier study, but frozen issue17 plan requires exactly front and overhead. Fix only derived QA view enumeration; scientific inputs and produced videos unchanged.",
+  "path": "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue17_videos.py",
+  "before_sha256": "1cea3ae0a2a55c7c5f611b887d976587e060369552c3e3208f73defa635faa8d",
+  "after_sha256": "2664e7093fe0e2bcc567f94f77c0e992bf8cae607956eaeb5da94b52826582a4",
+  "original_failure_log": "audit_issue17_videos.py.log",
+  "no_rollout_or_render_restarted": true
+}
