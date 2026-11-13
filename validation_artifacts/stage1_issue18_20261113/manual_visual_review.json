@@ -1,0 +1,28 @@
+{
+  "actual_review_completed": true,
+  "figures_reviewed": 3,
+  "contact_sheets_reviewed": 1,
+  "full_resolution_frames_reviewed": 6,
+  "method": "Actual inline visual inspection of remote images streamed in memory; no local file copies",
+  "reviewed_files_sha256": {
+    "figures/zero_yaw_heading.png": "ebc073ae74354f4fac2ac9172b18acce4cb66559f5ca30458d788e9d5e530e55",
+    "figures/tracking_falls_prefix.png": "1b1a9674b00676cf04843db8c8e8392095f9ee6897f470429ea77550a83d172c",
+    "figures/half_cycle_yaw.png": "9e620df1179bdb924c08dacecc3476c8eadb3333879b31564168e27f44b34287",
+    "video_contact_sheets/sym_int.png": "6235b415c96a3f64f8b26a50c7fdecfec227bfe82b40daa802a3e9416bf8d602",
+    "video_review_frames/sym_int_front_frame40.png": "2093e3d3aa24ac599be060c068217596537627871969aef2878999b31e35d291",
+    "video_review_frames/sym_int_front_frame42.png": "689c15f13d900c034644d66b9c760e6e421c764dec26a15e8655aaa12852960b",
+    "video_review_frames/sym_int_front_frame999.png": "319f5133a528b394a671e580af8701170f12d9ac07a972c33d4c895a3aee4597",
+    "video_review_frames/sym_int_overhead_frame40.png": "df2e32b9531f8729291cf975fc8b1cff9ef894d539e000ed258599188bc4e664",
+    "video_review_frames/sym_int_overhead_frame42.png": "8e761a81a17b5b7f76c9276aada297287245799b962243c61cff6298b1c4a181",
+    "video_review_frames/sym_int_overhead_frame999.png": "35492543ffa17ec5a2e989413b4155e83f27504e21e0e779a9bf7f8f3b0eb980"
+  },
+  "notes": [
+    "All three plots readable; intervals and axes labelled, missing strict control forward0.8 complete endpoints explicitly marked rather than filled.",
+    "Half-cycle figure clearly identifies pre-action bins and interrupted-cycle exclusion; its intervals do not prove exact cancellation.",
+    "Contact sheet spans start, motion/heading critical samples40/42,5s,10s,15s,20s in both views.",
+    "Full-resolution40/42/999 in both views: colored whole robot within frame, text readable, worldXY trail/heading inset visible, no overlay obscures robot.",
+    "End frame displays33deg reset-excluded heading and curved4.62m-span worldXY trail; do not label trajectory perfectly straight.",
+    "Both views show the same seed3/eval2/env502 source; full20s and0/15360censoring annotations visible."
+  ],
+  "reviewed_at_unix": 1794559871.6591077
+}

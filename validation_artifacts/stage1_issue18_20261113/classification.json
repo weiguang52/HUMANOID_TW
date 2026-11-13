@@ -1,0 +1,125 @@
+{
+  "overall": "C",
+  "cohorts": {
+    "control6000": {
+      "interpretable": false,
+      "fall_gain_by_zero_yaw_command": {
+        "stand": 0.0,
+        "forward_03": 0.0,
+        "forward_05": 0.0,
+        "forward_08": 0.4044270833333333
+      },
+      "original_forward05_abs_heading": 254.59611658626983,
+      "strict_forward05_abs_heading": 98.21207648023761,
+      "ratio": 0.3857563807221642,
+      "paired_absolute_heading_difference_ci95": [
+        -217.32651638752583,
+        -95.4415638245385
+      ],
+      "strict_zero_yaw_heading_means": {
+        "stand": 8.129552454123864,
+        "forward_03": 52.06343871689485,
+        "forward_05": 98.21207648023761,
+        "forward_08": null
+      },
+      "commands_at_most30deg": 1,
+      "complete_cycle_sum": {
+        "mean": -0.9742268462266412,
+        "ci95": [
+          -3.2872240523408913,
+          0.9444585018098705
+        ],
+        "seeds": [
+          0.22763922295289796,
+          -5.046656211590334,
+          -2.299443885543997,
+          1.0032922586105426,
+          1.2440343844376849
+        ],
+        "complete": true
+      },
+      "classification": "wrapper_destroyed_control"
+    },
+    "control_int": {
+      "interpretable": false,
+      "fall_gain_by_zero_yaw_command": {
+        "stand": 0.0,
+        "forward_03": 0.0,
+        "forward_05": 0.0,
+        "forward_08": 0.4
+      },
+      "original_forward05_abs_heading": 356.08748165674217,
+      "strict_forward05_abs_heading": 115.61938246392988,
+      "ratio": 0.3246937576294343,
+      "paired_absolute_heading_difference_ci95": [
+        -374.9083413890208,
+        -120.0360983154299
+      ],
+      "strict_zero_yaw_heading_means": {
+        "stand": 9.056752027528324,
+        "forward_03": 42.781466494761546,
+        "forward_05": 115.61938246392988,
+        "forward_08": null
+      },
+      "commands_at_most30deg": 1,
+      "complete_cycle_sum": {
+        "mean": -0.2643685458620874,
+        "ci95": [
+          -3.393280679599081,
+          1.72383823411788
+        ],
+        "seeds": [
+          2.086641036483455,
+          0.6741386594452199,
+          -6.4418904863781465,
+          0.5521558338766407,
+          1.8071122272623938
+        ],
+        "complete": true
+      },
+      "classification": "wrapper_destroyed_control"
+    },
+    "sym_int": {
+      "interpretable": true,
+      "fall_gain_by_zero_yaw_command": {
+        "stand": 0.0,
+        "forward_03": 0.0,
+        "forward_05": 0.0,
+        "forward_08": 0.0
+      },
+      "original_forward05_abs_heading": 277.2313003972406,
+      "strict_forward05_abs_heading": 27.22685945347441,
+      "ratio": 0.09820990420079352,
+      "paired_absolute_heading_difference_ci95": [
+        -328.2212251367451,
+        -158.71008741444865
+      ],
+      "strict_zero_yaw_heading_means": {
+        "stand": 18.358635908637613,
+        "forward_03": 62.46232846526874,
+        "forward_05": 27.22685945347441,
+        "forward_08": 30.6210810609497
+      },
+      "commands_at_most30deg": 2,
+      "complete_cycle_sum": {
+        "mean": -0.18443843588023895,
+        "ci95": [
+          -0.7182670735576349,
+          0.349390201797157
+        ],
+        "seeds": [
+          -0.8625361207227975,
+          -0.9081915257994798,
+          0.6491786488655099,
+          0.2492368929991927,
+          -0.049880074743619864
+        ],
+        "complete": true
+      },
+      "classification": "C"
+    }
+  },
+  "no_causal_conclusion": false,
+  "prospective_rules_sha256": "24e8c9c1f768dab5ec70ed0c6797910f14ff7a119fc1a420441302fa7a6e9ba9",
+  "conservative_overall_mixed_cohort_convention_disclosed": true
+}

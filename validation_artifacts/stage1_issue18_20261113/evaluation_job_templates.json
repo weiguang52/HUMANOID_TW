@@ -1,0 +1,902 @@
+[
+  {
+    "name": "strict_control6000_s1_eval1",
+    "model": "control6000_s1",
+    "group": "control6000",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s1_eval2",
+    "model": "control6000_s1",
+    "group": "control6000",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s1_eval3",
+    "model": "control6000_s1",
+    "group": "control6000",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s2_eval1",
+    "model": "control6000_s2",
+    "group": "control6000",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s2_eval2",
+    "model": "control6000_s2",
+    "group": "control6000",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s2_eval3",
+    "model": "control6000_s2",
+    "group": "control6000",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s3_eval1",
+    "model": "control6000_s3",
+    "group": "control6000",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s3_eval2",
+    "model": "control6000_s3",
+    "group": "control6000",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s3_eval3",
+    "model": "control6000_s3",
+    "group": "control6000",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s4_eval1",
+    "model": "control6000_s4",
+    "group": "control6000",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s4_eval2",
+    "model": "control6000_s4",
+    "group": "control6000",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s4_eval3",
+    "model": "control6000_s4",
+    "group": "control6000",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s5_eval1",
+    "model": "control6000_s5",
+    "group": "control6000",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s5_eval2",
+    "model": "control6000_s5",
+    "group": "control6000",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control6000_s5_eval3",
+    "model": "control6000_s5",
+    "group": "control6000",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "integer_clock": false,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s1_eval1",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s1_eval2",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s1_eval3",
+    "model": "control_int_s1",
+    "group": "control_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s1_eval1",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s1_eval2",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s1_eval3",
+    "model": "sym_int_s1",
+    "group": "sym_int",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s2_eval1",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s2_eval2",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s2_eval3",
+    "model": "control_int_s2",
+    "group": "control_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s2_eval1",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s2_eval2",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s2_eval3",
+    "model": "sym_int_s2",
+    "group": "sym_int",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s3_eval1",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s3_eval2",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s3_eval3",
+    "model": "control_int_s3",
+    "group": "control_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s3_eval1",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s3_eval2",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s3_eval3",
+    "model": "sym_int_s3",
+    "group": "sym_int",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s4_eval1",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s4_eval2",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s4_eval3",
+    "model": "control_int_s4",
+    "group": "control_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s4_eval1",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s4_eval2",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s4_eval3",
+    "model": "sym_int_s4",
+    "group": "sym_int",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s5_eval1",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s5_eval2",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_control_int_s5_eval3",
+    "model": "control_int_s5",
+    "group": "control_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s5_eval1",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s5_eval2",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  },
+  {
+    "name": "strict_sym_int_s5_eval3",
+    "model": "sym_int_s5",
+    "group": "sym_int",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "integer_clock": true,
+    "mode": "strict",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "num_envs": 1024,
+    "seconds": 20,
+    "initial_trials": 6144
+  }
+]

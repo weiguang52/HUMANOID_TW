@@ -1,0 +1,3969 @@
+{
+  "authorization": "Explicit user authorization to delete unused training weights; delete only audited unreferenced historical intermediates, never finals/parents/archived/tracked/open files.",
+  "completed": true,
+  "inventory_sha256": "b695429b813dbacb065d8dbf03d2aebd5bd0568abf1e705b94aa679fc17d1c8d",
+  "selected": [
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-01-35_tw_stage1_s1/model_0.pt",
+      "bytes": 5441239,
+      "nlink": 1,
+      "sha256": "36be3442612b95b4b8d63476b8933bf71879bb1872ceb4c21cf75fffc0986b5e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-01-35_tw_stage1_s1/model_100.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "f365be55e70087368ab0ac1f0b5166ce1209004222b48888a9772b56f8a781b4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-01-35_tw_stage1_s1/model_200.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "3c59640201abd664bf26aba1698dd2beff55b0d120129c9ce18b505744bd8146"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_0.pt",
+      "bytes": 5441239,
+      "nlink": 1,
+      "sha256": "36be3442612b95b4b8d63476b8933bf71879bb1872ceb4c21cf75fffc0986b5e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_100.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "f365be55e70087368ab0ac1f0b5166ce1209004222b48888a9772b56f8a781b4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_200.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "3c59640201abd664bf26aba1698dd2beff55b0d120129c9ce18b505744bd8146"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_300.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "925c1fa14429e8b8e3812316777289e0d6abc211674c4367b071996de29b9a0a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_400.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "ae9c9a55db58362982eda6a658822ee8dfbab04c6df088f33b6b7c777d788383"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_500.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "166c066f7d2f907f5f46810c5a1a0551cea44b77ace1ba7eb767e46ff5d04c02"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_600.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "44950a591cf88ef55a49bd1f17a0fd411f5f31a075d195074a704af6f8433a83"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_700.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "abc49f9aa87509fac603af5b1a00326fce2708eab1874523aaf6568098933cea"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_800.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "f1f7315f643876dce56f53221fb8437ccc717a4939899672848fb6d8f46bf11a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_900.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "2a7131464b62544c3304309faba7b943d133252b5c1e9653cacec112db4422a3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1000.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "6bee76cb4183bd13659fbf971a166e82b77287d38eaaf1b9f9af4b6c1101777b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1100.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "5a584b6fd08d89508f429ac8be560d6911e99fd1da83eecd49f3734e94b7b41a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1200.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "77f798b58415744f27e56a17efe7044a3add292901a469471052d51d1f7bf172"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1300.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "046b91675a433299d7018b4051ba63d62065eac3add538feed1fb51523d963d4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1400.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "be960e997241574fc5efe5c59604ed587538a07fd1fc3bb5e5b42bc6b7b00539"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1500.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "79005cca77a7b78bacc157f3d070b15cecb8b4f059b96dde4a60e0a2056095fd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1600.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "a5b43062c454c24f69585ceac2431d013b82da645720c931eb982f228a1431de"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1700.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "6495d82d7f515f1f6ffd0294d3f981ffce11be53bedbca52568752179aa67c9f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1800.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "1040129c58f3df565ef351de658233cefd1aeef67192e90e37b6be7ee5c10b10"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_1900.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "7c6f13b22de2178da020836ad9cf39f5ed197d3abaa2d8baac39a8869228d037"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2000.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "bb827596ae8f5ab32983e6c8f55975a11c96787047d372d972dc14fe6d2876c7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2100.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "d16db1b8925a57976cc609a3c90d3a57752e750df2f21a7cbbbc819d88b7524e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2200.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "d0c59fee6233320fd29b54f97e003c3c186e159dc2e405e834d5bd176e3bab71"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2300.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "be9f067f47e254d5e6ba176214a81eba469d88b75ceb40e86b5225bea927718a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2400.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "2ed3450742436e35e4f88bff9970020d28f7de3068810064a38f509cdcab9466"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2600.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "1bb482f90a7b61921081b342614b70c3c86a76281dbd64934b52b07e545f7943"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2700.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "0adb7d70f30736b9d158285d2bb1c2d77663e5ebe3db57c69640e5d9fddb19ff"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2800.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "2800348b15afb66a60bd8c8b88b7d1cce1742329c9620cc8ea5d47dffeaa6e08"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_00-12-23_tw_stage1_s1_full/model_2900.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "f06b926db632b5919adab1010d8d686cb3363719bd3ebbd0668ecd254cb1b07f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_0.pt",
+      "bytes": 5441239,
+      "nlink": 1,
+      "sha256": "f9cb5c1de6af4eeef661abff95329158cf4f85c57cd03b532242abdf18c79fec"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_100.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "b0bbacdc228d2435d711cd5cd7de677b1cb124ba260e059b1819a7e67406e771"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_200.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "8734e2246f2322f9370bb95d5d506f366b3787aeb954e93bebdfabdf7bd3a22a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_300.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "f64843c6246aa6237c3d3b5c2ed04e663f3a9e61f22cd67df5c6ea4b8948518c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_400.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "b7cc358f37f837882614f25c728b965c98846d5a78904eba195566ccbea38164"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_500.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "f37b4a36160219127fe5839d90b50b16fdd4e9cf8485b6c8c04fafe013ef02ac"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_600.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "f6c27067b813f62f4b0aa439d8f5e6ec26b395ccbc0682bcba4fc2562cd286ff"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_700.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "c962b8be82a82e13e20193b4db54e106985fbd0b5f563154a9523ab1d70ce69d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_800.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "74c7cd777951f0269b5c34837f5d1baa2265dd993d17441fb296fb6c0790bc10"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_900.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "ae0572d81bd3e79537edc17242dc609c695ad7458bd1638923ece7ee2f5060e7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1000.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "44d9c82cf76d6cc6c4f3e9bdc0032e6e2e3fc572f936286cde37e650b2a3ae39"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1100.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "6b3aaf77afbaa9cfc56a216d6557a792ab32fca8ea5a9c15ebdcdce1fed880de"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1200.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "32a0c6a35651bc3a0844311daa960a406dc614f4c92fd2bab5af0d1e515b825a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1300.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "1dc7264e9d4a58501dc7c66cead3ebc035903be1722dde05320359d28dcb9367"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1400.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "5ba066c95d4bf8eb1d163d7301d8150e4c1d8e40552359d36b7080ee4e37572d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1500.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "fbaa1251126cf682aba4bba1fe9ab8092e1ff8a766db3e7e03ce87b6fb51a543"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1600.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "d6d4766d636e1f5d20458facd091f6d9e7d962c71fe96f0494e9ad124a5c5298"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1700.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "b542373a9c0d38d53c5c8efe9b13c71b55fa10a9f644e5cb54f7a33361cf3d8a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1800.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "ff523bc1ef4108a1bdce76ef6efdeb7233152560bd6cc831ed5f1632520b8f23"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_1900.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "dd1c31b13310193bddbd8d9d5b9c27e6467d8f7252940dd3beae0fbaa674f6a2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2000.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "ca9a6f99c565253f999bc2a81f849438e84462f9726e1869fc056aa20f9a941c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2100.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "1ff33af2b87749c776606deaa7096d3280417de3b40c283b0cbef412b9c7e136"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2200.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "1c176e7dd8ccf886766483cc9eaf10945a0daee90542c78fd41ee9c2e287a4d1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2300.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "17293ea2392b1034b552c9411b59763c09a27140d2336acfc5ec748433f00d9d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2400.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "e8efc87c38bca0baf609b69e2f6fbbfe51e217f3ce5ef49fb0b7547c6b1e4078"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2600.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "b2de4dcf2e2e58e38e125af3574ae35c7fc26e17621813658615c98009f03ab0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2700.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "cb32755158867b7d3c26a9bcb3c32f15f4ccc720900c9dd866384b5a971f3a44"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2800.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "f0bece276cc3d9dd743bf3688e79a7acd611b5bea2a8c2a564ea99f2d3e6b86c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_01-15-37_tw_stage1_s1_ent0/model_2900.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "0acff8d9282492fced69ce1197e267cc851964fa56b6c03f06ef83aa1d1c87fe"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_0.pt",
+      "bytes": 5441239,
+      "nlink": 1,
+      "sha256": "3444be521a072f85c898fc47cb9fe955477225124c3849826b9326bbb81f54ac"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_100.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "29c1a435d117390fd942977f4a09ec74a467833ef09d62bbccd4b2fc9853d2a0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_200.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "563f78d46139204f827650739bb0c5657f81cbe2b4fd3557810fe30d96b2ec4a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_300.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "fd45bc95b4c825f7350563e2925354a746d712cc8df188a8678daee71bc5e164"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_400.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "003ebaf9e4f6e1def77225fcbe9c9788b848aa8b4b137bf3951ba0b4ec1f2cd8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_500.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "8e5cc103379edc703784e1d2be9dcd6badcf7a47279080451bef08891f281da5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_600.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "910c443b015b49f83f9ce29dfee90edbb9772f8d8d071daf62f25cdce2253bbb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_700.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "4d5f2dcbf6782a55b8f61c2cf8760aff6baf6f97799240b1e8e32fed0f78b21e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_800.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "9274c38629ee5f5cd806f394964f18c826847e42abffcb5339f873c7e2265ba9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_900.pt",
+      "bytes": 5441835,
+      "nlink": 1,
+      "sha256": "b5ed26bd47c0b096b09b5106e5cbe4c099807189ba305f2d94a931f96fa052d8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1000.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "fa356803a4068e63bb133c5a137d2c5b0e227a3ae2964cdd8bd223e37865d3a6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1100.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "d7432eabb0018a7f3e1a8a5c82fdcbda4121f76eece4503644a79e8904018a4f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1200.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "58c74d935ac5d4faae949eb898a0339d40b0b4cda3815d1925fcc3af45684654"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1300.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "6d4017958173b96413c0a0e31410b8dc53fa228c94b28109149791dace2220e9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1400.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "3a1417e10500b9e8eaaca4026d1ee54c924e049e6425b08a7be5aa27ef09b016"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1500.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "4c7eaf5ace6f331084c14f28419e75debf543f24180871a2c5584071f2ad5f85"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1600.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "9a44d113009b92b0865f01ea6e43f1622665d46f4274f05fea53439ae01a7b67"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1700.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "7c97ad9d4ad36b0a27cf96195894cb260663f5b80285ad3159405e03174d8187"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1800.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "6833a51a5fd05fd2d17d3ea9a949b211cce5ac6f804e40c52e9223e41c08187e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_1900.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "2cd2e3f7cbe5eb287dd570b2cae8bedcae57d0f57b3d9000326d05008d8633ff"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2000.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "02e2e96a60e7a801a664b7a7ccefc46c842392e44153bece572872416589a421"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2100.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "5ae33e219ae547bdb7556a8b50a210aa27ed438f62f71316a3e3b31dce2c89f2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2200.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "68927a1ad142e14c380295cb6419ad3a518cef39ae90ff101e5debab271f7617"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2300.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "e3904078f8324409ebee94c3f357449b2f2e3ce40716e68e2dc66b36c53e367b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2400.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "0c3fe4b10e61b5f41f51574086088b8767b6b2c2cca08700f8283970c775bd01"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2600.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "18a832730db92ad614cf994ab954b3e0cb962c8a0d06d81a42718742d4299f89"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2700.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "897cc4e9632477876710a8af49a5b9848b92aedd2e6056bc3f79d2dab20745c1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2800.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "d9b8e15736745e927961f3031244752a3bbc1036c0f3bf248ded6f4e61c134d1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_02-15-02_tw_stage1_s1_std02/model_2900.pt",
+      "bytes": 5441909,
+      "nlink": 1,
+      "sha256": "cbbfde86bfb72763237d445d977a7b990760cbd63986fa0092663a51866048f6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_0.pt",
+      "bytes": 5465815,
+      "nlink": 1,
+      "sha256": "1d52af20069fbbf026193b3fc7bb4c5467c06e2eef0814a690ba7c4fb30e2f93"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_100.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "2d6375536eb6678fcc6d82a7b291531779e29508a8bb06da70b686c50c3c8838"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_200.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "cbc3084c0f2d9e58d56697bacff818d28196160e921e47fa46185d6341fc2a1c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_300.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "dcef658d817b37ac160d28d4393ad1e791b1332bddcf69a598e1418967e12cf7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_400.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "8bbb30cd4b29a9c396d10631f75f70b409bce801fa1a04c6bab40af9e36e72a0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_500.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "842c806d342c450178964bfe1e32fc00d67b2084b642e320923b6fefed5ff203"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_600.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "f13c441670477f10e58df050d99826e644ed2ff14ea315f19b41342d3ec24208"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_700.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "cb48b4c16a64aad16649a45f0c408c79ac849640091bae7d878c01e9e5ac40b7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_800.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "ff9280485bc719a2ede5cf53dd533545414ea338f850aace1f8d3b347b052921"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_900.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "d5dd4f1c159c67db5020f05361a6df6bb9d1c209abd7caf5f703cd6641a0b1c9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a1274061d121f14381a6153492328ff9f6e171bee7448c6dc4ce4d05c440745d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "16ff54685c374ec7e3b2ec4bf2ef6595c63e8f9ad6524e86c168d3ddb9f94467"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "818a684e3d27c6bbe33f97f20fa916a1e6b8b61506a2af7035e23709cbc9a66d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f083589430fc1bc0588705a2bb7e8ffd1f69462bc3866567321a01ba1f8c4eb0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f1464ae656f069f80328d602b6e904fd63397844c3f4387dba4f77239886b7d5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c21d8afb178b7915d8f6c28825b5fb3fef9651ec67ec499371e40f8366893614"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "74555ad22ce621aa89dd311969b22b223cf0de9b8c47f8746b67f8b0cb869d9e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6bf1a319de66dfe167cfdcb9d44b6a32221ab6cd40572f15873f5a5bb88edda9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a2a217962c8e2a8478f7a533fdad45c5545ea200fb292195587743791d078e6a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_1900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "969ec4c5ca823722f4ba053754f0e2341ef45bba00f6a54f6710160b95d17a44"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b3e07b6fb1396f04cbbd3a71d62dbc42196e34aff5a8136c0371f221efd1584f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6b8ba71763588ab5a5bacc53d4903dfddf9980ef4c00a0067c8fd21f88d4e0ae"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "319a885d645e094b74ed00d90199183d97f19e0472d49d8ccf203ed5f1ebd342"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "269c0eac222ab7ba1a4afb4f8c157254aebe55e4fc8c0b0fddb0ea5b872f39cc"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3587923a13ef4752c6abdcea61e3333250e3b297cafc3e375f34d50e38df44a0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "44ae144d0f2358c994ba4ad622dff9df9e98440791c6cfa2530000c7603a174f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "95bf698ca157fe7b28f7d4396682a59df8d2ee53a5e199b5e963a44525136e39"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b0ccd3670a641ca9c4efb8d0ad483e355e9720cf38b8ac5d4c760f0925c73087"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_08-46-01_tw_stage1_s1_gait/model_2900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3ce5b5c6f734ae75a52468ceafc2a1c422c60eb48bc52b07ba0cf57af0d809be"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_0.pt",
+      "bytes": 5465815,
+      "nlink": 1,
+      "sha256": "da201218930985293f464f9bcbb9f2579bf813cc613a7fbddc7c8f87225b9155"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_100.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "453a6c706b13bbac6d102c802e4704ebcc58ac2641f9257d0cde84f51800570f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_200.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "181a6c48a71161cbbbb0949f8fe9255aedfb0a5d4fc32ae35e2c402bc3697f42"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_300.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "4ca31991268149f97753c9cb823ec751b46e708df337adc83ea590862a01382c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_400.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "fcebfdf86d84bea091b7c9d3af54900d9edf691096298cc25b16384ae9414da9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_500.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "c08b81e1dac9e6af9c0b9bf585e7da595c81bf17a7ba01c0ff248e615a8f6667"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_600.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "5ea7a8cfbf1d27fd2bf0f3fa742e62e4808ddbef0ce24424ed51d29ca487b905"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_700.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "d29bbe5a3feecfb63f032f5a8217d3f26d375dfd319a9e94812c7ad4b722781e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_800.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "02040155b327a365469f0c067137f7fb944d60496f359466c219f52ccde9075f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_900.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "254fef926b2f0a18d2d3b99cfb89652802344d103c39f43f5d3a8eb22064890e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "451005b2ac6118ad2b39784339a838798ee2e593fde8ad50a09d1a5edd2a9c6b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0622ac2bdd9627411d1a3953dc34a1a86a2ec082a4a1b070e23e40bf703d2984"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "abbbc1077f7acade7a916d92adbf3db20006f2c274918a186996ab073f7ce5ec"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3216f12a99cbf0ec6d5781eaf4244e2f885674fffd2cfd43c7654ba937e34746"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a528b4f9b6d5df606b637495388430ef7e329ee2636e2b0028eb52a44ad8f891"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cbed7ee94d27cbd5ed674b34b162b782d97b8c0340fec27be3fd63f887785e2b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "72715e3931181ea56f396d8e274f742fbe379a0689c2088c56d66e8343321257"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "fe292664690f25a0e227b801f5cd56116d04b0f2e7b4138b3f2aa26a6b8b253b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "16ff393c511358138cbe6a97222a4d9271b385f4c4b27d3745205cec5cd82a07"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_1900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "afbefeb9ef601fbb6e355d72edc728e7a9d37cc0f326bc8f35f10a7787119b97"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4a73329730e3e128a4159bf89a596eca647a0aac30a07026c39cc7549d555467"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "96ca4a3d86fa978fd4ef508a175438b7c51a0a954e5ba8fa48783f9ee51d20b4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5cce1607009f57aae0ec092313281bd14f94a9c1b58839c23418694596525986"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7ef02f4493981cd11db7606eea8821cd66d704689c9b8c430f929c0b68598340"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "17ed4de8e77f498d6918ea8f28f728419b59581e6be361f7cd39ad5afe22c4b5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5148c1df8f09ff57123ee6509687351bfe54408dbd6c9c24b6c610ef369edb66"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "12c156695e8b9011c56aad387107fea578a87b8ee4d3a1f70d147c92bc6fbb34"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "27d5d977382331a03285b33abd246d2a8baa463664b2591eb2c42b953bdb0731"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_09-49-04_tw_stage1_s1_gait_clr/model_2900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ea33cd8be2b487b4bb27ad69bccad6696a16d0d92196cabdf44863445e5a14ad"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_0.pt",
+      "bytes": 5465815,
+      "nlink": 1,
+      "sha256": "48d98e0bafaa3913db862e3bbf69eb6f4501d1e9db8789067ba213bf006dda18"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_100.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "c32880c3acb84f79a6893ef4f1c470dffa96cb05d7e38ace18e4bca021a168ed"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_200.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "cf795ec145893bc403a18adecf977e080def5953faece3d6f312cba71207872b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_300.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "21253c31d9e201722de7e933c4959f38407e9a5b3a24d4338c90f9e1a204974a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_400.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "0de04356827522d3e31d6ec36ca940156d022c56058b692e361513d62ffba433"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_500.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "a09ffaeeb83e600460dc3af4b0275063674550e9afa89a02499600aa14a1a08a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_600.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "bc962e4cbf6c58430a11682d25fe4365acdd207ae959fbccd44011239df49528"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_700.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "774a4ca545e2e08d8b7d84d996c4e0f0c8cdf67a696168364ae62b40c05744b3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_800.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "e1a2406069843e6e8baa947dfe7bb63f81f181aa701a2bc7c7643c8addb74765"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_900.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "cf5f1ddd757108bbcb47da707f762059ede1182302e360bb4c591a175ab680c9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d14bd5f835a856bea89b707931877cdc83cfde061c349dd61b7ec86f2f88fdba"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "05db0cd36359ce97fd613d84e66a0693c342fb8eaff3fa58be58508a696bbb2c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "85fded1bc01c560242df4dc16fa214ac01f5f30acdac5320b8c9b0db3f79b3ea"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "677e18c5b464489e6bfa23915ec3a9f08ae8a6109823265e75da023b2b8e5350"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8defe4e26d67178e4a5f48fa9a27fbfbc0d3a537030413dca8a9ae50414b544f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "93f05d896c0e8052d99954080459aef414c693af5c19bcc9d1d7648d5b0dc081"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1aa467b39f0bb4f7503d390b5baa16daf9e644ce029764991bdc17839ffe01e6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6eb9878add7e58e8d1acaff19f0bc4e8d93ffdbd73f9bd79ce11f874c4803de2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d0b4c439b7b2deacb460985ed0565005cfe02dd60aff6fc6e68cbf55fe87d213"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_1900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "70fbf91c2c345f8f40cead1dae21c9b1cd17d57e6573bd403cb74aaa61835c12"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8062ce224588a0bf5aa7b0d28716825e254889619d930121b69a34463c737ea4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8f6530c0896534165f793bf9518561f9c984df7c79e5acaf42b71ec25d4da4e6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "bb66b53673fc5b06111fb14669777a0d4259c15b28a2fc9f4a290b8ca902a888"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3524410ddc6c159ebe292eea4ffda119076a9680acd12ae06bf4bb80c3306230"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "626a6b1451bad0449c81a6fe9a4d20e07e21349b49e4bc722a790621436fe4c1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9b83ac169b928ff8f18a90f6cc89b8f9ae04f250546878ebda1827fc865ebc82"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c1f051c0bfc3240320f51ec1e6cec46e7f4d0bdcfed79967adfcae38247902fd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7d4a13b7f025af0114e68673b36ac16efec32007681b517c688aa7d05d1c9a82"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_10-54-02_tw_stage1_s2_gait/model_2900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "86cc9a7366c696b1a8227410652445de82cd3349eea5b9a4dcdf50e55bf47c3e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_0.pt",
+      "bytes": 5465815,
+      "nlink": 1,
+      "sha256": "1d52af20069fbbf026193b3fc7bb4c5467c06e2eef0814a690ba7c4fb30e2f93"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_100.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "972766b0b27b91c25358f80bb7d342fcc4c9713b6913c3637633f334ce0e2d04"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_200.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "abeb04f15c295ec3c44bc6648ca25e1b6d289236d7da76e78b5127e0b23146bb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_300.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "c5fd27603c234e9111a9b7e5321f7a1f9bce58e21e7d8adb8ec34ea547042bc6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_400.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "41ba07f6f743749f19ff2b4471e83c1a521d87993b8dd7c01b2618526840ee25"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_500.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "8623f894a46d93d8ac523786f95c8953f7f35ec58b300a0bd1eff9084754c850"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_600.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "261a15a464496ccf217cdcd52db2a610279981aacfaff02a0357b1cb0b9aa085"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_700.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "3842ff79d21f44c0b74c36957620fcf30c5963c7c108ee813d6bcf5e48ca9683"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_800.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "57bbb697bb1aeff96a6f7ac6ce01c14671385af84a6be0fc65594532530e4245"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_900.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "8416e33668c20194fab11cf11acbad71648c8010aad74f7b2bf639254e983ef7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7950977f3fbca02de917b037ddc0625f41c5d7075e1d33e9786d89c6d9f393f4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "98dfdd4bfc464ac243159437c74aa8240a3231dcac518e3cc0f809eae4c48c06"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "caac5da21879af212e58b9d3ac83c53a9ae43815bd2d4c0637f90b1639e9c0b8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "76f677ded21332640e48c3a7d6432afab9e962a655b8265ae570f5461993261e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d0bf4d48eb769fd634f16012a1c47b92c37db280156950d8f85cffcf3c6a00c5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1170cbadcae6655741e2b4019bf2108e2d29dbafa158b190a9910ce8a1932f92"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "be4b6c8a739f2006d340d9524b0314757967f60b4453ba02917dac272c94f687"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1f12cd11bedbf2fd2a44760922cdcdac3311c7286cb50307d566c19c4aa9c19a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "24b1ced411152f320ba944ae83df69bd7dd80b6000a72e5fd03ed745114a7f21"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_1900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "dca3db7b0d5a0d7ec2b4b394773bb2195046d2471d3955f0380b1f52c29ce8c6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "062e992d2f3ba645ebb6011473aa0240b8ff676b0999a78c2baf33c7aee0dfa7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "775f280c3e7654e33bd29fdd7eb01b318c2c0586d61d06d35191d540142efbe1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5fd611e39dd208c6b39793cf4d64019ce401e423f9aef14aaaef2ef9f1d16e10"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "48ee97c5f8259c49c0f1a0283f4c1fda2eab6c915f8fd8c0301aa64d97114164"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e00810035073f1a5d584d6dc7ae6a7ab3f4b65b16a804b1149fdfca9331027ba"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8156a47d8f37873914b8b1e6bbdc53cd47f58ccd3fc22b0183ed382107c83c88"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "77deb2c31b0c5675f23294e79bbbb52c7826766749502cb301fdc482c15ad88e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7384faab0ddcd5b738d84d201fecff246eca118c72480dc72b0fcbf1d40b8fc2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_12-32-29_tw_stage1_s1_swing/model_2900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0dc02614f714edd231c1f009d663d7dd7c893d82fd79818c6e35e32de9645149"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_0.pt",
+      "bytes": 5465815,
+      "nlink": 1,
+      "sha256": "08d19452ef724d6914901466c05d1f9b6007cff263fd534b840cb8d2158908a3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_100.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "d48e4157051877b69692b94c107997431dfacef1b4b8b53a9452fcbd1e3fe190"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_200.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "670a90daf53123564a7867c3a94f6790a8667a0a41484d0165bd27d48ca4c042"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_300.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "d519bf9b5b3d99836f934c5bb09835d82f81da810f8f7a6ce1705a1c48bfabcb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_400.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "a30899a78a6aa058e517769513bf9f44e76157ce393409274a917c24e72ee3e5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_500.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "0d5d39622f213b460d1302886c999ced4ffd86c83e71a5ad2714c6d381bd7149"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_600.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "aa0028942d3bfdafd8f9802d468048436873ab101aba74867d4a8034b7a9a027"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_700.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "d708ffb15b71f4f64c22cd6510591ee5ae75b3f3822bffa634239204ea697812"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_800.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "0625dd673263ed684b84f96586554e418b0723c535eb4a04ed480d6f2b68f4bc"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_900.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "fbe7e5cfba24a9a20e8ff350c3c3a53bf3b12e5cf6bfa98d875041e3bbfe35d7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "faaca834f5892c39e444f4e6be034a97f25bb761aab5605c54480fab9aa42739"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "710c9c5be62c2db98e45fdc10af2160ab8aff9b6e50f0e8c859b30edbcacb279"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "60f1c448eb9e75972595a11192683a883750e42ac60b9060ee27f38f10fbc693"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "aee274bfc879e5460a0c2c1fab324e1749ffcd69d3f03257b0dee7da3593747c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d61c7e63998a5c3ab304b6c9c2e2d2c96832d52432393b2121a0a2a632e2b4a5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "059cdd3205d8191c138f86fa8dd42b0c60e04d1853fd152b3b96b92e720b4089"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9006bd5555a9c0816160c63dc9874c08f4f2d16de30875a59b86467e4fae6752"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5c47d1546cf87554e0200af88a22b595ff20c8a4463bfe5d4d850f33e12866af"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "31ca2fb5d7410a16afb54dbf6bda43108d447f105a6e101981216f8e523807d6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_1900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0081f4aa066f93c7628c3f646413268c313e233316ef5cebba51a83ca3f303fd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8b921c8708e270567b1e64d99f0232280d6e5235e5773fe1ca4944abb55d428d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a4d134ca1c8cd37093e1375ce5bb6c07c931790caa48c964d3eab94c557ef3ff"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4c431831a0617bef9dc5dc25f51d105bec0d49955bba6b52b2133d9393b41166"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a70bf1055a6b98c2e5aad5e3a576f01d5205ed73df984e41adba63e4ecf5df0c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "bb85bc7ac185e8fd8208e2396b40243588754314b785ea943ce14b58a2aad25b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7addd866b64503ffc09a64b8ac2c75dceedc7fe693cb5aedd6e924d24739db0b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9f357dbb19ca9fc6c3c1cb55e30297b94235f7eddec00156800f434b287214a0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "41bd0dc4b6dd17b8ea0d6eaa1ec4ef2df7fb9981e5f81a1f2177481df7cc934d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_14-09-18_tw_stage1_s1_swing_w3_h08/model_2900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "71788c480408a4c2f4c25165768eee7fab9aedd1ba5a138a847eb1631f57b01e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_0.pt",
+      "bytes": 5465815,
+      "nlink": 1,
+      "sha256": "b96e810903c34a65f63df0d9c58f3a005bf932f48ce4955c47efa083b0294626"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_100.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "a690fad2b9fde4a14eeeffb174f3c9f656fb60b7e312120a200681225eff191a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_200.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "6f07ec245acdba6dba95a9a69fc1473b324c0f8b297d76bf01177df8405741e6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_300.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "7a421447197da4aa8af1bd39647f4d85a8b4d92010574351af2a367b87d08699"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_400.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "0c4265e18a45b4320aad15d7d279d609ad6e8b5e300a0a12b4faed6ce393337e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_500.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "f9c5c9980ebbdce4cda3b20126476ec313d1f21b589a7f3c2e9d59ea6c654d8d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_600.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "95f3028574de858c616b37ea4ff09110585c7cd3bc1267107d8f3590f026dca6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_700.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "98e85326a6f156990ca4a5e286e6c13874fdad714e8a410145dfc2db0c8dd588"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_800.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "5a691248deb8e2953e79548a6e5796afa650ef19e4eb6d7dcd0bcec2a4ccb25a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_900.pt",
+      "bytes": 5466411,
+      "nlink": 1,
+      "sha256": "bb61372680a4a9956c35f3da425c9750810bd367029a616d80195f871294bedb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "15b10e3c5fb2070df7b3049895359233fe32fc4c5d13da1f53ea7b40be3eb668"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a2ad97fea0c74a094142065d1cee2ec892d4b41d5713fa3420acf29c0056b18c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "743e5a557fad37e2b5f5601cdd77187dd6ccf2185d4fb30a37868cd0da86e2ff"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e68fcef42974c72c7a2297060533ed0106b2bab52d51d43f2f8d973e723616ec"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b25573a7c4c4ba998048983ca1c80584159fc13463227a0760ee7f7aafd7a018"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e23aad6856d4ab26135d7499dc195555cc52a457ff5fc61a08b8becd0eb5e7c2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "facb68d28fe3ff2df4e7b0d39cacd0dd78f5cb5ccb005b768cbeec4b21820e66"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "548c1d19ee4aa129ee48d6ebacfa357257cfcb6e82f76bc13a593e079c6cf589"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "329e9debfa6547914154dec527b0b6408aef7bbfca147c22acc5e7e29b841f91"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_1900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "df5499ffcbffb1f909da088ab3602f97ef95ce54419e02054b44d75986bd7211"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "03ea7cf0187a30c39800ad630c79447bf1a2bde6e72e08e4d7c33b5911df6f05"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "98b0d502267521ac23f8b3991b68e96d65a38d9beec18e399cc1c55051ea14fd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "aa74e6e6295fbac102bf89a58d5c9e5384cf4ee22d4e0f789cd999c756f71231"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "27c0a22b51b10a293b6a4f441a5ba8ab4dbbfcabad127283867f8b5c4ff66da4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3d199ada468a504970e4d8830cb724d024e7d0c0c6d1ea5d213052f1765912be"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "85a62ae35bff9543ff5555251f4ba2dc65da6973bb58431cf433ef2e204494c9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f2def66a222ee2518d957bba43961088766226b27da4ced003723975861ac06a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cca562463580883dfe3a423102d43433bd23737c54b6bf220d36c9b40c995ec2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_15-22-29_tw_stage1_s1_noise05/model_2900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "41a32d88cd6881e9c7ff1e42e378999a69e447bd6dd7045a935b71f26794f920"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a1ee25f3dfefaab75e22477e88060818351454e9ce994a38d0c1139eb2e0b45f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5a8f5596f54fc47bd32f163ffeb62fd0a8344f2f5e9d33f3237b35091241a3b0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "eafa4f35bfa7c66866af7a676d86799b3c696e80f5023ac8966894af35a4dd6e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6aad0675a4c46929dafcc64b700e87b33a45d49ba73e1ad6594e1a81c830989f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ba54c424ae8e6ec8000d20c52eebe29509624c42bbcc817485442a16c5b51f75"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "58107acfd99b0c21a2dbcb602b61d119a128b9cf42bc87361d487864c7607146"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6472477963ea72630095b24381ec4def87a750af9ae8b9ffee1e68a2f9b97ba6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8e7414615eb816751061ba1a66f0213b173f2d03976e72714965dfbc157dbade"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_3900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1930047fd7d875ef9a012588b8e7f06fbefa42315a3d00af2c534c8a307168c5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_4100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "90d825257d2007ea6d909a5c88ca00ea62501d573460f08d147cb7e77be8e580"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_4200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6519c6435544e0d0fffbefd19dc039354bbbf3a57a6706caf59c7a7c5080a891"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_4300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "504f7c256694e41666c7d8bab2b3c857fb2e7721d280c3382712baaf2383c8ab"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_16-32-16_tw_stage1_s1_ft4/model_4400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f6a434e3c515e22d39aafeffe20c3d56d398f3224a19f2ff36218cedc8a72762"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_4500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "447793c15bbad42ab983c7e9bd575598f65b19866dac434396fc2cc660717c83"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_4600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "23d800fac10013bb99a11778be7f7122eca9d99e4a9715c6457716e3840fd996"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_4700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8b82a6060f75ccbccc677cda6bdfccff889065de5bae8ea691b0a4c3ca39f17f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_4800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8d87c83e8d31c2457b0d4e14aa927c6704981bde4bcdf9be89d28167f109151e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_4900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1b991d847dde264e6e3adb79e7a1309d405bc1b917239cd952fb58cfab26c5c6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c677dada6cd57364e667152bcd6088097dc8ea9e09500ae205b5dabc5be92964"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f149e0ef10625ed5a65b176c4fab379dcfc4462c0f4302a12ef7ac1e76954ad9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2194075bdf7c829685df21438e84bbc3b8e8e0676455fa2fc883529313c81edc"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ae6ed1a88e0dcd3e17bd810ccf96a9049a4bfc028de321c1220c9390a3f697f8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "32dcf34dc8070f44676b9cc3b610f73a79334107d622fa7f7d3d0af184085f37"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4487be121e5bd7706710febaf0005c119f3951ccd73443bbcbebc6e62778eacf"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "38ee2ad7a969c26ef22961d473fc82894a5c583fc398099e4f142740e5e66074"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "900c6f6a3bcace31b1be920cafc44402fa8f41e4b3432ddb756788d45776a895"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "08e82bc954674c0d5e785da6729106272cf9c7111bafa03c0ba92bbf400d6bd9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-07_17-12-49_tw_stage1_s1_ft5/model_5900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3dd359cbecd4162ff811e018a50d465bfe34cef30db533372e8082a09498dd26"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_4500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e7581f064fdaf23ac7d89ed5df129c90cc038fa4555b4a512f5116afe71acc61"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_4600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5c443f691cc571998737a4d1ad17532c6bcd650dc5dacdf269eeea4ab1a02d51"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_4700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "39594252ea95b667a5ff14d5916260daf886e6943080102dec257e46fa84f886"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_4800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7221c41a3969bb781afe7086f6d79fe3f0b5421e95d06a09a22a4bc0f7837c24"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_4900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b2e95e260c0ce1f3049f99dfd0d110518b6f183b4ba28ca1807d6a815ed9b4c9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c8eb397e48f67d58725bf7d60baa741328b449a631a81250004d681c336d05e5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4d4369c145684db7a29fe59060aeaeadb3100e790dce4d2b529306e206cd5225"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cbb3010337ed1ce2fe953d89ea701810baa486b42162ee7958c4dcaf899ba87e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6b592fae97abb9d023c404d61703e76275a82a261b81cb92212736b3c1994416"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ac3b9f9ed033e04de57a41f12f6c0cbb286f05c373ea22c16545dcb071d09f91"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2285e81474dffcf897329eef04a9ff342b0b7bb3c75853269ae825377938203e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d2864011d2b80275d195c98aab6d57ed4ca4fc794600b9ade1ef706f3ca6986f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "69e3db51015ce78d41c185ee4cb4f51c311015150ec24a8abd8ef4adde6dd74c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1a6b9a5ddae1a908dc8605fbe73f70f8122d8a1ade691af02747dc66be1e3e3e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_15-22-29_issues20261108_control_s1/model_5900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "67d3bfdc94ee6313d4768202ef2524c33827a367321e9e8ba3aa1ea165b3a10c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_4500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4dc1ab5e3230e749ce283dbe85e82bcb2056581493af480562d49b9a75a4cdf9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_4600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5917b68bb00e9152db45dfb717d4697e4234e17b47a87665a783641b606df946"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_4700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "fc151c48dbfc0b9f7ed982aecc53eb85332c4629070cb7a6f49b841980d3e471"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_4800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "41c8878d6bb5752d2042cbcbf6c9357570b52e8e50801b93d55a94c26f053fee"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_4900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "17b553bdb6ee3c582d33bfa60fc2d136f99dd9a6ade1f55888be19d9f1f9156d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "30f63ada96352287fc80aa780b4cf05af5f3dffd4077cc1f01cfa12810126081"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9bcf3c3a9ab0fad318f47d667701b6d659183cb171d21c11f4fdf41aa8aba1ba"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1bc79463ea7cb0a0bf32c1cc3b1c26bba705064e56980ff6ab9247d037041ef0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "69b88217dca6f4245944367614a14122fbb847b40a77a0475ac0a909c0d37d29"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e2da2819ad8438441529494f0c29787f1303c5d2f8e47deba8c4d873f0d21d4c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "09ac4065e3070a58259fcdc1511f6245b3f657f61074dea05f26a00ae231490c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2ea51230a67c9cf990f335ca282a03a609494c7294c5568ae011d3c683672d11"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "270b2332bf53efdc69ae752334f86b940f2d84a54b45248f47bb03b3212274f4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f9837120161776ec1d4a967cc54748dd52aaacde59d283e182374ed4769dc1e7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-07-27_issues20261108_control_s2/model_5900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ef785e95c180653b788be5104b1a02cfe85306386b73646be9943e58807e28be"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_4500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9140c811e4e9f57a4d493cff5f43d1863f424ce19267ba07e0850afe005b4a40"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_4600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "674f9844fa935673cba1edab432c7c272f536fd0ce1d64dc18bffd6bf70d6500"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_4700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "43f3450c6612c8176886317e4d554945a282d9f8ba9ce1da21c75937f3fc3e65"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_4800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "904a254d8384aa46e87b893b36a6593f99a70a0e50271a42a145354fb40db59f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_4900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "88ec56c096fda77dd6f0ecd6f9df842a087e30262103d096af2115d93469f350"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ef15fb5579d86ea496e8908e6f66c6f52e189ff07a10d440503d80eafe5326b9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "20408baed6f9558c08a554fd24786cb12e19690065e79f37a6796a097ab17a8a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c33ba3b8c919a68ed93a2a6718a93d97e24f1b126b77878783f06f2caa60fb51"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9891220141e4d73a1833bc4bfcb84daa60988f3c2fd97d14749627aef013b98b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ba1ee017d884be2e21c63740d32c0bd4b2a40398d2395df292bd467e32dfcba3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "51afa13b43c99345195d778911fe31664276d70e7a9b6ebdb1d8beee2ac43a31"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "442863f9261bc923403e3b0dd01d8e7fc71fa6c963374c80f0b2f364fb2e7725"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "15b788f3baa53c7968e6d2d64e62e40ee59047aeef7d48d26c57d5f3e510ad47"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ee4de5892b2bf271d83896ee9f2cf6aa943c667f871b6bf414173b7667d4f4b0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_16-52-17_issues20261108_entropy_s1/model_5900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9bab99d30066e621c6f918a420de1f33181a04ce26043c829b906be30f1eeff1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_4500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "816d1b93b976d4daf33738fa3b91819fd4ec9727a85be4081552766ce5f40169"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_4600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0d1b9cc1164732354a62be71d1ce5709f6e73ffea5a5b5a064969c0f18b6c0e7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_4700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "28dca3d40a41a6d48d75e84df049fd8311c2e7a609a133e2a4cd015978530b87"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_4800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "18ccde776b4c412e2ef49a501a3ed1cd96ae98ad7aee2a6af8ffbe52a48f8cb7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_4900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8ef8ccdc0638583e66bcaa138eba79452cef1a172fdcef0e7d0b7eb7db8b3e6b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7b6602276c8a0832fa3ce5a690bd1056a25381abc30d776e50410478ac507d75"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "35f25b0742feceb939991e87d962da15868af78396aff2933c9b09722ba768a9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c14f5fdcc7483295fcbbdf9332d3cf97af3a75a7b6ba8b5ad090275b3b841508"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3b11a710b775b92e228d8a14aed06d7fb2d41e81ca496cd62f6067db9053b82d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "569385a66ae7c8204049d58abd59b3f6befd55b8e35ecfe27bf571e90dc0eca6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "847c38f9e0fdee3771b6cb389848e2b7fc40ee6d0fa7b4fd2a75f1fa606d9985"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e553108342907a671c325e20fca47dcbafa4894926c41fdb7da85180f9d98cc8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b7a71596be3d894da63a428096fcb7a73f7300c6440d9650f26ccd388b53f5a4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "945fde5216e469ddea21fdd47fc950403d68634c80ce7f248c9e705fdcff73f9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_17-34-57_issues20261108_entropy_s2/model_5900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "35dd2dfca7f4aa8dd62e2121ea4ce1822c9bf2ff97331bdf486b7124d24c4f8e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_4500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9ca5bce02b11156fd28be398650b877a3e59a4610f0a3820d1987173daa260bd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_4600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d0536933473422f4153117761af60a7fb358e684eadb14405393efe74c26fee6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_4700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6e0683831c77935ec0b2d7568611d64eaf33f8c18519687c46ae25c1ca765062"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_4800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c784ab448e8741d9acdd7f2a4245e167a35d066190bcfb954d68868291eba98a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_4900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "87b83660f9d2359a4121265732e26cfc9dd715316a6c06b368b8269b1da6fbd9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ac75760dcc0953cbc1a825de503e033851ac56fec403ecd14f19f07f2e54bbdb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "389e331a36ed900a3a30ae520a26c727ba3da5ce150902d942f87d56336172e4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5ab1cb8599fa2225aaea2d29c62cdf51817da592411ba2208ab893f15553a3be"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "eee4ef992ab4e2cfd1e87977ebfc50f8e23416b16cc6f60259672b46ab63db34"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ab630b890954616f9137246d980f5d1a3e7a1106f40ce0618c3452bf70503876"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "577873ad35fd009537f1d0626cc8f5ddc8209c0f15064b5f116965fee4028fad"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6258cd5f96cb66d0e1f86fdc41fc51d5a76cb09ec7b57c94f01c94cde0bf6e5e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "dc128ab27a27d4cc800908e6cf4c438c58e24560a3af7635ee8ceef5cd67ddc4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "824a74f5598771d278d11130bb63331a24437cc3f0cbf804c27f1300638413b8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_18-18-49_issues20261108_yaw_s1/model_5900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "711d80076c932e05b6e7c2556fa5a5cc861496739c1d1df248a0edf7a13d9b05"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_4500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e3678c80f91dd249f2e4d9c01c85f8e6f2bc3ae2c550a39d36548bdae6da0523"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_4600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2ba631d9913a21dcfcfd1a6f07722877d48403c733c598d5ac0e427b9884d64d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_4700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6950431c5ead8d9c3d2d28a6ab0f3b8601c8a73257f6afd44459739bfcb90bb6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_4800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0c45a1926edcab90e1dafa536a546227952a006aa16e20b325681174e943ff8a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_4900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "74a19faf72696e98e8a1ae462ddb9b79331150fbdc03b8e3cfa1905c81c1fb15"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "48813889fcf64b21a196fad9c057765c4aee82cc70544a37a66d43950dd6f683"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "66970c796ca5ef10099e35cce7dfa7e97bf97821fedca8f6ab1fbb66c9898e3c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "14c9a756cfb222306be0056988e2cf2fef6530e3a6ffb30d49879d5086eb817a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7a2d2421443611671bb44a3e5f2d03cfbaac71e389c198b648f645c514175879"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "408ed325706092d28123b43ec586624a20406974b2638105dc8dd72bd2e0bdad"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2276e322aae2fed6531d37e67cd66ab20add563c697298bbefb9111fc964582e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a02a119d489280f212238d397fb8960d9d4ef90112e4c62c0eca4a84303a5290"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7ec14cc3a08396f6ebb2cad62257a8251a9d7d732472cec74b9a492472763f58"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "66019378b7ff30c78d44dfbd9263e7223ad312988118d8f912873ea67fc17404"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-02-16_issues20261108_yaw_s2/model_5900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1d762080179d9917f907035f7e1f0a2a83e772b857c876c10fded092c11f0be9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "739b34e6fab72dee06432025ff8eb890cd27a8efbbc13bfa78ceb3c4b2ff5296"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9407012312ca27c70eb2af768b938585f65f67583dea9ba3f07e42c1f66fc6bc"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "dabe86706b8f1485055dfb6568d3393b683eeee4d84f96a9a77198836f17427d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "88590eee4165f106a9fd7dd6519f4f2ba2345cfd0c383ed93fd37fe8731dea40"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8e76f9a3cc28bbffef99b159d945d48657f6d228b73e8c7213943278b02c4efd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5f0e23b3d1ce2f4a0cb4e75e7267f37a39208d9c46335ece868a9c526417e1ef"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e2e99c2caf3a5177ca255a348852a32bd75c473192ec5c5e7e84d6951c44dc7b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "663992add8946bab5382f6ea2220b5ca8793835561f56f769de0f04583146e81"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f80c51f5dc68cc65de4ee5a88d6d76ead5a2d0706c7d8fe1ee90d5359715e091"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_6900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4058ac0a482f3c467c29604ef5767e199869d78f67b43eb2a1478cf3bab10847"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_7000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0a8785bc718f333ec331e697245198f76ce0acdfeaadd08da5e0645be211fb15"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_7100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "898eb41555323c441e6f5d4437d32024a6d85ddac58051ca24e8f985a8a52174"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_7200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "11e20565aa6c045942cea574ab129d2de3b8db4a19f40fb05d7bf40b45357881"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_7300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "dd7bc69d6ed05fe51cff45be444b6959266785bdbd38d30775bc1419f09758a4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_19-46-00_issues20261108_range05/model_7400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "63365ba48db8751ce3da790ca7cffcc40ba12088d9bf6ad1b0532f459aaef9cf"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cd97fb154e210890f6ebc368e7b7eb409de65f8623d517001b08a35d6075b1ba"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d5c50ed57b6f6da83499449d5e62dc67a1c01621da1d0883802157f4bed189af"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8eed4c82c8667ae8b149cebdad2c555ad8616f1779212d4fcf3331bbe42fd6ac"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2fd22f766b1472d329773ceac5901a36354901ca949f5005688c5efb72ee9a5b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "68123719dca31da3281b6477a27a07412eda5c22dc459fef36fe02453d5e53bf"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ff6e3f33052d8d1addae763b5b93012a5b313c052a36de900ee0962d474f8049"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0563be688343f994012543ddf82e0f35db3e8bfede8f2f6abe555c2796e23189"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "86e10799f8001ec93ebf45d5cb4c96b9cf9e766b0b8fc914234c80d30c999bb9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "11d1e574b1f053b30e45a2a2a585e86aee9ebc647456a43ad68537a9e76bbbae"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_6900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5b63000cbcf9b5faffee80def3ba81cb89d7c9e7d78437329fdb5e4ecf70a287"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a197abe0558a75d9850e6b70800824710ae6cd3cf38692513416fd12bc74a75a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d7af1cbcbd403047245bca72227a90e47d1b5a5dcd45d54b6a82b4464b42ca7e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f92b9363935eb010edf652c35c1ea5ec07bf4d2f2a1de67182a8b507be42552c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c663bd0f13e63655246047ea0457d926cc82b3a3a3da9123fd9853e883d1ed60"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_20-44-43_issues20261108_robust05/model_7400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d2dc5695a4fb440debba3a09f49e13fd678e632a1d86c37209e7470c8ba89157"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d852603d1cced14f2247112868ea1479cef09c821563b18a18c576e808a50df3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3cd0a969ca28e1e4303b8728f68df437ae334f69bb1599156c0ce75dc7ddc5c6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2e40bc0859367bc236f25487b9aeb136b854f3af2fb1fd98f476a5d76f8817a0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2ddfe5d82be05f59735df8904f15b04a45f3383ca2e172db213a55dae3b7acab"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e9ddfbb1afaf2f00a758a5bc3e28bed33ea2bf56af884328ad1abd5d61762df8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5c041002c2f8e432cd5727c337b0a62cfee34b76ce8ba60c229b2a6fad4d5477"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ba6a9ca45ab8119fee63026b496cfc47921ab05fbfe4d917f05157967e782961"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e9886ce239f5744c002b4aed7a17c442ae59f312ce92e20903def0d1c6193580"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f9b7e6fbb355789a4a06ab805783d9f5db266c44e1d996de191758574bbfc9aa"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "86459ffd5595df2eda4bdd59144a4872328ba232138f97a94a1fc6ac131a4ba0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1e2821bc53c984e62c0d1ac890373ea444770573ff75f2c840ada01769cb92d7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cdc064c41f208f57fb6e5ac4b91c7ffd6eb546606ea67699598b39659b485eb7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_21-43-41_issues20261108_range08/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3858d4d4890b13b9540fc27d8802e413d18eb952286a90f3662b804272c60884"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3c090be5caa585cccd4b93d46e8bf4d465c589aa943d84645bb2884f33201e38"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cdcdb57f1c86b927cd448214b7ef4b33a1fad627e51de87bef03f0f069ff52d2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2e6fffa5b40a210a0cd4a4c9c0f85492680b4a66e98b24fd4fd220379a1f346f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "548208357a9c7efdfa44cd956e4742fb20a1f076e081f6267225b8249004aab7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e63e71fd69231fa4b83a53cae6aca8686c2866b698e49f4716e24ea74e6b331b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "82a50640642f5dd16af65230985983d7faeee186ea2111d86696cdbc9eb599cf"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8bcac506d30b501b6f53397836d5e11fb5ab32399e46016f5bf08210d8cd3743"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d037d3bdf81bba49bd6cc42eef423b4cd2b3e89464712b1e20d189ae69f2e01a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f5afe3b053ea68154383e31b9f17723ddf566e089f1d5b58c31fa79d05fb5bfe"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4fa6ae2d3b4539d2c6340d87eac82f7f47b72e8843483ea7e0a784c16a7164b8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3ea2917240926fd0dd022f26dc22952c66cd64d948148ac6755fe4e0d08ed521"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2be1c6731796847f13a441c867e410ae68f82feb95786d1f6d52c0886d3ddebb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-08_22-41-21_issues20261108_robust08/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "50556f3f064638e2bb9fa1407ca8caee7acc6a4434da57a68289f6c02037535c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "24fbab381844bd81e0e96fc614c2e37a500410f5fe3090c544a6f405dd8a8b45"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f7119e6599d831764d3c2e4a93c674044a6d8392cd7c63a200ff3dad01119c61"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d586a7a3d13ded5d9ad098861c7fdf0f59d0613589fc46e41ca4b93dcc5a1bd0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "39a0d86834e338d9cb503bf5ed0a181a060694f692ffb5e1c86b04de033bad5c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e7888a369b27aca510874037ae569646f189d41f8c90691606a4069de4d80339"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "acfe49dbbb7efb9503808286cb98931f90533253550193f9377a6efcfc50bbbb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cde177daec892eb5552ad5c34d92d8ec426bbeae3928f6cb0f1cb027ab944c11"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "784db87b0144054240f2cfad2b93eba83dd7332f1ed8ff8bc7c1b0dd5104a619"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "94feb23d13781874de44c396874db6b0b045dcd761423a7984994a0cf0c67bfd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6edb27fea6e4bf2708997d9e99e00f3894d739e325aba2505d0472ec209b5419"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "093cc12bc99666d5be130e5cc6bf0650eb9de7d444f801c000cccce129634192"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f5a627ca9616cd05f49688fcb8a2c7b90a18a843d666ac9d9f6df3ad382e0ab9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_01-38-27_issue5_20261109_robust08_s2/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e96e3763093434d21d5c7003329250d910674f7e43d3cf3585c3c841e64552a5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "80adf6501a4b407f14e087753c235a368ed0d109b6bd2c3aa43ab0dee90e88a9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f9f277a01255c01bfe27f9ff877cd97a62fd2eccdfe1b80137bc2ebb184955e6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b9aa0d233af1a5b60671d764730e3ee84c67d212671b5cae8219d70c6b9c2621"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e91fed35e14c6fd0a0cc6432066687a7f09bbbb449e9b5f9ad6b074a00a68660"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "44f40f610ec9140de00c30597b75e167f8695c4cb2a6b2b5661c5076fc018ef3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4afcc80ac196748aaf84a34654900fdd078afb91377bddecbe465f514253d173"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9fe5cb5e897d09279c0e15f6b076708cc350ad41fad5789b5266302fde12cd64"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8a01cc95a14e7878d31e722cdc0d075cdb4df543aba3116c43c710f5547da20c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "39d12be354a5d8ed7331a314961e0423d0b3a4865f41895ace16b4bdd30896d5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6678da07b6f0581603d81fcddabe2fea397e8e5f8e52a3c29f3e34978c2f0ac7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "eb7d4d62cc7049aef3b4aa5ec05e35818cd735393bdf57801f969691db03553a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1c09ea9517fd9907b0d4ca6be6c889962ae61928ebfdddd2c316be613226eb61"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_02-35-55_issue5_20261109_remove_s1/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d3ec9e9db165d51dda17429f6d18043fea49b2ecab91b36acecbbd147ea2ded6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "23063c02b319489bab66a6c04e80bb8d0c77cb29fd0d9e6953498a6377214a22"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ec354c046c186e2a45681e2355f9a7ca13014e335830a856a9dbd5bd2ac1c5bf"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "04722dec1ae5a6f1588dc16714f0e9c0b83f434ff1a1516bf845b2b09ba22a9a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0813da8f0c8398c935ad7b9758dd1df297aef9fe5f127b6cf48df5b27131b2a7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ba8bb27e6e432936de1237174fd98af0f6aff0c2ad3f8e3fa46ca9fd2a66bb4c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e2968d4fef191d08c7bb32f820aa2ec7b3ac1f123b00973d812e04dd4882451f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b66bd9b3abdefd1009aa20b45f60308d28e41626dad6b38fa1d904c3e9c37f8b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d0f57fd756f8c98b3ceb86bb9d8869a307a957584c720937f3802254fa99126b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8b67d8e7bf84c846f8afa7f8cf7090eba7e942e5ad78955e6acc8db312842765"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "fab06ed3523938117f728ddb09af50b20c83f069a51cecb292c89d6016eb8126"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2b25eb96361263d83ebd933c7adc9f46b1be3ab67858aa8eac82035197013727"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b1d7b224b8f5d423fbd8f9fba918ec69c793c3ad23bbceafc62e5244b53ef332"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_03-18-38_issue5_20261109_remove_s2/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "07f9d720130f3918493b572ef15d28c8f8444554aa84a68df0bdc781b4396d42"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3c090be5caa585cccd4b93d46e8bf4d465c589aa943d84645bb2884f33201e38"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d3ef8d94a18d055e27ff59dd081a9308298b08a47abf12045c02cac58d303f21"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e95ca11313b7fc0fc88fdc798ce0ea8df915e574a0574eb43fd64c56853f25c6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "fefff5b83ac979903b868c5162f69806c34b59f4a84613b776bbe2a0ce4ffb22"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d99b7f944ca2dd87c8931942170377bc690031ace67f59ee24725c02aec8d1f1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "aeebc21bba517ac733b6ac6be019ee6b18f9f34b5be0ca066c69139237e22378"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6e059c77219d61180ed873a3eeb881783f76c95f4af53570f35dc95ce17938fd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "98dc0f3f3e43ef8f626466fde7dfca92317283cc9e71d9066a0f5e5586b1056b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c85b755bbf251047881295d21717bf90e61f440390416f16d9245b18354df59e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b627a309382517766666e84167588714f9057bda7533994ea950a09a1792cc7e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "30bcb0c2a59da4cd081c3d80038fabdef4b6e900d688f6ba0bd56aa1e0c982a6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "40bd7072489ea947c6bfb4642c01df459caf054f313473a8d8f0a303114e2945"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-01-22_issue5_20261109_strengthen_s1/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c00a482205be30b3df66c3d00754216e23a93b59bca17238b4d011266c303f35"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "24fbab381844bd81e0e96fc614c2e37a500410f5fe3090c544a6f405dd8a8b45"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f39942ed6b49cd686c9c0b7798d04b1fdeaf5c4dd94fe742a57f2dd99a6fe40a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e8a1de932ae44f52868a04fd6639c7d001ca42f02018493a62fe9c0ec507230b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2b22367c9e7878f70913e2d84b044babcda1ed08b08aa1c970cb32c2cc1d90b0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "485e3740be0e033c2e02b12f97d2aa41875df8b2c8ee346bff7cee58b66c8bb3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "18a2690fb1fb875249b0607cecf3c2183f0e26c43accebe866d311718b2c42de"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7837e88ba07e4c9e3fc9f00d672c951b334577eceeeed55238dd45eec16561c6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3a38bd277089544f7e0f844bd4e6f0727c15f96af1774e68c92df33dc204f90f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c64aec5549a17210fe4b93529c6ac52866b22ad98e99d95f9c98b3e1f0ce0cd3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "471994a82f8744562f8af9c3e7eedf11742e445190bfda0d5af5cc92f7887210"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5bbf87b824b9686f9b4a2d85fcddc343013929df6c42b393001621ebfef87b7a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "367b6a1491c4fc3b060bce638a34f169234660ae90d96b79429b16332007af09"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_04-45-13_issue5_20261109_strengthen_s2/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d1693367798fcbf7ff766f7f3d7b414760bba8618abdc277a62bdc4e95c48b9f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ed6d00d90a6bd5778e15abd8a6532cbc3681ade95f1a8559c5d9a86cef6ece9e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "631252ab6536e61fe875a48d039ec91c10704714b4e2922dbf2c1da03445b101"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7b86782144a885206a4620098316e208aa6bdfefc8a645e64ed4bed850a44126"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "65f4443f3d5e4cc7b28ce2c2a51062e51e46bbcbf4b312a5103038dbee175362"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a99d84496d9544337d9d9fa23685b6e308e917c55d8cc02728a68942416d0c94"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "bc19c2e1bdfd845162f355dfabaf766b16795ac661b50e5cca1a33b78669686d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "fe9545381b1088c098bcd36f9914ef624c48d646093abf46ad1def11f99ad0cb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "bf269561360d1b95beb885a066c01496d9e30fe8a214f6d925742e8f927a7ee3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "516d57312e3bb327376a53896054e9f3a774ee67549e3f8765d3f13107261be1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a219393c2ba32484d046630b0b51b250cee12eb74d262df29bf38578f69def78"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "200a11a20d1603e721ff9cdbea74dfb3e9cc2e545d0f8d96dafa8430208b96f1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "907401192131396eee3ed00fc2714bc53c50a69ba57f3556596b63d1493b18c0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_07-40-00_issue6_20261109_bounded_strengthen_s1/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5fd3d2bd3c5667afba3eba6ee707743633f6446e01e711e7302939928d0a9536"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "17b62a6b4cd3e89effebe2e517c6418507e611673706d5fed05fc0cd2c39b3d0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6c6e402eaaad9457ab8c396cf099551b39931c0d0261b490e93bc7020c8f39ab"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8d75c5ded12c8c6a2a0cbc97305d76c99a28af315e45199239b48250d18354f8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "321bcfca4b1b6f10ba2852cb25fb0d65d381dfd796f318faf06084e04da5105d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "76d5390ba84c65d606c01a06b8a7f08ba744ebf5535902fec158d884f972be0f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6608e74627e4834bff524586e9a7975a4b10da49454be7dba9b5b93b0571c5eb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8f287a0e4c859067d6feb6d7f0c3350ecef47b12feed616149426cb90980f445"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "54a85265889ca62296298f3dde6ae965bfe463a741841607f9351f976a1cc89e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9b24dd21231f9fcf10350b3607659449632962bbf0d3e63cc57ab7dc888d7c5e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "90a459d44e01769ef11faa8c2ff450db9dcd8eba8ea90eb06b7b2351f6be45b5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "097908fb3943925af2b36367a391c53e483fcb373fbe5c98a888a1ff546418e5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "67731eb8193731f7d995d1f661855a9662ae9a28c614cd3e050298b93d0070d5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_08-17-58_issue6_20261109_bounded_strengthen_s2/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d4f27f5210c8c465c00dc97a5f668c2ce19fa8dec9d7391faa66b26b1df4e236"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1e8ed8848a85196fb6d347bf28be24a8bc468eaa7293d90a973d31c664f54d32"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5930df6290e93ecd98441045d213bc1fcf40ba196459bc4b1554dd438bac1b58"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "46732fe2ee2d5bab103813b4421cbe539cafe25bb4a0742b86d06e89eb1de90a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "885f2abb143888d5bbf349a6524f6af994b4f0adfd9a725977b192a689fb0fe2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "dfef345e35294d4c178c6980327df0a97ccb94fb73279b25b002184bc2f5e02c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "405a03ab2efbb0600233381a56cefc1ac65185cf5b7c5e5d1ae25e067b285c3f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1710fa0300c955d79cebbf1279828cd24db6e4faad497fc50b319e96095e4a25"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7aa413cc61afaa0d94ab9eb3da49146583d8216dfa58b38c56c66da2c1c9c62d"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "640d6392e733ccde5911784d7ceccfb50af1a38e1905ba64602ebb1b9b68b201"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5326ad0482cc121bc4ab205fcd4cf1fa7a4e79772871b46702a0815d9c3e30b4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b90b4b74d489ed98476279c14c118406216586fc9b31e6146a7191034bf9420c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6a6647847b3785bf5d622ff5e8f9d2f20ff61afee9500c01a05484d7e95f55e3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_10-59-57_issue8_20261109_applied_s1/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e196974485e419c499473e6ba0665e241ed4ff8988c4aebe220f05518f32c88e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0712d47cc4f51bc86c65ab743bcbef6fb1a0759e4d6c8ad54f4730f1c08e061a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "37a74d15fdb679105f9d8ea0e1e08c08a0600ea8036a4a267b86de6f41e59139"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "18b33e616d13c860188da2edf273d0686896712085ecef86ea6df5a316d93519"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b52781c0d63c63bd01a04add713d37eca6eb48475bfb79c8d115b9631c3115f9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6feccc57471eeb9a3dbe2e2b75e48543b9e567b05760346c094d33352e3eb4a6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a175f0ac10763006688a12f202b86b01499d65ddff0fd9480ccd245497a350b7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ba01ae4c7689e550a6cbe85f45d29a02249ad638cbf71d95371f0d289caf609e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2cadea95a8e39c77b9eca93624d4d0f7fa62e4e6d1df99f3889b5a274a17c455"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "31b93ff080195b6a7fafb3d0e38da1011ad3cb43a1ca91ebd9ff61170f2ba595"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6227a253e52ac69f24155df863902d8a1e672d27da2335ab71ea2ea118972942"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9216eaf7f285d5037ed02e9c39adeffa5bfe1e130b9b8fcfa0ebefa86448d864"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d743691d8ef43318623f804fc5fbb6e70f3a371c5b27306e606c033f94a781eb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_11-35-08_issue8_20261109_applied_s2/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "97385f3e08f0fbabd586e85a88535f1335cd5252d1f8955bf82f577924d222cc"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "098fbd0741de7ed590da0acf75277c4298bed6b13fa46196ab52ca9725a5f68a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ad3dbeb45c4d8e9a2e33ad26fc4293df64fbb308bb96129329aaf7a7a066ab66"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b9a7211a0b8321982ea0edc522143bfcaf434de5aa1a78f6aa519631dc666a63"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "fc1cf3f7512eac6effa57330306dc08f61c30e8a86665cc6c4b43fe01b491c7b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "19cb4d5c8ffd9d0fbc031c9061c4917c2cb0bde4b4fe5d68b5493dc1767ef08a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6c9532396b2f2d3646629f7a3d54e6eecbbedc7911847e300f97adeeeb69db11"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b51f3a9b6d165e1d272b3d6669720fdb4a4b4aa7f061eb48f123e207f20823ec"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1489e359863fa9d4352a1092e0fc298da3f1550d06ab15b6e9ccf7f114872e90"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3f64367afc0f9f55e823b954d75004d46aecbcba1def0a0874d4824dd08fd1f0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6be57ca4b6a2631504f218d50c49081839a60089ccbdff5ca937509c558a71cf"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f9f819dd5373dd004cf18705f08bd675d1c5c84874af066203615531efee07e7"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "fc9b4e106e18d4b52360afae676123d9a253934317ef1b43c4d098a1701fb1ac"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_12-37-35_issue9_20261109_requested_s3/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1487537c3d399e077aefef8d3d1663af8b54586b31e81bc2976e62e8f86a4bba"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8a0181003c092493878b9b0e76c2ca1e84ce22e53b9eb8c9695d0960dac3194f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0b12a44e5aa17dbd73770ceb62837bb635acc6528adb75dd77663e70c04e2c45"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "03ad1b1ed3181b0edde0eca3b79faf38ea6db16796f8faa5385857b67804a056"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "cd8bc7b1136c92d26d16dd0a09022226d1e7d2b2298dcf9430b1a7757243ae05"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8cd9f38db1558157808e07c5271217cd8b7d83d304a25bd7e8704d4c67ff2b45"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "de5fb478f26db946af2e70e7531d1cb538875a144a351e678176d1010f98e963"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "62196ba3334a6298c99a5a49ee1fea270b7f7249d6f51a6fc78d82cf045a2209"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "dad9a08eda253b0654c7a8f3ce140f4f4e143acb49c82259776e394103d37793"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a33e767192dac53a7a2e4a91aa8a717b6831c50a1439133d829968a7181fe954"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1af1484af90db1ee4e66b41907a74f6c3e184de8b64de8235119c266d96f4275"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "34dc3425c1774a75788873818953e8ed4012c29be397dbbb854ad0123d85a538"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5bb347eb3c4887e86c35ff3a3ee9478da3fabb504b01ad8dbbe5d8f2ce305649"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-12-38_issue9_20261109_applied_s3/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b67171a18cd232d829b8d580eba821b6aa03a3be8b10d07e3952b7b89aff0b31"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "80046dab6d2517dbcc8d404221807c5b36308d0e43fa6dfd8bc616101eaee612"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "61628f480b5255d82ca913f47461a0786b77bc8b24bfa086098ad80feca7e38e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "de6475029df2d2e22a7afe2b5bef725a20a86c56ff245656de6b951f53277e64"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5f6624debcad8e0becaa99dc0e26582b5c697fc830c605253ae492f4f8c5de53"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ec117234fa7a345d27966df1dc11d3fd5f5c6c9093049b9fd96b1478070b2873"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a17eca65dbe8a6d3e6a555f6e9ba7a03f2476fda4477c568bb76af5f769ce291"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "80590a331d7264bb53af57135cd9c3bb61a66492d29ecb30664e3859a894b00e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7ef0fc36a67091b53cb74325a057e184a169ad4b7b6275cce8e43e397b2bdebe"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7499301cedf819b050be24d16b79eff417fcd5b33d30907e68b11e6f94b62567"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1e02656aeadb2d82da2d94246b35053ce6aa83d1fb92905f5428c0f0ceb7f32f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "eef32970e72c01aec98a93644427a5371104d785c45da4ea02508016e1415562"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e50a89ec1080d89495fea890960df8ace3d3827c5fd1b7f998a3bb8ac6e63e3f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_13-46-57_issue9_20261109_requested_s4/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "10561a4e3bd39676c7603865bff48729f1c1b567c1584922c29086f1a1d772e0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "92ad7c2dadb70c9b138ff05568e8d44ee55d7b068083eef9d300f83b700517e9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "943e454bbd54711c8821b996ec346875f5d518fd3e7944eb0b90731af256ca5c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7814ec31741f3f39eaa5f88f15c1f589ef83703cfdcb186f959e67f72eb00ec8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9e3d341f23916a3d3c74ac85064704c48ccc82c734808aab4b1da0c34efb3c78"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "a84ebab13a96ee15a6be2eb7774e581e874cd5ced7e4dade784e4f2428a24351"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0df5237978e8f1c09ef362d8324f91bc5bfaeb11f413a4b515182e9e21bed4d1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "87869da1441e83ec0ba5d0f5a0ca88d382affce9eb763a7a767aad149287e0e0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "70f04780f55f3144275a5a475bd0d8890dc67bda6219772ebace9b0fbbe430be"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f12b9cca2fc13134f8c9894a53daca8d406d63e7b9299025083024e13cf119ba"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8162e32ada27bb9ba45632950f940a85e41feb7299e76288fd84101da0f26cd9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "8665234910015bad50b82af8d87725d1af2b365c2068cffc205a50507bc26401"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4715873c2051fd730df00a510d6814ea1f657229344ab4879ddedba5c20923d1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-23-11_issue9_20261109_applied_s4/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "50e0ec4fc9f74de8f9f19122b3a83b463f3404d9542cdfa9d744f45092613584"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2f29c127f787b43dd9a2b274acb1ae2a06a3816871a01fc501938e231da8cac0"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "745f46db776ebe26450cd4320aaed53173308032c276f58d500071bdaa52c17a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "b4273682f15110a5982ec831ed121a0fc2a284a01f6edd081c084906f4738ed1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1797cff2e80034b65e6783d806d36bbd96fb4ea94903d6832f356ffc0d70df9a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ca8dfa706bf77ad6d3d0bdcf0e0ed708b970d527de71a10514f25c43637bd955"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "5cf400a1a323ef3371c55806ec0edfcadd9449f94be1a4b6f4e0c38d823076fb"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "80bb6d62ffcd6cfc23a90e2d2f1e74fb852c856838705ff51c468fa1f9f35c93"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "543010ce460801096750445513df30edac239f4875b2950803bd398dda82c825"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0e9c2cb3139206d3f53251bfd5fa6ec43ea73811f8ae288faa46b39018b36c25"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4fc13710459743171d0b2821537f8e3f2fa66fffdfd04dd7f00c75bde0c13ee9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4c3afaf8ba304b119bcd67c122a53b7328076abf2be88e2a05bae32db82b6ddc"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "1ca896c73395e4710bec972c92ab5c92aafdc0f889e885d4563a52840b29f86e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_14-57-48_issue9_20261109_requested_s5/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "96a7380e6a3e8f405b4c785a88b03d71de15b16f1f0d0b8fb235e67d64ee3f4f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_7500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f559529cd690cfc03d59943c7595dc357dc994e16852ee87a9107573b387754a"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_7600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "ab37f27dba0e1b3bf446710697737bf6d01708fe072fce92882221920f3b954c"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_7700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7443d8ebc16a3a86180741e4ea4bd607d7b4f0e6e8c14b8bab388e44885d6701"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_7800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "6cb29e42b81a100d56c2280226ac79046c9b6dd9a72e1c4a0cb44c9aad448b51"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_7900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "2ee793cf08cb816fff2db435d5d727b26185f9b848993348d8048161a6edb818"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "88fda580dde8025327f68ab5f7c7667276bf78e38167b0561582e90f63287bc5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "c5dede566cdc973bffa4d3749b54f2d1e90c77dec9e47733056b7c659362c7f6"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "f9b9125d1e8fe14bf64cf90bed54ea3d0beee948dc96e63b6ab710fa2487ced5"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "7cccb1b2dfc980f29dedaa3234154abc49531607e0a7f64943dba46f6624ec66"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "17846b5413e996581318e7cdd8de80a707d94e64ff670be27a14392a305e2fa4"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "4454bc4ea1311a0fae5677fd85416172f8c409b11ca9378a2cfcd0294e93268e"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "29785e8f469918a2175bbf787f551b1722d68b4d953443468a80b874a424a171"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_15-32-27_issue9_20261109_applied_s5/model_8900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "3398cbac985da1378f09df1acf261288f1f522d2d46d0a7ea75d8d6bb1a61d98"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9000.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9fa614cef5d7292f413b47efbeed74f6b61be2c5de6e3c4d081e93012f8cd753"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9100.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "da7120f91d907384e850515245ff51d2d9bcd3f2e123d0dec082d3e28b179e26"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9200.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "e45fd7ceb52cfb2de33f4d4c3899c5e12462cace8aba713e929bfab9ce24f0b3"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9300.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "0649e20039d81956d365fd0e0ca547960ca60d447c8f8cc444a4f4772873c24b"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9400.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "9c2c104ea9a71155a5cf6172ca21ad2b77ec16f54838af06c3ea8ea9e317febd"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9500.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "51375bb653e01bd2b3430a4af45926079e3a3e5bcdf51783ff9a9f00fc1ce3b2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9600.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "d8a80ad02c810506812a0072f16c2f97fc2d32b1f5bd72ebf660d85bef2e0081"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9700.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "297cd8cecd8e1484f4c75ce81765877f1f595a721bc915a5eab1c25a7c2fbfb1"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9800.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "aca61f6ae8ae4deba0660b3f232d638ca4a70bc795352a5c1777e29bd9c85c40"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_9900.pt",
+      "bytes": 5466485,
+      "nlink": 1,
+      "sha256": "bc3f2da90527ba9e2a7575f9521421eaeb84abd351d6161a4a60b5646c776332"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10000.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "125691b714440254c158b502121e45713b70d873d35f0de0fe132d95368c8387"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10100.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "964e16c901d7b86766f8e6c1c5d122a4ba450b084f888ded76aa9e835ab6f759"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10200.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "1d4f63903cf6bcc0c0b308804931d608c16f2bbb88c13afa39f2f5b10ea17925"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10300.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "5ffa6f617ab40ffe34d2076d00d2f7c8c3bce9dc72010487611ef46dbdcc4da8"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10400.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "c16c60e87479cffc07a218c6d5d9f7d1d219ecb685481c52e84948fb28aa8543"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10600.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "0989851cef98be9ba036b461928d6a7efdaa6825b2951e02a8571b55f0000599"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10700.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "ac88e58b8d479041c0d2c1d71f4ba117c9140745a08cf5e59e2c6cb8e8024a71"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10800.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "9e51f85d6cfb10415c207301365bcf75ad1f4d80b3b79d55d73cc9b375e82d18"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_10900.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "4a944b488ab47c1efdf7025c0e4a9b5c36223e397a201da7c1469bbcca095df2"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_11000.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "7d4df22480b02454e0a2f01ea1d72d39ad83ba1575d6524341ede35d1ef54520"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_11100.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "30b190edfef4643dd07c7615e92569c2bd59cbe84b982050484709a0041c741f"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_11200.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "2586e8013c4b1c5f9cb8085d009057f9b2b0e24237bb5aa241ba6a0556548118"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_11300.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "c3d5bac58ce2940a73b1d1747d9f4337151e65e5366d02ca70817c8ca2e2a3b9"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_11400.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "2f20768740c1b079b3ba41fc37c47c7c256375da322c6bfddb686e514391ea90"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_11500.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "09a4d50d73dad055776453b1bb95921cad4883d294c98971c4065bd8ac084622"
+    },
+    {
+      "path": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-09_17-33-48_issue10_20261109_requested_s1/model_11600.pt",
+      "bytes": 5466559,
+      "nlink": 1,
+      "sha256": "6ea0bd5b167f9a3c93afea3e3ef4910f720b0412369f26ad968abe4ba3c85622"
+    }
+  ],
+  "protected_files_verified": 329,
+  "free_bytes_before": 293650432,
+  "deleted_count": 659,
+  "deleted_bytes": 3600190117,
+  "all15_current_final_models_preserved": true,
+  "all_issue17_frozen_inputs_preserved": true,
+  "free_bytes_after": 3894767616,
+  "completed_unix": 1794549521.3760467
+}

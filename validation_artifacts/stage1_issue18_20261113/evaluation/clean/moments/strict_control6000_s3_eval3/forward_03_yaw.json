@@ -1,0 +1,11 @@
+{
+  "dt": 0.02,
+  "steps": 1000,
+  "num_envs": 1024,
+  "full_series": true,
+  "yaw_error_formula": "mean valid post-step abs(root_ang_vel_b[:,2] - commanded_yaw_rate), units rad/s; exactly original evaluator",
+  "yaw_body_rate_note": "Body-z angular velocity is not generally Euler heading derivative under tilt.",
+  "heading_formula": "Sum atan2(sin(yaw_t-yaw_previous),cos(yaw_t-yaw_previous)) over nonterminal steps; reset jumps excluded. Both full episode-concatenated and initial-episode prefixes retained. Full20s endpoint statistics only on no-reset survivors, with denominator/falls and censoring caveat.",
+  "contact_formula": "left/right foot net world force norm >1N, same as evaluator; packed axis1 little endian",
+  "observer_no_sampling_or_writes": true
+}

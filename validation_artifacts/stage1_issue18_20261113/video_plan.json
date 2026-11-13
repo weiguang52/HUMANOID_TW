@@ -1,0 +1,24 @@
+[
+  {
+    "group": "sym_int",
+    "model": "sym_int_s3",
+    "env_id": 502,
+    "push_seconds": [],
+    "selection_metric": "absolute reset-aware20s heading for all initial trials",
+    "source_policy_mode": "strict",
+    "views": {
+      "front": {
+        "path": "/root/gpufree-data/tw_stage1/issue18_20261113/videos/sym_int_front.mp4",
+        "sha256": "239b86ea610a67873585be7ea5dc675d5f027242bea97cb5653720d5aa9d35aa",
+        "metadata": "/root/gpufree-data/tw_stage1/issue18_20261113/sym_int_front.json",
+        "source_trajectory_sha256": "32cca197402788bb7c5cbedc680a756938d919a2912bea589f7853091e9e8c28"
+      },
+      "overhead": {
+        "path": "/root/gpufree-data/tw_stage1/issue18_20261113/videos/sym_int_overhead.mp4",
+        "sha256": "dc315d7cfbe1435afa0dc63aa9e32eb81ff342726a3df3c834092d8c6734a615",
+        "metadata": "/root/gpufree-data/tw_stage1/issue18_20261113/sym_int_overhead.json",
+        "source_trajectory_sha256": "32cca197402788bb7c5cbedc680a756938d919a2912bea589f7853091e9e8c28"
+      }
+    }
+  }
+]

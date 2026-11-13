@@ -1,0 +1,92 @@
+[
+  {
+    "model": "control6000_s1",
+    "sha256": "a2188ed0e259882be63a364fce71cdc614b4534291b26e285c3fcc5e7a566552",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue12_20261110/models/control_s1/model_13493.pt",
+    "new_training": false
+  },
+  {
+    "model": "control6000_s2",
+    "sha256": "bdf2c1889f40eefa818aa0bf8bf079ccb766d3b1a47180cad4477d91c0d122c7",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue12_20261110/models/control_s2/model_13493.pt",
+    "new_training": false
+  },
+  {
+    "model": "control6000_s3",
+    "sha256": "3a8e1c160d1b0cefa23b300415bea0a762fd52a48141f88dac4558a5d9757e96",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue12_20261110/models/control_s3/model_13493.pt",
+    "new_training": false
+  },
+  {
+    "model": "control6000_s4",
+    "sha256": "ff26d6474131eed034f5f923c525c8147d5a241078e2d5e90205f3bf1f88575e",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue12_20261110/models/control_s4/model_13493.pt",
+    "new_training": false
+  },
+  {
+    "model": "control6000_s5",
+    "sha256": "09a25318b57f8ed26e63201cf734674b46cc64b6e7efeb15ee15a4b17107899f",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue12_20261110/models/control_s5/model_13493.pt",
+    "new_training": false
+  },
+  {
+    "model": "control_int_s1",
+    "sha256": "219cee2ad046cd2cffd48720de04fb1e4e0aa9fa02b3be04fe5dc1609e741f03",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/control_int_s1.pt",
+    "new_training": false
+  },
+  {
+    "model": "sym_int_s1",
+    "sha256": "7853c0c8bf3cbc312cf347011289901e553aadd6812f6a99d3556223fd6735b6",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/sym_int_s1.pt",
+    "new_training": false
+  },
+  {
+    "model": "control_int_s2",
+    "sha256": "4e7a9b310f053a00200140127248a87173f45c39e06066b5147f5fe76266afd9",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/control_int_s2.pt",
+    "new_training": false
+  },
+  {
+    "model": "sym_int_s2",
+    "sha256": "9ba68fc3cca5abd8afae0bef09270492c419cb812418dd1de14b85771cafc71c",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/sym_int_s2.pt",
+    "new_training": false
+  },
+  {
+    "model": "control_int_s3",
+    "sha256": "636fafd76d65c3ad3fde8c0f7bb239f6e9e1d27496523466e2a7211b8de34ff7",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/control_int_s3.pt",
+    "new_training": false
+  },
+  {
+    "model": "sym_int_s3",
+    "sha256": "6a9655605bfeaedd8f504e35940f6d5b29d6b963241f84dc1a2dea86fde21306",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/sym_int_s3.pt",
+    "new_training": false
+  },
+  {
+    "model": "control_int_s4",
+    "sha256": "e01b70a7387676a902244df572b385269da4a770f9b88896d927b893fe566723",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/control_int_s4.pt",
+    "new_training": false
+  },
+  {
+    "model": "sym_int_s4",
+    "sha256": "3e300cf59c0bfe3f1606d73b6a7ffe4bbdb1bd10d762e0e71bfff51eb438e37e",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/sym_int_s4.pt",
+    "new_training": false
+  },
+  {
+    "model": "control_int_s5",
+    "sha256": "5c68f76d988369793e4ba812506eda58577db44958b2970b4374817345bfb038",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/control_int_s5.pt",
+    "new_training": false
+  },
+  {
+    "model": "sym_int_s5",
+    "sha256": "cc6d90583e24c1ba49f3b05b2221537de09339151fde19f74eaa4db748b8711a",
+    "existing_committed_checkpoint": "validation_artifacts/stage1_issue17_20261113/models/sym_int_s5.pt",
+    "new_training": false
+  }
+]

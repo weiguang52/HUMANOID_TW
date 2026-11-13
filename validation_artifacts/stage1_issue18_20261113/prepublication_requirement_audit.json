@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "scope": "pre-publication scientific and implementation requirements; GitHub and Notion delivery must be verified separately",
+  "requirements": {
+    "fifteen_models_same102400_states_identity_and_strict_equivariance": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/projection_validation.json": "c30297f9ce9f3a1fcd49769d38ca4114d48a8e2ab8c4d0f61f43f3d41156c3cc"
+      }
+    },
+    "bounded45_new_jobs_270_commands_276480_trials": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/evaluation_progress.json": "4b60f0be1b324390af6848e9bc3ba0cf3220a37bab4c37c3af659e1847ab21b5"
+      }
+    },
+    "formal_sources_weights_and_prospective_rules_unchanged": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/formal_inputs_frozen.json": "6d9f8d7c3e8013bda5eb973af79a5972d70a37b71b4c9ba4862b0e7b22c53735",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/classification_rules.json": "24e8c9c1f768dab5ec70ed0c6797910f14ff7a119fc1a420441302fa7a6e9ba9"
+      }
+    },
+    "all_commands_actual_feedback_phase_and_model_immutability": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/preflight_audit.json": "9599681debf1417e1e1815951121486a1e4328232a3feb6b4a2b6d33db6532a7"
+      }
+    },
+    "original45_jobs_reused_without_rewrite": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/original_reuse_manifest.json": "f2d7ff5bf57fe2a76187b4633c0a98ee9613f3a610406e3ee2816448156cec50",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/original_reuse_portability.json": "6c9bcf84241a2745b534cfe9ab28c0c0af1c118afddb0c81cb772feb4e6413a9",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/original_phase_reuse_audit.json": "72a4c3e65cfbb6e1f818724fc239de487e7bd27e178e2302ab472875d2211e15"
+      }
+    },
+    "all_original_and_projected_heading_falls_prefix_tracking_and_halfcycles": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/raw_analysis_audit.json": "16f114649e5509cd1a89222c829ef3b2eaa3f5b7567baf2019dc29ebb5d5a104",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/job_statistics.json": "b45f26d0a99c20b013579415508c6150cb21319e6bceeb2f8d3587cdc83a9393",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/seed_statistics.json": "c7c1c8287fe0f4a40c8a2ef5b3ea4123dcd2251412d967bfae118feca5a180c5",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/group_statistics.json": "34e22c6ef9cea19f9ba4c361ca923b0d3b78b67077d5faf6b44239a220c50044",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/paired_comparisons.json": "f8328b41172b3694ed20d253bac4562fb7a428b31a7b4ec5c5a50cd345015960"
+      }
+    },
+    "prospective_training_seed_A_B_C_classification": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/classification.json": "5e60e6c9917b997e2577568204b81a6021b61e271d18ca7eddd6aa63b26d0dec"
+      }
+    },
+    "strict_sym_int_median_colored_two_views_world_XY_and_actual_review": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/representative_selection.json": "6c35d0ec3c03c43e4fef8bb32df54189ad5777def1a112a76f2fbdb6a9461150",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/reconstruction_state.json": "7f3b0be2f363aa4714d8e8f3b13dcda144bbb26e36c8ebf223042074e977917f",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/media_source_sha256.json": "817025bba8c8050cc2318ed7a9ab80fbc539cd9ff06e3459b405b20b6eb91274",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/video_quality_audit.json": "5d917ae1216cd3eac71ea34cf8866019001e9b140a132a1f0d6de942309af911",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/manual_visual_review.json": "1f3c7bd1b014e86cac341110576f01d5d8857284bc1107c197aad09f0eac3d81"
+      }
+    },
+    "complete_report_all_tables_figures_and_one_unimplemented_recommendation": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/results.md": "17810baba7c2dd99a06632614ad7ff17a5ea3117c73c5371f40efea8dcf7dc31",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/seed_tables.md": "49c1e6a88ed72e69350856ba7d2c6aabfeb4eeed575faeeadfc74afc97225e55",
+        "/root/gpufree-data/tw_stage1/issue18_20261113/figure_manifest.json": "734681fc4d31645c310bfdb7e990d466068589bbfefb800c86b50b3c98922896"
+      }
+    },
+    "no_existing_reward_configuration_USD_or_default_edits": {
+      "passed": true,
+      "files": {
+        "/root/gpufree-data/tw_stage1/issue18_20261113/cohort.json": "2efa2856fd6c2c4b3fa1dd1d04f083345708d6e35f7d95564c5401f4d3c492cc"
+      }
+    }
+  },
+  "zero_training": true,
+  "source_sha256": "4e2a45d971d2ae4e580a79175e4fbf71d5b0eae1b87340e8525b2ad9ca7a97b3"
+}

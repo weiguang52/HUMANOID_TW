@@ -1,0 +1,20 @@
+{
+  "frozen_before_first_formal_rollout": true,
+  "training_seed_units": 5,
+  "eval_seeds_averaged_within_training_seed": 3,
+  "bootstrap": "exact3125equallyweighted five-seed bootstrap resamples; unadjusted percentile95",
+  "zero_yaw_commands": [
+    "stand",
+    "forward_03",
+    "forward_05",
+    "forward_08"
+  ],
+  "uninterpretable": "If any zero-yaw command has group mean fall-rate(projected)-group mean fall-rate(original)>0.05, label wrapper-destroyed-control and exclude that cohort from causal classification; report all its data nonetheless. The boundary is strict >5 percentage points.",
+  "A_per_cohort": "For interpretable cohort: projected forward0.5 mean absolute20s heading <=0.30*original mean; paired projected-minus-original bootstrap95 upper<0; at least3of4projected zero-yaw command means<=30deg. Missing any required seed endpoint cannot pass.",
+  "B_per_cohort": "For interpretable cohort failing A: projected forward0.5 mean absolute20s heading>100deg, OR complete-cycle left+right yaw sum has five-training-seed95 interval excluding0 (evidence halves do not cancel). The sum interval is descriptive unadjusted; no arbitrary numeric cancellation tolerance is introduced.",
+  "overall_A": "At least2cohorts interpretable, and every interpretable cohort satisfies A. Per-cohort conclusions always retained.",
+  "overall_B": "At least1cohort interpretable, and every interpretable cohort satisfies B. This is a diagnosis category, not proof of USD physical asymmetry.",
+  "overall_C": "All other cases, including mixed cohorts, wide intervals or insufficient interpretable evidence; if none interpretable, explicitly say no causal conclusion. No additional experiments.",
+  "half_cycle_convention": "Assign wrapped post-step quaternion-yaw increment to PRE-action episode_length_buf%20: left0..9,right10..19. Exclude terminal/reset transitions. Group complete20-step cycles within each initial episode separately; summarize complete-cycle left/right/sum means per training seed, then five-seed95. Also retain all valid full-horizon/prefix half totals, exposure, partial cycles and failure counts. Never replace absent full20s headings with prefixes.",
+  "next_step": "Exactly ONE recommendation based on final A/B/C; no future training/2x2/heading_command experiment performed in this issue. No default promotion."
+}

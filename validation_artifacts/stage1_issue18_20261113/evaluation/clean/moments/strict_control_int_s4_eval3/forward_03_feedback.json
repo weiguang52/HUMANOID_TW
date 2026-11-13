@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "actual_last_action_observation_checks": 1000,
+  "last_action_max_error": 0.0,
+  "actually_applied_action_checks": 1000,
+  "applied_action_max_error": 0.0,
+  "pre_action_episode_step_reconstruction_exact": true,
+  "clock_reset_zero": true,
+  "phase_bin_convention": "pre-action episode_length_buf %20, left0..9 right10..19; yaw is post-step increment; terminal steps excluded"
+}
