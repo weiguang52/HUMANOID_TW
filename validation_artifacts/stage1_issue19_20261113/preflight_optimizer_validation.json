@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "mode": "baseline",
+      "finite_tensor_states": 68,
+      "std_positive": true,
+      "final_checkpoint_sha256": "3e8e5f49fb04e6e9bcbe94ec1f138147b2559b8d181dc4287740845534b33aa8",
+      "iteration": 13494
+    },
+    {
+      "mode": "sym_cont",
+      "finite_tensor_states": 68,
+      "std_positive": true,
+      "final_checkpoint_sha256": "3e8e5f49fb04e6e9bcbe94ec1f138147b2559b8d181dc4287740845534b33aa8",
+      "iteration": 13494
+    },
+    {
+      "mode": "sym_wrap",
+      "finite_tensor_states": 69,
+      "std_positive": true,
+      "final_checkpoint_sha256": "bab45d9cd0355bba918dfb488506ebf7bdf3747bf8261ae2658402ec01c8ac08",
+      "iteration": 13494
+    }
+  ],
+  "time": 1794572592.3772204,
+  "checked_actor_critic_optimizer_checkpoint_tensors": true
+}

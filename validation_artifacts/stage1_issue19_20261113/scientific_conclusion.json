@@ -1,0 +1,229 @@
+{
+  "all_criteria_passed": false,
+  "primary_passed": false,
+  "zero_yaw_heading_passed": false,
+  "heading_passed": false,
+  "tracking_recovered": true,
+  "robustness_passed": false,
+  "outcome": "heading_not_met_persistent_drift_and_nonzero_halfcycle",
+  "recommendation": "Next issue: original/reflected policy x original/strict symmetric USD 2x2 diagnostic.",
+  "recommendation_not_implemented": true,
+  "default_promoted": false,
+  "primary_paired_difference_ci95": [
+    -353.9517766388484,
+    -144.90261512299594
+  ],
+  "heading_by_command": {
+    "stand": {
+      "mean": 8.762178692824804,
+      "ci95": [
+        2.790177152647154,
+        17.92336545829355
+      ],
+      "seeds": [
+        3.869417338235374,
+        3.4153005806681165,
+        26.545325873123602,
+        8.355416040264851,
+        1.6254336318320803
+      ],
+      "complete": true
+    },
+    "forward_03": {
+      "mean": 40.952376050895715,
+      "ci95": [
+        11.027794210769226,
+        91.85504480422898
+      ],
+      "seeds": [
+        6.071912295984767,
+        27.372605408320496,
+        15.75244109391024,
+        13.621352683983174,
+        141.9435687722799
+      ],
+      "complete": true
+    },
+    "forward_05": {
+      "mean": 48.04389416345721,
+      "ci95": [
+        20.231324456046472,
+        75.85646387086796
+      ],
+      "seeds": [
+        91.7288162211445,
+        5.426836661961969,
+        25.37231108051451,
+        39.55832679527939,
+        78.1331800583857
+      ],
+      "complete": true
+    },
+    "forward_08": {
+      "mean": 28.862800315694198,
+      "ci95": [
+        9.271860485968755,
+        57.42954351536132
+      ],
+      "seeds": [
+        30.299425304490246,
+        83.36144353376477,
+        6.763961671022078,
+        8.942208018605717,
+        14.946963050588186
+      ],
+      "complete": true
+    }
+  },
+  "tracking": {
+    "forward_05": {
+      "xy_error": 0.034810967294486725,
+      "reference_xy_error": 0.03579747391005778,
+      "xy_error_ratio": 0.9724420047612945,
+      "vx": 0.4908392142005158,
+      "reference_vx": 0.49709000313070373,
+      "vx_ratio": 0.9874252370982718,
+      "passed": true
+    },
+    "forward_08": {
+      "xy_error": 0.08249161643120898,
+      "reference_xy_error": 0.09388260694689875,
+      "xy_error_ratio": 0.8786677225299818,
+      "vx": 0.7235977866350227,
+      "reference_vx": 0.7167596956388944,
+      "vx_ratio": 1.0095402839162617,
+      "passed": true
+    },
+    "yaw_positive": {
+      "yaw_error": 0.12105908975774655,
+      "reference_yaw_error": 0.12724385265662858,
+      "ratio": 0.9513944071186543,
+      "passed": true
+    },
+    "yaw_negative": {
+      "yaw_error": 0.11066963018169532,
+      "reference_yaw_error": 0.11414210455610299,
+      "ratio": 0.9695776209146303,
+      "passed": true
+    }
+  },
+  "bounded03_falls": {
+    "mean": 0.009244791666666667,
+    "ci95": [
+      0.005989583333333334,
+      0.013802083333333335
+    ],
+    "seeds": [
+      0.009440104166666666,
+      0.018229166666666668,
+      0.007161458333333333,
+      0.0068359375,
+      0.004557291666666667
+    ],
+    "complete": true
+  },
+  "bounded05_falls": 0.014908854166666666,
+  "reference_bounded05_falls": 0.025520833333333336,
+  "diagnostic": {
+    "forward_05": {
+      "startup": {
+        "mean": -3.7454228173134476,
+        "ci95": [
+          -4.793341204316541,
+          -2.5288992470809446
+        ],
+        "seeds": [
+          -1.5099017905121837,
+          -4.0914821044888,
+          -5.01093932769808,
+          -3.1881182330192974,
+          -4.926672630848874
+        ],
+        "complete": true
+      },
+      "late_slope": {
+        "mean": -0.5245932889186895,
+        "ci95": [
+          -3.202846519887926,
+          2.4595655419947113
+        ],
+        "seeds": [
+          -5.0466245861307355,
+          0.13237331741119832,
+          -0.43717942052371256,
+          -1.9900308293064761,
+          4.718495073956278
+        ],
+        "complete": true
+      },
+      "half_cycle_sum": {
+        "mean": -0.30221439509339904,
+        "ci95": [
+          -1.2085304484571175,
+          0.7650358164130183
+        ],
+        "seeds": [
+          -1.8345763203118637,
+          -0.07164517671230101,
+          -0.376347542110437,
+          -0.7911665338872864,
+          1.562663597554893
+        ],
+        "complete": true
+      },
+      "persistent_and_nonzero_halfcycle": false
+    },
+    "forward_08": {
+      "startup": {
+        "mean": -0.028352174305719336,
+        "ci95": [
+          -2.9561311696955395,
+          3.5325181026443753
+        ],
+        "seeds": [
+          -2.800951439360862,
+          6.668319391418488,
+          -4.146096062481369,
+          -0.32161653943212615,
+          0.45858377832727265
+        ],
+        "complete": true
+      },
+      "late_slope": {
+        "mean": 1.5101186970012517,
+        "ci95": [
+          0.43301274153745756,
+          2.9556434990986866
+        ],
+        "seeds": [
+          1.8723645066844838,
+          4.216660150104912,
+          0.25587253849421426,
+          0.44762234097621106,
+          0.7580739487464371
+        ],
+        "complete": true
+      },
+      "half_cycle_sum": {
+        "mean": 0.5505963555211028,
+        "ci95": [
+          0.13274606761460045,
+          1.1264778002887401
+        ],
+        "seeds": [
+          0.6059216072934603,
+          1.667228872068468,
+          0.02478077794483551,
+          0.15911826188458075,
+          0.29593225841416965
+        ],
+        "complete": true
+      },
+      "persistent_and_nonzero_halfcycle": true
+    }
+  },
+  "rules_sha256": "9f5fd7739785427abee1ed67adf66b103cb0df262f5380fc652bfe6c39174d33",
+  "bootstrap_unit": "five paired training seeds, three evaluation seeds averaged within each",
+  "heading_seed95_intervals": "individual percentile intervals; not adjusted for simultaneous coverage",
+  "causal_background_claims_not_proven": true
+}

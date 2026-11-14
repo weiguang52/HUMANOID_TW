@@ -1,0 +1,17 @@
+{
+  "successful_formal_models": 10,
+  "updates_per_successful_model": 1500,
+  "successful_formal_updates": 15000,
+  "preflight_updates": 6,
+  "failed_infrastructure_attempts": 1,
+  "failed_logged_updates": 1392,
+  "failed_executed_update_bounds": [
+    1392,
+    1393
+  ],
+  "failed_checkpoint_updates": 8,
+  "user_authorized_retry": true,
+  "extra_candidate_models": 0,
+  "failed_attempt_excluded_from_formal_results": true,
+  "retry_log_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-14_01-25-29_issue19_20261113_sym_cont_s1_authorized_retry"
+}

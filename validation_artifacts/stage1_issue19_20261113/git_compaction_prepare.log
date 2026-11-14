@@ -1,0 +1,8 @@
+{'stage': 'building_complete_lossless_pack', 'object_count': 17692, 'started': 1794572221.4200344, 'driver_pid': 76040, 'original_objects_untouched': True}
+Traceback (most recent call last):
+  File "/tmp/issue19_prepare_git_compaction.py", line 7, in <module>
+    p=subprocess.run(['git','pack-objects','--threads=2','--window-memory=128m','--compression=6',str(out/'objects/pack/pack')],stdin=source,stdout=subprocess.PIPE,stderr=log,check=True)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/gpufree-data/conda_envs/env_isaaclab/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'pack-objects', '--threads=2', '--window-memory=128m', '--compression=6', '/tmp/issue19_git_compaction/objects/pack/pack']' returned non-zero exit status 128.

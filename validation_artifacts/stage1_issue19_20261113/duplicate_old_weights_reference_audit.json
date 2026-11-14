@@ -1,0 +1,118 @@
+{
+  "scanned_metadata_files": 33945,
+  "safe_unreferenced_payload_duplicate_weights": [
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_smoke/2026-10-31_04-55-06/checkpoint_0000004.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_smoke/2026-10-31_04-55-06/checkpoint_final.pt",
+      "bytes": 221083064,
+      "identical_payload_sha256": "eb6acbd45ab4e5c2306684a7e2012163f3fcd148a2877b7ccf9fcce1003e7caf",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_smoke/2026-10-31_02-54-40/checkpoint_0000004.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_smoke/2026-10-31_02-54-40/checkpoint_final.pt",
+      "bytes": 221079032,
+      "identical_payload_sha256": "9ed347eba0f08686ece266d2faf920db0cabcc2c075ca63d9f56af98374b51dc",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_reload/2026-10-31_05-00-10/checkpoint_0000006.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_reload/2026-10-31_05-00-10/checkpoint_final.pt",
+      "bytes": 221083512,
+      "identical_payload_sha256": "602ee57b15f1054984fb06a657c4c2bc5e7637bd40cff7df53e268b452471bd9",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_reload/2026-10-31_02-58-20/checkpoint_0000006.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_reload/2026-10-31_02-58-20/checkpoint_final.pt",
+      "bytes": 221079480,
+      "identical_payload_sha256": "a5480780933cb6339a3b29933dde27519b058a32ca66b248b8c8b2c2fa629efc",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_smoke/2026-10-31_04-51-14/checkpoint_0000004.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_smoke/2026-10-31_04-51-14/checkpoint_final.pt",
+      "bytes": 221082680,
+      "identical_payload_sha256": "9d59a01627612ea913dbc6dd79dcfe39e8c11150abfec2bf103224731d4926e8",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/anchor_retention_smoke_v2/2026-10-31_11-58-26/checkpoint_0000004.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/anchor_retention_smoke_v2/2026-10-31_11-58-26/checkpoint_final.pt",
+      "bytes": 221085121,
+      "identical_payload_sha256": "0040bfe3bfb38ac02c20756f937e79820ccddd022a372e1e578bfeb6806d55c3",
+      "payload_members": 197,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_velocity_v2_seed42/2026-10-31_09-24-01/checkpoint_0001000.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_velocity_v2_seed42/2026-10-31_09-24-01/checkpoint_final.pt",
+      "bytes": 221083128,
+      "identical_payload_sha256": "9080a1dfe2c2bd2ed1332434e92afe8e4044e468ec15fb3166d270fc98306cb0",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_1000/2026-10-31_05-15-56/checkpoint_0001000.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_1000/2026-10-31_05-15-56/checkpoint_final.pt",
+      "bytes": 221083064,
+      "identical_payload_sha256": "87eb3e42576a4f0eb6b6fb291082b167d25d1c6899a2289c8cda89ac30861467",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_v1_seed42/2026-10-31_08-08-16/checkpoint_0001000.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_v1_seed42/2026-10-31_08-08-16/checkpoint_final.pt",
+      "bytes": 221083064,
+      "identical_payload_sha256": "381bbf6ff770389bcaf72a9d9afa317130523fe5786023a25c235915853e7b6b",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_calibration_pair_v1/control/checkpoint_0001100.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_calibration_pair_v1/control/checkpoint_final.pt",
+      "bytes": 221084408,
+      "identical_payload_sha256": "800892b46bd5963c2f5505cdac8b14bd60f2aabb7c375900d613457b0b3866bb",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_calibration_pair_v1/calibrated/checkpoint_0001100.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_calibration_pair_v1/calibrated/checkpoint_final.pt",
+      "bytes": 221084408,
+      "identical_payload_sha256": "817099f1e9ccb49d9943a8b0b37caf1b39fbd35ec9bbc1d7251d5928180a2c78",
+      "payload_members": 196,
+      "references": []
+    },
+    {
+      "candidate": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/velocity_penalty_smoke_v1/2026-10-31_09-20-38/checkpoint_0000004.pt",
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/velocity_penalty_smoke_v1/2026-10-31_09-20-38/checkpoint_final.pt",
+      "bytes": 221083064,
+      "identical_payload_sha256": "ab6abb7a7bb2bb841f35d56f619877b05528944322427523a975f12ab1539aa0",
+      "payload_members": 196,
+      "references": []
+    }
+  ],
+  "protected_references": {
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_smoke/2026-10-31_04-55-06/checkpoint_0000004.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_smoke/2026-10-31_02-54-40/checkpoint_0000004.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_reload/2026-10-31_05-00-10/checkpoint_0000006.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_reload/2026-10-31_02-58-20/checkpoint_0000006.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_smoke/2026-10-31_04-51-14/checkpoint_0000004.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/anchor_retention_smoke_v2/2026-10-31_11-58-26/checkpoint_0000004.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_velocity_v2_seed42/2026-10-31_09-24-01/checkpoint_0001000.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_1000/2026-10-31_05-15-56/checkpoint_0001000.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_v1_seed42/2026-10-31_08-08-16/checkpoint_0001000.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_calibration_pair_v1/control/checkpoint_0001100.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_calibration_pair_v1/calibrated/checkpoint_0001100.pt": [],
+    "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/velocity_penalty_smoke_v1/2026-10-31_09-20-38/checkpoint_0000004.pt": []
+  },
+  "bytes_reclaimable": 2652994025,
+  "no_files_deleted": true,
+  "time": 1794573971.4734297
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "group": "sym_wrap",
+    "model": "sym_wrap_s4",
+    "env_id": 406,
+    "push_seconds": [],
+    "selection_metric": "absolute reset-aware20s heading for all initial trials",
+    "source_policy_mode": "trained_symmetric_actor",
+    "views": {
+      "front": {
+        "path": "/root/gpufree-data/tw_stage1/issue19_20261113/videos/sym_wrap_front.mp4",
+        "sha256": "c1ee201d128853619a488c0cd4ee3d387c24f32511c79fd3f7b086731310cf87",
+        "metadata": "/root/gpufree-data/tw_stage1/issue19_20261113/sym_wrap_front.json",
+        "source_trajectory_sha256": "e52391767b124d61386a0fa987cf4c757e9d7b920485d379559a12e4684330e2"
+      },
+      "side": {
+        "path": "/root/gpufree-data/tw_stage1/issue19_20261113/videos/sym_wrap_side.mp4",
+        "sha256": "38afa3aed2954c92f96feaa510c874c8431da03e21c78a387d519cde68301aeb",
+        "metadata": "/root/gpufree-data/tw_stage1/issue19_20261113/sym_wrap_side.json",
+        "source_trajectory_sha256": "e52391767b124d61386a0fa987cf4c757e9d7b920485d379559a12e4684330e2"
+      },
+      "overhead": {
+        "path": "/root/gpufree-data/tw_stage1/issue19_20261113/videos/sym_wrap_overhead.mp4",
+        "sha256": "1d428a0f8cd8cf835fc03beafeecd7f45a3199f57535196c39ad4ee349b5d7e7",
+        "metadata": "/root/gpufree-data/tw_stage1/issue19_20261113/sym_wrap_overhead.json",
+        "source_trajectory_sha256": "e52391767b124d61386a0fa987cf4c757e9d7b920485d379559a12e4684330e2"
+      }
+    }
+  }
+]

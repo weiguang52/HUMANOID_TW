@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "scope": "seed1 initial configuration only; all successful pairs require final audit",
+  "allowed_differences": [
+    "top-level env.log_dir",
+    "top-level agent.run_name"
+  ],
+  "checks": {
+    "env.yaml": {
+      "identical_except_run_identifiers": true,
+      "interrupted_control": "logs/rsl_rl/tw_stage1/2026-11-13_19-57-58_issue19_20261113_sym_cont_s1/params/env.yaml",
+      "sym_wrap": "logs/rsl_rl/tw_stage1/2026-11-13_20-30-42_issue19_20261113_sym_wrap_s1/params/env.yaml",
+      "interrupted_control_sha256": "be769bc231377e39192b67afc7c774266d4f0bbed9852d4620965c4cc6715740",
+      "sym_wrap_sha256": "ddb017ac8ca3cf674a42a4f9511d949a7f91757bad9207762bd389eaa7f0e663"
+    },
+    "agent.yaml": {
+      "identical_except_run_identifiers": true,
+      "interrupted_control": "logs/rsl_rl/tw_stage1/2026-11-13_19-57-58_issue19_20261113_sym_cont_s1/params/agent.yaml",
+      "sym_wrap": "logs/rsl_rl/tw_stage1/2026-11-13_20-30-42_issue19_20261113_sym_wrap_s1/params/agent.yaml",
+      "interrupted_control_sha256": "730535ebb1364327ed4852dd9842fca08ae33db3d772404df728d4202ca4fc40",
+      "sym_wrap_sha256": "b80af32372c50c2d6e4d55d9ce7a4faf1c073c184547242654791ebe3efe88b7"
+    }
+  }
+}

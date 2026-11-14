@@ -1,0 +1,11 @@
+{
+  "authorized": true,
+  "instruction": "User explicitly authorizes rerun; failed computation is accounted separately.",
+  "failed_arm": "sym_cont_s1",
+  "retry_parent": "same original sym_int_s1 final checkpoint",
+  "retry_seed": 1,
+  "retry_updates": 1500,
+  "retry_num_envs": 4096,
+  "no_other_budget_extension": true,
+  "time": 1794573201.8320196
+}

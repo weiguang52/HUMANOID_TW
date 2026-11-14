@@ -1,0 +1,15 @@
+{
+  "python": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:34:02) [GCC 14.3.0]",
+  "packages": {
+    "torch": "2.7.0+cu128",
+    "numpy": "1.26.0",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.31.1",
+    "rsl-rl-lib": "5.0.1",
+    "tensordict": "0.13.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 4090, 580.126.09, 24564 MiB",
+  "time": 1794572383.78145,
+  "onnxruntime_added_for_required_export_validation": true,
+  "training_dependencies_not_upgraded": true
+}

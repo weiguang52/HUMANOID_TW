@@ -1,0 +1,124 @@
+{
+  "checked_at": 1794592675.057512,
+  "scope": "all ten checkpoint hashes and fixed budgets; all five exact paired configurations",
+  "models": [
+    {
+      "group": "sym_wrap",
+      "seed": 1,
+      "sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f"
+    },
+    {
+      "group": "sym_cont",
+      "seed": 2,
+      "sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea"
+    },
+    {
+      "group": "sym_wrap",
+      "seed": 2,
+      "sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef"
+    },
+    {
+      "group": "sym_cont",
+      "seed": 3,
+      "sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b"
+    },
+    {
+      "group": "sym_wrap",
+      "seed": 3,
+      "sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87"
+    },
+    {
+      "group": "sym_cont",
+      "seed": 4,
+      "sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a"
+    },
+    {
+      "group": "sym_wrap",
+      "seed": 4,
+      "sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac"
+    },
+    {
+      "group": "sym_cont",
+      "seed": 5,
+      "sha256": "7274eeb4ec96021ba9fa3d922e35316acfb2142386b9f7899322ebef036c3efe"
+    },
+    {
+      "group": "sym_wrap",
+      "seed": 5,
+      "sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288"
+    },
+    {
+      "group": "sym_cont",
+      "seed": 1,
+      "sha256": "8df88e25a85b13603b602ce1500360809d21d834308a22ffb498db6630e70742"
+    }
+  ],
+  "configuration_pairs": [
+    {
+      "seed": 1,
+      "files": {
+        "env.yaml": {
+          "ignored_top_level_key": "log_dir:",
+          "normalized_sha256": "d25ccda6054d113abc3533325c609ef7c0d2ded7469c914a8fd1f9217c461f4a"
+        },
+        "agent.yaml": {
+          "ignored_top_level_key": "run_name:",
+          "normalized_sha256": "e99135f22cd4e3be85d46497bb40c3785e2d99db4a21910ff5a0102afc201209"
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "files": {
+        "env.yaml": {
+          "ignored_top_level_key": "log_dir:",
+          "normalized_sha256": "9d64c666ac9a2d3a267e808763c95ce638228864c8ba4589c553690e6de59707"
+        },
+        "agent.yaml": {
+          "ignored_top_level_key": "run_name:",
+          "normalized_sha256": "6fc89438401de964619a6b78599cd06c874d8dfb7cf574750d46798e4fa96512"
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "files": {
+        "env.yaml": {
+          "ignored_top_level_key": "log_dir:",
+          "normalized_sha256": "afaff58faf75c2ef747b1a3bc5c578e7cfb5413acb301a06e4402b47fabe811a"
+        },
+        "agent.yaml": {
+          "ignored_top_level_key": "run_name:",
+          "normalized_sha256": "8298585fdf21a7f1f85acd27bac2451b536c4cf890dd27c3f3f3007cc51d5b15"
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "files": {
+        "env.yaml": {
+          "ignored_top_level_key": "log_dir:",
+          "normalized_sha256": "7b71efa00ba60dc946a1e6dec0730756757e3c9dcb91fe1026719cb5febc9c0b"
+        },
+        "agent.yaml": {
+          "ignored_top_level_key": "run_name:",
+          "normalized_sha256": "6a3fd73be0b392fc798eaa6a65c319641488bf065d323574fd44c978225639b9"
+        }
+      }
+    },
+    {
+      "seed": 5,
+      "files": {
+        "env.yaml": {
+          "ignored_top_level_key": "log_dir:",
+          "normalized_sha256": "6bbc122f024fcf26840984de706ac51131acd6d717d06d2bdebf5e7fc2d72a23"
+        },
+        "agent.yaml": {
+          "ignored_top_level_key": "run_name:",
+          "normalized_sha256": "0666c75594d73c9d23288417d2d55a058f751a506bac6e32adc72fbdd9fbc19e"
+        }
+      }
+    }
+  ],
+  "passed": true
+}

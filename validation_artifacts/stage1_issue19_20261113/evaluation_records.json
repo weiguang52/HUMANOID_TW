@@ -1,0 +1,1172 @@
+[
+  {
+    "name": "clean_sym_cont_s1_eval1",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s1_eval1.json",
+    "output_sha256": "47dbe00012f54e09e58d2bd971d067d6939bace35361fac0c025a234eebb6679",
+    "checkpoint_sha256": "8df88e25a85b13603b602ce1500360809d21d834308a22ffb498db6630e70742",
+    "wall_seconds": 195.00846076011658
+  },
+  {
+    "name": "combined_sym_cont_s1_eval1",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s1_eval1.json",
+    "output_sha256": "b9c98b257f4276b6d94ac587d3ab01ea04d7ae40326c380f34e2890a3136d207",
+    "checkpoint_sha256": "8df88e25a85b13603b602ce1500360809d21d834308a22ffb498db6630e70742",
+    "wall_seconds": 125.00582838058472
+  },
+  {
+    "name": "clean_sym_cont_s1_eval2",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s1_eval2.json",
+    "output_sha256": "5c0538738fa9ef5a29352df096beb28c54a91194b393e734a5d0b07b34b2ebe3",
+    "checkpoint_sha256": "8df88e25a85b13603b602ce1500360809d21d834308a22ffb498db6630e70742",
+    "wall_seconds": 190.00800132751465
+  },
+  {
+    "name": "combined_sym_cont_s1_eval2",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s1_eval2.json",
+    "output_sha256": "12928b6e9b1cb5370f176211b8ed2360d4605c1e0f52ce639a1cb550bf9c2435",
+    "checkpoint_sha256": "8df88e25a85b13603b602ce1500360809d21d834308a22ffb498db6630e70742",
+    "wall_seconds": 125.00602126121521
+  },
+  {
+    "name": "clean_sym_cont_s1_eval3",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s1_eval3.json",
+    "output_sha256": "007bc4dd20b6f80011f333e043d5cc606ec6566d5de1d939144d9e9eb8cbf9ee",
+    "checkpoint_sha256": "8df88e25a85b13603b602ce1500360809d21d834308a22ffb498db6630e70742",
+    "wall_seconds": 190.05564141273499
+  },
+  {
+    "name": "combined_sym_cont_s1_eval3",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s1_eval3.json",
+    "output_sha256": "751d28303373c102b7ae60cb047c83d5bcf34eb0b7fbc5e0b30971a111776fc4",
+    "checkpoint_sha256": "8df88e25a85b13603b602ce1500360809d21d834308a22ffb498db6630e70742",
+    "wall_seconds": 125.03272151947021
+  },
+  {
+    "name": "clean_sym_wrap_s1_eval1",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s1_eval1.json",
+    "output_sha256": "06299176a2807c9e40bbbbb5884cc7f7b26ada6712a5e66843ee1bbf2348ffa6",
+    "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+    "wall_seconds": 195.00860738754272
+  },
+  {
+    "name": "combined_sym_wrap_s1_eval1",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s1_eval1.json",
+    "output_sha256": "253bbe5fd388cbe4762e81196abccab3d45047bea718116d1c876e8ad2971d35",
+    "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+    "wall_seconds": 125.0059974193573
+  },
+  {
+    "name": "clean_sym_wrap_s1_eval2",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s1_eval2.json",
+    "output_sha256": "f6df850259726989908d7edf361adfdc3ca5f2d6451fd76c08da7668d6a73145",
+    "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+    "wall_seconds": 195.00813341140747
+  },
+  {
+    "name": "combined_sym_wrap_s1_eval2",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s1_eval2.json",
+    "output_sha256": "dec08c8619c56e633bd4c24c9a74816fd049443571ebe76b6fdb8f09f69ff939",
+    "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+    "wall_seconds": 125.00572466850281
+  },
+  {
+    "name": "clean_sym_wrap_s1_eval3",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s1_eval3.json",
+    "output_sha256": "5f7fbfb9a81ab90898faeefb5f9f4c4377cc5539ed816b07d9953d1c81cb95ac",
+    "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+    "wall_seconds": 195.00823092460632
+  },
+  {
+    "name": "combined_sym_wrap_s1_eval3",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s1_eval3.json",
+    "output_sha256": "85752a732cdb22982809bf0f162dda6d466f97bd7e806043049b67b2171a1c4d",
+    "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+    "wall_seconds": 125.0059700012207
+  },
+  {
+    "name": "clean_sym_cont_s2_eval1",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s2_eval1.json",
+    "output_sha256": "6d52ea278937d3b1592fdc4a73604446e6cf54ec05a9f742786b3d969797d50f",
+    "checkpoint_sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea",
+    "wall_seconds": 200.00915455818176
+  },
+  {
+    "name": "combined_sym_cont_s2_eval1",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s2_eval1.json",
+    "output_sha256": "5809cbc7f730fecfda373492f1bbc92dbc933bea2cae6b6978a12cb12f0e91b6",
+    "checkpoint_sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea",
+    "wall_seconds": 125.00585126876831
+  },
+  {
+    "name": "clean_sym_cont_s2_eval2",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s2_eval2.json",
+    "output_sha256": "b02c947f35c02f702f29c7561755326f69003587ddb3414334845dde4cbbfe32",
+    "checkpoint_sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea",
+    "wall_seconds": 200.05193328857422
+  },
+  {
+    "name": "combined_sym_cont_s2_eval2",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s2_eval2.json",
+    "output_sha256": "a429e907783b458a46b16074ad7d016d96234bdc5049fd60aaf95334419a81fe",
+    "checkpoint_sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea",
+    "wall_seconds": 125.03137540817261
+  },
+  {
+    "name": "clean_sym_cont_s2_eval3",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s2_eval3.json",
+    "output_sha256": "6a72c16ec1815eb612a6653399a268ef3c61fb743bae733e54f25fcb2fb72e6c",
+    "checkpoint_sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea",
+    "wall_seconds": 200.03758001327515
+  },
+  {
+    "name": "combined_sym_cont_s2_eval3",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s2_eval3.json",
+    "output_sha256": "9344b784755321d129ae67318de2bb8b3f5f075cada680d86c53142408ac2c52",
+    "checkpoint_sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea",
+    "wall_seconds": 125.00573492050171
+  },
+  {
+    "name": "clean_sym_wrap_s2_eval1",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s2_eval1.json",
+    "output_sha256": "cd76ac11fcc83a16d18e9e80a421cab3104a61a238d6eda58452bb251c588f22",
+    "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+    "wall_seconds": 200.06183695793152
+  },
+  {
+    "name": "combined_sym_wrap_s2_eval1",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s2_eval1.json",
+    "output_sha256": "27b48cd88677c461e72cd001c1c151b55dd5b3ba49f52e706ef08ee89d89c232",
+    "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+    "wall_seconds": 125.0309853553772
+  },
+  {
+    "name": "clean_sym_wrap_s2_eval2",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s2_eval2.json",
+    "output_sha256": "5f04408358aafe8f5379716509b7587015ddda9642ff035a0ae50cf0e72eeb67",
+    "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+    "wall_seconds": 195.00892543792725
+  },
+  {
+    "name": "combined_sym_wrap_s2_eval2",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s2_eval2.json",
+    "output_sha256": "9eb5512b7d04aea9230679cf31e03ffad34ae73bfdf49f787e9acf3eed09dced",
+    "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+    "wall_seconds": 130.00636839866638
+  },
+  {
+    "name": "clean_sym_wrap_s2_eval3",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s2_eval3.json",
+    "output_sha256": "32265db189a6d6f35f865cf90743cf2660d0417a1f591f2b8c880f176a8326db",
+    "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+    "wall_seconds": 195.0085644721985
+  },
+  {
+    "name": "combined_sym_wrap_s2_eval3",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s2_eval3.json",
+    "output_sha256": "0da155ef55e61515347c186744e0911d13ddfc24faad3cd95cca0aed619ab18f",
+    "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+    "wall_seconds": 130.0061478614807
+  },
+  {
+    "name": "clean_sym_cont_s3_eval1",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s3_eval1.json",
+    "output_sha256": "9c81d950316e5afef58527a7ffc8f11788b47997d3a438dc7c59ff1147b9ec43",
+    "checkpoint_sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b",
+    "wall_seconds": 200.04136657714844
+  },
+  {
+    "name": "combined_sym_cont_s3_eval1",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s3_eval1.json",
+    "output_sha256": "88a8821da1bf09e350c2b3b06ec903eac73be42a0f5b1aa3f21b357e5e253df4",
+    "checkpoint_sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b",
+    "wall_seconds": 125.00589680671692
+  },
+  {
+    "name": "clean_sym_cont_s3_eval2",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s3_eval2.json",
+    "output_sha256": "95b6e66a960559d29b52a9026558aa8e4079baeadbac5c70e38e2d649ec9fbf3",
+    "checkpoint_sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b",
+    "wall_seconds": 190.00802063941956
+  },
+  {
+    "name": "combined_sym_cont_s3_eval2",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s3_eval2.json",
+    "output_sha256": "6759d518fa1ed36959ca7876b63a28e806611622e64e7a3d5ebcb7626c7d8d82",
+    "checkpoint_sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b",
+    "wall_seconds": 125.00587034225464
+  },
+  {
+    "name": "clean_sym_cont_s3_eval3",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s3_eval3.json",
+    "output_sha256": "9a7322eef3dc47f942b5ce92734447850349c7d522d3bbb0221dba82e4094fae",
+    "checkpoint_sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b",
+    "wall_seconds": 190.0078399181366
+  },
+  {
+    "name": "combined_sym_cont_s3_eval3",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s3_eval3.json",
+    "output_sha256": "997c4a505e9272d0cbdaaacf2bc84a0b730a1de236dd99d7c2cf3ac2f2c3e705",
+    "checkpoint_sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b",
+    "wall_seconds": 125.00576877593994
+  },
+  {
+    "name": "clean_sym_wrap_s3_eval1",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s3_eval1.json",
+    "output_sha256": "ec3f2ce5d5d86bc0b04ab0192ca7bca450933895c41d77a3856b91fca782d31f",
+    "checkpoint_sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+    "wall_seconds": 200.00925469398499
+  },
+  {
+    "name": "combined_sym_wrap_s3_eval1",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s3_eval1.json",
+    "output_sha256": "711c89a7204ac913d9b9b3bf8cfc3a495c38c3551e0acb2f3346d1fad64d1ee1",
+    "checkpoint_sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+    "wall_seconds": 130.00638222694397
+  },
+  {
+    "name": "clean_sym_wrap_s3_eval2",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s3_eval2.json",
+    "output_sha256": "ee9cb858c403a8b61ce25e206c94246fc12fc12f738c14eee75de711414c0cbd",
+    "checkpoint_sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+    "wall_seconds": 195.02063727378845
+  },
+  {
+    "name": "combined_sym_wrap_s3_eval2",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s3_eval2.json",
+    "output_sha256": "d35c495e2203a7e024a2dafc74799db984d4efd7492b24fac12419f24978ddbb",
+    "checkpoint_sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+    "wall_seconds": 125.030766248703
+  },
+  {
+    "name": "clean_sym_wrap_s3_eval3",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s3_eval3.json",
+    "output_sha256": "a01d2ccf3453449304b578852d25c4635d8693f40ec509879cd842ae1757a588",
+    "checkpoint_sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+    "wall_seconds": 195.03629231452942
+  },
+  {
+    "name": "combined_sym_wrap_s3_eval3",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s3_eval3.json",
+    "output_sha256": "2b13b336d0d82d8ea3d63c14e64ef7892aeeaccdf24f92fcdc034c3da07acc47",
+    "checkpoint_sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+    "wall_seconds": 130.00656533241272
+  },
+  {
+    "name": "clean_sym_cont_s4_eval1",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s4_eval1.json",
+    "output_sha256": "b574e010ca935c156337ed1eb63f741db4a804feeb210f2cbdd1f99e9a7034ec",
+    "checkpoint_sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a",
+    "wall_seconds": 190.0080189704895
+  },
+  {
+    "name": "combined_sym_cont_s4_eval1",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s4_eval1.json",
+    "output_sha256": "fdb74ef15fad6c21443da88dcd6b8f51416e8fb27e2987808823786bc3fcc5b0",
+    "checkpoint_sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a",
+    "wall_seconds": 120.00572919845581
+  },
+  {
+    "name": "clean_sym_cont_s4_eval2",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s4_eval2.json",
+    "output_sha256": "ae7f7ed95a3a55ac2341eaa06319a1ab204c8f80bbcfb57611222f263629cb43",
+    "checkpoint_sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a",
+    "wall_seconds": 190.0095992088318
+  },
+  {
+    "name": "combined_sym_cont_s4_eval2",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s4_eval2.json",
+    "output_sha256": "1db137b340f86d4ac8cf5fc5b1910be9045c634eb74bb410b2fc15bd4e0f35f6",
+    "checkpoint_sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a",
+    "wall_seconds": 130.03215265274048
+  },
+  {
+    "name": "clean_sym_cont_s4_eval3",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s4_eval3.json",
+    "output_sha256": "a9ebb35170917c6ad28ae742480eadc2366a47f0837ebb380758649b30258630",
+    "checkpoint_sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a",
+    "wall_seconds": 195.00904846191406
+  },
+  {
+    "name": "combined_sym_cont_s4_eval3",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s4_eval3.json",
+    "output_sha256": "e313e8d6fbaac8c49e3fe93567cc72096950c152af0d74dd989cf91dcd07b658",
+    "checkpoint_sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a",
+    "wall_seconds": 125.00605535507202
+  },
+  {
+    "name": "clean_sym_wrap_s4_eval1",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s4_eval1.json",
+    "output_sha256": "bdc24a5ad5887476c7067b2877dbbd73bdf4e962182eacca51737367128e1234",
+    "checkpoint_sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+    "wall_seconds": 195.00828409194946
+  },
+  {
+    "name": "combined_sym_wrap_s4_eval1",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s4_eval1.json",
+    "output_sha256": "8570f047a57694b3ac22742339c8de9a5c5cfbbc37fdf01ec72abdd93b649d44",
+    "checkpoint_sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+    "wall_seconds": 125.00579118728638
+  },
+  {
+    "name": "clean_sym_wrap_s4_eval2",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s4_eval2.json",
+    "output_sha256": "ea30b1f560a574fbf03fe4b6a07ada35591942cc61b6786b1541c7b31d5d8ca8",
+    "checkpoint_sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+    "wall_seconds": 200.03339219093323
+  },
+  {
+    "name": "combined_sym_wrap_s4_eval2",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s4_eval2.json",
+    "output_sha256": "c53fe2e9f664d1f26766e20f7f1d3653043f734ce434116db48ee6af6e545da1",
+    "checkpoint_sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+    "wall_seconds": 125.00597882270813
+  },
+  {
+    "name": "clean_sym_wrap_s4_eval3",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s4_eval3.json",
+    "output_sha256": "ed58333c91864e87cf240d8eda05dad27a96275a8a7f5e7c16867a474869f888",
+    "checkpoint_sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+    "wall_seconds": 195.0603678226471
+  },
+  {
+    "name": "combined_sym_wrap_s4_eval3",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s4_eval3.json",
+    "output_sha256": "0a32910498757e52382feb2f4f19cd567454fe7d9ee8d600978945d9f3e0618d",
+    "checkpoint_sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+    "wall_seconds": 135.03171634674072
+  },
+  {
+    "name": "clean_sym_cont_s5_eval1",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s5_eval1.json",
+    "output_sha256": "18047a20e3439d9c342c46648fee8f90c3846f2508e1b04d21352f2e0a9ed70b",
+    "checkpoint_sha256": "7274eeb4ec96021ba9fa3d922e35316acfb2142386b9f7899322ebef036c3efe",
+    "wall_seconds": 195.00907731056213
+  },
+  {
+    "name": "combined_sym_cont_s5_eval1",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s5_eval1.json",
+    "output_sha256": "5ea0c8dedf133dbe2fac27a95aa28d1767593730a7d63d16483a53f5364afe7e",
+    "checkpoint_sha256": "7274eeb4ec96021ba9fa3d922e35316acfb2142386b9f7899322ebef036c3efe",
+    "wall_seconds": 130.00653862953186
+  },
+  {
+    "name": "clean_sym_cont_s5_eval2",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s5_eval2.json",
+    "output_sha256": "1c36252f053b824b0481e592ebba5f92a91f507059a16acca7ee43081273aef8",
+    "checkpoint_sha256": "7274eeb4ec96021ba9fa3d922e35316acfb2142386b9f7899322ebef036c3efe",
+    "wall_seconds": 190.00823664665222
+  },
+  {
+    "name": "combined_sym_cont_s5_eval2",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s5_eval2.json",
+    "output_sha256": "f0d2df311d7cd75a6ec2188b7646863f2f150f09a938bd9e2bfc87ccbd68e4b9",
+    "checkpoint_sha256": "7274eeb4ec96021ba9fa3d922e35316acfb2142386b9f7899322ebef036c3efe",
+    "wall_seconds": 130.00773072242737
+  },
+  {
+    "name": "clean_sym_cont_s5_eval3",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_cont_s5_eval3.json",
+    "output_sha256": "9dfaedfa6ff5401d4f57d6251d1675bdc06f23d69bb811aef30d1f5139c5f5a8",
+    "checkpoint_sha256": "7274eeb4ec96021ba9fa3d922e35316acfb2142386b9f7899322ebef036c3efe",
+    "wall_seconds": 190.0353810787201
+  },
+  {
+    "name": "combined_sym_cont_s5_eval3",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_cont_s5_eval3.json",
+    "output_sha256": "447cf47c18f9c4cbef55c5d35555f5541dffb59b04e9c4970bdd27478ade6c5e",
+    "checkpoint_sha256": "7274eeb4ec96021ba9fa3d922e35316acfb2142386b9f7899322ebef036c3efe",
+    "wall_seconds": 130.00631523132324
+  },
+  {
+    "name": "clean_sym_wrap_s5_eval1",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s5_eval1.json",
+    "output_sha256": "e8fa99049bec8e990da50aebc11baf73e217448d892f1fd82e0f24fab2f8af2d",
+    "checkpoint_sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288",
+    "wall_seconds": 195.0081479549408
+  },
+  {
+    "name": "combined_sym_wrap_s5_eval1",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s5_eval1.json",
+    "output_sha256": "d755797aa63539dafd2d928864eb2a771eb6f8373315389880098d84445a2e55",
+    "checkpoint_sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288",
+    "wall_seconds": 130.00712490081787
+  },
+  {
+    "name": "clean_sym_wrap_s5_eval2",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s5_eval2.json",
+    "output_sha256": "a4f773cbc52a74b7582a2ddda8858bcb1656833044aed226cfe76dffe0e108b2",
+    "checkpoint_sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288",
+    "wall_seconds": 200.00860214233398
+  },
+  {
+    "name": "combined_sym_wrap_s5_eval2",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s5_eval2.json",
+    "output_sha256": "ff0093f37cd17f0899674f9fc3b74e8b1df76600af88e4990686d09253d199cd",
+    "checkpoint_sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288",
+    "wall_seconds": 130.02528524398804
+  },
+  {
+    "name": "clean_sym_wrap_s5_eval3",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/clean/clean_sym_wrap_s5_eval3.json",
+    "output_sha256": "ee67a75c9e376feca73f0b636851dfc3bc77f99e01ad67416b7ac1003f325f32",
+    "checkpoint_sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288",
+    "wall_seconds": 200.03567504882812
+  },
+  {
+    "name": "combined_sym_wrap_s5_eval3",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072,
+    "output": "/root/gpufree-data/tw_stage1/issue19_20261113/evaluation/combined/combined_sym_wrap_s5_eval3.json",
+    "output_sha256": "15192a315381e6c3945c4a16d7f3bde992848b0ac1aa320c0e240a0a5a101213",
+    "checkpoint_sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288",
+    "wall_seconds": 130.0061390399933
+  }
+]

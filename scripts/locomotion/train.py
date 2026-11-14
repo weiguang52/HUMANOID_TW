@@ -38,6 +38,7 @@ parser.add_argument("--last_action_observation", default="requested", choices=["
 parser.add_argument("--mass_randomization", default="legacy", choices=["legacy","bounded"])
 parser.add_argument("--post_push_pitch_weight", type=float, default=None)
 parser.add_argument("--critic_recovery_clock", action="store_true", default=False)
+parser.add_argument("--issue19_mode", choices=["off","sym_wrap","sym_cont"], default="off")
 parser.add_argument("--issue17_mode", choices=["legacy","control_int","sym_int"], default="legacy")
 parser.add_argument("--issue12_audit_dir", default="")
 parser.add_argument("--issue12_calibration_steps", type=int, default=0)
@@ -285,6 +286,12 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
         assert agent_cfg.resume and args_cli.issue12_audit_dir and not os.environ.get("TW_RESET_STD")
         from issue14_resume import expand_loaded_critic
         expand_loaded_critic(runner, env.unwrapped, Path(args_cli.issue12_audit_dir) / "critic_clock_migration.json")
+
+    if args_cli.issue19_mode != "off":
+        assert args_cli.issue17_mode == "sym_int" and agent_cfg.resume
+        assert args_cli.issue12_audit_dir and not os.environ.get("TW_RESET_STD")
+        from issue19_actor import install_runner
+        install_runner(runner, env.unwrapped, args_cli.issue19_mode, args_cli.issue12_audit_dir)
 
     # dump the configuration into log-directory
     dump_yaml(os.path.join(log_dir, "params", "env.yaml"), env_cfg)

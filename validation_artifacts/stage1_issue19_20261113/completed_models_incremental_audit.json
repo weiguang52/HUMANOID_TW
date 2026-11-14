@@ -1,0 +1,53 @@
+{
+  "scope": "completed models only; final all-ten audit remains required",
+  "checked_at": 1794586969.5141988,
+  "records": [
+    {
+      "group": "sym_wrap",
+      "seed": 1,
+      "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+      "budget_verified": true
+    },
+    {
+      "group": "sym_cont",
+      "seed": 2,
+      "checkpoint_sha256": "1a811c85fb3787469d34997156ecfd7f0aeda9d800355e6c2fefe1dfea246cea",
+      "budget_verified": true
+    },
+    {
+      "group": "sym_wrap",
+      "seed": 2,
+      "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+      "budget_verified": true
+    },
+    {
+      "group": "sym_cont",
+      "seed": 3,
+      "checkpoint_sha256": "38ff548f1cacb18e4c87802200d06e706511e9837cc91b4725e905234190e01b",
+      "budget_verified": true
+    },
+    {
+      "group": "sym_wrap",
+      "seed": 3,
+      "checkpoint_sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+      "budget_verified": true
+    },
+    {
+      "group": "sym_cont",
+      "seed": 4,
+      "checkpoint_sha256": "fec7221f76d4ffc8ed32fd6abf62ba4e1d4551587da403e3c8a23995f7439d9a",
+      "budget_verified": true
+    },
+    {
+      "group": "sym_wrap",
+      "seed": 4,
+      "checkpoint_sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+      "budget_verified": true
+    }
+  ],
+  "exact_configuration_pairs_ignoring_only_top_level_log_dir_run_name": [
+    2,
+    3,
+    4
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "first completed model checkpoint/optimizer finiteness and tied-std shape; all-final equivariance/ONNX validation remains pending",
+  "model": "sym_wrap_s1",
+  "checkpoint_sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+  "finite_tensor_states": 69,
+  "std_parameter_count": 18,
+  "std_min": 0.030440732836723328,
+  "std_max": 0.39121875166893005,
+  "updates": 1500,
+  "num_envs": 4096,
+  "at": 1794575075.387711
+}

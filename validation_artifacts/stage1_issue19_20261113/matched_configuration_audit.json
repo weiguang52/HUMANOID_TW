@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "training_seed_pairs": 5,
+  "allowed_differences": [
+    "top-level env.log_dir",
+    "top-level agent.run_name"
+  ],
+  "pairs": {
+    "1": {
+      "env.yaml": {
+        "sym_cont_sha256": "1db4591b977c7dfa3b3db19fce220cdf1dc586b8a057a93e38a31ea234a21643",
+        "sym_wrap_sha256": "ddb017ac8ca3cf674a42a4f9511d949a7f91757bad9207762bd389eaa7f0e663",
+        "identical_except_top_level_run_identifiers": true
+      },
+      "agent.yaml": {
+        "sym_cont_sha256": "a322ebb6086f7a6f3c29a10eeeed66151be02b4e8af27e7f589ad12e471e8a43",
+        "sym_wrap_sha256": "b80af32372c50c2d6e4d55d9ce7a4faf1c073c184547242654791ebe3efe88b7",
+        "identical_except_top_level_run_identifiers": true
+      }
+    },
+    "2": {
+      "env.yaml": {
+        "sym_cont_sha256": "51c22ff6bd087239ed06f8422f95f3cd43a6e6e1483a0cbf89896a1ad8c03f73",
+        "sym_wrap_sha256": "200e2cb33b61d7bbeb947137cd2930aac418ddfa81931f4e3037af9e00115357",
+        "identical_except_top_level_run_identifiers": true
+      },
+      "agent.yaml": {
+        "sym_cont_sha256": "8eca62ef1a2a98119583ea307008433880d82e71f05c8ba73cfb520b48e0e311",
+        "sym_wrap_sha256": "b5abeeec22bddccf7b25709b272d2b78a1458d142d3b3b74249bf54be69de543",
+        "identical_except_top_level_run_identifiers": true
+      }
+    },
+    "3": {
+      "env.yaml": {
+        "sym_cont_sha256": "94c4d2599e51eb4f3bbee37480ebdd008437f5a8fe2f952a1245447f126b1c52",
+        "sym_wrap_sha256": "96fe8ac004efd57b1d35a314336ede0c43d17d77f187f52f366c9996f8cf4d94",
+        "identical_except_top_level_run_identifiers": true
+      },
+      "agent.yaml": {
+        "sym_cont_sha256": "3b64e22957aadd511e0d41c98514e4552f53a6342c6705dcb4233cd507e4fbad",
+        "sym_wrap_sha256": "b4d5cc0629d4dad7d6607bcc8c782353bc77361e163071001a1dc6276105523e",
+        "identical_except_top_level_run_identifiers": true
+      }
+    },
+    "4": {
+      "env.yaml": {
+        "sym_cont_sha256": "f1b42e8f33b4457348368e84aae62ed03a3c371537acc2e17b217ba128731d67",
+        "sym_wrap_sha256": "6991c4d6dd8d5277fc81573e72f2de9fdd7cb017cb168ca9ebd4f6dfd08df3b0",
+        "identical_except_top_level_run_identifiers": true
+      },
+      "agent.yaml": {
+        "sym_cont_sha256": "80d475583d230555cc6e3a31a0cc4e47015b5640eb400af6fdb8a5b697d209ab",
+        "sym_wrap_sha256": "7c78dda1627d9582d1db7a84cab459964097b862dbe0c41c8dcca0b2df49e23a",
+        "identical_except_top_level_run_identifiers": true
+      }
+    },
+    "5": {
+      "env.yaml": {
+        "sym_cont_sha256": "4de4592c536c00f8ac0f89ee32252f226b3ddb619c8216fe758750648e62c02e",
+        "sym_wrap_sha256": "4d22345897104ee528b28b60e557e9bfa8d0bac3f30135e14c2202f5cd4a0d5a",
+        "identical_except_top_level_run_identifiers": true
+      },
+      "agent.yaml": {
+        "sym_cont_sha256": "0eac9ba7137184d2d65ef3986e26af29fc0f4716f3b048a60e3a943f8b14a0a7",
+        "sym_wrap_sha256": "03437513836858e2eadde54b6aadf7d90a2df682f26dd198e62e5d496806317d",
+        "identical_except_top_level_run_identifiers": true
+      }
+    }
+  }
+}

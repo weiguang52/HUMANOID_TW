@@ -1,0 +1,14 @@
+{
+  "mode": "sym_int",
+  "integer_clock": true,
+  "audit": {
+    "training_batch_calls": 40,
+    "original_batch_sizes": [
+      24576
+    ],
+    "augmented_batch_sizes": [
+      49152
+    ]
+  },
+  "updates": 2
+}

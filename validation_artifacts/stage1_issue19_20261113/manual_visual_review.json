@@ -1,0 +1,31 @@
+{
+  "actual_review_completed": true,
+  "figures_reviewed": 4,
+  "contact_sheets_reviewed": 1,
+  "full_resolution_frames_reviewed": 9,
+  "reviewed_at": 1794622182.571717,
+  "review_method": "Actual model visual inspection through remote image display, 960px full resolution frames; no mounted files copied locally.",
+  "reviewed_files_sha256": {
+    "figures/zero_yaw_heading.png": "52762b30ab513813073b006c21a1d9df63a2e47452b8f67012f549ce659c350f",
+    "figures/tracking_and_robustness.png": "148aabddc97fc83b213b3e359a59ce4a17a588382bde1fe186b6e07c9772a681",
+    "figures/startup_slope_and_halfcycle.png": "b80388df1df964c2378a9d19ab1b3b8d849666ffd22f7d1dc7621b1a00e07e30",
+    "figures/clean_falls_and_exposure.png": "56e9cdd48f25351966cb29398cf1ed38039233191179d1e95f80eadb08a69e63",
+    "video_contact_sheets/sym_wrap.png": "3f0af910abf123baae615f6bf45c8e3bb4c963ccc72f22f52b3f478a7960008e",
+    "video_review_frames/sym_wrap_front_frame19.png": "b14f5b82c28cc10522f1f41021abd99ca19b46b6a5f0d4057bd70cd89eb4a9af",
+    "video_review_frames/sym_wrap_front_frame30.png": "e22fcb1d3606df7ed073fee2ba058f889c0a61cc6b8dcf92b7747af0e0c116fa",
+    "video_review_frames/sym_wrap_front_frame999.png": "dc15bfe0ba45b09fe8c90954bd507066057950742317b6fc6615d2dc2febdf43",
+    "video_review_frames/sym_wrap_side_frame19.png": "df992e6da0666db960aa8b0c42ed43a459b944871fdfc8afa703f7b9a7efae31",
+    "video_review_frames/sym_wrap_side_frame30.png": "0fb2b6560eccdc4591a4c6f7b7c01de2d57ce0e839bba1a6309dce54afbd7e0c",
+    "video_review_frames/sym_wrap_side_frame999.png": "24ed616b02255caaabd8c736b167d66c430cd462f53f270ec87ecc5e594d7035",
+    "video_review_frames/sym_wrap_overhead_frame19.png": "4019278a4afed4e533975db7cb7d950d1229aaf4fd6759517008e86c4edaa171",
+    "video_review_frames/sym_wrap_overhead_frame30.png": "2eb207d4672b9926764f7508b86184af5284a52fa07a1237b6bf7757534743b1",
+    "video_review_frames/sym_wrap_overhead_frame999.png": "2bad203a7fe49558f8cb0e2fec55dab29ca117c58dce9409e0d99e000c2ab647"
+  },
+  "notes": [
+    "Four charts readable with legends, units, individual training-seed intervals and threshold lines. Clean falls are zero and initial exposure is 20s for every cohort.",
+    "Contact sheet inspected for front, side and overhead over full 20s. Nine full-resolution frames at maximum arm/turn and final time reviewed.",
+    "Colored articulated robot remains fully visible. Front and side follow heading; overhead retains world heading. World XY trail shows curved travel consistent with 41.0 degree representative drift.",
+    "Representative has extended arms; this is the saved policy pose, not a rendering correction. No claim of natural gait or accepted straight walking.",
+    "Media overlays identify exact saved-state replay without new physics; median selection is over all initial trials, no censored clean forward05 trials."
+  ]
+}

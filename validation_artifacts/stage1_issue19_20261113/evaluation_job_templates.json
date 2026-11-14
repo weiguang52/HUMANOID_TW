@@ -1,0 +1,932 @@
+[
+  {
+    "name": "clean_sym_cont_s1_eval1",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s1_eval1",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s1_eval2",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s1_eval2",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s1_eval3",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s1_eval3",
+    "model": "sym_cont_s1",
+    "group": "sym_cont",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s1_eval1",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s1_eval1",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s1_eval2",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s1_eval2",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s1_eval3",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s1_eval3",
+    "model": "sym_wrap_s1",
+    "group": "sym_wrap",
+    "training_seed": 1,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s2_eval1",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s2_eval1",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s2_eval2",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s2_eval2",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s2_eval3",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s2_eval3",
+    "model": "sym_cont_s2",
+    "group": "sym_cont",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s2_eval1",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s2_eval1",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s2_eval2",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s2_eval2",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s2_eval3",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s2_eval3",
+    "model": "sym_wrap_s2",
+    "group": "sym_wrap",
+    "training_seed": 2,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s3_eval1",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s3_eval1",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s3_eval2",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s3_eval2",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s3_eval3",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s3_eval3",
+    "model": "sym_cont_s3",
+    "group": "sym_cont",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s3_eval1",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s3_eval1",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s3_eval2",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s3_eval2",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s3_eval3",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s3_eval3",
+    "model": "sym_wrap_s3",
+    "group": "sym_wrap",
+    "training_seed": 3,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s4_eval1",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s4_eval1",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s4_eval2",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s4_eval2",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s4_eval3",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s4_eval3",
+    "model": "sym_cont_s4",
+    "group": "sym_cont",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s4_eval1",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s4_eval1",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s4_eval2",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s4_eval2",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s4_eval3",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s4_eval3",
+    "model": "sym_wrap_s4",
+    "group": "sym_wrap",
+    "training_seed": 4,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s5_eval1",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s5_eval1",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s5_eval2",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s5_eval2",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_cont_s5_eval3",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_cont_s5_eval3",
+    "model": "sym_cont_s5",
+    "group": "sym_cont",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s5_eval1",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s5_eval1",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s5_eval2",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s5_eval2",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 2,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  },
+  {
+    "name": "clean_sym_wrap_s5_eval3",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "clean",
+    "commands": [
+      "forward_03",
+      "yaw_positive",
+      "yaw_negative",
+      "forward_05",
+      "forward_08",
+      "stand"
+    ],
+    "initial_trials": 6144
+  },
+  {
+    "name": "combined_sym_wrap_s5_eval3",
+    "model": "sym_wrap_s5",
+    "group": "sym_wrap",
+    "training_seed": 5,
+    "eval_seed": 3,
+    "protocol": "combined",
+    "commands": [
+      "forward_03",
+      "forward_05",
+      "forward_08"
+    ],
+    "initial_trials": 3072
+  }
+]

@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_05-33-25_issue17_20261113_sym_int_s4/model_13493.pt",
+  "checkpoint_sha256": "3e300cf59c0bfe3f1606d73b6a7ffe4bbdb1bd10d762e0e71bfff51eb438e37e",
+  "iteration": 13493,
+  "exact_state": {
+    "actor_state_dict": {
+      "checkpoint_sha256": "00e2df283c5aa207737b6f9cc3c2020332011029f159575a8feef1896efe822a",
+      "loaded_sha256": "00e2df283c5aa207737b6f9cc3c2020332011029f159575a8feef1896efe822a"
+    },
+    "critic_state_dict": {
+      "checkpoint_sha256": "b8a0befaf2d5ad64a39cd456388cdcde56babb1f9b81e9553036c889985f4553",
+      "loaded_sha256": "b8a0befaf2d5ad64a39cd456388cdcde56babb1f9b81e9553036c889985f4553"
+    },
+    "optimizer_state_dict": {
+      "checkpoint_sha256": "6692ef0c618bea375e0dbd796eeae0eed0f0547a1aa79cf98ee8cf6be2022657",
+      "loaded_sha256": "6692ef0c618bea375e0dbd796eeae0eed0f0547a1aa79cf98ee8cf6be2022657"
+    }
+  },
+  "observation_dims": {
+    "policy": [
+      101
+    ],
+    "critic": [
+      134
+    ]
+  },
+  "actor_parameter_shapes": {
+    "distribution.std_param": [
+      30
+    ],
+    "mlp.0.weight": [
+      512,
+      101
+    ],
+    "mlp.0.bias": [
+      512
+    ],
+    "mlp.2.weight": [
+      256,
+      512
+    ],
+    "mlp.2.bias": [
+      256
+    ],
+    "mlp.4.weight": [
+      128,
+      256
+    ],
+    "mlp.4.bias": [
+      128
+    ],
+    "mlp.6.weight": [
+      30,
+      128
+    ],
+    "mlp.6.bias": [
+      30
+    ]
+  },
+  "critic_parameter_shapes": {
+    "mlp.0.weight": [
+      512,
+      134
+    ],
+    "mlp.0.bias": [
+      512
+    ],
+    "mlp.2.weight": [
+      256,
+      512
+    ],
+    "mlp.2.bias": [
+      256
+    ],
+    "mlp.4.weight": [
+      128,
+      256
+    ],
+    "mlp.4.bias": [
+      128
+    ],
+    "mlp.6.weight": [
+      1,
+      128
+    ],
+    "mlp.6.bias": [
+      1
+    ]
+  },
+  "optimizer_groups": [
+    {
+      "lr": 7.593750000000004e-05,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "amsgrad": false,
+      "maximize": false,
+      "foreach": null,
+      "capturable": false,
+      "differentiable": false,
+      "fused": null,
+      "decoupled_weight_decay": false,
+      "params": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  ],
+  "std_reset": false
+}

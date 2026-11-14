@@ -1,0 +1,27 @@
+{
+  "cause": "Git pack-objects temporary file used source object directory despite external output prefix; filled mounted data disk",
+  "failed_temp_file": "/root/gpufree-data/projects/HUMANOID_TW/.git/objects/pack/tmp_pack_pvBXLA",
+  "failed_temp_bytes_removed": 2736238592,
+  "actual_processes_terminal": true,
+  "last_logged_iteration": 14884,
+  "logged_iterations": 1392,
+  "monitor_rows": 1392,
+  "last_monitor_row": {
+    "iteration": "14884",
+    "environment_steps": "24.0",
+    "transitions": "98304.0",
+    "raw_cost_mean": "0.00854334986070171",
+    "active_fraction": "0.12518310546875",
+    "new_reward_per_step": "0.0",
+    "old_reward_per_step": "0.07852412636081378",
+    "total_reward_per_step": "0.07852412636081378",
+    "xy_tracking_reward_per_step": "0.047757481380055346",
+    "yaw_tracking_reward_per_step": "0.006599033348417531",
+    "abs_new_over_abs_old": "0.0",
+    "abs_new_over_tracking": "0.0",
+    "max_term_identity_error": "0.0"
+  },
+  "last_checkpoint": "logs/rsl_rl/tw_stage1/2026-11-13_19-57-58_issue19_20261113_sym_cont_s1/model_13500.pt",
+  "no_final_checkpoint": true,
+  "time": 1794572984.3662107
+}

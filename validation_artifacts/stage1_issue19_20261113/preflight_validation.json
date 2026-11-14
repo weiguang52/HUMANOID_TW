@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "disabled_model_optimizer_and_runtime_bitwise_equal": true,
+  "sym_wrap_two_updates": true,
+  "all_three_runs_4096_envs": true,
+  "summary": {
+    "log_dir": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_19-56-59_issue19_preflight_sym_wrap",
+    "parent_checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_02-38-54_issue17_20261113_sym_int_s1/model_13493.pt",
+    "additional_updates": 2,
+    "environment_steps": 48,
+    "num_envs": 4096,
+    "final_iteration": 13494,
+    "std_reset": false,
+    "post_push_pitch_weight": 0.0
+  }
+}

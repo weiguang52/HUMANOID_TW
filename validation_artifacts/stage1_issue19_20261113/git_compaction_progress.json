@@ -1,0 +1,15 @@
+{
+  "stage": "complete_pack_verified_original_objects_untouched",
+  "object_count": 17692,
+  "started": 1794573090.83667,
+  "driver_pid": 76606,
+  "original_objects_untouched": true,
+  "pack": "/tmp/issue19_git_compaction/objects/pack/pack-9a82aa5b9210b4d44b4bde28644693b20ff9e269.pack",
+  "idx": "/tmp/issue19_git_compaction/objects/pack/pack-9a82aa5b9210b4d44b4bde28644693b20ff9e269.idx",
+  "pack_bytes": 10610102690,
+  "completed": 1794574139.5166392,
+  "installed": false,
+  "temporary_verified_pack_deleted": true,
+  "reason": "Verified duplicate-weight cleanup provides required disk capacity; original Git object store remains intact",
+  "final_object_id_count": 17692
+}

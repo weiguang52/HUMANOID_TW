@@ -1,0 +1,38 @@
+{
+  "frozen_at": 1794570666.8854284,
+  "issue": 19,
+  "base_commit": "91428e3c316eae754fc8aa557c254ca21eb71742",
+  "groups": [
+    "sym_wrap",
+    "sym_cont"
+  ],
+  "training_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "updates_per_model": 1500,
+  "training_envs": 4096,
+  "eval_envs": 1024,
+  "eval_seeds": [
+    1,
+    2,
+    3
+  ],
+  "seconds": 20,
+  "bootstrap": "exact 3125 paired resamples of 5 training seeds; average 3 eval seeds within each training seed",
+  "primary": "clean f05 mean absolute heading sym_wrap-sym_cont paired CI upper<0 AND sym_wrap mean<=30deg",
+  "heading": "stand,f03,f05,f08 mean absolute heading all <=30deg; report individual seed95 upper bounds",
+  "tracking": "f05,f08 xy error <=1.05*control_int AND vx>=.95*control_int; yaw +/-0.3 yaw error<=1.10*control_int",
+  "robustness": "bounded_combined f03 seed bootstrap95 upper<.01; f05 mean falls<=control_int",
+  "decomposition": "per trial 0-2s reset-aware initial yaw; OLS 5-20s unwrapped yaw slope deg/s; halfcycles f05/f08 per issue18; censoring/exposure reported",
+  "decision": "no default promotion unless ALL pass; otherwise exactly one future recommendation, no implementation or budget extension",
+  "reused_reference": [
+    "issue17/control_int",
+    "issue18/sym_int/strict"
+  ],
+  "std_migration": "one parameter per left-right orbit, arithmetic mean of parent std; preserve all other actor/critic/optimizer states and std Adam step; orbit-mean std Adam first/second moments, documented",
+  "status": "frozen_before_implementation_and_training"
+}

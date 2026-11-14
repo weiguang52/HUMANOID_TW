@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "protocol": "clean",
+      "command": "forward_05",
+      "envs": 64,
+      "phase_and_reset_aware_statistics_passed": true
+    },
+    {
+      "protocol": "clean",
+      "command": "forward_08",
+      "envs": 64,
+      "phase_and_reset_aware_statistics_passed": true
+    },
+    {
+      "protocol": "combined",
+      "command": "forward_05",
+      "envs": 64,
+      "phase_and_reset_aware_statistics_passed": true
+    },
+    {
+      "protocol": "combined",
+      "command": "forward_08",
+      "envs": 64,
+      "phase_and_reset_aware_statistics_passed": true
+    }
+  ],
+  "excluded_from_formal_counts": true,
+  "model": "two-update smoke only",
+  "loader_note": "in-memory n==64 specialization for preflight only; formal loader keeps n==1024",
+  "time": 1794571652.8790607
+}
