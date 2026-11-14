@@ -1,0 +1,66 @@
+[
+  {
+    "command": "stand",
+    "phase": 0,
+    "views": {
+      "front": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_stand_k0_front.mp4",
+        "sha256": "0bcdac78efc7e459cf5fa9b270d8403326ca70cf21128cda86fea0ebf45c5b89",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_stand_k0_front.json"
+      },
+      "side": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_stand_k0_side.mp4",
+        "sha256": "8a132760401de47f82adefc5dd60be6eedb8dd2d89c391503771a8d582e7cc85",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_stand_k0_side.json"
+      }
+    }
+  },
+  {
+    "command": "stand",
+    "phase": 10,
+    "views": {
+      "front": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_stand_k10_front.mp4",
+        "sha256": "48928a7f4a0198482325d6274eb6ca91867a1e7a6b5699c7ff5ef8780a0071e6",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_stand_k10_front.json"
+      },
+      "side": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_stand_k10_side.mp4",
+        "sha256": "085996450c0e2ff9736485ecd9ba3b2764c16b7a79dbc6e860065b47f941d2cb",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_stand_k10_side.json"
+      }
+    }
+  },
+  {
+    "command": "forward_05",
+    "phase": 0,
+    "views": {
+      "front": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_forward_05_k0_front.mp4",
+        "sha256": "e5b984e904cf7f6aeee1118ec83a321c8c059751c9e71585b074014c139a81b5",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_forward_05_k0_front.json"
+      },
+      "side": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_forward_05_k0_side.mp4",
+        "sha256": "037373270829e3c163c073395746cee0718ad7ebf83de5a80ed43252649f7a6c",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_forward_05_k0_side.json"
+      }
+    }
+  },
+  {
+    "command": "forward_05",
+    "phase": 10,
+    "views": {
+      "front": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_forward_05_k10_front.mp4",
+        "sha256": "5c85bab80641abddfcdbf6bccf9b99d439912a8252daf75842068ed485c4f078",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_forward_05_k10_front.json"
+      },
+      "side": {
+        "path": "/root/tw_stage1/issue21_20261114/videos/video_forward_05_k10_side.mp4",
+        "sha256": "7025c47a65908dc4bfa44f479965d619c21e8740b81f10d4760ee581072d3b8c",
+        "metadata": "/root/tw_stage1/issue21_20261114/video_forward_05_k10_side.json"
+      }
+    }
+  }
+]

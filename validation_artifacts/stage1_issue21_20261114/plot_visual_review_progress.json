@@ -1,0 +1,115 @@
+{
+  "actual_seen": [
+    {
+      "path": "figures/closed_stand_n16.png",
+      "sha256": "87ff9d6be9e71ecab43a84fc17a5bf58e258c3cedd5f13503e97f9a0e3dd6c31",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/closed_forward_05_n16.png",
+      "sha256": "97fc175dd21983e29f6032b3c6f1e966fd91ec85fb819c9b5c982f5b1651f770",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/closed_stand_n1.png",
+      "sha256": "d4a19c6a96c2a4e0db23e2054dfef66f9a0c0b9003a3d42400cb2fd2a65fdfdc",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/closed_forward_05_n1.png",
+      "sha256": "be8863770c899014a982e42d935e793bb5a08de6d58a51b277b5166c4f450345",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/open_stand_n16.png",
+      "sha256": "2331fea7adb6680834c5b5cf29cea14394b6419e61194184655384f1ec3ed9ab",
+      "width": 1680,
+      "height": 1440,
+      "source_width": 1680,
+      "source_height": 1440,
+      "transport_sha256": "14a8f1084918d743246bdf8116bf512823d5f203eed9ec0fb87662b7154fbd48"
+    },
+    {
+      "path": "figures/actuator_aux_stand.png",
+      "sha256": "f9325a24e85fba01b9e439c2cba71612158c8b2c21659693b58ea1b312324427",
+      "width": 1680,
+      "height": 1440,
+      "source_width": 1680,
+      "source_height": 1440,
+      "transport_sha256": "17da14ac24ebdedbc88b0cb7e57f86ce9ae6c864ee1fbb64ad6741a22b6f8ee6"
+    },
+    {
+      "path": "figures/actuator_aux_forward_05.png",
+      "sha256": "c3ba3ef76797a8c328c28fae5cf7cde02c1de0a9e5e2edce10e140b3c23ab84f",
+      "width": 1680,
+      "height": 1440,
+      "source_width": 1680,
+      "source_height": 1440,
+      "transport_sha256": "11b63a5634736024199c4779e1e34f0716e4a3ed8398c84f2a9df5feb0505070"
+    }
+  ],
+  "accepted_current_sha": [
+    {
+      "path": "figures/closed_stand_n16.png",
+      "sha256": "87ff9d6be9e71ecab43a84fc17a5bf58e258c3cedd5f13503e97f9a0e3dd6c31",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/closed_forward_05_n16.png",
+      "sha256": "97fc175dd21983e29f6032b3c6f1e966fd91ec85fb819c9b5c982f5b1651f770",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/closed_stand_n1.png",
+      "sha256": "d4a19c6a96c2a4e0db23e2054dfef66f9a0c0b9003a3d42400cb2fd2a65fdfdc",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/closed_forward_05_n1.png",
+      "sha256": "be8863770c899014a982e42d935e793bb5a08de6d58a51b277b5166c4f450345",
+      "width": 2400,
+      "height": 1680
+    },
+    {
+      "path": "figures/actuator_aux_stand.png",
+      "sha256": "f9325a24e85fba01b9e439c2cba71612158c8b2c21659693b58ea1b312324427",
+      "width": 1680,
+      "height": 1440,
+      "source_width": 1680,
+      "source_height": 1440,
+      "transport_sha256": "17da14ac24ebdedbc88b0cb7e57f86ce9ae6c864ee1fbb64ad6741a22b6f8ee6"
+    },
+    {
+      "path": "figures/actuator_aux_forward_05.png",
+      "sha256": "c3ba3ef76797a8c328c28fae5cf7cde02c1de0a9e5e2edce10e140b3c23ab84f",
+      "width": 1680,
+      "height": 1440,
+      "source_width": 1680,
+      "source_height": 1440,
+      "transport_sha256": "11b63a5634736024199c4779e1e34f0716e4a3ed8398c84f2a9df5feb0505070"
+    }
+  ],
+  "rejected_superseded": [
+    {
+      "path": "figures/open_stand_n16.png",
+      "sha256": "2331fea7adb6680834c5b5cf29cea14394b6419e61194184655384f1ec3ed9ab",
+      "width": 1680,
+      "height": 1440,
+      "source_width": 1680,
+      "source_height": 1440,
+      "transport_sha256": "14a8f1084918d743246bdf8116bf512823d5f203eed9ec0fb87662b7154fbd48"
+    }
+  ],
+  "final_acceptance_pending_remaining_figures": true,
+  "notes": [
+    "Actually inspected four closed-loop panels and both closed-loop actuator auxiliary panels; axes, seed legends and log thresholds readable.",
+    "One early ground-open panel was superseded by continuous no-reset replay data and will be reviewed again."
+  ]
+}

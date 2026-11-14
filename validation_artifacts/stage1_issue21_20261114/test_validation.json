@@ -1,0 +1,10 @@
+{
+  "analysis_tests_passed": 3,
+  "codec_tests_passed": 4,
+  "commands": [
+    "python -m unittest discover -s scripts/locomotion -p test_issue21_analysis.py",
+    "python -m unittest discover -s scripts/locomotion -p test_issue21_archive_codec.py"
+  ],
+  "scope": "Mirror involution/contact signs, crossing time/component correctness, exact independent OLS/censoring; lossless text/binary/video restore, corruption/path traversal rejection",
+  "already_executed_and_passed": true
+}

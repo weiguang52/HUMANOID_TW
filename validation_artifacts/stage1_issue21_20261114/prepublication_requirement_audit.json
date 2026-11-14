@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "groups": {
+    "same_five_unchanged_final_policies_and_strict_USD": {
+      "passed": true,
+      "evidence": {
+        "cohort.json": "2c92dcd791a3cb29273c8abb001f4f464fd5738bcb2f7d40603bc820a835f109",
+        "existing_issue20_input_objects.json": "ae0bffed35400fddf5bae475ba628d4018c4de989c818b9c922cce91224cb97f",
+        "existing_reference_bindings.json": "96ec2a675caa55a63ec1b066d781cfc1e3f5dd6295e1e34e589f33598ddc6aa6"
+      }
+    },
+    "all_closed_loop_commands_counts_phases_1000steps": {
+      "passed": true,
+      "evidence": {
+        "evaluation_records.json": "cde79932a8a9e7c65004ade6133627355260e69e6788fa26572afeb0590da03d",
+        "independent_protocol_audit.json": "8ab06e4d9b70926be2b057a990eac50a4115464f80202712b3755c736d69d571"
+      }
+    },
+    "every_observation_action_root_joint_and_contact_component": {
+      "passed": true,
+      "evidence": {
+        "pair_analysis.json": "951207d393ca301e6ffe0f3b29087ad790a124e06e8e1bcc77739692fe8d0db2",
+        "first_crossings.csv": "1dcdb9612a955414a7348524d05cc4bf89f37f9688d43b3a820dc0b81c4c11b2",
+        "first_component_crossings.csv": "0032bc14b3203115f4820a7d0f0699480c591f2593151047763cbcdedb7c842d"
+      }
+    },
+    "independent_component_crossings_and_step_alignment": {
+      "passed": true,
+      "evidence": {
+        "independent_component_crossing_audit.json": "94ac16dd3686450e4c9b32d43d20b4122c3fffcf9df0f7099ab58bb422c661a7"
+      }
+    },
+    "air_fixed_no_contact_and_ground200steps_exact_open_actions": {
+      "passed": true,
+      "evidence": {
+        "independent_protocol_audit.json": "8ab06e4d9b70926be2b057a990eac50a4115464f80202712b3755c736d69d571",
+        "independent_open_continuity_audit.json": "29866e075b0a5cc3fc0c689d1c3808ca00eaf768d8f545318a4d87b78bded987",
+        "ground_open_lifecycle_correction.json": "1c91ba984fae9d05f82ecdde68b93ebb391f725966da5ccb0c8b068c52005b1d"
+      }
+    },
+    "six_yaw_perturbations_five_seeds1024env_and_censoring": {
+      "passed": true,
+      "evidence": {
+        "perturbation_analysis.json": "22dd8efda5fa8d47548078ce68aac75d56867e244680b733ce3766177687500a"
+      }
+    },
+    "frozen_O_N_H_other_and_one_unimplemented_recommendation": {
+      "passed": true,
+      "evidence": {
+        "classification_rules.json": "5d017196e31b317135bbceda1fa5ebd46f7ec82b662030432c434044987c4192",
+        "scientific_conclusion.json": "b94c1d672223373d30be12d04fb43a27487f0ef009c879de39173e09e583ef06",
+        "O_trigger_components.json": "9c2174ead78ce399ab46ba80e764e1e23ef3aa405507a3530428d81c4bb099f8"
+      }
+    },
+    "measured_active_joint_force_and_separate_PD_estimate_semantics": {
+      "passed": true,
+      "evidence": {
+        "installed_torque_API_evidence.json": "cf30ca5167cd368d88ebbc6b0552d983e62d17cdb4585b46310624b04a2dda1e",
+        "torque_instrumentation_correction.json": "082a2f2c86e11044df587c802ad02673e8f0f50f177830926a54d995c1df2544"
+      }
+    },
+    "all_sources_models_defaults_unchanged_and_no_training": {
+      "passed": true,
+      "evidence": {
+        "frozen_evaluation_sources.json": "fe6821dfe7824f5c39b35ad7ee6dddaf4ffc71300b5513d5009a0cc2dc2054bf",
+        "independent_protocol_audit.json": "8ab06e4d9b70926be2b057a990eac50a4115464f80202712b3755c736d69d571"
+      }
+    },
+    "eight_exact_pose_colored_front_side_videos": {
+      "passed": true,
+      "evidence": {
+        "colored_asset_integrity.json": "709fa0a9cbe5fd0c29c819b965a340375774a53e07614c572111a93ebbb72219",
+        "video_plan.json": "6e1da318cb193bc4d098577398202596605166a5f1eaf86580d7cba982463022",
+        "video_quality_audit.json": "c7cf976904eba3bce1abc805fab53188a119c7094971a63844bb782787781fab"
+      }
+    },
+    "actual_eleven_plots_four_sheets_twentyfour_frames": {
+      "passed": true,
+      "evidence": {
+        "manual_visual_review.json": "eb54b93455275d4c7bd2466cd2e7534c9ae9271e76c9393f531d696ab7f6f0c9",
+        "figure_manifest.json": "6981a82a5b3094e64a15fa69d24d3ccbc614d548ff7b0ffd2d63aca134ea424d"
+      }
+    },
+    "complete_evidence_and_historical_failures_preserved": {
+      "passed": true,
+      "evidence": {
+        "results.md": "057f66c9050cf5ae5ba38bfa3745c678c88f72faadcc482686343ddd2d4037e8",
+        "torque_instrumentation_correction.json": "082a2f2c86e11044df587c802ad02673e8f0f50f177830926a54d995c1df2544",
+        "startup_correction.json": "ae6024b0dc9f68af8a0e0889a9cbdf684eadf708745bec57bc99736f4f3fe4ff"
+      }
+    },
+    "meaningful_tests_and_syntax_validation": {
+      "passed": true,
+      "evidence": {
+        "test_validation.json": "442f1bf969be5504f7388be3603dd7d1c97ea82a38270c40834690d57acdbcbe",
+        "source_syntax_validation.json": "02ca50573a5904b58f404fdc24a9f84a498f8775580be9354fae48cef14643b5"
+      }
+    }
+  },
+  "jobs": 25,
+  "trace_pairs": 60,
+  "perturbation_cells": 30,
+  "classification": "O",
+  "training_updates": 0,
+  "publication_separate": true
+}

@@ -1,0 +1,12 @@
+{
+  "reason": "Installed ImplicitActuator documents approximate torques; original applied_torque was an estimate, unsuitable as measured torque. Preserve all v1 data and rerun same prescribed inputs with actual PhysX projected active joint forces plus estimated PD and explicit input/targets. No physics, actor, thresholds or parameters changed.",
+  "prior_completed_jobs": 5,
+  "prior_compute_seconds": 732.0749752521515,
+  "interrupted_job": "ground_s3_n1",
+  "retained_directory": "/root/tw_stage1/issue21_20261114/publication/rejected_instrumentation_v1_approximate_torque",
+  "prior_paths": "original absolute paths are historical; relative layout retained under retained_directory; never mix v1 and v2 arrays",
+  "rules_unchanged": true,
+  "time": 1794647861.4977822,
+  "inventory": "instrumentation_v1_inventory.json",
+  "retained_remote_only_rejected_raw_instrumentation": true
+}

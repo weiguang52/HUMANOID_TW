@@ -1,0 +1,460 @@
+{
+  "classification": "O",
+  "closed_initial_obs_global_max": 8.742277657347586e-08,
+  "closed_initial_action_global_max": 3.5762786865234375e-07,
+  "exact_mirrored_input_actor_probe_max": 0.0,
+  "air_first_step_ranges": {
+    "joint_pos": [
+      8.440017700195312e-05,
+      0.0004640687257051468
+    ],
+    "joint_vel": [
+      0.007035434246063232,
+      0.020730525255203247
+    ],
+    "applied_torque": [
+      0.0004721805453300476,
+      0.0018403679132461548
+    ],
+    "joint_target": [
+      0.0,
+      0.0
+    ]
+  },
+  "air_contact_max": 0.0,
+  "air_all200step_joint_target_max": 0.0,
+  "perturbation_seed_summaries": [
+    {
+      "training_seed": 1,
+      "baseline": {
+        "path": "/root/tw_stage1/issue21_20261114/controls/s1_epsilon_+0.00.npz",
+        "sha256": "c9fc9a996f0673340f3dfbba71ad59378d7471a5b0de3402ea314323a6a3cf85",
+        "fresh_independent_zero_epsilon_control": true,
+        "censored": 0,
+        "slope_mean": -4.356034325018076,
+        "positive": 0,
+        "negative": 1024
+      },
+      "perturbations": [
+        {
+          "epsilon": -0.2,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.05,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.01,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.01,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.05,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.2,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        }
+      ]
+    },
+    {
+      "training_seed": 2,
+      "baseline": {
+        "path": "/root/tw_stage1/issue21_20261114/controls/s2_epsilon_+0.00.npz",
+        "sha256": "79f88a2557cac4928db7dd7e59502f9b45832721c87fabd60511842f2ef4b30d",
+        "fresh_independent_zero_epsilon_control": true,
+        "censored": 0,
+        "slope_mean": 0.7764146269277727,
+        "positive": 1020,
+        "negative": 4
+      },
+      "perturbations": [
+        {
+          "epsilon": -0.2,
+          "positive": 1020,
+          "negative": 4,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 8,
+          "flip_fraction_valid": 0.0078125
+        },
+        {
+          "epsilon": -0.05,
+          "positive": 1022,
+          "negative": 2,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 6,
+          "flip_fraction_valid": 0.005859375
+        },
+        {
+          "epsilon": -0.01,
+          "positive": 1022,
+          "negative": 2,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 6,
+          "flip_fraction_valid": 0.005859375
+        },
+        {
+          "epsilon": 0.01,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 4,
+          "flip_fraction_valid": 0.00390625
+        },
+        {
+          "epsilon": 0.05,
+          "positive": 1023,
+          "negative": 1,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 5,
+          "flip_fraction_valid": 0.0048828125
+        },
+        {
+          "epsilon": 0.2,
+          "positive": 1023,
+          "negative": 1,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 5,
+          "flip_fraction_valid": 0.0048828125
+        }
+      ]
+    },
+    {
+      "training_seed": 3,
+      "baseline": {
+        "path": "/root/tw_stage1/issue21_20261114/controls/s3_epsilon_+0.00.npz",
+        "sha256": "a05e6bc769d1d78672af6e97e0c110bf7fc83cbb0879bb5f477a5417a3481630",
+        "fresh_independent_zero_epsilon_control": true,
+        "censored": 0,
+        "slope_mean": 3.18417707442115,
+        "positive": 1024,
+        "negative": 0
+      },
+      "perturbations": [
+        {
+          "epsilon": -0.2,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.05,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.01,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.01,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.05,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.2,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        }
+      ]
+    },
+    {
+      "training_seed": 4,
+      "baseline": {
+        "path": "/root/tw_stage1/issue21_20261114/controls/s4_epsilon_+0.00.npz",
+        "sha256": "f09fa74734666da24b9770c9f07462648a2a885a67765e77c051d071f419a2e6",
+        "fresh_independent_zero_epsilon_control": true,
+        "censored": 0,
+        "slope_mean": -1.1994516979099594,
+        "positive": 0,
+        "negative": 1024
+      },
+      "perturbations": [
+        {
+          "epsilon": -0.2,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.05,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.01,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.01,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.05,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.2,
+          "positive": 0,
+          "negative": 1024,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        }
+      ]
+    },
+    {
+      "training_seed": 5,
+      "baseline": {
+        "path": "/root/tw_stage1/issue21_20261114/controls/s5_epsilon_+0.00.npz",
+        "sha256": "b56f5c29f202280f2011cb643370e6ca0fd67e747753c0f5f185ef7875e648ac",
+        "fresh_independent_zero_epsilon_control": true,
+        "censored": 0,
+        "slope_mean": 7.8441242958985455,
+        "positive": 1024,
+        "negative": 0
+      },
+      "perturbations": [
+        {
+          "epsilon": -0.2,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.05,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": -0.01,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.01,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.05,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        },
+        {
+          "epsilon": 0.2,
+          "positive": 1024,
+          "negative": 0,
+          "zero": 0,
+          "censored": 0,
+          "comparison_valid": 1024,
+          "flips": 0,
+          "flip_fraction_valid": 0.0
+        }
+      ]
+    }
+  ],
+  "most_repeated_O_components": [
+    {
+      "quantity": "applied_torque",
+      "component": "neck_linkage_roll",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "applied_torque",
+      "component": "right_shoulder_roll_joint",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "applied_torque",
+      "component": "waist_roll_joint",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_pos",
+      "component": "left_shoulder_roll_joint",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_pos",
+      "component": "neck_linkage_roll",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_pos",
+      "component": "right_shoulder_roll_joint",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_pos",
+      "component": "waist_roll_joint",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_vel",
+      "component": "left_shoulder_pitch_joint",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_vel",
+      "component": "left_shoulder_roll_joint",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_vel",
+      "component": "neck",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_vel",
+      "component": "neck_linkage_roll",
+      "paired_conditions_affected": 20
+    },
+    {
+      "quantity": "joint_vel",
+      "component": "right_shoulder_roll_joint",
+      "paired_conditions_affected": 20
+    }
+  ]
+}

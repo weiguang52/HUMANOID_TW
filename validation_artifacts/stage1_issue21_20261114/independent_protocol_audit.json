@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "jobs": 25,
+  "cold_processes": 155,
+  "matched_zero_epsilon_controls": 5,
+  "single_env_initial_state_exact_env0_of16": true,
+  "trace_files": 120,
+  "perturbation_cells": 30,
+  "air_contacts_zero": true,
+  "all_open_loop_actions_exact_frozen_ground_k0_or_mirror": true,
+  "mirrored_initial_joint_states_exact": true,
+  "max_initial_root_origin_precision_error": 0.0,
+  "all_raw_finite": true,
+  "all_perturbation_slopes_independent_lstsq_match": true,
+  "all_frozen_sources_unchanged": true,
+  "all_model_states_unchanged": true,
+  "training_updates": 0,
+  "defaults_unchanged": true
+}

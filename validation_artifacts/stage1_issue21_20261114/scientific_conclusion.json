@@ -1,0 +1,391 @@
+{
+  "classification": "O",
+  "checks": {
+    "complete": true,
+    "O_components": [
+      {
+        "case": "air_s1_n1_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.0001481771469116211
+      },
+      {
+        "case": "air_s1_n1_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.017061173915863037
+      },
+      {
+        "case": "air_s1_n1_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0012178868055343628
+      },
+      {
+        "case": "air_s1_n1_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.0002053976058959961
+      },
+      {
+        "case": "air_s1_n1_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.01791989803314209
+      },
+      {
+        "case": "air_s1_n1_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0013622120022773743
+      },
+      {
+        "case": "air_s1_n16_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.0001481771469116211
+      },
+      {
+        "case": "air_s1_n16_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.01706165075302124
+      },
+      {
+        "case": "air_s1_n16_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0012179575860500336
+      },
+      {
+        "case": "air_s1_n16_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.0002053976058959961
+      },
+      {
+        "case": "air_s1_n16_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.017920255661010742
+      },
+      {
+        "case": "air_s1_n16_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0013622641563415527
+      },
+      {
+        "case": "air_s2_n1_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.0002803024835884571
+      },
+      {
+        "case": "air_s2_n1_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.012736320495605469
+      },
+      {
+        "case": "air_s2_n1_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.00048233941197395325
+      },
+      {
+        "case": "air_s2_n1_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00046405568718910217
+      },
+      {
+        "case": "air_s2_n1_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.007035434246063232
+      },
+      {
+        "case": "air_s2_n1_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0004721805453300476
+      },
+      {
+        "case": "air_s2_n16_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.0002803024835884571
+      },
+      {
+        "case": "air_s2_n16_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.012736916542053223
+      },
+      {
+        "case": "air_s2_n16_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0004826299846172333
+      },
+      {
+        "case": "air_s2_n16_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.0004640687257051468
+      },
+      {
+        "case": "air_s2_n16_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.007035732269287109
+      },
+      {
+        "case": "air_s2_n16_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0004727095365524292
+      },
+      {
+        "case": "air_s3_n1_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 8.440017700195312e-05
+      },
+      {
+        "case": "air_s3_n1_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.020730167627334595
+      },
+      {
+        "case": "air_s3_n1_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.001840241253376007
+      },
+      {
+        "case": "air_s3_n1_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00010085105895996094
+      },
+      {
+        "case": "air_s3_n1_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.019687682390213013
+      },
+      {
+        "case": "air_s3_n1_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0016712378710508347
+      },
+      {
+        "case": "air_s3_n16_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 8.440017700195312e-05
+      },
+      {
+        "case": "air_s3_n16_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.020730525255203247
+      },
+      {
+        "case": "air_s3_n16_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0018403679132461548
+      },
+      {
+        "case": "air_s3_n16_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00010085105895996094
+      },
+      {
+        "case": "air_s3_n16_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.019687920808792114
+      },
+      {
+        "case": "air_s3_n16_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0016716066747903824
+      },
+      {
+        "case": "air_s4_n1_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00022937264293432236
+      },
+      {
+        "case": "air_s4_n1_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.014284610748291016
+      },
+      {
+        "case": "air_s4_n1_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0007390454411506653
+      },
+      {
+        "case": "air_s4_n1_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.000367642380297184
+      },
+      {
+        "case": "air_s4_n1_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.010075509548187256
+      },
+      {
+        "case": "air_s4_n1_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0005558282136917114
+      },
+      {
+        "case": "air_s4_n16_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00022937636822462082
+      },
+      {
+        "case": "air_s4_n16_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.014284849166870117
+      },
+      {
+        "case": "air_s4_n16_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0007391273975372314
+      },
+      {
+        "case": "air_s4_n16_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00036764610558748245
+      },
+      {
+        "case": "air_s4_n16_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.010076045989990234
+      },
+      {
+        "case": "air_s4_n16_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0005558431148529053
+      },
+      {
+        "case": "air_s5_n1_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00012981891632080078
+      },
+      {
+        "case": "air_s5_n1_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.01781141757965088
+      },
+      {
+        "case": "air_s5_n1_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0013414174318313599
+      },
+      {
+        "case": "air_s5_n1_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00011849403381347656
+      },
+      {
+        "case": "air_s5_n1_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.019003450870513916
+      },
+      {
+        "case": "air_s5_n1_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0015485510230064392
+      },
+      {
+        "case": "air_s5_n16_stand_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00012981891632080078
+      },
+      {
+        "case": "air_s5_n16_stand_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.017811685800552368
+      },
+      {
+        "case": "air_s5_n16_stand_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0013416074216365814
+      },
+      {
+        "case": "air_s5_n16_forward_05_open",
+        "quantity": "joint_pos",
+        "step": 1,
+        "error": 0.00011849403381347656
+      },
+      {
+        "case": "air_s5_n16_forward_05_open",
+        "quantity": "joint_vel",
+        "step": 1,
+        "error": 0.019003570079803467
+      },
+      {
+        "case": "air_s5_n16_forward_05_open",
+        "quantity": "applied_torque",
+        "step": 1,
+        "error": 0.0015488006174564362
+      }
+    ],
+    "air_full_200_step_pass": false,
+    "mirrored_input_policy_probe_pass": true,
+    "small_epsilon_majority_flip_every_seed": false,
+    "epsilon02_no_single_flip_all_seeds": false,
+    "ground_first_contact_all_small": false,
+    "ground_first_contact_all_large": true,
+    "ground_exponential_all_trials": false,
+    "counts": {
+      "pairs": 60,
+      "air_pairs": 20,
+      "ground_open_pairs": 20,
+      "perturb_cells": 30,
+      "first_contact_small": 0,
+      "first_contact_large": 170,
+      "growth_exponential": 0,
+      "growth_trials": 170
+    }
+  },
+  "recommendation": "Repair the specifically identified non-equivariant pipeline component, then rerun only the symmetric-USD issue20 prerequisite in a future issue.",
+  "recommendation_implemented": false,
+  "training_updates": 0,
+  "default_promoted": false,
+  "parameter_scan": false,
+  "rules_sha256": "5d017196e31b317135bbceda1fa5ebd46f7ec82b662030432c434044987c4192"
+}

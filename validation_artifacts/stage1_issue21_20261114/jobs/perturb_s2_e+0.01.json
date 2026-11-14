@@ -1,0 +1,182 @@
+{
+  "mode": "perturb",
+  "training_seed": 2,
+  "num_envs": 1024,
+  "steps": 1000,
+  "checkpoint": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_21-33-38_issue19_20261113_sym_wrap_s2/model_14992.pt",
+  "checkpoint_sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+  "strict_usd_sha256": "b957ede157134278f6c5c13f41b014a88d9f6217563053ea5332598d425ac05e",
+  "body_names": [
+    "base_link",
+    "left_hip_linkage",
+    "right_hip_linkage",
+    "waist",
+    "left_thigh",
+    "right_thigh",
+    "gearbox",
+    "left_knee_linkage",
+    "right_knee_linkage",
+    "chest",
+    "left_mid_leg",
+    "right_mid_leg",
+    "left_shoulder_linkage",
+    "neck",
+    "right_shoulder_linkage",
+    "left_calf",
+    "right_calf",
+    "left_upper_arm",
+    "neck_linkage",
+    "right_upper_arm",
+    "left_ankle",
+    "right_ankle",
+    "left_elbow_linkage",
+    "head",
+    "right_elbow_linkage",
+    "left_foot",
+    "right_foot",
+    "left_force_arm",
+    "right_force_arm",
+    "left_wrist",
+    "right_wrist"
+  ],
+  "contact_body_names": [
+    "base_link",
+    "left_hip_linkage",
+    "left_thigh",
+    "left_knee_linkage",
+    "left_mid_leg",
+    "left_calf",
+    "left_ankle",
+    "left_foot",
+    "waist",
+    "gearbox",
+    "chest",
+    "left_shoulder_linkage",
+    "left_upper_arm",
+    "left_elbow_linkage",
+    "left_force_arm",
+    "left_wrist",
+    "neck",
+    "neck_linkage",
+    "head",
+    "right_hip_linkage",
+    "right_thigh",
+    "right_knee_linkage",
+    "right_mid_leg",
+    "right_calf",
+    "right_ankle",
+    "right_foot",
+    "right_shoulder_linkage",
+    "right_upper_arm",
+    "right_elbow_linkage",
+    "right_force_arm",
+    "right_wrist"
+  ],
+  "joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_pitch_joint",
+    "right_knee_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "neck",
+    "right_shoulder_pitch_joint",
+    "left_ankle_yaw_joint",
+    "right_ankle_yaw_joint",
+    "left_shoulder_roll_joint",
+    "neck_linkage_roll",
+    "right_shoulder_roll_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_yaw_joint",
+    "head_pitch",
+    "right_shoulder_yaw_joint",
+    "left_foot_roll",
+    "right_foot_roll",
+    "left_elbow_pitch_joint",
+    "right_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_wrist_pitch"
+  ],
+  "step_dt": 0.02,
+  "policy_terms": [
+    "base_ang_vel",
+    "projected_gravity",
+    "velocity_commands",
+    "joint_pos_rel",
+    "joint_vel_rel",
+    "last_action",
+    "gait_phase"
+  ],
+  "policy_dims": [
+    [
+      3
+    ],
+    [
+      3
+    ],
+    [
+      3
+    ],
+    [
+      30
+    ],
+    [
+      30
+    ],
+    [
+      30
+    ],
+    [
+      2
+    ]
+  ],
+  "root_state_fields": [
+    "x",
+    "y",
+    "z",
+    "qw",
+    "qx",
+    "qy",
+    "qz",
+    "vx",
+    "vy",
+    "vz",
+    "wx",
+    "wy",
+    "wz"
+  ],
+  "torque_semantics": {
+    "applied_torque": "PhysX get_dof_projected_joint_forces: measured active component of incoming joint force in DOF direction; not claimed to be a separately exposed pure implicit drive torque",
+    "estimated_pd_torque": "Isaac Lab approximate implicit PD torque, not actual solver drive torque",
+    "explicit_actuation_force": "PhysX explicit actuation input; implicit drives may yield zero",
+    "joint_target": "Isaac Lab position target sent to simulation"
+  },
+  "training_updates": 0,
+  "air_fixed_root": false,
+  "clean": true,
+  "cold_start": true,
+  "parent_initial": {
+    "path": "/root/tw_stage1/issue20_20261114/evaluation/symmetric/moments/symmetric_s2_eval1_k0/forward_05_initial_state.npz",
+    "sha256": "015c046f913063a0d68d39d0c05beb2083e2777227496d356371f150a6e2ef5e",
+    "count": 1024,
+    "ground_world_root_and_joints_exact_parent": true,
+    "air_joint_initial_states_exact_parent": false,
+    "single_env_matches_env0_of16": true,
+    "fresh_process_no_prior_trajectory": true
+  },
+  "records": [
+    {
+      "epsilon": 0.01,
+      "path": "/root/tw_stage1/issue21_20261114/jobs/perturb_s2_e+0.01_epsilon_+0.01.npz",
+      "sha256": "8c2df0e4e40237b3eecfbcefd50edd94d9526775a9a74de2b87c99e136845d10"
+    }
+  ],
+  "model_unchanged": true
+}

@@ -1,0 +1,21 @@
+"""Add concrete O-trigger components and transparent runtime limitations."""
+import json,numpy as np
+from issue21_common import ROOT,save
+from issue21_analysis import GROUPS
+
+def main():
+ c=json.loads((ROOT/'scientific_conclusion.json').read_text());pairs={x['case']:x for x in json.loads((ROOT/'pair_analysis.json').read_text())};rows=[]
+ for flag in c['checks']['O_components']:
+  case=pairs[flag['case']];z=np.load(case['residual_file']);e=z[flag['quantity']+'_signed'][0];hits=np.argwhere(abs(e)>1e-5);meta=json.loads((ROOT/'evaluation'/('%s_s%d_n%d.json'%(case['mode'],case['training_seed'],case['num_envs']))).read_text())
+  for env,component in hits:
+   quantity=flag['quantity'];names=meta['joint_names'] if quantity in ['joint_pos','joint_vel','applied_torque','action','joint_pos_obs','joint_vel_obs','last_action'] else {'ang_vel':['wx','wy','wz'],'gravity':['gx','gy','gz'],'commands':['vx','vy','wz'],'gait_phase':['sin','cos']}[quantity]
+   rows.append({'case':case['case'],'quantity':quantity,'step':flag['step'],'env':int(env),'component':names[component],'signed_residual':float(e[env,component]),'absolute_residual':float(abs(e[env,component]))})
+ save('O_trigger_components.json',rows);report=ROOT/'results.md';s=report.read_text();marker='\n## Concrete O-trigger components and comparison limits\n';s=s.split(marker)[0];s=s.replace('Positions in meters, joint/heading angles radians', 'Observation residuals use the actual policy features after configured preprocessing/scales; they are not unscaled physical velocities. Physical positions are in meters, joint/heading angles radians')
+ lines=[marker,'All component/env exceedances at the exact O threshold1e-5 are retained in [O_trigger_components.json](O_trigger_components.json). Maximal triggering component per case/quantity:','', '|Case|Quantity|Step|Environment|Component|Signed residual|','|---|---|---:|---:|---|---:|'];groups={}
+ for row in rows:
+  key=(row['case'],row['quantity'])
+  if key not in groups or row['absolute_residual']>groups[key]['absolute_residual']:groups[key]=row
+ for x in groups.values():lines.append('|%s|%s|%d|%d|%s|%+.9g|'%(x['case'],x['quantity'],x['step'],x['env'],x['component'],x['signed_residual']))
+ lines+=['','Each command/phase/condition starts in a separate fresh process. Both environment counts restore the same parent issue20 initial sample; num_envs1 is the exact env0 initial state of the16-env experiment (ground world origins also match). Air uses the same matched joint state and its configured fixed anchor. Thus no preceding phase or command can supply trajectory-specific solver/contact history. Cold application initialization and unavoidable floating-point solver behavior remain part of the tested simulator.','', 'Pure implicit-drive torque is not exposed separately by the installed Isaac Lab actuator API. PhysX projected active joint force, approximate PD estimate and explicit actuation input are separately retained and labeled; no estimate is presented as a direct motor measurement. Classification uses the measured active joint component together with joint state errors under the frozen thresholds.','', 'Ground-open fall flags are retained while automatic reset requests are suppressed: all340 final ground-open trajectories continue physically for200 control steps from one initial state, even after a fall condition. Original termination tests, physical parameters and saved actions are unchanged. Independent episode-counter and source-hash checks are recorded in independent_open_continuity_audit.json. The earlier reset-contaminated40 replays are separately retained; see ground_open_lifecycle_correction.json.','Instrumentation-v1 and startup/queue orchestration failures are retained with distinct ledgers. Only the25 final logical groups contribute to required scientific group counts; five unperturbed controls are separately reported. The active final cold plan contains155 processes; total executed cold processes195 includes40 rejected reset-contaminated ground-open replays, all separately accounted. Runtime hashes and original thresholds stay fixed; analysis/presentation freeze is documented separately.']
+ report.write_text(s+'\n'.join(lines)+'\n');print('ISSUE21_REPORT_FINALIZED_CONCRETE_O_COMPONENTS',len(rows),flush=True)
+if __name__=='__main__':main()

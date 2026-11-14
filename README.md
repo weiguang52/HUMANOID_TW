@@ -7,7 +7,11 @@ This branch contains two separate research lines. Their results must not be comb
 | Line | Current status | Evidence |
 | --- | --- | --- |
 | SuperMimic world-model / imitation | Stopped after failed acceptance; previous policy pilots passed 0/7 fixed independent motions. No accepted TW SuperMimic policy. | Historical handoff below and `docs/practice9/supermimic_dense_static_final_review.json` |
-| Isaac Lab stage1 velocity walking | Issue20 complete: 30 formal evaluations, zero training; frozen outcome simulator_not_equivariant. Required symmetric-USD prerequisite stop; original USD skipped. No default promotion; issue17/19 acceptance remains FAILED. | [Issue20 results](docs/stage1_issue20_20261114.md), [archive](validation_artifacts/stage1_issue20_20261114/results.md) |
+| Isaac Lab stage1 velocity walking | Issue21 diagnostic complete:25 jobs, zero training, classification O; no default promotion. Historical issue17/19 acceptance remains FAILED. | [Issue21 report](docs/stage1_issue21_20261114.md), [raw analysis](validation_artifacts/stage1_issue21_20261114/results.md) |
+
+<!-- ISSUE21_STATUS_START -->
+Issue21 diagnostic complete:25 jobs, zero training, classification O; no default promotion. Historical issue17/19 acceptance remains FAILED. Closed/open-loop first-deviation traces, measured joint-force semantics, yaw perturbation distributions, independent component audits and colored front/side videos are retained. [Full report](docs/stage1_issue21_20261114.md).
+<!-- ISSUE21_STATUS_END -->
 
 <!-- ISSUE20_STATUS_START -->
 Issue20 complete: 30 formal evaluations, zero training; frozen outcome simulator_not_equivariant. Required symmetric-USD prerequisite stop; original USD skipped. No default promotion; issue17/19 acceptance remains FAILED. The same five final symmetric policies are tested with start phases0/10 and original/strict symmetric USD. Rewards/defaults unchanged. [Full report](docs/stage1_issue20_20261114.md) includes all cell/seed intervals, paired S/D, startup and late slope, half cycles, model differences and colored paired-overhead/front/side videos. Historical findings below remain preserved.

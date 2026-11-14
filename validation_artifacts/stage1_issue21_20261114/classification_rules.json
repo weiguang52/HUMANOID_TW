@@ -1,0 +1,79 @@
+{
+  "frozen_at": 1794646878.5439284,
+  "issue": 21,
+  "training_updates": 0,
+  "phase": [
+    0,
+    10
+  ],
+  "commands": [
+    "stand",
+    "forward_05"
+  ],
+  "closed_loop": {
+    "envs": [
+      16,
+      1
+    ],
+    "steps": 1000,
+    "evaluation_seed": 1,
+    "reset_ordinals": {
+      "stand": 5,
+      "forward_05": 3
+    }
+  },
+  "open_loop": {
+    "envs": [
+      16,
+      1
+    ],
+    "steps": 200,
+    "conditions": [
+      "air_fixed",
+      "ground"
+    ],
+    "actions": "k0 closed-loop sequence; mirror for k10; air uses identical saved ground sequence",
+    "air": "fixed root at world z2.5, identity initial orientation and zero root velocities, no contact; diagnostic cfg only"
+  },
+  "perturbation": {
+    "envs": 1024,
+    "steps": 1000,
+    "evaluation_seed": 1,
+    "eps_rad_per_s": [
+      -0.2,
+      -0.05,
+      -0.01,
+      0.01,
+      0.05,
+      0.2
+    ],
+    "duration_steps": 10,
+    "definition": "impose root world z angular velocity equal to signed epsilon before each of first10 control steps; no repeated additive accumulation",
+    "slope_window_seconds": [
+      5,
+      20
+    ]
+  },
+  "thresholds": [
+    1e-06,
+    0.0001,
+    0.01
+  ],
+  "error_definitions": "full per-component signed differences retained; group L2 and Linf reported; first absolute component threshold crossing per quantity/env; quaternion sign canonicalized; origins subtracted; contact reflection swaps bodies and flips Y force",
+  "decision_order": [
+    "O",
+    "N",
+    "H",
+    "other"
+  ],
+  "O": "initial observation/action Linf>1e-5 OR air post-first-step joint_pos/joint_vel/applied_torque Linf>1e-5",
+  "N": "O absent; observation/action evaluated on exactly mirrored fixed initial inputs and air within1e-5; ground starts<=1e-5 and grows exponentially; epsilon<=0.05 flips slope signs",
+  "H": "O absent; air passes; first contact-step error>=1e-4 and epsilon0.2 does not flip signs",
+  "other": "report all evidence without forcing classification",
+  "exponential_growth": "fit log(error) vs time from first contact until0.01 or2s, at least10 positive points; positive slope and R2>=0.8; report per trial and aggregate, no posthoc threshold change",
+  "flip": "relative to matching unperturbed k0 env slope, sign crosses zero; report per-env positive/negative/zero/fallen, any_flip and majority_flip separately; decisive flip requires majority flips for at least one signed epsilon in every training seed; partial/mixed results => other",
+  "fall_handling": "retain all resets and terminated masks; slopes reported only continuous initial trial through20s; separately report censored exposure",
+  "recommendations": "only one next-step recommendation; do not implement it",
+  "no_default_promotion": true,
+  "no_parameter_scan": true
+}

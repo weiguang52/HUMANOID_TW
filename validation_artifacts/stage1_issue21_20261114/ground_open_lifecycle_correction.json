@@ -1,0 +1,731 @@
+{
+  "reason": "169 of340 ground-open trajectories triggered episode termination. Automatic resets contaminate the requested continuous200-step open-loop response. Re-evaluate the same40 conditions, same inputs/policies/physical parameters, evaluating termination conditions but suppressing only automatic-reset requests. No parameter scan or training.",
+  "rejected_completed_processes": 40,
+  "rejected_compute_seconds": 776.8844525814056,
+  "retained_remotely": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets",
+  "inventory": [
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_stand_k0.json",
+      "bytes": 4418,
+      "sha256": "d22ed7d59d1ac98d5e26de253029d350e4a9e38e3059cb179557960d3d8d6b91"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_stand_k0.log",
+      "bytes": 12629,
+      "sha256": "92de5b34ba368ce32c7ab4dbf9419f6a675a0c996d7097be4705961f53b38ed2"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n16_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n16_stand_open_k0.npz",
+      "bytes": 3509880,
+      "sha256": "5990dcea99c640528f3ecb6b161e7747f7e0b6fe7704a614b51b08ac62a53c2e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_stand_k10.json",
+      "bytes": 4420,
+      "sha256": "bca47d45dff9f5e7ce5ac32db25b51f84d34c5c4b567f9e07d46d829bad68cdb"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_stand_k10.log",
+      "bytes": 12630,
+      "sha256": "3fad91ff322d0fb66c88884c53af43970ec2be8474cfdfc734dbb01760c40747"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n16_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n16_stand_open_k10.npz",
+      "bytes": 3511775,
+      "sha256": "d9bfabaf0a38fa3cb6e9b60ac6b58961abf61483b51acd9b32195ef1ddcf1749"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_forward_05_k0.json",
+      "bytes": 4433,
+      "sha256": "36b06ddd535c068abb3dbb09920a98ad4a3f6910a49b65b641079b31e050cf89"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_forward_05_k0.log",
+      "bytes": 12636,
+      "sha256": "6a5193bd8890ebc8417da5db7205c16f38fd5bb91f4a6d77d054324fb2117bd6"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n16_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n16_forward_05_open_k0.npz",
+      "bytes": 3505920,
+      "sha256": "cbc03a832f327670a071bca7f6649b27912f6b541a820afe172b2a428d4285a3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_forward_05_k10.json",
+      "bytes": 4435,
+      "sha256": "094e70e37f3b8fc01178e3e0f59a19f71c34e23438e1e3d65bdb29d36315a444"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n16_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n16_forward_05_k10.log",
+      "bytes": 12637,
+      "sha256": "83901bf7dad4f39c2bd65dae2d4712c9186527f2b9dd065be0f54f9834446f4e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n16_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n16_forward_05_open_k10.npz",
+      "bytes": 3459432,
+      "sha256": "ecd1b6a498371ea31669ab7e21c1023dd6742b14781ce89ab642782c684bc06f"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_stand_k0.json",
+      "bytes": 4415,
+      "sha256": "35e1a2940242d4c9dc0bebca77994ba78f4e70a36526100a5bf162bccf18e7b5"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_stand_k0.log",
+      "bytes": 12626,
+      "sha256": "84b30d2596d9e8f54d80d6f0ad590b92cdfaa78ff793b2f0c2787621588ad444"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n1_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n1_stand_open_k0.npz",
+      "bytes": 225249,
+      "sha256": "c39906f36e2f2c669d48232269cc1ed4dfd1a456d9715cb510c6968d8119893a"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_stand_k10.json",
+      "bytes": 4417,
+      "sha256": "656648c5c06fdd2826787d842e63416f6dad1834aca58740cbd97f15319f8bed"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_stand_k10.log",
+      "bytes": 12627,
+      "sha256": "952201319eba8b6d7b94f3674d8f495dfbf533b7e63bf104a076a1340a58c2f9"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n1_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n1_stand_open_k10.npz",
+      "bytes": 224930,
+      "sha256": "520aa7f813ef9b257694aff6a6a2f3088e5153e2e7742b070247c78f4411edc3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_forward_05_k0.json",
+      "bytes": 4430,
+      "sha256": "2958d874596d71ee324a3b3617b1c6748de40701f2f2d81d79d2ad6304bf88aa"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_forward_05_k0.log",
+      "bytes": 12631,
+      "sha256": "dbaead9ace9a30b582169b219ae5a61a96c7d859053904f936262a61a1cf4566"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n1_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n1_forward_05_open_k0.npz",
+      "bytes": 225175,
+      "sha256": "43a7cfff9321c45e36c57ef45988bd6aa6be65058ec457a502deb70f25e46cad"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_forward_05_k10.json",
+      "bytes": 4432,
+      "sha256": "3de7b90680ec40f22e8a7a69f2e47643e1e775246c0694d717256b6bc73997e9"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s1_n1_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s1_n1_forward_05_k10.log",
+      "bytes": 12634,
+      "sha256": "44b83ce0c90b88fed9059f3fed59584343b99cd1d6ca3173c52c7d646c81c619"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s1_n1_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s1_n1_forward_05_open_k10.npz",
+      "bytes": 222024,
+      "sha256": "10be795b5b5de749039768bf72de6b6df5c1a1c6672105ffb65397a87937e374"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_stand_k0.json",
+      "bytes": 4418,
+      "sha256": "332e2bad87c0302e2f0be745cdb3eaddcb269d02ca25fffe8f23cac9573b2212"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_stand_k0.log",
+      "bytes": 12629,
+      "sha256": "aa5b9dd021bfabf0367958b59a0dcf01de64ddec49ffbfd0c015ea08fa1a537f"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n16_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n16_stand_open_k0.npz",
+      "bytes": 3508481,
+      "sha256": "ba194505e163a95807e7679253563055701cc8dfba10f32afb0ea6834fa21373"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_stand_k10.json",
+      "bytes": 4420,
+      "sha256": "53587c306d87ca400b338d7a27437b498b0cbface2a264159ebfe6dd8d64e59a"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_stand_k10.log",
+      "bytes": 12630,
+      "sha256": "adda5524bafa05049a2b59bb537a8283ffb881671ce6ac15f65a651b2711e5a3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n16_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n16_stand_open_k10.npz",
+      "bytes": 3501038,
+      "sha256": "bae5d05464b75df4fc21df797566cc10192fc61dc193b9a5ade41410579f5ded"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_forward_05_k0.json",
+      "bytes": 4433,
+      "sha256": "313209d4cfe2a938d616246475c437f3674344884395b011b188ba727cd2b8b8"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_forward_05_k0.log",
+      "bytes": 12636,
+      "sha256": "8556f886fc0056eea455d819c18de26244920a6f2d353a30212988b213498c90"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n16_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n16_forward_05_open_k0.npz",
+      "bytes": 3508689,
+      "sha256": "824e9a04950035af7f47eba568442c02bc5d4c16616024204337180979c9d1a0"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_forward_05_k10.json",
+      "bytes": 4435,
+      "sha256": "9faac7f0352ce87bd3e61b4d37bb86ee5112cffc17ac569f27ecbb73e493a26b"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n16_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n16_forward_05_k10.log",
+      "bytes": 12635,
+      "sha256": "0ea1faf71291f34a8698186dda57f26d51284011e78f63990c9a5635f07d661d"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n16_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n16_forward_05_open_k10.npz",
+      "bytes": 3466490,
+      "sha256": "60be699753cb7feb30231c68974aafaadebec73532add20c75636df02c2ceb7e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_stand_k0.json",
+      "bytes": 4415,
+      "sha256": "a3f315923778eb6052f32ae17cba11fdc286d84120b74068fd74d0f8c9e3aec1"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_stand_k0.log",
+      "bytes": 12628,
+      "sha256": "b9776c6513a821eecc907279a9ba4b97a1e02c18f23db897aead16ef5ec75471"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n1_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n1_stand_open_k0.npz",
+      "bytes": 225291,
+      "sha256": "c70215ef6ad398d9979c51339729e4704bb59b01dc3e8372d6faf62a5a6f2607"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_stand_k10.json",
+      "bytes": 4417,
+      "sha256": "a9a5c35fc5e25ad6ddd179d5e23b8b3ae3ec0eafedc84b5afb45a4654ce6c151"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_stand_k10.log",
+      "bytes": 12629,
+      "sha256": "74e7c9ed5ee8bbabab304924b002fadeda44d5cf3ae40f590b7a70b49013f4d9"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n1_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n1_stand_open_k10.npz",
+      "bytes": 225098,
+      "sha256": "7639097e7a150ce8cab32744e4e2632da0f37e4be6376ae8fcb13e72cb1af17b"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_forward_05_k0.json",
+      "bytes": 4430,
+      "sha256": "86393cda8d2c7d20341bcf768964491a6c90f9ca5dfb4073123070d93bd9234a"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_forward_05_k0.log",
+      "bytes": 12633,
+      "sha256": "c16f4cc19541c1b6cd3cd72a15115f4b6f2590df26afbb36375513d6b958ccd8"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n1_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n1_forward_05_open_k0.npz",
+      "bytes": 225184,
+      "sha256": "29cfe8f762ccf0074423bc350144922223439873d1f8f39c816b69e1ca50e634"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_forward_05_k10.json",
+      "bytes": 4432,
+      "sha256": "60e607ec318ba8190554f76975a8ab02f2187f79f9669a942e96963c0eb2836d"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s2_n1_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s2_n1_forward_05_k10.log",
+      "bytes": 12632,
+      "sha256": "70024b1758337471da6779b96dd6ee54d8625586b3477ef0f56c78aa68bb721d"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s2_n1_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s2_n1_forward_05_open_k10.npz",
+      "bytes": 222595,
+      "sha256": "d5f086f35e421ed824ee518e3acab861fc9429de89df59f0928b20d06de8595e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_stand_k0.json",
+      "bytes": 4418,
+      "sha256": "1750a8fafbeff3891c85cf9ec3138edbe178ec46bc4919f9bfc4037c202f05de"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_stand_k0.log",
+      "bytes": 12629,
+      "sha256": "8b0906d78a6f730ad1278716f30b1ea3bffabfb67c07df5fca30150233d1f243"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n16_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n16_stand_open_k0.npz",
+      "bytes": 3506368,
+      "sha256": "43bb5d5c9f58c073e9c01765d0eed8dc14221c3fd2531c2bc59b5f76dea5f9b6"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_stand_k10.json",
+      "bytes": 4420,
+      "sha256": "afaba4fc8f52173db660e608dfce2ed62c45d0b9caf614bcb2f10276a26d2578"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_stand_k10.log",
+      "bytes": 12630,
+      "sha256": "ac4ac3a6e5315b0da8d44c72f4e9a2cf1825e8623b681b7b39769121a5171b93"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n16_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n16_stand_open_k10.npz",
+      "bytes": 3510791,
+      "sha256": "b936eae48d300d70c013e928fdc7c1a9888e57484bdf7f3ae4e009afdbb2be49"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_forward_05_k0.json",
+      "bytes": 4433,
+      "sha256": "75afac237c4e8a6548d057d558e4d22d0a49c8434b463be13054bcb09df32b25"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_forward_05_k0.log",
+      "bytes": 12634,
+      "sha256": "e07516f162c05de874d50126f1b62fb0d075a1205b90fd91a873c181f2b9d086"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n16_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n16_forward_05_open_k0.npz",
+      "bytes": 3512215,
+      "sha256": "ced918de83bcbf41fa6718fef2a0e435f02739f3a879bba24e8b2c27be6c2dda"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_forward_05_k10.json",
+      "bytes": 4435,
+      "sha256": "27ab49c861fe440c5c5d6e794aa07293eac8d9a392ebc950fb5178b3d0ab5c4c"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n16_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n16_forward_05_k10.log",
+      "bytes": 12635,
+      "sha256": "f286d698c5a4ca2b2e00db5e8c1e7b6c604d12c8595278fe13bc46c0822c1a1a"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n16_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n16_forward_05_open_k10.npz",
+      "bytes": 3471971,
+      "sha256": "77f70397eca13d0971e5e8d4549715450155aa3944ec7178974359338c62aa11"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_stand_k0.json",
+      "bytes": 4415,
+      "sha256": "9ef0d9893f4725bfa35a6a9bf46d47487c3ee52eee8f565c44c4b629c8ebc496"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_stand_k0.log",
+      "bytes": 12626,
+      "sha256": "e1f910c46745d9e68d3e9f04056cacf0fcbc4f54190a5b10e33e97284e7d312b"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n1_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n1_stand_open_k0.npz",
+      "bytes": 225876,
+      "sha256": "fea3218f3741a30069c2da532ee28f692ec118c790a38f85a1a5002b3c402998"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_stand_k10.json",
+      "bytes": 4417,
+      "sha256": "eb1fe9d04b3f152c4e3912134039049e6a3cf4e1dc240bdf9eabe981eb89e9fe"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_stand_k10.log",
+      "bytes": 12629,
+      "sha256": "06e1d3d966ce381079d77adcddc0158633cd4f8b455b1b29543259d2f695fc9e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n1_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n1_stand_open_k10.npz",
+      "bytes": 226320,
+      "sha256": "10b21e0973f44a2326707420207279aee30e456826a13b6c77ea3b1a776b8cb1"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_forward_05_k0.json",
+      "bytes": 4430,
+      "sha256": "e3bde2de151b54b5ea6943d6eda03a9076d0d149f2e17ebfd1dce3af63ca6233"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_forward_05_k0.log",
+      "bytes": 12633,
+      "sha256": "e6dbc0c0461554473ace34753d7df6aed2087cdaa500ff15e6da91fa54620507"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n1_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n1_forward_05_open_k0.npz",
+      "bytes": 225270,
+      "sha256": "282210e4d5e358e0be0627410a7c248aca61392ba15e07e7bcb2c6d502f5151c"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_forward_05_k10.json",
+      "bytes": 4432,
+      "sha256": "21f2acfca3b7a5cb4ced9b956a49abf393601882631319aa4bb055a8fa02ee8f"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s3_n1_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s3_n1_forward_05_k10.log",
+      "bytes": 12634,
+      "sha256": "118fded9baba957cc874f3870bdb1f93ad22e9180333f602c145aa1fb726713d"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s3_n1_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s3_n1_forward_05_open_k10.npz",
+      "bytes": 222406,
+      "sha256": "8e7ac025a9d169a482718c6b58ad706325901c9b2b1620d7e871f5663abad424"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_stand_k0.json",
+      "bytes": 4418,
+      "sha256": "d0da91ab12e94002d516ee7b798be73f0637088bf3e1d6c4d315f22f75ee4e9d"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_stand_k0.log",
+      "bytes": 12629,
+      "sha256": "ec2629d6dade5656c111b4642c1225ae7267ea656fd769316ff36e3f8e27283b"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n16_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n16_stand_open_k0.npz",
+      "bytes": 3500289,
+      "sha256": "418ddc18a01d5ec8990d02e35e7f68845774b81aa86bb165d22dd7ae098eceb4"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_stand_k10.json",
+      "bytes": 4420,
+      "sha256": "1cf5c759a21ac18162f9fd4b26d70c5e0f4b3db9f1e5e923bd49b838f2acfad1"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_stand_k10.log",
+      "bytes": 12630,
+      "sha256": "8b40d3cfd5e8ef3891804fad3c26b84202d323bc26da906580776a1f7816cb04"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n16_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n16_stand_open_k10.npz",
+      "bytes": 3502521,
+      "sha256": "dcab401c8bcfbcac595c0a75a2e4dcc820eda797310ad5acfd742ac2a0848f61"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_forward_05_k0.json",
+      "bytes": 4433,
+      "sha256": "34ebe624aed3d5b0f4db28f8941c97242e0d20a37f36ae10f894407314266d42"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_forward_05_k0.log",
+      "bytes": 12636,
+      "sha256": "37c80580638dd16836f2e0e92294069c284004a3f854827c91af581e91b7e0b4"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n16_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n16_forward_05_open_k0.npz",
+      "bytes": 3512357,
+      "sha256": "8c3f0963656a1d557ea55829f35d02172e037c04f7ebae302749e04cfa89eb3f"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_forward_05_k10.json",
+      "bytes": 4435,
+      "sha256": "ab232b8f7e0dbc5322e910892f12d77f8aa08b2d10cb0b716a4f0d417af6a2f3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n16_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n16_forward_05_k10.log",
+      "bytes": 12635,
+      "sha256": "07e6134e19ab70d718dfe9b50a80876e75c17a76959549ebaa7706a5d0f86575"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n16_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n16_forward_05_open_k10.npz",
+      "bytes": 3473895,
+      "sha256": "85d720dba7ced7fe5590655c7123bfb26a8b081fd086d8936419245f489a1bd3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_stand_k0.json",
+      "bytes": 4415,
+      "sha256": "316a9ca0b5a9bd20050638e4ce1e721c9e35afd08a7c971556755bd2552db65e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_stand_k0.log",
+      "bytes": 12626,
+      "sha256": "15f0fd2951c24c8284b0c4d24fd8f4427e28558a8953c10b5a328a656893a502"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n1_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n1_stand_open_k0.npz",
+      "bytes": 225297,
+      "sha256": "df7a4bd4e2d18b67ecf0aafe51cc767a2412b11e80bb0436844114e1acbcf2ab"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_stand_k10.json",
+      "bytes": 4417,
+      "sha256": "69fed4e318930321daff5c2f92b4931259cc0733d9eb41b54c47f228cce43773"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_stand_k10.log",
+      "bytes": 12627,
+      "sha256": "1a17a2236665b448b32c6cb2474f645230864ee3d0f8bfde71c57d80f1e75444"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n1_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n1_stand_open_k10.npz",
+      "bytes": 224823,
+      "sha256": "eda96d4139cbcaf0c319a5f30edeef917a25990d74c5ddf8e3e91339a4ff1cc2"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_forward_05_k0.json",
+      "bytes": 4430,
+      "sha256": "7b5b3fc9c0d41a41b52a00f8a66a7eea848ff3b310a7267525805642828701e8"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_forward_05_k0.log",
+      "bytes": 12633,
+      "sha256": "52e515876170af744b4df62810769d129c3c8c3493b329b73bf62e0cdc3b43b7"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n1_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n1_forward_05_open_k0.npz",
+      "bytes": 225531,
+      "sha256": "33f31bad784b2981a874d1e006231510e917e36d97c1e8c3e645446d4e7da8c6"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_forward_05_k10.json",
+      "bytes": 4432,
+      "sha256": "15e4494e29348f3388b5bbd17ffdbfdc91f6498252764c96abb3009d150ea305"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s4_n1_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s4_n1_forward_05_k10.log",
+      "bytes": 12632,
+      "sha256": "faf3bb1bd3b387ef9bdfdff39fa475cc35d9971d71047074a548e86a5ab53493"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s4_n1_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s4_n1_forward_05_open_k10.npz",
+      "bytes": 223748,
+      "sha256": "9f260dffe3e1ac844314d69c14f522a83f1f9291c09d6a25d3fd4686491089f3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_stand_k0.json",
+      "bytes": 4418,
+      "sha256": "1f75be1b13594c1beb9df0d85e8ea6ee8f1effd1bf899ef6e8ef706ad5120d3a"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_stand_k0.log",
+      "bytes": 12629,
+      "sha256": "b5c712b64933ada7381c7dccf2312100c4991414b23cdac7d3d202ef84c6c155"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n16_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n16_stand_open_k0.npz",
+      "bytes": 3514366,
+      "sha256": "ab3ce80e38bd2bd424ebadd36a141fc8dc8ef9926925b9a7273e831a69f30453"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_stand_k10.json",
+      "bytes": 4420,
+      "sha256": "76b4d332deaad2a8c132da9a84e73f03a49285143cf3b932e6c2ee6028baebf9"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_stand_k10.log",
+      "bytes": 12630,
+      "sha256": "8ecf0d3f9c7357504355bf21742563b359c7d950849b2d832822962a2d89f211"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n16_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n16_stand_open_k10.npz",
+      "bytes": 3508224,
+      "sha256": "fc406cecf416de8253b19c8a2dbb3391ef3fb6f0ca46261a001d94ba717780f3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_forward_05_k0.json",
+      "bytes": 4433,
+      "sha256": "6f95098d6ea8f39f6a0c420a8b82214d7f600499dee317ea1702a63b5015e739"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_forward_05_k0.log",
+      "bytes": 12634,
+      "sha256": "db4114cc332dfa4eb96cae359ccb5208abc5da949ae5aec1b3f241506092c499"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n16_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n16_forward_05_open_k0.npz",
+      "bytes": 3504125,
+      "sha256": "955f0628f96a011911a5297c932283ca638e631d578bb45b85fcfd41bd7250a3"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_forward_05_k10.json",
+      "bytes": 4435,
+      "sha256": "c7aa3198d07f33be6dbb11da71bb40adb72e026226c9a74cd709fa7b29335cce"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n16_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n16_forward_05_k10.log",
+      "bytes": 12635,
+      "sha256": "cace5a7cd8f9bfe8c785aca5757a2bcee58d801cd1653493429cddb4082a15c8"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n16_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n16_forward_05_open_k10.npz",
+      "bytes": 3467171,
+      "sha256": "dd39b31a363c149a432ffea85c2b3b14586e7f12a4dd7c31341ad50acb69b8c2"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_stand_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_stand_k0.json",
+      "bytes": 4415,
+      "sha256": "45879e0c81580adf3c08fc9d53752c6fb99e0e9c5f59fb609435cad7c04cb148"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_stand_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_stand_k0.log",
+      "bytes": 12626,
+      "sha256": "407e3948f1563b31d2a0fdb3d67cda62ded95bf4ed8182aeca995ad5529d919e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n1_stand_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n1_stand_open_k0.npz",
+      "bytes": 225579,
+      "sha256": "efab55289870d620e60b2207ee1f6cc329bfe3cccf8d2138b75c8b070e4c49c5"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_stand_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_stand_k10.json",
+      "bytes": 4417,
+      "sha256": "049be04ab2ed1edfedf3ef7a08fc91ea1c7da7a2647bac3ffb6ac58a1b20f4f7"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_stand_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_stand_k10.log",
+      "bytes": 12627,
+      "sha256": "a47071c73c9d7d75909fbbfe86bff73ffb16b582978b5075778e8c5896fc454f"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n1_stand_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n1_stand_open_k10.npz",
+      "bytes": 224980,
+      "sha256": "d9193ff05839ef19624dde3d810f420f73b2519f7fddeba180c4f51fc83ed88c"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_forward_05_k0.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_forward_05_k0.json",
+      "bytes": 4430,
+      "sha256": "b8e05e9a36c63da11a622748343d2550e25518a31bf3a8621a0ebea5a07c36ac"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_forward_05_k0.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_forward_05_k0.log",
+      "bytes": 12633,
+      "sha256": "effb614d7b6bb6bc6bbf3ca3a4add1c508cc49640d1d90ed298a54a3802a256a"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n1_forward_05_open_k0.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n1_forward_05_open_k0.npz",
+      "bytes": 225178,
+      "sha256": "0a22abcdca9a66c0143e2f3f7af0f925ff001ce1e303b23712120eb6e3691af4"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_forward_05_k10.json",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_forward_05_k10.json",
+      "bytes": 4432,
+      "sha256": "2ebcaa9c94d996d284cdd9acc8f4474cfbbd599817843450cec33c99ad78e33e"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/jobs/ground_open_s5_n1_forward_05_k10.log",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/jobs/ground_open_s5_n1_forward_05_k10.log",
+      "bytes": 12632,
+      "sha256": "713f4a80d7a125222034f07f2ef1d6b788945780b96f09a9176ea7e608c1514a"
+    },
+    {
+      "original": "/root/tw_stage1/issue21_20261114/evaluation/ground_s5_n1_forward_05_open_k10.npz",
+      "retained": "/root/tw_stage1/issue21_20261114/publication/rejected_ground_open_auto_resets/evaluation/ground_s5_n1_forward_05_open_k10.npz",
+      "bytes": 222556,
+      "sha256": "d785f90785cbaff59b0a31e94b30382e52a663ab6928b97021730f2684fa6799"
+    }
+  ],
+  "source_closed_actions_unchanged": true,
+  "thresholds_unchanged": true,
+  "time": 1794654129.950449
+}

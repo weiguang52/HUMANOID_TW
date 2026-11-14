@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "references": [
+    {
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_20-30-42_issue19_20261113_sym_wrap_s1/model_14992.pt",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue19_20261113/models/sym_wrap_s1.pt",
+      "git_blob": "de03964b565c6946bd34fff2f686d8d6c3a351d6",
+      "sha256": "9a7b87d298c91d10fe2a515ee7034a4fcb2c554f69a3809680cffa0a963b231f",
+      "bytes": 5467072
+    },
+    {
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_21-33-38_issue19_20261113_sym_wrap_s2/model_14992.pt",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue19_20261113/models/sym_wrap_s2.pt",
+      "git_blob": "7ae1f6ceaea630e545a92d69926889e4aec468a7",
+      "sha256": "66f954ba35bd8bb49318c0759f1b267ed8edc4dae46bf76f7284e3ae961ad5ef",
+      "bytes": 5467072
+    },
+    {
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_22-37-59_issue19_20261113_sym_wrap_s3/model_14992.pt",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue19_20261113/models/sym_wrap_s3.pt",
+      "git_blob": "00096d16c53b40fc95e640f8f2d6bf5e6aba167b",
+      "sha256": "327844928cc4fb599a1c57414e837b2beaeb612bfe8179466f1fcaf381343c87",
+      "bytes": 5467072
+    },
+    {
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-13_23-46-24_issue19_20261113_sym_wrap_s4/model_14992.pt",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue19_20261113/models/sym_wrap_s4.pt",
+      "git_blob": "ce8feeb21666b4c65a004ee4b666167751b8492b",
+      "sha256": "4a80e71f753bb4af958de6d9aab1bbe8cf69b3192c16207430f1c657db93abac",
+      "bytes": 5467072
+    },
+    {
+      "source": "/root/gpufree-data/projects/HUMANOID_TW/logs/rsl_rl/tw_stage1/2026-11-14_00-52-19_issue19_20261113_sym_wrap_s5/model_14992.pt",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue19_20261113/models/sym_wrap_s5.pt",
+      "git_blob": "c4ecdf86902d9453613b9df13c7445e646a348c0",
+      "sha256": "cff988bde710d0daddad6c92f18ebdd5445356dc1cf2b0dc6492bfbd08d97288",
+      "bytes": 5467072
+    },
+    {
+      "source": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s1_eval1_states.npz",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue17_20261113/state_collection/control6000_s1_eval1_states.npz",
+      "git_blob": "92482bc069224dcb53146e0e57c4eba73a52f99d",
+      "sha256": "5c4e6549f43a613adac03c4ef965672d932cea4f40704d334bc54773e088a6ca",
+      "bytes": 7279549
+    },
+    {
+      "source": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s2_eval1_states.npz",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue17_20261113/state_collection/control6000_s2_eval1_states.npz",
+      "git_blob": "e7dbe81be6c4b4676485764292e420d7c4b4ef54",
+      "sha256": "af607f8f193a9d1aa4b4ac38a04e57e2909404c891e2298b3966d4223fb3fd15",
+      "bytes": 7269975
+    },
+    {
+      "source": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s3_eval1_states.npz",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue17_20261113/state_collection/control6000_s3_eval1_states.npz",
+      "git_blob": "752eee20f0e1e9f0795798ec72464b8fda16d557",
+      "sha256": "bd2856c1927396c5a1a63c63649fba490bc5392c0e4c8921af8d2bdf71c16bd7",
+      "bytes": 7296258
+    },
+    {
+      "source": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s4_eval1_states.npz",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue17_20261113/state_collection/control6000_s4_eval1_states.npz",
+      "git_blob": "1b2570515878a057be5b02e6c2de1bde0a62af1a",
+      "sha256": "c798cfec4edd11d4d2f561133b66f5be25821d6bc473b0712db4d0adf2ed6d2f",
+      "bytes": 7321942
+    },
+    {
+      "source": "/root/gpufree-data/tw_stage1/issue17_20261113/state_collection/control6000_s5_eval1_states.npz",
+      "git_commit": "2c89ead59fa17fa9e339a8e46b972a8af579d237",
+      "git_path": "validation_artifacts/stage1_issue17_20261113/state_collection/control6000_s5_eval1_states.npz",
+      "git_blob": "280909bec29250b4db41f680f197157a0700321c",
+      "sha256": "b5902db41fcd26d2906cdce1888a1bbd3cd2c0f5cfcb58392521ba3c2e6ac5bd",
+      "bytes": 7254296
+    }
+  ],
+  "original_USD_layers": [
+    {
+      "identifier": "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd",
+      "path": "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd",
+      "sha256": "24663fd164311931d0ea633bb1e4ceeb7a35bb7f3c02a52e10a94aafa6035816"
+    },
+    {
+      "identifier": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_physics.usd",
+      "path": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_physics.usd",
+      "sha256": "0377936f919c4de596021320fa1af7611a9eeb3e4b9c24bebf41ca2463b143c5"
+    },
+    {
+      "identifier": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_sensor.usd",
+      "path": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_sensor.usd",
+      "sha256": "d3969e2b73b74a59f819020303572db0a871d5eb1007cb4f803e4b5bc12631ea"
+    },
+    {
+      "identifier": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_base.usd",
+      "path": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_base.usd",
+      "sha256": "f34697e45b2aee6ff4a8ca7f12c143e46653f9c8b1cf35a3c646c6b5c98f640a"
+    },
+    {
+      "identifier": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_robot.usd",
+      "path": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_robot.usd",
+      "sha256": "6072067a79f5003d31ecedf2e9d3e104d9b55d27407b860e8ae26798983da4ee"
+    }
+  ],
+  "checkpoints": 5,
+  "fixed_states": 102400,
+  "new_training": false,
+  "source_models_already_committed": true
+}

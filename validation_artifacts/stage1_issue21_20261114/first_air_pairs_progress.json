@@ -1,0 +1,73 @@
+{
+  "provisional": true,
+  "pairs": [
+    {
+      "command": "stand",
+      "n": 16,
+      "contact_max": 0.0,
+      "first": {
+        "joint_pos": 0.0001481771469116211,
+        "joint_vel": 0.01706165075302124,
+        "applied_torque": 0.0012179575860500336,
+        "joint_target": 0.0
+      },
+      "full200": {
+        "joint_pos": 0.0011693630367517471,
+        "joint_vel": 0.01706165075302124,
+        "applied_torque": 0.0012179575860500336,
+        "joint_target": 0.0
+      }
+    },
+    {
+      "command": "stand",
+      "n": 1,
+      "contact_max": 0.0,
+      "first": {
+        "joint_pos": 0.0001481771469116211,
+        "joint_vel": 0.017061173915863037,
+        "applied_torque": 0.0012178868055343628,
+        "joint_target": 0.0
+      },
+      "full200": {
+        "joint_pos": 0.0011669732630252838,
+        "joint_vel": 0.017061173915863037,
+        "applied_torque": 0.0012178868055343628,
+        "joint_target": 0.0
+      }
+    },
+    {
+      "command": "forward_05",
+      "n": 16,
+      "contact_max": 0.0,
+      "first": {
+        "joint_pos": 0.0002053976058959961,
+        "joint_vel": 0.017920255661010742,
+        "applied_torque": 0.0013622641563415527,
+        "joint_target": 0.0
+      },
+      "full200": {
+        "joint_pos": 0.002153441309928894,
+        "joint_vel": 0.02690833806991577,
+        "applied_torque": 0.002232179045677185,
+        "joint_target": 0.0
+      }
+    },
+    {
+      "command": "forward_05",
+      "n": 1,
+      "contact_max": 0.0,
+      "first": {
+        "joint_pos": 0.0002053976058959961,
+        "joint_vel": 0.01791989803314209,
+        "applied_torque": 0.0013622120022773743,
+        "joint_target": 0.0
+      },
+      "full200": {
+        "joint_pos": 0.00215303897857666,
+        "joint_vel": 0.026667192578315735,
+        "applied_torque": 0.0021973922848701477,
+        "joint_target": 0.0
+      }
+    }
+  ]
+}

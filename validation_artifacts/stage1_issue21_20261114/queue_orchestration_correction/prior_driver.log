@@ -1,0 +1,6 @@
+ISSUE21_DONE 1 ground_s1_n16
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/run_issue21_evaluation.py", line 13, in <module>
+    for p,d in files.items():assert sha(p)==d,p
+                                    ^^^^^^^^^
+AssertionError: /root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/plot_issue21.py
