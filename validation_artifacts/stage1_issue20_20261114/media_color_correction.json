@@ -1,0 +1,62 @@
+{
+  "source_changed": "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/color_issue20_usd.py",
+  "before_sha256": "2a286096f8b6c0ad32ee0ab28f104123d0284d270371249dcc33cb7ecd67700e",
+  "after_sha256": "0372dffcd80d8b3184ca7e405bf2512a881c6cf0a5b559610761ed940944efb0",
+  "actual_failure": "First rendered frame was gray and failed unchanged color-pixel QA.",
+  "repair": "Offline strongerThanDescendants binding at each link root, matching proven project color helper.",
+  "physics_asset_sha256": "b957ede157134278f6c5c13f41b014a88d9f6217563053ea5332598d425ac05e",
+  "formal_data_unchanged": true,
+  "rejected_render_payloads_not_final_deliverables": [
+    {
+      "path": "videos/phase0_side.mp4",
+      "sha256": "71abd9ba8a3d2d0d2c26d5db82f6e7d2325740a746b9de9a6d21ef548c7f8429",
+      "bytes": 2216813
+    },
+    {
+      "path": "videos/phase10_front.mp4",
+      "sha256": "243e2a754d5e4427b3ec2cea0abf96252bb8a6d2b43dbda623cbbf5057bfaa64",
+      "bytes": 2358408
+    },
+    {
+      "path": "videos/phase0_front.mp4",
+      "sha256": "4032cd12f63ee0ac5f77a545404c1cc18fec305e54c376904b3f6e2895dd31f0",
+      "bytes": 2373125
+    },
+    {
+      "path": "videos/phase10_side.mp4",
+      "sha256": "5b55ee4cc140fd0c3b940e5e7e60896768b67c4bb0ec26d8e35fc26b9334faf0",
+      "bytes": 2225101
+    },
+    {
+      "path": "videos/phase0_overhead.mp4",
+      "sha256": "9582469f1843e7fcc1dcfd54e4ec566788bced10bccc03d4257d05fd015a2ebd",
+      "bytes": 979406
+    },
+    {
+      "path": "videos/phase10_overhead.mp4",
+      "sha256": "b6a1835645e1db7e1f997c920fd15c57b4b1fe7810d182ec985fc0776044e12d",
+      "bytes": 954795
+    },
+    {
+      "path": "videos/phase0_phase10_overhead_paired.mp4",
+      "sha256": "3d6a651ea130bcb23c5c7549b4d1d8239e695e65147a7d91aaf627ea2e51e10f",
+      "bytes": 2539721
+    },
+    {
+      "path": "video_review_frames/phase0_front_frame0.png",
+      "sha256": "a4f59645a467b7d2faf6a0dde4cf07da69fa9391a21410a7321d05a624c9b197",
+      "bytes": 189067
+    }
+  ],
+  "rejected_payloads_retained_remotely_in_publication_folder": true,
+  "timestamp": 1794642708.8873324,
+  "preview_and_final_QA_pending": true,
+  "preview_actual_review": {
+    "actual_model_review_completed": true,
+    "source_sha256": "93bb8493a0d5e6672256c82647500b3d471d20fbfb0a412b6376c38ab8283ba7",
+    "width": 960,
+    "height": 720,
+    "notes": "Colored head, torso and left/right limbs are visible; full body framed; source poses and physics asset unchanged. Offline link-root stronger binding fixes the gray first render."
+  },
+  "preview_passed": true
+}

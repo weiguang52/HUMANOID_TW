@@ -1,0 +1,970 @@
+{
+  "passed": true,
+  "completed_jobs_at_snapshot": 30,
+  "phase_pair_command_cells": 60,
+  "phase_arrays_verified": 120,
+  "checks": [
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 1,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 1,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 1,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 1,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 2,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 2,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 2,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 2,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 3,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 3,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 3,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 1,
+      "eval_seed": 3,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 1,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 1,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 1,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 1,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 2,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 2,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 2,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 2,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 3,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 3,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 3,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 2,
+      "eval_seed": 3,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 1,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 1,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 1,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 1,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 2,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 2,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 2,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 2,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 3,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 3,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 3,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 3,
+      "eval_seed": 3,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 1,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 1,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 1,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 1,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 2,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 2,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 2,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 2,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 3,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 3,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 3,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 4,
+      "eval_seed": 3,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 1,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 1,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 1,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 1,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 2,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 2,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 2,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 2,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 3,
+      "command": "forward_03",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 3,
+      "command": "forward_05",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 3,
+      "command": "forward_08",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    },
+    {
+      "usd": "symmetric",
+      "training_seed": 5,
+      "eval_seed": 3,
+      "command": "stand",
+      "initial_state_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0,
+        "last_action": 0.0
+      },
+      "all1000_shifted_phase_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "source_pose_yaw_max_error_at_most2e_6": true
+    }
+  ],
+  "scientific_classification_performed": false,
+  "timestamp": 1794641640.1794894
+}

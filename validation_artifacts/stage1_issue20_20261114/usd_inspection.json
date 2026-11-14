@@ -1,0 +1,6026 @@
+{
+  "usd": "/root/tw_stage1/issue20_20261114/strict_symmetric.usd",
+  "usd_sha256": "b957ede157134278f6c5c13f41b014a88d9f6217563053ea5332598d425ac05e",
+  "meters_per_unit": 1.0,
+  "up_axis": "Z",
+  "layers": [
+    {
+      "identifier": "anon:0x557a148f65a0:strict_symmetric-session.usda",
+      "path": ".",
+      "sha256": null
+    },
+    {
+      "identifier": "/root/tw_stage1/issue20_20261114/strict_symmetric.usd",
+      "path": "/root/tw_stage1/issue20_20261114/strict_symmetric.usd",
+      "sha256": "b957ede157134278f6c5c13f41b014a88d9f6217563053ea5332598d425ac05e"
+    }
+  ],
+  "bodies": {
+    "base_link": {
+      "path": "/urdf0711_training_30dof/base_link",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -6.255825610423926e-06,
+          0.0,
+          -0.0013914030278101563
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          4.476768936001463e-06,
+          4.890436230198247e-06,
+          5.149986918695504e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.07990783452987671,
+        "physics:principalAxes": [
+          0.03715158626437187,
+          -0.03715158626437187,
+          0.7061301469802856,
+          0.7061301469802856
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physxArticulation:articulationEnabled": true,
+        "physxArticulation:enabledSelfCollisions": false,
+        "physxArticulation:sleepThreshold": 4.999999873689376e-05,
+        "physxArticulation:solverPositionIterationCount": 32,
+        "physxArticulation:solverVelocityIterationCount": 1,
+        "physxArticulation:stabilizationThreshold": 9.999999747378752e-06
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "left_hip_linkage": {
+      "path": "/urdf0711_training_30dof/left_hip_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          0.0016206578584387898,
+          0.008438712917268276,
+          3.469446951953614e-18
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.4229497935502877e-07,
+          6.610185465660834e-08,
+          1.562817857347909e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.004141506738960743,
+        "physics:principalAxes": [
+          0.9479719400405884,
+          0.0,
+          0.0,
+          -0.31835395097732544
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008007085416465998,
+          0.012900348752737045,
+          -0.025046125054359436,
+          1.0
+        ]
+      ]
+    },
+    "left_thigh": {
+      "path": "/urdf0711_training_30dof/left_thigh",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.00024358558584935963,
+          -0.0054773506708443165,
+          -0.03990628942847252
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          4.634041033568792e-06,
+          4.331013769842684e-06,
+          1.2755497209582245e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.04239087551832199,
+        "physics:principalAxes": [
+          0.9936758875846863,
+          -0.11164963990449905,
+          0.011921252124011517,
+          -0.0006903816247358918
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0004007085517514497,
+          0.028500348329544067,
+          -0.025046125054359436,
+          1.0
+        ]
+      ]
+    },
+    "left_knee_linkage": {
+      "path": "/urdf0711_training_30dof/left_knee_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          8.356212943816388e-11,
+          0.00030222369241528213,
+          -0.0013589657610282302
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          3.6448605555960967e-07,
+          2.944977097740775e-07,
+          4.280827852198854e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.010938732884824276,
+        "physics:principalAxes": [
+          0.9710004925727844,
+          -0.23907750844955444,
+          2.125681533016177e-07,
+          2.3791946546225518e-07
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          0.018999939784407616,
+          -0.11015960574150085,
+          1.0
+        ]
+      ]
+    },
+    "left_mid_leg": {
+      "path": "/urdf0711_training_30dof/left_mid_leg",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.00016061913629528135,
+          0.0005548542831093073,
+          -0.02649628557264805
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.5827272363821976e-06,
+          1.7194696511069196e-06,
+          8.985997510535526e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.0351288840174675,
+        "physics:principalAxes": [
+          0.9989999532699585,
+          -0.014974748715758324,
+          -0.029942382127046585,
+          0.02963511273264885
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          0.018999939784407616,
+          -0.12635961174964905,
+          1.0
+        ]
+      ]
+    },
+    "left_calf": {
+      "path": "/urdf0711_training_30dof/left_calf",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -9.05844644876197e-05,
+          -7.235894008772448e-05,
+          -0.02179766073822975
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.9317303667776287e-06,
+          2.0949585177731933e-06,
+          8.139067517731746e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.029065843671560287,
+        "physics:principalAxes": [
+          0.9996883869171143,
+          0.01858963631093502,
+          0.004848283715546131,
+          0.015940751880407333
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005931243649683893,
+          0.01979977823793888,
+          -0.18517278134822845,
+          1.0
+        ]
+      ]
+    },
+    "left_ankle": {
+      "path": "/urdf0711_training_30dof/left_ankle",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0029612097423523664,
+          0.0003349635808262974,
+          -0.010205673053860664
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          3.377128336978785e-07,
+          3.2142648365152127e-07,
+          1.3772432794212364e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.006317314226180315,
+        "physics:principalAxes": [
+          0.9011827111244202,
+          -0.16510814428329468,
+          0.2579193711280823,
+          0.3067356050014496
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0006851911311969161,
+          0.019704803824424744,
+          -0.23148895800113678,
+          1.0
+        ]
+      ]
+    },
+    "left_foot": {
+      "path": "/urdf0711_training_30dof/left_foot",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          0.016153519973158836,
+          -9.95985756162554e-05,
+          -0.0008499454124830663
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          8.237689144152682e-07,
+          2.314050334462081e-06,
+          2.1527080207306426e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.02622980810701847,
+        "physics:principalAxes": [
+          0.9979163408279419,
+          -0.0059116557240486145,
+          -0.06414446234703064,
+          -0.00369051075540483
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.005185191053897142,
+          0.019500136375427246,
+          -0.25198894739151,
+          1.0
+        ]
+      ]
+    },
+    "waist": {
+      "path": "/urdf0711_training_30dof/waist",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          0.0007800610619597137,
+          0.0,
+          -0.0020823257509618998
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.8115805460183765e-06,
+          1.8525549876358127e-06,
+          2.1067410216346616e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.019742896780371666,
+        "physics:principalAxes": [
+          0.7070338129997253,
+          -0.010159543715417385,
+          -0.010159543715417385,
+          0.7070338129997253
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.028999999165534973,
+          1.0
+        ]
+      ]
+    },
+    "gearbox": {
+      "path": "/urdf0711_training_30dof/gearbox",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          0.0013475996674969792,
+          0.0,
+          1.3877787807814457e-17
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          5.41926281627525e-09,
+          1.2188985820671405e-08,
+          1.5262690666872913e-08
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.00086215726332739,
+        "physics:principalAxes": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008008063887245953,
+          0.0,
+          0.04244999960064888,
+          1.0
+        ]
+      ]
+    },
+    "chest": {
+      "path": "/urdf0711_training_30dof/chest",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0005710615077987313,
+          0.0,
+          0.031621597707271576
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.13966398203047e-05,
+          1.3284960004966706e-05,
+          1.6707948816474527e-05
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.12830553948879242,
+        "physics:principalAxes": [
+          0.7387059330940247,
+          0.0,
+          -0.6740278601646423,
+          -0.0
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008008063887245953,
+          0.0,
+          0.04244999960064888,
+          1.0
+        ]
+      ]
+    },
+    "left_shoulder_linkage": {
+      "path": "/urdf0711_training_30dof/left_shoulder_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0016206578584387898,
+          0.008438712917268276,
+          1.3877787807814457e-17
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.4229497935502877e-07,
+          6.610185465660834e-08,
+          1.562817857347909e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.004141506738960743,
+        "physics:principalAxes": [
+          0.9479719400405884,
+          0.0,
+          0.0,
+          0.31835395097732544
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          2.449293598294706e-16,
+          0.0,
+          0.0
+        ],
+        [
+          -2.449293598294706e-16,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0005991913494654,
+          0.0251003485172987,
+          0.09871695935726166,
+          1.0
+        ]
+      ]
+    },
+    "left_upper_arm": {
+      "path": "/urdf0711_training_30dof/left_upper_arm",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0005274710711091757,
+          0.02688703127205372,
+          -0.00010294002277078107
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.4600742588299909e-06,
+          8.74202896739007e-07,
+          1.3331343780009774e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.03456928953528404,
+        "physics:principalAxes": [
+          0.999765157699585,
+          0.00024294338072650135,
+          -0.01854388415813446,
+          -0.011211606673896313
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          2.992353672414049e-15,
+          -3.422853445123053e-08,
+          -0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          0.000599188613705337,
+          0.04070065915584564,
+          0.09880943596363068,
+          1.0
+        ]
+      ]
+    },
+    "left_elbow_linkage": {
+      "path": "/urdf0711_training_30dof/left_elbow_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          3.5152452060316364e-09,
+          0.008525020442903042,
+          -0.005643379874527454
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.1748831241220614e-07,
+          4.111952378593742e-08,
+          1.12444503486131e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.0031351889483630657,
+        "physics:principalAxes": [
+          0.9672952890396118,
+          -0.2536529302597046,
+          -1.9018964394490467e-06,
+          4.987325041838631e-07
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          2.992353672414049e-15,
+          -3.422853445123053e-08,
+          -0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          -0.0002006247523240745,
+          0.040608588606119156,
+          0.044996265321969986,
+          1.0
+        ]
+      ]
+    },
+    "left_force_arm": {
+      "path": "/urdf0711_training_30dof/left_force_arm",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.00998473260551691,
+          -0.0001327373320236802,
+          -0.006394801661372185
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          2.930068774276151e-07,
+          8.7344329813277e-07,
+          1.0107626167155104e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.015736782923340797,
+        "physics:principalAxes": [
+          0.9991583228111267,
+          0.037968553602695465,
+          -0.010606478899717331,
+          -0.011334828101098537
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          -3.973642881405226e-08,
+          -3.9736430312853344e-08,
+          0.9999999999999984,
+          0.0
+        ],
+        [
+          -0.9999999999999984,
+          -3.973642881405226e-08,
+          -3.9736430312853344e-08,
+          0.0
+        ],
+        [
+          3.9736430312853344e-08,
+          -0.9999999999999984,
+          -3.973642881405226e-08,
+          0.0
+        ],
+        [
+          -0.00020062354451511055,
+          0.03370893746614456,
+          0.027396265417337418,
+          1.0
+        ]
+      ]
+    },
+    "left_wrist": {
+      "path": "/urdf0711_training_30dof/left_wrist",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.000594914483372122,
+          0.020594511181116104,
+          -3.599653427954763e-05
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          4.260917648934992e-06,
+          6.714961386933282e-07,
+          4.274560978956288e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.026017291471362114,
+        "physics:principalAxes": [
+          0.9996985197067261,
+          -0.00021660751372110099,
+          0.010556698776781559,
+          0.022165551781654358
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999996,
+          2.0291164345192702e-08,
+          2.0291160229821834e-08,
+          0.0
+        ],
+        [
+          2.0291164345192702e-08,
+          -2.028159256095563e-07,
+          -0.9999999999999791,
+          0.0
+        ],
+        [
+          -2.0291160229821834e-08,
+          0.9999999999999791,
+          -2.028159260536455e-07,
+          0.0
+        ],
+        [
+          -0.00020061795657966286,
+          0.0397089347243309,
+          0.0009962711483240128,
+          1.0
+        ]
+      ]
+    },
+    "neck": {
+      "path": "/urdf0711_training_30dof/neck",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0007649202016182244,
+          0.0,
+          0.011502807028591633
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          3.7674678310395393e-07,
+          1.1314181165289483e-06,
+          1.3048800155956997e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.0174129419028759,
+        "physics:principalAxes": [
+          0.7134313583374023,
+          0.0,
+          -0.7007251381874084,
+          -0.0
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0011987851466983557,
+          0.0,
+          0.09695348143577576,
+          1.0
+        ]
+      ]
+    },
+    "neck_linkage": {
+      "path": "/urdf0711_training_30dof/neck_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0016895810840651393,
+          0.0,
+          0.009690427221357822
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.240326383822321e-07,
+          2.42126475313853e-07,
+          2.9639014087479154e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.003944259602576494,
+        "physics:principalAxes": [
+          0.0,
+          0.8770868182182312,
+          0.0,
+          -0.4803318679332733
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.005799134261906147,
+          0.0,
+          0.1192534789443016,
+          1.0
+        ]
+      ]
+    },
+    "head": {
+      "path": "/urdf0711_training_30dof/head",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          0.00316837290301919,
+          0.0,
+          0.03342021629214287
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          2.8137210392742418e-05,
+          3.452912642387673e-05,
+          3.7984023947501555e-05
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.1150117814540863,
+        "physics:principalAxes": [
+          -0.2698972523212433,
+          -0.6535713076591492,
+          0.6535713076591492,
+          0.2698972523212433
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.00017086463049054146,
+          0.0,
+          0.14025349915027618,
+          1.0
+        ]
+      ]
+    },
+    "right_hip_linkage": {
+      "path": "/urdf0711_training_30dof/right_hip_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          0.0016206578584387898,
+          -0.008438712917268276,
+          3.469446951953614e-18
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.4229497935502877e-07,
+          6.610185465660834e-08,
+          1.562817857347909e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.004141506738960743,
+        "physics:principalAxes": [
+          0.9479719400405884,
+          0.0,
+          0.0,
+          0.31835395097732544
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008007085416465998,
+          -0.012900348752737045,
+          -0.025046125054359436,
+          1.0
+        ]
+      ]
+    },
+    "right_thigh": {
+      "path": "/urdf0711_training_30dof/right_thigh",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.00024358558584935963,
+          0.0054773506708443165,
+          -0.03990628942847252
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          4.634041033568792e-06,
+          4.331013769842684e-06,
+          1.2755497209582245e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.04239087551832199,
+        "physics:principalAxes": [
+          0.9936758875846863,
+          0.11164963990449905,
+          0.011921252124011517,
+          0.0006903816247358918
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0004007085517514497,
+          -0.028500348329544067,
+          -0.025046125054359436,
+          1.0
+        ]
+      ]
+    },
+    "right_knee_linkage": {
+      "path": "/urdf0711_training_30dof/right_knee_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          8.356212943816388e-11,
+          -0.00030222369241528213,
+          -0.0013589657610282302
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          3.6448605555960967e-07,
+          2.944977097740775e-07,
+          4.280827852198854e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.010938732884824276,
+        "physics:principalAxes": [
+          0.9710004925727844,
+          0.23907750844955444,
+          2.125681533016177e-07,
+          -2.3791946546225518e-07
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          -0.018999939784407616,
+          -0.11015960574150085,
+          1.0
+        ]
+      ]
+    },
+    "right_mid_leg": {
+      "path": "/urdf0711_training_30dof/right_mid_leg",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.00016061913629528135,
+          -0.0005548542831093073,
+          -0.02649628557264805
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.5827272363821976e-06,
+          1.7194696511069196e-06,
+          8.985997510535526e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.0351288840174675,
+        "physics:principalAxes": [
+          0.9990000128746033,
+          0.014974749647080898,
+          -0.029942383989691734,
+          -0.029635114595294
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          -0.018999939784407616,
+          -0.12635961174964905,
+          1.0
+        ]
+      ]
+    },
+    "right_calf": {
+      "path": "/urdf0711_training_30dof/right_calf",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -9.05844644876197e-05,
+          7.235894008772448e-05,
+          -0.02179766073822975
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.9317303667776287e-06,
+          2.0949585177731933e-06,
+          8.139067517731746e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.029065843671560287,
+        "physics:principalAxes": [
+          0.9996883869171143,
+          -0.01858963631093502,
+          0.004848283715546131,
+          -0.015940751880407333
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005931243649683893,
+          -0.01979977823793888,
+          -0.18517278134822845,
+          1.0
+        ]
+      ]
+    },
+    "right_ankle": {
+      "path": "/urdf0711_training_30dof/right_ankle",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0029612097423523664,
+          -0.0003349635808262974,
+          -0.010205673053860664
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          3.377128336978785e-07,
+          3.2142648365152127e-07,
+          1.3772432794212364e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.006317314226180315,
+        "physics:principalAxes": [
+          0.9011826515197754,
+          0.16510812938213348,
+          0.2579193711280823,
+          -0.3067355751991272
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0006851911311969161,
+          -0.019704803824424744,
+          -0.23148895800113678,
+          1.0
+        ]
+      ]
+    },
+    "right_foot": {
+      "path": "/urdf0711_training_30dof/right_foot",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          0.016153519973158836,
+          9.95985756162554e-05,
+          -0.0008499454124830663
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          8.237689144152682e-07,
+          2.314050334462081e-06,
+          2.1527080207306426e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.02622980810701847,
+        "physics:principalAxes": [
+          0.9979162812232971,
+          0.005911655258387327,
+          -0.06414446234703064,
+          0.0036905105225741863
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.005185191053897142,
+          -0.019500136375427246,
+          -0.25198894739151,
+          1.0
+        ]
+      ]
+    },
+    "right_shoulder_linkage": {
+      "path": "/urdf0711_training_30dof/right_shoulder_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0016206578584387898,
+          -0.008438712917268276,
+          1.3877787807814457e-17
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.4229497935502877e-07,
+          6.610185465660834e-08,
+          1.562817857347909e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.004141506738960743,
+        "physics:principalAxes": [
+          0.9479719400405884,
+          0.0,
+          0.0,
+          -0.31835395097732544
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          -2.449293598294706e-16,
+          0.0,
+          0.0
+        ],
+        [
+          2.449293598294706e-16,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0005991913494654,
+          -0.0251003485172987,
+          0.09871695935726166,
+          1.0
+        ]
+      ]
+    },
+    "right_upper_arm": {
+      "path": "/urdf0711_training_30dof/right_upper_arm",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.0005274710711091757,
+          -0.02688703127205372,
+          -0.00010294002277078107
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.4600742588299909e-06,
+          8.74202896739007e-07,
+          1.3331343780009774e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.03456928953528404,
+        "physics:principalAxes": [
+          0.999765157699585,
+          -0.00024294338072650135,
+          -0.01854388415813446,
+          0.011211606673896313
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          -1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          -2.992353672414049e-15,
+          -3.422853445123053e-08,
+          0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          -0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          0.000599188613705337,
+          -0.04070065915584564,
+          0.09880943596363068,
+          1.0
+        ]
+      ]
+    },
+    "right_elbow_linkage": {
+      "path": "/urdf0711_training_30dof/right_elbow_linkage",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          3.5152452060316364e-09,
+          -0.008525020442903042,
+          -0.005643379874527454
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          1.1748831241220614e-07,
+          4.111952378593742e-08,
+          1.12444503486131e-07
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.0031351889483630657,
+        "physics:principalAxes": [
+          0.9672952890396118,
+          0.2536529302597046,
+          -1.9018964394490467e-06,
+          -4.987325041838631e-07
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          -1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          -2.992353672414049e-15,
+          -3.422853445123053e-08,
+          0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          -0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          -0.0002006247523240745,
+          -0.040608588606119156,
+          0.044996265321969986,
+          1.0
+        ]
+      ]
+    },
+    "right_force_arm": {
+      "path": "/urdf0711_training_30dof/right_force_arm",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.00998473260551691,
+          0.0001327373320236802,
+          -0.006394801661372185
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          2.930068774276151e-07,
+          8.7344329813277e-07,
+          1.0107626167155104e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.015736782923340797,
+        "physics:principalAxes": [
+          0.9991583228111267,
+          -0.037968553602695465,
+          -0.010606478899717331,
+          0.011334828101098537
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          -3.973642881405226e-08,
+          3.9736430312853344e-08,
+          0.9999999999999984,
+          0.0
+        ],
+        [
+          0.9999999999999984,
+          -3.973642881405226e-08,
+          3.9736430312853344e-08,
+          0.0
+        ],
+        [
+          3.9736430312853344e-08,
+          0.9999999999999984,
+          -3.973642881405226e-08,
+          0.0
+        ],
+        [
+          -0.00020062354451511055,
+          -0.03370893746614456,
+          0.027396265417337418,
+          1.0
+        ]
+      ]
+    },
+    "right_wrist": {
+      "path": "/urdf0711_training_30dof/right_wrist",
+      "attributes": {
+        "physics:angularVelocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:centerOfMass": [
+          -0.000594914483372122,
+          -0.020594511181116104,
+          -3.599653427954763e-05
+        ],
+        "physics:density": 0.0,
+        "physics:diagonalInertia": [
+          4.260917648934992e-06,
+          6.714961386933282e-07,
+          4.274560978956288e-06
+        ],
+        "physics:kinematicEnabled": false,
+        "physics:mass": 0.026017291471362114,
+        "physics:principalAxes": [
+          0.9996985793113708,
+          0.00021660752827301621,
+          0.010556698776781559,
+          -0.022165551781654358
+        ],
+        "physics:rigidBodyEnabled": true,
+        "physics:startsAsleep": false,
+        "physics:velocity": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999996,
+          -2.0291164345192702e-08,
+          2.0291160229821834e-08,
+          0.0
+        ],
+        [
+          -2.0291164345192702e-08,
+          -2.028159256095563e-07,
+          0.9999999999999791,
+          0.0
+        ],
+        [
+          -2.0291160229821834e-08,
+          -0.9999999999999791,
+          -2.028159260536455e-07,
+          0.0
+        ],
+        [
+          -0.00020061795657966286,
+          -0.0397089347243309,
+          0.0009962711483240128,
+          1.0
+        ]
+      ]
+    }
+  },
+  "joints": {
+    "left_hip_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_hip_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/base_link"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_hip_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 8.779720519669354e-05,
+        "physics:localPos0": [
+          -0.0008007085416465998,
+          0.012900348752737045,
+          -0.025046125054359436
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -89.9543685913086,
+        "physics:upperLimit": 89.9543685913086,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "left_hip_roll_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_hip_roll_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_hip_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_thigh"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.00015690812142565846,
+        "physics:localPos0": [
+          0.00039999998989515007,
+          0.015599999576807022,
+          0.0
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:lowerLimit": -45.26366424560547,
+        "physics:upperLimit": 45.26366424560547,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    "left_hip_yaw_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_hip_yaw_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_thigh"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_knee_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0011641195742413402,
+        "physics:localPos0": [
+          -0.00010034900333266705,
+          -0.009500408545136452,
+          -0.08511348068714142
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:lowerLimit": -60.160560607910156,
+        "physics:upperLimit": 60.160560607910156,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    "left_knee_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_knee_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_knee_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_mid_leg"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0008396494085900486,
+        "physics:localPos0": [
+          0.0,
+          0.0,
+          -0.016200000420212746
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -90.0,
+        "physics:upperLimit": 90.0,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    "left_ankle_yaw_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_ankle_yaw_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_mid_leg"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_calf"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0008260539034381509,
+        "physics:localPos0": [
+          -9.206683171214536e-05,
+          0.0007998390356078744,
+          -0.05881316959857941
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:lowerLimit": -49.84732437133789,
+        "physics:upperLimit": 49.84732437133789,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    "left_ankle_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_ankle_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_calf"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_ankle"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.00020063642296008766,
+        "physics:localPos0": [
+          -9.206673712469637e-05,
+          -9.497387509327382e-05,
+          -0.04631617292761803
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -45.26366424560547,
+        "physics:upperLimit": 45.26366424560547,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "left_foot_roll": {
+      "path": "/urdf0711_training_30dof/joints/left_foot_roll",
+      "body0": [
+        "/urdf0711_training_30dof/left_ankle"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_foot"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 2.4341416064999066e-05,
+        "physics:localPos0": [
+          -0.0044999998062849045,
+          -0.0002046665467787534,
+          -0.020500000566244125
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:lowerLimit": -20.05352210998535,
+        "physics:upperLimit": 20.05352210998535,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    "right_hip_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_hip_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/base_link"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_hip_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 8.754292502999306e-05,
+        "physics:localPos0": [
+          -0.0008007085416465998,
+          -0.012900348752737045,
+          -0.025046125054359436
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -89.9543685913086,
+        "physics:upperLimit": 89.9543685913086,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    "right_hip_roll_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_hip_roll_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_hip_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_thigh"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0001567027939017862,
+        "physics:localPos0": [
+          0.00039999998989515007,
+          -0.015599999576807022,
+          0.0
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:lowerLimit": -45.26366424560547,
+        "physics:upperLimit": 45.26366424560547,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    "right_hip_yaw_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_hip_yaw_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_thigh"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_knee_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.001163357519544661,
+        "physics:localPos0": [
+          -0.00010034900333266705,
+          0.009500408545136452,
+          -0.08511348068714142
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:lowerLimit": -60.160560607910156,
+        "physics:upperLimit": 60.160560607910156,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    "right_knee_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_knee_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_knee_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_mid_leg"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0008399227517656982,
+        "physics:localPos0": [
+          0.0,
+          0.0,
+          -0.016200000420212746
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -90.0,
+        "physics:upperLimit": 90.0,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    "right_ankle_yaw_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_ankle_yaw_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_mid_leg"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_calf"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0008269983809441328,
+        "physics:localPos0": [
+          -9.206683171214536e-05,
+          -0.0007998390356078744,
+          -0.05881316959857941
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:lowerLimit": -49.84732437133789,
+        "physics:upperLimit": 49.84732437133789,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        1.2246467991473532e-16,
+        0.0,
+        -1.0
+      ]
+    },
+    "right_ankle_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_ankle_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_calf"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_ankle"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0002011317410506308,
+        "physics:localPos0": [
+          -9.206673712469637e-05,
+          9.497387509327382e-05,
+          -0.04631617292761803
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -45.26366424560547,
+        "physics:upperLimit": 45.26366424560547,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    "right_foot_roll": {
+      "path": "/urdf0711_training_30dof/joints/right_foot_roll",
+      "body0": [
+        "/urdf0711_training_30dof/right_ankle"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_foot"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 2.4373246560571715e-05,
+        "physics:localPos0": [
+          -0.0044999998062849045,
+          0.0002046665467787534,
+          -0.020500000566244125
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:lowerLimit": -20.05352210998535,
+        "physics:upperLimit": 20.05352210998535,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 171.8873291015625
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    "waist_yaw": {
+      "path": "/urdf0711_training_30dof/joints/waist_yaw",
+      "body0": [
+        "/urdf0711_training_30dof/base_link"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/waist"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.00010961682710330933,
+        "physics:localPos0": [
+          0.0,
+          0.0,
+          0.028999999165534973
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -89.9543685913086,
+        "physics:upperLimit": 89.9543685913086,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "waist_roll_joint": {
+      "path": "/urdf0711_training_30dof/joints/waist_roll_joint",
+      "body0": [
+        "/urdf0711_training_30dof/waist"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/gearbox"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0002224932686658576,
+        "physics:localPos0": [
+          -0.0008008063887245953,
+          0.0,
+          0.013450000435113907
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -29.79380226135254,
+        "physics:upperLimit": 29.79380226135254,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    "waist_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/waist_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/gearbox"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/chest"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.00022025429643690586,
+        "physics:localPos0": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -45.26366424560547,
+        "physics:upperLimit": 45.26366424560547,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    },
+    "left_shoulder_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_shoulder_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/chest"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_shoulder_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.00032839554478414357,
+        "physics:localPos0": [
+          -0.00139999995008111,
+          -0.0251003485172987,
+          0.056266963481903076
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          -4.371138828673793e-08,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -90.0,
+        "physics:upperLimit": 90.0,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -8.742277645101104e-08,
+        0.9999999999999962,
+        0.0
+      ]
+    },
+    "left_shoulder_roll_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_shoulder_roll_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_shoulder_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_upper_arm"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0006581912748515606,
+        "physics:localPos0": [
+          0.0,
+          0.015600308775901794,
+          9.247533307643607e-05
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.7071067690849304,
+          0.7071067690849304
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:lowerLimit": -179.95437622070312,
+        "physics:upperLimit": -0.04562615975737572,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        -1.5833375420592126e-16,
+        -8.65956056235493e-17
+      ]
+    },
+    "left_shoulder_yaw_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_shoulder_yaw_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_upper_arm"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_elbow_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0006514587439596653,
+        "physics:localPos0": [
+          -0.0007998134242370725,
+          0.05381317064166069,
+          -9.206683171214536e-05
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -60.160560607910156,
+        "physics:upperLimit": 60.160560607910156,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        2.9923536724140484e-15,
+        -3.4228534451230523e-08,
+        -0.9999999999999994
+      ]
+    },
+    "left_elbow_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/left_elbow_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/left_elbow_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_force_arm"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0001755405100993812,
+        "physics:localPos0": [
+          0.0,
+          0.01759999990463257,
+          -0.006899651139974594
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          -0.7071067690849304,
+          -3.0908619663705394e-08,
+          -3.0908619663705394e-08,
+          -0.7071067690849304
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:lowerLimit": -150.11492919921875,
+        "physics:upperLimit": 0.0,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -8.742278123764105e-08,
+        0.9999999999999957,
+        -3.422853594740775e-08
+      ]
+    },
+    "left_wrist_pitch": {
+      "path": "/urdf0711_training_30dof/joints/left_wrist_pitch",
+      "body0": [
+        "/urdf0711_training_30dof/left_force_arm"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/left_wrist"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 8.79784784046933e-05,
+        "physics:localPos0": [
+          -0.026399999856948853,
+          0.0,
+          -0.006000000052154064
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          -0.7071067690849304,
+          -3.0908619663705394e-08,
+          3.0908619663705394e-08,
+          0.7071067690849304
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -69.90084838867188,
+        "physics:upperLimit": 69.90084838867188,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -5.507885115792622e-09,
+        -1.271592101903749e-07,
+        0.9999999999999919
+      ]
+    },
+    "neck": {
+      "path": "/urdf0711_training_30dof/joints/neck",
+      "body0": [
+        "/urdf0711_training_30dof/chest"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/neck"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0014906706055626273,
+        "physics:localPos0": [
+          -0.00199959147721529,
+          0.0,
+          0.05450348183512688
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -60.160560607910156,
+        "physics:upperLimit": 60.160560607910156,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    "neck_linkage_roll": {
+      "path": "/urdf0711_training_30dof/joints/neck_linkage_roll",
+      "body0": [
+        "/urdf0711_training_30dof/neck"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/neck_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0008310542907565832,
+        "physics:localPos0": [
+          0.004600348882377148,
+          0.0,
+          0.022299999371170998
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:lowerLimit": -29.79380226135254,
+        "physics:upperLimit": 29.79380226135254,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.2246467991473532e-16,
+        0.0
+      ]
+    },
+    "head_pitch": {
+      "path": "/urdf0711_training_30dof/joints/head_pitch",
+      "body0": [
+        "/urdf0711_training_30dof/neck_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/head"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0004919046186842024,
+        "physics:localPos0": [
+          -0.005969999823719263,
+          0.0,
+          0.02100001834332943
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -45.26366424560547,
+        "physics:upperLimit": 45.26366424560547,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        0.0,
+        -1.0,
+        1.2246467991473532e-16
+      ]
+    },
+    "right_shoulder_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_shoulder_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/chest"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_shoulder_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.00033010024344548583,
+        "physics:localPos0": [
+          -0.00139999995008111,
+          0.0251003485172987,
+          0.056266963481903076
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          4.371138828673793e-08,
+          1.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -90.0,
+        "physics:upperLimit": 90.0,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -8.74227765734757e-08,
+        -0.9999999999999962,
+        5.3531011751640665e-24
+      ]
+    },
+    "right_shoulder_roll_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_shoulder_roll_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_shoulder_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_upper_arm"
+      ],
+      "attributes": {
+        "physics:axis": "X",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0006614947924390435,
+        "physics:localPos0": [
+          0.0,
+          -0.015600308775901794,
+          9.247533307643607e-05
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          0.0,
+          0.7071067690849304,
+          -0.7071067690849304
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "physics:lowerLimit": 0.04562615975737572,
+        "physics:upperLimit": 179.95437622070312,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -1.0,
+        1.5833375420592126e-16,
+        -8.65956056235493e-17
+      ]
+    },
+    "right_shoulder_yaw_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_shoulder_yaw_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_upper_arm"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_elbow_linkage"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.0006519884918816388,
+        "physics:localPos0": [
+          -0.0007998134242370725,
+          -0.05381317064166069,
+          -9.206683171214536e-05
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot1": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -60.160560607910156,
+        "physics:upperLimit": 60.160560607910156,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        2.9923536510016427e-15,
+        3.4228534328765845e-08,
+        -0.9999999999999994
+      ]
+    },
+    "right_elbow_pitch_joint": {
+      "path": "/urdf0711_training_30dof/joints/right_elbow_pitch_joint",
+      "body0": [
+        "/urdf0711_training_30dof/right_elbow_linkage"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_force_arm"
+      ],
+      "attributes": {
+        "physics:axis": "Z",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 0.00017588729679118842,
+        "physics:localPos0": [
+          0.0,
+          -0.01759999990463257,
+          -0.006899651139974594
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          -0.7071067690849304,
+          3.0908619663705394e-08,
+          -3.0908619663705394e-08,
+          0.7071067690849304
+        ],
+        "physics:localRot1": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "physics:lowerLimit": 0.0,
+        "physics:upperLimit": 150.11492919921875,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -8.742278123764105e-08,
+        -0.9999999999999957,
+        -3.422853594740775e-08
+      ]
+    },
+    "right_wrist_pitch": {
+      "path": "/urdf0711_training_30dof/joints/right_wrist_pitch",
+      "body0": [
+        "/urdf0711_training_30dof/right_force_arm"
+      ],
+      "body1": [
+        "/urdf0711_training_30dof/right_wrist"
+      ],
+      "attributes": {
+        "physics:axis": "Y",
+        "physics:breakForce": 3.4028234663852886e+38,
+        "physics:breakTorque": 3.4028234663852886e+38,
+        "physics:collisionEnabled": false,
+        "physics:excludeFromArticulation": false,
+        "physics:jointEnabled": true,
+        "physics:JointEquivalentInertia": 8.525843441020697e-05,
+        "physics:localPos0": [
+          -0.026399999856948853,
+          0.0,
+          -0.006000000052154064
+        ],
+        "physics:localPos1": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:localRot0": [
+          3.0908619663705394e-08,
+          0.7071067690849304,
+          0.7071067690849304,
+          3.0908619663705394e-08
+        ],
+        "physics:localRot1": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "physics:lowerLimit": -69.90084838867188,
+        "physics:upperLimit": 69.90084838867188,
+        "physxJoint:armature": 0.0,
+        "physxJoint:jointFriction": 0.0,
+        "physxJoint:maxJointVelocity": 114.591552734375
+      },
+      "axis_world_at_authored_pose": [
+        -3.9736425562227554e-08,
+        1.271592090788064e-07,
+        0.9999999999999911
+      ]
+    }
+  },
+  "collision_shapes": [
+    {
+      "path": "/urdf0711_training_30dof/base_link/strict_symmetric_collision",
+      "body": "base_link",
+      "type": "Mesh",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "array_key": "collider_0",
+      "point_count": 115134,
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_hip_linkage/collisions/left_hip_linkage/node_STL_BINARY_",
+      "body": "left_hip_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008007085416465998,
+          0.012900348752737045,
+          -0.025046125054359436,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_hip_linkage/collisions/left_hip_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0008007085416465998,
+              0.012900348752737045,
+              -0.025046125054359436,
+              1.0
+            ]
+          ],
+          "array_key": "collider_1_desc0",
+          "point_count": 42258
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_thigh/collisions/left_thigh/node_STL_BINARY_",
+      "body": "left_thigh",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0004007085517514497,
+          0.028500348329544067,
+          -0.025046125054359436,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_thigh/collisions/left_thigh/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0004007085517514497,
+              0.028500348329544067,
+              -0.025046125054359436,
+              1.0
+            ]
+          ],
+          "array_key": "collider_2_desc0",
+          "point_count": 412584
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_knee_linkage/collisions/left_knee_linkage/node_STL_BINARY_",
+      "body": "left_knee_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          0.018999939784407616,
+          -0.11015960574150085,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_knee_linkage/collisions/left_knee_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0005010575405322015,
+              0.018999939784407616,
+              -0.11015960574150085,
+              1.0
+            ]
+          ],
+          "array_key": "collider_3_desc0",
+          "point_count": 56412
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_mid_leg/collisions/left_mid_leg/node_STL_BINARY_",
+      "body": "left_mid_leg",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          0.018999939784407616,
+          -0.12635961174964905,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_mid_leg/collisions/left_mid_leg/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0005010575405322015,
+              0.018999939784407616,
+              -0.12635961174964905,
+              1.0
+            ]
+          ],
+          "array_key": "collider_4_desc0",
+          "point_count": 410430
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_calf/collisions/left_calf/node_STL_BINARY_",
+      "body": "left_calf",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005931243649683893,
+          0.01979977823793888,
+          -0.18517278134822845,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_calf/collisions/left_calf/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0005931243649683893,
+              0.01979977823793888,
+              -0.18517278134822845,
+              1.0
+            ]
+          ],
+          "array_key": "collider_5_desc0",
+          "point_count": 313290
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_ankle/collisions/left_ankle/node_STL_BINARY_",
+      "body": "left_ankle",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0006851911311969161,
+          0.019704803824424744,
+          -0.23148895800113678,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_ankle/collisions/left_ankle/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0006851911311969161,
+              0.019704803824424744,
+              -0.23148895800113678,
+              1.0
+            ]
+          ],
+          "array_key": "collider_6_desc0",
+          "point_count": 42534
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_foot/collisions/mesh_0/box",
+      "body": "left_foot",
+      "type": "Cube",
+      "attributes": {
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.04899999871850014,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.022850001230835915,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.020942874252796173,
+          0.0
+        ],
+        [
+          0.014514809008687735,
+          0.01987513666972518,
+          -0.252217510715127,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {
+        "extent": [
+          [
+            -0.02449999935925007,
+            -0.011425000615417957,
+            -0.010471437126398087
+          ],
+          [
+            0.02449999935925007,
+            0.011425000615417957,
+            0.010471437126398087
+          ]
+        ],
+        "size": 1.0
+      },
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/waist/strict_symmetric_collision",
+      "body": "waist",
+      "type": "Mesh",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.028999999165534973,
+          1.0
+        ]
+      ],
+      "array_key": "collider_8",
+      "point_count": 8793,
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/gearbox/strict_symmetric_collision",
+      "body": "gearbox",
+      "type": "Mesh",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008008063887245953,
+          0.0,
+          0.04244999960064888,
+          1.0
+        ]
+      ],
+      "array_key": "collider_9",
+      "point_count": 456,
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/chest/strict_symmetric_collision",
+      "body": "chest",
+      "type": "Mesh",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008008063887245953,
+          0.0,
+          0.04244999960064888,
+          1.0
+        ]
+      ],
+      "array_key": "collider_10",
+      "point_count": 216762,
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_shoulder_linkage/collisions/left_shoulder_linkage/node_STL_BINARY_",
+      "body": "left_shoulder_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          2.449293598294706e-16,
+          0.0,
+          0.0
+        ],
+        [
+          -2.449293598294706e-16,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0005991913494654,
+          0.0251003485172987,
+          0.09871695935726166,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_shoulder_linkage/collisions/left_shoulder_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              2.449293598294706e-16,
+              0.0,
+              0.0
+            ],
+            [
+              -2.449293598294706e-16,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0005991913494654,
+              0.0251003485172987,
+              0.09871695935726166,
+              1.0
+            ]
+          ],
+          "array_key": "collider_11_desc0",
+          "point_count": 42258
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_upper_arm/collisions/left_upper_arm/node_STL_BINARY_",
+      "body": "left_upper_arm",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          2.992353672414049e-15,
+          -3.422853445123053e-08,
+          -0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          0.000599188613705337,
+          0.04070065915584564,
+          0.09880943596363068,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_upper_arm/collisions/left_upper_arm/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999847,
+              1.748455624752822e-07,
+              -2.992353672414049e-15,
+              0.0
+            ],
+            [
+              2.992353672414049e-15,
+              -3.422853445123053e-08,
+              -0.9999999999999997,
+              0.0
+            ],
+            [
+              -1.748455624752822e-07,
+              0.9999999999999843,
+              -3.422853445123053e-08,
+              0.0
+            ],
+            [
+              0.000599188613705337,
+              0.04070065915584564,
+              0.09880943596363068,
+              1.0
+            ]
+          ],
+          "array_key": "collider_12_desc0",
+          "point_count": 410880
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_elbow_linkage/collisions/left_elbow_linkage/node_STL_BINARY_",
+      "body": "left_elbow_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          2.992353672414049e-15,
+          -3.422853445123053e-08,
+          -0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          -0.0002006247523240745,
+          0.040608588606119156,
+          0.044996265321969986,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_elbow_linkage/collisions/left_elbow_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999847,
+              1.748455624752822e-07,
+              -2.992353672414049e-15,
+              0.0
+            ],
+            [
+              2.992353672414049e-15,
+              -3.422853445123053e-08,
+              -0.9999999999999997,
+              0.0
+            ],
+            [
+              -1.748455624752822e-07,
+              0.9999999999999843,
+              -3.422853445123053e-08,
+              0.0
+            ],
+            [
+              -0.0002006247523240745,
+              0.040608588606119156,
+              0.044996265321969986,
+              1.0
+            ]
+          ],
+          "array_key": "collider_13_desc0",
+          "point_count": 40086
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_force_arm/collisions/left_force_arm/node_STL_BINARY_",
+      "body": "left_force_arm",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          -3.973642881405226e-08,
+          -3.9736430312853344e-08,
+          0.9999999999999984,
+          0.0
+        ],
+        [
+          -0.9999999999999984,
+          -3.973642881405226e-08,
+          -3.9736430312853344e-08,
+          0.0
+        ],
+        [
+          3.9736430312853344e-08,
+          -0.9999999999999984,
+          -3.973642881405226e-08,
+          0.0
+        ],
+        [
+          -0.00020062354451511055,
+          0.03370893746614456,
+          0.027396265417337418,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_force_arm/collisions/left_force_arm/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              -3.973642881405226e-08,
+              -3.9736430312853344e-08,
+              0.9999999999999984,
+              0.0
+            ],
+            [
+              -0.9999999999999984,
+              -3.973642881405226e-08,
+              -3.9736430312853344e-08,
+              0.0
+            ],
+            [
+              3.9736430312853344e-08,
+              -0.9999999999999984,
+              -3.973642881405226e-08,
+              0.0
+            ],
+            [
+              -0.00020062354451511055,
+              0.03370893746614456,
+              0.027396265417337418,
+              1.0
+            ]
+          ],
+          "array_key": "collider_14_desc0",
+          "point_count": 287742
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_wrist/collisions/left_wrist/node_STL_BINARY_",
+      "body": "left_wrist",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999996,
+          2.0291164345192702e-08,
+          2.0291160229821834e-08,
+          0.0
+        ],
+        [
+          2.0291164345192702e-08,
+          -2.028159256095563e-07,
+          -0.9999999999999791,
+          0.0
+        ],
+        [
+          -2.0291160229821834e-08,
+          0.9999999999999791,
+          -2.028159260536455e-07,
+          0.0
+        ],
+        [
+          -0.00020061795657966286,
+          0.0397089347243309,
+          0.0009962711483240128,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_wrist/collisions/left_wrist/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999996,
+              2.0291164345192702e-08,
+              2.0291160229821834e-08,
+              0.0
+            ],
+            [
+              2.0291164345192702e-08,
+              -2.028159256095563e-07,
+              -0.9999999999999791,
+              0.0
+            ],
+            [
+              -2.0291160229821834e-08,
+              0.9999999999999791,
+              -2.028159260536455e-07,
+              0.0
+            ],
+            [
+              -0.00020061795657966286,
+              0.0397089347243309,
+              0.0009962711483240128,
+              1.0
+            ]
+          ],
+          "array_key": "collider_15_desc0",
+          "point_count": 153078
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/left_wrist/collisions/left_hand/node_STL_BINARY_",
+      "body": "left_wrist",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999996,
+          2.0291164345192702e-08,
+          2.0291160229821834e-08,
+          0.0
+        ],
+        [
+          2.0291164345192702e-08,
+          -2.028159256095563e-07,
+          -0.9999999999999791,
+          0.0
+        ],
+        [
+          -2.0291160229821834e-08,
+          0.9999999999999791,
+          -2.028159260536455e-07,
+          0.0
+        ],
+        [
+          -0.005600617351964862,
+          0.03970892717141432,
+          -0.035703728085059214,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/left_wrist/collisions/left_hand/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999996,
+              2.0291164345192702e-08,
+              2.0291160229821834e-08,
+              0.0
+            ],
+            [
+              2.0291164345192702e-08,
+              -2.028159256095563e-07,
+              -0.9999999999999791,
+              0.0
+            ],
+            [
+              -2.0291160229821834e-08,
+              0.9999999999999791,
+              -2.028159260536455e-07,
+              0.0
+            ],
+            [
+              -0.005600617351964862,
+              0.03970892717141432,
+              -0.035703728085059214,
+              1.0
+            ]
+          ],
+          "array_key": "collider_16_desc0",
+          "point_count": 124872
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/neck/strict_symmetric_collision",
+      "body": "neck",
+      "type": "Mesh",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0011987851466983557,
+          0.0,
+          0.09695348143577576,
+          1.0
+        ]
+      ],
+      "array_key": "collider_17",
+      "point_count": 52011,
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/neck_linkage/strict_symmetric_collision",
+      "body": "neck_linkage",
+      "type": "Mesh",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.005799134261906147,
+          0.0,
+          0.1192534789443016,
+          1.0
+        ]
+      ],
+      "array_key": "collider_18",
+      "point_count": 750,
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/head/strict_symmetric_collision",
+      "body": "head",
+      "type": "Mesh",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.00017086463049054146,
+          0.0,
+          0.14025349915027618,
+          1.0
+        ]
+      ],
+      "array_key": "collider_19",
+      "point_count": 352291,
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_hip_linkage/collisions/left_hip_linkage/node_STL_BINARY_",
+      "body": "right_hip_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0008007085416465998,
+          -0.012900348752737045,
+          -0.025046125054359436,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_hip_linkage/collisions/left_hip_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0008007085416465998,
+              -0.012900348752737045,
+              -0.025046125054359436,
+              1.0
+            ]
+          ],
+          "array_key": "collider_20_desc0",
+          "point_count": 42258
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_thigh/collisions/left_thigh/node_STL_BINARY_",
+      "body": "right_thigh",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0004007085517514497,
+          -0.028500348329544067,
+          -0.025046125054359436,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_thigh/collisions/left_thigh/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0004007085517514497,
+              -0.028500348329544067,
+              -0.025046125054359436,
+              1.0
+            ]
+          ],
+          "array_key": "collider_21_desc0",
+          "point_count": 412584
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_knee_linkage/collisions/left_knee_linkage/node_STL_BINARY_",
+      "body": "right_knee_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          -0.018999939784407616,
+          -0.11015960574150085,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_knee_linkage/collisions/left_knee_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0005010575405322015,
+              -0.018999939784407616,
+              -0.11015960574150085,
+              1.0
+            ]
+          ],
+          "array_key": "collider_22_desc0",
+          "point_count": 56412
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_mid_leg/collisions/left_mid_leg/node_STL_BINARY_",
+      "body": "right_mid_leg",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005010575405322015,
+          -0.018999939784407616,
+          -0.12635961174964905,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_mid_leg/collisions/left_mid_leg/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0005010575405322015,
+              -0.018999939784407616,
+              -0.12635961174964905,
+              1.0
+            ]
+          ],
+          "array_key": "collider_23_desc0",
+          "point_count": 410430
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_calf/collisions/left_calf/node_STL_BINARY_",
+      "body": "right_calf",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0005931243649683893,
+          -0.01979977823793888,
+          -0.18517278134822845,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_calf/collisions/left_calf/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0005931243649683893,
+              -0.01979977823793888,
+              -0.18517278134822845,
+              1.0
+            ]
+          ],
+          "array_key": "collider_24_desc0",
+          "point_count": 313290
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_ankle/collisions/left_ankle/node_STL_BINARY_",
+      "body": "right_ankle",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          -0.0006851911311969161,
+          -0.019704803824424744,
+          -0.23148895800113678,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_ankle/collisions/left_ankle/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              -0.0006851911311969161,
+              -0.019704803824424744,
+              -0.23148895800113678,
+              1.0
+            ]
+          ],
+          "array_key": "collider_25_desc0",
+          "point_count": 42534
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_foot/collisions/mesh_0/box",
+      "body": "right_foot",
+      "type": "Cube",
+      "attributes": {
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.04899999871850014,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.022850001230835915,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.020942874252796173,
+          0.0
+        ],
+        [
+          0.014514809008687735,
+          -0.01987513666972518,
+          -0.252217510715127,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {
+        "extent": [
+          [
+            -0.02449999935925007,
+            -0.011425000615417957,
+            -0.010471437126398087
+          ],
+          [
+            0.02449999935925007,
+            0.011425000615417957,
+            0.010471437126398087
+          ]
+        ],
+        "size": 1.0
+      },
+      "descendant_geometry": []
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_shoulder_linkage/collisions/left_shoulder_linkage/node_STL_BINARY_",
+      "body": "right_shoulder_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          1.0,
+          -2.449293598294706e-16,
+          0.0,
+          0.0
+        ],
+        [
+          2.449293598294706e-16,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0005991913494654,
+          -0.0251003485172987,
+          0.09871695935726166,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_shoulder_linkage/collisions/left_shoulder_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              1.0,
+              -2.449293598294706e-16,
+              0.0,
+              0.0
+            ],
+            [
+              2.449293598294706e-16,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0005991913494654,
+              -0.0251003485172987,
+              0.09871695935726166,
+              1.0
+            ]
+          ],
+          "array_key": "collider_27_desc0",
+          "point_count": 42258
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_upper_arm/collisions/left_upper_arm/node_STL_BINARY_",
+      "body": "right_upper_arm",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          -1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          -2.992353672414049e-15,
+          -3.422853445123053e-08,
+          0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          -0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          0.000599188613705337,
+          -0.04070065915584564,
+          0.09880943596363068,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_upper_arm/collisions/left_upper_arm/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999847,
+              -1.748455624752822e-07,
+              -2.992353672414049e-15,
+              0.0
+            ],
+            [
+              -2.992353672414049e-15,
+              -3.422853445123053e-08,
+              0.9999999999999997,
+              0.0
+            ],
+            [
+              -1.748455624752822e-07,
+              -0.9999999999999843,
+              -3.422853445123053e-08,
+              0.0
+            ],
+            [
+              0.000599188613705337,
+              -0.04070065915584564,
+              0.09880943596363068,
+              1.0
+            ]
+          ],
+          "array_key": "collider_28_desc0",
+          "point_count": 410880
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_elbow_linkage/collisions/left_elbow_linkage/node_STL_BINARY_",
+      "body": "right_elbow_linkage",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999847,
+          -1.748455624752822e-07,
+          -2.992353672414049e-15,
+          0.0
+        ],
+        [
+          -2.992353672414049e-15,
+          -3.422853445123053e-08,
+          0.9999999999999997,
+          0.0
+        ],
+        [
+          -1.748455624752822e-07,
+          -0.9999999999999843,
+          -3.422853445123053e-08,
+          0.0
+        ],
+        [
+          -0.0002006247523240745,
+          -0.040608588606119156,
+          0.044996265321969986,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_elbow_linkage/collisions/left_elbow_linkage/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999847,
+              -1.748455624752822e-07,
+              -2.992353672414049e-15,
+              0.0
+            ],
+            [
+              -2.992353672414049e-15,
+              -3.422853445123053e-08,
+              0.9999999999999997,
+              0.0
+            ],
+            [
+              -1.748455624752822e-07,
+              -0.9999999999999843,
+              -3.422853445123053e-08,
+              0.0
+            ],
+            [
+              -0.0002006247523240745,
+              -0.040608588606119156,
+              0.044996265321969986,
+              1.0
+            ]
+          ],
+          "array_key": "collider_29_desc0",
+          "point_count": 40086
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_force_arm/collisions/left_force_arm/node_STL_BINARY_",
+      "body": "right_force_arm",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          -3.973642881405226e-08,
+          3.9736430312853344e-08,
+          0.9999999999999984,
+          0.0
+        ],
+        [
+          0.9999999999999984,
+          -3.973642881405226e-08,
+          3.9736430312853344e-08,
+          0.0
+        ],
+        [
+          3.9736430312853344e-08,
+          0.9999999999999984,
+          -3.973642881405226e-08,
+          0.0
+        ],
+        [
+          -0.00020062354451511055,
+          -0.03370893746614456,
+          0.027396265417337418,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_force_arm/collisions/left_force_arm/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              -3.973642881405226e-08,
+              3.9736430312853344e-08,
+              0.9999999999999984,
+              0.0
+            ],
+            [
+              0.9999999999999984,
+              -3.973642881405226e-08,
+              3.9736430312853344e-08,
+              0.0
+            ],
+            [
+              3.9736430312853344e-08,
+              0.9999999999999984,
+              -3.973642881405226e-08,
+              0.0
+            ],
+            [
+              -0.00020062354451511055,
+              -0.03370893746614456,
+              0.027396265417337418,
+              1.0
+            ]
+          ],
+          "array_key": "collider_30_desc0",
+          "point_count": 287742
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_wrist/collisions/left_wrist/node_STL_BINARY_",
+      "body": "right_wrist",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999996,
+          -2.0291164345192702e-08,
+          2.0291160229821834e-08,
+          0.0
+        ],
+        [
+          -2.0291164345192702e-08,
+          -2.028159256095563e-07,
+          0.9999999999999791,
+          0.0
+        ],
+        [
+          -2.0291160229821834e-08,
+          -0.9999999999999791,
+          -2.028159260536455e-07,
+          0.0
+        ],
+        [
+          -0.00020061795657966286,
+          -0.0397089347243309,
+          0.0009962711483240128,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_wrist/collisions/left_wrist/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999996,
+              -2.0291164345192702e-08,
+              2.0291160229821834e-08,
+              0.0
+            ],
+            [
+              -2.0291164345192702e-08,
+              -2.028159256095563e-07,
+              0.9999999999999791,
+              0.0
+            ],
+            [
+              -2.0291160229821834e-08,
+              -0.9999999999999791,
+              -2.028159260536455e-07,
+              0.0
+            ],
+            [
+              -0.00020061795657966286,
+              -0.0397089347243309,
+              0.0009962711483240128,
+              1.0
+            ]
+          ],
+          "array_key": "collider_31_desc0",
+          "point_count": 153078
+        }
+      ]
+    },
+    {
+      "path": "/urdf0711_training_30dof/right_wrist/collisions/left_hand/node_STL_BINARY_",
+      "body": "right_wrist",
+      "type": "Xform",
+      "attributes": {
+        "physics:approximation": "convexHull",
+        "physics:collisionEnabled": true
+      },
+      "world_matrix_row": [
+        [
+          0.9999999999999996,
+          -2.0291164345192702e-08,
+          2.0291160229821834e-08,
+          0.0
+        ],
+        [
+          -2.0291164345192702e-08,
+          -2.028159256095563e-07,
+          0.9999999999999791,
+          0.0
+        ],
+        [
+          -2.0291160229821834e-08,
+          -0.9999999999999791,
+          -2.028159260536455e-07,
+          0.0
+        ],
+        [
+          -0.005600617351964862,
+          -0.03970892717141432,
+          -0.035703728085059214,
+          1.0
+        ]
+      ],
+      "geometry_attributes": {},
+      "descendant_geometry": [
+        {
+          "path": "/urdf0711_training_30dof/right_wrist/collisions/left_hand/node_STL_BINARY_/mesh",
+          "type": "Mesh",
+          "attributes": {},
+          "world_matrix_row": [
+            [
+              0.9999999999999996,
+              -2.0291164345192702e-08,
+              2.0291160229821834e-08,
+              0.0
+            ],
+            [
+              -2.0291164345192702e-08,
+              -2.028159256095563e-07,
+              0.9999999999999791,
+              0.0
+            ],
+            [
+              -2.0291160229821834e-08,
+              -0.9999999999999791,
+              -2.028159260536455e-07,
+              0.0
+            ],
+            [
+              -0.005600617351964862,
+              -0.03970892717141432,
+              -0.035703728085059214,
+              1.0
+            ]
+          ],
+          "array_key": "collider_32_desc0",
+          "point_count": 124872
+        }
+      ]
+    }
+  ],
+  "joint_mapping_authored_pose": [
+    {
+      "joint": "left_hip_pitch_joint",
+      "partner": "right_hip_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "left_hip_roll_joint",
+      "partner": "right_hip_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "left_hip_yaw_joint",
+      "partner": "right_hip_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "left_knee_pitch_joint",
+      "partner": "right_knee_pitch_joint",
+      "sign": 1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "left_ankle_yaw_joint",
+      "partner": "right_ankle_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "left_ankle_pitch_joint",
+      "partner": "right_ankle_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375
+    },
+    {
+      "joint": "left_foot_roll",
+      "partner": "right_foot_roll",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375
+    },
+    {
+      "joint": "right_hip_pitch_joint",
+      "partner": "left_hip_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "right_hip_roll_joint",
+      "partner": "left_hip_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "right_hip_yaw_joint",
+      "partner": "left_hip_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "right_knee_pitch_joint",
+      "partner": "left_knee_pitch_joint",
+      "sign": 1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "right_ankle_yaw_joint",
+      "partner": "left_ankle_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "right_ankle_pitch_joint",
+      "partner": "left_ankle_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375
+    },
+    {
+      "joint": "right_foot_roll",
+      "partner": "left_foot_roll",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.375
+    },
+    {
+      "joint": "waist_yaw",
+      "partner": "waist_yaw",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "waist_roll_joint",
+      "partner": "waist_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "waist_pitch_joint",
+      "partner": "waist_pitch_joint",
+      "sign": 1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.5
+    },
+    {
+      "joint": "left_shoulder_pitch_joint",
+      "partner": "right_shoulder_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "left_shoulder_roll_joint",
+      "partner": "right_shoulder_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": -1.5707963267948966,
+      "partner_default": 1.5707963267948966,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "left_shoulder_yaw_joint",
+      "partner": "right_shoulder_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "left_elbow_pitch_joint",
+      "partner": "right_elbow_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0000000000000002,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "left_wrist_pitch",
+      "partner": "right_wrist_pitch",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.9999999999999994,
+      "axis_mismatch_degrees": 1.9090959104164224e-06,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "right_shoulder_pitch_joint",
+      "partner": "left_shoulder_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "right_shoulder_roll_joint",
+      "partner": "left_shoulder_roll_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 1.5707963267948966,
+      "partner_default": -1.5707963267948966,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "right_shoulder_yaw_joint",
+      "partner": "left_shoulder_yaw_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "right_elbow_pitch_joint",
+      "partner": "left_elbow_pitch_joint",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0000000000000002,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "right_wrist_pitch",
+      "partner": "left_wrist_pitch",
+      "sign": -1,
+      "axis_alignment_cos_abs": 0.9999999999999994,
+      "axis_mismatch_degrees": 1.9090959104164224e-06,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.4
+    },
+    {
+      "joint": "neck",
+      "partner": "neck",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.25
+    },
+    {
+      "joint": "neck_linkage_roll",
+      "partner": "neck_linkage_roll",
+      "sign": -1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.25
+    },
+    {
+      "joint": "head_pitch",
+      "partner": "head_pitch",
+      "sign": 1,
+      "axis_alignment_cos_abs": 1.0,
+      "axis_mismatch_degrees": 0.0,
+      "default": 0.0,
+      "partner_default": 0.0,
+      "absolute_coordinate_offset": 0.0,
+      "action_scale": 0.25
+    }
+  ],
+  "defaults": {
+    "left_hip_pitch_joint": 0.0,
+    "left_hip_roll_joint": 0.0,
+    "left_hip_yaw_joint": 0.0,
+    "left_knee_pitch_joint": 0.0,
+    "left_ankle_yaw_joint": 0.0,
+    "left_ankle_pitch_joint": 0.0,
+    "left_foot_roll": 0.0,
+    "right_hip_pitch_joint": 0.0,
+    "right_hip_roll_joint": 0.0,
+    "right_hip_yaw_joint": 0.0,
+    "right_knee_pitch_joint": 0.0,
+    "right_ankle_yaw_joint": 0.0,
+    "right_ankle_pitch_joint": 0.0,
+    "right_foot_roll": 0.0,
+    "waist_yaw": 0.0,
+    "waist_roll_joint": 0.0,
+    "waist_pitch_joint": 0.0,
+    "left_shoulder_pitch_joint": 0.0,
+    "left_shoulder_roll_joint": -1.5707963267948966,
+    "left_shoulder_yaw_joint": 0.0,
+    "left_elbow_pitch_joint": 0.0,
+    "left_wrist_pitch": 0.0,
+    "right_shoulder_pitch_joint": 0.0,
+    "right_shoulder_roll_joint": 1.5707963267948966,
+    "right_shoulder_yaw_joint": 0.0,
+    "right_elbow_pitch_joint": 0.0,
+    "right_wrist_pitch": 0.0,
+    "neck": 0.0,
+    "neck_linkage_roll": 0.0,
+    "head_pitch": 0.0
+  },
+  "action_scales": {
+    "left_hip_pitch_joint": 0.5,
+    "left_hip_roll_joint": 0.5,
+    "left_hip_yaw_joint": 0.5,
+    "left_knee_pitch_joint": 0.5,
+    "left_ankle_yaw_joint": 0.5,
+    "right_hip_pitch_joint": 0.5,
+    "right_hip_roll_joint": 0.5,
+    "right_hip_yaw_joint": 0.5,
+    "right_knee_pitch_joint": 0.5,
+    "right_ankle_yaw_joint": 0.5,
+    "left_ankle_pitch_joint": 0.375,
+    "left_foot_roll": 0.375,
+    "right_ankle_pitch_joint": 0.375,
+    "right_foot_roll": 0.375,
+    "waist_yaw": 0.5,
+    "waist_roll_joint": 0.5,
+    "waist_pitch_joint": 0.5,
+    "left_shoulder_pitch_joint": 0.4,
+    "left_shoulder_roll_joint": 0.4,
+    "left_shoulder_yaw_joint": 0.4,
+    "left_elbow_pitch_joint": 0.4,
+    "left_wrist_pitch": 0.4,
+    "right_shoulder_pitch_joint": 0.4,
+    "right_shoulder_roll_joint": 0.4,
+    "right_shoulder_yaw_joint": 0.4,
+    "right_elbow_pitch_joint": 0.4,
+    "right_wrist_pitch": 0.4,
+    "neck": 0.25,
+    "neck_linkage_roll": 0.25,
+    "head_pitch": 0.25
+  },
+  "actuators": {
+    "leg_major": {
+      "class_type": "isaaclab.actuators.actuator_pd:ImplicitActuator",
+      "joint_names_expr": [
+        "left_hip_pitch_joint",
+        "left_hip_roll_joint",
+        "left_hip_yaw_joint",
+        "left_knee_pitch_joint",
+        "left_ankle_yaw_joint",
+        "right_hip_pitch_joint",
+        "right_hip_roll_joint",
+        "right_hip_yaw_joint",
+        "right_knee_pitch_joint",
+        "right_ankle_yaw_joint"
+      ],
+      "effort_limit": null,
+      "velocity_limit": null,
+      "effort_limit_sim": 40.0,
+      "velocity_limit_sim": 3.0,
+      "stiffness": 20.0,
+      "damping": 1.0,
+      "armature": 0.001,
+      "friction": null,
+      "dynamic_friction": null,
+      "viscous_friction": null
+    },
+    "feet": {
+      "class_type": "isaaclab.actuators.actuator_pd:ImplicitActuator",
+      "joint_names_expr": [
+        "left_ankle_pitch_joint",
+        "left_foot_roll",
+        "right_ankle_pitch_joint",
+        "right_foot_roll"
+      ],
+      "effort_limit": null,
+      "velocity_limit": null,
+      "effort_limit_sim": 15.0,
+      "velocity_limit_sim": 3.0,
+      "stiffness": 10.0,
+      "damping": 0.5,
+      "armature": 0.001,
+      "friction": null,
+      "dynamic_friction": null,
+      "viscous_friction": null
+    },
+    "waist": {
+      "class_type": "isaaclab.actuators.actuator_pd:ImplicitActuator",
+      "joint_names_expr": [
+        "waist_yaw",
+        "waist_roll_joint",
+        "waist_pitch_joint"
+      ],
+      "effort_limit": null,
+      "velocity_limit": null,
+      "effort_limit_sim": 20.0,
+      "velocity_limit_sim": 2.0,
+      "stiffness": 10.0,
+      "damping": 0.5,
+      "armature": 0.001,
+      "friction": null,
+      "dynamic_friction": null,
+      "viscous_friction": null
+    },
+    "arms": {
+      "class_type": "isaaclab.actuators.actuator_pd:ImplicitActuator",
+      "joint_names_expr": [
+        "left_shoulder_pitch_joint",
+        "left_shoulder_roll_joint",
+        "left_shoulder_yaw_joint",
+        "left_elbow_pitch_joint",
+        "left_wrist_pitch",
+        "right_shoulder_pitch_joint",
+        "right_shoulder_roll_joint",
+        "right_shoulder_yaw_joint",
+        "right_elbow_pitch_joint",
+        "right_wrist_pitch"
+      ],
+      "effort_limit": null,
+      "velocity_limit": null,
+      "effort_limit_sim": 8.0,
+      "velocity_limit_sim": 2.0,
+      "stiffness": 5.0,
+      "damping": 0.25,
+      "armature": 0.0005,
+      "friction": null,
+      "dynamic_friction": null,
+      "viscous_friction": null
+    },
+    "neck": {
+      "class_type": "isaaclab.actuators.actuator_pd:ImplicitActuator",
+      "joint_names_expr": [
+        "neck",
+        "neck_linkage_roll",
+        "head_pitch"
+      ],
+      "effort_limit": null,
+      "velocity_limit": null,
+      "effort_limit_sim": 3.0,
+      "velocity_limit_sim": 2.0,
+      "stiffness": 3.0,
+      "damping": 0.15,
+      "armature": 0.0002,
+      "friction": null,
+      "dynamic_friction": null,
+      "viscous_friction": null
+    }
+  },
+  "source_sha256": "5c8dcafdcb288f515ea6db8e4209d93fcf29a0122fbe89a6ceaf322eb950b5e0"
+}

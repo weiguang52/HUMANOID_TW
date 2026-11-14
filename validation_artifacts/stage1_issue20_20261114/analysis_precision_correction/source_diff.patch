@@ -1,0 +1,11 @@
+--- before_issue20_analysis.py
++++ corrected_issue20_analysis.py
+@@ -21,6 +21,7 @@
+  # A separate common-prefix quantity remains defined for censored pairs.
+  p0=np.asarray(m0[:,1,0],bool);p10=np.asarray(m10[:,1,0],bool);both=p0&p10
+  def prefix(y,s):
+-  prev=np.r_[np.asarray(s)[None],y[:-1]];inc=np.arctan2(np.sin(y-prev),np.cos(y-prev));return np.where(both,inc,0).sum(0)*180/np.pi
++  y=np.asarray(y,dtype=np.float64);s=np.asarray(s,dtype=np.float64)
++  prev=np.r_[s[None],y[:-1]];inc=np.arctan2(np.sin(y-prev),np.cos(y-prev));return np.where(both,inc,0).sum(0)*180/np.pi
+  c0=prefix(y0,start0);c10=prefix(y10,start10)
+  return {'S20_degrees':S,'D20_degrees':D,'paired_complete20s':full,'common_prefix_S_degrees':c0+c10,'common_prefix_D_degrees':(c0-c10)/2,'common_prefix_seconds':both.sum(0)*.02}

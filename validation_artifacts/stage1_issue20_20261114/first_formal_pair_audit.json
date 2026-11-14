@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "training_seed": 1,
+  "eval_seed": 1,
+  "checks": [
+    {
+      "command": "forward_03",
+      "initial_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0
+      },
+      "phase20_all_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "saved_video_pose_yaw_matches_formal_yaw": true
+    },
+    {
+      "command": "forward_05",
+      "initial_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0
+      },
+      "phase20_all_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "saved_video_pose_yaw_matches_formal_yaw": true
+    },
+    {
+      "command": "forward_08",
+      "initial_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0
+      },
+      "phase20_all_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "saved_video_pose_yaw_matches_formal_yaw": true
+    },
+    {
+      "command": "stand",
+      "initial_mirror_errors": {
+        "root": 0.0,
+        "joint_pos": 0.0,
+        "joint_vel": 0.0
+      },
+      "phase20_all_steps_verified": true,
+      "paired_trials": 1024,
+      "complete20s_pairs": 1024,
+      "saved_video_pose_yaw_matches_formal_yaw": true
+    }
+  ],
+  "no_early_scientific_classification": true
+}

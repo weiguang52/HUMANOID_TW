@@ -1,0 +1,11 @@
+{
+ "issue":20,"base_commit":"2c89ead59fa17fa9e339a8e46b972a8af579d237","training_allowed":false,"default_promotion_allowed":false,"parameter_scan_allowed":false,
+ "models":"exact five issue19 sym_wrap final checkpoints; hashes frozen before evaluation",
+ "protocol":{"condition":"clean","commands":["stand","forward_03","forward_05","forward_08"],"num_envs":1024,"evaluation_seeds":[1,2,3],"seconds":20,"phase_offsets":[0,10],"USD":["original","strict_symmetric_left_authoritative"]},
+ "statistics":{"unit":"five training seeds; average evaluation seeds and trials within each","bootstrap":"exact all 3125 paired seed resamples; percentile 95%","S":"per-trial signed initial-episode yaw(k0)+yaw(k10)","D":"per-trial (signed initial-episode yaw(k0)-yaw(k10))/2","P":"abs(mean_S)/2 divided by mean_abs_yaw_original_k0_forward05","censoring":"paired first-episode prefix; retain falls and exposure; never join yaw across resets"},
+ "prerequisite":{"evaluate_symmetric_USD_first":true,"S_gate":"for every command, abs(mean of five seed S means) <=5 degrees; additionally report all per-seed values and intervals","halfcycle_swap":"signed yaw is axial: k10 left equals negative k0 right and k10 right equals negative k0 left; paired five-seed bootstrap95 swap-residual intervals must include zero; report numerical per-trial residuals without hiding divergences","failure":"classify simulator_not_equivariant, report and stop further original-USD factorial evaluation; suggest simulator investigation"},
+ "classification":{"Phi":"original forward05 S CI excludes zero and P>=0.5 and symmetric USD S CI includes zero","Gamma":"original P<0.5 or original S CI includes zero; abs(D)>=20 degrees in at least3 of5 training seeds and D sign agrees across USD for each seed","Omega":"otherwise; no additional experiments"},
+ "halfcycle":"actual pre-action (episode step+k)%20; complete cycles only, left bins0..9/right10..19, report phase-shifted prefix and exposure separately",
+ "video":"forward05 seed with maximum abs seed-mean D; paired same trial, k0/k10 overhead side-by-side worldXY plus colored front and side; exact-state replay; if prerequisite fails choose from symmetric USD and label early stop",
+ "scope":"No training, reward change, default change, extra experiments or parameter scan. Causal background statements remain hypotheses."
+}

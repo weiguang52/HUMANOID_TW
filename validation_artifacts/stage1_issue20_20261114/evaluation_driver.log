@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/run_issue20_evaluation.py", line 52, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/run_issue20_evaluation.py", line 14, in main
+    os.chdir(REPO);assert not (ROOT/'evaluation_records.json').exists(),'Audit partial formal records before resumption';check_wait()
+                                                                                                                         ^^^^^^^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/run_issue20_evaluation.py", line 8, in check_wait
+    pid=json.loads((ROOT/'usd_preflight_driver.json').read_text())['driver_pid'];assert Path('/proc/'+str(pid)).exists(),'USD preflight driver terminal without completed gates'
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: USD preflight driver terminal without completed gates
+ISSUE20_FORMAL_DONE 1 symmetric_s1_eval1_k0
+ISSUE20_FORMAL_DONE 2 symmetric_s1_eval1_k10
+ISSUE20_FORMAL_DONE 3 symmetric_s1_eval2_k0
+ISSUE20_FORMAL_DONE 4 symmetric_s1_eval2_k10
+ISSUE20_FORMAL_DONE 5 symmetric_s1_eval3_k0
+ISSUE20_FORMAL_DONE 6 symmetric_s1_eval3_k10
+ISSUE20_FORMAL_DONE 7 symmetric_s2_eval1_k0
+ISSUE20_FORMAL_DONE 8 symmetric_s2_eval1_k10
+ISSUE20_FORMAL_DONE 9 symmetric_s2_eval2_k0
+ISSUE20_FORMAL_DONE 10 symmetric_s2_eval2_k10
+ISSUE20_FORMAL_DONE 11 symmetric_s2_eval3_k0
+ISSUE20_FORMAL_DONE 12 symmetric_s2_eval3_k10
+ISSUE20_FORMAL_DONE 13 symmetric_s3_eval1_k0
+ISSUE20_FORMAL_DONE 14 symmetric_s3_eval1_k10
+ISSUE20_FORMAL_DONE 15 symmetric_s3_eval2_k0
+ISSUE20_FORMAL_DONE 16 symmetric_s3_eval2_k10
+ISSUE20_FORMAL_DONE 17 symmetric_s3_eval3_k0
+ISSUE20_FORMAL_DONE 18 symmetric_s3_eval3_k10
+ISSUE20_FORMAL_DONE 19 symmetric_s4_eval1_k0
+ISSUE20_FORMAL_DONE 20 symmetric_s4_eval1_k10
+ISSUE20_FORMAL_DONE 21 symmetric_s4_eval2_k0
+ISSUE20_FORMAL_DONE 22 symmetric_s4_eval2_k10
+ISSUE20_FORMAL_DONE 23 symmetric_s4_eval3_k0
+ISSUE20_FORMAL_DONE 24 symmetric_s4_eval3_k10
+ISSUE20_FORMAL_DONE 25 symmetric_s5_eval1_k0
+ISSUE20_FORMAL_DONE 26 symmetric_s5_eval1_k10
+ISSUE20_FORMAL_DONE 27 symmetric_s5_eval2_k0
+ISSUE20_FORMAL_DONE 28 symmetric_s5_eval2_k10
+ISSUE20_FORMAL_DONE 29 symmetric_s5_eval3_k0
+ISSUE20_FORMAL_DONE 30 symmetric_s5_eval3_k10
+ISSUE20_ANALYZED symmetric False
+ISSUE20_FORMAL_EVALUATION_TERMINAL 30

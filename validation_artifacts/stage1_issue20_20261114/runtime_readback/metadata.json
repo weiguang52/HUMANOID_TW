@@ -1,0 +1,602 @@
+{
+  "raw_readback_completed": true,
+  "formal_env_steps": 0,
+  "formal_initial_trials": 0,
+  "training_updates": 0,
+  "policy_loaded_or_called": false,
+  "num_envs": 64,
+  "raw_PhysX_link_names": [
+    "base_link",
+    "left_hip_linkage",
+    "right_hip_linkage",
+    "waist",
+    "left_thigh",
+    "right_thigh",
+    "gearbox",
+    "left_knee_linkage",
+    "right_knee_linkage",
+    "chest",
+    "left_mid_leg",
+    "right_mid_leg",
+    "left_shoulder_linkage",
+    "neck",
+    "right_shoulder_linkage",
+    "left_calf",
+    "right_calf",
+    "left_upper_arm",
+    "neck_linkage",
+    "right_upper_arm",
+    "left_ankle",
+    "right_ankle",
+    "left_elbow_linkage",
+    "head",
+    "right_elbow_linkage",
+    "left_foot",
+    "right_foot",
+    "left_force_arm",
+    "right_force_arm",
+    "left_wrist",
+    "right_wrist"
+  ],
+  "raw_PhysX_DOF_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_pitch_joint",
+    "right_knee_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "neck",
+    "right_shoulder_pitch_joint",
+    "left_ankle_yaw_joint",
+    "right_ankle_yaw_joint",
+    "left_shoulder_roll_joint",
+    "neck_linkage_roll",
+    "right_shoulder_roll_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_yaw_joint",
+    "head_pitch",
+    "right_shoulder_yaw_joint",
+    "left_foot_roll",
+    "right_foot_roll",
+    "left_elbow_pitch_joint",
+    "right_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_wrist_pitch"
+  ],
+  "robot_body_names": [
+    "base_link",
+    "left_hip_linkage",
+    "right_hip_linkage",
+    "waist",
+    "left_thigh",
+    "right_thigh",
+    "gearbox",
+    "left_knee_linkage",
+    "right_knee_linkage",
+    "chest",
+    "left_mid_leg",
+    "right_mid_leg",
+    "left_shoulder_linkage",
+    "neck",
+    "right_shoulder_linkage",
+    "left_calf",
+    "right_calf",
+    "left_upper_arm",
+    "neck_linkage",
+    "right_upper_arm",
+    "left_ankle",
+    "right_ankle",
+    "left_elbow_linkage",
+    "head",
+    "right_elbow_linkage",
+    "left_foot",
+    "right_foot",
+    "left_force_arm",
+    "right_force_arm",
+    "left_wrist",
+    "right_wrist"
+  ],
+  "robot_joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_pitch_joint",
+    "right_knee_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "neck",
+    "right_shoulder_pitch_joint",
+    "left_ankle_yaw_joint",
+    "right_ankle_yaw_joint",
+    "left_shoulder_roll_joint",
+    "neck_linkage_roll",
+    "right_shoulder_roll_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_yaw_joint",
+    "head_pitch",
+    "right_shoulder_yaw_joint",
+    "left_foot_roll",
+    "right_foot_roll",
+    "left_elbow_pitch_joint",
+    "right_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_wrist_pitch"
+  ],
+  "action_joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_pitch_joint",
+    "right_knee_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "neck",
+    "right_shoulder_pitch_joint",
+    "left_ankle_yaw_joint",
+    "right_ankle_yaw_joint",
+    "left_shoulder_roll_joint",
+    "neck_linkage_roll",
+    "right_shoulder_roll_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_yaw_joint",
+    "head_pitch",
+    "right_shoulder_yaw_joint",
+    "left_foot_roll",
+    "right_foot_roll",
+    "left_elbow_pitch_joint",
+    "right_elbow_pitch_joint",
+    "left_wrist_pitch",
+    "right_wrist_pitch"
+  ],
+  "getter_docstrings": {
+    "get_masses": "Gets the link masses for all articulation in the view.\n\n.. note::\n    The function raises an exception if the masses cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of masses with shape (count, max_links) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> link_masses = articulation_view.get_masses() # Get the mass for all links and all articulations in the view\n      >>> link_masses_np = link_masses.numpy().reshape(articulation_view.count, articulation_view.max_links) # Reshape the obtained array in a 2D numpy array on the host",
+    "get_coms": "Gets the pose of the principal-axes frame relative to the rigid-body-prim frame for articulations in the view.\n\n.. note::\n    * The function raises an exception if the centers of mass cannot be obtained from the backend.\n    * The poses are given in the rigid-body-prim frames.\n    * Using set_inertias in-between a set_coms and get_coms call may update the principal axes rotation, see note in set_coms.\n\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of centers of mass with shape (count, max_links, 7) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations. The 7 elements of the last dimension are the x, y, z, qx, qy, qz, qw components of the center-of-mass translation and principal-axes frame rotation.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> link_coms = articulation_view.get_coms() # Get the poses of the principal-axes frames for all links and all articulations in the view\n      >>> link_coms_np = link_coms.numpy().reshape(articulation_view.count, articulation_view.max_links, 7) # Reshape the obtained array in a 3D numpy array on the host",
+    "get_inertias": "Gets the link inertia tensors for all articulations in the view.\n\n.. note::\n    * The function raises an exception if the inertias cannot be obtained from the backend.\n    * The inertia tensors are given at the center of mass, expressed in the rigid-body-prim frame.\n\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of inertias with shape (count, max_links, 9) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations. The 9 elements of the last dimension are the column-major components of the inertia tensors.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> link_inertias = articulation_view.get_inertias() # Get the inertia tensor for all links and all articulations in the view\n      >>> link_inertias_np = link_inertias.numpy().reshape(articulation_view.count, articulation_view.max_links, 9) # Reshape the obtained array in a 3D numpy array on the host",
+    "get_material_properties": "Gets the material properties for all shapes in the view.\n\nThe material properties array is composed of the following properties (provided in the order of appearance in the array):\n\n* static friction\n* dynamic friction\n* restitution\n\n.. note::\n    The function raises an exception if the material properties cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of material properties with shape (count, max_shapes, 3) where count is the number of articulations in the view and max_shapes is the maximum number of shapes in all the view's articulations. The 3 elements of the last dimension are the static friction, dynamic friction, and restitution respectively.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> material_properties = articulation_view.get_material_properties() # Get the material properties for all shapes in the view\n      >>> material_properties_np = material_properties.numpy().reshape(articulation_view.count, articulation_view.max_shapes, 3) # Reshape the obtained array in a 3D numpy array on the host",
+    "get_dof_limits": "Gets the degrees of freedom (DOF) upper and lower limits for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF limits cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]:\n      An array of DOF limits with shape (count, max_dofs, 2) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n      The first index of the last dimension is reserved for the lower limit and the second index is for the upper limit.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_limits = articulation_view.get_dof_limits() # Get the DOF limits for all DOFs and all articulations in the view\n      >>> dof_limits_np = dof_limits.numpy().reshape(articulation_view.count, articulation_view.max_dofs, 2) # Reshape the obtained array in a 3D numpy array on the host\n      >>> dof_limits_final = dof_limits_np[0] # Takes only the results for the first articulation as all articulations in a view must be identical",
+    "get_dof_stiffnesses": "Gets the degrees of freedom (DOF) drive stiffnesses for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF stiffnesses cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF stiffnesses with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_stiffnesses = articulation_view.get_dof_stiffnesses() # Get the DOF stiffness for all DOFs and all articulations in the view\n      >>> dof_stiffnesses_np = dof_stiffnesses.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host",
+    "get_dof_dampings": "Gets the degrees of freedom (DOF) drive dampings for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF dampings cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF dampings with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_dampings = articulation_view.get_dof_dampings() # Get the DOF damping for all DOFs and all articulations in the view\n      >>> dof_dampings_np = dof_dampings.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host",
+    "get_dof_armatures": "Gets the degrees of freedom (DOF) armatures for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF armatures cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF armatures with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_armatures = articulation_view.get_dof_armatures() # Get the DOF armature for all DOFs and all articulations in the view\n      >>> dof_armatures_np = dof_armatures.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host",
+    "get_dof_max_forces": "Gets the degrees of freedom (DOF) maximum forces applied by the drive for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF maximum forces cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF maximum forces with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_max_forces = articulation_view.get_dof_max_forces() # Get the DOF maximum force applied by the drive for all DOFs and all articulations in the view\n      >>> dof_max_forces_np = dof_max_forces.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host",
+    "get_dof_max_velocities": "Gets the degrees of freedom (DOF) maximum velocities for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF maximum velocities cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF maximum velocities with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_max_velocities = articulation_view.get_dof_max_velocities() # Get the DOF maximum velocity for all DOFs and all articulations in the view\n      >>> dof_max_velocities_np = dof_max_velocities.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host",
+    "get_dof_friction_coefficients": "Gets the degrees of freedom (DOF) friction coefficients for all articulations in the view.\n\n.. warning::\n    This function is deprecated and will be removed in the future. Use :py:func:`ArticulationView.get_dof_friction_properties` instead.\n\n.. note::\n    The function raises an exception if the DOF friction coefficients cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF friction coefficients with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_friction_coefficients = articulation_view.get_dof_friction_coefficients() # Get the DOF friction coefficient for all DOFs and all articulations in the view\n      >>> dof_friction_coefficients_np = dof_friction_coefficients.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host"
+  },
+  "unsupported_optional_fields": {},
+  "parameter_identical_across_environments": {
+    "raw_masses": true,
+    "raw_COM_poses": true,
+    "raw_inertias": true,
+    "raw_materials": true,
+    "raw_DOF_limits": true,
+    "raw_DOF_stiffness": true,
+    "raw_DOF_damping": true,
+    "raw_DOF_armature": true,
+    "raw_DOF_effort_limit": true,
+    "raw_DOF_velocity_limit": true,
+    "raw_DOF_friction": true,
+    "data_default_mass": true,
+    "data_default_inertia": true,
+    "data_default_joint_pos": true,
+    "data_default_joint_vel": true,
+    "data_joint_stiffness": true,
+    "data_joint_damping": true,
+    "data_joint_armature": true,
+    "data_joint_friction_coeff": true,
+    "data_joint_effort_limits": true,
+    "data_joint_velocity_limits": true,
+    "data_soft_joint_pos_limits": true,
+    "action_scale": true,
+    "action_offset": true,
+    "action_processed_actions": true
+  },
+  "array_shapes": {
+    "raw_masses": [
+      64,
+      31
+    ],
+    "raw_COM_poses": [
+      64,
+      31,
+      7
+    ],
+    "raw_inertias": [
+      64,
+      31,
+      9
+    ],
+    "raw_materials": [
+      64,
+      33,
+      3
+    ],
+    "raw_DOF_limits": [
+      64,
+      30,
+      2
+    ],
+    "raw_DOF_stiffness": [
+      64,
+      30
+    ],
+    "raw_DOF_damping": [
+      64,
+      30
+    ],
+    "raw_DOF_armature": [
+      64,
+      30
+    ],
+    "raw_DOF_effort_limit": [
+      64,
+      30
+    ],
+    "raw_DOF_velocity_limit": [
+      64,
+      30
+    ],
+    "raw_DOF_friction": [
+      64,
+      30
+    ],
+    "data_default_mass": [
+      64,
+      31
+    ],
+    "data_default_inertia": [
+      64,
+      31,
+      9
+    ],
+    "data_default_joint_pos": [
+      64,
+      30
+    ],
+    "data_default_joint_vel": [
+      64,
+      30
+    ],
+    "data_joint_stiffness": [
+      64,
+      30
+    ],
+    "data_joint_damping": [
+      64,
+      30
+    ],
+    "data_joint_armature": [
+      64,
+      30
+    ],
+    "data_joint_friction_coeff": [
+      64,
+      30
+    ],
+    "data_joint_effort_limits": [
+      64,
+      30
+    ],
+    "data_joint_velocity_limits": [
+      64,
+      30
+    ],
+    "data_soft_joint_pos_limits": [
+      64,
+      30,
+      2
+    ],
+    "action_scale": [
+      64,
+      30
+    ],
+    "action_offset": [
+      64,
+      30
+    ],
+    "action_processed_actions": [
+      64,
+      30
+    ]
+  },
+  "array_dtypes": {
+    "raw_masses": "float32",
+    "raw_COM_poses": "float32",
+    "raw_inertias": "float32",
+    "raw_materials": "float32",
+    "raw_DOF_limits": "float32",
+    "raw_DOF_stiffness": "float32",
+    "raw_DOF_damping": "float32",
+    "raw_DOF_armature": "float32",
+    "raw_DOF_effort_limit": "float32",
+    "raw_DOF_velocity_limit": "float32",
+    "raw_DOF_friction": "float32",
+    "data_default_mass": "float32",
+    "data_default_inertia": "float32",
+    "data_default_joint_pos": "float32",
+    "data_default_joint_vel": "float32",
+    "data_joint_stiffness": "float32",
+    "data_joint_damping": "float32",
+    "data_joint_armature": "float32",
+    "data_joint_friction_coeff": "float32",
+    "data_joint_effort_limits": "float32",
+    "data_joint_velocity_limits": "float32",
+    "data_soft_joint_pos_limits": "float32",
+    "action_scale": "float32",
+    "action_offset": "float32",
+    "action_processed_actions": "float32"
+  },
+  "authored_stage_joint_drive_attributes": {
+    "left_hip_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "100.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_hip_roll_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "100.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_hip_yaw_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "80.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_knee_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "80.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_ankle_yaw_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "60.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_ankle_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "60.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_foot_roll": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "60.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_hip_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "100.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_hip_roll_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "100.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_hip_yaw_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "80.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_knee_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "80.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_ankle_yaw_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "60.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_ankle_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "60.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_foot_roll": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "60.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "waist_yaw": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "50.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "waist_roll_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "50.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "waist_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "50.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_shoulder_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "30.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_shoulder_roll_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "30.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_shoulder_yaw_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "25.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_elbow_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "25.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "left_wrist_pitch": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "20.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "neck": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "20.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "neck_linkage_roll": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "15.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "head_pitch": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "15.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_shoulder_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "30.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_shoulder_roll_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "30.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_shoulder_yaw_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "25.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_elbow_pitch_joint": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "25.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    },
+    "right_wrist_pitch": {
+      "drive:angular:physics:damping": "0.0",
+      "drive:angular:physics:maxForce": "20.0",
+      "drive:angular:physics:stiffness": "0.0",
+      "drive:angular:physics:targetPosition": "0.0",
+      "drive:angular:physics:targetVelocity": "-0.0",
+      "drive:angular:physics:type": "force"
+    }
+  },
+  "drive_note": "Authored USD attributes are distinguished from effective GPU PhysX readback; ImplicitActuator configuration overrides are not inferred from USD defaults.",
+  "physics_array_sha256": "09471bc890ad04ff75f149dae3b88dc4ef0e68059f6c3da54aa8f845422300cc",
+  "env_yaml_sha256": "90f3b9c90b8f348395be6d61bb7093e2313579c0ad3b49823798dc7c602542c5",
+  "source_sha256": "218c6eb00785bafb4e6770c667555169ac286c7eae9c3f88377228e9ca76195c",
+  "original_evaluator_source_sha256": "0275fca8bbf6a1f971c5568c6c4cf7b27e6d0aa9e4bf3e37b60c15b0e6cfd69c",
+  "instrumented_source_sha256": "72bb5d7d4a31b2fab06543bd58983d94382fb9590256061ee086a2d72fa3df6a",
+  "resolved_actual_stage_layers": [
+    {
+      "path": "/root/tw_stage1/issue20_20261114/strict_symmetric.usd",
+      "sha256": "b957ede157134278f6c5c13f41b014a88d9f6217563053ea5332598d425ac05e"
+    }
+  ],
+  "exact_PhysX_cooked_collision_hulls_extracted": false,
+  "collision_geometry_source": "Complete authored meshes/analytic primitives and cooking attributes are in the separate frozen USD inspection."
+}

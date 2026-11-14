@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "layers": [
+    {
+      "source": "/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd",
+      "archived_relative_path": "input_assets/original/urdf0711_training_30dof_tw123_yaw_waist_v3.usd",
+      "sha256": "24663fd164311931d0ea633bb1e4ceeb7a35bb7f3c02a52e10a94aafa6035816",
+      "bytes": 1492
+    },
+    {
+      "source": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_physics.usd",
+      "archived_relative_path": "input_assets/original/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_physics.usd",
+      "sha256": "0377936f919c4de596021320fa1af7611a9eeb3e4b9c24bebf41ca2463b143c5",
+      "bytes": 11279
+    },
+    {
+      "source": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_sensor.usd",
+      "archived_relative_path": "input_assets/original/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_sensor.usd",
+      "sha256": "d3969e2b73b74a59f819020303572db0a871d5eb1007cb4f803e4b5bc12631ea",
+      "bytes": 663
+    },
+    {
+      "source": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_base.usd",
+      "archived_relative_path": "input_assets/original/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_base.usd",
+      "sha256": "f34697e45b2aee6ff4a8ca7f12c143e46653f9c8b1cf35a3c646c6b5c98f640a",
+      "bytes": 216639819
+    },
+    {
+      "source": "/root/gpufree-data/datasets/practice9/custom_robot/usd/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_robot.usd",
+      "archived_relative_path": "input_assets/original/configuration/urdf0711_training_30dof_tw123_yaw_waist_v3_robot.usd",
+      "sha256": "6072067a79f5003d31ecedf2e9d3e104d9b55d27407b860e8ae26798983da4ee",
+      "bytes": 2743
+    }
+  ],
+  "relative_configuration_structure_preserved": true,
+  "copies_remain_on_remote_server": true
+}

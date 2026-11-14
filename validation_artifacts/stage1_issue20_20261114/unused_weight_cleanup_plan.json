@@ -1,0 +1,70 @@
+{
+  "user_authorization": "Prior explicit instruction: unused training weight files may be deleted",
+  "scope": "Only unreferenced numerical intermediate SuperMimic checkpoints with a retained final sibling. No final/anchor/best/TW/checkpoint reference removed. SuperMimic remains stopped.",
+  "text_files_checked": 25102,
+  "candidate_count": 12,
+  "protected_referenced_count": 0,
+  "selected": [
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/policy_anchor_smoke_v1/calibrated_retained/checkpoint_0001004.pt",
+      "bytes": 221089610,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/policy_anchor_smoke_v1/calibrated_retained/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_policy_anchor_v1/calibrated_retained/checkpoint_0001100.pt",
+      "bytes": 221089610,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_policy_anchor_v1/calibrated_retained/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_retention_zero_readout_v1/calibrated_retained/checkpoint_0001100.pt",
+      "bytes": 221087233,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_retention_zero_readout_v1/calibrated_retained/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_retention_v1/calibrated_retained/checkpoint_0001100.pt",
+      "bytes": 221086977,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_retention_v1/calibrated_retained/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/zero_readout_smoke_v1/calibrated_retained/checkpoint_0001004.pt",
+      "bytes": 221086977,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/zero_readout_smoke_v1/calibrated_retained/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_velocity_v2_seed42/2026-10-31_09-24-01/checkpoint_0000900.pt",
+      "bytes": 221083128,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_velocity_v2_seed42/2026-10-31_09-24-01/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_1000/2026-10-31_05-15-56/checkpoint_0000900.pt",
+      "bytes": 221083064,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_1000/2026-10-31_05-15-56/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_smoke/2026-10-31_04-55-06/checkpoint_0000002.pt",
+      "bytes": 221083064,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_twreward_smoke/2026-10-31_04-55-06/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_v1_seed42/2026-10-31_08-08-16/checkpoint_0000900.pt",
+      "bytes": 221083064,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/standing_v1_seed42/2026-10-31_08-08-16/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/velocity_penalty_smoke_v1/2026-10-31_09-20-38/checkpoint_0000002.pt",
+      "bytes": 221083064,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/velocity_penalty_smoke_v1/2026-10-31_09-20-38/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_smoke/2026-10-31_04-51-14/checkpoint_0000002.pt",
+      "bytes": 221082680,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/physics_v3_smoke/2026-10-31_04-51-14/checkpoint_final.pt"
+    },
+    {
+      "path": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_smoke/2026-10-31_02-54-40/checkpoint_0000002.pt",
+      "bytes": 221079032,
+      "retained_final": "/root/gpufree-data/twrl_runs/supermimic_tw_20261031/method_smoke/2026-10-31_02-54-40/checkpoint_final.pt"
+    }
+  ],
+  "reclaim_bytes": 2653017503
+}

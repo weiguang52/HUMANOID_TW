@@ -1,0 +1,43 @@
+{
+  "actual_review_completed": true,
+  "figures_reviewed": 4,
+  "contact_sheets_reviewed": 2,
+  "full_resolution_frames_reviewed": 18,
+  "paired_overhead_reviewed": true,
+  "paired_frames_reviewed": 3,
+  "reviewed_files_sha256": {
+    "video_review_frames/phase0_front_frame81.png": "019e433b44baa467e7849dcc14ee694e29e8f521053d3c6d02e2c506988f02be",
+    "video_review_frames/phase0_front_frame440.png": "6169544e427d3947f4a0b47dc9a73ae9ef01553a5758db04028db0abba76ae13",
+    "video_review_frames/phase0_front_frame999.png": "699e213433ece11e13791adb2587ae8cb15f2f8bd983573e8dfe298bcc54c7c4",
+    "video_review_frames/phase0_side_frame81.png": "d636b35515a60155eb210c75827d160845529b2835ff8a1f524299edb203a1ee",
+    "video_review_frames/phase0_side_frame440.png": "100866f11e29b52ac16f7258751721eafd7d7a899e4eb248d0a741cbc6d5b0ed",
+    "video_review_frames/phase0_side_frame999.png": "ef0abb525425bb701781b87e399095d0ff93a84a952b6035eebd2803a5d2a889",
+    "video_review_frames/phase0_overhead_frame81.png": "a4af437b8fb140ca18585cbd0e7fdce58ed77ca4daa447297a34956cce758483",
+    "video_review_frames/phase0_overhead_frame440.png": "1ae2f30b792babecc77951ff91c5f7d38f27163d9c4bca925b9b98ea1d34e61a",
+    "video_review_frames/phase0_overhead_frame999.png": "b09c2325d421d6115b649dfcc6ad5c4ef3220fff8ae8ca7c197b994b67a50768",
+    "video_review_frames/phase10_front_frame0.png": "02fd55ebdad60656abf27cd3f74a3663bdd1b90002f5206393bff2212e13d89d",
+    "video_review_frames/phase10_front_frame950.png": "8c565efe066628080871081b6d6622018af3a6adaa17b739a0f1351def078b83",
+    "video_review_frames/phase10_front_frame999.png": "6ce512eba6eb7a2c5ef4d6ee1ac983fdd63aa379fd6a5f7b3125f28d583e817b",
+    "video_review_frames/phase10_side_frame0.png": "f9168038b2ca2b8a59de149cbd92b48ef844bfa64e52717a4212a18538e4728c",
+    "video_review_frames/phase10_side_frame950.png": "4dab645cb385c0ca0e4aa61ea328dc748d9ed6f1e5f127a4411f6dc41059371c",
+    "video_review_frames/phase10_side_frame999.png": "5d87f974f6edeb7e79519e39ec8cccb3712ae7f781fd2d8bee1ed2bb0710be25",
+    "video_review_frames/phase10_overhead_frame0.png": "d8c86cd9a271ed2597e2f523b163098e5d2b66a133a4c6b92a6a243044d38246",
+    "video_review_frames/phase10_overhead_frame950.png": "e480a7904e9f258022d3d76cce716e72839e0988dac8061f1ba745aa0c6e961a",
+    "video_review_frames/phase10_overhead_frame999.png": "90dac116487b0c30bc91249381a0f57bd21e40c099052af779e515d69918d9c6",
+    "video_contact_sheets/phase0.png": "80fef792f7e296eb952e9cc278894c0f7ec94d6397273bc10fd25b06634e0f59",
+    "video_contact_sheets/phase10.png": "701e1e705f84a0dfb1b1c36c091e09c8d8d6541b20560001c71f6bf43d1a4839",
+    "video_review_frames/paired_frame0.png": "320be90614c07d6a4f9b30275d1882565a6cf8858407e9ab52a57e11e9b4eaf7",
+    "video_review_frames/paired_frame500.png": "d52c8bec1bdd25a9d5d724a6a97fa1ff63fd77df20b23d8eb0729bc86910d3cb",
+    "video_review_frames/paired_frame999.png": "16b80c209302cd01b4e9c8461870b07ecc63dd22372772fd92cb8256f8906451",
+    "figures/paired_S_D.png": "8ad6ce8a733a06a49b7911336c72589b42a47e179e43c1947af9015d19781a6d",
+    "figures/heading_startup_and_slope.png": "2999d388870783c21fa311b8e94943fc3e9736640f70d9e37e7c9a0e9bbbd24e",
+    "figures/halfcycle_swap_residuals.png": "120870bc577b475d3d08f092a19f6573467ead3106947a21468ee46eb1993693",
+    "figures/falls_and_exposure.png": "542786e932f32915761bfcd41dafd3d6df99972b5504ea9b4bfab6df87911382"
+  },
+  "notes": [
+    "Actually inspected four plots, two 21-frame contact sheets, eighteen distinct 960x720 single-view frames and three 1920x720 paired frames.",
+    "Joint colors visible; full body framed, attachments intact. Arms commonly outstretched; this is not a natural-gait claim.",
+    "Front and side follow translation/heading. Overhead fixed world orientation; paired times aligned and world XY uses common scale.",
+    "Both phases show substantial same-signed heading drift. Videos replay saved poses without dynamics integration; no causal isolation from visual appearance."
+  ]
+}

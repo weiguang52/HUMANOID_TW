@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/verify_issue20.py", line 16, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/verify_issue20.py", line 14, in main
+    child=subprocess.Popen(['python','-u','scripts/locomotion/'+script],stdout=log,stderr=subprocess.STDOUT,start_new_session=True);save('verification_progress.json',{'state':script,'driver_pid':os.getpid(),'child_pid':child.pid});assert child.wait()==0,script
+                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^
+AssertionError: audit_issue20_statistics.py

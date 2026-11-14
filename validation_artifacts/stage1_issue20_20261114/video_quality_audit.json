@@ -1,0 +1,552 @@
+{
+  "passed": true,
+  "videos": {
+    "phase0_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            352,
+            248,
+            609,
+            561
+          ],
+          "sha256": "a9116ab639d1a4a03c0bdb90d0a1a559972275d5905484d3ac3a322b19ac3da8"
+        },
+        {
+          "frame": 81,
+          "bbox": [
+            362,
+            250,
+            607,
+            549
+          ],
+          "sha256": "019e433b44baa467e7849dcc14ee694e29e8f521053d3c6d02e2c506988f02be"
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            356,
+            248,
+            607,
+            554
+          ],
+          "sha256": "3a9a9af4e07222f22a4526d47c06bea9128857a2f249b953d5be1d77adf5dc58"
+        },
+        {
+          "frame": 440,
+          "bbox": [
+            360,
+            250,
+            607,
+            549
+          ],
+          "sha256": "6169544e427d3947f4a0b47dc9a73ae9ef01553a5758db04028db0abba76ae13"
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            360,
+            250,
+            609,
+            554
+          ],
+          "sha256": "d979b2d75eb9179feec34780b764b14fb3a58da0fad3737bbca5375fb0cd9649"
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            356,
+            248,
+            607,
+            553
+          ],
+          "sha256": "ae9472e4f968ce7d2f4b60db0f8bd2ea5f3d58b878a72ebf6a386a75f6954587"
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            360,
+            250,
+            607,
+            553
+          ],
+          "sha256": "699e213433ece11e13791adb2587ae8cb15f2f8bd983573e8dfe298bcc54c7c4"
+        }
+      ],
+      "arm_motion_frame": 81,
+      "turn_frame": 440,
+      "manual_review_frames": [
+        81,
+        440,
+        999
+      ]
+    },
+    "phase0_side.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            456,
+            250,
+            509,
+            559
+          ],
+          "sha256": "e38395315e1c5e4dc32bccc78834f548053c8372358541fa07a011fd1abba931"
+        },
+        {
+          "frame": 81,
+          "bbox": [
+            468,
+            256,
+            559,
+            571
+          ],
+          "sha256": "d636b35515a60155eb210c75827d160845529b2835ff8a1f524299edb203a1ee"
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            464,
+            248,
+            561,
+            567
+          ],
+          "sha256": "b7d26fbf895a2853b4c16e9be2490eda46f720bf4ccdbbce6ef5b44fe87c3e4b"
+        },
+        {
+          "frame": 440,
+          "bbox": [
+            470,
+            256,
+            551,
+            571
+          ],
+          "sha256": "100866f11e29b52ac16f7258751721eafd7d7a899e4eb248d0a741cbc6d5b0ed"
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            466,
+            254,
+            547,
+            571
+          ],
+          "sha256": "929e04028781e370dd22f93e47414a41ba747d86bc58fc262ad5320914867aa1"
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            464,
+            248,
+            561,
+            567
+          ],
+          "sha256": "0ae7564922136da4bc95861de7825f1d8814befc3d5cbeb44a91ff6924f4a6b4"
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            466,
+            254,
+            545,
+            572
+          ],
+          "sha256": "ef0abb525425bb701781b87e399095d0ff93a84a952b6035eebd2803a5d2a889"
+        }
+      ],
+      "arm_motion_frame": 81,
+      "turn_frame": 440,
+      "manual_review_frames": [
+        81,
+        440,
+        999
+      ]
+    },
+    "phase0_overhead.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            454,
+            256,
+            499,
+            458
+          ],
+          "sha256": "7d3fc4c9c597c2a577f03e2dbb9afdce7d67a5e6c2a91b6d1294f2c2067e3a59"
+        },
+        {
+          "frame": 81,
+          "bbox": [
+            428,
+            260,
+            489,
+            449
+          ],
+          "sha256": "a4af437b8fb140ca18585cbd0e7fdce58ed77ca4daa447297a34956cce758483"
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            428,
+            264,
+            505,
+            459
+          ],
+          "sha256": "edb1f277fbfbfc2adde4ec3afaa2b07e995cae8ad06ccb6752cdef93878b712d"
+        },
+        {
+          "frame": 440,
+          "bbox": [
+            388,
+            314,
+            557,
+            433
+          ],
+          "sha256": "1ae2f30b792babecc77951ff91c5f7d38f27163d9c4bca925b9b98ea1d34e61a"
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            382,
+            322,
+            567,
+            439
+          ],
+          "sha256": "5c770e1e59bd80812167e340bccb77b8fa4ddf11aef63ad8551b3bcff2fb2fb0"
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            380,
+            340,
+            581,
+            429
+          ],
+          "sha256": "5310e6241beb56c3991f879dded4d7a937fa5fcb9ba441d79389b8d9cb9dccb7"
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            432,
+            278,
+            539,
+            453
+          ],
+          "sha256": "b09c2325d421d6115b649dfcc6ad5c4ef3220fff8ae8ca7c197b994b67a50768"
+        }
+      ],
+      "arm_motion_frame": 81,
+      "turn_frame": 440,
+      "manual_review_frames": [
+        81,
+        440,
+        999
+      ]
+    },
+    "phase10_front.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            350,
+            248,
+            607,
+            561
+          ],
+          "sha256": "02fd55ebdad60656abf27cd3f74a3663bdd1b90002f5206393bff2212e13d89d"
+        },
+        {
+          "frame": 111,
+          "bbox": [
+            360,
+            250,
+            609,
+            549
+          ],
+          "sha256": "c71c230b0739946f0538eeb41b6f1666791ab2a26bb76c59f4e32acc5d0a2d89"
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            362,
+            252,
+            607,
+            551
+          ],
+          "sha256": "ccada93981b7d770a5ee1755ccff488d1db4ccf8c3bd4ba876606b4569aff1fb"
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            356,
+            248,
+            607,
+            554
+          ],
+          "sha256": "5cb0c6fd33f8d81b02f71c5a6ee09949326767b8038e40f91c0c75bac631bfa3"
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            360,
+            250,
+            607,
+            551
+          ],
+          "sha256": "01f4eb7586ede7c03274f2072d6b8bf11ac59ae6df3a01695dd24155d21dfe22"
+        },
+        {
+          "frame": 950,
+          "bbox": [
+            360,
+            250,
+            609,
+            551
+          ],
+          "sha256": "8c565efe066628080871081b6d6622018af3a6adaa17b739a0f1351def078b83"
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            356,
+            248,
+            609,
+            555
+          ],
+          "sha256": "6ce512eba6eb7a2c5ef4d6ee1ac983fdd63aa379fd6a5f7b3125f28d583e817b"
+        }
+      ],
+      "arm_motion_frame": 950,
+      "turn_frame": 950,
+      "manual_review_frames": [
+        950,
+        950,
+        999
+      ]
+    },
+    "phase10_side.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            456,
+            250,
+            511,
+            559
+          ],
+          "sha256": "f9168038b2ca2b8a59de149cbd92b48ef844bfa64e52717a4212a18538e4728c"
+        },
+        {
+          "frame": 111,
+          "bbox": [
+            470,
+            256,
+            559,
+            571
+          ],
+          "sha256": "c5272f02d59a234a2b7bc2e2ac160c244776c325a4de82458581cca0b7651394"
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            470,
+            256,
+            551,
+            572
+          ],
+          "sha256": "bdc9556aec29d3469e48ca0d9d8b1a631b1a0509ae0aa38987362e5ec8ffdd1d"
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            464,
+            248,
+            559,
+            567
+          ],
+          "sha256": "c624c0bf38586118e44c6e01ef34914922ad7abfcc43b13cb3fa02fd2fab8809"
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            470,
+            254,
+            555,
+            571
+          ],
+          "sha256": "393597c4614dd28ec75f54312cabcd0ef03db4deb5378f64dc3962d7d9d272c6"
+        },
+        {
+          "frame": 950,
+          "bbox": [
+            470,
+            256,
+            547,
+            572
+          ],
+          "sha256": "4dab645cb385c0ca0e4aa61ea328dc748d9ed6f1e5f127a4411f6dc41059371c"
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            462,
+            250,
+            555,
+            567
+          ],
+          "sha256": "5d87f974f6edeb7e79519e39ec8cccb3712ae7f781fd2d8bee1ed2bb0710be25"
+        }
+      ],
+      "arm_motion_frame": 950,
+      "turn_frame": 950,
+      "manual_review_frames": [
+        950,
+        950,
+        999
+      ]
+    },
+    "phase10_overhead.mp4": {
+      "probe": {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "20.000000",
+        "nb_frames": "1000"
+      },
+      "sampled_frames": [
+        {
+          "frame": 0,
+          "bbox": [
+            418,
+            276,
+            543,
+            439
+          ],
+          "sha256": "d8c86cd9a271ed2597e2f523b163098e5d2b66a133a4c6b92a6a243044d38246"
+        },
+        {
+          "frame": 111,
+          "bbox": [
+            418,
+            286,
+            547,
+            445
+          ],
+          "sha256": "2310301bb23c97c994ecd5732ca2a0eb2d9f5b77b04c582ace63b29fba656001"
+        },
+        {
+          "frame": 250,
+          "bbox": [
+            452,
+            266,
+            531,
+            463
+          ],
+          "sha256": "77249e43f2f3586aeff724f6751348614bc60c1ffb73900e7cc43329484083c3"
+        },
+        {
+          "frame": 500,
+          "bbox": [
+            458,
+            260,
+            535,
+            451
+          ],
+          "sha256": "0176f2be1e84378696fd75fc625476be95523507d13a40654a9966e632a8ac36"
+        },
+        {
+          "frame": 750,
+          "bbox": [
+            401,
+            294,
+            573,
+            407
+          ],
+          "sha256": "1a9742fb4e39202ec4ff28c3190e34ff685189257e33e1089fa404e4941118c2"
+        },
+        {
+          "frame": 950,
+          "bbox": [
+            384,
+            310,
+            583,
+            390
+          ],
+          "sha256": "e480a7904e9f258022d3d76cce716e72839e0988dac8061f1ba745aa0c6e961a"
+        },
+        {
+          "frame": 999,
+          "bbox": [
+            378,
+            310,
+            581,
+            397
+          ],
+          "sha256": "90dac116487b0c30bc91249381a0f57bd21e40c099052af779e515d69918d9c6"
+        }
+      ],
+      "arm_motion_frame": 950,
+      "turn_frame": 950,
+      "manual_review_frames": [
+        950,
+        950,
+        999
+      ]
+    }
+  },
+  "paired_overhead_probe": {
+    "codec_name": "h264",
+    "width": 1920,
+    "height": 720,
+    "r_frame_rate": "50/1",
+    "duration": "20.000000",
+    "nb_frames": "1000"
+  },
+  "single_view_clips": 6,
+  "paired_clips": 1,
+  "single_view_sampled_frames": 42,
+  "contact_sheets": 2,
+  "manual_attachment_full_frame_and_plot_review_required": true
+}

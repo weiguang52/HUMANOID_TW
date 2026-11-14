@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "reason": "Independent unwrap audit detected float32 accumulation in common-prefix S/D. Promote only this derived prefix calculation to float64, without relaxing the verifier tolerance.",
+  "changed_sources": {
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/issue20_analysis.py": {
+      "before_sha256": "fea4a64de45645037f5720c1f8712ec1867084b18a0295f1c002989f72642d8d",
+      "after_sha256": "e1c186fa482cbd802e31d0f627f359229ee8e3df9bff6a8411596874dbe782ca"
+    }
+  },
+  "all_formal_raw_inputs_unchanged": true,
+  "formal_raw_input_files_verified": 1110,
+  "all_gate_metrics_bitwise_unchanged": true,
+  "all_job_statistics_unchanged": true,
+  "S20_D20_half_swap_and_full_pair_intervals_unchanged": true,
+  "prerequisite_decision_unchanged": true,
+  "no_new_rollouts_or_training": true,
+  "rules_sha256": "482b0eace32724500e35a7e5ff126fae6304bbceeb96ae099fe02743d34f2fac",
+  "timestamp": 1794641869.778543
+}

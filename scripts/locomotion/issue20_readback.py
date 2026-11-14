@@ -1,0 +1,3 @@
+"""Read back the strict model's actual PhysX parameters with issue16 conventions."""
+from pathlib import Path
+p=Path(__file__).with_name('issue16_runtime_readback.py');s=p.read_text().replace('from issue16_common import ROOT,sha','from issue20_common import ROOT,sha').replace("actual=Path('/root/gpufree-data/datasets/practice9/custom_robot/usd/urdf0711_training_30dof_tw123_yaw_waist_v3.usd')","actual=ROOT/'strict_symmetric.usd'");s=s.replace(" assert any(Path(x['path']).resolve()==actual.resolve()"," print('ACTUAL_USD_DEBUG',str(actual),base.cfg.scene.robot.spawn.usd_path,layers,flush=True)\n assert any(Path(x['path']).resolve()==actual.resolve()");exec(compile(s,str(p),'exec'),globals())

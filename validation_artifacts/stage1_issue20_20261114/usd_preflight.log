@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/preflight_issue20_usd.py", line 26, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/preflight_issue20_usd.py", line 20, in main
+    a,out=args('strict_zero_step_readback',usd=str(ROOT/'strict_symmetric.usd'));a[2]='scripts/locomotion/read_runtime_issue20.py';a[a.index('--num_envs')+1]='64';run(a[2],a[3:],name='runtime_readback.log');run('scripts/locomotion/audit_runtime_issue20.py')
+                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/preflight_issue20_usd.py", line 11, in run
+    assert code==0,(script,code)
+           ^^^^^^^
+AssertionError: ('scripts/locomotion/read_runtime_issue20.py', 1)
+ISSUE20_USD_PREFLIGHT_COMPLETE

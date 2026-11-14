@@ -1,0 +1,8 @@
+{
+  "required_by_issue": true,
+  "reason": "Symmetric USD mirrored-trajectory prerequisite failed or incomplete; do not infer Phi/Gamma or run further original USD cells",
+  "completed_formal_jobs": 30,
+  "skipped_original_USD_jobs": 30,
+  "recommendation": "Investigate simulation equivariance, including contact solver and finite-precision clock/state effects; no extra experiments in this issue",
+  "training_updates": 0
+}

@@ -1,0 +1,11 @@
+{
+  "static_mass_relative_difference_maximum": 0.0,
+  "static_COM_reflection_distance_m_maximum": 0.0,
+  "static_inertia_frobenius_relative_difference_maximum": 2.1911032354329668e-08,
+  "static_collision_vertex_cloud_hausdorff_m_maximum": 0.0,
+  "runtime_mass_relative_difference_maximum": 0.0,
+  "runtime_COM_reflection_distance_m_maximum": 0.0,
+  "runtime_inertia_frobenius_relative_difference_maximum": 3.756588024572287e-07,
+  "maximum_joint_axis_mismatch_degrees": 1.9090959104164224e-06,
+  "note": "Actual numerical limits, not merely boolean passes; trajectory failures do not isolate contact ordering from float32 clock/state/model representation effects."
+}

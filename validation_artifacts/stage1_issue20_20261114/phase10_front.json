@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "phase": 10,
+  "usd": "symmetric",
+  "source_trajectory_sha256": "8240b5ab668a5ba011ceeaf48a8f3d6e4c12143c0a2aecdbae37e63a482ea8de",
+  "source_selection_sha256": "ceec6a73eae4e6dc64751487c7ca8d64e99a5bc985c8d88a169ea26761443f4f",
+  "replay_source_sha256": "74fbaa7e5ba445a4d22471535d21386a3a2e97ad57052dae718516731508442d",
+  "render_adapter_sha256": "84d0409214630369c0c6b6d5d538d18efa562d055c4265841180533f14a5abdf",
+  "frames": 1000,
+  "fps": 50,
+  "seconds": 20,
+  "physics_integrated": false,
+  "view": "front",
+  "camera_follows_translation": true,
+  "camera_follows_heading": true,
+  "video": "/root/tw_stage1/issue20_20261114/videos/phase10_front.mp4",
+  "video_sha256": "d20fa395daada703df5b34ee2e02801fa8e15366b5333fd2b9dee204e21641b0",
+  "humanml_source_npy": "N/A: stage1 velocity command, not motion retargeting"
+}

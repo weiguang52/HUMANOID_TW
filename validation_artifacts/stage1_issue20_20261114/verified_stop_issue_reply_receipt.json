@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "url": "https://github.com/weiguang52/HUMANOID_TW/issues/20#issuecomment-6874208595",
+  "readback": {
+    "url": "https://api.github.com/repos/weiguang52/HUMANOID_TW/issues/comments/6874208595",
+    "html_url": "https://github.com/weiguang52/HUMANOID_TW/issues/20#issuecomment-6874208595",
+    "issue_url": "https://api.github.com/repos/weiguang52/HUMANOID_TW/issues/20",
+    "id": 6874208595,
+    "node_id": "IC_kwDOTzwZ7c8AAAABmbwZUw",
+    "user": {
+      "login": "weiguang52",
+      "id": 93264629,
+      "node_id": "U_kgDOBY8a9Q",
+      "avatar_url": "https://avatars.githubusercontent.com/u/93264629?u=a3ac23453c6e28f503fde16138ae82d2b976a55f&v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/weiguang52",
+      "html_url": "https://github.com/weiguang52",
+      "followers_url": "https://api.github.com/users/weiguang52/followers",
+      "following_url": "https://api.github.com/users/weiguang52/following{/other_user}",
+      "gists_url": "https://api.github.com/users/weiguang52/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/weiguang52/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/weiguang52/subscriptions",
+      "organizations_url": "https://api.github.com/users/weiguang52/orgs",
+      "repos_url": "https://api.github.com/users/weiguang52/repos",
+      "events_url": "https://api.github.com/users/weiguang52/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/weiguang52/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "created_at": "2026-11-14T07:59:37Z",
+    "updated_at": "2026-11-14T07:59:37Z",
+    "author_association": "OWNER",
+    "body": "Symmetric-USD prerequisite evaluation finished: all30 formal jobs (5 policies x3 evaluation seeds x2 start phases),120 command cells and122880 initial trials; zero falls and full20s exposure for every initial trial. The prerequisite FAILS, so the30 original-USD jobs are not run as requested. No P/Phi/Gamma inference or default promotion.\n\nstand: meanS=-19.456deg, paired training-seed95%CI=[-38.81273928053933, -4.1502968789734345]\nforward_03: meanS=38.038deg, paired training-seed95%CI=[0.7944629333519743, 73.34881936511637]\nforward_05: meanS=36.835deg, paired training-seed95%CI=[-86.8184668947544, 174.75556706339822]\nforward_08: meanS=104.068deg, paired training-seed95%CI=[65.28790463194059, 146.73253223600335]\n\nAll initial mirrors, actual phases and saved pose/yaw consistency passed. Independent verification covers all120 cell metrics,60 paired command cells, raw S/D and half-swap arrays and all3125 five-seed bootstrap resamples. It detected float32 accumulation in common-prefix summaries; only that derived calculation was promoted to float64. All1110 formal raw inputs, S20/D20, half-swap intervals and every gate decision are unchanged, with source/hash correction evidence retained. Verifier tolerances were not relaxed.\n\nThe one next recommendation is investigation of simulator equivariance, including contact/cooking order and finite-precision state/clock/tensor effects; this result alone does not identify a sole cause. No further experiments or training in this issue. Four plots have been visually reviewed; exact-state colored front/side/paired-overhead media QA and final archive/commit/push remain in progress. Task status remains in progress in Notion, not Linear: https://www.notion.so/403325d8231d8172995bf19510b8d760",
+    "reactions": {
+      "url": "https://api.github.com/repos/weiguang52/HUMANOID_TW/issues/comments/6874208595/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "performed_via_github_app": null,
+    "minimized": null,
+    "pin": null
+  }
+}

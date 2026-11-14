@@ -1,0 +1,50 @@
+[
+  {
+    "phase": 0,
+    "usd": "symmetric",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "env_id": 0,
+    "views": {
+      "front": {
+        "path": "/root/tw_stage1/issue20_20261114/videos/phase0_front.mp4",
+        "sha256": "5a24a58b44be4c0dfbf0c4839ce2334e0ae1d615ae0b67387d90671e57adcbe4",
+        "metadata": "/root/tw_stage1/issue20_20261114/phase0_front.json"
+      },
+      "side": {
+        "path": "/root/tw_stage1/issue20_20261114/videos/phase0_side.mp4",
+        "sha256": "75115add81828e5112e1412e93a557bb06c199969b27c732fc8fedc32b8293f4",
+        "metadata": "/root/tw_stage1/issue20_20261114/phase0_side.json"
+      },
+      "overhead": {
+        "path": "/root/tw_stage1/issue20_20261114/videos/phase0_overhead.mp4",
+        "sha256": "11099570b4f62fd0746ffa346067c46e224b401bbd9dbb187cbc3959affb20a7",
+        "metadata": "/root/tw_stage1/issue20_20261114/phase0_overhead.json"
+      }
+    }
+  },
+  {
+    "phase": 10,
+    "usd": "symmetric",
+    "training_seed": 5,
+    "eval_seed": 1,
+    "env_id": 0,
+    "views": {
+      "front": {
+        "path": "/root/tw_stage1/issue20_20261114/videos/phase10_front.mp4",
+        "sha256": "d20fa395daada703df5b34ee2e02801fa8e15366b5333fd2b9dee204e21641b0",
+        "metadata": "/root/tw_stage1/issue20_20261114/phase10_front.json"
+      },
+      "side": {
+        "path": "/root/tw_stage1/issue20_20261114/videos/phase10_side.mp4",
+        "sha256": "c5a23396eb1747fb3a6261b465adc7505e720edfc9ac7adb0118582f85acca7a",
+        "metadata": "/root/tw_stage1/issue20_20261114/phase10_side.json"
+      },
+      "overhead": {
+        "path": "/root/tw_stage1/issue20_20261114/videos/phase10_overhead.mp4",
+        "sha256": "e73973a722004c56ef27726e71302e14517e172b505d8954ee175f412dfe6d38",
+        "metadata": "/root/tw_stage1/issue20_20261114/phase10_overhead.json"
+      }
+    }
+  }
+]

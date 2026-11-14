@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "formal_jobs": 30,
+  "command_cells": 120,
+  "paired_command_cells": 60,
+  "all_raw_S_D_and_half_swap_arrays_independently_verified": true,
+  "all_primary_cell_metrics_and_seed_intervals_verified": true,
+  "OLS_method": "independent numpy.linalg.lstsq on unwrapped full20s heading",
+  "half_cycle_cell_method": "complete eligible cycles pooled as issue19; per-trial paired residuals separately verified",
+  "bootstrap": "independent np.indices enumerating all3125 seed resamples",
+  "max_float32_accumulator_vs_float64_heading_difference_degrees": 0.00023262663817735785
+}

@@ -1,0 +1,14 @@
+{
+  "files": {
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/report_issue20.py": "5429e5eddaeb0c1d94c3bce92fb393782b16d1fc96e80ff48cadae2ad64b2a71",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/plot_issue20.py": "71e48b27da674615fbb9c0b37de53580dfc4e82aaa0e9af6c536f3c415d3561f",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/color_issue20_usd.py": "0372dffcd80d8b3184ca7e405bf2512a881c6cf0a5b559610761ed940944efb0",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/render_issue20.py": "b1145161ff5d1fdd58dc6c45d1866950c34452e1f069b2e5dc59200fdbe59cd6",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/render_eval_issue20.py": "84d0409214630369c0c6b6d5d538d18efa562d055c4265841180533f14a5abdf",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/replay_issue20.py": "74fbaa7e5ba445a4d22471535d21386a3a2e97ad57052dae718516731508442d",
+    "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue20_videos.py": "224050bb25c3f10ee4670f0dc4f38b928579ef234f2e0ffc42bbfe35d5a3311f"
+  },
+  "frozen_before_aggregate_analysis": false,
+  "revision_reason": "Actual frame color failure; bind at physical link roots with strongerThanDescendants before simulation.",
+  "previous_manifest_sha256": "b039bc3b49aacd28112cceb3644719133d2c3c4ed83fc99ce08b8d797cfb1cdc"
+}

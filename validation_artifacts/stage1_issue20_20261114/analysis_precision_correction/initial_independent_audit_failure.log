@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue20_statistics.py", line 59, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/root/gpufree-data/projects/HUMANOID_TW/scripts/locomotion/audit_issue20_statistics.py", line 50, in main
+    for key,value in expected.items():assert np.allclose(value,z[key],equal_nan=True,atol=1e-7,rtol=0),(path,key)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (PosixPath('/root/tw_stage1/issue20_20261114/paired_raw/symmetric/s1_eval1_forward_03.npz'), 'common_prefix_S_degrees')

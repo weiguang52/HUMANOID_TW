@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "num_envs": 1024,
+  "evaluation_seed": 1,
+  "training_seed": 1,
+  "checks": [
+    {
+      "command": "stand",
+      "steps": 1000,
+      "action_and_root_joint_state_bitwise_equal": true,
+      "all_archived_issue19_yaw_arrays_bitwise_equal": true
+    },
+    {
+      "command": "forward_03",
+      "steps": 1000,
+      "action_and_root_joint_state_bitwise_equal": true,
+      "all_archived_issue19_yaw_arrays_bitwise_equal": true
+    },
+    {
+      "command": "forward_05",
+      "steps": 1000,
+      "action_and_root_joint_state_bitwise_equal": true,
+      "all_archived_issue19_yaw_arrays_bitwise_equal": true
+    },
+    {
+      "command": "forward_08",
+      "steps": 1000,
+      "action_and_root_joint_state_bitwise_equal": true,
+      "all_archived_issue19_yaw_arrays_bitwise_equal": true
+    }
+  ],
+  "baseline_observer_only": true,
+  "baseline_output": "/root/tw_stage1/issue20_20261114/preflight/original_evaluator_observed/result.json",
+  "candidate_output": "/root/tw_stage1/issue20_20261114/preflight/zero_phase_candidate/result.json",
+  "training_updates": 0
+}

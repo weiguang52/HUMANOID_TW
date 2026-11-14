@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "left_bodies_unchanged": 12,
+  "left_joint_local_attributes_unchanged": 12,
+  "left_collision_world_vertex_arrays_unchanged": 12,
+  "original_inspection_sha256": "87864fc6b101c559e2ade288016a37f78dc5f27716608b90551dcd2ad72e8ae1",
+  "symmetric_inspection_sha256": "ef60e3df0e7d39c999041db4fbf44b6bb2b178b0108ad1c4d57bf52edff1b803",
+  "note": "Central body symmetry projection can change derived left joint world axes at float precision; all left local joint attributes and body/collision geometry remain unchanged."
+}

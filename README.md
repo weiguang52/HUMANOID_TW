@@ -7,7 +7,11 @@ This branch contains two separate research lines. Their results must not be comb
 | Line | Current status | Evidence |
 | --- | --- | --- |
 | SuperMimic world-model / imitation | Stopped after failed acceptance; previous policy pilots passed 0/7 fixed independent motions. No accepted TW SuperMimic policy. | Historical handoff below and `docs/practice9/supermimic_dense_static_final_review.json` |
-| Isaac Lab stage1 velocity walking | Issue #19 matched symmetric actor continuation completed: 10 models and 60 new evaluations. Tracking recovered; heading and robustness acceptance FAILED. Default remains unchanged. Issue #17 scientific acceptance remains FAILED. | [Issue #19 results](docs/stage1_issue19_20261113.md), [lossless archive](validation_artifacts/stage1_issue19_20261113/results.md) |
+| Isaac Lab stage1 velocity walking | Issue20 complete: 30 formal evaluations, zero training; frozen outcome simulator_not_equivariant. Required symmetric-USD prerequisite stop; original USD skipped. No default promotion; issue17/19 acceptance remains FAILED. | [Issue20 results](docs/stage1_issue20_20261114.md), [archive](validation_artifacts/stage1_issue20_20261114/results.md) |
+
+<!-- ISSUE20_STATUS_START -->
+Issue20 complete: 30 formal evaluations, zero training; frozen outcome simulator_not_equivariant. Required symmetric-USD prerequisite stop; original USD skipped. No default promotion; issue17/19 acceptance remains FAILED. The same five final symmetric policies are tested with start phases0/10 and original/strict symmetric USD. Rewards/defaults unchanged. [Full report](docs/stage1_issue20_20261114.md) includes all cell/seed intervals, paired S/D, startup and late slope, half cycles, model differences and colored paired-overhead/front/side videos. Historical findings below remain preserved.
+<!-- ISSUE20_STATUS_END -->
 
 Issue #19: all ten fixed-budget continuations and sixty formal evaluations are complete. Symmetric actor forward0.5 heading improves substantially versus matched continuation, but averages48.044deg (threshold30deg), while bounded0.3 fall upper bound1.3802% exceeds1%. Tracking recovery passes; overall acceptance fails. No default promotion. The sole unimplemented next recommendation is the original/reflected policy x original/strict symmetric USD 2x2 diagnostic. See [full report](docs/stage1_issue19_20261113.md) for all commands, seed intervals, exact-state videos and separately accounted user-authorized infrastructure retry. Historical findings below remain preserved.
 

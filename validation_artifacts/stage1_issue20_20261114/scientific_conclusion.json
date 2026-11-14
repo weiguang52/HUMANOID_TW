@@ -1,0 +1,12 @@
+{
+  "prerequisite_passed": false,
+  "training_updates": 0,
+  "default_promoted": false,
+  "parameter_scan": false,
+  "rules_sha256": "482b0eace32724500e35a7e5ff126fae6304bbceeb96ae099fe02743d34f2fac",
+  "individual95_intervals_not_simultaneous": true,
+  "classification": "simulator_not_equivariant",
+  "physical_fraction_P": null,
+  "recommendation": "Next issue: investigate simulator equivariance, including contact-solver ordering and finite-precision state/clock effects. No extra experiments in this issue.",
+  "Phi_or_Gamma_not_inferred": true
+}
